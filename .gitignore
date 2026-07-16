@@ -1,0 +1,17 @@
+# personal reference docs — not part of the tracked project
+docs/architecture.html
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# data (gitignored per pipeline design — raw docs + manifest are regenerable)
+data/raw/*
+!data/raw/.gitkeep
+data/manifest.db
+
+# editor/OS noise
+.vscode/
+.DS_Store

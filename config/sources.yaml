@@ -1,0 +1,40 @@
+strong_tier:
+  engineering:
+    regulator: AICTE
+    listing_page: https://www.aicte.gov.in/education/model-syllabus
+    doc_type: pdf
+
+  medicine:
+    regulator: NMC
+    # TODO: verify page structure (branch -> doc links) before building NMCAdapter
+    listing_page: https://www.nmc.org.in/information-desk/for-colleges/ug-curriculum/
+    doc_type: pdf_or_webpage
+
+medium_tier:
+  law:
+    regulator: BCI
+    # TODO: barcouncilofindia.org/legal-education-rules is a near-empty JS shell.
+    # Real content lives at the 2008 Legal Education Rules PDF, linked from
+    # barcouncilofindia.org/info/ler2008 — confirm before building BCIAdapter.
+    listing_page: https://www.barcouncilofindia.org/info/ler2008
+    doc_type: webpage
+
+  commerce_management:
+    regulator: UGC
+    # TODO: ugc.gov.in/page/Model-Curriculum.aspx was down (maintenance/403).
+    # LOCF docs are per-subject PDFs (e.g. Commerce), not one listing page —
+    # confirm the actual index page before building UGCAdapter.
+    listing_page: https://www.ugc.gov.in/pdfnews/8737712_LOCF-document-on-commerce-2.pdf
+    doc_type: pdf
+
+weak_tier:
+  # no single regulator — scoped search only, restricted domains
+  animation_design:
+    method: scoped_search
+    allowed_domains: [".ac.in", ".edu"]
+    query_template: "{course_name} syllabus curriculum"
+
+  media_mass_comm:
+    method: scoped_search
+    allowed_domains: [".ac.in", ".edu"]
+    query_template: "{course_name} syllabus curriculum"
