@@ -151,6 +151,15 @@ career_info:
     # Skipped pending that design decision — do not build NCSAdapter as a
     # copy of AICTEAdapter without resolving this first.
 
+# Confidence threshold for accepting a match() result during orchestrated
+# retrieval (src/retrieve/orchestrator.py). Below this, retrieve_course()
+# falls through to the next source in retrieval_order rather than
+# downloading a low-confidence match — this is what correctly rejects
+# AICTE's Aerospace Engineering "Textile Engineering" match (confidence
+# 0.69) instead of downloading the wrong document.
+matching:
+  threshold: 0.80
+
 # Declarative retrieval order per tier. Not yet consumed by any adapter —
 # orchestration doesn't exist yet (see README.md STAGE 1). Encoded here now
 # so the order is a config decision, not something re-derived ad hoc when
