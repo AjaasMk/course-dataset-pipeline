@@ -41,7 +41,8 @@ download(match: SourceMatch, tier: str) -> ManifestEntry
    — `.pdf` for AICTE, `.html` for Careers360. Content is saved as-is; Stage 1 does
    not parse or normalize it (that's Stage 2's job).
 4. Insert a new row into `data/manifest.db` (SQLite): course_name, tier,
-   source_type, matched_url, local_path, file_hash, match_confidence, retrieved_at.
+   source_type, matched_url, local_path, file_hash, match_confidence, retrieved_at,
+   content_type, content_length, http_status (see "Manifest fields" below).
 5. Return the `ManifestEntry`.
 
 `src/retrieve/manifest.py` owns all SQLite access (`get_entry(course_name, url)`,
@@ -64,11 +65,35 @@ class SourceType(str, Enum):
 `AICTEAdapter.download()` always produces `REGULATOR_PDF`; `Careers360Adapter.download()`
 always produces `AGGREGATOR_WEBPAGE`.
 
+## Manifest fields (added)
+
+Three fields are added to `ManifestEntry`, captured from the `requests.Response`
+at download time:
+
+```python
+class ManifestEntry(BaseModel):
+    ...
+    content_type: Optional[str] = None    # response.headers.get("Content-Type")
+    content_length: Optional[int] = None  # response.headers.get("Content-Length"); not always sent (e.g. chunked encoding) -> None
+    http_status: Optional[int] = None     # response.status_code
+    retrieved_at: str                     # already existed; ISO 8601 timestamp
+```
+
+These are only ever populated on a successful download (see "Error handling"
+below) — a manifest row always reflects a real, saved file, never a failed
+attempt. `http_status` will therefore always be 2xx in practice, but is stored
+explicitly rather than assumed, since it's cheap and makes the manifest
+self-describing without cross-referencing code.
+
 ## Error handling
 
 - HTTP failure (timeout, 404, 5xx) on `requests.get` → propagates, no silent
-  fallback. A failed download is a failed download (Hard Constraint 4 — no
-  fabrication; fail loud, per project conventions).
+  fallback, and no manifest row is written. A failed download is a failed
+  download (Hard Constraint 4 — no fabrication; fail loud, per project
+  conventions). This was an explicit choice on revisiting the design: failed
+  attempts are not logged to the manifest with their status code, to keep
+  every manifest row representing a real, saved file rather than a mix of
+  successes and failures. Revisit if failure visibility becomes a real need.
 - Manifest DB missing on first run → `manifest.py` creates the table via
   `CREATE TABLE IF NOT EXISTS`, no separate init step required.
 
@@ -89,11 +114,13 @@ mirrors the tier model in `config/sources.yaml`.
 ## Testing
 
 - `tests/test_manifest.py` — `get_entry`/`insert_entry` against a temp SQLite file
-  (pytest `tmp_path` fixture), real SQLite, no mocking.
+  (pytest `tmp_path` fixture), real SQLite, no mocking. Includes round-tripping
+  the new `content_type`/`content_length`/`http_status` fields.
 - `tests/test_aicte.py` (new) and `tests/test_careers360.py` (extended) — mock
   `requests.get` (stdlib `unittest.mock.patch`, no new dependency) to verify:
-  first download writes file + manifest row; second call for the same
-  course+URL skips the HTTP call (idempotency); a different course/URL triggers a
-  real download.
+  first download writes file + manifest row with `content_type`/`content_length`/
+  `http_status` correctly populated from the mocked response headers/status;
+  second call for the same course+URL skips the HTTP call (idempotency); a
+  different course/URL triggers a real download.
 - Existing `__main__` smoke-test blocks in each adapter are extended to call
   `download()`, same pattern as their existing `match()` smoke test.
