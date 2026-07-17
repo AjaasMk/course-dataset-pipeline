@@ -155,18 +155,33 @@ career_info:
 # orchestration doesn't exist yet (see README.md STAGE 1). Encoded here now
 # so the order is a config decision, not something re-derived ad hoc when
 # Stage 1 orchestration is finally written.
+#
+# DECISION (2026-07-17): fact_supplement_independent_writing_required
+# (Careers360) is tried FIRST in every tier, ahead of regulatory_primary —
+# reversing the original regulator-first order, including for engineering
+# where AICTE is verified and already working end-to-end. Rationale: NMC/
+# BCI/UGC are blocked/needs_scoping (see status notes above) while
+# Careers360 is verified and simpler to retrieve from uniformly across
+# tiers; rather than block retrieval on hard-to-access regulator sites,
+# Careers360 becomes the default primary source everywhere.
+#
+# Explicit, accepted tradeoff: this means strong/medium tier metrics
+# (CLAUDE.md Hard Constraint 6) will blend regulator-backed and
+# Careers360-backed results under the same tier label going forward — the
+# tier label no longer implies "regulator-sourced." Chosen deliberately in
+# favor of simplicity over that distinction; not an oversight.
 retrieval_order:
   strong_tier: # Engineering, Medicine
+    - fact_supplement_independent_writing_required
     - regulatory_primary
     - syllabus_supplement
-    - fact_supplement_independent_writing_required
   medium_tier: # Law, Commerce/Management
+    - fact_supplement_independent_writing_required
     - regulatory_primary
     - university_websites # from fact_supplement_independent_writing_required
-    - fact_supplement_independent_writing_required
   weak_tier: # Animation/Media/Arts — no regulator exists, no regulatory_primary step
-    - university_scoped_search
     - fact_supplement_independent_writing_required
+    - university_scoped_search
 
 weak_tier_fallback:
   # Animation/Media/Arts — no regulator exists
