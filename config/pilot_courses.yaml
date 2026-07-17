@@ -1,0 +1,118 @@
+# Pilot course list — 50 courses, stratified per README.md's "Pilot scope"
+# table, selected from C:\Users\ajaas\Downloads\COURSE LIST.xlsx (30-sheet
+# taxonomy of sub-fields -> applicable bachelor's degrees). raw_name is the
+# exact sub-field string from that file, kept for provenance. Selecting
+# these 50 names is input scoping (defining what to search for), not manual
+# retrieval/matching/writing -- see design doc's Hard Constraint 1 note.
+courses:
+  # engineering (20) -> strong_tier
+  - raw_name: "Civil Engineering"
+    category: engineering
+  - raw_name: "Mechanical Engineering"
+    category: engineering
+  - raw_name: "Electrical Engineering"
+    category: engineering
+  - raw_name: "Aerospace Engineering"
+    category: engineering
+  - raw_name: "Chemical Engineering"
+    category: engineering
+  - raw_name: "Biomedical Engineering"
+    category: engineering
+  - raw_name: "Electronics & Communication Engineering"
+    category: engineering
+  - raw_name: "Automotive Engineering"
+    category: engineering
+  - raw_name: "Industrial Engineering"
+    category: engineering
+  - raw_name: "Mechatronics Engineering"
+    category: engineering
+  - raw_name: "Robotics Engineering"
+    category: engineering
+  - raw_name: "Metallurgical Engineering"
+    category: engineering
+  - raw_name: "Mining Engineering"
+    category: engineering
+  - raw_name: "Marine Engineering"
+    category: engineering
+  - raw_name: "Computer Science & Engineering"
+    category: engineering
+  - raw_name: "Information Technology (IT)"
+    category: engineering
+  - raw_name: "Artificial Intelligence (AI)"
+    category: engineering
+  - raw_name: "Data Science"
+    category: engineering
+  - raw_name: "Cybersecurity / Information Security"
+    category: engineering
+  - raw_name: "Software Engineering"
+    category: engineering
+
+  # medicine (10) -> strong_tier
+  - raw_name: "Allopathic Medicine & Surgery (Core)"
+    category: medicine
+  - raw_name: "Dentistry & Oral Surgery"
+    category: medicine
+  - raw_name: "Ayurveda"
+    category: medicine
+  - raw_name: "Homeopathy"
+    category: medicine
+  - raw_name: "Nursing (Core / General)"
+    category: medicine
+  - raw_name: "Pharmacy (Core)"
+    category: medicine
+  - raw_name: "Physiotherapy / Physical Therapy"
+    category: medicine
+  - raw_name: "Optometry & Ophthalmic Sciences"
+    category: medicine
+  - raw_name: "Nutrition & Dietetics"
+    category: medicine
+  - raw_name: "Radiography / Medical Imaging"
+    category: medicine
+
+  # commerce_management (5) -> medium_tier
+  - raw_name: "Business Administration / Management (Core)"
+    category: commerce_management
+  - raw_name: "Accounting (Core)"
+    category: commerce_management
+  - raw_name: "Finance (Core)"
+    category: commerce_management
+  - raw_name: "Economics (Core)"
+    category: commerce_management
+  - raw_name: "Marketing"
+    category: commerce_management
+
+  # law (5) -> medium_tier
+  - raw_name: "Law (Core / Professional)"
+    category: law
+  - raw_name: "Corporate / Business Law"
+    category: law
+  - raw_name: "Criminal Law / Criminal Justice"
+    category: law
+  - raw_name: "International Law / Global Law"
+    category: law
+  - raw_name: "Intellectual Property Law (IPR)"
+    category: law
+
+  # animation_design (5) -> weak_tier
+  - raw_name: "Animation (Core / General)"
+    category: animation_design
+  - raw_name: "Film Production (Core / General)"
+    category: animation_design
+  - raw_name: "Visual Effects (VFX)"
+    category: animation_design
+  - raw_name: "Game Design (Core / Mechanics)"
+    category: animation_design
+  - raw_name: "Fashion Design"
+    category: animation_design
+
+  # media_mass_comm (5) -> weak_tier
+  - raw_name: "Mass Communication"
+    category: media_mass_comm
+  - raw_name: "Journalism (Core)"
+    category: media_mass_comm
+  - raw_name: "Advertising"
+    category: media_mass_comm
+  - raw_name: "Public Relations (PR)"
+    category: media_mass_comm
+  - raw_name: "Graphic Design"
+    category: media_mass_comm

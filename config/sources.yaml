@@ -151,6 +151,17 @@ career_info:
     # Skipped pending that design decision — do not build NCSAdapter as a
     # copy of AICTEAdapter without resolving this first.
 
+# Maps each pilot category (config/pilot_courses.yaml's `category` field,
+# also src/schema.py's ManifestEntry.tier) to the tier_group that selects
+# its retrieval_order sequence below.
+categories:
+  engineering: strong_tier
+  medicine: strong_tier
+  commerce_management: medium_tier
+  law: medium_tier
+  animation_design: weak_tier
+  media_mass_comm: weak_tier
+
 # Confidence threshold for accepting a match() result during orchestrated
 # retrieval (src/retrieve/orchestrator.py). Below this, retrieve_course()
 # falls through to the next source in retrieval_order rather than
