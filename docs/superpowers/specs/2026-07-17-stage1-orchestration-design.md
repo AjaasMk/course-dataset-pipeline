@@ -53,12 +53,19 @@ recorded here so they aren't silently re-discovered later:
 def retrieve_course(
     course_name: str,
     category: str,                    # e.g. "engineering" — becomes ManifestEntry.tier
-    tier_group: str,                  # e.g. "strong_tier" — selects retrieval_order sequence
+    tier_group: str,                  # e.g. "strong_tier" — key into retrieval_order
+    retrieval_order: dict,            # loaded from config/sources.yaml's retrieval_order key
     indices: dict,                    # pre-built {adapter: index}, keyed by adapter instance, built once per run
     registry: dict,                   # {SourceCategory: {category_name_or_"*": SourceAdapter}} — see Registry below
     threshold: float,                 # no default — the single source of truth is config/sources.yaml, see below
 ) -> ManifestEntry | None:
 ```
+
+`retrieval_order` is an explicit parameter, not read from a module global or
+re-loaded from disk inside the function — consistent with the "explicit
+parameters" rationale below. The caller loads `config/sources.yaml` once and
+passes the resulting `retrieval_order` dict through; tests pass an in-memory
+fake dict instead.
 
 Walks `sources.yaml`'s `retrieval_order[tier_group]` in order (a list of
 category-name strings, e.g. `["fact_supplement_independent_writing_required",
