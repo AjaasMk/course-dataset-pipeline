@@ -36,11 +36,28 @@ code "works":
 5. **Idempotent** via hash-based diffing: re-running on unchanged sources must not
    duplicate records or reprocess unnecessarily.
 6. **Metrics are always reported stratified by source-quality tier**
-   (strong/medium/weak) — never blended into a single number.
+   (strong/medium/weak) — never blended into a single number. **Exception, by
+   deliberate decision (2026-07-17):** since retrieval order now tries
+   Careers360 before the regulator in every tier (see below), strong/medium
+   tier results may be regulator-backed or Careers360-backed interchangeably
+   — the tier label no longer implies "regulator-sourced." This blending is
+   an accepted tradeoff for retrieval simplicity, not an oversight of this
+   constraint.
 
 The **weak tier is included on purpose** — to find where automation breaks, not to
 avoid it. Don't "fix" weak-tier failures by falling back to manual or non-official
 sources; a surfaced failure there is a valid result.
+
+**Retrieval order (2026-07-17 decision):** `config/sources.yaml`'s
+`retrieval_order` tries `fact_supplement_independent_writing_required`
+(Careers360) FIRST in every tier, ahead of `regulatory_primary` — including
+engineering, where AICTE is verified and working. Rationale: NMC/BCI/UGC are
+blocked or unverified (JS SPAs, CDN bot-blocks, ambiguous doc structure),
+while Careers360 already works uniformly across tiers — rather than block
+retrieval on hard-to-access regulator sites, Careers360 is now the default
+primary source everywhere. **Not yet consumed by any adapter** — this is a
+config-level intent, not runtime behavior, until Stage 1 orchestration is
+written.
 
 ## Tier model (drives everything)
 
@@ -108,11 +125,22 @@ field. **Additional rule, added with the fact-supplement source lineup**
 
 ### Retrieval adapter pattern
 
-Each source type is implemented as a `SourceAdapter` (interface **designed but not
-yet written** — `src/retrieve/base.py`). The contract is `build_index()` (crawl
-listing page → `{branch: doc_url}`) and `match()` (fuzzy-map a course name to an
-indexed URL with a confidence score). Depend on this interface, not on any concrete
+Each source type is implemented as a `SourceAdapter` (`src/retrieve/base.py`,
+a `Protocol`). The contract is `build_index()` (crawl listing page →
+`{branch: doc_url}`), `match()` (fuzzy-map a course name to an indexed URL with
+a confidence score), and `download()` (idempotent fetch + hash + save + manifest
+write — see Data model below). Depend on this interface, not on any concrete
 adapter, so new regulators/sources can be added without touching later stages.
+
+Two adapters exist: `AICTEAdapter` (`src/retrieve/aicte.py`, engineering,
+`regulatory_primary`, verified live) and `Careers360Adapter`
+(`src/retrieve/careers360.py`, `fact_supplement_independent_writing_required`,
+verified live). Both fully implement `build_index()`/`match()`/`download()`.
+`build_index()`/`match()` are deliberately independent per adapter (no shared
+base implementation) — `download()` follows the same pattern (see
+`docs/superpowers/specs/2026-07-17-stage1-download-idempotency-design.md`).
+This duplication is accepted for 2 adapters; extract a shared helper if a
+third adapter arrives.
 
 ### Data model — `src/schema.py`
 
@@ -124,8 +152,11 @@ adapter, so new regulators/sources can be added without touching later stages.
   `category` (drives the Validation rules similarity check above). A field
   can have more than one `SourceRef`.
 - `ManifestEntry` — one retrieval record per course: `tier`, `source_type`
-  (`regulator_pdf | regulator_webpage | university_webpage | none`), `matched_url`,
-  `file_hash` (for idempotency), `match_confidence`.
+  (`SourceType` enum: `regulator_pdf | regulator_webpage | university_webpage |
+  aggregator_webpage | none`), `matched_url`, `local_path`, `file_hash` (for
+  idempotency), `match_confidence`, `retrieved_at`, plus HTTP metadata
+  (`content_type`, `content_length`, `http_status`) captured on successful
+  download only — a failed download writes no manifest row at all.
 
 ### Data / persistence
 
@@ -133,27 +164,49 @@ adapter, so new regulators/sources can be added without touching later stages.
 (`data/manifest.db`) are regenerable pipeline output, not source. Postgres is the
 eventual source of truth; Chroma holds embeddings for search.
 
+`src/retrieve/manifest.py` is the only code that touches `data/manifest.db`
+(SQLite, stdlib `sqlite3`, no new dependency) — `get_entry(course_name,
+matched_url)` / `insert_entry(entry)`. Idempotency is keyed on
+`(course_name, matched_url)`: if a manifest row already exists for that pair,
+`download()` returns it without making an HTTP request at all — re-running on
+an unchanged source does not re-fetch or duplicate records. Files save to
+`data/raw/<tier>/<source_type>/<course_name_slug>.<ext>`.
+
 ## Current status & gotchas
 
-**Built:** `src/schema.py`, `config/sources.yaml`. `pyproject.toml` currently
-declares deps for the **retrieve stage only** (pydantic, requests, beautifulsoup4,
-rapidfuzz, pyyaml, pytest) — later stages' deps aren't added yet.
+**Built:** `src/schema.py` (`CourseDetail`, `SourceCategory`, `SourceRef`,
+`SourceType`, `ManifestEntry`), `config/sources.yaml`, the `SourceAdapter`
+interface (`src/retrieve/base.py`), `AICTEAdapter` and `Careers360Adapter`
+(both adapters fully implement `build_index()`/`match()`/`download()`),
+`src/retrieve/manifest.py` (SQLite manifest, idempotency). 22 tests passing
+(`tests/test_schema.py`, `tests/test_manifest.py`, `tests/test_aicte.py`,
+`tests/test_careers360.py`). `pyproject.toml` currently declares deps for the
+**retrieve stage only** (pydantic, requests, beautifulsoup4, rapidfuzz, pyyaml,
+pytest) — later stages' deps aren't added yet; `sqlite3` is stdlib, no new
+dependency needed for the manifest.
 
-**Not built:** the `SourceAdapter` interface, any adapter, and stages 2–6.
+**Not built:** NMC/BCI/UGC/NPTEL/AISHE adapters (blocked/unverified — see
+below), Coursera/edX adapters, NCS (career info — doesn't fit the
+`SourceAdapter` shape, see `config/sources.yaml`), Stage 1 orchestration
+(nothing yet consumes `retrieval_order`), Stages 2–6.
 
 **Source verification state (critical):**
-- Only `strong_tier.engineering` (AICTE) is **verified real** — the listing page
-  lists branch names each linked to a model-curriculum PDF.
-- **Aerospace Engineering has no published AICTE model curriculum** — this is an
-  expected `no_source_found` case, **not a bug**.
-- `sources.yaml` `TODO` markers (NMC, BCI, UGC) have **URLs corrected but page
-  structure not yet verified**. Do **not** build adapters against those URLs
-  without re-checking the actual page layout first.
-
-**Current task:** implement `AICTEAdapter.build_index()` and `.match()` for the
-**engineering tier only**. `download()` is intentionally deferred. Test set:
-Mechanical, Civil, Computer Science, Electrical, Aerospace Engineering — stop after
-printing matched URLs + confidence scores for manual review.
+- `strong_tier.engineering` (AICTE) and `fact_supplement.Careers360` are both
+  **verified live** (not just unit-tested against mocks) — `build_index()`,
+  `match()`, and `download()` all confirmed working end to end against the
+  real sites as of 2026-07-17.
+- **Aerospace Engineering has no published AICTE model curriculum** — reconfirmed
+  live (matched "Textile Engineering" at confidence 0.69, correctly signaling
+  no real match). This is an expected `no_source_found` case, **not a bug**.
+- NMC (`needs_scoping`), BCI (`blocked`, JS SPA), UGC (`blocked`, CDN bot-block),
+  NPTEL (`blocked`, JS SPA), AISHE (`unverified`) are all still **not usable by
+  a plain `requests`+`bs4` adapter** — see `config/sources.yaml` status notes.
+  Retrieval order now routes around this by trying Careers360 first in every
+  tier (see Hard Constraint 6 / Retrieval order note above) rather than
+  requiring these to be fixed first.
+- Careers360 responses use chunked transfer encoding in practice — no
+  `Content-Length` header, so `ManifestEntry.content_length` is `None` for
+  those rows. Confirmed live, not a bug.
 
 ## Notes
 
