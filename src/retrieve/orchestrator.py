@@ -56,3 +56,53 @@ def retrieve_course(
 
     logger.info("Exhausted retrieval_order for %s — no source found for %r", tier_group, course_name)
     return None
+
+
+if __name__ == "__main__":
+    from src.retrieve.aicte import AICTEAdapter
+    from src.retrieve.careers360 import Careers360Adapter
+
+    TEST_COURSES = [
+        "Mechanical Engineering",
+        "Civil Engineering",
+        "Computer Science Engineering",
+        "Electrical Engineering",
+        "Aerospace Engineering",
+    ]
+
+    logging.basicConfig(level=logging.INFO, format="%(message)s")
+
+    config = load_config()
+    retrieval_order = config["retrieval_order"]
+    threshold = config["matching"]["threshold"]
+
+    aicte_adapter = AICTEAdapter()
+    careers360_adapter = Careers360Adapter()
+
+    registry = {
+        SourceCategory.REGULATORY_PRIMARY: {"engineering": aicte_adapter},
+        SourceCategory.FACT_SUPPLEMENT_INDEPENDENT_WRITING_REQUIRED: {"*": careers360_adapter},
+    }
+
+    print("Building indices...")
+    indices = build_indices([aicte_adapter, careers360_adapter])
+    print(f"AICTE index: {len(indices[aicte_adapter])} entries")
+    print(f"Careers360 index: {len(indices[careers360_adapter])} entries\n")
+
+    for course in TEST_COURSES:
+        print(f"--- {course} ---")
+        result = retrieve_course(
+            course_name=course,
+            category="engineering",
+            tier_group="strong_tier",
+            retrieval_order=retrieval_order,
+            indices=indices,
+            registry=registry,
+            threshold=threshold,
+        )
+        if result is None:
+            print("  -> NO SOURCE FOUND\n")
+        else:
+            print(f"  -> source_type: {result.source_type.value}")
+            print(f"     local_path:  {result.local_path}")
+            print(f"     confidence:  {result.match_confidence:.2f}\n")
