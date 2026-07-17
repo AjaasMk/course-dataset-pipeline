@@ -1,39 +1,180 @@
-strong_tier:
+# Source registry — finalized lineup decision (supersedes the original
+# "regulator-only" grounding rule; see CLAUDE.md Hard Constraint 3 and the new
+# "Validation rules" section for the safeguard this depends on).
+#
+# Category meaning:
+#   regulatory_primary                          -> official, authoritative, use as-is
+#   syllabus_supplement                         -> official-adjacent, curriculum detail
+#   fact_supplement_independent_writing_required -> facts only, NEVER copied/paraphrased
+#                                                    sentences; validation runs an extra
+#                                                    n-gram/similarity check on these
+#   general_background                          -> CC BY-SA, different license basis
+#   aggregate_stats_only                        -> counts/stats fields only
+#   career_info                                 -> career_scope field only
+#
+# status: verified      -> real, working, structure confirmed scrapeable with
+#                           requests+bs4 (or a documented equivalent)
+#         blocked        -> real content confirmed to exist, but not reachable
+#                           by a plain scripted HTTP client (bot-blocked CDN,
+#                           JS-only SPA) — needs a different retrieval strategy
+#         needs_scoping  -> real, but doesn't structurally cover what the
+#                           pilot category needs; a scoping decision, not a
+#                           URL fix, is required before building an adapter
+#         unverified     -> URL/domain is real but page structure not yet checked
+
+regulatory_primary:
   engineering:
     regulator: AICTE
     listing_page: https://www.aicte.gov.in/education/model-syllabus
     doc_type: pdf
+    status: verified
 
   medicine:
     regulator: NMC
-    # TODO: verify page structure (branch -> doc links) before building NMCAdapter
     listing_page: https://www.nmc.org.in/information-desk/for-colleges/ug-curriculum/
-    doc_type: pdf_or_webpage
+    doc_type: pdf
+    status: needs_scoping
+    # Page is real and has "UG Curriculum Volume I/II/III" PDFs — but those
+    # three volumes are ALL one combined MBBS curriculum, not per-branch
+    # documents like AICTE's page. NMC does not appear to cover "Allied
+    # Sciences" (Nursing, Pharmacy, etc.) at all — those have their own
+    # regulators in India (Indian Nursing Council, Pharmacy Council of
+    # India, ...). The "Medicine & Allied Sciences" pilot category may need
+    # to be split across multiple regulators, not treated as NMC-only.
 
-medium_tier:
   law:
     regulator: BCI
-    # TODO: barcouncilofindia.org/legal-education-rules is a near-empty JS shell.
-    # Real content lives at the 2008 Legal Education Rules PDF, linked from
-    # barcouncilofindia.org/info/ler2008 — confirm before building BCIAdapter.
     listing_page: https://www.barcouncilofindia.org/info/ler2008
     doc_type: webpage
+    status: blocked
+    # Confirmed: barcouncilofindia.org is a client-side React/umi SPA —
+    # the raw HTML is just <div id="root"></div>, nothing for requests+bs4
+    # to parse. A university mirror of the same Rules of Legal Education
+    # 2008 text was found (klc.ac.in) but that specific URL 404'd on
+    # verification — no working mirror confirmed yet. Needs either a
+    # headless-browser adapter (different from every other adapter's
+    # requests+bs4 approach) or a working static mirror/gazette copy
+    # (e.g. indiacode.nic.in, not yet checked).
 
   commerce_management:
     regulator: UGC
-    # TODO: ugc.gov.in/page/Model-Curriculum.aspx was down (maintenance/403).
-    # LOCF docs are per-subject PDFs (e.g. Commerce), not one listing page —
-    # confirm the actual index page before building UGCAdapter.
     listing_page: https://www.ugc.gov.in/pdfnews/8737712_LOCF-document-on-commerce-2.pdf
     doc_type: pdf
+    status: blocked
+    # The PDF itself is real (indexed by Google, resolves in a browser) but
+    # a plain scripted request (curl, and by extension Python requests) gets
+    # HTTP 403 from CloudFront — bot-blocked at the CDN, not a wrong URL.
+    # Tried with a browser User-Agent and a Referer header, same result.
+    # Needs a different retrieval approach than plain requests.get().
 
-weak_tier:
-  # no single regulator — scoped search only, restricted domains
+syllabus_supplement:
+  - name: NPTEL
+    full_name: National Programme on Technology Enhanced Learning
+    use: subject/curriculum breakdown, especially Engineering
+    listing_page: https://nptel.ac.in/localchapter/discipline
+    status: blocked
+    # CORRECTED: originally marked verified based on a WebFetch result, but
+    # WebFetch renders JavaScript before reading the page — a plain
+    # curl/requests fetch (what the actual adapter uses) gets a near-empty
+    # Svelte SPA shell, no discipline names, no links. Same category as BCI —
+    # needs a headless-browser adapter, not requests+bs4. The discipline
+    # grouping ("Aerospace, Agriculture Engineering & Architecture and
+    # Planning" as one combined category, linking out to a Google Drive
+    # folder per discipline, not a plain doc list) is real, seen via
+    # WebFetch's rendered output, but unconfirmed by a method matching what
+    # we'll actually scrape with.
+
+fact_supplement_independent_writing_required:
+  - name: Careers360
+    status: verified
+    # Checked a real content page (course college-list page), not just the
+    # homepage — 258KB, real target-term matches, genuinely server-rendered.
+  - name: Coursera
+    status: verified
+    # The /courses?query=... path 301-redirects to a clean /browse/<category>
+    # URL; that destination is 959KB with real content — genuinely usable.
+    # (The redirect itself is a real finding: build_index()/match() for this
+    # source would need to follow it, not treat it as a dead end.)
+  - name: edX
+    status: verified # thin signal — see caveat below
+    # Weaker confirmation than the other two: a subject page (835KB) has an
+    # accurate, specific <title> (suggests server-side rendering, likely
+    # Next.js) but only 2 body mentions of the target term — most of the
+    # visible content may still hydrate client-side. Workable, but don't
+    # assume it behaves like Careers360/Coursera without checking the
+    # specific page type actually needed when this adapter gets built.
+  - name: university_websites
+    scope: [".ac.in", ".edu"]
+
+general_background:
+  - name: Wikipedia
+    license: CC BY-SA
+    note: >
+      Usable WITH attribution + share-alike compliance — a different license
+      basis than every other source in this registry. Keep separate; don't
+      fold into fact_supplement handling, its compliance requirements differ.
+
+aggregate_stats_only:
+  # college counts etc. — NEVER from Careers360 or any aggregator
+  - name: AISHE
+    listing_page: https://dashboard.aishe.gov.in/hedirectory/#/hedirectory/universityMoreDetails/ALL/ALL
+    status: unverified
+    # Confirmed real (Angular SPA, page loads). Landing on the deep-linked
+    # hash route serves the generic homepage, not the directory table — the
+    # data view needs an in-page interaction to load. First-load network
+    # trace showed no REST API call yet; the actual data-fetching endpoint
+    # hasn't been identified. Needs a browser-driven session (not plain
+    # requests) to find it, or acceptance that this needs headless-browser
+    # tooling like BCI does.
+  - name: AICTE
+    status: verified # same source as regulatory_primary.engineering above
+
+career_info:
+  - name: NCS
+    full_name: National Career Service
+    use: career scope, job profiles
+    listing_page: https://www.ncs.gov.in/content-repository/Pages/BrowseBySectors.aspx
+    status: verified # page itself; matching approach is a separate open question
+    # Page confirmed real: 52 sectors, exact pattern
+    # /content-repository/Pages/ViewNcos.aspx?FilterField1=Industry_x002F_
+    # Sector...&FilterValue1=<SectorName> (e.g. Agriculture, Automotive,
+    # Aerospace and Aviation, Capital Goods and Manufacturing).
+    #
+    # DEFERRED, not blocked: course_name-to-sector matching is NOT a fuzzy
+    # string-matching problem like AICTE's — "Mechanical Engineering" shares
+    # no text with its correct sectors ("Automotive", "Capital Goods and
+    # Manufacturing"). Forcing this through SourceAdapter.match() would
+    # return a confidently-wrong result, not an honestly-low-confidence one.
+    # This is a course-category-to-sector categorization problem, likely
+    # belonging in Stage 2 (LLM-driven) rather than Stage 1 fuzzy-match —
+    # NCS may not fit the SourceAdapter shape other sources use at all.
+    # Skipped pending that design decision — do not build NCSAdapter as a
+    # copy of AICTEAdapter without resolving this first.
+
+# Declarative retrieval order per tier. Not yet consumed by any adapter —
+# orchestration doesn't exist yet (see README.md STAGE 1). Encoded here now
+# so the order is a config decision, not something re-derived ad hoc when
+# Stage 1 orchestration is finally written.
+retrieval_order:
+  strong_tier: # Engineering, Medicine
+    - regulatory_primary
+    - syllabus_supplement
+    - fact_supplement_independent_writing_required
+  medium_tier: # Law, Commerce/Management
+    - regulatory_primary
+    - university_websites # from fact_supplement_independent_writing_required
+    - fact_supplement_independent_writing_required
+  weak_tier: # Animation/Media/Arts — no regulator exists, no regulatory_primary step
+    - university_scoped_search
+    - fact_supplement_independent_writing_required
+
+weak_tier_fallback:
+  # Animation/Media/Arts — no regulator exists
+  order: [university_scoped_search, Careers360, Coursera, edX]
   animation_design:
     method: scoped_search
     allowed_domains: [".ac.in", ".edu"]
     query_template: "{course_name} syllabus curriculum"
-
   media_mass_comm:
     method: scoped_search
     allowed_domains: [".ac.in", ".edu"]

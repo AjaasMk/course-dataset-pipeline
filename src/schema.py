@@ -1,6 +1,27 @@
+from enum import Enum
 from typing import Optional
 
 from pydantic import BaseModel
+
+
+class SourceCategory(str, Enum):
+    REGULATORY_PRIMARY = "regulatory_primary"
+    SYLLABUS_SUPPLEMENT = "syllabus_supplement"
+    FACT_SUPPLEMENT_INDEPENDENT_WRITING_REQUIRED = (
+        "fact_supplement_independent_writing_required"
+    )
+    GENERAL_BACKGROUND = "general_background"
+    AGGREGATE_STATS_ONLY = "aggregate_stats_only"
+    CAREER_INFO = "career_info"
+
+
+class SourceRef(BaseModel):
+    field: str  # which CourseDetail field this grounds, e.g. "description"
+    url: str
+    category: SourceCategory
+    # category == FACT_SUPPLEMENT_INDEPENDENT_WRITING_REQUIRED means Stage 3
+    # must run an n-gram/similarity check against this source's original text,
+    # in addition to the faithfulness check — see CLAUDE.md Validation rules.
 
 
 class CourseDetail(BaseModel):
@@ -12,7 +33,9 @@ class CourseDetail(BaseModel):
     eligibility: Optional[str] = None
     duration: Optional[str] = None
     career_scope: Optional[str] = None
-    source_refs: list[str] = []
+    # one or more SourceRef per field — e.g. description may cite both an
+    # AICTE doc and a Careers360 page. Filter by .field to get a field's refs.
+    source_refs: list[SourceRef] = []
 
 
 class ManifestEntry(BaseModel):
