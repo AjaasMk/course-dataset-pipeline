@@ -20,13 +20,16 @@ official regulator/university sources. Pilot: 50 courses. Eventual target: 629.
    Revises the original "regulator-only" rule: the safeguard that makes
    fact-supplement sources safe is the independent-writing requirement +
    similarity check, not their absence.
-   **Retrieval order (2026-07-17):** `fact_supplement_independent_writing_
-   required` (Careers360) is tried FIRST in every tier, ahead of
-   `regulatory_primary` — including engineering, where AICTE is verified and
-   working. Regulator adapters for medicine/law/commerce (NMC/BCI/UGC) are
-   blocked or unverified (JS SPAs, CDN bot-blocks), while Careers360 works
-   uniformly across tiers; this is an accepted tradeoff for retrieval
-   simplicity over "strong tier = regulator-sourced" (see constraint 6).
+   **Retrieval order (2026-07-17, revised same day):** `fact_supplement_
+   independent_writing_required` (Careers360) is tried FIRST in every tier,
+   ahead of `regulatory_primary` — including engineering, where AICTE is
+   verified and working. Regulator adapters for medicine/law/commerce (NMC/
+   BCI/UGC) are blocked or unverified (JS SPAs, CDN bot-blocks), while
+   Careers360 works uniformly across tiers; this is an accepted tradeoff for
+   retrieval simplicity over "strong tier = regulator-sourced" (see
+   constraint 6). `general_background` (Wikipedia) is the final fallback for
+   medium/weak tier if both regulator and Careers360 fail — see constraint 6
+   and the Pilot scope note below for the weak-tier policy this revises.
 4. No field fabrication. Ungroundable fields are `null` and flagged for
    review — never a plausible-sounding guess.
 5. Idempotent: re-running on unchanged sources must not duplicate records or
@@ -48,7 +51,11 @@ official regulator/university sources. Pilot: 50 courses. Eventual target: 629.
 | Weak   | Animation/Media/Arts             | 10    | no regulator — scoped university search |
 
 Weak tier is deliberately included to find where automation breaks, not to
-avoid it.
+avoid it. **Revised (2026-07-17):** Wikipedia (`general_background`) is now
+an explicit last-resort fallback after regulator and Careers360 both fail
+(see constraint 3/6) — a deliberate, accepted tradeoff between reducing
+`no_source_found` counts and keeping automation failures fully visible;
+revisit if it later masks too much real signal.
 
 ## Pipeline architecture
 

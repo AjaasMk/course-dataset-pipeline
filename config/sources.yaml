@@ -160,10 +160,15 @@ career_info:
 matching:
   threshold: 0.80
 
-# Declarative retrieval order per tier. Not yet consumed by any adapter —
-# orchestration doesn't exist yet (see README.md STAGE 1). Encoded here now
-# so the order is a config decision, not something re-derived ad hoc when
-# Stage 1 orchestration is finally written.
+# Declarative retrieval order per tier. Consumed by src/retrieve/orchestrator.py's
+# retrieve_course() — walks each entry in order via SourceCategory(entry), so
+# every entry here MUST be a real SourceCategory value (regulatory_primary,
+# syllabus_supplement, fact_supplement_independent_writing_required,
+# general_background, aggregate_stats_only, career_info). A source NAME within
+# a category (e.g. "university_websites" is a named entry under
+# fact_supplement_independent_writing_required, not its own category) does not
+# belong here — retrieve_course() has no concept of picking one named source
+# out of a category, only of trying a category via its registered adapter(s).
 #
 # DECISION (2026-07-17): fact_supplement_independent_writing_required
 # (Careers360) is tried FIRST in every tier, ahead of regulatory_primary —
@@ -179,6 +184,21 @@ matching:
 # Careers360-backed results under the same tier label going forward — the
 # tier label no longer implies "regulator-sourced." Chosen deliberately in
 # favor of simplicity over that distinction; not an oversight.
+#
+# DECISION (2026-07-17, later same day): general_background (Wikipedia) added
+# as the last-resort entry for medium_tier and weak_tier, after regulatory
+# sources and Careers360 both fail. This REVISES the weak-tier hard
+# constraint in CLAUDE.md/README.md ("don't fix weak-tier failures by
+# falling back to other sources") — an explicit, deliberate policy change,
+# not an oversight; see CLAUDE.md Hard Constraint 6 note for the rationale.
+# Also removed: the redundant "university_websites" entry from medium_tier
+# (it's a named source WITHIN fact_supplement, already covered by that
+# entry, not a separate category — see note above) and
+# "university_scoped_search" from weak_tier (not a SourceCategory at all; no
+# adapter exists for the scoped-search method it referred to — see
+# weak_tier_scoped_search_notes below). The old, contradictory
+# weak_tier_fallback.order block (which disagreed with this list on
+# ordering) is removed entirely — this is now the single source of truth.
 retrieval_order:
   strong_tier: # Engineering, Medicine
     - fact_supplement_independent_writing_required
@@ -187,14 +207,22 @@ retrieval_order:
   medium_tier: # Law, Commerce/Management
     - fact_supplement_independent_writing_required
     - regulatory_primary
-    - university_websites # from fact_supplement_independent_writing_required
+    - general_background
   weak_tier: # Animation/Media/Arts — no regulator exists, no regulatory_primary step
     - fact_supplement_independent_writing_required
-    - university_scoped_search
+    - general_background
 
-weak_tier_fallback:
-  # Animation/Media/Arts — no regulator exists
-  order: [university_scoped_search, Careers360, Coursera, edX]
+# NOT consumed by retrieve_course() — general_background has no adapter
+# registered yet (no WikipediaAdapter exists), so this entry currently just
+# skips silently, same as any other unregistered category. Adding it above
+# is a config-level policy decision now; it becomes a real fallback only
+# once a WikipediaAdapter is built and registered.
+
+weak_tier_scoped_search_notes:
+  # Animation/Media/Arts — no regulator exists. These describe HOW a future
+  # scoped-search adapter would work; not consumed by retrieve_course() (not
+  # a SourceCategory, no adapter built). Kept as design notes for when this
+  # gets built, not as an active retrieval_order entry.
   animation_design:
     method: scoped_search
     allowed_domains: [".ac.in", ".edu"]
