@@ -138,3 +138,11 @@ if __name__ == "__main__":
             print(f"     url:        {result.matched_url}")
             print(f"     confidence: {result.confidence:.2f}")
         print()
+
+    print("--- download() smoke test (first match only) ---")
+    first_match = adapter.match(TEST_COURSES[0], index)
+    if first_match is not None:
+        entry = adapter.download(first_match, tier="engineering")
+        print(f"downloaded: {entry.local_path}")
+        print(f"  hash:   {entry.file_hash}")
+        print(f"  status: {entry.http_status}")
