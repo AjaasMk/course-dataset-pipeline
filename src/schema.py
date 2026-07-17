@@ -15,6 +15,14 @@ class SourceCategory(str, Enum):
     CAREER_INFO = "career_info"
 
 
+class SourceType(str, Enum):
+    REGULATOR_PDF = "regulator_pdf"
+    REGULATOR_WEBPAGE = "regulator_webpage"
+    UNIVERSITY_WEBPAGE = "university_webpage"
+    AGGREGATOR_WEBPAGE = "aggregator_webpage"
+    NONE = "none"
+
+
 class SourceRef(BaseModel):
     field: str  # which CourseDetail field this grounds, e.g. "description"
     url: str
@@ -41,9 +49,12 @@ class CourseDetail(BaseModel):
 class ManifestEntry(BaseModel):
     course_name: str
     tier: str
-    source_type: str  # regulator_pdf | regulator_webpage | university_webpage | none
+    source_type: SourceType
     matched_url: Optional[str] = None
     local_path: Optional[str] = None
     file_hash: Optional[str] = None
     match_confidence: float = 0.0
     retrieved_at: str
+    content_type: Optional[str] = None
+    content_length: Optional[int] = None
+    http_status: Optional[int] = None
