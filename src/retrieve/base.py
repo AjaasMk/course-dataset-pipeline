@@ -27,6 +27,10 @@ class SourceAdapter(Protocol):
         """
         ...
 
-    def download(self, match: SourceMatch) -> ManifestEntry:
-        """Not implemented yet."""
+    def download(self, match: SourceMatch, tier: str) -> ManifestEntry:
+        """Download match's content, save it, and record a manifest entry.
+
+        Idempotent: if a manifest entry already exists for
+        (course_name, matched_url), returns it without making an HTTP request.
+        """
         ...
