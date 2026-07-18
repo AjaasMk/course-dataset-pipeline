@@ -181,3 +181,53 @@ def _summarize(results: list[CourseResult]) -> dict[str, TierSummary]:
         elif result.outcome == "errored":
             tier_summary.errored += 1
     return summary
+
+
+if __name__ == "__main__":
+    from pathlib import Path
+
+    from src.retrieve.aicte import AICTEAdapter
+    from src.retrieve.careers360 import Careers360Adapter
+    from src.retrieve.orchestrator import build_indices, default_registry, load_config
+
+    logging.basicConfig(level=logging.INFO, format="%(message)s")
+
+    config = load_config()
+    retrieval_order = config["retrieval_order"]
+    threshold = config["matching"]["threshold"]
+    categories = config["categories"]
+
+    pilot_config = load_config(path=Path("config/pilot_courses.yaml"))
+    courses = pilot_config["courses"]
+
+    aicte_adapter = AICTEAdapter()
+    careers360_adapter = Careers360Adapter()
+    registry = default_registry(aicte_adapter, careers360_adapter)
+
+    print("Building indices...")
+    indices = build_indices([aicte_adapter, careers360_adapter])
+    print(f"AICTE index: {len(indices[aicte_adapter])} entries")
+    print(f"Careers360 index: {len(indices[careers360_adapter])} entries\n")
+
+    print(f"Running batch for {len(courses)} courses (this will take a few minutes)...\n")
+    report = run_batch(
+        courses=courses,
+        categories=categories,
+        retrieval_order=retrieval_order,
+        indices=indices,
+        registry=registry,
+        threshold=threshold,
+    )
+
+    report_path = Path("data/pilot_run_report.json")
+    report_path.parent.mkdir(parents=True, exist_ok=True)
+    report_path.write_text(report.model_dump_json(indent=2), encoding="utf-8")
+    print(f"\nReport written to {report_path}\n")
+
+    print("=== Summary by tier ===")
+    for tier_group, summary in report.summary_by_tier.items():
+        print(f"{tier_group}:")
+        for source, count in summary.matched_by_source.items():
+            print(f"  matched via {source}: {count}")
+        print(f"  no_source_found: {summary.no_source_found}")
+        print(f"  errored: {summary.errored}")

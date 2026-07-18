@@ -58,6 +58,15 @@ def retrieve_course(
     return None
 
 
+def default_registry(
+    aicte_adapter: SourceAdapter, careers360_adapter: SourceAdapter
+) -> dict[SourceCategory, dict[str, SourceAdapter]]:
+    return {
+        SourceCategory.REGULATORY_PRIMARY: {"engineering": aicte_adapter},
+        SourceCategory.FACT_SUPPLEMENT_INDEPENDENT_WRITING_REQUIRED: {"*": careers360_adapter},
+    }
+
+
 if __name__ == "__main__":
     from src.retrieve.aicte import AICTEAdapter
     from src.retrieve.careers360 import Careers360Adapter
@@ -79,10 +88,7 @@ if __name__ == "__main__":
     aicte_adapter = AICTEAdapter()
     careers360_adapter = Careers360Adapter()
 
-    registry = {
-        SourceCategory.REGULATORY_PRIMARY: {"engineering": aicte_adapter},
-        SourceCategory.FACT_SUPPLEMENT_INDEPENDENT_WRITING_REQUIRED: {"*": careers360_adapter},
-    }
+    registry = default_registry(aicte_adapter, careers360_adapter)
 
     print("Building indices...")
     indices = build_indices([aicte_adapter, careers360_adapter])
