@@ -126,6 +126,67 @@ def test_read_html_discards_navigation_content_before_first_h1(tmp_path):
     assert not any("Popular Searches" in (s.heading_title or "") for s in sections)
 
 
+def test_read_html_strips_wikipedia_language_switcher(tmp_path):
+    # Real noise found on the actual Wikipedia Marketing page: a language-switcher
+    # widget (id="p-lang-btn", MediaWiki's standard "portlet: language" convention)
+    # sits right after the <h1>, containing 200+ <li> language names with no real
+    # article content.
+    html_path = tmp_path / "wiki_with_lang_switcher.html"
+    html_path.write_text(
+        """
+        <html><body>
+        <h1>Marketing</h1>
+        <div id="p-lang-btn"><ul><li>Afrikaans</li><li>Aragonés</li></ul></div>
+        <div id="mw-panel-toc" class="mw-table-of-contents-container"><ul><li>Definition</li><li>Concept</li></ul></div>
+        <p>Marketing is the act of acquiring customers.</p>
+        </body></html>
+        """,
+        encoding="utf-8",
+    )
+
+    sections = read_html(html_path)
+
+    assert sections[0].heading_title == "Marketing"
+    assert sections[0].paragraphs == ["Marketing is the act of acquiring customers."]
+
+
+def test_read_html_restricts_to_mediawiki_content_container_when_present(tmp_path):
+    # MediaWiki (Wikipedia) pages wrap the real article body in
+    # id="mw-content-text" / class="mw-parser-output", with zero nav/tools
+    # chrome inside it -- and notably no <h1> inside it either (the page
+    # title lives outside, in the page header). Verified against the real
+    # Marketing Wikipedia page. When this container exists, restrict
+    # extraction to it entirely and skip the h1-based filtering (there's no
+    # h1 inside to filter around).
+    html_path = tmp_path / "mediawiki_page.html"
+    html_path.write_text(
+        """
+        <html><body>
+        <div id="mw-head"><ul><li>Article</li><li>Talk</li></ul></div>
+        <h1>Marketing</h1>
+        <div id="mw-content-text">
+          <div class="mw-parser-output">
+            <table class="sidebar hlist"><tr><td><ul><li>Account-based marketing</li><li>Digital marketing</li></ul></td></tr></table>
+            <p>Marketing is the act of acquiring customers.</p>
+            <h2>Definition</h2>
+            <p>Marketing is defined by the AMA.</p>
+          </div>
+        </div>
+        </body></html>
+        """,
+        encoding="utf-8",
+    )
+
+    sections = read_html(html_path)
+
+    assert sections[0].heading_title is None
+    assert sections[0].paragraphs == ["Marketing is the act of acquiring customers."]
+    assert sections[1].heading_title == "Definition"
+    assert sections[1].paragraphs == ["Marketing is defined by the AMA."]
+    assert not any("Article" in p or "Talk" in p for s in sections for p in s.paragraphs)
+    assert not any("Account-based marketing" in p for s in sections for p in s.paragraphs)
+
+
 def test_read_html_skips_empty_sections(tmp_path):
     html_path = tmp_path / "empty_heading.html"
     html_path.write_text(

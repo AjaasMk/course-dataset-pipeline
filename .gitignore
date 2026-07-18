@@ -14,6 +14,7 @@ data/raw/*
 !data/raw/.gitkeep
 data/manifest.db
 data/pilot_run_report.json
+data/chunks/
 
 # editor/OS noise
 .vscode/
