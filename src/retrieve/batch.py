@@ -190,6 +190,7 @@ if __name__ == "__main__":
     from src.retrieve.aicte import AICTEAdapter
     from src.retrieve.careers360 import Careers360Adapter
     from src.retrieve.orchestrator import build_indices, default_registry, load_config
+    from src.retrieve.wikipedia import WikipediaAdapter
 
     logging.basicConfig(level=logging.INFO, format="%(message)s")
 
@@ -203,12 +204,14 @@ if __name__ == "__main__":
 
     aicte_adapter = AICTEAdapter()
     careers360_adapter = Careers360Adapter()
-    registry = default_registry(aicte_adapter, careers360_adapter)
+    wikipedia_adapter = WikipediaAdapter()
+    registry = default_registry(aicte_adapter, careers360_adapter, wikipedia_adapter)
 
     print("Building indices...")
-    indices = build_indices([aicte_adapter, careers360_adapter])
+    indices = build_indices([aicte_adapter, careers360_adapter, wikipedia_adapter])
     print(f"AICTE index: {len(indices[aicte_adapter])} entries")
-    print(f"Careers360 index: {len(indices[careers360_adapter])} entries\n")
+    print(f"Careers360 index: {len(indices[careers360_adapter])} entries")
+    print(f"Wikipedia index: {len(indices[wikipedia_adapter])} entries (always empty — no listing page)\n")
 
     print(f"Running batch for {len(courses)} courses (this will take a few minutes)...\n")
     report = run_batch(
