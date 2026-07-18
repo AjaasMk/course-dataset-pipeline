@@ -215,6 +215,7 @@ retrieval_order:
     - fact_supplement_independent_writing_required
     - regulatory_primary
     - syllabus_supplement
+    - general_background
   medium_tier: # Law, Commerce/Management
     - fact_supplement_independent_writing_required
     - regulatory_primary

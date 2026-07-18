@@ -20,6 +20,7 @@ class SourceType(str, Enum):
     REGULATOR_WEBPAGE = "regulator_webpage"
     UNIVERSITY_WEBPAGE = "university_webpage"
     AGGREGATOR_WEBPAGE = "aggregator_webpage"
+    GENERAL_BACKGROUND_WEBPAGE = "general_background_webpage"
     NONE = "none"
 
 

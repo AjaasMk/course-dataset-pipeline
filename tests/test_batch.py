@@ -38,6 +38,10 @@ def test_infer_source_category_for_aggregator_webpage():
     assert batch.infer_source_category(SourceType.AGGREGATOR_WEBPAGE) == "fact_supplement_independent_writing_required"
 
 
+def test_infer_source_category_for_general_background_webpage():
+    assert batch.infer_source_category(SourceType.GENERAL_BACKGROUND_WEBPAGE) == "general_background"
+
+
 def test_infer_source_category_falls_back_to_unknown():
     assert batch.infer_source_category(SourceType.NONE) == "unknown"
 

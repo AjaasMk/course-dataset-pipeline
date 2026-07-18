@@ -31,6 +31,7 @@ _SOURCE_TYPE_TO_CATEGORY = {
     SourceType.REGULATOR_PDF: "regulatory_primary",
     SourceType.REGULATOR_WEBPAGE: "regulatory_primary",
     SourceType.AGGREGATOR_WEBPAGE: "fact_supplement_independent_writing_required",
+    SourceType.GENERAL_BACKGROUND_WEBPAGE: "general_background",
 }
 
 

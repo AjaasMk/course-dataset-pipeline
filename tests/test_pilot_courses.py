@@ -44,3 +44,8 @@ def test_every_category_tier_group_is_a_real_retrieval_order_key():
             f"{category!r} maps to tier_group {tier_group!r}, "
             f"which has no retrieval_order entry"
         )
+
+
+def test_strong_tier_includes_general_background_fallback():
+    sources = load_config()
+    assert "general_background" in sources["retrieval_order"]["strong_tier"]
