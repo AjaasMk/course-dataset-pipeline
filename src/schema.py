@@ -37,7 +37,7 @@ class CourseDetail(BaseModel):
     course_name: str
     category: str
     degrees_offered: list[str] = []
-    colleges_available: Optional[int] = None  # from AISHE, NOT from curriculum docs
+    colleges_available: Optional[int] = None
     description: Optional[str] = None
     eligibility: Optional[str] = None
     duration: Optional[str] = None

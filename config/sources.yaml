@@ -115,7 +115,12 @@ general_background:
       fold into fact_supplement handling, its compliance requirements differ.
 
 aggregate_stats_only:
-  # college counts etc. — NEVER from Careers360 or any aggregator
+  # college counts etc. Originally restricted to AISHE only (never Careers360
+  # or any aggregator), on the theory that aggregator counts might be
+  # outdated/incomplete/marketing-influenced. REVISED (2026-07-18): dropped
+  # that restriction — no AISHE adapter exists yet, and it was blocking
+  # CourseDetail.colleges_available from ever being populated. Any resolved
+  # source can now ground this field, same as every other field.
   - name: AISHE
     listing_page: https://dashboard.aishe.gov.in/hedirectory/#/hedirectory/universityMoreDetails/ALL/ALL
     status: unverified
