@@ -1,9 +1,15 @@
+import logging
 import re
+import time
 from typing import Literal, Optional
 
 from pydantic import BaseModel
 
-from src.schema import SourceType
+from src.retrieve.base import SourceAdapter
+from src.retrieve.orchestrator import retrieve_course
+from src.schema import SourceCategory, SourceType
+
+logger = logging.getLogger(__name__)
 
 
 def normalize_course_name(raw_name: str) -> str:
@@ -62,3 +68,116 @@ class BatchReport(BaseModel):
     """Complete batch processing report."""
     results: list[CourseResult]
     summary_by_tier: dict[str, TierSummary]
+
+
+def run_batch(
+    courses: list[dict],
+    categories: dict[str, str],
+    retrieval_order: dict[str, list[str]],
+    indices: dict[SourceAdapter, dict[str, str]],
+    registry: dict[SourceCategory, dict[str, SourceAdapter]],
+    threshold: float,
+    delay_seconds: float = 1.0,
+) -> BatchReport:
+    """Run retrieval for a batch of courses, isolating per-course failures.
+
+    Each course is processed independently: an exception raised by
+    `retrieve_course()` is caught, logged, and recorded as an "errored"
+    outcome — the loop always continues to the next course rather than
+    aborting the batch. A fixed delay is applied after every course
+    (matched, no_source_found, or errored) for rate limiting.
+
+    Args:
+        courses: list of {"raw_name": str, "category": str} dicts.
+        categories: maps a course's `category` to its tier group (e.g.
+            "engineering" -> "strong_tier").
+        retrieval_order: per-tier-group ordered list of source categories
+            to try, passed through to `retrieve_course()`.
+        indices: per-adapter {branch_name: doc_url} indices, passed through
+            to `retrieve_course()`.
+        registry: maps source category -> {course category: adapter},
+            passed through to `retrieve_course()`.
+        threshold: minimum match confidence to accept, passed through to
+            `retrieve_course()`.
+        delay_seconds: fixed delay (seconds) applied after each course.
+
+    Returns:
+        A BatchReport with one CourseResult per course and a summary
+        stratified by tier group.
+    """
+    results: list[CourseResult] = []
+
+    for course in courses:
+        raw_name = course["raw_name"]
+        category = course["category"]
+        tier_group = categories[category]
+        course_name = normalize_course_name(raw_name)
+
+        try:
+            entry = retrieve_course(
+                course_name=course_name,
+                category=category,
+                tier_group=tier_group,
+                retrieval_order=retrieval_order,
+                indices=indices,
+                registry=registry,
+                threshold=threshold,
+            )
+        except Exception as exc:
+            logger.info("Course %r errored: %s", raw_name, exc)
+            results.append(
+                CourseResult(
+                    raw_name=raw_name,
+                    course_name=course_name,
+                    category=category,
+                    tier_group=tier_group,
+                    outcome="errored",
+                    error=str(exc),
+                )
+            )
+            time.sleep(delay_seconds)
+            continue
+
+        if entry is None:
+            results.append(
+                CourseResult(
+                    raw_name=raw_name,
+                    course_name=course_name,
+                    category=category,
+                    tier_group=tier_group,
+                    outcome="no_source_found",
+                )
+            )
+        else:
+            results.append(
+                CourseResult(
+                    raw_name=raw_name,
+                    course_name=course_name,
+                    category=category,
+                    tier_group=tier_group,
+                    outcome="matched",
+                    source_category=infer_source_category(entry.source_type),
+                )
+            )
+
+        time.sleep(delay_seconds)
+
+    return BatchReport(results=results, summary_by_tier=_summarize(results))
+
+
+def _summarize(results: list[CourseResult]) -> dict[str, TierSummary]:
+    """Aggregate per-course results into a TierSummary per tier group."""
+    summary: dict[str, TierSummary] = {}
+    for result in results:
+        tier_summary = summary.setdefault(
+            result.tier_group,
+            TierSummary(matched_by_source={}, no_source_found=0, errored=0),
+        )
+        if result.outcome == "matched":
+            key = result.source_category or "unknown"
+            tier_summary.matched_by_source[key] = tier_summary.matched_by_source.get(key, 0) + 1
+        elif result.outcome == "no_source_found":
+            tier_summary.no_source_found += 1
+        elif result.outcome == "errored":
+            tier_summary.errored += 1
+    return summary
