@@ -1,6 +1,7 @@
 # personal reference docs — not part of the tracked project
 docs/architecture.html
 CLAUDE.md
+WALKTHROUGH.md
 
 # python
 __pycache__/
