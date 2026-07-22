@@ -1,3 +1,4 @@
+import re
 from collections import Counter
 from pathlib import Path
 
@@ -8,6 +9,103 @@ from src.extract.models import PageText, Section
 
 _HEADING_TAGS = {"h1": 1, "h2": 2, "h3": 3, "h4": 4, "h5": 5, "h6": 6}
 _MIN_REPEATED_PAGE_COUNT = 3
+
+# Real, non-Wikipedia (Careers360-style) pages don't wrap article content in a
+# scoped container the way MediaWiki does, so the h1-based filter above only
+# discards content BEFORE the title — nothing discards footer/forum noise
+# AFTER it. Verified against the real downloaded Chemical Engineering page.
+#
+# First attempt classified noise by heading CSS class during the extraction
+# loop (mirroring the h1-before-title filter) — reverted because classes here
+# are reused across noise AND real content: individual FAQ questions use
+# class="blockHeading" too (<h3 class="blockHeading"><strong>Question:</strong>
+# ...), the exact class the forum/footer noise headings use. Classifying by
+# class wrongly excluded the FAQs.
+#
+# Correct approach (matches the Wikipedia widget/sidebar removal above):
+# anchor on the SPECIFIC noise heading found by text match, then decompose
+# THAT heading's own ancestor container — not a blind class-wide search
+# (verified those classes, e.g. "cardBlk", are shared with the FAQ section's
+# own container too).
+_QNA_FORUM_CONTAINER_ID = "qna"  # "Questions related to X" — stable, unique id
+_SIGNIN_MODAL_ID = "commonSignin"  # sign-in/sign-up popup dialog
+_NOISE_CONTAINER_CLASSES = (
+    "new-fat-footer-bg-container",  # "download our app" promo banner
+    "right-sidebar",  # "Popular Degrees" sidebar widget
+)
+_NOISE_HEADING_PATTERNS = (
+    re.compile(r"popular\s.+\scolleges\sin\sindia", re.IGNORECASE),  # college directory cards
+    re.compile(r"explore\s.+\scolleges\sin\sother\spopular\slocations", re.IGNORECASE),  # footer link directory
+)
+
+
+def _strip_noise_containers(soup: BeautifulSoup) -> None:
+    # The real bottom-of-page site footer (Top Exams, College, Predictors &
+    # Ebooks, Resources, ...) lives in a semantic <footer> tag — the most
+    # reliable signal available, verified against the real downloaded page.
+    footer = soup.find("footer")
+    if footer is not None:
+        footer.decompose()
+
+    modal = soup.find(id=_SIGNIN_MODAL_ID)
+    if modal is not None:
+        modal.decompose()
+
+    for class_name in _NOISE_CONTAINER_CLASSES:
+        for container in soup.find_all(class_=class_name):
+            container.decompose()
+
+    qna = soup.find(id=_QNA_FORUM_CONTAINER_ID)
+    if qna is not None:
+        qna.decompose()
+
+    for pattern in _NOISE_HEADING_PATTERNS:
+        heading = soup.find(
+            lambda tag: tag.name in _HEADING_TAGS and pattern.search(tag.get_text(strip=True))
+        )
+        if heading is not None:
+            container = heading.find_parent("div") or heading
+            container.decompose()
+
+
+_RELATED_COURSES_HEADING_PATTERN = re.compile(r"courses\ssimilar\sto\s", re.IGNORECASE)
+
+
+def _extract_related_courses_section(soup: BeautifulSoup) -> Section | None:
+    # "Courses Similar to X" wraps each related course name in its own
+    # <h3 class="heading-h3"><a>Name</a></h3> instead of a <li> — since h3 is
+    # in _HEADING_TAGS, the main extraction loop below would otherwise treat
+    # each course name as its own top-level heading with no content (dropped
+    # by flush()'s empty-paragraph check), losing this data for
+    # CourseDetail.related_courses entirely. Verified against the real
+    # downloaded Chemical Engineering page. Extracted here as its own
+    # Section, and the container is decomposed so the main loop doesn't
+    # double-pick-up (or drop) these nested headings.
+    heading = soup.find(
+        lambda tag: tag.name in _HEADING_TAGS
+        and _RELATED_COURSES_HEADING_PATTERN.search(tag.get_text(strip=True))
+    )
+    if heading is None:
+        return None
+
+    container = heading.find_next_sibling("div")
+    if container is None:
+        return None
+
+    names = [a.get_text(strip=True) for a in container.find_all("a") if a.get_text(strip=True)]
+    heading_title = heading.get_text(strip=True)
+    container.decompose()
+    # Decompose the heading too, not just its content div — otherwise the
+    # main loop below still finds this heading (only its sibling div is
+    # gone), starts a new section under the same title, and wrongly
+    # accumulates whatever unrelated p/li content comes next in the
+    # document. Confirmed live: this produced a duplicate "Courses Similar
+    # to X" section full of unrelated modal/report-dialog text.
+    heading.decompose()
+
+    if not names:
+        return None
+    return Section(heading_title=heading_title, paragraphs=names)
 
 
 def read_pdf(path: Path) -> list[PageText]:
@@ -56,6 +154,9 @@ def read_html(path: Path) -> list[Section]:
     for sidebar in soup.find_all(class_="sidebar"):
         sidebar.decompose()
 
+    _strip_noise_containers(soup)
+    related_courses_section = _extract_related_courses_section(soup)
+
     # MediaWiki (Wikipedia) pages wrap the real article body in
     # id="mw-content-text", with zero nav/tools chrome inside it — and
     # notably no <h1> inside it either (the page title lives outside, in the
@@ -102,4 +203,6 @@ def read_html(path: Path) -> list[Section]:
                 current_paragraphs.append(text)
 
     flush()
+    if related_courses_section is not None:
+        sections.append(related_courses_section)
     return sections

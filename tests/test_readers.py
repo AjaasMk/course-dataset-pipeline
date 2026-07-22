@@ -187,6 +187,200 @@ def test_read_html_restricts_to_mediawiki_content_container_when_present(tmp_pat
     assert not any("Account-based marketing" in p for s in sections for p in s.paragraphs)
 
 
+def test_read_html_excludes_qna_forum_block_by_stable_id(tmp_path):
+    # Real noise found on the actual Chemical Engineering Careers360 page:
+    # the "Questions related to X" forum block lives in a container with a
+    # stable, unique id="qna". Individual FAQ questions use the SAME
+    # class="blockHeading" as this section's own heading, so a class-based
+    # check can't distinguish them -- id-based decompose is what's safe here.
+    html_path = tmp_path / "with_qna_noise.html"
+    html_path.write_text(
+        """
+        <html><body>
+        <h1>Chemical Engineering</h1>
+        <p>Real course content.</p>
+        <div id="qna">
+          <h2 class="blockHeading">Questions related to Chemical Engineering</h2>
+          <a><h3 class="cardSubHeading">Some forum question nobody asked</h3></a>
+          <p>A forum answer with no course-fact value.</p>
+        </div>
+        <h2>Courses Similar to Chemical Engineering</h2>
+        <p>Petrochemical Engineering, Polymer Engineering</p>
+        </body></html>
+        """,
+        encoding="utf-8",
+    )
+
+    sections = read_html(html_path)
+
+    assert not any("forum question" in p for s in sections for p in s.paragraphs)
+    assert not any(s.heading_title == "Questions related to Chemical Engineering" for s in sections)
+    # real content after the noise block is still captured, not cut off
+    assert any(s.heading_title == "Courses Similar to Chemical Engineering" for s in sections)
+
+
+def test_read_html_keeps_faq_questions_that_share_a_class_with_noise_headings(tmp_path):
+    # Real bug caught live: individual FAQ questions use the exact same
+    # class="blockHeading" as the forum/footer noise headings. A class-based
+    # noise check wrongly excluded these. Must survive using the id/text-
+    # anchored decompose approach instead.
+    html_path = tmp_path / "with_faq.html"
+    html_path.write_text(
+        """
+        <html><body>
+        <h1>Chemical Engineering</h1>
+        <p>Real course content.</p>
+        <h2>Frequently Asked Questions (FAQs)</h2>
+        <h3 class="blockHeading"><strong>Question:</strong> Can I do a diploma?</h3>
+        <p>Yes, after Class 10.</p>
+        </body></html>
+        """,
+        encoding="utf-8",
+    )
+
+    sections = read_html(html_path)
+
+    assert any("Can I do a diploma?" in (s.heading_title or "") for s in sections)
+    assert any("Yes, after Class 10." in s.paragraphs for s in sections)
+
+
+def test_read_html_excludes_popular_colleges_directory_by_text_pattern(tmp_path):
+    # Real noise found on the actual Chemical Engineering Careers360 page:
+    # "Popular Chemical Engineering Colleges in India" is photo/rating/
+    # brochure directory cards, sharing the same class as real content
+    # headings -- needs a text-pattern match, not a class check.
+    html_path = tmp_path / "with_college_cards.html"
+    html_path.write_text(
+        """
+        <html><body>
+        <h1>Chemical Engineering</h1>
+        <p>Real course content.</p>
+        <div>
+          <h2>Popular Chemical Engineering Colleges in India</h2>
+          <div><li>IIT Bombay</li><li>95 Reviews</li><li>Rated AAAAA</li></div>
+        </div>
+        <h2>Frequently Asked Questions (FAQs)</h2>
+        <p>An FAQ answer worth keeping.</p>
+        </body></html>
+        """,
+        encoding="utf-8",
+    )
+
+    sections = read_html(html_path)
+
+    assert not any("95 Reviews" in p for s in sections for p in s.paragraphs)
+    assert not any(s.heading_title == "Popular Chemical Engineering Colleges in India" for s in sections)
+    # FAQs come right after the noise section and must still be captured
+    assert any(s.heading_title == "Frequently Asked Questions (FAQs)" for s in sections)
+
+
+def test_read_html_excludes_explore_colleges_footer_directory(tmp_path):
+    html_path = tmp_path / "with_footer_directory.html"
+    html_path.write_text(
+        """
+        <html><body>
+        <h1>Chemical Engineering</h1>
+        <p>Real course content.</p>
+        <div>
+          <h2>Explore Engineering colleges in other popular locations</h2>
+          <li>Hyderabad</li><li>Bangalore</li><li>Pune</li>
+        </div>
+        </body></html>
+        """,
+        encoding="utf-8",
+    )
+
+    sections = read_html(html_path)
+
+    assert not any("Hyderabad" in p for s in sections for p in s.paragraphs)
+    assert not any(
+        s.heading_title == "Explore Engineering colleges in other popular locations" for s in sections
+    )
+
+
+def test_read_html_excludes_site_footer_tag(tmp_path):
+    html_path = tmp_path / "with_footer_tag.html"
+    html_path.write_text(
+        """
+        <html><body>
+        <h1>Chemical Engineering</h1>
+        <p>Real course content.</p>
+        <footer class="footer-section">
+          <h5>Top Exams</h5><li>JEE Main</li>
+          <h5>Resources</h5><li>NCERT</li>
+        </footer>
+        </body></html>
+        """,
+        encoding="utf-8",
+    )
+
+    sections = read_html(html_path)
+
+    assert not any(s.heading_title in ("Top Exams", "Resources") for s in sections)
+    assert not any("JEE Main" in p for s in sections for p in s.paragraphs)
+
+
+def test_read_html_excludes_signin_modal_and_app_promo_and_sidebar(tmp_path):
+    html_path = tmp_path / "with_ui_chrome.html"
+    html_path.write_text(
+        """
+        <html><body>
+        <h1>Chemical Engineering</h1>
+        <p>Real course content.</p>
+        <div id="commonSignin"><h3>Sign In/Sign Up</h3><p>noise</p></div>
+        <section class="new-fat-footer-bg-container">
+          <h4>Scan and download the app</h4><p>noise</p>
+        </section>
+        <div class="right-sidebar"><h3>Popular Degrees</h3><li>B.Tech</li></div>
+        <h2>Eligibility Criteria</h2>
+        <p>Real eligibility content.</p>
+        </body></html>
+        """,
+        encoding="utf-8",
+    )
+
+    sections = read_html(html_path)
+
+    assert not any(
+        s.heading_title in ("Sign In/Sign Up", "Scan and download the app", "Popular Degrees")
+        for s in sections
+    )
+    assert any(s.heading_title == "Eligibility Criteria" for s in sections)
+
+
+def test_read_html_extracts_related_courses_wrapped_in_nested_h3_tags(tmp_path):
+    # Real structure found on the actual Chemical Engineering Careers360 page:
+    # each related course name is its own <h3><a>Name</a></h3>, not a <li>.
+    html_path = tmp_path / "with_related_courses.html"
+    html_path.write_text(
+        """
+        <html><body>
+        <h1>Chemical Engineering</h1>
+        <p>Real course content.</p>
+        <h2>Courses Similar to Chemical Engineering</h2>
+        <div class="course_name">
+          <div class="block-inner"><h3 class="heading-h3"><a href="/x">Ceramic Engineering</a></h3></div>
+          <div class="block-inner"><h3 class="heading-h3"><a href="/y">Petrochemical Engineering</a></h3></div>
+          <div class="block-inner"><h3 class="heading-h3"><a href="/z">Polymer Engineering</a></h3></div>
+        </div>
+        <h2>Eligibility Criteria</h2>
+        <p>Real eligibility content.</p>
+        </body></html>
+        """,
+        encoding="utf-8",
+    )
+
+    sections = read_html(html_path)
+
+    related = next(s for s in sections if s.heading_title == "Courses Similar to Chemical Engineering")
+    assert related.paragraphs == ["Ceramic Engineering", "Petrochemical Engineering", "Polymer Engineering"]
+    # course names weren't ALSO picked up as their own stray top-level headings
+    assert not any(s.heading_title == "Ceramic Engineering" for s in sections)
+    assert not any(s.heading_title == "Polymer Engineering" for s in sections)
+    # real content after this section is still captured
+    assert any(s.heading_title == "Eligibility Criteria" for s in sections)
+
+
 def test_read_html_skips_empty_sections(tmp_path):
     html_path = tmp_path / "empty_heading.html"
     html_path.write_text(
