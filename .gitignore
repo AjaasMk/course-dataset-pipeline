@@ -16,6 +16,11 @@ data/raw/*
 data/manifest.db
 data/pilot_run_report.json
 data/chunks/
+data/extracted/
+data/pilot_extraction_log.txt
+
+# secrets
+.env
 
 # editor/OS noise
 .vscode/
