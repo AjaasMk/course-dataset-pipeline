@@ -6,20 +6,27 @@ official regulator/university sources. Pilot: 50 courses. Eventual target: 629.
 ## Hard constraints
 
 1. No manual retrieval, matching, or writing anywhere in the pipeline.
-2. Every generated field carries `source_refs` pointing to a real retrieved
-   document chunk.
+2. **Revised (2026-07-21): dropped.** Originally: every generated field
+   carries `source_refs` pointing to a real retrieved document chunk. This
+   project's output is course content for a client-facing site, not an
+   auditable research dataset — per-field citation tracking (and the Stage 3
+   faithfulness/citation-validity checks it enabled) was judged not worth
+   its cost, and is removed. Retrieval (Stage 1) is unaffected — generation
+   still starts from real fetched pages; only the after-the-fact citation
+   record is gone. `SourceRef` no longer exists in `src/schema.py`.
 3. **Source lineup is tiered by category** (see `config/sources.yaml`):
    `regulatory_primary` (AICTE/NMC/BCI/UGC — authoritative, use as-is),
    `syllabus_supplement` (NPTEL — curriculum detail), `fact_supplement_
    independent_writing_required` (Careers360, Coursera, edX, university
-   sites — **facts only, never copied/paraphrased sentences**, gated by an
-   n-gram/similarity check against the source text on top of the normal
-   faithfulness check), `general_background` (Wikipedia, CC BY-SA —
-   separate license basis, needs attribution), `aggregate_stats_only`
-   (AISHE/AICTE — counts, never from an aggregator), `career_info` (NCS).
-   Revises the original "regulator-only" rule: the safeguard that makes
-   fact-supplement sources safe is the independent-writing requirement +
-   similarity check, not their absence.
+   sites), `general_background` (Wikipedia, CC BY-SA — separate license
+   basis, needs attribution), `aggregate_stats_only` (AISHE/AICTE — counts,
+   never from an aggregator), `career_info` (NCS). Still governs *retrieval
+   order* (which source is tried first per tier) even though per-field
+   citation tracking is gone (constraint 2). **Revised (2026-07-21):** the
+   independent-writing/similarity-check safeguard on
+   `fact_supplement_independent_writing_required` no longer applies, since
+   it depended on Stage 3 citation validation (now dropped) — accepted,
+   deliberate risk of the 2026-07-21 decision.
    **Retrieval order (2026-07-17, revised same day):** `fact_supplement_
    independent_writing_required` (Careers360) is tried FIRST in every tier,
    ahead of `regulatory_primary` — including engineering, where AICTE is
@@ -30,8 +37,16 @@ official regulator/university sources. Pilot: 50 courses. Eventual target: 629.
    constraint 6). `general_background` (Wikipedia) is the final fallback for
    medium/weak tier if both regulator and Careers360 fail — see constraint 6
    and the Pilot scope note below for the weak-tier policy this revises.
-4. No field fabrication. Ungroundable fields are `null` and flagged for
-   review — never a plausible-sounding guess.
+4. **Revised (2026-07-21): fabrication is now allowed for ungrounded gaps.**
+   Originally: no field fabrication — ungroundable fields are `null` and
+   flagged for review, never a plausible-sounding guess. Reversed by the
+   same 2026-07-21 decision as constraint 2: when the retrieved source is
+   silent on a fact, the model may fill it from general/typical knowledge
+   instead of returning `null`. Known consequence: this undercuts the
+   weak-tier intent below — a weak-tier course with no real source match now
+   gets a fluent, unverifiable answer instead of a surfaced
+   `no_source_found` failure. Accepted tradeoff; revisit if it masks too
+   much real automation-breakage signal.
 5. Idempotent: re-running on unchanged sources must not duplicate records or
    reprocess unnecessarily (hash-based diffing).
 6. Metrics are always reported stratified by source-quality tier
@@ -63,10 +78,11 @@ revisit if it later masks too much real signal.
 STAGE 1 — RETRIEVE   crawl regulator listing page -> {branch: doc_url} index,
                       fuzzy-match course name -> download (idempotent)
 STAGE 2 — EXTRACT     chunk doc -> LLM structured extraction (CourseDetail),
-                      every field cites source_refs
+                      no per-field citation tracking (revised 2026-07-21)
 STAGE 3 — VALIDATE    automated: schema validity, field completeness,
-                      faithfulness (NLI/LLM-judge), citation validity,
-                      retrieval precision. Below threshold -> review_queue.
+                      retrieval precision. Faithfulness/citation validity
+                      dropped with source_refs (2026-07-21). Below
+                      threshold -> review_queue.
 STAGE 4 — PERSIST      validated record -> Postgres (source of truth) ->
                       embed -> Chroma
 STAGE 5 — SERVE        FastAPI: browse/filter (Postgres), search (Chroma +
@@ -86,7 +102,11 @@ GitHub Actions (monthly re-crawl, hash-diffed)
 ## Status
 
 **Built:**
-- `src/schema.py` — `CourseDetail`, `SourceCategory`, `SourceRef`,
+- `src/schema.py` — `CourseDetail` (revised 2026-07-21: richer nested
+  shape — `Eligibility`, `EntranceExams`, `Fees`/`FeeRange`,
+  `CollegesAvailable`, `JobProfile`, `Syllabus`/`SyllabusSemester`,
+  `TopCollege`, `FAQ` — no `source_refs`; a `Seo` model was proposed in the
+  same revision and then removed as unrequested scope), `SourceCategory`,
   `SourceType`, `ManifestEntry` Pydantic models.
 - `config/sources.yaml` — source registry by tier, with `retrieval_order`
   (Careers360-first, see constraint 3).
