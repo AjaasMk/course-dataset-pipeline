@@ -1,6 +1,6 @@
 import httpx
 import pytest
-from anthropic import APIConnectionError
+from anthropic import APIConnectionError, RateLimitError
 
 from src.extract.chunker import (
     MAX_TOKENS,
@@ -40,27 +40,36 @@ def _connection_error():
     return APIConnectionError(request=httpx.Request("POST", "https://api.anthropic.com/v1/messages/count_tokens"))
 
 
-class _FlakyMessages:
-    """Fails with APIConnectionError a fixed number of times, then succeeds."""
+def _rate_limit_error():
+    response = httpx.Response(
+        status_code=429,
+        request=httpx.Request("POST", "https://api.anthropic.com/v1/messages/count_tokens"),
+    )
+    return RateLimitError("rate limited", response=response, body=None)
 
-    def __init__(self, fail_times: int):
+
+class _FlakyMessages:
+    """Fails with a given error a fixed number of times, then succeeds."""
+
+    def __init__(self, fail_times: int, error_factory=_connection_error):
         self.fail_times = fail_times
+        self.error_factory = error_factory
         self.calls = 0
 
     def count_tokens(self, model, messages):
         self.calls += 1
         if self.calls <= self.fail_times:
-            raise _connection_error()
+            raise self.error_factory()
         return _FakeCountTokensResponse(input_tokens=5)
 
 
 class _FlakyClient:
-    def __init__(self, fail_times: int):
-        self.messages = _FlakyMessages(fail_times)
+    def __init__(self, fail_times: int, error_factory=_connection_error):
+        self.messages = _FlakyMessages(fail_times, error_factory)
 
 
 def test_token_count_retries_on_connection_error_then_succeeds(monkeypatch):
-    monkeypatch.setattr("src.extract.chunker.time.sleep", lambda seconds: None)
+    monkeypatch.setattr("src.extract.retry.time.sleep", lambda seconds: None)
     client = _FlakyClient(fail_times=2)
 
     result = _token_count("some text", client)
@@ -69,8 +78,18 @@ def test_token_count_retries_on_connection_error_then_succeeds(monkeypatch):
     assert client.messages.calls == 3
 
 
+def test_token_count_retries_on_rate_limit_error_then_succeeds(monkeypatch):
+    monkeypatch.setattr("src.extract.retry.time.sleep", lambda seconds: None)
+    client = _FlakyClient(fail_times=2, error_factory=_rate_limit_error)
+
+    result = _token_count("some text", client)
+
+    assert result == 5
+    assert client.messages.calls == 3
+
+
 def test_token_count_raises_after_exhausting_retries(monkeypatch):
-    monkeypatch.setattr("src.extract.chunker.time.sleep", lambda seconds: None)
+    monkeypatch.setattr("src.extract.retry.time.sleep", lambda seconds: None)
     client = _FlakyClient(fail_times=5)
 
     with pytest.raises(APIConnectionError):

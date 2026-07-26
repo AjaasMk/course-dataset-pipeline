@@ -5,10 +5,12 @@ import sqlite3
 from pathlib import Path
 from typing import Callable, Literal, Optional
 
+import anthropic
 from pydantic import BaseModel
 
 from src.extract.extractor import extract_course_detail
 from src.extract.models import Chunk
+from src.extract.retry import call_with_retry
 from src.schema import CourseDetail
 
 logger = logging.getLogger(__name__)
@@ -16,6 +18,16 @@ logger = logging.getLogger(__name__)
 CHUNKS_DIR = Path("data/chunks")
 EXTRACTED_DIR = Path("data/extracted")
 HASH_STORE_PATH = Path("data/extracted/.chunk_hashes.json")
+
+# extract_fn (a real, billed model call) is retried only on transient
+# connection/rate-limit errors -- unlike a bare re-run, a dropped connection
+# mid-request means Claude may have already processed (and billed) the
+# request even though the response never arrived, so a retry here can incur
+# a real duplicate charge. Accepted for unattended batch runs: completing
+# the batch reliably matters more than an occasional duplicate charge on a
+# rare connection drop. Real refusals/truncation/auth/billing errors are
+# NOT retried -- they'd fail identically every time or mask a real problem.
+_RETRYABLE_ERRORS = (anthropic.APIConnectionError, anthropic.RateLimitError)
 
 
 class ManifestRow(BaseModel):
@@ -98,7 +110,8 @@ def extract_all_courses(
     """Extract CourseDetail for every course in manifest_rows, isolating per-course
     failures the same way src/retrieve/batch.py does for retrieval: an exception
     is caught, logged, recorded as "extraction_failed", and the batch continues
-    rather than aborting.
+    rather than aborting. extract_fn itself is retried on transient connection/
+    rate-limit errors before being treated as a failure (see _RETRYABLE_ERRORS).
 
     Idempotent via hash-based diffing (Hard Constraint 5): each course's
     chunks are hashed, and a course is only re-sent to extract_fn (a real,
@@ -131,7 +144,11 @@ def extract_all_courses(
             continue
 
         try:
-            course_detail = extract_fn(chunks, row.course_name, row.category)
+            course_detail = call_with_retry(
+                lambda: extract_fn(chunks, row.course_name, row.category),
+                retryable_errors=_RETRYABLE_ERRORS,
+                description=f"extract_course_detail({row.course_name!r})",
+            )
         except Exception as exc:
             logger.info("Course %r extraction failed: %s", row.course_name, exc)
             results.append(

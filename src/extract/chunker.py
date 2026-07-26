@@ -1,9 +1,9 @@
 import re
-import time
 
 import anthropic
 
 from src.extract.models import Chunk, PageText, Section
+from src.extract.retry import call_with_retry
 
 MODEL = "claude-sonnet-5"
 MAX_TOKENS = 1000
@@ -15,24 +15,21 @@ _SENTENCE_ENDINGS = (".", ",", ";")
 # count_tokens() now runs once per paragraph-append decision across every
 # document -- a transient network blip anywhere previously killed the whole
 # batch (confirmed live: an APIConnectionError partway through a 50-document
-# run). Retry only APIConnectionError -- auth/permission/billing errors are
-# real failures that should surface immediately, not be masked by a retry loop.
-_MAX_RETRIES = 3
-_RETRY_BACKOFF_SECONDS = 2.0
+# run). Retry connection errors and rate limits -- both are transient;
+# auth/permission/billing errors are real failures that should surface
+# immediately, not be masked by a retry loop.
+_RETRYABLE_ERRORS = (anthropic.APIConnectionError, anthropic.RateLimitError)
 
 
-def _token_count(text: str, client: anthropic.Anthropic) -> int:
-    last_error: anthropic.APIConnectionError | None = None
-    for attempt in range(_MAX_RETRIES):
-        try:
-            return client.messages.count_tokens(
-                model=MODEL, messages=[{"role": "user", "content": text}]
-            ).input_tokens
-        except anthropic.APIConnectionError as exc:
-            last_error = exc
-            if attempt < _MAX_RETRIES - 1:
-                time.sleep(_RETRY_BACKOFF_SECONDS * (attempt + 1))
-    raise last_error
+def _token_count(text: str, client: anthropic.Anthropic, max_retries: int = 3) -> int:
+    return call_with_retry(
+        lambda: client.messages.count_tokens(
+            model=MODEL, messages=[{"role": "user", "content": text}]
+        ).input_tokens,
+        retryable_errors=_RETRYABLE_ERRORS,
+        description="count_tokens",
+        max_retries=max_retries,
+    )
 
 
 # _tail_tokens has no offline decoder to cut text at an exact token boundary

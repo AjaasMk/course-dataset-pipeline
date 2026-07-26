@@ -1,6 +1,9 @@
 import logging
 import sqlite3
 
+import httpx
+from anthropic import APIConnectionError
+
 from src.extract.batch_extract import (
     ManifestRow,
     compute_chunk_hash,
@@ -12,6 +15,10 @@ from src.extract.batch_extract import (
 )
 from src.extract.models import Chunk
 from src.schema import CourseDetail
+
+
+def _connection_error():
+    return APIConnectionError(request=httpx.Request("POST", "https://api.anthropic.com/v1/messages"))
 
 
 def _chunk(chunk_id=0, text="text"):
@@ -194,7 +201,61 @@ def test_extract_all_courses_isolates_failure_and_continues(tmp_path):
     assert report.results[0].outcome == "extraction_failed"
     assert "simulated model refusal" in report.results[0].error
     assert report.results[1].outcome == "extracted"
-    assert calls == ["Course One", "Course Two"]
+    assert calls == ["Course One", "Course Two"]  # RuntimeError isn't retried -- one attempt each
+
+
+def test_extract_all_courses_retries_transient_connection_error_then_succeeds(tmp_path, monkeypatch):
+    monkeypatch.setattr("src.extract.retry.time.sleep", lambda seconds: None)
+    chunks_dir = tmp_path / "chunks"
+    extracted_dir = tmp_path / "extracted"
+    _write_chunks(chunks_dir / "course__aggregator_webpage.json", [_chunk()])
+
+    row = ManifestRow(
+        course_name="Course", category="engineering", source_type="aggregator_webpage",
+        local_path="data/raw/engineering/aggregator_webpage/course.html",
+    )
+
+    attempts = {"count": 0}
+
+    def flaky_then_succeeds(chunks, course_name, category):
+        attempts["count"] += 1
+        if attempts["count"] < 3:
+            raise _connection_error()
+        return CourseDetail(course_name=course_name, category=category)
+
+    report = extract_all_courses(
+        [row], chunks_dir, extracted_dir, extract_fn=flaky_then_succeeds,
+        hash_store_path=tmp_path / "hashes.json",
+    )
+
+    assert report.results[0].outcome == "extracted"
+    assert attempts["count"] == 3  # two transient failures, then a retried success
+
+
+def test_extract_all_courses_gives_up_after_exhausting_retries_on_connection_error(tmp_path, monkeypatch):
+    monkeypatch.setattr("src.extract.retry.time.sleep", lambda seconds: None)
+    chunks_dir = tmp_path / "chunks"
+    extracted_dir = tmp_path / "extracted"
+    _write_chunks(chunks_dir / "course__aggregator_webpage.json", [_chunk()])
+
+    row = ManifestRow(
+        course_name="Course", category="engineering", source_type="aggregator_webpage",
+        local_path="data/raw/engineering/aggregator_webpage/course.html",
+    )
+
+    attempts = {"count": 0}
+
+    def always_disconnects(chunks, course_name, category):
+        attempts["count"] += 1
+        raise _connection_error()
+
+    report = extract_all_courses(
+        [row], chunks_dir, extracted_dir, extract_fn=always_disconnects,
+        hash_store_path=tmp_path / "hashes.json",
+    )
+
+    assert report.results[0].outcome == "extraction_failed"
+    assert attempts["count"] == 3  # default max_retries, then gives up and records the failure
 
 
 def test_extract_all_courses_logs_failure(tmp_path, caplog):
