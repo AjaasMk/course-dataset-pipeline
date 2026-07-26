@@ -90,6 +90,57 @@ STAGE 5 — SERVE        FastAPI: browse/filter (Postgres), search (Chroma +
 STAGE 6 — OBSERVE      Langfuse trace per run, stratified by tier
 ```
 
+## Running with Docker
+
+Build once:
+
+```bash
+docker build -t course-dataset-pipeline .
+```
+
+Verify your `ANTHROPIC_API_KEY` (in `.env`, project root) is valid and has a
+usable credit balance — no pipeline cost, just a key check:
+
+```bash
+docker run --rm --env-file .env course-dataset-pipeline python scripts/verify_anthropic_key.py
+```
+
+Run the test suite inside the container (no `.env` needed — all 129 tests
+run against fakes/mocks, zero real API calls):
+
+```bash
+docker run --rm course-dataset-pipeline pytest
+```
+
+Each pipeline stage is run explicitly, with `data/` mounted from the host so
+state (the manifest, downloaded documents, chunks, extracted output)
+persists across separate `docker run` invocations — the container itself is
+stateless:
+
+```bash
+# Stage 1 — Retrieve
+docker run --rm --env-file .env -v "$(pwd)/data:/app/data" course-dataset-pipeline python -m src.retrieve.batch
+
+# Stage 2 — Chunk
+docker run --rm --env-file .env -v "$(pwd)/data:/app/data" course-dataset-pipeline python -m src.extract.run_chunking
+
+# Stage 2 — Extract (billed — verify credit balance first)
+docker run --rm --env-file .env -v "$(pwd)/data:/app/data" course-dataset-pipeline python -m src.extract.batch_extract
+```
+
+**Windows + Git Bash note:** Git Bash's MSYS layer auto-converts `/app/data`
+into a Windows path before Docker sees it, silently breaking the volume
+mount (confirmed live — the container ran but wrote to its own empty
+`data/manifest.db` instead of the host's, without erroring). Fix by
+prefixing the command:
+
+```bash
+MSYS_NO_PATHCONV=1 docker run --rm --env-file .env -v "$(pwd)/data:/app/data" course-dataset-pipeline python -m src.retrieve.batch
+```
+
+PowerShell doesn't have this issue — use `${PWD}` in place of `$(pwd)` and no
+prefix is needed.
+
 ## Stack
 
 Python 3.11 · requests/beautifulsoup4/rapidfuzz (retrieval) · YAML source
