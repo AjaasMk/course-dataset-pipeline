@@ -92,7 +92,22 @@ STAGE 6 — OBSERVE      Langfuse trace per run, stratified by tier
 
 ## Running with Docker
 
-Build once:
+Every push to `main` automatically builds and publishes the image to
+GitHub Container Registry (see `.github/workflows/docker-publish.yml`) —
+tagged both `:latest` and with the exact commit SHA it was built from. The
+package is **private**: pulling it requires a GitHub personal access token
+(classic, scope `read:packages`) and being granted access to the package
+(repo collaborators get this automatically; anyone else needs to be added
+under the package's own access settings on GitHub).
+
+```bash
+echo "$GITHUB_TOKEN" | docker login ghcr.io -u <your-github-username> --password-stdin
+docker pull ghcr.io/ajaasmk/course-dataset-pipeline:latest
+```
+
+Everything below works identically whether your image is the one you pulled
+(tag it locally first: `docker tag ghcr.io/ajaasmk/course-dataset-pipeline:latest course-dataset-pipeline`)
+or one you build yourself:
 
 ```bash
 docker build -t course-dataset-pipeline .
