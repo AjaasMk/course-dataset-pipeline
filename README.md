@@ -95,13 +95,18 @@ STAGE 6 — OBSERVE      Langfuse trace per run, stratified by tier
 Every push to `main` automatically builds and publishes the image to
 GitHub Container Registry (see `.github/workflows/docker-publish.yml`) —
 tagged both `:latest` and with the exact commit SHA it was built from. The
-package is **private**: pulling it requires a GitHub personal access token
-(classic, scope `read:packages`) and being granted access to the package
-(repo collaborators get this automatically; anyone else needs to be added
-under the package's own access settings on GitHub).
+package is **private**: pulling it requires (1) being granted access to the
+package (repo collaborators get this automatically; anyone else needs to be
+added under the package's own access settings on GitHub) and (2) a GitHub
+**personal access token** with `read:packages` scope — a regular GitHub
+password will not work here. Create one at
+[github.com/settings/tokens](https://github.com/settings/tokens) (classic
+token, `read:packages` scope is sufficient), then:
 
 ```bash
-echo "$GITHUB_TOKEN" | docker login ghcr.io -u <your-github-username> --password-stdin
+# <your-github-username> is your own GitHub username; the password prompt
+# takes the personal access token above, NOT your GitHub account password.
+echo "<your-personal-access-token>" | docker login ghcr.io -u <your-github-username> --password-stdin
 docker pull ghcr.io/ajaasmk/course-dataset-pipeline:latest
 ```
 
