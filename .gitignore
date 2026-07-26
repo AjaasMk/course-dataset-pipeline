@@ -2,6 +2,8 @@
 docs/architecture.html
 CLAUDE.md
 WALKTHROUGH.md
+.obsidian/
+[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9].md
 
 # python
 __pycache__/
