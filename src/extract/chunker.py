@@ -1,19 +1,45 @@
 import re
+import time
 
+import anthropic
 import tiktoken
 
 from src.extract.models import Chunk, PageText, Section
 
+# Used only for _tail_tokens' overlap slicing (needs encode/decode to cut text
+# at an exact token boundary; Anthropic exposes no offline tokenizer/decoder).
+# The MAX_TOKENS boundary decision below uses the real API count instead --
+# tiktoken confirmed live to undercount Claude's real tokenizer by ~2x on this
+# content, so it must not be the source of truth for chunk sizing.
 _ENCODING = tiktoken.get_encoding("cl100k_base")
+MODEL = "claude-sonnet-5"
 MAX_TOKENS = 1000
 OVERLAP_TOKENS = 125
 
 _HEADING_MAX_LEN = 80
 _SENTENCE_ENDINGS = (".", ",", ";")
 
+# count_tokens() now runs once per paragraph-append decision across every
+# document -- a transient network blip anywhere previously killed the whole
+# batch (confirmed live: an APIConnectionError partway through a 50-document
+# run). Retry only APIConnectionError -- auth/permission/billing errors are
+# real failures that should surface immediately, not be masked by a retry loop.
+_MAX_RETRIES = 3
+_RETRY_BACKOFF_SECONDS = 2.0
 
-def _token_count(text: str) -> int:
-    return len(_ENCODING.encode(text))
+
+def _token_count(text: str, client: anthropic.Anthropic) -> int:
+    last_error: anthropic.APIConnectionError | None = None
+    for attempt in range(_MAX_RETRIES):
+        try:
+            return client.messages.count_tokens(
+                model=MODEL, messages=[{"role": "user", "content": text}]
+            ).input_tokens
+        except anthropic.APIConnectionError as exc:
+            last_error = exc
+            if attempt < _MAX_RETRIES - 1:
+                time.sleep(_RETRY_BACKOFF_SECONDS * (attempt + 1))
+    raise last_error
 
 
 def _tail_tokens(text: str, n: int) -> str:
@@ -23,7 +49,13 @@ def _tail_tokens(text: str, n: int) -> str:
     return _ENCODING.decode(tokens[-n:])
 
 
-def chunk_document(sections: list[Section], source_document: str, source_url: str) -> list[Chunk]:
+def chunk_document(
+    sections: list[Section],
+    source_document: str,
+    source_url: str,
+    client: anthropic.Anthropic | None = None,
+) -> list[Chunk]:
+    client = client or anthropic.Anthropic()
     chunks: list[Chunk] = []
     chunk_id = 0
 
@@ -31,8 +63,8 @@ def chunk_document(sections: list[Section], source_document: str, source_url: st
         buffer = ""
         for paragraph in section.paragraphs:
             candidate = f"{buffer} {paragraph}".strip() if buffer else paragraph
-            if buffer and _token_count(candidate) > MAX_TOKENS:
-                chunks.append(_make_chunk(chunk_id, buffer, section, source_document, source_url))
+            if buffer and _token_count(candidate, client) > MAX_TOKENS:
+                chunks.append(_make_chunk(chunk_id, buffer, section, source_document, source_url, client))
                 chunk_id += 1
                 overlap = _tail_tokens(buffer, OVERLAP_TOKENS)
                 buffer = f"{overlap} {paragraph}".strip() if overlap else paragraph
@@ -40,13 +72,20 @@ def chunk_document(sections: list[Section], source_document: str, source_url: st
                 buffer = candidate
 
         if buffer:
-            chunks.append(_make_chunk(chunk_id, buffer, section, source_document, source_url))
+            chunks.append(_make_chunk(chunk_id, buffer, section, source_document, source_url, client))
             chunk_id += 1
 
     return chunks
 
 
-def _make_chunk(chunk_id: int, text: str, section: Section, source_document: str, source_url: str) -> Chunk:
+def _make_chunk(
+    chunk_id: int,
+    text: str,
+    section: Section,
+    source_document: str,
+    source_url: str,
+    client: anthropic.Anthropic,
+) -> Chunk:
     return Chunk(
         chunk_id=chunk_id,
         text=text,
@@ -54,7 +93,7 @@ def _make_chunk(chunk_id: int, text: str, section: Section, source_document: str
         source_url=source_url,
         page_number=section.page_number,
         heading_title=section.heading_title,
-        token_count=_token_count(text),
+        token_count=_token_count(text, client),
     )
 
 

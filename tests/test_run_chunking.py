@@ -1,0 +1,134 @@
+import sqlite3
+import threading
+
+from src.extract.run_chunking import chunk_all_documents
+
+
+class _FakeCountTokensResponse:
+    def __init__(self, input_tokens: int):
+        self.input_tokens = input_tokens
+
+
+class _FakeMessages:
+    def count_tokens(self, model, messages):
+        text = messages[0]["content"]
+        return _FakeCountTokensResponse(input_tokens=max(1, int(len(text.split()) * 1.3)))
+
+
+class _FakeClient:
+    def __init__(self):
+        self.messages = _FakeMessages()
+
+
+def _make_manifest_db(db_path, rows):
+    conn = sqlite3.connect(db_path)
+    conn.execute(
+        """CREATE TABLE manifest (
+            course_name TEXT, tier TEXT, source_type TEXT, matched_url TEXT,
+            local_path TEXT, file_hash TEXT, match_confidence REAL,
+            retrieved_at TEXT, content_type TEXT, content_length INTEGER, http_status INTEGER
+        )"""
+    )
+    for course_name, tier, source_type, matched_url, local_path in rows:
+        conn.execute(
+            "INSERT INTO manifest (course_name, tier, source_type, matched_url, local_path, "
+            "match_confidence, retrieved_at) VALUES (?, ?, ?, ?, ?, ?, ?)",
+            (course_name, tier, source_type, matched_url, local_path, 0.9, "2026-07-17T12:00:00+00:00"),
+        )
+    conn.commit()
+    conn.close()
+
+
+def _write_html(path, body_text):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(f"<html><body><h1>Title</h1><p>{body_text}</p></body></html>", encoding="utf-8")
+
+
+def test_chunk_all_documents_chunks_every_row_and_writes_output(tmp_path):
+    db_path = tmp_path / "manifest.db"
+    raw_dir = tmp_path / "raw"
+    chunks_dir = tmp_path / "chunks"
+
+    doc_one = raw_dir / "course_one.html"
+    doc_two = raw_dir / "course_two.html"
+    _write_html(doc_one, "Course one content.")
+    _write_html(doc_two, "Course two content.")
+
+    _make_manifest_db(
+        db_path,
+        [
+            ("Course One", "engineering", "aggregator_webpage", "https://example.com/one", str(doc_one)),
+            ("Course Two", "engineering", "aggregator_webpage", "https://example.com/two", str(doc_two)),
+        ],
+    )
+
+    report = chunk_all_documents(
+        db_path=db_path, client=_FakeClient(), chunks_dir=chunks_dir, max_workers=2
+    )
+
+    assert len(report.results) == 2
+    assert {r.course_name for r in report.results} == {"Course One", "Course Two"}
+    assert all(r.outcome == "chunked" for r in report.results)
+    assert (chunks_dir / "course_one__aggregator_webpage.json").exists()
+    assert (chunks_dir / "course_two__aggregator_webpage.json").exists()
+
+
+def test_chunk_all_documents_isolates_failure_and_continues(tmp_path):
+    db_path = tmp_path / "manifest.db"
+    raw_dir = tmp_path / "raw"
+    chunks_dir = tmp_path / "chunks"
+
+    doc_ok = raw_dir / "course_ok.html"
+    _write_html(doc_ok, "Real content.")
+    missing_path = str(raw_dir / "does_not_exist.html")
+
+    _make_manifest_db(
+        db_path,
+        [
+            ("Course Missing", "engineering", "aggregator_webpage", "https://example.com/missing", missing_path),
+            ("Course Ok", "engineering", "aggregator_webpage", "https://example.com/ok", str(doc_ok)),
+        ],
+    )
+
+    report = chunk_all_documents(db_path=db_path, client=_FakeClient(), chunks_dir=chunks_dir, max_workers=2)
+
+    by_name = {r.course_name: r for r in report.results}
+    assert by_name["Course Missing"].outcome == "failed"
+    assert by_name["Course Missing"].error is not None
+    assert by_name["Course Ok"].outcome == "chunked"
+    assert (chunks_dir / "course_ok__aggregator_webpage.json").exists()
+
+
+def test_chunk_all_documents_runs_concurrently_not_sequentially(tmp_path):
+    db_path = tmp_path / "manifest.db"
+    raw_dir = tmp_path / "raw"
+    chunks_dir = tmp_path / "chunks"
+
+    docs = []
+    rows = []
+    for i in range(4):
+        doc = raw_dir / f"course_{i}.html"
+        _write_html(doc, f"Content {i}.")
+        docs.append(doc)
+        rows.append((f"Course {i}", "engineering", "aggregator_webpage", f"https://example.com/{i}", str(doc)))
+    _make_manifest_db(db_path, rows)
+
+    seen_threads = set()
+    lock = threading.Lock()
+
+    class _TrackingMessages(_FakeMessages):
+        def count_tokens(self, model, messages):
+            with lock:
+                seen_threads.add(threading.get_ident())
+            return super().count_tokens(model, messages)
+
+    class _TrackingClient:
+        def __init__(self):
+            self.messages = _TrackingMessages()
+
+    chunk_all_documents(db_path=db_path, client=_TrackingClient(), chunks_dir=chunks_dir, max_workers=4)
+
+    # With 4 independent documents and max_workers=4, more than one worker
+    # thread should have handled the count_tokens() calls -- proves the work
+    # is actually distributed across threads, not silently run one-at-a-time.
+    assert len(seen_threads) > 1
