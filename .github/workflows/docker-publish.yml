@@ -6,7 +6,6 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build-and-push:
@@ -18,6 +17,13 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+
+      # Docker/OCI registry names must be lowercase -- github.repository
+      # preserves the repo's actual case (AjaasMk/...), which buildx rejects
+      # outright ("repository name must be lowercase"), confirmed live.
+      - name: Compute lowercase image name
+        id: image
+        run: echo "name=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
 
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
@@ -32,5 +38,5 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+            ${{ env.REGISTRY }}/${{ steps.image.outputs.name }}:latest
+            ${{ env.REGISTRY }}/${{ steps.image.outputs.name }}:${{ github.sha }}
