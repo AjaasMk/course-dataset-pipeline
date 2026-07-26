@@ -2,7 +2,14 @@ import httpx
 import pytest
 from anthropic import APIConnectionError
 
-from src.extract.chunker import _token_count, chunk_document, detect_pdf_sections
+from src.extract.chunker import (
+    MAX_TOKENS,
+    _split_oversized_text,
+    _tail_tokens,
+    _token_count,
+    chunk_document,
+    detect_pdf_sections,
+)
 from src.extract.models import PageText, Section
 
 
@@ -70,6 +77,68 @@ def test_token_count_raises_after_exhausting_retries(monkeypatch):
         _token_count("some text", client)
 
     assert client.messages.calls == 3
+
+
+def test_split_oversized_text_splits_at_sentence_boundaries():
+    # ~1000 words / ~1300 fake tokens -- comfortably over MAX_TOKENS=1000,
+    # with clean sentence punctuation to split on (mirrors the real oversized
+    # paragraph found live in a Careers360 "What is X" intro block).
+    sentence = "This is one sentence in a long block of real prose text."
+    text = " ".join([sentence] * 100)
+
+    pieces = _split_oversized_text(text, _FakeClient())
+
+    assert len(pieces) > 1
+    client = _FakeClient()
+    for piece in pieces:
+        assert _token_count(piece, client) <= MAX_TOKENS
+    # No content lost or reordered by the split.
+    assert " ".join(pieces).replace("  ", " ") == text
+
+
+def test_split_oversized_text_falls_back_to_word_grouping_with_no_punctuation():
+    # No sentence-ending punctuation at all (e.g. an unbroken table row) --
+    # _SENTENCE_SPLIT_RE finds nothing to split on, forcing the word-group
+    # fallback.
+    text = " ".join(["word"] * 1000)
+
+    pieces = _split_oversized_text(text, _FakeClient())
+
+    assert len(pieces) > 1
+    client = _FakeClient()
+    for piece in pieces:
+        assert _token_count(piece, client) <= MAX_TOKENS
+
+
+def test_tail_tokens_returns_full_text_when_already_under_target():
+    text = "A short bit of text."
+    assert _tail_tokens(text, 125, _FakeClient()) == text
+
+
+def test_tail_tokens_returns_suffix_of_text_within_target():
+    words = [f"word{i}" for i in range(500)]
+    text = " ".join(words)
+
+    result = _tail_tokens(text, 50, _FakeClient())
+
+    assert text.endswith(result)
+    assert _token_count(result, _FakeClient()) <= 50
+
+
+def test_chunk_document_splits_a_single_oversized_paragraph():
+    # A single paragraph alone exceeding MAX_TOKENS used to become its own
+    # ~2x-over-limit chunk (chunk_document never split within a paragraph) --
+    # confirmed live on real pilot data after the tokenizer fix made true
+    # sizes visible. Now it must be split into multiple compliant chunks.
+    sentence = "This is one sentence in a long block of real prose text."
+    oversized_paragraph = " ".join([sentence] * 100)
+    sections = [Section(heading_title="What is X", paragraphs=[oversized_paragraph])]
+
+    chunks = _chunk(sections)
+
+    assert len(chunks) > 1
+    for chunk in chunks:
+        assert chunk.token_count <= MAX_TOKENS + 200  # slack for carried overlap
 
 
 def test_chunk_document_short_section_fits_in_one_chunk():
