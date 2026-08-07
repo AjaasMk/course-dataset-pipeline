@@ -65,7 +65,7 @@ def extract_course_detail(
         # which would cache the last cacheable block — here that's the varying
         # per-course `messages` content, not the identical-every-call schema).
         # The schema (~2,833 tokens) and instructions are byte-identical across
-        # all 629 courses; only the reconstructed document text below varies.
+        # every course; only the reconstructed document text below varies.
         system=[
             {
                 "type": "text",

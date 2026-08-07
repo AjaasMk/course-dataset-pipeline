@@ -363,10 +363,29 @@ them. It is replaced by the client's structure:
 model being replaced. Course-level tier labels stop existing.
 
 **Consequence for Hard Constraint 6** (metrics always stratified by tier, never
-blended): the strong/medium/weak axis disappears with them. Stratification moves to
-**source tier (A/B/C/D) per segment** — which is closer to what the constraint was
-protecting: knowing whether a fact is regulator-backed or portal-backed. This is a
-change to a documented hard constraint and needs explicit sign-off.
+blended): the strong/medium/weak axis disappears with them. **Signed off
+2026-08-07** — the protected metric axis becomes:
+
+```
+segment × source_tier
+```
+
+using the cookbook's Tier A/B/C/D classification. This preserves what the
+constraint actually protects — metrics stay stratified by *source authority* —
+while making the number meaningful under an architecture where authority is
+per-segment, not per-course.
+
+`strong`/`medium`/`weak` are **not** retained for backward compatibility. Source
+tier is now the canonical authority axis; a course-level quality label no longer
+means anything once different segments of the same course come from different
+tiers.
+
+```
+Eligibility          Fees                 Salary
+  Tier A → …           Tier A → …           Tier C → …
+  Tier B → …           Tier B → …           Tier D → …
+  Tier D → …           Tier D → …
+```
 
 ## Build order
 
@@ -399,13 +418,29 @@ structured JSON with an explicit pass/fail contract, not prose.
   Adapters are verified live, not only against mocks — the existing convention,
   and the reason NPTEL's status was corrected from `verified` to `blocked` once a
   plain fetch was tried instead of a JS-rendering one.
-- **Phase 6** — a full-run report stratified by **source tier per segment**:
-  `{segment, tier, intents, resolved_authoritative, resolved_secondary_only,
-  unresolved, reasons[]}`.
+- **Phase 6** — a full-run report on the signed-off `segment × source_tier` axis:
+  `{segment, source_tier, intents, resolved_authoritative, resolved_secondary_only,
+  unresolved, reasons[]}`. Never a single blended number, and never collapsed to a
+  course-level quality label.
 - **Regression** — a golden set of ~20 courses spanning regulated (medicine, law),
   well-covered (engineering) and genuinely uncovered (animation, vocational) areas.
-  Uncovered courses **must** produce unresolved segments; a run where everything
-  resolves means Tier D leaked into a canonical role and is a test failure.
+
+  **Uncovered courses must resolve to `unresolved`.** The expected path is:
+
+  ```
+  Course → no permitted authoritative source found → unresolved
+  ```
+
+  If those courses resolve *only* because a Tier D source (Careers360, Shiksha)
+  was allowed into a canonical role, **the test fails**. This specifically guards
+  against the old pipeline's behaviour:
+
+  ```
+  try source → fail → try another → eventually find anything → SUCCESS
+  ```
+
+  Lack of authoritative coverage is a **valid outcome**, not a system failure. A
+  run where every course fully resolves is evidence of tier leakage, not success.
 
 An expected-failure baseline carries over: Aerospace Engineering has no published
 AICTE model curriculum. Its Curriculum intent against AICTE must stay unresolved
@@ -413,18 +448,29 @@ rather than fuzzy-matching Textile Engineering at 0.69.
 
 ## Open questions
 
-1. **754 vs 629.** The client's stated target is 629 courses; the taxonomy has 754.
-   Older revision, subset, or different counting rule? Needs client confirmation
-   before the full run.
-2. **Typical vs per-institution curriculum.** Cookbook S06 says "build a typical
+1. **Typical vs per-institution curriculum.** Cookbook S06 says "build a typical
    curriculum from multiple institutions; preserve exact institution syllabus
    separately." Does a course page show a synthesised typical curriculum,
    per-institution records, or both?
-3. **Institution count per course.** NIRF top-N bounds it, but N is unset, and NIRF
+2. **Institution count per course.** NIRF top-N bounds it, but N is unset, and NIRF
    does not rank every discipline.
-4. **The 4 unmapped segments** — S02 overview, S14 skills, S18 further-study, S19
+3. **The 4 unmapped segments** — S02 overview, S14 skills, S18 further-study, S19
    reviews. On the client's demo page, absent from the field directory.
-5. **Hard Constraint 6 restratification** needs explicit sign-off (see
-   Configuration rebuild above).
-6. **Playwright.** Not yet needed, but likely for BCI/NPTEL/AISHE if the header and
+4. **Playwright.** Not yet needed, but likely for BCI/NPTEL/AISHE if the header and
    open-data routes fail. A real new dependency requiring approval before adoption.
+
+## Resolved
+
+- **754 vs the client's stated 629 target** — resolved 2026-08-07: proceed with the
+  full 754-course taxonomy. The 629 figure is not pursued and should not be treated
+  as a target elsewhere in the project docs. `CLAUDE.md`, `README.md` and
+  `WALKTHROUGH.md` updated accordingly.
+- **Hard Constraint 6 restratification** — signed off 2026-08-07. Metric axis is
+  `segment × source_tier` (Tier A/B/C/D); `strong`/`medium`/`weak` retired outright,
+  not kept for compatibility. See Configuration rebuild above.
+- **Regression semantics** — signed off 2026-08-07. `unresolved` is a valid
+  outcome; a golden-set run in which uncovered courses resolve is a **test
+  failure**, not a pass. See Verification above.
+- **Phase-1 hard assertions** — signed off 2026-08-07: `aliases = 4,284`,
+  `non-bullet lines = 10`. The earlier 4,254 / 9 values are wrong and must not
+  appear in the phase-1 spec or in validation logic.
