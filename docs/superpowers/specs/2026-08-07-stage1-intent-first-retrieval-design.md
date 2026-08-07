@@ -416,7 +416,7 @@ re-runnable-step convention.
 |-------|------|-----------|
 | 1 | ✅ **Done.** Course taxonomy loader; intent/document/registry models; `config/sources.yaml` rebuild; new manifest schema | — |
 | 2 | ✅ **Done.** Adapter protocol redesign; port `AICTEAdapter` and `Careers360Adapter`; delete `WikipediaAdapter` and `general_background` | 1 |
-| 3 | Self-contained Tier A adapters — UGC, NTA, NIRF, NAAC, NBA, NCS, NSDC, NQR, NSP, Apprenticeship India, NATS. Decision-5 escalation applies per source | 2 |
+| 3 | 🔶 **Verification done, adapters pending.** Self-contained Tier A adapters — UGC, NTA, NIRF, NAAC, NBA, NCS, NSDC, NQR, NSP, Apprenticeship India, NATS. Decision-5 escalation applies per source | 2 |
 | 4 | Institution registry — AISHE/UGC HEI/NIRF discovery, entity resolution, offering resolution | 3 |
 | 5 | University-backed segments — Curriculum, Fees, Institution & Offering | 4 |
 | 6 | Planner + orchestration + intent batching; full 754-course run | 2, and as much of 3–5 as exists |
@@ -491,6 +491,51 @@ retrieved, but it is Stage 2 code and harmless; remove it with the Stage 2 rebui
 `src/extract/batch_extract.py` still reads that table — Stage 2 has not yet been
 migrated onto `store.py`, so newly retrieved documents are not visible to
 extraction until it is. That migration belongs with the Stage 2 schema rebuild.
+
+### Phase 3 — live source probe (2026-08-07)
+
+Decision-5 step 1 says re-verify with realistic headers before assuming a source
+is unreachable. Doing that *first*, rather than building adapters against recorded
+status, was the right call: **the recorded status was wrong for 30 of 36 sources.**
+
+`scripts/probe_sources.py` fetches each source's entry URL with browser headers
+and classifies the response via `src/retrieve/probe.py` — a pure function tested
+against fixtures, so the classifier is verifiable without the network. It reports
+structured JSON: verdict, visible-text length, link and PDF counts, SPA markers.
+
+Result across all 44 sources: **24 reachable, 12 unverified, 6 blocked, 2 verified.**
+
+Findings that changed the plan:
+
+- **UGC was not blocked.** Recorded as a site-wide CDN bot-block; in fact only one
+  LOCF PDF path 403s. `ugc.gov.in` returns 15,624 chars and 248 links (63 PDFs) to
+  a plain request. A path-specific failure had been generalised into a site-wide
+  one, costing the primary Tier A regulator its role.
+- **NPTEL was not blocked either — but is still unusable.** The site returns 1,720
+  chars, yet `/localchapter/discipline`, the page an adapter would crawl, is a
+  SvelteKit shell. This is exactly why `reachable` and `verified` are now separate
+  statuses: **a rendering entry URL says nothing about the target page.**
+- **AISHE is not wholesale bot-blocked** (3,275 chars, 111 links), revising the
+  earlier assumption. Its Angular directory *view* remains the open question.
+- **UGC HEI Search is genuinely blocked** — 403 with full browser headers while
+  `ugc.gov.in` itself serves fine. Institution-registry critical path.
+- **Newly found JS-only:** NAAC (69 chars), Skill India Digital (95), Apprenticeship
+  India (47), MoSPI/PLFS (71). None were previously known to be blocked.
+- **CUET's URL in the client's own Source Directory is dead** (HTTP 404) — a
+  data-quality defect in the client spec, not in our config.
+- **Four sources fail on TLS, not on blocking:** NMC, CEE Kerala, DTE Kerala
+  (certificate chain), NCTE (connect timeout). Fixable by supplying the
+  intermediate CA. **Not** by disabling verification — these are regulators whose
+  output is treated as canonical, so an unauthenticated connection is the wrong
+  trade. Recorded as `unverified`, deliberately not as `blocked`.
+- **COA carries a react-root marker yet renders 63,912 chars and 600 PDF links** —
+  a server-rendered page with a React island. Marker presence alone is not
+  evidence of a client-only app, which is why the classifier weights visible text
+  over markers.
+
+**Still to do in this phase:** the adapters themselves. Each needs its specific
+data page confirmed before implementation — the NPTEL case shows entry-URL
+reachability is not sufficient grounds to build.
 
 ## Verification
 

@@ -1,0 +1,176 @@
+{
+  "summary": {
+    "server_rendered": 8,
+    "js_required": 1,
+    "blocked": 0,
+    "error": 4
+  },
+  "reachable": [
+    "CSAB",
+    "DCI",
+    "JOSAA",
+    "LBS_KERALA",
+    "MCC",
+    "NSDC",
+    "NSP",
+    "NTA"
+  ],
+  "results": [
+    {
+      "source_id": "NSDC",
+      "url": "https://nsdcindia.org/",
+      "http_status": 200,
+      "bytes": 401346,
+      "text_chars": 8421,
+      "link_count": 48,
+      "pdf_link_count": 0,
+      "spa_markers": [],
+      "verdict": "server_rendered",
+      "note": "8421 chars of visible text"
+    },
+    {
+      "source_id": "SKILL_INDIA_DIGITAL",
+      "url": "https://www.skillindiadigital.gov.in/",
+      "http_status": 200,
+      "bytes": 82788,
+      "text_chars": 95,
+      "link_count": 0,
+      "pdf_link_count": 0,
+      "spa_markers": [],
+      "verdict": "js_required",
+      "note": "only 95 chars of visible text; needs a rendering client"
+    },
+    {
+      "source_id": "NSP",
+      "url": "https://scholarships.gov.in/",
+      "http_status": 200,
+      "bytes": 109373,
+      "text_chars": 5889,
+      "link_count": 71,
+      "pdf_link_count": 4,
+      "spa_markers": [],
+      "verdict": "server_rendered",
+      "note": "5889 chars of visible text"
+    },
+    {
+      "source_id": "NTA",
+      "url": "https://www.nta.ac.in/",
+      "http_status": 200,
+      "bytes": 664446,
+      "text_chars": 100889,
+      "link_count": 851,
+      "pdf_link_count": 779,
+      "spa_markers": [],
+      "verdict": "server_rendered",
+      "note": "100889 chars of visible text"
+    },
+    {
+      "source_id": "CUET",
+      "url": "https://exams.nta.ac.in/CUET-UG/",
+      "http_status": 404,
+      "bytes": 0,
+      "text_chars": 0,
+      "link_count": 0,
+      "pdf_link_count": 0,
+      "spa_markers": [],
+      "verdict": "error",
+      "note": "HTTP 404"
+    },
+    {
+      "source_id": "JOSAA",
+      "url": "https://josaa.nic.in/",
+      "http_status": 200,
+      "bytes": 90585,
+      "text_chars": 4545,
+      "link_count": 76,
+      "pdf_link_count": 3,
+      "spa_markers": [],
+      "verdict": "server_rendered",
+      "note": "4545 chars of visible text"
+    },
+    {
+      "source_id": "CSAB",
+      "url": "https://csab.nic.in/",
+      "http_status": 200,
+      "bytes": 81946,
+      "text_chars": 2284,
+      "link_count": 68,
+      "pdf_link_count": 8,
+      "spa_markers": [],
+      "verdict": "server_rendered",
+      "note": "2284 chars of visible text"
+    },
+    {
+      "source_id": "MCC",
+      "url": "https://mcc.nic.in/",
+      "http_status": 200,
+      "bytes": 78972,
+      "text_chars": 1984,
+      "link_count": 47,
+      "pdf_link_count": 0,
+      "spa_markers": [],
+      "verdict": "server_rendered",
+      "note": "1984 chars of visible text"
+    },
+    {
+      "source_id": "CEE_KERALA",
+      "url": "https://cee.kerala.gov.in/",
+      "http_status": null,
+      "bytes": 0,
+      "text_chars": 0,
+      "link_count": 0,
+      "pdf_link_count": 0,
+      "spa_markers": [],
+      "verdict": "error",
+      "note": "SSLError: HTTPSConnectionPool(host='cee.kerala.gov.in', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)')))"
+    },
+    {
+      "source_id": "LBS_KERALA",
+      "url": "https://lbscentre.kerala.gov.in/",
+      "http_status": 200,
+      "bytes": 56741,
+      "text_chars": 5407,
+      "link_count": 91,
+      "pdf_link_count": 2,
+      "spa_markers": [],
+      "verdict": "server_rendered",
+      "note": "5407 chars of visible text"
+    },
+    {
+      "source_id": "DTE_KERALA",
+      "url": "https://dtekerala.gov.in/",
+      "http_status": null,
+      "bytes": 0,
+      "text_chars": 0,
+      "link_count": 0,
+      "pdf_link_count": 0,
+      "spa_markers": [],
+      "verdict": "error",
+      "note": "SSLError: HTTPSConnectionPool(host='dtekerala.gov.in', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1032)')))"
+    },
+    {
+      "source_id": "NMC",
+      "url": "https://www.nmc.org.in/",
+      "http_status": null,
+      "bytes": 0,
+      "text_chars": 0,
+      "link_count": 0,
+      "pdf_link_count": 0,
+      "spa_markers": [],
+      "verdict": "error",
+      "note": "SSLError: HTTPSConnectionPool(host='www.nmc.org.in', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)')))"
+    },
+    {
+      "source_id": "DCI",
+      "url": "https://dciindia.gov.in/",
+      "http_status": 200,
+      "bytes": 277907,
+      "text_chars": 37023,
+      "link_count": 135,
+      "pdf_link_count": 50,
+      "spa_markers": [],
+      "verdict": "server_rendered",
+      "note": "37023 chars of visible text"
+    }
+  ]
+}

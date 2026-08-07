@@ -19,12 +19,22 @@
 #   F -> AI-generated text. Never canonical, by client rule. Not a retrievable
 #        source; present in the tier enum only so precedence logic can name it.
 #
-# status: verified      -> live-confirmed working with requests+bs4 end to end
-#         blocked       -> content exists but unreachable by a plain scripted
-#                          client (JS-only SPA, CDN bot-block)
-#         needs_scoping  -> real, but doesn't structurally cover what we need;
-#                          a scoping decision, not a URL fix
-#         unverified     -> URL/domain is real, page structure not yet checked
+# status: verified      -> an adapter works end to end against this source
+#         reachable     -> the ENTRY URL server-renders real content to a plain
+#                          scripted client. This is NOT the same as verified: it
+#                          says nothing about whether the specific data page we
+#                          need renders. NPTEL is the cautionary case — its
+#                          homepage renders fine while /localchapter/discipline
+#                          is a JS-only shell. Confirm the actual target page
+#                          before building an adapter.
+#         blocked       -> content exists but is unreachable by a plain scripted
+#                          client (JS-only shell, or an HTTP 403/429 bot-block)
+#         unverified    -> inconclusive: the probe could not complete (TLS chain
+#                          failure, connect timeout) or the URL 404s
+#
+# Statuses below were set from a live probe on 2026-08-07
+# (scripts/probe_sources.py, report in data/). Re-run it rather than trusting
+# these values indefinitely — several were wrong before that probe.
 
 sources:
   UGC:
@@ -36,11 +46,12 @@ sources:
     best_used_for: University recognition; degree nomenclature; regulations; HEI categories
     usage_rule: Primary canonical source for university-level recognition and degree rules
     refresh: as regulations change
-    status: blocked
-    # The LOCF PDF path returns CloudFront 403 to a plain scripted request
-    # (browser User-Agent and Referer both tried). Bot-blocked at the CDN, not a
-    # wrong URL. NOTE: this says nothing about UGC HEI Search below — different
-    # endpoint, must be tested independently.
+    status: reachable
+    # CORRECTED 2026-08-07 by live probe: ugc.gov.in was recorded as `blocked`,
+    # but that was only ever true of one LOCF PDF path behind CloudFront. The
+    # site itself serves 15,624 chars of text and 248 links (63 PDFs) to a plain
+    # request with browser headers. The old status generalised a path-specific
+    # 403 into a site-wide block and cost this source its Tier A role for weeks.
 
   UGC_HEI_SEARCH:
     name: UGC university details
@@ -51,8 +62,11 @@ sources:
     best_used_for: Central/state/private/deemed universities and institutions of national importance
     usage_rule: Verify the exact institution category and current status
     refresh: annual / ongoing
-    status: unverified
-    # Institution-registry critical path. Distinct endpoint from UGC above.
+    status: blocked
+    # Institution-registry critical path, and genuinely blocked: HTTP 403 to a
+    # scripted client even with full browser headers, while ugc.gov.in itself
+    # serves fine. The block is specific to this endpoint. Escalation per the
+    # spec: look for an open-data equivalent before reaching for a browser.
 
   UGC_DEB:
     name: Distance Education Bureau
@@ -63,7 +77,7 @@ sources:
     best_used_for: Recognised online and distance programmes by session
     usage_rule: Verify institution, programme and admission session together
     refresh: every admission cycle
-    status: unverified
+    status: reachable
 
   AISHE:
     name: All India Survey on Higher Education
@@ -74,11 +88,13 @@ sources:
     best_used_for: Universities, colleges, standalone institutions, programmes and enrolment
     usage_rule: Use AISHE code as an institutional identifier where available
     refresh: annual
-    status: unverified
-    # Angular SPA; the deep-linked hash route serves the generic homepage and the
-    # data view needs an in-page interaction. No REST endpoint identified on first
-    # load. Institution-registry critical path — try the open-data route before
-    # Playwright (see spec, decision 5 escalation).
+    status: reachable
+    # Entry URL serves 3,275 chars and 111 links to a plain request — so the site
+    # is not wholesale bot-blocked, revising the earlier assumption. The
+    # *directory view* is still the open question: it is an Angular app whose
+    # deep-linked hash route falls back to the generic homepage, and no REST
+    # endpoint surfaced on first load. Institution-registry critical path; find
+    # the data endpoint or an open-data dump before reaching for a browser.
 
   NIRF:
     name: National Institutional Ranking Framework
@@ -89,7 +105,7 @@ sources:
     best_used_for: Institution/category rankings, rank bands, scores and methodology
     usage_rule: Do not mislabel institution/category rank as course rank
     refresh: annual
-    status: unverified
+    status: reachable
 
   NAAC:
     name: National Assessment and Accreditation Council
@@ -100,7 +116,8 @@ sources:
     best_used_for: Institutional accreditation status and grade
     usage_rule: Accreditation is not the same as ranking or legal recognition
     refresh: accreditation cycle
-    status: unverified
+    status: blocked
+    # Serves 69 chars of visible text to a plain request — a JS-rendered shell.
 
   NBA:
     name: National Board of Accreditation
@@ -111,7 +128,7 @@ sources:
     best_used_for: Programme-level accreditation in covered disciplines
     usage_rule: Check programme, campus and validity period
     refresh: accreditation cycle
-    status: unverified
+    status: reachable
 
   AICTE:
     name: All India Council for Technical Education
@@ -137,7 +154,7 @@ sources:
     best_used_for: NSQF-aligned qualifications, levels, awarding and approving bodies
     usage_rule: Strong source for vocational and skill qualifications
     refresh: ongoing
-    status: unverified
+    status: reachable
 
   NCS:
     name: National Career Service
@@ -148,7 +165,7 @@ sources:
     best_used_for: Occupations, career descriptions and labour-market information
     usage_rule: Map course pathways to occupations rather than making job guarantees
     refresh: ongoing
-    status: verified
+    status: reachable
     listing_page: https://www.ncs.gov.in/content-repository/Pages/BrowseBySectors.aspx
     # Page confirmed real (52 sectors). Course-to-sector mapping is NOT fuzzy string
     # matching — "Mechanical Engineering" shares no text with "Capital Goods and
@@ -164,7 +181,7 @@ sources:
     best_used_for: Qualification Packs, occupational standards, sector skill councils and job roles
     usage_rule: Use QP/NOS codes where available
     refresh: as standards change
-    status: unverified
+    status: reachable
 
   SKILL_INDIA_DIGITAL:
     name: Skill India Digital Hub
@@ -175,7 +192,8 @@ sources:
     best_used_for: Skill courses, credentials and opportunities
     usage_rule: Useful for skills, short courses and progression routes
     refresh: ongoing
-    status: unverified
+    status: blocked
+    # Serves 95 chars of visible text to a plain request — a JS-rendered shell.
 
   NSP:
     name: National Scholarship Portal
@@ -186,7 +204,7 @@ sources:
     best_used_for: Central scholarship schemes, eligibility and application workflow
     usage_rule: Store scheme year and deadline
     refresh: seasonal / ongoing
-    status: unverified
+    status: reachable
 
   NTA:
     name: National Testing Agency
@@ -197,7 +215,7 @@ sources:
     best_used_for: Entrance exam bulletins, dates, results and notices
     usage_rule: Use exam-specific official bulletins
     refresh: continuous
-    status: unverified
+    status: reachable
 
   CUET:
     name: Common University Entrance Test
@@ -209,6 +227,8 @@ sources:
     usage_rule: Course eligibility still depends on individual university rules
     refresh: annual
     status: unverified
+    # Probe returned HTTP 404 — the URL given in the client Source Directory is
+    # dead. Needs a corrected URL from the client or from nta.ac.in before use.
 
   JOSAA:
     name: Joint Seat Allocation Authority
@@ -219,7 +239,7 @@ sources:
     best_used_for: Institutions, programmes, seat matrix and opening/closing ranks
     usage_rule: Store counselling year and category
     refresh: annual
-    status: unverified
+    status: reachable
 
   CSAB:
     name: Central Seat Allocation Board
@@ -230,7 +250,7 @@ sources:
     best_used_for: Special rounds and technical seat allocation
     usage_rule: Use current round rules and seat data
     refresh: annual
-    status: unverified
+    status: reachable
 
   MCC:
     name: Medical Counselling Committee
@@ -241,7 +261,7 @@ sources:
     best_used_for: Medical/dental counselling routes administered by MCC
     usage_rule: State counselling may be separate
     refresh: annual
-    status: unverified
+    status: reachable
 
   CEE_KERALA:
     name: Commissioner for Entrance Examinations Kerala
@@ -253,6 +273,8 @@ sources:
     usage_rule: Strong source for Kerala admission cycles
     refresh: continuous in season
     status: unverified
+    # Probe could not complete: TLS chain failure. Same class of issue as NMC —
+    # supply the intermediate CA rather than disabling verification.
 
   LBS_KERALA:
     name: LBS Centre for Science and Technology
@@ -263,7 +285,7 @@ sources:
     best_used_for: Selected Kerala centralised admissions and allotments
     usage_rule: Use the relevant programme prospectus
     refresh: annual
-    status: unverified
+    status: reachable
 
   DTE_KERALA:
     name: Directorate of Technical Education Kerala
@@ -275,6 +297,8 @@ sources:
     usage_rule: Verify programme and academic year
     refresh: ongoing
     status: unverified
+    # Probe could not complete: self-signed certificate in the chain. Do not
+    # disable verification for a source treated as authoritative.
 
   NMC:
     name: National Medical Commission
@@ -285,10 +309,15 @@ sources:
     best_used_for: Medical colleges, programmes, seats and professional rules
     usage_rule: Use exact college/programme list and current year
     refresh: ongoing
-    status: needs_scoping
-    # UG Curriculum Volumes I-III are all one combined MBBS curriculum, not
-    # per-branch documents like AICTE's page. NMC does not cover allied sciences
-    # (nursing/pharmacy have their own regulators — INC/PCI below).
+    status: unverified
+    # Probe could not complete: TLS chain failure ("unable to get local issuer
+    # certificate") — an incomplete certificate chain served by nmc.org.in, not a
+    # block and not a wrong URL. Resolve by supplying the intermediate CA, NOT by
+    # disabling verification: this is a regulator whose data we treat as
+    # canonical, so an unauthenticated connection is the wrong trade.
+    # Separately, and still true: UG Curriculum Volumes I-III are one combined
+    # MBBS curriculum, not per-branch documents like AICTE's page, and NMC does
+    # not cover allied sciences (INC/PCI are the regulators for those).
 
   DCI:
     name: Dental Council of India
@@ -299,7 +328,7 @@ sources:
     best_used_for: Dental institutions, courses and regulations
     usage_rule: Validate course and seat approval
     refresh: ongoing
-    status: unverified
+    status: reachable
 
   INC:
     name: Indian Nursing Council
@@ -310,7 +339,7 @@ sources:
     best_used_for: Nursing programme standards and institution information
     usage_rule: Also verify the relevant state nursing council
     refresh: ongoing
-    status: unverified
+    status: reachable
 
   PCI:
     name: Pharmacy Council of India
@@ -321,7 +350,7 @@ sources:
     best_used_for: Pharmacy education, approved institutions and regulations
     usage_rule: Check programme and approval year
     refresh: ongoing
-    status: unverified
+    status: reachable
 
   COA:
     name: Council of Architecture
@@ -332,7 +361,9 @@ sources:
     best_used_for: Architecture education, institutions and professional rules
     usage_rule: Use for BArch/MArch recognition and standards
     refresh: ongoing
-    status: unverified
+    status: reachable
+    # Renders 63,912 chars and 600 PDF links despite carrying a react-root
+    # marker — server-rendered with a React island, not a client-only app.
 
   NCTE:
     name: National Council for Teacher Education
@@ -344,6 +375,8 @@ sources:
     usage_rule: Verify regional committee orders and validity
     refresh: ongoing
     status: unverified
+    # Probe could not complete: connect timeout at 25s. Retry before concluding;
+    # may be transient or may need a longer timeout.
 
   BCI:
     name: Bar Council of India
@@ -368,7 +401,7 @@ sources:
     best_used_for: Agricultural education standards, institutions and admissions information
     usage_rule: Also verify university and programme approvals
     refresh: annual / ongoing
-    status: unverified
+    status: reachable
 
   RCI:
     name: Rehabilitation Council of India
@@ -379,7 +412,7 @@ sources:
     best_used_for: Approved rehabilitation programmes and professional registration pathways
     usage_rule: Critical for regulated rehabilitation roles
     refresh: ongoing
-    status: unverified
+    status: reachable
 
   APPRENTICESHIP_INDIA:
     name: Apprenticeship India
@@ -390,7 +423,8 @@ sources:
     best_used_for: Apprenticeship courses and current openings
     usage_rule: Treat openings as expiring records
     refresh: weekly / ongoing
-    status: unverified
+    status: blocked
+    # Serves 47 chars of visible text to a plain request — a JS-rendered shell.
 
   NATS:
     name: National Apprenticeship Training Scheme
@@ -401,7 +435,7 @@ sources:
     best_used_for: Graduate/diploma apprenticeship opportunities
     usage_rule: Store eligibility, duration, stipend and deadline
     refresh: ongoing
-    status: unverified
+    status: reachable
 
   AICTE_INTERNSHIP:
     name: AICTE Internship Portal
@@ -412,7 +446,7 @@ sources:
     best_used_for: Internship opportunities and initiatives
     usage_rule: Verify active status and provider
     refresh: ongoing
-    status: unverified
+    status: reachable
 
   SWAYAM:
     name: SWAYAM
@@ -423,7 +457,7 @@ sources:
     best_used_for: Course topics, learning content and introductory explanations
     usage_rule: Use for explanation, not degree recognition
     refresh: ongoing
-    status: unverified
+    status: reachable
 
   MOSPI_PLFS:
     name: Ministry of Statistics and Programme Implementation / PLFS
@@ -434,7 +468,8 @@ sources:
     best_used_for: Labour-force and earnings context
     usage_rule: Not a direct course-placement source; use for broader context
     refresh: annual / periodic
-    status: unverified
+    status: blocked
+    # Serves 71 chars to a plain request; react-root marker present.
 
   NPTEL:
     name: NPTEL
@@ -445,10 +480,13 @@ sources:
     best_used_for: Subject explanations, modules and technical learning pathways
     usage_rule: Useful for content synthesis and prerequisite understanding
     refresh: ongoing
-    status: blocked
-    # Svelte SPA. A plain fetch gets a near-empty shell — no discipline names, no
-    # links. Originally mis-marked verified from a WebFetch result, which renders
-    # JavaScript before reading; the adapter does not.
+    status: reachable
+    # Nuanced, and the reason `reachable` and `verified` are different statuses:
+    # nptel.ac.in itself returns 1,720 chars and 64 links to a plain request, so
+    # the blanket `blocked` was wrong. But /localchapter/discipline — the page an
+    # adapter would actually crawl — is a SvelteKit shell that renders nothing
+    # without JS (sveltekit markers still present on the entry page). Reachable
+    # entry, unusable target. Confirm the specific page before building.
 
   LINKEDIN_JOBS:
     name: LinkedIn Jobs
