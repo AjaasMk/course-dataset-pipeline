@@ -39,3 +39,15 @@ def test_server_error_is_error():
 
 def test_thin_page_without_spa_markers_is_still_js_required():
     assert classify(200, "<html><body><p>hi</p></body></html>").verdict is ProbeVerdict.JS_REQUIRED
+
+
+def test_link_dense_index_page_is_usable_despite_little_visible_text():
+    # NIRF's /Rankings/<year>/Ranking.html is a real nav page whose anchors carry
+    # no text, so a text-length heuristic alone wrongly rejects it. Every source
+    # genuinely blocked by JS in the live probe returned 0-1 links.
+    html = (
+        "<html><body>"
+        + "".join(f'<a href="/Rankings/2025/Cat{n}Ranking.html"></a>' for n in range(17))
+        + "</body></html>"
+    )
+    assert classify(200, html).verdict is ProbeVerdict.SERVER_RENDERED

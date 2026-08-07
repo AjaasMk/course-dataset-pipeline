@@ -4,25 +4,53 @@ import sys
 import time
 from pathlib import Path
 
+from urllib.parse import urlparse
+
 import requests
 
 from src.retrieve.probe import BROWSER_HEADERS, ProbeResult, ProbeVerdict, classify
 from src.retrieve.registry import load_registry
+from src.retrieve.tls import verify_arg
 
 REQUEST_TIMEOUT = 25
 DELAY_SECONDS = 1.5
 
 
 def probe(source_id: str, url: str) -> ProbeResult:
+    note_prefix = ""
     try:
         response = requests.get(url, headers=BROWSER_HEADERS, timeout=REQUEST_TIMEOUT)
+    except requests.exceptions.SSLError:
+        host = urlparse(url).hostname or ""
+        verify = verify_arg(host)
+        if verify is True:
+            return ProbeResult(
+                source_id=source_id,
+                url=url,
+                verdict=ProbeVerdict.ERROR,
+                note="TLS chain incomplete and no AIA issuer available",
+            )
+        try:
+            response = requests.get(
+                url, headers=BROWSER_HEADERS, timeout=REQUEST_TIMEOUT, verify=verify
+            )
+        except requests.RequestException as exc:
+            return ProbeResult(
+                source_id=source_id,
+                url=url,
+                verdict=ProbeVerdict.ERROR,
+                note=f"after CA repair: {type(exc).__name__}",
+            )
+        note_prefix = "CA chain repaired; "
     except requests.RequestException as exc:
-        result = ProbeResult(verdict=ProbeVerdict.ERROR, note=f"{type(exc).__name__}: {exc}")
-    else:
-        result = classify(response.status_code, response.text)
+        return ProbeResult(
+            source_id=source_id, url=url, verdict=ProbeVerdict.ERROR, note=f"{type(exc).__name__}"
+        )
 
+    result = classify(response.status_code, response.text)
     result.source_id = source_id
     result.url = url
+    result.note = note_prefix + result.note
     return result
 
 

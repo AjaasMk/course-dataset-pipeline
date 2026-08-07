@@ -5,6 +5,11 @@ from bs4 import BeautifulSoup
 from pydantic import BaseModel
 
 MIN_TEXT_CHARS = 500
+# A page can carry no visible text and still be perfectly machine-usable: NIRF's
+# per-year ranking index is 17 anchors with empty labels. Every source the live
+# probe found genuinely JS-blocked returned 0-1 links, so link density separates
+# "nav page" from "empty shell" where text length alone cannot.
+MIN_LINKS = 10
 BLOCKED_STATUSES = (401, 403, 405, 406, 429)
 
 _SPA_MARKERS = {
@@ -70,14 +75,14 @@ def classify(status: Optional[int], html: str) -> ProbeResult:
     links = [a["href"] for a in soup.find_all("a", href=True)]
     markers = sorted({name for token, name in _SPA_MARKERS.items() if token in html})
 
-    verdict = (
-        ProbeVerdict.SERVER_RENDERED if text_chars >= MIN_TEXT_CHARS else ProbeVerdict.JS_REQUIRED
-    )
-    note = (
-        f"{text_chars} chars of visible text"
-        if verdict is ProbeVerdict.SERVER_RENDERED
-        else f"only {text_chars} chars of visible text; needs a rendering client"
-    )
+    usable = text_chars >= MIN_TEXT_CHARS or len(links) >= MIN_LINKS
+    verdict = ProbeVerdict.SERVER_RENDERED if usable else ProbeVerdict.JS_REQUIRED
+    if verdict is ProbeVerdict.JS_REQUIRED:
+        note = f"only {text_chars} chars and {len(links)} links; needs a rendering client"
+    elif text_chars >= MIN_TEXT_CHARS:
+        note = f"{text_chars} chars of visible text"
+    else:
+        note = f"{len(links)} links but only {text_chars} chars of text; index/nav page"
 
     return ProbeResult(
         http_status=status,

@@ -19,6 +19,7 @@ data/manifest.db
 data/pilot_run_report.json
 data/source_probe_report.json
 data/probe_*.json
+data/ca_bundles/
 data/chunks/
 data/extracted/
 data/pilot_extraction_log.txt

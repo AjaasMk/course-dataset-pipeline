@@ -105,7 +105,12 @@ sources:
     best_used_for: Institution/category rankings, rank bands, scores and methodology
     usage_rule: Do not mislabel institution/category rank as course rank
     refresh: annual
-    status: reachable
+    status: verified
+    # VERIFIED end to end 2026-08-07 by NIRFAdapter against the live site.
+    # Year index -> per-discipline ranking pages; the ranking TABLE is fully
+    # server-rendered (2025 Engineering: 19,086 chars, 301 rows) and carries NIRF
+    # Institute IDs, city, state, score and rank. Serves the Ranking segment and
+    # supplies the top-N bound on institutions per course.
 
   NAAC:
     name: National Assessment and Accreditation Council
@@ -272,9 +277,9 @@ sources:
     best_used_for: Kerala professional course exams, allotments and prospectuses
     usage_rule: Strong source for Kerala admission cycles
     refresh: continuous in season
-    status: unverified
-    # Probe could not complete: TLS chain failure. Same class of issue as NMC —
-    # supply the intermediate CA rather than disabling verification.
+    status: reachable
+    # RESOLVED 2026-08-07: same incomplete-chain issue as NMC. tls.py fetched 3
+    # intermediates via AIA; the site then verifies cleanly and returns 3,823 chars.
 
   LBS_KERALA:
     name: LBS Centre for Science and Technology
@@ -297,8 +302,10 @@ sources:
     usage_rule: Verify programme and academic year
     refresh: ongoing
     status: unverified
-    # Probe could not complete: self-signed certificate in the chain. Do not
-    # disable verification for a source treated as authoritative.
+    # Self-signed certificate in the chain, and no AIA CA-Issuers URL to repair
+    # from — unlike NMC and CEE Kerala this is not a fixable incomplete chain.
+    # Stays unverified: trusting a self-signed cert for an authoritative source is
+    # the one trade this pipeline will not make.
 
   NMC:
     name: National Medical Commission
@@ -309,12 +316,14 @@ sources:
     best_used_for: Medical colleges, programmes, seats and professional rules
     usage_rule: Use exact college/programme list and current year
     refresh: ongoing
-    status: unverified
-    # Probe could not complete: TLS chain failure ("unable to get local issuer
-    # certificate") — an incomplete certificate chain served by nmc.org.in, not a
-    # block and not a wrong URL. Resolve by supplying the intermediate CA, NOT by
-    # disabling verification: this is a regulator whose data we treat as
-    # canonical, so an unauthenticated connection is the wrong trade.
+    status: reachable
+    # RESOLVED 2026-08-07. nmc.org.in serves an incomplete certificate chain, so a
+    # plain request failed verification. src/retrieve/tls.py now fetches the
+    # missing intermediate via the leaf's AIA CA-Issuers URL (Sectigo Public
+    # Server Authentication CA DV R36) and appends it to certifi's roots; the site
+    # then verifies cleanly and returns 6,540 chars. Verification was NOT
+    # disabled — the trust anchor is still a certifi root, which matters because
+    # this regulator's output is treated as canonical.
     # Separately, and still true: UG Curriculum Volumes I-III are one combined
     # MBBS curriculum, not per-branch documents like AICTE's page, and NMC does
     # not cover allied sciences (INC/PCI are the regulators for those).
