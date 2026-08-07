@@ -8,7 +8,7 @@ from src.schema import ManifestEntry, SourceCategory, SourceType
 def test_load_config_returns_dict_from_real_file():
     config = orchestrator.load_config()
 
-    assert "retrieval_order" in config
+    assert "sources" in config
     assert config["matching"]["threshold"] == 0.80
 
 

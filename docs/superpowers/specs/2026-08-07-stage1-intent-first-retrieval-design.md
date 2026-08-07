@@ -414,7 +414,7 @@ re-runnable-step convention.
 
 | Phase | Work | Depends on |
 |-------|------|-----------|
-| 1 | Course taxonomy loader; intent/document/registry models; `config/sources.yaml` rebuild; new manifest schema | — |
+| 1 | ✅ **Done.** Course taxonomy loader; intent/document/registry models; `config/sources.yaml` rebuild; new manifest schema | — |
 | 2 | Adapter protocol redesign; port `AICTEAdapter` to it; delete `WikipediaAdapter` and `general_background` | 1 |
 | 3 | Self-contained Tier A adapters — UGC, NTA, NIRF, NAAC, NBA, NCS, NSDC, NQR, NSP, Apprenticeship India, NATS. Decision-5 escalation applies per source | 2 |
 | 4 | Institution registry — AISHE/UGC HEI/NIRF discovery, entity resolution, offering resolution | 3 |
@@ -424,6 +424,38 @@ re-runnable-step convention.
 
 Phases 3–5 can proceed against hand-written intent fixtures before the planner
 exists; only the intent *schema* (phase 1) is a hard prerequisite.
+
+### Phase 1 as built (2026-08-07)
+
+| Module | Contents |
+|--------|----------|
+| `src/courses/taxonomy.py` | `load_taxonomy()` → 750 `Course` records |
+| `src/retrieve/models.py` | `SourceTier`, `Segment`, `IntentRole`, `MatchType`, `DocumentType`, `RetrievalStatus`, `RetrievalIntent`, `DiscoveredDocument`, `DocumentRecord`, `IntentResolution` |
+| `src/retrieve/registry.py` | `load_registry()`, `SourceRegistry.validate_intent()`, `SourceAuthorityError` |
+| `src/retrieve/store.py` | `documents` / `retrieval_intents` / `intent_resolutions` tables + accessors |
+| `config/sources.yaml` | 44 sources, 13-entry `regulator_map`, 14-entry `segment_sources` |
+
+Two architectural rules are enforced **structurally**, not by instruction:
+
+- `RetrievalIntent` sets `extra="forbid"` and has no `document_url` field, so a
+  planner cannot emit a URL even by accident — the decision-7 guarantee is a
+  schema constraint, not a prompt line.
+- `SourceRegistry.validate_intent()` raises `SourceAuthorityError` when a source
+  whose tiers are all non-canonical (D/E/F) is given a `primary` or `secondary`
+  role. Tier D can only ever be `discovery`. LinkedIn Jobs (C/D) is correctly
+  permitted, since Tier C is official employer evidence.
+
+The registry's tier counts are asserted against the client's own Overview-sheet
+totals (35 A / 5 B / 1 C / 8 D), which independently checks the transcription of
+all 44 sources rather than trusting it.
+
+**Superseded and pending phase 2:** `src/retrieve/orchestrator.py` and
+`src/retrieve/batch.py` are structurally coupled to the removed `retrieval_order`
+and `categories` config keys and will not run until ported. They are kept as the
+reference for the port, not deleted. `config/pilot_courses.yaml` likewise remains
+until the code referencing it is migrated. Four tests asserting the retired
+structure were removed with this phase; the replacement coverage lives in
+`tests/test_source_registry.py`.
 
 ## Verification
 

@@ -26,26 +26,3 @@ def test_pilot_courses_stratified_by_category():
     }
 
 
-def test_every_pilot_category_has_a_tier_group_mapping():
-    pilot = load_config(path=PILOT_COURSES_PATH)
-    sources = load_config()  # real config/sources.yaml
-
-    categories_used = {course["category"] for course in pilot["courses"]}
-    categories_mapped = set(sources["categories"].keys())
-
-    assert categories_used <= categories_mapped
-
-
-def test_every_category_tier_group_is_a_real_retrieval_order_key():
-    sources = load_config()
-
-    for category, tier_group in sources["categories"].items():
-        assert tier_group in sources["retrieval_order"], (
-            f"{category!r} maps to tier_group {tier_group!r}, "
-            f"which has no retrieval_order entry"
-        )
-
-
-def test_strong_tier_includes_general_background_fallback():
-    sources = load_config()
-    assert "general_background" in sources["retrieval_order"]["strong_tier"]
