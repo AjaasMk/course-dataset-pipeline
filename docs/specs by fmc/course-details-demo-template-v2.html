@@ -1,0 +1,2623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Demo course details page for a student and parent career portal." />
+  <title>BSc Psychology | Enhanced Course Library Demo</title>
+  <style>
+    :root {
+      --primary: #123f5a;
+      --primary-2: #1c6687;
+      --accent: #eeb64a;
+      --accent-soft: #fff3d3;
+      --green: #27725a;
+      --green-soft: #eaf6f1;
+      --blue-soft: #edf6fb;
+      --red-soft: #fff0ef;
+      --ink: #17202a;
+      --muted: #5c6975;
+      --line: #dce4ea;
+      --surface: #ffffff;
+      --canvas: #f5f8fa;
+      --shadow: 0 12px 34px rgba(18, 63, 90, 0.09);
+      --radius-lg: 22px;
+      --radius-md: 14px;
+      --radius-sm: 9px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 126px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--canvas);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .topbar {
+      background: #0b2e43;
+      color: #e9f3f8;
+      font-size: 0.84rem;
+    }
+
+    .topbar-inner,
+    .header-inner,
+    .page,
+    .tab-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding-left: 22px;
+      padding-right: 22px;
+    }
+
+    .topbar-inner {
+      min-height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .topbar a {
+      color: white;
+      font-weight: 700;
+    }
+
+    .site-header {
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+    }
+
+    .header-inner {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 850;
+      letter-spacing: -0.03em;
+      color: var(--primary);
+      font-size: 1.15rem;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(145deg, var(--primary), var(--primary-2));
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      box-shadow: 0 8px 20px rgba(18, 63, 90, .22);
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: .93rem;
+      font-weight: 700;
+      color: #394957;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 11px;
+      padding: 11px 16px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      color: white;
+      background: var(--primary);
+      box-shadow: 0 9px 20px rgba(18, 63, 90, .18);
+    }
+
+    .btn-secondary {
+      color: var(--primary);
+      background: white;
+      border: 1px solid #bbcad4;
+    }
+
+    .btn-accent {
+      color: #2f240e;
+      background: var(--accent);
+    }
+
+    .breadcrumbs {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 20px 22px 12px;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .breadcrumbs span {
+      color: #9aabb6;
+      margin: 0 7px;
+    }
+
+    .hero {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 8px 22px 24px;
+    }
+
+    .hero-card {
+      background:
+        radial-gradient(circle at 88% 14%, rgba(238, 182, 74, .22), transparent 22%),
+        linear-gradient(135deg, #10394f, #165d79);
+      color: white;
+      border-radius: 28px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 34px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-card::after {
+      content: "";
+      width: 250px;
+      height: 250px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 50%;
+      position: absolute;
+      right: -80px;
+      bottom: -120px;
+    }
+
+    .label-row,
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .eyebrow,
+    .chip {
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .01em;
+    }
+
+    .eyebrow {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.16);
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.55rem);
+      line-height: 1.05;
+      letter-spacing: -0.055em;
+      margin: 17px 0 13px;
+      max-width: 800px;
+    }
+
+    .hero-summary {
+      max-width: 760px;
+      color: #dcebf1;
+      font-size: 1.05rem;
+      margin: 0 0 23px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .hero .btn-secondary {
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.24);
+      color: white;
+    }
+
+    .fit-panel {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 20px;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+      align-self: stretch;
+    }
+
+    .fit-panel h2 {
+      font-size: 1.05rem;
+      margin: 0 0 5px;
+    }
+
+    .fit-panel p {
+      color: #d9e8ee;
+      font-size: .9rem;
+      margin: 0 0 20px;
+    }
+
+    .fit-score {
+      width: 132px;
+      height: 132px;
+      border-radius: 50%;
+      margin: 0 auto 18px;
+      background: conic-gradient(var(--accent) 0 76%, rgba(255,255,255,.18) 76% 100%);
+      display: grid;
+      place-items: center;
+    }
+
+    .fit-score::before {
+      content: "";
+      width: 102px;
+      height: 102px;
+      border-radius: 50%;
+      background: #16536e;
+      position: absolute;
+    }
+
+    .fit-score strong {
+      font-size: 1.8rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .fit-list {
+      display: grid;
+      gap: 9px;
+      font-size: .86rem;
+      color: #f2f8fa;
+    }
+
+    .fit-list span::before {
+      content: "✓";
+      color: var(--accent);
+      font-weight: 900;
+      margin-right: 8px;
+    }
+
+    .quick-grid {
+      max-width: var(--max);
+      margin: 0 auto 24px;
+      padding: 0 22px;
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .quick-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      min-height: 115px;
+      box-shadow: 0 6px 18px rgba(18, 63, 90, .04);
+    }
+
+    .quick-icon {
+      font-size: 1.15rem;
+      margin-bottom: 11px;
+    }
+
+    .quick-card small {
+      display: block;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .quick-card strong {
+      display: block;
+      color: var(--primary);
+      line-height: 1.35;
+    }
+
+    .section-tabs {
+      position: sticky;
+      top: 74px;
+      z-index: 40;
+      background: rgba(245, 248, 250, .96);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .tab-inner {
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+      gap: 4px;
+      padding-top: 9px;
+      padding-bottom: 9px;
+    }
+
+    .tab-inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-inner a {
+      padding: 9px 12px;
+      border-radius: 9px;
+      white-space: nowrap;
+      font-size: .88rem;
+      color: #50616d;
+      font-weight: 800;
+    }
+
+    .tab-inner a:hover {
+      background: white;
+      color: var(--primary);
+    }
+
+    .page {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 24px;
+      padding-top: 26px;
+      padding-bottom: 80px;
+    }
+
+    .main-column,
+    .sidebar {
+      min-width: 0;
+    }
+
+    .content-section {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      margin-bottom: 18px;
+      box-shadow: 0 7px 23px rgba(18, 63, 90, .045);
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 17px;
+    }
+
+    .section-heading h2 {
+      font-size: 1.45rem;
+      letter-spacing: -0.035em;
+      margin: 0;
+      color: var(--primary);
+    }
+
+    .section-heading p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .section-tag {
+      background: var(--blue-soft);
+      color: var(--primary-2);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: .75rem;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .info-box {
+      border-radius: var(--radius-md);
+      padding: 18px;
+      border: 1px solid var(--line);
+      background: #fbfdfe;
+    }
+
+    .info-box h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      color: var(--primary);
+    }
+
+    .info-box p,
+    .info-box ul {
+      margin: 0;
+      color: #455763;
+      font-size: .93rem;
+    }
+
+    .info-box ul {
+      padding-left: 18px;
+    }
+
+    .positive {
+      background: var(--green-soft);
+      border-color: #cde8dc;
+    }
+
+    .caution {
+      background: var(--red-soft);
+      border-color: #f2d4d0;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    .tags span {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: #f0f4f6;
+      color: #41535f;
+      font-size: .82rem;
+      font-weight: 750;
+      border: 1px solid #dde6eb;
+    }
+
+    .check-list {
+      display: grid;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .check-list li {
+      position: relative;
+      padding-left: 26px;
+    }
+
+    .check-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 9px;
+      margin-top: 18px;
+    }
+
+    .timeline-step {
+      position: relative;
+      background: #f7fafb;
+      border: 1px solid var(--line);
+      padding: 16px 13px;
+      border-radius: 13px;
+      min-height: 116px;
+    }
+
+    .timeline-step strong {
+      display: block;
+      color: var(--primary);
+      margin: 8px 0 4px;
+      font-size: .9rem;
+    }
+
+    .timeline-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .8rem;
+      line-height: 1.45;
+    }
+
+    .step-number {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: var(--primary);
+      color: white;
+      font-size: .75rem;
+      font-weight: 900;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 16px;
+    }
+
+    .tab-btn {
+      border: 1px solid var(--line);
+      color: #4b5e69;
+      background: #f6f9fa;
+      padding: 9px 12px;
+      border-radius: 9px;
+      font-weight: 800;
+      font-size: .86rem;
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    .subject-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .subject-card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+      background: #fbfdfe;
+    }
+
+    .subject-card strong {
+      display: block;
+      color: var(--primary);
+      font-size: .92rem;
+      margin-bottom: 4px;
+    }
+
+    .subject-card span {
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    .skill-grid,
+    .career-grid,
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .skill-card,
+    .career-card,
+    .roadmap-card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      background: #fbfdfe;
+    }
+
+    .skill-card h3,
+    .career-card h3,
+    .roadmap-card h3 {
+      color: var(--primary);
+      font-size: .98rem;
+      margin: 0 0 8px;
+    }
+
+    .skill-card p,
+    .career-card p,
+    .roadmap-card p {
+      color: var(--muted);
+      font-size: .85rem;
+      margin: 0;
+    }
+
+    .career-card .route {
+      display: block;
+      margin-top: 12px;
+      padding-top: 11px;
+      border-top: 1px dashed #cbd7de;
+      color: #344955;
+      font-size: .8rem;
+      font-weight: 750;
+    }
+
+    .route-badge {
+      display: inline-block;
+      margin-top: 10px;
+      background: var(--accent-soft);
+      color: #6b5118;
+      font-size: .74rem;
+      border-radius: 999px;
+      padding: 5px 8px;
+      font-weight: 850;
+    }
+
+    .pathway {
+      display: flex;
+      align-items: stretch;
+      overflow-x: auto;
+      gap: 8px;
+      padding-bottom: 7px;
+    }
+
+    .pathway-item {
+      min-width: 148px;
+      border-radius: 13px;
+      padding: 15px;
+      background: var(--blue-soft);
+      border: 1px solid #d8e9f1;
+      color: var(--primary);
+      font-weight: 850;
+      text-align: center;
+      display: grid;
+      place-items: center;
+      font-size: .88rem;
+    }
+
+    .pathway-arrow {
+      display: grid;
+      place-items: center;
+      color: #8195a2;
+      font-weight: 900;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 640px;
+      background: white;
+    }
+
+    th,
+    td {
+      padding: 13px 14px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+      font-size: .86rem;
+    }
+
+    th {
+      color: var(--primary);
+      background: #f1f6f8;
+      font-size: .8rem;
+      letter-spacing: .02em;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .parent-section {
+      background:
+        radial-gradient(circle at 100% 0, rgba(238, 182, 74, .2), transparent 27%),
+        #fffaf0;
+      border-color: #ead9b1;
+    }
+
+    .parent-questions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      counter-reset: parentq;
+    }
+
+    .parent-question {
+      counter-increment: parentq;
+      border: 1px solid #eadfca;
+      background: rgba(255,255,255,.78);
+      border-radius: 12px;
+      padding: 13px 14px;
+      font-weight: 750;
+      color: #4e4534;
+      font-size: .88rem;
+    }
+
+    .parent-question::before {
+      content: counter(parentq);
+      display: inline-grid;
+      place-items: center;
+      width: 25px;
+      height: 25px;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #37270d;
+      font-weight: 900;
+      margin-right: 8px;
+    }
+
+    .accordion {
+      display: grid;
+      gap: 9px;
+    }
+
+    .accordion-item {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .accordion-button {
+      width: 100%;
+      border: 0;
+      background: #fbfdfe;
+      padding: 15px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-align: left;
+      font-weight: 850;
+      color: #284351;
+    }
+
+    .accordion-button span:last-child {
+      font-size: 1.1rem;
+      color: var(--primary-2);
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 0 16px 15px;
+      color: var(--muted);
+      font-size: .9rem;
+      background: #fbfdfe;
+    }
+
+    .accordion-item.open .accordion-content {
+      display: block;
+    }
+
+    .source-box {
+      font-size: .86rem;
+      color: var(--muted);
+    }
+
+    .source-box strong {
+      color: var(--primary);
+    }
+
+    .sidebar {
+      align-self: start;
+      position: sticky;
+      top: 130px;
+    }
+
+    .side-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 14px;
+    }
+
+    .side-card h3 {
+      margin: 0 0 7px;
+      color: var(--primary);
+      font-size: 1.05rem;
+    }
+
+    .side-card p {
+      margin: 0 0 15px;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+
+    .side-card .btn {
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 10px;
+      margin: 14px 0 0;
+    }
+
+    .mini-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: .84rem;
+      color: #40545f;
+    }
+
+    .mini-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 9px;
+      background: var(--blue-soft);
+      color: var(--primary);
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      font-weight: 900;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: .78rem;
+      color: var(--muted);
+      font-weight: 750;
+      margin-bottom: 6px;
+    }
+
+    .progress {
+      height: 8px;
+      border-radius: 999px;
+      background: #e6edf1;
+      overflow: hidden;
+    }
+
+    .progress > span {
+      display: block;
+      height: 100%;
+      width: 58%;
+      background: var(--primary-2);
+      border-radius: inherit;
+    }
+
+    .mobile-bar {
+      display: none;
+    }
+
+    footer {
+      background: #0b2e43;
+      color: #d9e8ef;
+      padding: 35px 22px;
+      text-align: center;
+      font-size: .88rem;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+
+    /* Course snapshot */
+    .snapshot-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 16px;
+    }
+
+    .snapshot-panel {
+      border: 1px solid var(--line);
+      background: #fbfdfe;
+      border-radius: 16px;
+      padding: 19px;
+    }
+
+    .snapshot-panel h3 {
+      color: var(--primary);
+      margin: 0 0 5px;
+      font-size: 1.02rem;
+    }
+
+    .snapshot-panel > p {
+      color: var(--muted);
+      margin: 0 0 17px;
+      font-size: .84rem;
+    }
+
+    .salary-values {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 9px;
+      margin-bottom: 16px;
+    }
+
+    .salary-value {
+      border: 1px solid #dce6eb;
+      border-radius: 12px;
+      padding: 13px 10px;
+      background: white;
+      text-align: center;
+    }
+
+    .salary-value small {
+      display: block;
+      color: var(--muted);
+      font-weight: 750;
+      font-size: .73rem;
+      margin-bottom: 3px;
+    }
+
+    .salary-value strong {
+      display: block;
+      color: var(--primary);
+      font-size: 1.17rem;
+      line-height: 1.2;
+    }
+
+    .salary-value.featured {
+      border-color: #e6c875;
+      background: var(--accent-soft);
+    }
+
+    .salary-scale {
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #dcebf1 0%, #89bed1 52%, #1c6687 100%);
+      position: relative;
+      margin: 24px 10px 8px;
+    }
+
+    .salary-scale::before,
+    .salary-scale::after {
+      position: absolute;
+      top: 15px;
+      color: var(--muted);
+      font-size: .7rem;
+      font-weight: 750;
+    }
+
+    .salary-scale::before {
+      content: "Entry";
+      left: 0;
+      transform: translateX(-6px);
+    }
+
+    .salary-scale::after {
+      content: "Experienced / specialised";
+      right: 0;
+      transform: translateX(6px);
+    }
+
+    .salary-marker {
+      position: absolute;
+      left: 38%;
+      top: 50%;
+      width: 18px;
+      height: 18px;
+      border: 4px solid white;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 2px 9px rgba(18,63,90,.26);
+      transform: translate(-50%, -50%);
+    }
+
+    .specialisation-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px;
+    }
+
+    .specialisation-item {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 48px;
+      border: 1px solid #dce6eb;
+      background: white;
+      border-radius: 11px;
+      padding: 10px 11px;
+      color: #40545f;
+      font-size: .82rem;
+      font-weight: 760;
+    }
+
+    .specialisation-item span:first-child {
+      width: 27px;
+      height: 27px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: var(--blue-soft);
+      color: var(--primary);
+      flex: 0 0 auto;
+    }
+
+    .data-note {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      margin-top: 17px;
+      border-radius: 11px;
+      padding: 11px 13px;
+      background: #fff9e9;
+      border: 1px solid #efdfb7;
+      color: #685630;
+      font-size: .77rem;
+    }
+
+    /* Ranked college directory */
+    .college-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .college-filters {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .college-filter-btn {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 9px 13px;
+      background: #f6f9fa;
+      color: #4c5f6a;
+      font-size: .84rem;
+      font-weight: 850;
+    }
+
+    .college-filter-btn.active {
+      color: white;
+      border-color: var(--primary);
+      background: var(--primary);
+    }
+
+    .ranking-source {
+      color: var(--muted);
+      font-size: .76rem;
+      font-weight: 720;
+    }
+
+    .college-list {
+      display: grid;
+      gap: 11px;
+    }
+
+    .college-card {
+      display: grid;
+      grid-template-columns: 64px minmax(0, 1fr) auto;
+      gap: 15px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      padding: 16px;
+      background: #fbfdfe;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+
+    .college-card:hover {
+      transform: translateY(-1px);
+      border-color: #b9cad4;
+      box-shadow: 0 8px 22px rgba(18,63,90,.07);
+    }
+
+    .college-card[hidden] {
+      display: none;
+    }
+
+    .college-rank {
+      width: 52px;
+      height: 52px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: var(--primary);
+      color: white;
+      font-size: 1.12rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .college-rank small {
+      display: block;
+      font-size: .55rem;
+      opacity: .75;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 2px;
+    }
+
+    .college-main h3 {
+      margin: 0 0 4px;
+      color: var(--primary);
+      font-size: 1rem;
+    }
+
+    .college-main > p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .81rem;
+    }
+
+    .college-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 9px;
+    }
+
+    .college-meta span,
+    .institution-type {
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: #f0f4f6;
+      border: 1px solid #dde6eb;
+      color: #445762;
+      font-size: .7rem;
+      font-weight: 790;
+    }
+
+    .institution-type.gov {
+      background: var(--green-soft);
+      border-color: #cde8dc;
+      color: #26644f;
+    }
+
+    .institution-type.private {
+      background: var(--accent-soft);
+      border-color: #eddcae;
+      color: #70571f;
+    }
+
+    .college-actions {
+      min-width: 126px;
+      text-align: right;
+    }
+
+    .college-actions strong {
+      display: block;
+      color: var(--primary);
+      font-size: .82rem;
+      margin-bottom: 7px;
+    }
+
+    .college-actions .btn {
+      padding: 9px 12px;
+      font-size: .76rem;
+    }
+
+    /* Recruiters */
+    .recruiter-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 11px;
+    }
+
+    .recruiter-card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 15px;
+      background: #fbfdfe;
+      min-height: 150px;
+    }
+
+    .recruiter-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .recruiter-logo {
+      width: 41px;
+      height: 41px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(145deg, var(--primary), var(--primary-2));
+      font-weight: 900;
+      letter-spacing: -.03em;
+      flex: 0 0 auto;
+    }
+
+    .recruiter-card h3 {
+      margin: 0;
+      color: var(--primary);
+      font-size: .91rem;
+      line-height: 1.3;
+    }
+
+    .recruiter-sector {
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 700;
+    }
+
+    .recruiter-card p {
+      color: #4b5d68;
+      font-size: .8rem;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .recruiter-roles {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      margin-top: 11px;
+    }
+
+    .recruiter-roles span {
+      background: var(--blue-soft);
+      color: var(--primary-2);
+      border-radius: 999px;
+      padding: 4px 7px;
+      font-size: .67rem;
+      font-weight: 800;
+    }
+
+    @media (max-width: 1050px) {
+      .snapshot-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .recruiter-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .quick-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .page {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .sidebar {
+        position: static;
+      }
+
+      .skill-grid,
+      .career-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 820px) {
+      .main-nav {
+        display: none;
+      }
+
+      .hero-card {
+        grid-template-columns: 1fr;
+      }
+
+      .fit-panel {
+        display: grid;
+        grid-template-columns: 145px 1fr;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .fit-panel h2,
+      .fit-panel p {
+        grid-column: 1 / -1;
+      }
+
+      .timeline {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .roadmap-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .topbar-inner {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .topbar-inner span:last-child,
+      .header-actions .btn-secondary {
+        display: none;
+      }
+
+      .header-inner {
+        min-height: 64px;
+      }
+
+      .hero {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .hero-card {
+        padding: 24px 20px;
+        border-radius: 22px;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .fit-panel {
+        display: block;
+      }
+
+      .quick-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .section-tabs {
+        top: 64px;
+      }
+
+      .page,
+      .tab-inner {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .content-section {
+        padding: 20px 17px;
+        border-radius: 17px;
+      }
+
+      .two-col,
+      .subject-grid,
+      .skill-grid,
+      .career-grid,
+      .parent-questions,
+      .recruiter-grid,
+      .specialisation-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .salary-values {
+        grid-template-columns: 1fr;
+      }
+
+      .college-card {
+        grid-template-columns: 52px minmax(0, 1fr);
+        align-items: start;
+      }
+
+      .college-rank {
+        width: 46px;
+        height: 46px;
+      }
+
+      .college-actions {
+        grid-column: 1 / -1;
+        text-align: left;
+        padding-left: 62px;
+      }
+
+      .timeline {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading {
+        display: block;
+      }
+
+      .section-tag {
+        display: inline-block;
+        margin-top: 9px;
+      }
+
+      .mobile-bar {
+        position: fixed;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 90;
+        background: rgba(255,255,255,.97);
+        border-top: 1px solid var(--line);
+        padding: 9px 10px max(9px, env(safe-area-inset-bottom));
+        box-shadow: 0 -8px 24px rgba(18, 63, 90, .1);
+      }
+
+      .mobile-bar .btn {
+        padding: 10px 6px;
+        font-size: .78rem;
+      }
+
+      footer {
+        padding-bottom: 90px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span>Career information for students in Grades 8–12 and their parents</span>
+      <span>Need guidance? <a href="#parent">Talk to a counsellor</a></span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#">
+        <span class="brand-mark">C</span>
+        Career Portal
+      </a>
+
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="#">Courses</a>
+        <a href="#">Careers</a>
+        <a href="#">Colleges</a>
+        <a href="#">Assessments</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn-secondary">Sign in</button>
+        <button class="btn btn-primary">Student dashboard</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    Home <span>›</span> Courses <span>›</span> Health & Behavioural Sciences
+    <span>›</span> Psychology
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="hero-card">
+        <div>
+          <div class="label-row">
+            <span class="eyebrow">Undergraduate</span>
+            <span class="eyebrow">Health & Behavioural Sciences</span>
+            <span class="eyebrow">Student-friendly guide</span>
+          </div>
+
+          <h1>BSc Psychology</h1>
+          <p class="hero-summary">
+            Study how people think, feel, learn and behave using scientific
+            research, observation and practical applications. This page helps
+            students and parents understand the course, admission path, costs,
+            career options and further-study requirements.
+          </p>
+
+          <div class="hero-actions">
+            <button class="btn btn-accent" id="saveTop">♡ Save course</button>
+            <button class="btn btn-secondary" id="compareTop">⇄ Add to compare</button>
+            <a class="btn btn-secondary" href="#colleges">⌖ Find colleges</a>
+          </div>
+        </div>
+
+        <aside class="fit-panel">
+          <h2>Your possible fit</h2>
+          <p>Illustrative score based on interests and learning preferences.</p>
+          <div class="fit-score"><strong>76%</strong></div>
+          <div class="fit-list">
+            <span>Enjoys understanding people</span>
+            <span>Comfortable with reading and research</span>
+            <span>Open to statistics and scientific study</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="quick-grid" aria-label="Course at a glance">
+      <article class="quick-card">
+        <div class="quick-icon">⏱</div>
+        <small>Typical duration</small>
+        <strong>3–4 years</strong>
+      </article>
+      <article class="quick-card">
+        <div class="quick-icon">🎓</div>
+        <small>Entry level</small>
+        <strong>Class 12</strong>
+      </article>
+      <article class="quick-card">
+        <div class="quick-icon">📚</div>
+        <small>Suitable streams</small>
+        <strong>Science, Commerce or Humanities*</strong>
+      </article>
+      <article class="quick-card">
+        <div class="quick-icon">🧪</div>
+        <small>Learning style</small>
+        <strong>Theory + research + practical work</strong>
+      </article>
+      <article class="quick-card">
+        <div class="quick-icon">💰</div>
+        <small>Indicative fees</small>
+        <strong>₹20,000–₹3,00,000/year*</strong>
+      </article>
+      <article class="quick-card">
+        <div class="quick-icon">🧭</div>
+        <small>Career direction</small>
+        <strong>Psychology, HR, research and support roles</strong>
+      </article>
+    </section>
+
+    <nav class="section-tabs" aria-label="Course section navigation">
+      <div class="tab-inner">
+        <a href="#snapshot">Snapshot</a>
+        <a href="#overview">Overview</a>
+        <a href="#fit">Suitability</a>
+        <a href="#eligibility">Eligibility</a>
+        <a href="#subjects">Subjects</a>
+        <a href="#careers">Careers</a>
+        <a href="#recruiters">Recruiters</a>
+        <a href="#fees">Fees</a>
+        <a href="#colleges">Colleges</a>
+        <a href="#compare">Compare</a>
+        <a href="#parent">Parent guide</a>
+        <a href="#faq">FAQs</a>
+      </div>
+    </nav>
+
+    <div class="page">
+      <div class="main-column">
+
+
+        <section class="content-section" id="snapshot">
+          <div class="section-heading">
+            <div>
+              <h2>Course snapshot</h2>
+              <p>Salary outlook and possible specialisation pathways</p>
+            </div>
+            <span class="section-tag">Decision snapshot</span>
+          </div>
+
+          <div class="snapshot-grid">
+            <article class="snapshot-panel">
+              <h3>Indicative salary range</h3>
+              <p>Example annual salary figures shown in LPA for interface demonstration.</p>
+
+              <div class="salary-values">
+                <div class="salary-value">
+                  <small>Lower range</small>
+                  <strong>₹2.5 LPA</strong>
+                </div>
+                <div class="salary-value featured">
+                  <small>Typical average</small>
+                  <strong>₹4.2 LPA</strong>
+                </div>
+                <div class="salary-value">
+                  <small>Higher range</small>
+                  <strong>₹8 LPA+</strong>
+                </div>
+              </div>
+
+              <div class="salary-scale" aria-label="Illustrative salary progression">
+                <span class="salary-marker" title="Illustrative average"></span>
+              </div>
+
+              <div class="data-note">
+                <span>ⓘ</span>
+                <span>
+                  Salary depends on qualification level, specialisation, job role,
+                  employer, experience and location. Regulated psychology roles
+                  usually require postgraduate training.
+                </span>
+              </div>
+            </article>
+
+            <article class="snapshot-panel">
+              <h3>Popular specialisations</h3>
+              <p>Students normally select a specialisation during later or postgraduate study.</p>
+
+              <div class="specialisation-grid">
+                <div class="specialisation-item"><span>01</span>Clinical Psychology</div>
+                <div class="specialisation-item"><span>02</span>Counselling Psychology</div>
+                <div class="specialisation-item"><span>03</span>Organisational Psychology</div>
+                <div class="specialisation-item"><span>04</span>Educational Psychology</div>
+                <div class="specialisation-item"><span>05</span>Health Psychology</div>
+                <div class="specialisation-item"><span>06</span>Forensic Psychology</div>
+                <div class="specialisation-item"><span>07</span>Neuropsychology</div>
+                <div class="specialisation-item"><span>08</span>Sports Psychology</div>
+              </div>
+            </article>
+          </div>
+
+          <div class="data-note">
+            <span>Demo data</span>
+            <span>
+              In the production portal, display the salary year, country/region,
+              sample size, role level and source. Avoid showing one salary figure
+              as guaranteed for every graduate.
+            </span>
+          </div>
+        </section>
+
+        <section class="content-section" id="overview">
+          <div class="section-heading">
+            <div>
+              <h2>What is BSc Psychology?</h2>
+              <p>A simple explanation for students and parents</p>
+            </div>
+            <span class="section-tag">About 180 words</span>
+          </div>
+
+          <p>
+            BSc Psychology is an undergraduate course that studies human
+            behaviour, emotions, thought processes, learning, memory and social
+            interaction. It uses scientific methods to understand why people
+            behave differently in different situations.
+          </p>
+          <p>
+            Students commonly study areas such as cognitive psychology,
+            developmental psychology, social psychology, biological psychology,
+            research methods and statistics. Depending on the university, the
+            course may include laboratory activities, surveys, case analysis,
+            field visits, projects or internships.
+          </p>
+          <p>
+            This degree can be a foundation for careers in research, human
+            resources, education, community support and behavioural services.
+            However, professional roles such as clinical psychologist or
+            counselling psychologist generally require postgraduate education,
+            supervised training and any registration required by the relevant
+            authority.
+          </p>
+        </section>
+
+        <section class="content-section" id="fit">
+          <div class="section-heading">
+            <div>
+              <h2>Is this course suitable for you?</h2>
+              <p>Interest, learning preference and reality check</p>
+            </div>
+            <span class="section-tag">Student decision support</span>
+          </div>
+
+          <div class="two-col">
+            <article class="info-box positive">
+              <h3>You may enjoy this course if you…</h3>
+              <ul class="check-list">
+                <li>Are curious about thoughts, feelings and behaviour.</li>
+                <li>Enjoy reading, discussion, observation and research.</li>
+                <li>Can listen patiently and respect different viewpoints.</li>
+                <li>Are willing to study statistics and scientific methods.</li>
+              </ul>
+            </article>
+
+            <article class="info-box caution">
+              <h3>Think carefully if you…</h3>
+              <ul>
+                <li>Expect the course to involve only counselling conversations.</li>
+                <li>Strongly dislike reading, report writing or basic statistics.</li>
+                <li>Expect to become a clinical psychologist immediately after graduation.</li>
+                <li>Do not want further study for specialised professional roles.</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="tags" aria-label="Course fit tags">
+            <span>Understanding people</span>
+            <span>Scientific thinking</span>
+            <span>Reading and writing</span>
+            <span>Research</span>
+            <span>Empathy</span>
+            <span>Statistics</span>
+            <span>Communication</span>
+          </div>
+        </section>
+
+        <section class="content-section" id="eligibility">
+          <div class="section-heading">
+            <div>
+              <h2>Eligibility and admission</h2>
+              <p>Requirements vary by university and country</p>
+            </div>
+            <span class="section-tag">Verify institution rules</span>
+          </div>
+
+          <div class="two-col">
+            <article class="info-box">
+              <h3>Typical eligibility</h3>
+              <ul>
+                <li>Completion of Class 12 or an equivalent qualification.</li>
+                <li>Many institutions accept Science, Commerce and Humanities students.</li>
+                <li>A minimum percentage may apply.</li>
+                <li>Some universities may prefer Psychology, Biology or Mathematics.</li>
+              </ul>
+            </article>
+
+            <article class="info-box">
+              <h3>Possible admission methods</h3>
+              <ul>
+                <li>Class 12 marks or merit-based admission.</li>
+                <li>Common entrance examination.</li>
+                <li>University-specific entrance examination.</li>
+                <li>Interview, counselling or document verification.</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="timeline" aria-label="Admission pathway">
+            <article class="timeline-step">
+              <span class="step-number">1</span>
+              <strong>Check eligibility</strong>
+              <p>Confirm accepted streams, subjects and minimum marks.</p>
+            </article>
+            <article class="timeline-step">
+              <span class="step-number">2</span>
+              <strong>Shortlist colleges</strong>
+              <p>Compare recognition, curriculum, fees and location.</p>
+            </article>
+            <article class="timeline-step">
+              <span class="step-number">3</span>
+              <strong>Track entrance exams</strong>
+              <p>Check whether merit, CUET or another test is used.</p>
+            </article>
+            <article class="timeline-step">
+              <span class="step-number">4</span>
+              <strong>Submit applications</strong>
+              <p>Prepare certificates, identification and required documents.</p>
+            </article>
+            <article class="timeline-step">
+              <span class="step-number">5</span>
+              <strong>Confirm admission</strong>
+              <p>Complete counselling, fee payment and enrolment.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="content-section" id="subjects">
+          <div class="section-heading">
+            <div>
+              <h2>What will you study?</h2>
+              <p>Illustrative subjects; actual curriculum varies</p>
+            </div>
+            <span class="section-tag">Year-wise tabs</span>
+          </div>
+
+          <div class="tabs" role="tablist" aria-label="Year-wise subjects">
+            <button class="tab-btn active" data-tab="year1">Year 1</button>
+            <button class="tab-btn" data-tab="year2">Year 2</button>
+            <button class="tab-btn" data-tab="year3">Year 3</button>
+            <button class="tab-btn" data-tab="learning">Learning style</button>
+          </div>
+
+          <div class="tab-panel active" id="year1">
+            <div class="subject-grid">
+              <article class="subject-card">
+                <strong>Introduction to Psychology</strong>
+                <span>Core ideas, approaches and applications of psychology.</span>
+              </article>
+              <article class="subject-card">
+                <strong>Biological Psychology</strong>
+                <span>Connections between the brain, body and behaviour.</span>
+              </article>
+              <article class="subject-card">
+                <strong>Research Methods I</strong>
+                <span>Observation, surveys, experiments and research ethics.</span>
+              </article>
+              <article class="subject-card">
+                <strong>Basic Statistics</strong>
+                <span>Understanding, organising and interpreting behavioural data.</span>
+              </article>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="year2">
+            <div class="subject-grid">
+              <article class="subject-card">
+                <strong>Cognitive Psychology</strong>
+                <span>Attention, memory, language and problem-solving.</span>
+              </article>
+              <article class="subject-card">
+                <strong>Developmental Psychology</strong>
+                <span>Human development from childhood through later life.</span>
+              </article>
+              <article class="subject-card">
+                <strong>Social Psychology</strong>
+                <span>How groups, relationships and society influence behaviour.</span>
+              </article>
+              <article class="subject-card">
+                <strong>Research Methods II</strong>
+                <span>Advanced analysis, interpretation and project preparation.</span>
+              </article>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="year3">
+            <div class="subject-grid">
+              <article class="subject-card">
+                <strong>Abnormal Psychology</strong>
+                <span>Introduction to psychological difficulties and classification.</span>
+              </article>
+              <article class="subject-card">
+                <strong>Organisational Psychology</strong>
+                <span>Behaviour, motivation and performance in workplaces.</span>
+              </article>
+              <article class="subject-card">
+                <strong>Elective or Specialisation</strong>
+                <span>Choose an area such as health, education or counselling.</span>
+              </article>
+              <article class="subject-card">
+                <strong>Final Project</strong>
+                <span>Conduct and present an independent research project.</span>
+              </article>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="learning">
+            <div class="two-col">
+              <article class="info-box">
+                <h3>Common learning activities</h3>
+                <p>Lectures, reading, group discussion, experiments, surveys, case analysis, presentations and supervised projects.</p>
+              </article>
+              <article class="info-box">
+                <h3>Common assessment methods</h3>
+                <p>Written examinations, assignments, presentations, research reports, practical work, viva and final projects.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-section">
+          <div class="section-heading">
+            <div>
+              <h2>Skills you can develop</h2>
+              <p>Subject knowledge, transferable skills and career readiness</p>
+            </div>
+            <span class="section-tag">9 skill areas</span>
+          </div>
+
+          <div class="skill-grid">
+            <article class="skill-card">
+              <h3>Research skills</h3>
+              <p>Plan studies, gather information and interpret findings.</p>
+            </article>
+            <article class="skill-card">
+              <h3>Data understanding</h3>
+              <p>Use basic statistics and evaluate evidence.</p>
+            </article>
+            <article class="skill-card">
+              <h3>Critical thinking</h3>
+              <p>Question assumptions and compare explanations.</p>
+            </article>
+            <article class="skill-card">
+              <h3>Communication</h3>
+              <p>Present ideas clearly in writing and speech.</p>
+            </article>
+            <article class="skill-card">
+              <h3>Observation</h3>
+              <p>Notice patterns in behaviour and social interaction.</p>
+            </article>
+            <article class="skill-card">
+              <h3>Ethical awareness</h3>
+              <p>Respect privacy, consent and responsible practice.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="content-section" id="careers">
+          <div class="section-heading">
+            <div>
+              <h2>Career opportunities</h2>
+              <p>Separate direct-entry roles from regulated professional roles</p>
+            </div>
+            <span class="section-tag">Career-route clarity</span>
+          </div>
+
+          <div class="career-grid">
+            <article class="career-card">
+              <h3>Research Assistant</h3>
+              <p>Support surveys, data collection, analysis and reporting in research projects.</p>
+              <span class="route-badge">Possible after bachelor’s</span>
+              <span class="route">Typical route: BSc Psychology → Research experience</span>
+            </article>
+            <article class="career-card">
+              <h3>Human Resources Associate</h3>
+              <p>Support recruitment, employee engagement, training and workplace processes.</p>
+              <span class="route-badge">Possible after bachelor’s</span>
+              <span class="route">Typical route: BSc Psychology → HR internship/certification</span>
+            </article>
+            <article class="career-card">
+              <h3>Behaviour Support Assistant</h3>
+              <p>Assist trained professionals in education, community or support settings.</p>
+              <span class="route-badge">Training may be required</span>
+              <span class="route">Typical route: BSc Psychology → Relevant supervised training</span>
+            </article>
+            <article class="career-card">
+              <h3>Counselling Psychologist</h3>
+              <p>Provide professional psychological support within an approved scope of practice.</p>
+              <span class="route-badge">Postgraduate route</span>
+              <span class="route">Typical route: Bachelor’s → Master’s → Supervision/registration</span>
+            </article>
+            <article class="career-card">
+              <h3>Clinical Psychologist</h3>
+              <p>Assess and support people with psychological and behavioural difficulties.</p>
+              <span class="route-badge">Advanced regulated route</span>
+              <span class="route">Typical route: Bachelor’s → Approved postgraduate clinical training</span>
+            </article>
+            <article class="career-card">
+              <h3>Academic or Researcher</h3>
+              <p>Teach, conduct advanced research and publish in specialist areas.</p>
+              <span class="route-badge">Higher study required</span>
+              <span class="route">Typical route: Bachelor’s → Master’s → PhD/doctoral research</span>
+            </article>
+          </div>
+        </section>
+
+
+        <section class="content-section" id="recruiters">
+          <div class="section-heading">
+            <div>
+              <h2>Top recruiters and employment sectors</h2>
+              <p>Show organisations together with the roles they typically recruit for</p>
+            </div>
+            <span class="section-tag">Illustrative directory</span>
+          </div>
+
+          <div class="recruiter-grid">
+            <article class="recruiter-card">
+              <div class="recruiter-head">
+                <div class="recruiter-logo">HN</div>
+                <div>
+                  <h3>Healthcare Network A</h3>
+                  <div class="recruiter-sector">Hospitals & behavioural health</div>
+                </div>
+              </div>
+              <p>May recruit graduates for support, coordination, research and patient-service positions.</p>
+              <div class="recruiter-roles"><span>Support assistant</span><span>Research</span></div>
+            </article>
+
+            <article class="recruiter-card">
+              <div class="recruiter-head">
+                <div class="recruiter-logo">HR</div>
+                <div>
+                  <h3>People Consulting Group B</h3>
+                  <div class="recruiter-sector">HR & talent consulting</div>
+                </div>
+              </div>
+              <p>Uses psychology-related knowledge in recruitment, assessment, learning and employee experience.</p>
+              <div class="recruiter-roles"><span>HR associate</span><span>Talent analyst</span></div>
+            </article>
+
+            <article class="recruiter-card">
+              <div class="recruiter-head">
+                <div class="recruiter-logo">ES</div>
+                <div>
+                  <h3>Education Services C</h3>
+                  <div class="recruiter-sector">Schools & learning support</div>
+                </div>
+              </div>
+              <p>May offer student-support, learning-assistance and programme-coordination opportunities.</p>
+              <div class="recruiter-roles"><span>Student support</span><span>Programme assistant</span></div>
+            </article>
+
+            <article class="recruiter-card">
+              <div class="recruiter-head">
+                <div class="recruiter-logo">RL</div>
+                <div>
+                  <h3>Behavioural Research Lab D</h3>
+                  <div class="recruiter-sector">Research organisations</div>
+                </div>
+              </div>
+              <p>Recruits for data collection, field research, survey administration and research coordination.</p>
+              <div class="recruiter-roles"><span>Research assistant</span><span>Field investigator</span></div>
+            </article>
+
+            <article class="recruiter-card">
+              <div class="recruiter-head">
+                <div class="recruiter-logo">NG</div>
+                <div>
+                  <h3>Community Foundation E</h3>
+                  <div class="recruiter-sector">NGOs & social services</div>
+                </div>
+              </div>
+              <p>Offers community outreach, youth programmes, case support and monitoring roles.</p>
+              <div class="recruiter-roles"><span>Project associate</span><span>Community support</span></div>
+            </article>
+
+            <article class="recruiter-card">
+              <div class="recruiter-head">
+                <div class="recruiter-logo">MR</div>
+                <div>
+                  <h3>Consumer Insights Firm F</h3>
+                  <div class="recruiter-sector">Market research & insights</div>
+                </div>
+              </div>
+              <p>Applies behavioural understanding in consumer research, interviews, surveys and data interpretation.</p>
+              <div class="recruiter-roles"><span>Research executive</span><span>Insights trainee</span></div>
+            </article>
+          </div>
+
+          <div class="data-note">
+            <span>ⓘ</span>
+            <span>
+              The live portal should list verified recruiters by institution,
+              graduation year, job role and placement source. A recruiter logo
+              should not imply that every student or every college receives an offer.
+            </span>
+          </div>
+        </section>
+
+        <section class="content-section">
+          <div class="section-heading">
+            <div>
+              <h2>Further-study pathway</h2>
+              <p>One possible route toward a specialised psychology career</p>
+            </div>
+          </div>
+
+          <div class="pathway">
+            <div class="pathway-item">Class 12</div>
+            <div class="pathway-arrow">→</div>
+            <div class="pathway-item">BSc Psychology</div>
+            <div class="pathway-arrow">→</div>
+            <div class="pathway-item">Master’s Degree</div>
+            <div class="pathway-arrow">→</div>
+            <div class="pathway-item">Specialised Training</div>
+            <div class="pathway-arrow">→</div>
+            <div class="pathway-item">Professional Role</div>
+          </div>
+        </section>
+
+        <section class="content-section" id="fees">
+          <div class="section-heading">
+            <div>
+              <h2>Fees and total study cost</h2>
+              <p>Illustrative ranges for interface demonstration only</p>
+            </div>
+            <span class="section-tag">Parent priority</span>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Cost category</th>
+                  <th>Indicative range</th>
+                  <th>Frequency</th>
+                  <th>What parents should check</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Tuition</td>
+                  <td>₹20,000–₹3,00,000</td>
+                  <td>Per year</td>
+                  <td>Government/private status and included facilities</td>
+                </tr>
+                <tr>
+                  <td>Books and materials</td>
+                  <td>₹5,000–₹20,000</td>
+                  <td>Per year</td>
+                  <td>Library access, software and printing costs</td>
+                </tr>
+                <tr>
+                  <td>Hostel and living</td>
+                  <td>₹60,000–₹2,00,000</td>
+                  <td>Per year</td>
+                  <td>Food, travel, deposit and local cost of living</td>
+                </tr>
+                <tr>
+                  <td>Fieldwork or project</td>
+                  <td>Varies</td>
+                  <td>As required</td>
+                  <td>Travel, data collection and project expenses</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size:.8rem;color:var(--muted);margin-bottom:0;">
+            *Replace demo figures with sourced ranges for the selected country,
+            academic year and institution type.
+          </p>
+        </section>
+
+        <section class="content-section" id="colleges">
+          <div class="section-heading">
+            <div>
+              <h2>Top colleges and universities</h2>
+              <p>Ranked directory with All, Government and Private filters</p>
+            </div>
+            <span class="section-tag">Illustrative ranking</span>
+          </div>
+
+          <div class="college-toolbar">
+            <div class="college-filters" role="group" aria-label="Filter institutions by type">
+              <button class="college-filter-btn active" data-college-filter="all">All institutions</button>
+              <button class="college-filter-btn" data-college-filter="government">Government</button>
+              <button class="college-filter-btn" data-college-filter="private">Private</button>
+            </div>
+            <div class="ranking-source">Demo composite ranking · Updated August 2026</div>
+          </div>
+
+          <div class="college-list">
+            <article class="college-card" data-college-type="government">
+              <div class="college-rank"><div><small>Rank</small>01</div></div>
+              <div class="college-main">
+                <h3>National University of Behavioural Sciences</h3>
+                <p>New Delhi · BSc (Hons) Psychology · 4 years</p>
+                <div class="college-meta">
+                  <span class="institution-type gov">Government</span>
+                  <span>Demo score: 92.4</span>
+                  <span>Merit / entrance</span>
+                  <span>Hostel available</span>
+                </div>
+              </div>
+              <div class="college-actions">
+                <strong>₹28,000/year*</strong>
+                <button class="btn btn-secondary">View details</button>
+              </div>
+            </article>
+
+            <article class="college-card" data-college-type="private">
+              <div class="college-rank"><div><small>Rank</small>02</div></div>
+              <div class="college-main">
+                <h3>Horizon University</h3>
+                <p>Bengaluru · BSc Psychology · 3 years</p>
+                <div class="college-meta">
+                  <span class="institution-type private">Private</span>
+                  <span>Demo score: 90.8</span>
+                  <span>University entrance</span>
+                  <span>Internship support</span>
+                </div>
+              </div>
+              <div class="college-actions">
+                <strong>₹1.85 lakh/year*</strong>
+                <button class="btn btn-secondary">View details</button>
+              </div>
+            </article>
+
+            <article class="college-card" data-college-type="government">
+              <div class="college-rank"><div><small>Rank</small>03</div></div>
+              <div class="college-main">
+                <h3>Central Institute for Social & Behavioural Studies</h3>
+                <p>Mumbai · BSc Psychology · 3 years</p>
+                <div class="college-meta">
+                  <span class="institution-type gov">Government</span>
+                  <span>Demo score: 88.9</span>
+                  <span>Merit based</span>
+                  <span>Research facilities</span>
+                </div>
+              </div>
+              <div class="college-actions">
+                <strong>₹35,000/year*</strong>
+                <button class="btn btn-secondary">View details</button>
+              </div>
+            </article>
+
+            <article class="college-card" data-college-type="private">
+              <div class="college-rank"><div><small>Rank</small>04</div></div>
+              <div class="college-main">
+                <h3>Meridian Institute of Human Sciences</h3>
+                <p>Hyderabad · BSc Applied Psychology · 4 years</p>
+                <div class="college-meta">
+                  <span class="institution-type private">Private</span>
+                  <span>Demo score: 86.7</span>
+                  <span>Interview + merit</span>
+                  <span>Applied learning</span>
+                </div>
+              </div>
+              <div class="college-actions">
+                <strong>₹2.10 lakh/year*</strong>
+                <button class="btn btn-secondary">View details</button>
+              </div>
+            </article>
+
+            <article class="college-card" data-college-type="government">
+              <div class="college-rank"><div><small>Rank</small>05</div></div>
+              <div class="college-main">
+                <h3>State University of Psychology</h3>
+                <p>Thiruvananthapuram · BSc Psychology · 3 years</p>
+                <div class="college-meta">
+                  <span class="institution-type gov">Government</span>
+                  <span>Demo score: 84.5</span>
+                  <span>Centralised allotment</span>
+                  <span>Affordable fees</span>
+                </div>
+              </div>
+              <div class="college-actions">
+                <strong>₹22,000/year*</strong>
+                <button class="btn btn-secondary">View details</button>
+              </div>
+            </article>
+
+            <article class="college-card" data-college-type="private">
+              <div class="college-rank"><div><small>Rank</small>06</div></div>
+              <div class="college-main">
+                <h3>Northbridge University</h3>
+                <p>Pune · BSc Behavioural Science · 3 years</p>
+                <div class="college-meta">
+                  <span class="institution-type private">Private</span>
+                  <span>Demo score: 82.1</span>
+                  <span>Application + interview</span>
+                  <span>Industry electives</span>
+                </div>
+              </div>
+              <div class="college-actions">
+                <strong>₹2.40 lakh/year*</strong>
+                <button class="btn btn-secondary">View details</button>
+              </div>
+            </article>
+          </div>
+
+          <div class="data-note">
+            <span>Ranking note</span>
+            <span>
+              These institutions and scores are fictional demo content. In the
+              production version, clearly show ranking body, category, year,
+              methodology and official course availability. Allow users to sort
+              by rank, fees, location, admission route and student fit.
+            </span>
+          </div>
+        </section>
+
+        <section class="content-section" id="compare">
+          <div class="section-heading">
+            <div>
+              <h2>Compare similar courses</h2>
+              <p>Help families understand meaningful differences</p>
+            </div>
+            <span class="section-tag">Decision table</span>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>BSc Psychology</th>
+                  <th>BA Psychology</th>
+                  <th>BSc Neuroscience</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Main focus</td>
+                  <td>Scientific study of behaviour</td>
+                  <td>Behaviour in social and human contexts</td>
+                  <td>Brain and nervous system</td>
+                </tr>
+                <tr>
+                  <td>Statistics</td>
+                  <td>Moderate</td>
+                  <td>Low to moderate</td>
+                  <td>Moderate to high</td>
+                </tr>
+                <tr>
+                  <td>Laboratory exposure</td>
+                  <td>Possible</td>
+                  <td>Usually lower</td>
+                  <td>Usually stronger</td>
+                </tr>
+                <tr>
+                  <td>Common next steps</td>
+                  <td>Psychology, HR, research</td>
+                  <td>Psychology, social services</td>
+                  <td>Research, neuroscience, health sciences</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="content-section">
+          <div class="section-heading">
+            <div>
+              <h2>What should you do now?</h2>
+              <p>Different guidance for Grades 8–10 and Grades 11–12</p>
+            </div>
+          </div>
+
+          <div class="roadmap-grid">
+            <article class="roadmap-card">
+              <h3>Grades 8–10: Explore</h3>
+              <p>Read introductory psychology topics, observe related careers and develop reading, communication and basic data skills.</p>
+            </article>
+            <article class="roadmap-card">
+              <h3>Grade 11: Prepare</h3>
+              <p>Choose subjects carefully, explore eligibility rules and compare BSc, BA and related behavioural-science pathways.</p>
+            </article>
+            <article class="roadmap-card">
+              <h3>Grade 12: Apply</h3>
+              <p>Shortlist institutions, track applications, verify entrance requirements and calculate the full cost before applying.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="content-section parent-section" id="parent">
+          <div class="section-heading">
+            <div>
+              <h2>Parent corner</h2>
+              <p>Questions that support informed family discussion</p>
+            </div>
+            <span class="section-tag">About 150 words</span>
+          </div>
+
+          <p>
+            Parents can support students by checking whether the student
+            understands the actual curriculum, not only the course title.
+            Compare eligibility, total cost, institution recognition, learning
+            environment and the qualifications required for the student’s
+            preferred career.
+          </p>
+
+          <div class="parent-questions">
+            <div class="parent-question">What genuinely attracts the student to psychology?</div>
+            <div class="parent-question">Has the student understood the role of research and statistics?</div>
+            <div class="parent-question">Which careers require postgraduate study or registration?</div>
+            <div class="parent-question">What is the realistic total cost, including living expenses?</div>
+            <div class="parent-question">Are the course and institution appropriately recognised?</div>
+            <div class="parent-question">What alternative courses lead toward similar goals?</div>
+          </div>
+        </section>
+
+        <section class="content-section" id="faq">
+          <div class="section-heading">
+            <div>
+              <h2>Frequently asked questions</h2>
+              <p>Use short, expandable answers</p>
+            </div>
+            <span class="section-tag">6–10 questions</span>
+          </div>
+
+          <div class="accordion">
+            <article class="accordion-item open">
+              <button class="accordion-button">
+                <span>Can students from any Class 12 stream apply?</span>
+                <span>−</span>
+              </button>
+              <div class="accordion-content">
+                Many institutions accept students from Science, Commerce or
+                Humanities. However, minimum marks, preferred subjects and
+                entrance requirements can differ, so each institution’s latest
+                official eligibility rules should be checked.
+              </div>
+            </article>
+
+            <article class="accordion-item">
+              <button class="accordion-button">
+                <span>Is Mathematics required?</span>
+                <span>+</span>
+              </button>
+              <div class="accordion-content">
+                Mathematics may not be compulsory at every institution, but the
+                course normally includes research methods and statistics.
+                Students should be willing to work with basic numerical data.
+              </div>
+            </article>
+
+            <article class="accordion-item">
+              <button class="accordion-button">
+                <span>Can I become a psychologist after the bachelor’s degree?</span>
+                <span>+</span>
+              </button>
+              <div class="accordion-content">
+                A bachelor’s degree is usually the first stage. Specialised
+                professional titles commonly require postgraduate education,
+                supervised practical training and any applicable registration.
+              </div>
+            </article>
+
+            <article class="accordion-item">
+              <button class="accordion-button">
+                <span>What is the difference between BA and BSc Psychology?</span>
+                <span>+</span>
+              </button>
+              <div class="accordion-content">
+                The exact difference depends on the university. A BSc may place
+                more emphasis on scientific methods, biology and statistics,
+                while a BA may include broader social-science or humanities
+                perspectives. Always compare the actual subject list.
+              </div>
+            </article>
+
+            <article class="accordion-item">
+              <button class="accordion-button">
+                <span>Is this course suitable for someone who wants to work in HR?</span>
+                <span>+</span>
+              </button>
+              <div class="accordion-content">
+                Psychology can provide useful knowledge about behaviour,
+                motivation and assessment. HR roles may also benefit from
+                internships, business knowledge and specialised HR training.
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="content-section source-box">
+          <strong>Page verification area</strong>
+          <p>
+            Last reviewed: August 2026 · Content status: Demo only · Reviewer:
+            Career Content Team
+          </p>
+          <p>
+            In the live portal, list official curriculum, regulator,
+            examination, institution and labour-market sources here. Include a
+            “Report incorrect information” option and a visible review date.
+          </p>
+        </section>
+      </div>
+
+      <aside class="sidebar">
+        <section class="side-card">
+          <h3>Plan your next step</h3>
+          <p>Save your progress and return to this course from your dashboard.</p>
+          <div class="progress-label">
+            <span>Course exploration</span>
+            <span>58%</span>
+          </div>
+          <div class="progress"><span></span></div>
+          <button class="btn btn-primary" id="saveSide">♡ Save this course</button>
+          <button class="btn btn-secondary" id="compareSide">⇄ Compare courses</button>
+          <button class="btn btn-secondary">↗ Share with parent</button>
+        </section>
+
+        <section class="side-card">
+          <h3>Course checklist</h3>
+          <div class="mini-list">
+            <div class="mini-item">
+              <span class="mini-icon">1</span>
+              <span>Understand the course and subjects.</span>
+            </div>
+            <div class="mini-item">
+              <span class="mini-icon">2</span>
+              <span>Check your eligibility and entrance route.</span>
+            </div>
+            <div class="mini-item">
+              <span class="mini-icon">3</span>
+              <span>Compare career and further-study requirements.</span>
+            </div>
+            <div class="mini-item">
+              <span class="mini-icon">4</span>
+              <span>Calculate tuition and living costs.</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="side-card">
+          <h3>Need personal guidance?</h3>
+          <p>Discuss course fit, subject selection and pathways with a career counsellor.</p>
+          <button class="btn btn-accent">Book counselling</button>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <div class="mobile-bar">
+    <button class="btn btn-secondary" id="mobileSave">♡ Save</button>
+    <button class="btn btn-secondary" id="mobileCompare">⇄ Compare</button>
+    <a class="btn btn-primary" href="#colleges">Colleges</a>
+  </div>
+
+  <footer>
+    <strong>Career Portal Course Library Demo</strong><br />
+    Course information should guide exploration and should not replace official
+    eligibility, admission or professional-regulation sources.
+  </footer>
+
+  <script>
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const tabPanels = document.querySelectorAll(".tab-panel");
+
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        tabButtons.forEach((item) => item.classList.remove("active"));
+        tabPanels.forEach((panel) => panel.classList.remove("active"));
+
+        button.classList.add("active");
+        const panel = document.getElementById(button.dataset.tab);
+        if (panel) panel.classList.add("active");
+      });
+    });
+
+    const collegeFilterButtons = document.querySelectorAll(".college-filter-btn");
+    const collegeCards = document.querySelectorAll(".college-card");
+
+    collegeFilterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.collegeFilter;
+
+        collegeFilterButtons.forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+
+        collegeCards.forEach((card) => {
+          const shouldShow =
+            filter === "all" || card.dataset.collegeType === filter;
+          card.hidden = !shouldShow;
+        });
+      });
+    });
+
+    document.querySelectorAll(".accordion-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const item = button.closest(".accordion-item");
+        const isOpen = item.classList.toggle("open");
+        button.querySelector("span:last-child").textContent = isOpen ? "−" : "+";
+      });
+    });
+
+    let saved = false;
+    let compared = false;
+
+    const saveButtons = [
+      document.getElementById("saveTop"),
+      document.getElementById("saveSide"),
+      document.getElementById("mobileSave")
+    ].filter(Boolean);
+
+    const compareButtons = [
+      document.getElementById("compareTop"),
+      document.getElementById("compareSide"),
+      document.getElementById("mobileCompare")
+    ].filter(Boolean);
+
+    function updateSaveButtons() {
+      saveButtons.forEach((button) => {
+        button.textContent = saved ? "♥ Course saved" : "♡ Save course";
+      });
+    }
+
+    function updateCompareButtons() {
+      compareButtons.forEach((button) => {
+        button.textContent = compared ? "✓ Added to compare" : "⇄ Add to compare";
+      });
+    }
+
+    saveButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        saved = !saved;
+        updateSaveButtons();
+      });
+    });
+
+    compareButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        compared = !compared;
+        updateCompareButtons();
+      });
+    });
+  </script>
+</body>
+</html>
