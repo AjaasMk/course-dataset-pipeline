@@ -128,10 +128,21 @@ Measured properties of the real file:
 
 - 30 sheets, each a broad field (Engineering, Medicine, Law, Design…).
 - 754 specialization rows in col 1; **750 unique names**.
-- 4,284 degree-name variants in col 2 (avg 5.68 per course), newline-separated,
-  U+2022 bullet prefix on all but 10 lines — the parser must treat the bullet as
-  **optional**.
 - Zero rows with an empty col 2.
+
+**Col 2 uses two different formats, detected per cell** — found while building the
+loader, not from reading the file's shape:
+
+- **Bulleted (721 sheets' worth, 4,274 lines):** one degree per line, U+2022 prefix.
+- **Comma-separated (9 cells, all in the Rehabilitation sheet):** every degree on a
+  *single* line, comma-delimited, no bullets.
+
+Splitting on commas globally is **wrong** — 93 bulleted aliases contain commas that
+belong to the name (`MBBS (Bachelor of Medicine, Bachelor of Surgery)`,
+`B.A. in Urban Design, Planning and Development`). Treating the comma cells as one
+alias each is equally wrong, and was the loader's first-pass bug: it cost 16
+aliases across the 9 Rehabilitation courses. The rule is per-cell: **bullet present
+→ split on newlines; no bullet → split on commas.**
 
 Four specializations are cross-listed in two sheets each — Interior Design
 (Architecture + Design), Engineering Physics (Engineering + Physical Sciences),
@@ -139,6 +150,15 @@ Digital Humanities (Arts + Liberal), Physical Education Teaching Track (Educatio
 Sports). These resolve to **one course with two field associations**, not two
 courses: they are the same qualification, and duplicating them would duplicate
 retrieval cost and publish two competing pages.
+
+**Loader output contract** (measured after merge and correct alias parsing):
+
+| Property | Value |
+|----------|-------|
+| Courses returned | **750** (754 rows − 4 cross-listed duplicates) |
+| Total aliases | **4,291** |
+| Courses with zero aliases | 0 |
+| Unique `course_id` slugs | 750 (no collisions) |
 
 ```python
 class Course(BaseModel):
@@ -410,9 +430,11 @@ exists; only the intent *schema* (phase 1) is a hard prerequisite.
 Per the project's agent-native verification convention, every phase emits
 structured JSON with an explicit pass/fail contract, not prose.
 
-- **Phase 1** — taxonomy loader asserts exactly 754 courses, 750 unique names, 4
-  cross-listed, 4,284 alias lines, zero empty-variant rows. These are measured
-  values; a mismatch means the file changed and is a hard failure.
+- **Phase 1** — taxonomy loader asserts **750 courses** (754 rows, 4 cross-listed
+  merged), **4,291 aliases**, zero zero-alias courses, 750 unique `course_id`s,
+  and both alias formats parsed correctly (comma cells split; commas inside
+  bulleted aliases preserved). These are measured values; a mismatch means the
+  file changed and is a hard failure.
 - **Phase 2–5** — each adapter ships a live resolution check against real intents,
   reporting `{source_id, intents_attempted, resolved, validated, failed, reasons[]}`.
   Adapters are verified live, not only against mocks — the existing convention,
@@ -471,6 +493,11 @@ rather than fuzzy-matching Textile Engineering at 0.69.
 - **Regression semantics** — signed off 2026-08-07. `unresolved` is a valid
   outcome; a golden-set run in which uncovered courses resolve is a **test
   failure**, not a pass. See Verification above.
-- **Phase-1 hard assertions** — signed off 2026-08-07: `aliases = 4,284`,
-  `non-bullet lines = 10`. The earlier 4,254 / 9 values are wrong and must not
-  appear in the phase-1 spec or in validation logic.
+- **Phase-1 hard assertions** — signed off 2026-08-07 as `aliases = 4,284`,
+  `non-bullet lines = 10`. **Superseded during implementation:** those were *raw
+  line* counts of the source file, not the loader's output contract. Building the
+  loader showed the 10 non-bullet lines are a different format (comma-separated),
+  not merely bullet-less — parsing them correctly yields 16 more aliases, and
+  merging the 4 cross-listed rows removes 9 duplicates. The binding assertions are
+  now **750 courses / 4,291 aliases** (see the loader output contract above). The
+  4,254 / 9 figures remain wrong in every sense and appear nowhere.
