@@ -32,8 +32,8 @@ def test_source_type_has_aggregator_webpage_value():
     assert SourceType.AGGREGATOR_WEBPAGE.value == "aggregator_webpage"
 
 
-def test_source_type_has_general_background_webpage_value():
-    assert SourceType.GENERAL_BACKGROUND_WEBPAGE.value == "general_background_webpage"
+def test_source_type_has_no_general_background_value():
+    assert not hasattr(SourceType, "GENERAL_BACKGROUND_WEBPAGE")
 
 
 def test_manifest_entry_accepts_source_type_enum():

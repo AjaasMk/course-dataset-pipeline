@@ -415,7 +415,7 @@ re-runnable-step convention.
 | Phase | Work | Depends on |
 |-------|------|-----------|
 | 1 | ✅ **Done.** Course taxonomy loader; intent/document/registry models; `config/sources.yaml` rebuild; new manifest schema | — |
-| 2 | Adapter protocol redesign; port `AICTEAdapter` to it; delete `WikipediaAdapter` and `general_background` | 1 |
+| 2 | ✅ **Done.** Adapter protocol redesign; port `AICTEAdapter` and `Careers360Adapter`; delete `WikipediaAdapter` and `general_background` | 1 |
 | 3 | Self-contained Tier A adapters — UGC, NTA, NIRF, NAAC, NBA, NCS, NSDC, NQR, NSP, Apprenticeship India, NATS. Decision-5 escalation applies per source | 2 |
 | 4 | Institution registry — AISHE/UGC HEI/NIRF discovery, entity resolution, offering resolution | 3 |
 | 5 | University-backed segments — Curriculum, Fees, Institution & Offering | 4 |
@@ -449,13 +449,48 @@ The registry's tier counts are asserted against the client's own Overview-sheet
 totals (35 A / 5 B / 1 C / 8 D), which independently checks the transcription of
 all 44 sources rather than trusting it.
 
-**Superseded and pending phase 2:** `src/retrieve/orchestrator.py` and
-`src/retrieve/batch.py` are structurally coupled to the removed `retrieval_order`
-and `categories` config keys and will not run until ported. They are kept as the
-reference for the port, not deleted. `config/pilot_courses.yaml` likewise remains
-until the code referencing it is migrated. Four tests asserting the retired
-structure were removed with this phase; the replacement coverage lives in
-`tests/test_source_registry.py`.
+Four tests asserting the retired config structure were removed with this phase;
+the replacement coverage lives in `tests/test_source_registry.py`.
+
+### Phase 2 as built (2026-08-07)
+
+`SourceAdapter` is now `supports(intent)` / `resolve(intent) -> list[DiscoveredDocument]`
+/ `download(document) -> DocumentRecord`, with `source_id` and `tiers` as class
+attributes. `resolve()` returning a **list** is what removes "first match wins" at
+the type level — an adapter surfaces every plausible candidate, ranked, and the
+caller applies the threshold. An empty list is a valid answer.
+
+`build_index()` left the protocol. It is now a private, lazily-cached
+implementation detail of the two adapters that genuinely have a crawlable listing
+page. This is the change that lets one protocol cover sources shaped like a
+search (UGC), a per-year bulletin (NTA) or a ranking table (NIRF).
+
+Ported: `AICTEAdapter` (Tier A), `Careers360Adapter` (Tier D). Both score
+candidates against `intent.query_terms` rather than a bare course name, and AICTE
+additionally filters on `intent.required_document_type`.
+
+**Deviation from the "keep adapters independent" convention, deliberate.** That
+convention protects *site-specific* logic — index building and scoring — which
+stays per-adapter. But `download()` had become byte-identical between the two,
+differing only by source_id, tier and file extension. Duplicating it across 44
+adapters would be indefensible, so it is extracted as `base.fetch_and_store()`.
+The convention's own trigger ("extract a shared helper if a fourth arrives") is
+met in spirit: 42 more adapters are in scope.
+
+**Deleted:** `wikipedia.py`, `orchestrator.py`, `batch.py`, `config/pilot_courses.yaml`
+and their tests. The orchestrator and batch runner implemented the retired
+one-ordered-list-per-course model; phase 6 builds their replacement against
+intents. Git history holds them if the port needs reference. `SourceCategory`
+(the old 6-bucket model, superseded by `SourceTier`) and
+`SourceType.GENERAL_BACKGROUND_WEBPAGE` are removed from `src/schema.py`.
+
+**Known residue, out of phase-2 scope:** `src/extract/readers.py` still contains
+MediaWiki/Wikipedia-specific HTML stripping. It is dead now that Wikipedia is not
+retrieved, but it is Stage 2 code and harmless; remove it with the Stage 2 rebuild.
+`src/retrieve/manifest.py` and the old `ManifestEntry` also remain, because
+`src/extract/batch_extract.py` still reads that table — Stage 2 has not yet been
+migrated onto `store.py`, so newly retrieved documents are not visible to
+extraction until it is. That migration belongs with the Stage 2 schema rebuild.
 
 ## Verification
 

@@ -1,14 +1,27 @@
-import hashlib
-from pathlib import Path
 from unittest.mock import Mock, patch
 
 import pytest
 
 from src.retrieve.aicte import AICTEAdapter
-from src.retrieve.base import SourceMatch
-from src.schema import SourceType
+from src.retrieve.models import (
+    DocumentType,
+    IntentRole,
+    RetrievalIntent,
+    Segment,
+    SourceTier,
+)
 
 PDF_BYTES = b"%PDF-1.4 fake pdf bytes"
+
+LISTING_HTML = """
+<html><body>
+  <a href="/files/mech.pdf">Revised Model Curriculum for UG Degree Course in Mechanical Engineering</a>
+  <a href="/files/civil.pdf">Revised Model Curriculum for UG Degree Course in Civil Engineering</a>
+  <a href="/files/textile.pdf">Model Curriculum for UG Degree Course in Textile Engineering</a>
+  <a href="/files/notes.doc">Model Curriculum for UG Degree Course in Chemical Engineering</a>
+  <a href="/files/circular.pdf">Approval Process Handbook</a>
+</body></html>
+"""
 
 
 @pytest.fixture
@@ -16,85 +29,109 @@ def adapter():
     return AICTEAdapter()
 
 
-@pytest.fixture
-def match():
-    return SourceMatch(
-        course_name="Mechanical Engineering",
-        matched_name="Revised Model Curriculum for UG Degree Course in Mechanical Engineering",
-        matched_url="https://www.aicte.gov.in/sites/default/files/mechanical.pdf",
-        confidence=0.92,
-    )
-
-
 @pytest.fixture(autouse=True)
 def isolated_storage(tmp_path, monkeypatch):
-    monkeypatch.setattr("src.retrieve.manifest.DEFAULT_DB_PATH", tmp_path / "manifest.db")
+    monkeypatch.setattr("src.retrieve.store.DEFAULT_DB_PATH", tmp_path / "manifest.db")
     monkeypatch.setattr("src.retrieve.aicte.RAW_DIR", tmp_path / "raw")
 
 
-def _mock_response(content=PDF_BYTES, status_code=200, content_type="application/pdf"):
+def _intent(**overrides) -> RetrievalIntent:
+    fields = {
+        "intent_id": "RI-001",
+        "course_id": "mechanical_engineering",
+        "segment": Segment.CURRICULUM,
+        "field_ids": ["F042"],
+        "source_id": "AICTE",
+        "priority": 1,
+        "role": IntentRole.PRIMARY,
+        "query_terms": ["Mechanical Engineering"],
+        "required_document_type": [DocumentType.OFFICIAL_PDF],
+        "qualification_level": "Undergraduate",
+    }
+    fields.update(overrides)
+    return RetrievalIntent(**fields)
+
+
+def _listing_response():
     response = Mock()
-    response.content = content
-    response.status_code = status_code
-    response.headers = {"Content-Type": content_type, "Content-Length": str(len(content))}
+    response.text = LISTING_HTML
     response.raise_for_status = Mock()
     return response
 
 
-@patch("src.retrieve.aicte.requests.get")
-def test_download_writes_file_and_manifest_entry(mock_get, adapter, match):
-    mock_get.return_value = _mock_response()
-
-    entry = adapter.download(match, tier="engineering")
-
-    assert mock_get.call_count == 1
-    assert entry.course_name == "Mechanical Engineering"
-    assert entry.tier == "engineering"
-    assert entry.source_type == SourceType.REGULATOR_PDF
-    assert entry.http_status == 200
-    assert entry.content_type == "application/pdf"
-    assert entry.content_length == len(PDF_BYTES)
-    assert entry.file_hash == hashlib.sha256(PDF_BYTES).hexdigest()
-    assert Path(entry.local_path).read_bytes() == PDF_BYTES
-    assert Path(entry.local_path).name == "mechanical_engineering.pdf"
+def _pdf_response(content=PDF_BYTES):
+    response = Mock()
+    response.content = content
+    response.status_code = 200
+    response.headers = {"Content-Type": "application/pdf", "Content-Length": str(len(content))}
+    response.raise_for_status = Mock()
+    return response
 
 
-@patch("src.retrieve.aicte.requests.get")
-def test_second_download_for_same_course_and_url_skips_http_call(mock_get, adapter, match):
-    mock_get.return_value = _mock_response()
+def test_adapter_declares_its_source_id_and_tier():
+    assert AICTEAdapter.source_id == "AICTE"
+    assert AICTEAdapter.tiers == [SourceTier.A]
 
-    first = adapter.download(match, tier="engineering")
-    second = adapter.download(match, tier="engineering")
 
-    assert mock_get.call_count == 1
-    assert second == first
+def test_supports_only_intents_addressed_to_this_source(adapter):
+    assert adapter.supports(_intent(source_id="AICTE"))
+    assert not adapter.supports(_intent(source_id="NIRF"))
 
 
 @patch("src.retrieve.aicte.requests.get")
-def test_different_url_triggers_new_download(mock_get, adapter, match):
-    mock_get.return_value = _mock_response()
-    adapter.download(match, tier="engineering")
+def test_resolve_returns_several_ranked_candidates(mock_get, adapter):
+    mock_get.return_value = _listing_response()
 
-    other_match = SourceMatch(
-        course_name="Civil Engineering",
-        matched_name="Revised Model Curriculum for UG Degree Course in Civil Engineering",
-        matched_url="https://www.aicte.gov.in/sites/default/files/civil.pdf",
-        confidence=0.9,
-    )
-    adapter.download(other_match, tier="engineering")
+    documents = adapter.resolve(_intent())
 
-    assert mock_get.call_count == 2
+    assert len(documents) > 1
+    confidences = [d.match_confidence for d in documents]
+    assert confidences == sorted(confidences, reverse=True)
 
 
 @patch("src.retrieve.aicte.requests.get")
-def test_http_failure_propagates_and_writes_no_manifest_entry(mock_get, adapter, match):
-    response = _mock_response(status_code=404)
-    response.raise_for_status.side_effect = Exception("404 Client Error")
-    mock_get.return_value = response
+def test_resolve_ranks_the_matching_branch_first(mock_get, adapter):
+    mock_get.return_value = _listing_response()
 
-    with pytest.raises(Exception, match="404 Client Error"):
-        adapter.download(match, tier="engineering")
+    best = adapter.resolve(_intent())[0]
 
-    from src.retrieve import manifest
+    assert "Mechanical Engineering" in best.document_title
+    assert best.document_url.endswith("mech.pdf")
 
-    assert manifest.get_entry(match.course_name, match.matched_url) is None
+
+@patch("src.retrieve.aicte.requests.get")
+def test_resolve_honours_the_required_document_type(mock_get, adapter):
+    mock_get.return_value = _listing_response()
+
+    documents = adapter.resolve(_intent(query_terms=["Chemical Engineering"]))
+
+    assert all(d.document_url.endswith(".pdf") for d in documents)
+
+
+@patch("src.retrieve.aicte.requests.get")
+def test_download_writes_the_file_and_records_the_document(mock_get, adapter):
+    mock_get.return_value = _listing_response()
+    document = adapter.resolve(_intent())[0]
+    mock_get.return_value = _pdf_response()
+
+    record = adapter.download(document)
+
+    assert record.source_id == "AICTE"
+    assert record.source_tier == SourceTier.A
+    assert record.file_hash is not None
+    assert record.local_path is not None
+
+
+@patch("src.retrieve.aicte.requests.get")
+def test_download_is_idempotent_on_document_url(mock_get, adapter):
+    mock_get.return_value = _listing_response()
+    document = adapter.resolve(_intent())[0]
+
+    mock_get.return_value = _pdf_response()
+    first = adapter.download(document)
+    calls_after_first = mock_get.call_count
+
+    second = adapter.download(document)
+
+    assert mock_get.call_count == calls_after_first
+    assert second.document_id == first.document_id
