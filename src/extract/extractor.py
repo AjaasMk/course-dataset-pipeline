@@ -4,6 +4,7 @@ import re
 import anthropic
 
 from src.extract.models import Chunk
+from src.retrieve.models import Segment
 from src.schema import CourseDetail
 
 MODEL = "claude-sonnet-5"
@@ -28,8 +29,9 @@ from a retrieved source document, into the following JSON schema:
 {schema}
 
 - Ground each field in the source document when it states the fact.
-- If the source document does not cover a field, fill it from general, typical \
-knowledge for that kind of course in India rather than leaving it empty.
+- If the source document does not cover a field, leave it null. Never fill a \
+field from general or typical knowledge — an ungroundable field must be null, \
+not a plausible-sounding guess.
 - Normalize as you extract: convert fee figures to plain integers in the given \
 currency (e.g. "Rs. 2 Lakhs" -> 200000), collapse duplicate or synonymous entrance \
 exam names into one canonical form, and follow each field's stated length guidance.
@@ -42,6 +44,18 @@ _JSON_FENCE_RE = re.compile(r"^```(?:json)?\s*|\s*```$", re.MULTILINE)
 def reconstruct_document(chunks: list[Chunk]) -> str:
     ordered = sorted(chunks, key=lambda c: c.chunk_id)
     return "\n\n".join(chunk.text for chunk in ordered)
+
+
+def chunks_for_segment(chunks: list[Chunk], segment: Segment) -> list[Chunk]:
+    """Filter a course's chunks down to one segment, by chunk_id order.
+
+    This is the retrieval step ahead of per-segment extraction: given every
+    chunk already carries segment_id (see src/extract/chunker.py), the LLM
+    only needs the chunks tagged for the segment it's extracting -- no
+    embedding/similarity search required, since per-course per-segment chunk
+    counts are small enough to pass whole (decided 2026-08-09)."""
+    matching = [c for c in chunks if c.segment_id == segment]
+    return sorted(matching, key=lambda c: c.chunk_id)
 
 
 def _strip_markdown_fence(text: str) -> str:

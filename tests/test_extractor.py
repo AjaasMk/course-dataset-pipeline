@@ -4,20 +4,23 @@ import pytest
 
 from src.extract.extractor import (
     ExtractionTruncatedError,
+    chunks_for_segment,
     extract_course_detail,
     reconstruct_document,
 )
 from src.extract.models import Chunk
+from src.retrieve.models import Segment
 from src.schema import CourseDetail
 
 
-def _chunk(chunk_id, text):
+def _chunk(chunk_id, text, segment_id="unclassified"):
     return Chunk(
         chunk_id=chunk_id,
         text=text,
         source_document="doc.html",
         source_url="https://example.com",
         token_count=len(text.split()),
+        segment_id=segment_id,
     )
 
 
@@ -37,9 +40,51 @@ def _mock_client_returning(json_text, stop_reason="end_turn"):
     return mock_client
 
 
+def test_system_prompt_never_instructs_fabrication_from_general_knowledge():
+    from src.extract.extractor import SYSTEM_PROMPT
+
+    lowered = SYSTEM_PROMPT.lower()
+    # the old, now-removed instruction told the model to fabricate rather than
+    # leave a field empty -- that exact permission must be gone
+    assert "fill it from general" not in lowered
+    assert "rather than leaving it empty" not in lowered
+    # and it must be replaced with an explicit null-over-fabrication instruction
+    assert "null" in lowered
+    assert "never fill" in lowered
+
+
 def test_reconstruct_document_orders_chunks_by_chunk_id():
     chunks = [_chunk(1, "second"), _chunk(0, "first")]
     assert reconstruct_document(chunks) == "first\n\nsecond"
+
+
+def test_chunks_for_segment_keeps_only_matching_segment():
+    chunks = [
+        _chunk(0, "eligibility text", segment_id=Segment.ELIGIBILITY),
+        _chunk(1, "curriculum text", segment_id=Segment.CURRICULUM),
+        _chunk(2, "more eligibility text", segment_id=Segment.ELIGIBILITY),
+    ]
+
+    result = chunks_for_segment(chunks, Segment.ELIGIBILITY)
+
+    assert [c.chunk_id for c in result] == [0, 2]
+
+
+def test_chunks_for_segment_excludes_unclassified():
+    chunks = [
+        _chunk(0, "eligibility text", segment_id=Segment.ELIGIBILITY),
+        _chunk(1, "stray text", segment_id="unclassified"),
+    ]
+
+    result = chunks_for_segment(chunks, Segment.ELIGIBILITY)
+
+    assert [c.chunk_id for c in result] == [0]
+
+
+def test_chunks_for_segment_returns_empty_list_when_no_match():
+    chunks = [_chunk(0, "curriculum text", segment_id=Segment.CURRICULUM)]
+
+    assert chunks_for_segment(chunks, Segment.ELIGIBILITY) == []
 
 
 def test_extract_course_detail_calls_client_with_expected_params():
