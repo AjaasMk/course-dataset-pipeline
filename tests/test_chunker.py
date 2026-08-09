@@ -286,3 +286,4 @@ def test_detect_pdf_sections_does_not_treat_long_sentence_as_heading():
     assert len(sections) == 1
     assert sections[0].heading_title == "PREAMBLE"
     assert len(sections[0].paragraphs) == 1
+

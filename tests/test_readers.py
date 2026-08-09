@@ -392,3 +392,47 @@ def test_read_html_skips_empty_sections(tmp_path):
 
     assert len(sections) == 1
     assert sections[0].heading_title == "Real Section"
+
+
+TABLE_ONLY_HTML = """
+<html><body>
+  <h1>NIRF 2025 Engineering Ranking</h1>
+  <table>
+    <tr><th>Institute ID</th><th>Name</th><th>City</th><th>Rank</th></tr>
+    <tr><td>IR-E-U-0456</td><td>Indian Institute of Technology Madras</td><td>Chennai</td><td>1</td></tr>
+    <tr><td>IR-E-I-1074</td><td>Indian Institute of Technology Delhi</td><td>New Delhi</td><td>2</td></tr>
+  </table>
+</body></html>
+"""
+
+
+def test_read_html_extracts_table_rows(tmp_path):
+    # Stage 1 now retrieves table-based sources (NIRF rankings, seat matrices).
+    # A reader that only collects p/li/heading returns nothing for them, which
+    # silently produced zero chunks for a page with 19,000 characters of text.
+    path = tmp_path / "ranking.html"
+    path.write_text(TABLE_ONLY_HTML, encoding="utf-8")
+
+    sections = read_html(path)
+
+    assert sections
+    rows = [p for s in sections for p in s.paragraphs]
+    assert any("Indian Institute of Technology Madras" in r for r in rows)
+
+
+def test_table_row_cells_stay_separated(tmp_path):
+    path = tmp_path / "ranking.html"
+    path.write_text(TABLE_ONLY_HTML, encoding="utf-8")
+
+    rows = [p for s in read_html(path) for p in s.paragraphs]
+    madras = next(r for r in rows if "Madras" in r)
+
+    assert "IR-E-U-0456" in madras and "Chennai" in madras
+    assert "IR-E-U-0456Indian" not in madras
+
+
+def test_empty_table_rows_are_skipped(tmp_path):
+    path = tmp_path / "empty.html"
+    path.write_text("<html><body><h1>T</h1><table><tr><td></td><td></td></tr></table></body></html>", encoding="utf-8")
+
+    assert [p for s in read_html(path) for p in s.paragraphs] == []

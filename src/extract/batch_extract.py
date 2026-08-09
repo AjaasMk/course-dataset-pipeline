@@ -8,6 +8,7 @@ from typing import Callable, Literal, Optional
 import anthropic
 from pydantic import BaseModel
 
+from src.extract.extract_inputs import read_extraction_inputs
 from src.extract.extractor import extract_course_detail
 from src.extract.models import Chunk
 from src.extract.retry import call_with_retry
@@ -101,7 +102,7 @@ def read_manifest_rows(db_path: Path) -> list[ManifestRow]:
 
 
 def extract_all_courses(
-    manifest_rows: list[ManifestRow],
+    inputs: list,
     chunks_dir: Path,
     extracted_dir: Path,
     extract_fn: Callable[[list[Chunk], str, str], CourseDetail] = extract_course_detail,
@@ -123,42 +124,43 @@ def extract_all_courses(
     hash_store = load_hash_store(hash_store_path)
     results: list[ExtractionResult] = []
 
-    for row in manifest_rows:
-        slug = Path(row.local_path).stem
-        chunk_path = chunks_dir / f"{slug}__{row.source_type}.json"
+    for row in inputs:
+        slug = row.course_id
         out_path = extracted_dir / f"{slug}.json"
 
         try:
-            chunks = load_chunks(chunk_path)
+            chunks = []
+            for filename in row.chunk_filenames:
+                chunks.extend(load_chunks(chunks_dir / filename))
         except Exception as exc:
-            logger.info("Course %r extraction failed: %s", row.course_name, exc)
+            logger.info("Course %r extraction failed: %s", row.course_id, exc)
             results.append(
-                ExtractionResult(course_name=row.course_name, outcome="extraction_failed", error=str(exc))
+                ExtractionResult(course_name=row.course_id, outcome="extraction_failed", error=str(exc))
             )
             continue
 
         new_hash = compute_chunk_hash(chunks)
         if hash_store.get(slug) == new_hash and out_path.exists():
-            logger.info("Course %r unchanged since last run, skipping", row.course_name)
-            results.append(ExtractionResult(course_name=row.course_name, outcome="skipped_unchanged"))
+            logger.info("Course %r unchanged since last run, skipping", row.course_id)
+            results.append(ExtractionResult(course_name=row.course_id, outcome="skipped_unchanged"))
             continue
 
         try:
             course_detail = call_with_retry(
-                lambda: extract_fn(chunks, row.course_name, row.category),
+                lambda: extract_fn(chunks, row.course_id, row.course_id),
                 retryable_errors=_RETRYABLE_ERRORS,
-                description=f"extract_course_detail({row.course_name!r})",
+                description=f"extract_course_detail({row.course_id!r})",
             )
         except Exception as exc:
-            logger.info("Course %r extraction failed: %s", row.course_name, exc)
+            logger.info("Course %r extraction failed: %s", row.course_id, exc)
             results.append(
-                ExtractionResult(course_name=row.course_name, outcome="extraction_failed", error=str(exc))
+                ExtractionResult(course_name=row.course_id, outcome="extraction_failed", error=str(exc))
             )
             continue
 
         out_path.write_text(course_detail.model_dump_json(indent=2), encoding="utf-8")
         hash_store[slug] = new_hash
-        results.append(ExtractionResult(course_name=row.course_name, outcome="extracted"))
+        results.append(ExtractionResult(course_name=row.course_id, outcome="extracted"))
 
     save_hash_store(hash_store_path, hash_store)
     return ExtractionBatchReport(results=results)
@@ -170,8 +172,11 @@ if __name__ == "__main__":
     load_dotenv()
     logging.basicConfig(level=logging.INFO, format="%(message)s")
 
-    manifest_rows = read_manifest_rows(Path("data/manifest.db"))
-    report = extract_all_courses(manifest_rows, CHUNKS_DIR, EXTRACTED_DIR)
+    from dotenv import load_dotenv
+
+    load_dotenv()
+    inputs = read_extraction_inputs()
+    report = extract_all_courses(inputs, CHUNKS_DIR, EXTRACTED_DIR)
 
     extracted = sum(1 for r in report.results if r.outcome == "extracted")
     skipped = sum(1 for r in report.results if r.outcome == "skipped_unchanged")

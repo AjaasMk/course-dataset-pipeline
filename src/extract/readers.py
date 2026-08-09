@@ -166,7 +166,10 @@ def read_html(path: Path) -> list[Section]:
     mediawiki_content = soup.find(id="mw-content-text")
     scope = mediawiki_content if mediawiki_content is not None else soup
 
-    elements = scope.find_all(list(_HEADING_TAGS.keys()) + ["p", "li"])
+    # Stage 1 retrieves table-based sources too -- NIRF rankings and seat
+    # matrices carry all their content in <tr>, so a reader collecting only
+    # p/li/headings returns nothing for them.
+    elements = scope.find_all(list(_HEADING_TAGS.keys()) + ["p", "li", "tr"])
 
     if mediawiki_content is not None:
         seen_h1 = True
@@ -197,6 +200,11 @@ def read_html(path: Path) -> list[Section]:
             flush()
             current_paragraphs = []
             current_heading = el.get_text(strip=True)
+        elif el.name == "tr":
+            cells = [c.get_text(" ", strip=True) for c in el.find_all(["td", "th"])]
+            row = " | ".join(c for c in cells if c)
+            if row:
+                current_paragraphs.append(row)
         else:
             text = el.get_text(strip=True)
             if text:

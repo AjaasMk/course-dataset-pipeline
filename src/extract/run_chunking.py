@@ -117,6 +117,9 @@ def chunk_all_documents(
 
 
 if __name__ == "__main__":
+    from dotenv import load_dotenv
+
+    load_dotenv()
     logging.basicConfig(level=logging.INFO, format="%(message)s")
 
     report = chunk_all_documents()
