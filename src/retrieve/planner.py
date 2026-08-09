@@ -111,15 +111,53 @@ _AREA_TO_SCHOLARSHIP_TERMS: dict[str, list[str]] = {
     "agriculture": ["ICAR"],
 }
 
+# NIRF (src/retrieve/nirf.py) already has its own category-alias system
+# (_CATEGORY_ALIASES) for exactly this reason -- one ranking table per
+# broad discipline, not per specific course/specialisation -- but the
+# alias vocabulary doesn't cover niche specialisation names, so a course
+# like "Urban Design" never fuzzy-matches its way to the "Architecture"
+# category on course name alone (confirmed live: 0.44 best, capped by
+# noise). Diagnostic sampling (2026-08-09, 90 courses across all 30
+# taxonomy fields) found this pattern at real scale: 152 below-threshold
+# NIRF intents just in that sample, across 4 segments simultaneously
+# (Institution & Offering, Ranking & Accreditation, Recruiters &
+# Placement, Salary -- NIRF serves all four).
+#
+# Deliberately scoped to the 7 areas where a real, specific NIRF category
+# exists AND already has a regulator_map area to key off of. NOT mapped:
+# general_university_degrees -> NIRF's generic "University"/"Overall"
+# category. That's a real ranking, but claiming it as "the Ranking
+# evidence" for, say, a Sports Science or Aviation course (both fall back
+# to this area) would be imprecise in exactly the way Hard Constraint 4
+# warns against -- a generic overall-universities list isn't
+# discipline-specific ranking evidence. Also not mapped: a "management"
+# area, since none exists in _FIELD_TO_REGULATOR_AREAS yet even though
+# NIRF has a real "Management" category -- a real follow-up opportunity,
+# not silently added here without extending that table first.
+_AREA_TO_NIRF_TERMS: dict[str, list[str]] = {
+    "engineering_technology": ["Engineering"],
+    "medicine": ["Medical"],
+    "dentistry": ["Dental"],
+    "pharmacy": ["Pharmacy"],
+    "law": ["Law"],
+    "architecture": ["Architecture"],
+    "agriculture": ["Agriculture"],
+}
+
 # (segment, source_id) -> the area-vocabulary map that source's real index is
-# organized by. Generalizes the NTA/CUET exam-vocabulary fix and the NSP
-# scholarship-vocabulary fix into one mechanism rather than duplicating the
-# lookup/union logic per source -- both fix the same root problem (a
-# source indexed by something other than course name) the same way.
+# organized by. Generalizes the NTA/CUET exam-vocabulary fix, the NSP
+# scholarship-vocabulary fix, and the NIRF category-vocabulary fix into one
+# mechanism rather than duplicating the lookup/union logic per source -- all
+# three fix the same root problem (a source indexed by something other than
+# course name) the same way.
 _AREA_VOCABULARY_BY_SEGMENT_SOURCE: dict[tuple[Segment, str], dict[str, list[str]]] = {
     (Segment.ENTRANCE_ADMISSION, "NTA"): _AREA_TO_EXAM_TERMS,
     (Segment.ENTRANCE_ADMISSION, "CUET"): _AREA_TO_EXAM_TERMS,
     (Segment.SCHOLARSHIPS, "NSP"): _AREA_TO_SCHOLARSHIP_TERMS,
+    (Segment.INSTITUTION_OFFERING, "NIRF"): _AREA_TO_NIRF_TERMS,
+    (Segment.RANKING_ACCREDITATION, "NIRF"): _AREA_TO_NIRF_TERMS,
+    (Segment.RECRUITERS_PLACEMENT, "NIRF"): _AREA_TO_NIRF_TERMS,
+    (Segment.SALARY, "NIRF"): _AREA_TO_NIRF_TERMS,
 }
 
 

@@ -254,3 +254,53 @@ def test_priority_starts_at_one_within_each_segment(registry):
         by_segment.setdefault(intent.segment, []).append(intent.priority)
     for priorities in by_segment.values():
         assert min(priorities) == 1
+
+
+def test_nirf_intents_for_architecture_include_the_category_term(registry):
+    # NIRF publishes one ranking table per broad discipline, not per
+    # specialisation -- confirmed live, "Urban Design" (an
+    # architecture-area course) scores only 0.44 on course name alone
+    # against NIRF's real index, capped by noise, well below threshold.
+    architecture = _course(
+        course_id="urban_design", standard_course_name="Urban Design",
+        fields=["Architecture, Planning & Built"], aliases=[],
+    )
+    intents = plan_course(architecture, registry)
+    nirf_intents = [i for i in intents if i.source_id == "NIRF"]
+    assert nirf_intents
+    for intent in nirf_intents:
+        assert "Architecture" in intent.query_terms
+
+
+def test_nirf_vocabulary_covers_all_four_segments_nirf_serves(registry):
+    architecture = _course(
+        course_id="urban_design", standard_course_name="Urban Design",
+        fields=["Architecture, Planning & Built"], aliases=[],
+    )
+    segments_with_nirf_vocab = {
+        i.segment for i in plan_course(architecture, registry)
+        if i.source_id == "NIRF" and "Architecture" in i.query_terms
+    }
+    assert segments_with_nirf_vocab == {
+        Segment.INSTITUTION_OFFERING, Segment.RANKING_ACCREDITATION,
+        Segment.RECRUITERS_PLACEMENT, Segment.SALARY,
+    }
+
+
+def test_nirf_vocabulary_is_not_added_for_the_default_fallback_area(registry):
+    # Sports Science has no regulator-map area of its own -- it falls back
+    # to general_university_degrees, which is deliberately NOT mapped to
+    # NIRF's generic "University"/"Overall" category (see planner.py
+    # comment: claiming a generic overall-universities ranking as
+    # discipline-specific Ranking evidence for Sports Science would be
+    # imprecise, not a real fix).
+    sports = _course(
+        course_id="sports_science", standard_course_name="Sports Science (Core / General)",
+        fields=["Sports, Physical Education & We"], aliases=[],
+    )
+    intents = plan_course(sports, registry)
+    nirf_intents = [i for i in intents if i.source_id == "NIRF"]
+    assert nirf_intents
+    for intent in nirf_intents:
+        assert "Architecture" not in intent.query_terms
+        assert "Engineering" not in intent.query_terms
