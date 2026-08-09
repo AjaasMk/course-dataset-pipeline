@@ -175,6 +175,50 @@ def _area_vocabulary_terms(
     return terms
 
 
+# NCS's 52 real sectors (src/retrieve/ncs.py) are labour-market sectors, not
+# regulator areas -- Computing and Engineering share a regulator_map area
+# (both "engineering_technology") but need different sectors entirely
+# (IT-ITeS vs manufacturing-adjacent ones), so the area abstraction used
+# above is too coarse here. Keyed on the raw taxonomy field instead.
+#
+# Deliberately scoped to fields with an unambiguous, near-exact sector name
+# match -- confirmed live, all 12 distinct terms below score 1.00 against
+# their intended sector with the next-closest candidate no higher than 0.77
+# (Legal Activities vs Water Supply/Sewerage/Waste Management), safely below
+# the 0.80 threshold. Fields left out deliberately, not by oversight: no
+# single NCS sector cleanly represents them (Engineering spans several
+# manufacturing-adjacent sectors depending on sub-discipline; Business/
+# Management, Design, Performing Arts, and the remaining ~14 fields have no
+# comparably clean match) -- forcing one would be the same imprecision Hard
+# Constraint 4 warns against, not a fix.
+_FIELD_TO_NCS_TERMS: dict[str, list[str]] = {
+    "Computing, AI & Information Sys": ["IT-ITeS"],
+    "Agriculture, Food & Natural Res": ["Agriculture"],
+    "Medicine, Dentistry & Clinical ": ["Healthcare"],
+    "Nursing, Pharmacy & Allied Heal": ["Healthcare"],
+    "Public Health & Healthcare Mana": ["Healthcare"],
+    "Law, Governance & Public Policy": ["Legal Activities"],
+    "Education & Teaching": ["Education, Training and Research"],
+    "Environment, Sustainability & C": ["Environmental Science"],
+    "Sports, Physical Education & We": ["Sports, Physical Education, Fitness and Leisure"],
+    "Hospitality, Tourism, Culinary ": ["Tourism and Hospitality"],
+    "Communication, Journalism & Med": ["Media and Entertainment"],
+    "Film, Animation, Gaming & Inter": ["Media and Entertainment"],
+    "Architecture, Planning & Built": ["Construction"],
+    "Accounting, Finance, Economics ": ["BFSI"],
+    "Aviation, Maritime, Transport &": ["Aerospace and Aviation"],
+}
+
+
+def _ncs_terms_for(course: Course) -> list[str]:
+    terms: list[str] = []
+    for field in course.fields:
+        for term in _FIELD_TO_NCS_TERMS.get(field, []):
+            if term not in terms:
+                terms.append(term)
+    return terms
+
+
 def regulator_areas_for(fields: list[str]) -> list[str]:
     areas: list[str] = []
     for field in fields:
@@ -265,12 +309,14 @@ def plan_course(
                     continue
 
                 priority += 1
-                # Union, not replace: area vocabulary only ever adds
+                # Union, not replace: extra vocabulary only ever adds
                 # candidate terms, and fuzz.token_set_ratio's per-title
                 # score is a max() over query_terms, so adding terms can
                 # only raise or hold a candidate's score, never lower it.
-                area_terms = _area_vocabulary_terms(segment, source_id, course, registry)
-                terms = query_terms + [t for t in area_terms if t not in query_terms]
+                extra_terms = _area_vocabulary_terms(segment, source_id, course, registry)
+                if segment == Segment.CAREER_MAPPING and source_id == "NCS":
+                    extra_terms = extra_terms + _ncs_terms_for(course)
+                terms = query_terms + [t for t in extra_terms if t not in query_terms]
                 intents.append(
                     RetrievalIntent(
                         # Content-derived, not order-derived: RETRIEVAL_SEGMENTS

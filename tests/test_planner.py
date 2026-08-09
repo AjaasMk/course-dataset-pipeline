@@ -304,3 +304,42 @@ def test_nirf_vocabulary_is_not_added_for_the_default_fallback_area(registry):
     for intent in nirf_intents:
         assert "Architecture" not in intent.query_terms
         assert "Engineering" not in intent.query_terms
+
+
+def test_ncs_intents_for_computing_include_the_it_ites_sector_term(registry):
+    # NCS's 52 sectors are labour-market sectors, not regulator areas --
+    # confirmed live, "Computer Science & Engineering" scores well below
+    # threshold on course name alone against NCS's real index, but "IT-ITeS"
+    # scores 1.00 with zero collisions across all 52 real sectors.
+    computing = _course(
+        course_id="cse", standard_course_name="Computer Science & Engineering",
+        fields=["Computing, AI & Information Sys"], aliases=[],
+    )
+    intents = plan_course(computing, registry)
+    ncs_intents = [i for i in intents if i.segment == Segment.CAREER_MAPPING and i.source_id == "NCS"]
+    assert ncs_intents
+    for intent in ncs_intents:
+        assert "IT-ITeS" in intent.query_terms
+
+
+def test_ncs_terms_differ_from_engineering_despite_the_same_regulator_area(registry):
+    # Computing and Engineering share regulator area "engineering_technology"
+    # -- NCS vocabulary must still differ, since it's keyed on the raw
+    # taxonomy field, not the coarser regulator area (Engineering has no NCS
+    # mapping at all: no single sector cleanly represents it).
+    engineering = _course(fields=["Engineering & Applied Technolog"])  # default _course() fixture
+    intents = plan_course(engineering, registry)
+    ncs_intents = [i for i in intents if i.segment == Segment.CAREER_MAPPING and i.source_id == "NCS"]
+    assert ncs_intents
+    for intent in ncs_intents:
+        assert "IT-ITeS" not in intent.query_terms
+
+
+def test_ncs_vocabulary_is_not_added_outside_career_mapping(registry):
+    computing = _course(
+        course_id="cse", standard_course_name="Computer Science & Engineering",
+        fields=["Computing, AI & Information Sys"], aliases=[],
+    )
+    for intent in plan_course(computing, registry):
+        if not (intent.segment == Segment.CAREER_MAPPING and intent.source_id == "NCS"):
+            assert "IT-ITeS" not in intent.query_terms
