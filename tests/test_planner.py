@@ -50,6 +50,51 @@ def test_query_terms_include_the_course_name_and_its_aliases(registry):
     assert "Mechanical Engineering" in intent.query_terms
 
 
+def test_entrance_intents_against_exam_sources_include_exam_vocabulary(registry):
+    # NTA/CUET publish per-EXAM pages (Joint Entrance Examination, NEET,
+    # CUET-UG), not per-COURSE pages -- fuzzy-matching a course name alone
+    # against an exam title structurally caps out around 0.4-0.5, confirmed
+    # live against the real NTA index for "Physics (Core)" (best: 0.50 vs
+    # "Joint Entrance Examination"). Course-name terms alone are kept (other
+    # candidates might still be a real course-name match some day), but for
+    # engineering specifically the union must also carry JEE vocabulary so a
+    # document actually titled "Joint Entrance Examination" can score high.
+    engineering = _course(fields=["Engineering & Applied Technolog"])
+    intents = plan_course(engineering, registry)
+    nta_entrance = [
+        i for i in intents if i.segment == Segment.ENTRANCE_ADMISSION and i.source_id == "NTA"
+    ]
+    assert nta_entrance
+    for intent in nta_entrance:
+        assert any("Joint Entrance Examination" in t or "JEE" in t for t in intent.query_terms)
+        assert "Mechanical Engineering" in intent.query_terms  # course-name terms still present
+
+
+def test_entrance_intents_for_medicine_include_neet_vocabulary(registry):
+    medicine = _course(
+        course_id="mbbs", standard_course_name="MBBS", fields=["Medicine, Dentistry & Clinical "],
+        aliases=[],
+    )
+    intents = plan_course(medicine, registry)
+    nta_entrance = [
+        i for i in intents if i.segment == Segment.ENTRANCE_ADMISSION and i.source_id == "NTA"
+    ]
+    assert nta_entrance
+    for intent in nta_entrance:
+        assert any("NEET" in t or "National Eligibility Cum Entrance Test" in t for t in intent.query_terms)
+
+
+def test_exam_vocabulary_is_not_added_outside_entrance_admission(registry):
+    # Adding exam terms to, say, Eligibility/UGC query_terms would just be
+    # noise -- scoped to the one segment and the two exam-organized sources
+    # (NTA, CUET) it actually fixes.
+    engineering = _course(fields=["Engineering & Applied Technolog"])
+    for intent in plan_course(engineering, registry):
+        exam_scoped = intent.segment == Segment.ENTRANCE_ADMISSION and intent.source_id in {"NTA", "CUET"}
+        if not exam_scoped:
+            assert not any("Joint Entrance Examination" in t for t in intent.query_terms)
+
+
 def test_tier_d_sources_are_only_ever_planned_as_discovery(registry):
     for intent in plan_course(_course(), registry):
         if all(t in (SourceTier.D, SourceTier.E, SourceTier.F) for t in registry.tiers_for(intent.source_id)):

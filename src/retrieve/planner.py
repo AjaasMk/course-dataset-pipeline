@@ -60,6 +60,45 @@ _FIELD_TO_REGULATOR_AREAS = {
 }
 _DEFAULT_REGULATOR_AREA = "general_university_degrees"
 
+# NTA/CUET publish per-EXAM pages (Joint Entrance Examination, NEET,
+# CUET-UG), not per-COURSE pages -- fuzzy-matching a course name alone
+# against an exam title structurally caps out around 0.4-0.5 (confirmed
+# live, e.g. "Physics (Core)" vs "Joint Entrance Examination": 0.50),
+# comfortably below the 0.80 match threshold no matter how good the fuzzy
+# matcher is, because the two strings describe different things. This maps
+# a course's regulator area to the exam vocabulary that source actually
+# indexes under -- ONLY for areas verified against NTA's real 10-exam
+# index (src/retrieve/nta.py), not guessed. Areas with a real national
+# entrance exam NOT administered by NTA (architecture/NATA via COA,
+# law/CLAT via the NLU Consortium) are deliberately left out: forcing a
+# match against NTA's index for those would either find nothing (honest
+# unresolved, no regression) or, worse, coincidentally match an unrelated
+# NTA exam -- omission is the safe default here, not an oversight.
+_AREA_TO_EXAM_TERMS: dict[str, list[str]] = {
+    "engineering_technology": ["Joint Entrance Examination", "JEE"],
+    "medicine": ["National Eligibility Cum Entrance Test", "NEET"],
+    "dentistry": ["National Eligibility Cum Entrance Test", "NEET"],
+    "agriculture": ["ICAR", "All India Entrance Examination"],
+    "general_university_degrees": ["Common University Entrance Test", "CUET"],
+}
+
+# Scoped to the sources actually organized by exam name, not course name --
+# JoSAA/CSAB/MCC/CEE_KERALA/LBS_KERALA publish seat-matrix/counselling data
+# under their OWN exam already (JoSAA only ever means JEE, MCC only ever
+# means NEET), so their course-name-match failures are a different problem
+# (structured tabular data, not a document to fuzzy-match a title against)
+# -- not addressed by this fix.
+_EXAM_VOCABULARY_SOURCES = frozenset({"NTA", "CUET"})
+
+
+def _exam_terms_for(course: Course, registry: SourceRegistry) -> list[str]:
+    terms: list[str] = []
+    for area in regulator_areas_for(course.fields):
+        for term in _AREA_TO_EXAM_TERMS.get(area, []):
+            if term not in terms:
+                terms.append(term)
+    return terms
+
 
 def regulator_areas_for(fields: list[str]) -> list[str]:
     areas: list[str] = []
@@ -127,6 +166,7 @@ def plan_course(
     # route to -- default to the retrieval-facing subset, not the full taxonomy.
     wanted = segments if segments is not None else list(RETRIEVAL_SEGMENTS)
     query_terms = _query_terms(course)
+    exam_terms = _exam_terms_for(course, registry)
     regulators = _regulator_sources(registry)
     permitted = _permitted_regulators(registry, course.fields)
 
@@ -151,6 +191,15 @@ def plan_course(
                     continue
 
                 priority += 1
+                # Union, not replace: exam vocabulary only ever adds
+                # candidate terms, and fuzz.token_set_ratio's per-title
+                # score is a max() over query_terms, so adding terms can
+                # only raise or hold a candidate's score, never lower it.
+                terms = (
+                    query_terms + [t for t in exam_terms if t not in query_terms]
+                    if segment == Segment.ENTRANCE_ADMISSION and source_id in _EXAM_VOCABULARY_SOURCES
+                    else query_terms
+                )
                 intents.append(
                     RetrievalIntent(
                         # Content-derived, not order-derived: RETRIEVAL_SEGMENTS
@@ -172,7 +221,7 @@ def plan_course(
                         source_id=source_id,
                         priority=priority,
                         role=_role_for(registry, source_id, listed_as, floor),
-                        query_terms=query_terms,
+                        query_terms=terms,
                         required_document_type=_document_types(source_id),
                         qualification_level=qualification_level,
                     )
