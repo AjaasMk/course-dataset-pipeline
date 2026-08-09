@@ -94,19 +94,44 @@ _AREA_TO_EXAM_TERMS: dict[str, list[str]] = {
     "general_university_degrees": ["CUET"],
 }
 
-# Scoped to the sources actually organized by exam name, not course name --
-# JoSAA/CSAB/MCC/CEE_KERALA/LBS_KERALA publish seat-matrix/counselling data
-# under their OWN exam already (JoSAA only ever means JEE, MCC only ever
-# means NEET), so their course-name-match failures are a different problem
-# (structured tabular data, not a document to fuzzy-match a title against)
-# -- not addressed by this fix.
-_EXAM_VOCABULARY_SOURCES = frozenset({"NTA", "CUET"})
+# NSP's 31 real schemes (src/retrieve/nsp.py) are organized by beneficiary
+# category (SC/ST/OBC/disability/merit/regional), not by field of study --
+# matching a course name alone caps around 0.3-0.4 for almost all of them,
+# and correctly stays unresolved (that's not a bug: a generic SC/ST scheme
+# genuinely has no course-specific angle). The exception: 6 AICTE-branded
+# schemes (Pragati/Saksham/Swanath) explicitly target "Technical Degree"/
+# "Technical Diploma" students, and 4 ICAR schemes explicitly target
+# agriculture. Confirmed live: "AICTE Technical" scores 100 against all 6
+# with zero false positives across the other 25 (next closest: 32.9);
+# "ICAR" scores 100 against all 4 (next closest: 15.1). Every other
+# course area is deliberately left unmapped -- there is no other
+# course-specific scheme in NSP's real index to route to.
+_AREA_TO_SCHOLARSHIP_TERMS: dict[str, list[str]] = {
+    "engineering_technology": ["AICTE Technical"],
+    "agriculture": ["ICAR"],
+}
+
+# (segment, source_id) -> the area-vocabulary map that source's real index is
+# organized by. Generalizes the NTA/CUET exam-vocabulary fix and the NSP
+# scholarship-vocabulary fix into one mechanism rather than duplicating the
+# lookup/union logic per source -- both fix the same root problem (a
+# source indexed by something other than course name) the same way.
+_AREA_VOCABULARY_BY_SEGMENT_SOURCE: dict[tuple[Segment, str], dict[str, list[str]]] = {
+    (Segment.ENTRANCE_ADMISSION, "NTA"): _AREA_TO_EXAM_TERMS,
+    (Segment.ENTRANCE_ADMISSION, "CUET"): _AREA_TO_EXAM_TERMS,
+    (Segment.SCHOLARSHIPS, "NSP"): _AREA_TO_SCHOLARSHIP_TERMS,
+}
 
 
-def _exam_terms_for(course: Course, registry: SourceRegistry) -> list[str]:
+def _area_vocabulary_terms(
+    segment: Segment, source_id: str, course: Course, registry: SourceRegistry
+) -> list[str]:
+    area_terms = _AREA_VOCABULARY_BY_SEGMENT_SOURCE.get((segment, source_id))
+    if area_terms is None:
+        return []
     terms: list[str] = []
     for area in regulator_areas_for(course.fields):
-        for term in _AREA_TO_EXAM_TERMS.get(area, []):
+        for term in area_terms.get(area, []):
             if term not in terms:
                 terms.append(term)
     return terms
@@ -178,7 +203,6 @@ def plan_course(
     # route to -- default to the retrieval-facing subset, not the full taxonomy.
     wanted = segments if segments is not None else list(RETRIEVAL_SEGMENTS)
     query_terms = _query_terms(course)
-    exam_terms = _exam_terms_for(course, registry)
     regulators = _regulator_sources(registry)
     permitted = _permitted_regulators(registry, course.fields)
 
@@ -203,15 +227,12 @@ def plan_course(
                     continue
 
                 priority += 1
-                # Union, not replace: exam vocabulary only ever adds
+                # Union, not replace: area vocabulary only ever adds
                 # candidate terms, and fuzz.token_set_ratio's per-title
                 # score is a max() over query_terms, so adding terms can
                 # only raise or hold a candidate's score, never lower it.
-                terms = (
-                    query_terms + [t for t in exam_terms if t not in query_terms]
-                    if segment == Segment.ENTRANCE_ADMISSION and source_id in _EXAM_VOCABULARY_SOURCES
-                    else query_terms
-                )
+                area_terms = _area_vocabulary_terms(segment, source_id, course, registry)
+                terms = query_terms + [t for t in area_terms if t not in query_terms]
                 intents.append(
                     RetrievalIntent(
                         # Content-derived, not order-derived: RETRIEVAL_SEGMENTS

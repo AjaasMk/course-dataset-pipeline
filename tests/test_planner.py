@@ -87,6 +87,60 @@ def test_entrance_intents_for_medicine_include_neet_vocabulary(registry):
         assert "NEET" in intent.query_terms
 
 
+def test_scholarship_intents_for_engineering_include_aicte_technical_vocabulary(registry):
+    # NSP's 31 real schemes are organized by beneficiary category (SC/ST/
+    # OBC/disability/merit/regional), not by field of study -- matching a
+    # course name alone caps around 0.3-0.4 for almost all of them, and
+    # correctly stays unresolved for schemes that genuinely have no
+    # course-specific angle (that's not a bug -- a generic SC/ST scheme
+    # doesn't belong to "Mechanical Engineering" specifically). The
+    # exception: NSP's 6 AICTE-branded schemes (Pragati/Saksham/Swanath)
+    # explicitly target "Technical Degree"/"Technical Diploma" students --
+    # confirmed live, "AICTE Technical" scores 100 against all 6 with zero
+    # false positives across the other 25 schemes (next closest: 32.9).
+    engineering = _course(fields=["Engineering & Applied Technolog"])
+    intents = plan_course(engineering, registry)
+    nsp_scholarships = [
+        i for i in intents if i.segment == Segment.SCHOLARSHIPS and i.source_id == "NSP"
+    ]
+    assert nsp_scholarships
+    for intent in nsp_scholarships:
+        assert "AICTE Technical" in intent.query_terms
+
+
+def test_scholarship_intents_for_agriculture_include_icar_vocabulary(registry):
+    agriculture = _course(
+        course_id="agronomy", standard_course_name="Agronomy",
+        fields=["Agriculture, Food & Natural Res"], aliases=[],
+    )
+    intents = plan_course(agriculture, registry)
+    nsp_scholarships = [
+        i for i in intents if i.segment == Segment.SCHOLARSHIPS and i.source_id == "NSP"
+    ]
+    assert nsp_scholarships
+    for intent in nsp_scholarships:
+        assert "ICAR" in intent.query_terms
+
+
+def test_scholarship_vocabulary_is_not_added_for_an_unmapped_area(registry):
+    # Law has no course-area-specific NSP scheme (the client's own scheme
+    # list has nothing law-specific) -- must not force a vocabulary term
+    # that doesn't correspond to anything real just because a mapping
+    # exists for OTHER areas.
+    law = _course(
+        course_id="criminal_law", standard_course_name="Criminal Law",
+        fields=["Law, Governance & Public Policy"], aliases=[],
+    )
+    intents = plan_course(law, registry)
+    nsp_scholarships = [
+        i for i in intents if i.segment == Segment.SCHOLARSHIPS and i.source_id == "NSP"
+    ]
+    assert nsp_scholarships
+    for intent in nsp_scholarships:
+        assert "AICTE Technical" not in intent.query_terms
+        assert "ICAR" not in intent.query_terms
+
+
 def test_exam_vocabulary_is_not_added_outside_entrance_admission(registry):
     # Adding exam terms to, say, Eligibility/UGC query_terms would just be
     # noise -- scoped to the one segment and the two exam-organized sources
@@ -94,7 +148,8 @@ def test_exam_vocabulary_is_not_added_outside_entrance_admission(registry):
     engineering = _course(fields=["Engineering & Applied Technolog"])
     for intent in plan_course(engineering, registry):
         exam_scoped = intent.segment == Segment.ENTRANCE_ADMISSION and intent.source_id in {"NTA", "CUET"}
-        if not exam_scoped:
+        scholarship_scoped = intent.segment == Segment.SCHOLARSHIPS and intent.source_id == "NSP"
+        if not exam_scoped and not scholarship_scoped:
             assert "JEE" not in intent.query_terms
 
 

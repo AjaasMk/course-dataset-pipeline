@@ -80,6 +80,21 @@ def test_scheme_name_survives_a_block_without_the_marker():
     assert scheme_name_from_block("Some Scholarship") == "Some Scholarship"
 
 
+def test_scheme_name_is_cut_at_the_not_yet_opened_marker():
+    # Confirmed live 2026-08-09: schemes not yet open for the current cycle
+    # use a different status template than "Scheme Open from : <date>" --
+    # _OPEN_MARKER doesn't match it, so this boilerplate was leaking
+    # straight into the index and polluting the title used for matching.
+    block = (
+        "National Scholarship For Post Graduate Studies (Merit Based Scheme) "
+        "Scheme : NOT YET OPENED Student Application : NOT YET OPENED "
+        "Defective Application Verification : NOT YET OPENED "
+        "Institute Verification : NOT YET OPENED DNO/SNO/MNO Verification : "
+        "NOT YET OPENED Specifications FAQ"
+    )
+    assert scheme_name_from_block(block) == "National Scholarship For Post Graduate Studies (Merit Based Scheme)"
+
+
 @patch("src.retrieve.nsp.requests.get")
 def test_index_is_keyed_by_scheme_name_not_link_text(mock_get, adapter):
     mock_get.return_value = _html_response()

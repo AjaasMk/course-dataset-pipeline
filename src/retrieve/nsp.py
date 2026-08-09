@@ -23,13 +23,21 @@ ANCESTOR_DEPTH = 4
 
 _SPEC_LABEL = "specifications"
 _OPEN_MARKER = re.compile(r"\s*Scheme\s*Open from.*$|\s*Open from.*$", re.I | re.S)
+# A scheme not yet open for the current cycle uses a different status
+# template than "Scheme Open from : <date>" -- confirmed live 2026-08-09,
+# this was leaking straight into the index and polluting several real
+# scheme titles (e.g. "National Scholarship For Post Graduate Studies")
+# with ~200 chars of "X : NOT YET OPENED" boilerplate.
+_NOT_YET_OPENED_MARKER = re.compile(r"\s*Scheme\s*:\s*NOT YET OPENED.*$", re.I | re.S)
 _TRAILING_SCHEME = re.compile(r"\s+Scheme\s*$", re.I)
 _MIN_BLOCK_CHARS = 40
 _EXACT_SCORE = 99
 
 
 def scheme_name_from_block(text: str) -> str:
-    name = _OPEN_MARKER.sub("", " ".join(text.split()))
+    name = " ".join(text.split())
+    name = _OPEN_MARKER.sub("", name)
+    name = _NOT_YET_OPENED_MARKER.sub("", name)
     return _TRAILING_SCHEME.sub("", name).strip()
 
 
