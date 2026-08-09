@@ -57,8 +57,10 @@ def test_entrance_intents_against_exam_sources_include_exam_vocabulary(registry)
     # live against the real NTA index for "Physics (Core)" (best: 0.50 vs
     # "Joint Entrance Examination"). Course-name terms alone are kept (other
     # candidates might still be a real course-name match some day), but for
-    # engineering specifically the union must also carry JEE vocabulary so a
-    # document actually titled "Joint Entrance Examination" can score high.
+    # engineering specifically the union must also carry the bare acronym
+    # "JEE" -- not the full title, which collides with "Hotel Management
+    # Joint Entrance Examination" under token_set_ratio (confirmed live,
+    # see src/retrieve/planner.py and tests/test_nta.py).
     engineering = _course(fields=["Engineering & Applied Technolog"])
     intents = plan_course(engineering, registry)
     nta_entrance = [
@@ -66,7 +68,8 @@ def test_entrance_intents_against_exam_sources_include_exam_vocabulary(registry)
     ]
     assert nta_entrance
     for intent in nta_entrance:
-        assert any("Joint Entrance Examination" in t or "JEE" in t for t in intent.query_terms)
+        assert "JEE" in intent.query_terms
+        assert "Joint Entrance Examination" not in intent.query_terms
         assert "Mechanical Engineering" in intent.query_terms  # course-name terms still present
 
 
@@ -81,7 +84,7 @@ def test_entrance_intents_for_medicine_include_neet_vocabulary(registry):
     ]
     assert nta_entrance
     for intent in nta_entrance:
-        assert any("NEET" in t or "National Eligibility Cum Entrance Test" in t for t in intent.query_terms)
+        assert "NEET" in intent.query_terms
 
 
 def test_exam_vocabulary_is_not_added_outside_entrance_admission(registry):
@@ -92,7 +95,7 @@ def test_exam_vocabulary_is_not_added_outside_entrance_admission(registry):
     for intent in plan_course(engineering, registry):
         exam_scoped = intent.segment == Segment.ENTRANCE_ADMISSION and intent.source_id in {"NTA", "CUET"}
         if not exam_scoped:
-            assert not any("Joint Entrance Examination" in t for t in intent.query_terms)
+            assert "JEE" not in intent.query_terms
 
 
 def test_tier_d_sources_are_only_ever_planned_as_discovery(registry):

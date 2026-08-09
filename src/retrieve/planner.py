@@ -74,12 +74,24 @@ _DEFAULT_REGULATOR_AREA = "general_university_degrees"
 # match against NTA's index for those would either find nothing (honest
 # unresolved, no regression) or, worse, coincidentally match an unrelated
 # NTA exam -- omission is the safe default here, not an oversight.
+#
+# Bare acronyms ONLY, never a full official title. Confirmed live: the
+# full title "Joint Entrance Examination" scores 1.00 against BOTH the
+# correct jeemain document AND "Hotel Management Joint Entrance
+# Examination" (nchm-jee) -- token_set_ratio treats the shorter title as a
+# full token-subset of the longer one. "All India Entrance Examination"
+# has the same problem (0.80-0.87 against unrelated exams that happen to
+# share "Entrance Examination" wording). Bare acronyms route through
+# NTA's own curated _EXAM_ALIASES vocabulary instead of a literal-substring
+# match against raw titles, and were confirmed live to have zero
+# collisions across all 10 real NTA exam titles (src/retrieve/nta.py,
+# see test_known_limitation_a_full_exam_title_...).
 _AREA_TO_EXAM_TERMS: dict[str, list[str]] = {
-    "engineering_technology": ["Joint Entrance Examination", "JEE"],
-    "medicine": ["National Eligibility Cum Entrance Test", "NEET"],
-    "dentistry": ["National Eligibility Cum Entrance Test", "NEET"],
-    "agriculture": ["ICAR", "All India Entrance Examination"],
-    "general_university_degrees": ["Common University Entrance Test", "CUET"],
+    "engineering_technology": ["JEE"],
+    "medicine": ["NEET"],
+    "dentistry": ["NEET"],
+    "agriculture": ["ICAR"],
+    "general_university_degrees": ["CUET"],
 }
 
 # Scoped to the sources actually organized by exam name, not course name --
