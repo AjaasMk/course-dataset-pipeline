@@ -684,7 +684,17 @@ sources:
     best_used_for: Discovery of courses, colleges, fees, exams and reviews
     usage_rule: Verify factual data against official sources
     refresh: rolling
-    status: unverified
+    status: blocked
+    # CONFIRMED blocked 2026-08-09. Plain requests: 403 "Access Denied"
+    # (Akamai edgesuite). Realistic browser headers: still 403, identical
+    # body. Real Playwright/Chromium rendering: still the SAME 403 "Access
+    # Denied" page, not a JS shell. This is Akamai Bot Manager actively
+    # detecting and rejecting the client, not a missing-header or
+    # JS-rendering gap -- going further (navigator.webdriver spoofing,
+    # residential proxies) is evasion, the same category this project's
+    # hard line already excludes for CAPTCHAs. Not attempted. COLLEGEDUNIA
+    # covers the same best_used_for niche and is verified live -- no loss
+    # of real coverage from leaving this blocked.
 
   CAREERS360:
     name: Careers360
@@ -710,7 +720,19 @@ sources:
     best_used_for: Course, college, fee and review discovery
     usage_rule: Verify with prospectus and official portals
     refresh: rolling
-    status: unverified
+    status: verified
+    # VERIFIED live 2026-08-09 via CollegeDuniaAdapter (src/retrieve/collegedunia.py).
+    # Plain requests (base.USER_AGENT): 403 (CloudFront "Request blocked").
+    # Realistic browser headers: 200, real server-rendered content, real fee
+    # figures confirmed in the raw HTML (e.g. "the fees range from INR 13.5 K
+    # ... to INR 4.81 La[kh]" on /bsc-colleges). /courses lists 20 real
+    # course-category pages (/bsc-colleges, /btech-colleges, etc.) -- broad
+    # degree level only, not per-specialization, so this is coarse Tier D
+    # corroboration (e.g. every B.Sc.-prefixed course matches the same
+    # generic B.Sc page), never a per-course canonical fact. build_index()/
+    # resolve()/download() all confirmed working end to end; download()
+    # requires the same realistic headers as resolve() -- fetch_and_store()
+    # (src/retrieve/base.py) gained an optional headers override for this.
 
 # Course area -> primary regulator + secondary validation, from the cookbook's
 # Regulator Map sheet. Routes a course family to the right Tier A authority.
@@ -807,7 +829,12 @@ segment_sources:
     min_tier: A
   Fees:
     preferred: [CEE_KERALA, LBS_KERALA, DTE_KERALA]
-    secondary: [JOSAA, MCC]
+    # COLLEGEDUNIA added 2026-08-09: Tier D, so it always resolves to
+    # IntentRole.DISCOVERY regardless of listing here (_role_for() checks
+    # tier membership in _NON_CANONICAL before the preferred/secondary
+    # split) -- never canonical, per Hard Constraint 3, but real
+    # corroboration where the Kerala-scoped preferred sources have none.
+    secondary: [JOSAA, MCC, COLLEGEDUNIA]
     min_tier: B
   Scholarships:
     preferred: [NSP, AICTE]

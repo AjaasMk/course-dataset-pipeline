@@ -2,7 +2,7 @@ import hashlib
 import re
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Protocol
+from typing import Optional, Protocol
 
 import requests
 
@@ -43,6 +43,7 @@ def fetch_and_store(
     source_tier: SourceTier,
     raw_dir: Path,
     extension: str,
+    headers: Optional[dict] = None,
 ) -> DocumentRecord:
     existing = store.get_document_by_url(document.document_url)
     if existing is not None:
@@ -50,7 +51,7 @@ def fetch_and_store(
 
     response = requests.get(
         document.document_url,
-        headers={"User-Agent": USER_AGENT},
+        headers=headers or {"User-Agent": USER_AGENT},
         timeout=REQUEST_TIMEOUT,
     )
     response.raise_for_status()

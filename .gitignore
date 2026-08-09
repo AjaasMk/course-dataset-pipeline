@@ -21,6 +21,9 @@ data/source_probe_report.json
 data/probe_*.json
 data/institutions.db
 data/stage1_report.json
+data/stage1_report_full.json
+data/stage1_fees_check.json
+data/stage1_full_run.log
 data/institution_registry_report.json
 data/facts.db
 data/course_facts.db

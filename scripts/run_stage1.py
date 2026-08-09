@@ -5,6 +5,7 @@ from pathlib import Path
 from src.courses.taxonomy import load_taxonomy
 from src.retrieve.aicte import AICTEAdapter
 from src.retrieve.careers360 import Careers360Adapter
+from src.retrieve.collegedunia import CollegeDuniaAdapter
 from src.retrieve.ncs import NCSAdapter
 from src.retrieve.nirf import NIRFAdapter
 from src.retrieve.notice_board import NoticeBoardAdapter
@@ -30,6 +31,7 @@ def build_adapters() -> dict:
         NQRAdapter(),
         NSPAdapter(),
         Careers360Adapter(),
+        CollegeDuniaAdapter(),
         NoticeBoardAdapter("CUET", [SourceTier.A], "https://cuet.nta.nic.in/"),
         NoticeBoardAdapter("JOSAA", [SourceTier.A], "https://josaa.nic.in/"),
         NoticeBoardAdapter("CSAB", [SourceTier.A], "https://csab.nic.in/"),
