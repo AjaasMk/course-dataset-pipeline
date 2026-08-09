@@ -600,10 +600,12 @@ them is the anchor text:
 | NTA | anchor text, but as formal expansions needing discipline aliases |
 | UGC | the **filename**, behind a numeric upload id; anchor says "View" |
 | NCS | the **query string** (`FilterValue1=…`); anchors again have no text |
+| NQR | anchor text — conventional, the only other one besides AICTE |
+| NSP | an **ancestor block**; every document link just says "Specifications" |
 
-Five adapters, five different answers. Any remaining regulator adapter should be
-assumed to need its own variant rather than a shared "scrape the link text"
-helper — that helper would have worked for exactly one of these.
+Eight adapters, six different answers. A shared "scrape the link text" helper
+would have worked for two of them. Any remaining regulator adapter should be
+assumed to need its own variant.
 
 **`NCSAdapter` — verified.** 52 sectors indexed live. NCS is the source that most
 clearly justifies the intent-first model: its sectors share no vocabulary with
@@ -674,7 +676,31 @@ the orchestrator that consumes it. Today `validate_intent()` enforces the global
 stops a Tier B source taking primary on Ranking & Accreditation where the cookbook
 requires Tier A.
 
-**Still to do in this phase:** NBA, NQR, NCS, NSDC, NSP and NATS adapters. NCTE
+**`NQRAdapter` — verified.** 61 qualification sectors from the homepage, each
+linking to `/qualifications-search/<id>`. Conventional anchor text. Same planner
+requirement as NCS: `query_terms` must be sector-level.
+
+**`NSPAdapter` — verified.** 31 schemes from `/All-Scholarships`. Every scheme
+document is labelled "Specifications" and some filenames are opaque
+(`AICTE_3039_G.pdf`), so the scheme name comes from the ancestor block that also
+carries the open/close dates.
+
+### Sources investigated and deliberately NOT built
+
+Three of the phase-3 targets have no usable public listing at their entry point.
+Recording what was found so the investigation is not repeated:
+
+| Source | Finding |
+|--------|---------|
+| **NSDC** | Entry page is corporate navigation — careers, tenders, grievance. Only 14 named links, none of them Qualification Packs or NOS. The QP/NOS data is not exposed here; a different endpoint must be found first. |
+| **NBA** | 39 named links, all navigation (Downloads, Jobs, Tenders, Archive). Programme accreditation status is not published as a crawlable list from the homepage. |
+| **NATS** | 31 named links, predominantly role-selection and login pages (`student_type.php`, `institute_type.php`). Apprenticeship listings appear to sit behind authentication, which is out of scope. |
+
+Building adapters against these without finding a real data endpoint would produce
+exactly the speculative, unverified code this phase's probe-first ordering exists
+to prevent.
+
+**Still to do in this phase:** a data endpoint for NSDC, NBA and NATS. NCTE
 still times out. The six JS-only sources (UGC HEI Search, NAAC, Skill India
 Digital, Apprenticeship India, MoSPI, plus NPTEL's discipline page) need the
 open-data check before any Playwright decision.

@@ -165,7 +165,12 @@ sources:
     best_used_for: NSQF-aligned qualifications, levels, awarding and approving bodies
     usage_rule: Strong source for vocational and skill qualifications
     refresh: ongoing
-    status: reachable
+    status: verified
+    # VERIFIED end to end 2026-08-07 by NQRAdapter. 61 qualification sectors
+    # indexed live from the homepage, each linking to /qualifications-search/<id>.
+    # Notably the FIRST source since AICTE whose anchor text is the actual label —
+    # no href, filename or query-string extraction needed. Same planner
+    # requirement as NCS: query_terms must be sector-level, not course names.
 
   NCS:
     name: National Career Service
@@ -221,7 +226,12 @@ sources:
     best_used_for: Central scholarship schemes, eligibility and application workflow
     usage_rule: Store scheme year and deadline
     refresh: seasonal / ongoing
-    status: reachable
+    status: verified
+    # VERIFIED end to end 2026-08-07 by NSPAdapter against /All-Scholarships,
+    # which exposes 31 schemes. Every scheme document is labelled
+    # "Specifications", and some filenames are opaque (AICTE_3039_G.pdf), so the
+    # scheme name is taken from the ANCESTOR block that also carries the open and
+    # close dates — a sixth distinct place these sites keep their labels.
 
   NTA:
     name: National Testing Agency
