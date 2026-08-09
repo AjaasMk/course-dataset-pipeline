@@ -161,7 +161,12 @@ sources:
     best_used_for: Programme-level accreditation in covered disciplines
     usage_rule: Check programme, campus and validity period
     refresh: accreditation cycle
-    status: reachable
+    status: blocked
+    # INVESTIGATED 2026-08-07, no crawlable data. The entry page exposes 2 PDFs,
+    # and /Accreditationprogram — the accredited-programme list — renders to 1,782
+    # chars of pure navigation even with a browser. /Downloads holds one brochure.
+    # The programme data sits behind a search form, the same class of problem as
+    # the AISHE directory: it needs the UI driven, not fetched. Not registered.
 
   AICTE:
     name: All India Council for Technical Education
@@ -225,7 +230,12 @@ sources:
     best_used_for: Qualification Packs, occupational standards, sector skill councils and job roles
     usage_rule: Use QP/NOS codes where available
     refresh: as standards change
-    status: reachable
+    status: blocked
+    # INVESTIGATED 2026-08-07, no crawlable data: 0 PDFs on the entry page, and
+    # /reports holds news items rather than Qualification Packs. More usefully,
+    # NSDC is largely REDUNDANT here — NQR publishes the same NSQF qualification
+    # data and is verified with 61 sectors. Career Mapping and Skills should route
+    # to NQR rather than waiting on an NSDC adapter.
 
   SKILL_INDIA_DIGITAL:
     name: Skill India Digital Hub
@@ -500,7 +510,12 @@ sources:
     best_used_for: Agricultural education standards, institutions and admissions information
     usage_rule: Also verify university and programme approvals
     refresh: annual / ongoing
-    status: reachable
+    status: blocked
+    # INVESTIGATED 2026-08-07, no crawlable data. The entry page carries a single
+    # Hindi administrative notice, and its one education link
+    # (/index.php/hi/agricultural-education-division/...) 404s, as does the
+    # non-prefixed path. Agriculture eligibility and curriculum therefore have no
+    # working Tier A source and will correctly go unresolved.
 
   RCI:
     name: Rehabilitation Council of India
