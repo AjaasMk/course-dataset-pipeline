@@ -603,24 +603,35 @@ them is the anchor text:
 Any remaining regulator adapter should be assumed to need its own variant of this
 rather than a shared "scrape the link text" helper.
 
-### Open issue — a single global match threshold does not fit all sources
+### Per-source match thresholds (signed off 2026-08-07)
 
 `matching.threshold: 0.80` was tuned for short course-name matching (AICTE, NIRF,
 NTA), where it works: correct matches land at 1.00 and genuine non-coverage falls
-to 0.42–0.69. Against UGC's long document titles it produces **false negatives** —
-correct documents scoring below the bar:
+to 0.42–0.69. Against UGC's long document titles the same bar produced **false
+negatives** — correct documents scoring 0.78 ("equivalence of degrees") and 0.70
+("minimum qualifications appointment of teachers"). `token_set_ratio` scores a
+long title differently from a short name, so one number cannot serve both.
 
-| Query | Document found | Score |
+A source may now set `match_threshold`, resolved by
+`SourceRegistry.threshold_for(source_id)` with the global value as fallback.
+
+**Lowering the *global* threshold was rejected** — it would weaken the
+non-coverage rejection that decisions 2 and 3 depend on, which is precisely what
+makes Animation (0.63 at NIRF) and Bharatanatyam (0.42 at NTA) correctly
+unresolved.
+
+Overrides are set from observed scores, never guessed, and must clear both the
+false-negative band and the noise floor. UGC is set to **0.65**, verified live
+against both sides of the decision:
+
+| Query | Score | Outcome |
 |---|---|---|
-| "equivalence of degrees" | UGC (Recognition and Grant of Equivalence…) | 0.78 |
-| "minimum qualifications appointment of teachers" | 4th Amendment Minimum Qualifications… | 0.70 |
-
-Both are the right document. `token_set_ratio` behaves differently when the
-candidate is a long title rather than a short name, so one number cannot serve
-both. Deliberately **not** tuned here: lowering the global threshold would weaken
-the non-coverage rejection that decisions 2 and 3 depend on. Likely resolution is
-a per-source threshold in `config/sources.yaml`, but that is a policy change and
-needs sign-off.
+| UG and PG regulations | 1.00 | accept |
+| distance education ODL | 1.00 | accept |
+| equivalence of degrees | 0.78 | accept — was a false negative |
+| minimum qualifications appointment of teachers | 0.70 | accept — was a false negative |
+| Bharatanatyam syllabus | 0.48 | reject |
+| pizza delivery | 0.32 | reject |
 
 **Still to do in this phase:** NBA, NQR, NCS, NSDC, NSP and NATS adapters. NCTE
 still times out. The six JS-only sources (UGC HEI Search, NAAC, Skill India

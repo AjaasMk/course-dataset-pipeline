@@ -56,6 +56,21 @@ def test_unknown_source_id_is_rejected():
         registry.validate_intent(_intent(source_id="WIKIPEDIA"))
 
 
+def test_threshold_falls_back_to_the_global_default():
+    registry = load_registry()
+    assert registry.threshold_for("AICTE") == registry.threshold
+
+
+def test_a_source_may_override_the_global_threshold():
+    registry = load_registry()
+    assert registry.threshold_for("UGC") < registry.threshold
+
+
+def test_unknown_source_threshold_is_rejected():
+    with pytest.raises(SourceAuthorityError):
+        load_registry().threshold_for("WIKIPEDIA")
+
+
 def test_every_regulator_map_reference_is_a_real_source():
     registry = load_registry()
     assert registry.unknown_regulator_map_references() == []

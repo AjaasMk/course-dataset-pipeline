@@ -25,6 +25,7 @@ class Source(BaseModel):
     coverage: str
     status: str
     listing_page: Optional[str] = None
+    match_threshold: Optional[float] = None
 
 
 class SourceRegistry(BaseModel):
@@ -41,6 +42,12 @@ class SourceRegistry(BaseModel):
 
     def best_tier(self, source_id: str) -> SourceTier:
         return min(self.tiers_for(source_id), key=lambda t: t.value)
+
+    def threshold_for(self, source_id: str) -> float:
+        source = self.sources.get(source_id)
+        if source is None:
+            raise SourceAuthorityError(f"unknown source_id {source_id!r}")
+        return self.threshold if source.match_threshold is None else source.match_threshold
 
     def validate_intent(self, intent: RetrievalIntent) -> None:
         tiers = self.tiers_for(intent.source_id)

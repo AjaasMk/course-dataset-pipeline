@@ -46,6 +46,7 @@ sources:
     best_used_for: University recognition; degree nomenclature; regulations; HEI categories
     usage_rule: Primary canonical source for university-level recognition and degree rules
     refresh: as regulations change
+    match_threshold: 0.65
     status: verified
     # VERIFIED end to end 2026-08-07 by UGCAdapter against /regulations, which
     # serves 61 usable regulation PDFs. Site quirk: nearly every regulation link
@@ -719,9 +720,18 @@ segment_sources:
     secondary: [SKILL_INDIA_DIGITAL]
     min_tier: B
 
-# Confidence floor for accepting an adapter's discovered document. Below this the
-# resolution is recorded as failed with a reason rather than downloaded — this is
-# what correctly rejects AICTE's Aerospace Engineering "Textile Engineering" match
-# at 0.69 instead of retrieving the wrong document.
+# Default confidence floor for accepting an adapter's discovered document. Below
+# this the resolution is recorded as failed with a reason rather than downloaded —
+# this is what correctly rejects AICTE's Aerospace Engineering "Textile
+# Engineering" match at 0.69 instead of retrieving the wrong document.
+#
+# A source may override it with its own . One global number does
+# not fit every source: 0.80 is right where candidates are short names (AICTE,
+# NIRF, NTA), but token_set_ratio scores a long document title differently, so the
+# same bar produced false negatives against UGC — the correct regulation for
+# "equivalence of degrees" scored 0.78 and for "minimum qualifications appointment
+# of teachers" 0.70, while genuine non-coverage still sat at 0.48. Overrides are
+# set from observed scores, never guessed, and should sit clear of both the
+# false-negative band and the noise floor.
 matching:
   threshold: 0.80
