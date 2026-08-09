@@ -176,12 +176,18 @@ sources:
     best_used_for: Occupations, career descriptions and labour-market information
     usage_rule: Map course pathways to occupations rather than making job guarantees
     refresh: ongoing
-    status: reachable
+    status: verified
     listing_page: https://www.ncs.gov.in/content-repository/Pages/BrowseBySectors.aspx
-    # Page confirmed real (52 sectors). Course-to-sector mapping is NOT fuzzy string
-    # matching — "Mechanical Engineering" shares no text with "Capital Goods and
-    # Manufacturing". Under the intent-first model the planner supplies sector-level
-    # query_terms, which is what makes this source usable at all.
+    # VERIFIED end to end 2026-08-07 by NCSAdapter. 52 sectors indexed live.
+    # Sector anchors carry NO text; the name exists only in the FilterValue1 query
+    # parameter — a fourth distinct place these sites hide their labels.
+    #
+    # Course-to-sector mapping is NOT fuzzy string matching: "Mechanical
+    # Engineering" is served by Automotive and Capital Goods and Manufacturing,
+    # and resembles neither. Confirmed live — that query scores 0.49 and is
+    # correctly rejected. The planner MUST supply sector-level query_terms; the
+    # adapter deliberately does not guess, which is exactly what makes this source
+    # usable under the intent-first model and unusable under the old one.
 
   NSDC:
     name: National Skill Development Corporation

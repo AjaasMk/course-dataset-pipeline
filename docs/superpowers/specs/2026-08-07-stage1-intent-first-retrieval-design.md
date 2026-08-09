@@ -599,9 +599,20 @@ them is the anchor text:
 | NIRF | the href — anchors have **no text at all** |
 | NTA | anchor text, but as formal expansions needing discipline aliases |
 | UGC | the **filename**, behind a numeric upload id; anchor says "View" |
+| NCS | the **query string** (`FilterValue1=…`); anchors again have no text |
 
-Any remaining regulator adapter should be assumed to need its own variant of this
-rather than a shared "scrape the link text" helper.
+Five adapters, five different answers. Any remaining regulator adapter should be
+assumed to need its own variant rather than a shared "scrape the link text"
+helper — that helper would have worked for exactly one of these.
+
+**`NCSAdapter` — verified.** 52 sectors indexed live. NCS is the source that most
+clearly justifies the intent-first model: its sectors share no vocabulary with
+course names, so "Mechanical Engineering" — actually served by *Automotive* and
+*Capital Goods and Manufacturing* — scores 0.49 and is correctly rejected. The
+adapter does not guess. The planner is required to supply sector-level
+`query_terms`, which is what makes this source usable at all; under the old
+course-name-matching model it was unusable, and was in fact deferred for exactly
+that reason.
 
 ### Per-source match thresholds (signed off 2026-08-07)
 
@@ -632,6 +643,36 @@ against both sides of the decision:
 | minimum qualifications appointment of teachers | 0.70 | accept — was a false negative |
 | Bharatanatyam syllabus | 0.48 | reject |
 | pizza delivery | 0.32 | reject |
+
+### Ranking is four mechanisms, not one number
+
+A single course pulls many documents — up to one per segment per source — so
+"which source wins" has to be split into questions that are answered separately:
+
+| Mechanism | Question | Set by | State |
+|---|---|---|---|
+| `segment_sources.preferred` / `secondary` | Which sources are eligible for this segment | config, from the cookbook | built |
+| `segment_sources.min_tier` | Authority floor to hold a **primary** role in this segment | config | **declared, not enforced** |
+| `intent.priority` | Which eligible source to try first | planner | field exists |
+| `match_confidence` vs `threshold_for()` | Is this the right document | adapter, deterministic | built |
+
+**Stage 1 never picks a winner across sources.** Two sources both clearing
+threshold for one segment produce two evidence rows in `intent_resolutions`, both
+linked to that segment — not a contest. This is why `documents.document_url` is
+UNIQUE while resolutions are many-to-many. Conflict resolution is deferred to
+reconciliation, which is what the client's own conflict rule requires: preserve
+both, record the conflict, mark for later.
+
+Source tier does the ranking that matters, at exactly two moments: eligibility to
+be canonical at all (`validate_intent()` already blocks Tier D from primary and
+secondary roles), and precedence when two sources disagree — a Stage 3 concern,
+not a Stage 1 one.
+
+`min_tier` enforcement is **deliberately deferred to phase 6**, to be built with
+the orchestrator that consumes it. Today `validate_intent()` enforces the global
+"Tier D is never canonical" rule but not the per-segment floor, so nothing yet
+stops a Tier B source taking primary on Ranking & Accreditation where the cookbook
+requires Tier A.
 
 **Still to do in this phase:** NBA, NQR, NCS, NSDC, NSP and NATS adapters. NCTE
 still times out. The six JS-only sources (UGC HEI Search, NAAC, Skill India
