@@ -1,7 +1,17 @@
-import sqlite3
 import threading
 
 from src.extract.run_chunking import chunk_all_documents
+from src.retrieve import store
+from src.retrieve.models import (
+    DocumentRecord,
+    DocumentType,
+    IntentResolution,
+    IntentRole,
+    MatchType,
+    RetrievalIntent,
+    Segment,
+    SourceTier,
+)
 
 
 class _FakeCountTokensResponse:
@@ -21,22 +31,48 @@ class _FakeClient:
 
 
 def _make_manifest_db(db_path, rows):
-    conn = sqlite3.connect(db_path)
-    conn.execute(
-        """CREATE TABLE manifest (
-            course_name TEXT, tier TEXT, source_type TEXT, matched_url TEXT,
-            local_path TEXT, file_hash TEXT, match_confidence REAL,
-            retrieved_at TEXT, content_type TEXT, content_length INTEGER, http_status INTEGER
-        )"""
-    )
-    for course_name, tier, source_type, matched_url, local_path in rows:
-        conn.execute(
-            "INSERT INTO manifest (course_name, tier, source_type, matched_url, local_path, "
-            "match_confidence, retrieved_at) VALUES (?, ?, ?, ?, ?, ?, ?)",
-            (course_name, tier, source_type, matched_url, local_path, 0.9, "2026-07-17T12:00:00+00:00"),
+    """Seed the intent-first store: an intent, its document and the resolution
+    linking them. Chunking reads resolved documents now, not a flat manifest."""
+    for n, (course_name, tier, source_type, matched_url, local_path) in enumerate(rows, start=1):
+        intent_id = f"RI-{n:03d}"
+        document_id = f"DOC-{n:03d}"
+        store.insert_intent(
+            RetrievalIntent(
+                intent_id=intent_id,
+                course_id=course_name,
+                segment=Segment.CURRICULUM,
+                field_ids=["F042"],
+                source_id=source_type,
+                priority=1,
+                role=IntentRole.PRIMARY,
+                query_terms=[course_name],
+                required_document_type=[DocumentType.OFFICIAL_WEBPAGE],
+                qualification_level="Undergraduate",
+            ),
+            db_path=db_path,
         )
-    conn.commit()
-    conn.close()
+        store.insert_document(
+            DocumentRecord(
+                document_id=document_id,
+                source_id=source_type,
+                source_tier=SourceTier.A,
+                document_url=matched_url,
+                document_title=course_name,
+                local_path=str(local_path),
+                retrieved_at="2026-07-17T12:00:00+00:00",
+            ),
+            db_path=db_path,
+        )
+        store.insert_resolution(
+            IntentResolution(
+                intent_id=intent_id,
+                document_id=document_id,
+                match_confidence=0.9,
+                match_type=MatchType.EXACT,
+                validated=True,
+            ),
+            db_path=db_path,
+        )
 
 
 def _write_html(path, body_text):
@@ -69,8 +105,8 @@ def test_chunk_all_documents_chunks_every_row_and_writes_output(tmp_path):
     assert len(report.results) == 2
     assert {r.course_name for r in report.results} == {"Course One", "Course Two"}
     assert all(r.outcome == "chunked" for r in report.results)
-    assert (chunks_dir / "course_one__aggregator_webpage.json").exists()
-    assert (chunks_dir / "course_two__aggregator_webpage.json").exists()
+    assert (chunks_dir / "Course One__DOC-001.json").exists()
+    assert (chunks_dir / "Course Two__DOC-002.json").exists()
 
 
 def test_chunk_all_documents_isolates_failure_and_continues(tmp_path):
@@ -96,7 +132,7 @@ def test_chunk_all_documents_isolates_failure_and_continues(tmp_path):
     assert by_name["Course Missing"].outcome == "failed"
     assert by_name["Course Missing"].error is not None
     assert by_name["Course Ok"].outcome == "chunked"
-    assert (chunks_dir / "course_ok__aggregator_webpage.json").exists()
+    assert (chunks_dir / "Course OK__DOC-002.json").exists()
 
 
 def test_chunk_all_documents_runs_concurrently_not_sequentially(tmp_path):

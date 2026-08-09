@@ -1,5 +1,4 @@
 import logging
-import sqlite3
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Literal, Optional
@@ -7,6 +6,7 @@ from typing import Literal, Optional
 import anthropic
 from pydantic import BaseModel
 
+from src.extract.chunk_inputs import ChunkInput, read_chunk_inputs
 from src.extract.chunker import chunk_document, detect_pdf_sections
 from src.extract.readers import read_html, read_pdf
 
@@ -19,6 +19,7 @@ DEFAULT_MAX_WORKERS = 8
 class ChunkResult(BaseModel):
     course_name: str
     source_type: str
+    document_id: str = ""
     outcome: Literal["chunked", "failed"]
     chunk_count: int = 0
     error: Optional[str] = None
@@ -29,15 +30,11 @@ class ChunkBatchReport(BaseModel):
 
 
 def _chunk_one_document(
-    course_name: str,
-    tier: str,
-    source_type: str,
-    matched_url: str,
-    local_path: str,
+    chunk_input: ChunkInput,
     client: anthropic.Anthropic,
     chunks_dir: Path,
 ) -> ChunkResult:
-    path = Path(local_path)
+    path = Path(chunk_input.local_path)
     try:
         if path.suffix == ".pdf":
             pages = read_pdf(path)
@@ -45,26 +42,47 @@ def _chunk_one_document(
         else:
             sections = read_html(path)
 
-        chunks = chunk_document(sections, source_document=str(path), source_url=matched_url, client=client)
+        chunks = chunk_document(
+            sections,
+            source_document=str(path),
+            source_url=chunk_input.document_url,
+            client=client,
+        )
 
-        slug = path.stem
-        out_path = chunks_dir / f"{slug}__{source_type}.json"
+        out_path = chunks_dir / chunk_input.chunk_filename
         out_path.write_text(
             "[\n" + ",\n".join(c.model_dump_json() for c in chunks) + "\n]",
             encoding="utf-8",
         )
 
-        logger.info("%s (%s, %s): %d chunks -> %s", course_name, tier, source_type, len(chunks), out_path)
+        logger.info(
+            "%s (%s, tier %s): %d chunks -> %s",
+            chunk_input.course_id,
+            chunk_input.source_id,
+            chunk_input.source_tier.value,
+            len(chunks),
+            out_path,
+        )
         return ChunkResult(
-            course_name=course_name, source_type=source_type, outcome="chunked", chunk_count=len(chunks)
+            course_name=chunk_input.course_id,
+            source_type=chunk_input.source_id,
+            document_id=chunk_input.document_id,
+            outcome="chunked",
+            chunk_count=len(chunks),
         )
     except Exception as exc:
-        logger.info("Course %r chunking failed: %s", course_name, exc)
-        return ChunkResult(course_name=course_name, source_type=source_type, outcome="failed", error=str(exc))
+        logger.info("%s / %s chunking failed: %s", chunk_input.course_id, chunk_input.document_id, exc)
+        return ChunkResult(
+            course_name=chunk_input.course_id,
+            source_type=chunk_input.source_id,
+            document_id=chunk_input.document_id,
+            outcome="failed",
+            error=str(exc),
+        )
 
 
 def chunk_all_documents(
-    db_path: Path = Path("data/manifest.db"),
+    db_path: Optional[Path] = None,
     client: anthropic.Anthropic | None = None,
     max_workers: int = DEFAULT_MAX_WORKERS,
     chunks_dir: Path = CHUNKS_DIR,
@@ -82,23 +100,15 @@ def chunk_all_documents(
     failures -- one document's exception doesn't abort the batch.
     """
     client = client or anthropic.Anthropic()
-    conn = sqlite3.connect(db_path)
-    try:
-        rows = conn.execute(
-            "SELECT course_name, tier, source_type, matched_url, local_path FROM manifest"
-        ).fetchall()
-    finally:
-        conn.close()
+    inputs = read_chunk_inputs(db_path=db_path)
 
     chunks_dir.mkdir(parents=True, exist_ok=True)
     results: list[ChunkResult] = []
 
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         futures = [
-            executor.submit(
-                _chunk_one_document, course_name, tier, source_type, matched_url, local_path, client, chunks_dir
-            )
-            for course_name, tier, source_type, matched_url, local_path in rows
+            executor.submit(_chunk_one_document, chunk_input, client, chunks_dir)
+            for chunk_input in inputs
         ]
         for future in as_completed(futures):
             results.append(future.result())

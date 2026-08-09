@@ -71,6 +71,10 @@ _INTENT_COLUMNS = (
 )
 
 
+def _prefixed(columns: str, alias: str) -> str:
+    return ", ".join(f"{alias}.{c.strip()}" for c in columns.split(","))
+
+
 def _connect(db_path: Optional[Path]) -> sqlite3.Connection:
     resolved = db_path if db_path is not None else DEFAULT_DB_PATH
     resolved.parent.mkdir(parents=True, exist_ok=True)
@@ -113,6 +117,61 @@ def _row_to_intent(row: tuple) -> RetrievalIntent:
         required_document_type=[DocumentType(d) for d in json.loads(row[8])],
         qualification_level=row[9],
     )
+
+
+class CourseDocument(DocumentRecord):
+    segments: list[Segment] = []
+
+
+def documents_for_course(
+    course_id: str, segment: Optional[Segment] = None, db_path: Optional[Path] = None
+) -> list[CourseDocument]:
+    """Documents resolved for a course, each carrying the segments it serves.
+
+    This is the seam Stage 2 consumes. One document may serve several segments,
+    so it is returned once with every segment it was resolved for -- which is
+    what lets extraction target a segment's own evidence rather than a blob of
+    everything retrieved for the course.
+    """
+    conn = _connect(db_path)
+    try:
+        sql = (
+            f"SELECT {_prefixed(_DOCUMENT_COLUMNS, 'd')}, i.segment FROM documents d "
+            "JOIN intent_resolutions r ON r.document_id = d.document_id "
+            "JOIN retrieval_intents i ON i.intent_id = r.intent_id "
+            "WHERE i.course_id = ?"
+        )
+        params: list = [course_id]
+        if segment is not None:
+            sql += " AND i.segment = ?"
+            params.append(segment.value)
+        rows = conn.execute(sql + " ORDER BY d.document_id", params).fetchall()
+    finally:
+        conn.close()
+
+    merged: dict[str, CourseDocument] = {}
+    for row in rows:
+        document = _row_to_document(row)
+        found = merged.get(document.document_id)
+        if found is None:
+            found = CourseDocument(**document.model_dump(), segments=[])
+            merged[document.document_id] = found
+        parsed = Segment(row[-1])
+        if parsed not in found.segments:
+            found.segments.append(parsed)
+    return list(merged.values())
+
+
+def courses_with_documents(db_path: Optional[Path] = None) -> list[str]:
+    conn = _connect(db_path)
+    try:
+        rows = conn.execute(
+            "SELECT DISTINCT i.course_id FROM retrieval_intents i "
+            "JOIN intent_resolutions r ON r.intent_id = i.intent_id ORDER BY i.course_id"
+        ).fetchall()
+    finally:
+        conn.close()
+    return [r[0] for r in rows]
 
 
 def insert_document(document: DocumentRecord, db_path: Optional[Path] = None) -> None:
