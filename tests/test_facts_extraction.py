@@ -3,7 +3,12 @@ from unittest.mock import Mock
 
 import pytest
 
-from src.extract.facts_extraction import extract_curriculum
+from src.extract.facts_extraction import (
+    extract_course,
+    extract_curriculum,
+    extract_eligibility,
+    extract_specialisation,
+)
 from src.extract.models import Chunk
 from src.facts.course_facts import Curriculum
 from src.retrieve.base import document_id_for
@@ -147,3 +152,216 @@ def test_extract_curriculum_ignores_a_citation_for_an_unknown_field():
     _, refs = extract_curriculum(chunks, _course(), "2024", client=mock_client)
 
     assert "not_a_real_field" not in {r.field_id for r in refs}
+
+
+ELIGIBILITY_PAYLOAD = {
+    "minimum_qualification": "10+2 with Physics, Chemistry, Mathematics",
+    "accepted_streams": ["Science"],
+    "compulsory_subjects": ["Physics", "Chemistry", "Mathematics"],
+    "recommended_subjects": [],
+    "minimum_percentage": "75% aggregate",
+    "age_requirement": None,
+    "medical_requirement": None,
+    "portfolio_required": None,
+    "interview_required": None,
+    "lateral_entry_available": True,
+    "international_equivalence": None,
+    "citations": [
+        {"field": "minimum_qualification", "document_id": DOC_ID, "quoted_evidence": "10+2 with PCM"},
+        {"field": "accepted_streams", "document_id": DOC_ID, "quoted_evidence": "Science stream"},
+        {"field": "compulsory_subjects", "document_id": DOC_ID, "quoted_evidence": "Physics, Chemistry, Mathematics"},
+        {"field": "minimum_percentage", "document_id": DOC_ID, "quoted_evidence": "75% aggregate marks"},
+        {"field": "lateral_entry_available", "document_id": DOC_ID, "quoted_evidence": "lateral entry permitted"},
+    ],
+}
+
+
+def test_extract_eligibility_only_uses_eligibility_segment_chunks():
+    chunks = [
+        _chunk(0, "Eligibility content here.", segment_id=Segment.ELIGIBILITY),
+        _chunk(1, "Curriculum content here.", segment_id=Segment.CURRICULUM),
+    ]
+    mock_client = _mock_client_returning(ELIGIBILITY_PAYLOAD)
+
+    extract_eligibility(chunks, _course(), "2026", client=mock_client)
+
+    document_text = mock_client.messages.create.call_args.kwargs["messages"][0]["content"]
+    assert "Curriculum content here." not in document_text
+    assert "Eligibility content here." in document_text
+
+
+def test_extract_eligibility_returns_a_populated_model_and_matching_refs():
+    chunks = [_chunk(0, "Eligibility content.", segment_id=Segment.ELIGIBILITY)]
+    mock_client = _mock_client_returning(ELIGIBILITY_PAYLOAD)
+
+    rule, refs = extract_eligibility(chunks, _course(), "2026", client=mock_client)
+
+    assert rule.course_id == "mechanical_engineering"
+    assert rule.eligibility_year == "2026"
+    assert rule.minimum_qualification == "10+2 with Physics, Chemistry, Mathematics"
+    assert rule.compulsory_subjects == ["Physics", "Chemistry", "Mathematics"]
+    assert rule.lateral_entry_available is True
+    assert rule.age_requirement is None
+
+    from src.facts.course_facts import ELIGIBILITY_FIELD_IDS
+    from src.facts.engine import check_citations
+
+    check_citations(rule, ELIGIBILITY_FIELD_IDS, refs)  # must not raise
+
+
+def test_extract_eligibility_returns_empty_model_when_no_eligibility_chunks_exist():
+    chunks = [_chunk(0, "Curriculum only.", segment_id=Segment.CURRICULUM)]
+    mock_client = _mock_client_returning(ELIGIBILITY_PAYLOAD)
+
+    rule, refs = extract_eligibility(chunks, _course(), "2026", client=mock_client)
+
+    assert refs == []
+    assert rule.minimum_qualification is None
+    mock_client.messages.create.assert_not_called()
+
+
+COURSE_PAYLOAD = {
+    "standard_course_name": "Mechanical Engineering",
+    "common_course_name": None,
+    "abbreviation": None,
+    "qualification_level": None,
+    "qualification_type": None,
+    "academic_or_vocational": None,
+    "regulating_body": "AICTE",
+    "course_aliases": [],
+    "minimum_duration": "4 years",
+    "maximum_duration": None,
+    "semester_count": 8,
+    "credit_count": 160,
+    "study_mode": "Full-time",
+    "full_time_available": True,
+    "part_time_available": False,
+    "online_available": False,
+    "distance_available": False,
+    "exit_options": [],
+    "citations": [
+        {"field": "standard_course_name", "document_id": DOC_ID, "quoted_evidence": "Mechanical Engineering"},
+        {"field": "regulating_body", "document_id": DOC_ID, "quoted_evidence": "AICTE approved"},
+        {"field": "minimum_duration", "document_id": DOC_ID, "quoted_evidence": "4 year programme"},
+        {"field": "semester_count", "document_id": DOC_ID, "quoted_evidence": "8 semesters"},
+        {"field": "credit_count", "document_id": DOC_ID, "quoted_evidence": "160 credits"},
+        {"field": "study_mode", "document_id": DOC_ID, "quoted_evidence": "full-time programme"},
+        {"field": "full_time_available", "document_id": DOC_ID, "quoted_evidence": "offered full-time"},
+        {"field": "part_time_available", "document_id": DOC_ID, "quoted_evidence": "no part-time option"},
+        {"field": "online_available", "document_id": DOC_ID, "quoted_evidence": "not offered online"},
+        {"field": "distance_available", "document_id": DOC_ID, "quoted_evidence": "not offered via distance mode"},
+    ],
+}
+
+
+def test_extract_course_pulls_from_both_course_identity_and_duration_mode_segments():
+    chunks = [
+        _chunk(0, "Course identity content.", segment_id=Segment.COURSE_IDENTITY),
+        _chunk(1, "Duration content.", segment_id=Segment.DURATION_MODE),
+        _chunk(2, "Curriculum content.", segment_id=Segment.CURRICULUM),
+    ]
+    mock_client = _mock_client_returning(COURSE_PAYLOAD)
+
+    extract_course(chunks, _course(), client=mock_client)
+
+    document_text = mock_client.messages.create.call_args.kwargs["messages"][0]["content"]
+    assert "Course identity content." in document_text
+    assert "Duration content." in document_text
+    assert "Curriculum content." not in document_text
+
+
+def test_extract_course_returns_a_populated_model_and_matching_refs():
+    chunks = [_chunk(0, "Course content.", segment_id=Segment.COURSE_IDENTITY)]
+    mock_client = _mock_client_returning(COURSE_PAYLOAD)
+
+    course, refs = extract_course(chunks, _course(), client=mock_client)
+
+    assert course.course_id == "mechanical_engineering"
+    assert course.standard_course_name == "Mechanical Engineering"
+    assert course.semester_count == 8
+    assert course.full_time_available is True
+    assert course.common_course_name is None  # not in the citations list -- correctly excluded
+
+    from src.facts.course_facts import COURSE_FIELD_IDS
+    from src.facts.engine import check_citations
+
+    check_citations(course, COURSE_FIELD_IDS, refs)  # must not raise
+
+
+def test_extract_course_returns_none_when_no_relevant_chunks_exist():
+    chunks = [_chunk(0, "Eligibility only.", segment_id=Segment.ELIGIBILITY)]
+    mock_client = _mock_client_returning(COURSE_PAYLOAD)
+
+    course, refs = extract_course(chunks, _course(), client=mock_client)
+
+    assert course is None
+    assert refs == []
+    mock_client.messages.create.assert_not_called()
+
+
+SPECIALISATION_PAYLOAD = {
+    "specialisations": [
+        {
+            "specialisation_name": "Thermal Engineering",
+            "available_at_level": "Undergraduate",
+            "parent_course": "Mechanical Engineering",
+            "typical_subjects": ["Heat Transfer", "Refrigeration"],
+            "career_focus": "Power plants and HVAC",
+            "specialisation_type": "Elective track",
+            "citations": [
+                {"field": "available_at_level", "document_id": DOC_ID, "quoted_evidence": "offered at UG level"},
+                {"field": "parent_course", "document_id": DOC_ID, "quoted_evidence": "under Mechanical Engineering"},
+                {"field": "typical_subjects", "document_id": DOC_ID, "quoted_evidence": "Heat Transfer, Refrigeration"},
+                {"field": "career_focus", "document_id": DOC_ID, "quoted_evidence": "careers in power plants and HVAC"},
+                {"field": "specialisation_type", "document_id": DOC_ID, "quoted_evidence": "an elective track"},
+            ],
+        },
+        {
+            "specialisation_name": "Manufacturing Engineering",
+            "available_at_level": "Undergraduate",
+            "parent_course": "Mechanical Engineering",
+            "typical_subjects": ["CAD/CAM", "Automation"],
+            "career_focus": None,
+            "specialisation_type": "Elective track",
+            "citations": [
+                {"field": "available_at_level", "document_id": DOC_ID, "quoted_evidence": "offered at UG level"},
+                {"field": "parent_course", "document_id": DOC_ID, "quoted_evidence": "under Mechanical Engineering"},
+                {"field": "typical_subjects", "document_id": DOC_ID, "quoted_evidence": "CAD/CAM, Automation"},
+                {"field": "specialisation_type", "document_id": DOC_ID, "quoted_evidence": "an elective track"},
+            ],
+        },
+    ]
+}
+
+
+def test_extract_specialisation_returns_one_entry_per_specialisation():
+    chunks = [_chunk(0, "Specialisation content.", segment_id=Segment.SPECIALISATION)]
+    mock_client = _mock_client_returning(SPECIALISATION_PAYLOAD)
+
+    results = extract_specialisation(chunks, _course(), client=mock_client)
+
+    assert len(results) == 2
+    names = {spec.specialisation_name for spec, _ in results}
+    assert names == {"Thermal Engineering", "Manufacturing Engineering"}
+
+
+def test_extract_specialisation_each_entry_has_its_own_valid_citations():
+    chunks = [_chunk(0, "Specialisation content.", segment_id=Segment.SPECIALISATION)]
+    mock_client = _mock_client_returning(SPECIALISATION_PAYLOAD)
+
+    from src.facts.course_facts import SPECIALISATION_FIELD_IDS
+    from src.facts.engine import check_citations
+
+    results = extract_specialisation(chunks, _course(), client=mock_client)
+    for spec, refs in results:
+        check_citations(spec, SPECIALISATION_FIELD_IDS, refs)  # must not raise for either entry
+
+
+def test_extract_specialisation_returns_empty_list_when_no_relevant_chunks_exist():
+    chunks = [_chunk(0, "Curriculum only.", segment_id=Segment.CURRICULUM)]
+    mock_client = _mock_client_returning(SPECIALISATION_PAYLOAD)
+
+    results = extract_specialisation(chunks, _course(), client=mock_client)
+
+    assert results == []
+    mock_client.messages.create.assert_not_called()
