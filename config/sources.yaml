@@ -95,12 +95,16 @@ sources:
     usage_rule: Use AISHE code as an institutional identifier where available
     refresh: annual
     status: reachable
-    # Entry URL serves 3,275 chars and 111 links to a plain request — so the site
-    # is not wholesale bot-blocked, revising the earlier assumption. The
-    # *directory view* is still the open question: it is an Angular app whose
-    # deep-linked hash route falls back to the generic homepage, and no REST
-    # endpoint surfaced on first load. Institution-registry critical path; find
-    # the data endpoint or an open-data dump before reaching for a browser.
+    # ESCALATION EXHAUSTED 2026-08-07 — all three decision-5 steps tried:
+    #  1. Realistic headers: the dashboard was failing on the same incomplete TLS
+    #     chain as NMC and returns 200 after repair, so it was never bot-blocked.
+    #  2. Open data: data.gov.in search results are themselves JS-rendered, and
+    #     the AISHE report portal (he.nic.in/aishereport) is a JS app too — 28
+    #     chars and 0 links after TLS repair.
+    #  3. Static analysis: the Angular bundle exposes route paths only, no API
+    #     base, so the directory endpoint is not recoverable without executing JS.
+    # Only a headless browser remains, which needs explicit approval. Until then
+    # the institution registry is NIRF-only, covering 35% of taxonomy courses.
 
   NIRF:
     name: National Institutional Ranking Framework
