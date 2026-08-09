@@ -127,10 +127,17 @@ class NoticeBoardAdapter:
         ]
 
     def download(self, document: DiscoveredDocument) -> DocumentRecord:
+        # Confirmed live 2026-08-09: _get_html() above already repairs an
+        # incomplete TLS chain via verify_arg() for the listing-page fetch,
+        # but this download path never did -- so a source's homepage
+        # loaded fine (CEE_KERALA) while every real document download from
+        # the same host failed with the exact same certificate error.
+        host = urlparse(document.document_url).hostname or ""
         return fetch_and_store(
             document,
             source_id=self.source_id,
             source_tier=self.tiers[0],
             raw_dir=RAW_DIR,
             extension="pdf",
+            verify=verify_arg(host),
         )
