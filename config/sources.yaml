@@ -262,7 +262,10 @@ sources:
     best_used_for: CUET-UG information, application and bulletin
     usage_rule: Course eligibility still depends on individual university rules
     refresh: annual
-    status: reachable
+    status: verified
+    # VERIFIED 2026-08-07 via NoticeBoardAdapter: 12 notice PDFs, and
+    # "information bulletin" resolves at 1.00. Anchor text is the label; uploads
+    # are named with an opaque timestamp, the inverse of UGC.
     # CORRECTED 2026-08-07. The client Source Directory lists
     # https://exams.nta.nic.in/CUET-UG/, which returns HTTP 404. The live portal
     # is https://cuet.nta.nic.in/ (3,676 chars), found by crawling nta.ac.in.
@@ -277,7 +280,8 @@ sources:
     best_used_for: Institutions, programmes, seat matrix and opening/closing ranks
     usage_rule: Store counselling year and category
     refresh: annual
-    status: reachable
+    status: verified
+    # VERIFIED 2026-08-07 via NoticeBoardAdapter: 3 notice PDFs resolving at 1.00.
 
   CSAB:
     name: Central Seat Allocation Board
@@ -289,6 +293,8 @@ sources:
     usage_rule: Use current round rules and seat data
     refresh: annual
     status: reachable
+    # NoticeBoardAdapter indexes 7 PDFs, but generic admission queries top out at
+    # 0.30 — registered and usable, not yet proven on a real planner query.
 
   MCC:
     name: Medical Counselling Committee
@@ -324,6 +330,9 @@ sources:
     usage_rule: Use the relevant programme prospectus
     refresh: annual
     status: reachable
+    # NOT served by NoticeBoardAdapter. It indexes 2 PDFs and the top hit is a
+    # procurement tender — the index builds while the content is unrelated, which
+    # is why "indexes successfully" is not evidence a source is usable.
 
   DTE_KERALA:
     name: Directorate of Technical Education Kerala
@@ -478,6 +487,8 @@ sources:
     usage_rule: Store eligibility, duration, stipend and deadline
     refresh: ongoing
     status: reachable
+    # NoticeBoardAdapter indexes 5 PDFs (manuals) topping out at 0.40 for
+    # admission queries — not registered; apprenticeship listings need the app UI.
 
   AICTE_INTERNSHIP:
     name: AICTE Internship Portal
@@ -489,6 +500,8 @@ sources:
     usage_rule: Verify active status and provider
     refresh: ongoing
     status: reachable
+    # NOT served by NoticeBoardAdapter: the entry page exposes 0 PDFs. Needs its
+    # own investigation; opportunity listings are likely behind the app UI.
 
   SWAYAM:
     name: SWAYAM
@@ -500,6 +513,8 @@ sources:
     usage_rule: Use for explanation, not degree recognition
     refresh: ongoing
     status: reachable
+    # NOT served by NoticeBoardAdapter: its 2 indexable PDFs are exam admit-card
+    # notices, not the curriculum content this source is listed for.
 
   MOSPI_PLFS:
     name: Ministry of Statistics and Programme Implementation / PLFS

@@ -7,10 +7,12 @@ from src.retrieve.aicte import AICTEAdapter
 from src.retrieve.careers360 import Careers360Adapter
 from src.retrieve.ncs import NCSAdapter
 from src.retrieve.nirf import NIRFAdapter
+from src.retrieve.notice_board import NoticeBoardAdapter
 from src.retrieve.nqr import NQRAdapter
 from src.retrieve.nsp import NSPAdapter
 from src.retrieve.nta import NTAAdapter
 from src.retrieve.planner import plan_course
+from src.retrieve.models import SourceTier
 from src.retrieve.registry import load_registry
 from src.retrieve.resolver import resolve_intents
 from src.retrieve.ugc import UGCAdapter
@@ -26,6 +28,9 @@ def build_adapters() -> dict:
         NQRAdapter(),
         NSPAdapter(),
         Careers360Adapter(),
+        NoticeBoardAdapter("CUET", [SourceTier.A], "https://cuet.nta.nic.in/"),
+        NoticeBoardAdapter("JOSAA", [SourceTier.A], "https://josaa.nic.in/"),
+        NoticeBoardAdapter("CSAB", [SourceTier.A], "https://csab.nic.in/"),
     ]
     return {adapter.source_id: adapter for adapter in adapters}
 
