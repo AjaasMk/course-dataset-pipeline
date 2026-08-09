@@ -31,6 +31,14 @@ def build_adapters() -> dict:
         NoticeBoardAdapter("CUET", [SourceTier.A], "https://cuet.nta.nic.in/"),
         NoticeBoardAdapter("JOSAA", [SourceTier.A], "https://josaa.nic.in/"),
         NoticeBoardAdapter("CSAB", [SourceTier.A], "https://csab.nic.in/"),
+        NoticeBoardAdapter("NMC", [SourceTier.A], "https://www.nmc.org.in/"),
+        NoticeBoardAdapter("DCI", [SourceTier.A], "https://dciindia.gov.in/"),
+        NoticeBoardAdapter("INC", [SourceTier.A], "https://www.indiannursingcouncil.org/"),
+        NoticeBoardAdapter("PCI", [SourceTier.A], "https://www.pci.nic.in/"),
+        NoticeBoardAdapter("COA", [SourceTier.A], "https://www.coa.gov.in/"),
+        NoticeBoardAdapter("RCI", [SourceTier.A], "https://rehabcouncil.nic.in/"),
+        NoticeBoardAdapter("UGC_DEB", [SourceTier.A], "https://deb.ugc.ac.in/"),
+        NoticeBoardAdapter("CEE_KERALA", [SourceTier.A], "https://cee.kerala.gov.in/"),
     ]
     return {adapter.source_id: adapter for adapter in adapters}
 

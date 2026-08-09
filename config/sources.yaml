@@ -84,6 +84,11 @@ sources:
     usage_rule: Verify institution, programme and admission session together
     refresh: every admission cycle
     status: reachable
+    # Served by NoticeBoardAdapter (4 labelled PDFs indexed live 2026-08-07).
+    # Resolution quality is UNPROVEN: these sites publish circulars and notices
+    # rather than neatly-titled regulations, so generic queries top out at 0.41.
+    # Better query_terms are the planner's job; until then many intents against
+    # this source will correctly go unresolved rather than bind to a near-match.
 
   AISHE:
     name: All India Survey on Higher Education
@@ -317,6 +322,11 @@ sources:
     usage_rule: Strong source for Kerala admission cycles
     refresh: continuous in season
     status: reachable
+    # Served by NoticeBoardAdapter (5 labelled PDFs indexed live 2026-08-07).
+    # Resolution quality is UNPROVEN: these sites publish circulars and notices
+    # rather than neatly-titled regulations, so generic queries top out at 0.31.
+    # Better query_terms are the planner's job; until then many intents against
+    # this source will correctly go unresolved rather than bind to a near-match.
     # RESOLVED 2026-08-07: same incomplete-chain issue as NMC. tls.py fetched 3
     # intermediates via AIA; the site then verifies cleanly and returns 3,823 chars.
 
@@ -359,6 +369,11 @@ sources:
     usage_rule: Use exact college/programme list and current year
     refresh: ongoing
     status: reachable
+    # Served by NoticeBoardAdapter (22 labelled PDFs indexed live 2026-08-07).
+    # Resolution quality is UNPROVEN: these sites publish circulars and notices
+    # rather than neatly-titled regulations, so generic queries top out at 0.75.
+    # Better query_terms are the planner's job; until then many intents against
+    # this source will correctly go unresolved rather than bind to a near-match.
     # RESOLVED 2026-08-07. nmc.org.in serves an incomplete certificate chain, so a
     # plain request failed verification. src/retrieve/tls.py now fetches the
     # missing intermediate via the leaf's AIA CA-Issuers URL (Sectigo Public
@@ -380,6 +395,11 @@ sources:
     usage_rule: Validate course and seat approval
     refresh: ongoing
     status: reachable
+    # Served by NoticeBoardAdapter (40 labelled PDFs indexed live 2026-08-07).
+    # Resolution quality is UNPROVEN: these sites publish circulars and notices
+    # rather than neatly-titled regulations, so generic queries top out at 0.75.
+    # Better query_terms are the planner's job; until then many intents against
+    # this source will correctly go unresolved rather than bind to a near-match.
 
   INC:
     name: Indian Nursing Council
@@ -391,6 +411,11 @@ sources:
     usage_rule: Also verify the relevant state nursing council
     refresh: ongoing
     status: reachable
+    # Served by NoticeBoardAdapter (24 labelled PDFs indexed live 2026-08-07).
+    # Resolution quality is UNPROVEN: these sites publish circulars and notices
+    # rather than neatly-titled regulations, so generic queries top out at 0.49.
+    # Better query_terms are the planner's job; until then many intents against
+    # this source will correctly go unresolved rather than bind to a near-match.
 
   PCI:
     name: Pharmacy Council of India
@@ -402,6 +427,11 @@ sources:
     usage_rule: Check programme and approval year
     refresh: ongoing
     status: reachable
+    # Served by NoticeBoardAdapter (144 labelled PDFs indexed live 2026-08-07).
+    # Resolution quality is UNPROVEN: these sites publish circulars and notices
+    # rather than neatly-titled regulations, so generic queries top out at 0.78.
+    # Better query_terms are the planner's job; until then many intents against
+    # this source will correctly go unresolved rather than bind to a near-match.
 
   COA:
     name: Council of Architecture
@@ -412,7 +442,9 @@ sources:
     best_used_for: Architecture education, institutions and professional rules
     usage_rule: Use for BArch/MArch recognition and standards
     refresh: ongoing
-    status: reachable
+    status: verified
+    # VERIFIED 2026-08-07 via NoticeBoardAdapter: 589 labelled PDFs, and an
+    # eligibility query resolves to "Amendment in Eligibility Regulations" at 0.82.
     # Renders 63,912 chars and 600 PDF links despite carrying a react-root
     # marker — server-rendered with a React island, not a client-only app.
 
@@ -464,6 +496,11 @@ sources:
     usage_rule: Critical for regulated rehabilitation roles
     refresh: ongoing
     status: reachable
+    # Served by NoticeBoardAdapter (9 labelled PDFs indexed live 2026-08-07).
+    # Resolution quality is UNPROVEN: these sites publish circulars and notices
+    # rather than neatly-titled regulations, so generic queries top out at 0.57.
+    # Better query_terms are the planner's job; until then many intents against
+    # this source will correctly go unresolved rather than bind to a near-match.
 
   APPRENTICESHIP_INDIA:
     name: Apprenticeship India
