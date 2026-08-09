@@ -1,6 +1,8 @@
-from typing import Optional
+from typing import Literal, Optional, Union
 
 from pydantic import BaseModel
+
+from src.retrieve.models import Segment
 
 
 class PageText(BaseModel):
@@ -22,3 +24,10 @@ class Chunk(BaseModel):
     page_number: Optional[int] = None
     heading_title: Optional[str] = None
     token_count: int
+    # Classified once per Section and propagated into every chunk that
+    # section produces, so every fragment self-identifies its segment
+    # without depending on chunk 0 or on overlap text carrying context
+    # forward -- see docs/superpowers/specs for the NIRF header-loss finding
+    # this replaces.
+    segment_id: Union[Segment, Literal["unclassified"]] = "unclassified"
+    segment_match_confidence: float = 0.0

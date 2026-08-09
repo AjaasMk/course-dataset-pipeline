@@ -1,9 +1,12 @@
 import re
+from typing import Literal, Union
 
 import anthropic
 
 from src.extract.models import Chunk, PageText, Section
 from src.extract.retry import call_with_retry
+from src.extract.segment_match import classify_heading
+from src.retrieve.models import Segment
 
 MODEL = "claude-sonnet-5"
 MAX_TOKENS = 1000
@@ -106,6 +109,14 @@ def chunk_document(
     chunk_id = 0
 
     for section in sections:
+        # Classified once per section, not per chunk: this is what lets every
+        # fragment self-identify its segment without depending on chunk 0 or
+        # overlap text to carry context forward. The existing per-section
+        # packing loop below is unchanged -- "secondary splitting scoped to a
+        # segment" falls out for free, since a section never spans two
+        # segments and this loop already never crosses a section boundary.
+        segment_id, segment_confidence = classify_heading(section.heading_title or "")
+
         buffer = ""
         for paragraph in section.paragraphs:
             pieces = (
@@ -116,7 +127,12 @@ def chunk_document(
             for piece in pieces:
                 candidate = f"{buffer} {piece}".strip() if buffer else piece
                 if buffer and _token_count(candidate, client) > MAX_TOKENS:
-                    chunks.append(_make_chunk(chunk_id, buffer, section, source_document, source_url, client))
+                    chunks.append(
+                        _make_chunk(
+                            chunk_id, buffer, section, source_document, source_url,
+                            client, segment_id, segment_confidence,
+                        )
+                    )
                     chunk_id += 1
                     overlap = _tail_tokens(buffer, OVERLAP_TOKENS, client)
                     buffer = f"{overlap} {piece}".strip() if overlap else piece
@@ -124,10 +140,26 @@ def chunk_document(
                     buffer = candidate
 
         if buffer:
-            chunks.append(_make_chunk(chunk_id, buffer, section, source_document, source_url, client))
+            chunks.append(
+                _make_chunk(
+                    chunk_id, buffer, section, source_document, source_url,
+                    client, segment_id, segment_confidence,
+                )
+            )
             chunk_id += 1
 
     return chunks
+
+
+# A section producing more chunks than this is a signal worth a look, not a
+# hard limit -- the packing loop above already bounds every individual
+# chunk's size by construction (see _shrink_to_fit/_split_oversized_text), so
+# no chunk can ever be "still oversized" after it runs. There is nothing
+# recursive to cap. What CAN happen is one section legitimately containing an
+# unusual amount of content (AICTE's "PROFESSIONAL ELECTIVE COURSES" section
+# ran to 143 paragraphs); flagging an outlier chunk count is the practical
+# review signal in that case.
+OVERSIZED_SECTION_CHUNK_COUNT = 20
 
 
 def _make_chunk(
@@ -137,6 +169,8 @@ def _make_chunk(
     source_document: str,
     source_url: str,
     client: anthropic.Anthropic,
+    segment_id: Union[Segment, Literal["unclassified"]],
+    segment_match_confidence: float,
 ) -> Chunk:
     return Chunk(
         chunk_id=chunk_id,
@@ -146,7 +180,20 @@ def _make_chunk(
         page_number=section.page_number,
         heading_title=section.heading_title,
         token_count=_token_count(text, client),
+        segment_id=segment_id,
+        segment_match_confidence=segment_match_confidence,
     )
+
+
+def oversized_segments(chunks: list[Chunk]) -> dict:
+    """Sections whose chunk count exceeds OVERSIZED_SECTION_CHUNK_COUNT,
+    keyed by (heading_title, segment_id) -> chunk count. A review signal, not
+    an error -- large legitimate sections exist."""
+    counts: dict = {}
+    for chunk in chunks:
+        key = (chunk.heading_title, chunk.segment_id)
+        counts[key] = counts.get(key, 0) + 1
+    return {k: v for k, v in counts.items() if v > OVERSIZED_SECTION_CHUNK_COUNT}
 
 
 def _looks_like_heading(line: str) -> bool:
