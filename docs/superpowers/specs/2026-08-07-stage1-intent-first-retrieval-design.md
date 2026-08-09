@@ -417,7 +417,7 @@ re-runnable-step convention.
 | 1 | ✅ **Done.** Course taxonomy loader; intent/document/registry models; `config/sources.yaml` rebuild; new manifest schema | — |
 | 2 | ✅ **Done.** Adapter protocol redesign; port `AICTEAdapter` and `Careers360Adapter`; delete `WikipediaAdapter` and `general_background` | 1 |
 | 3 | 🔶 **Verification done, adapters pending.** Self-contained Tier A adapters — UGC, NTA, NIRF, NAAC, NBA, NCS, NSDC, NQR, NSP, Apprenticeship India, NATS. Decision-5 escalation applies per source | 2 |
-| 4 | Institution registry — AISHE/UGC HEI/NIRF discovery, entity resolution, offering resolution | 3 |
+| 4 | 🔶 **Registry built from NIRF; AISHE blocked.** Institution registry — AISHE/UGC HEI/NIRF discovery, entity resolution, offering resolution | 3 |
 | 5 | University-backed segments — Curriculum, Fees, Institution & Offering | 4 |
 | 6 | Planner + orchestration + intent batching; full 754-course run | 2, and as much of 3–5 as exists |
 | 7 | Tier D discovery adapters — Careers360, Shiksha, CollegeDunia, salary portals, all `role: discovery` | 6 |
@@ -704,6 +704,57 @@ to prevent.
 still times out. The six JS-only sources (UGC HEI Search, NAAC, Skill India
 Digital, Apprenticeship India, MoSPI, plus NPTEL's discipline page) need the
 open-data check before any Playwright decision.
+
+### Phase 4 as built (2026-08-07)
+
+`src/institutions/` holds `models.py`, `nirf_institutions.py` (extraction),
+`store.py` (persistence) and `offerings.py` (candidate resolution), populated by
+`scripts/build_institution_registry.py`.
+
+**Live result: 871 ranking rows across 13 NIRF categories → 523 institutions.**
+
+**NIRF ids are category-scoped, and this is the registry's join key.** They read
+`IR-<ranking category>-<institution type>-<number>`; only the category letter
+varies for one institution, so `IR-A-U-0108`, `IR-E-U-0108` and `IR-O-U-0108` are
+all Jamia Millia Islamia. Keying on the full id counted it six times. Keying on
+the number alone then collided — `IR-M-S-6` is IIM Sambalpur and `IR-C-N-6` is
+Queen Mary's College — because the number is scoped by the type letter. **Type +
+number** is the stable identity, with zero collisions across all 13 categories.
+This is the entity-resolution key decision 9 required, and it came from the data
+rather than from AISHE.
+
+**Rankings are normalised into `institution_rankings`.** Storing rank on the
+institution row let the last-crawled category overwrite the rest: querying top-5
+Engineering returned ranks starting at 17, with IIT Madras missing. Rankings are
+per (institution, category, year); IIT Madras correctly holds five.
+
+Two extraction traps worth remembering: the Innovation table has **five columns
+and no Score**, so requiring six silently dropped the whole category — and in a
+per-category loop a silent zero looks identical to an empty category. And name
+cells embed a details widget, needing three passes to clean ("More Details Close",
+then a bare "Close").
+
+`upsert_institution` merges rather than overwrites — a later sighting may fill a
+missing AISHE code, but a `None` never blanks a known value, since one source not
+knowing a field is not evidence the field is wrong.
+
+**Offering resolution is candidate generation, not confirmation.** A NIRF ranking
+says an institution works in a discipline, not that it runs a given course, so
+`candidate_offerings()` returns offerings at `CATEGORY_LEVEL_CONFIDENCE = 0.5` —
+deliberately below the acceptance threshold, with `official_course_url` unset.
+Confirming a real offering needs the institution's own course page, which is
+phase 5.
+
+Coverage is honest and limited: **263 of 750 courses (35%) sit in a
+NIRF-ranked discipline**; the other 65% fall back to the general University and
+College rankings, which is near-zero signal for a course like Bharatanatyam. That
+gap is the strongest argument for unblocking AISHE.
+
+**AISHE has exhausted the decision-5 escalation.** Realistic headers: its
+dashboard was failing on the *same* incomplete TLS chain as NMC and now returns
+200 after repair, so it was never bot-blocked. Open data: `data.gov.in` search
+results are themselves JS-rendered. Its Angular bundle exposes only route paths,
+no API base. Only Playwright remains, and that needs explicit approval.
 
 ## Verification
 
