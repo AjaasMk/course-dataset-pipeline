@@ -581,8 +581,49 @@ because these are regulators whose output is canonical. DTE Kerala serves a
 self-signed certificate with no AIA URL to repair from and stays `unverified`;
 trusting it is the one trade this pipeline will not make.
 
-**Still to do in this phase:** UGC, NBA, NQR, NCS, NSDC, NSP and NATS adapters.
-NCTE still times out. The six JS-only sources (UGC HEI Search, NAAC, Skill India
+**`UGCAdapter` — verified.** `/regulations` serves 61 usable regulation PDFs.
+Site quirk, a third distinct one: nearly every regulation link is labelled
+**"View"**, so the document name exists only in the uploaded filename behind a
+numeric upload id (`5576784_UG-and-PG-Regulations-2025.pdf`). Titles are derived
+from the filename, percent-decoded, with the upload id stripped. Uploads named as
+a bare content hash carry no information and are dropped.
+
+### A pattern across all four adapters: government sites hide their labels
+
+Each source required a different trick to recover the document name, and none of
+them is the anchor text:
+
+| Source | Where the name actually lives |
+|--------|------------------------------|
+| AICTE | anchor text (the only conventional one) |
+| NIRF | the href — anchors have **no text at all** |
+| NTA | anchor text, but as formal expansions needing discipline aliases |
+| UGC | the **filename**, behind a numeric upload id; anchor says "View" |
+
+Any remaining regulator adapter should be assumed to need its own variant of this
+rather than a shared "scrape the link text" helper.
+
+### Open issue — a single global match threshold does not fit all sources
+
+`matching.threshold: 0.80` was tuned for short course-name matching (AICTE, NIRF,
+NTA), where it works: correct matches land at 1.00 and genuine non-coverage falls
+to 0.42–0.69. Against UGC's long document titles it produces **false negatives** —
+correct documents scoring below the bar:
+
+| Query | Document found | Score |
+|---|---|---|
+| "equivalence of degrees" | UGC (Recognition and Grant of Equivalence…) | 0.78 |
+| "minimum qualifications appointment of teachers" | 4th Amendment Minimum Qualifications… | 0.70 |
+
+Both are the right document. `token_set_ratio` behaves differently when the
+candidate is a long title rather than a short name, so one number cannot serve
+both. Deliberately **not** tuned here: lowering the global threshold would weaken
+the non-coverage rejection that decisions 2 and 3 depend on. Likely resolution is
+a per-source threshold in `config/sources.yaml`, but that is a policy change and
+needs sign-off.
+
+**Still to do in this phase:** NBA, NQR, NCS, NSDC, NSP and NATS adapters. NCTE
+still times out. The six JS-only sources (UGC HEI Search, NAAC, Skill India
 Digital, Apprenticeship India, MoSPI, plus NPTEL's discipline page) need the
 open-data check before any Playwright decision.
 

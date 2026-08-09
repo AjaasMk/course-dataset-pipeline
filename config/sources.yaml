@@ -46,7 +46,12 @@ sources:
     best_used_for: University recognition; degree nomenclature; regulations; HEI categories
     usage_rule: Primary canonical source for university-level recognition and degree rules
     refresh: as regulations change
-    status: reachable
+    status: verified
+    # VERIFIED end to end 2026-08-07 by UGCAdapter against /regulations, which
+    # serves 61 usable regulation PDFs. Site quirk: nearly every regulation link
+    # is labelled "View", so the document name exists only in the uploaded
+    # filename behind a numeric upload id — titles are derived from the filename,
+    # not the anchor text. Uploads named as a bare content hash are dropped.
     # CORRECTED 2026-08-07 by live probe: ugc.gov.in was recorded as `blocked`,
     # but that was only ever true of one LOCF PDF path behind CloudFront. The
     # site itself serves 15,624 chars of text and 248 links (63 PDFs) to a plain
