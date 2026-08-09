@@ -131,7 +131,6 @@ def plan_course(
     permitted = _permitted_regulators(registry, course.fields)
 
     intents: list[RetrievalIntent] = []
-    counter = 0
     for segment in wanted:
         config = registry.segment_sources.get(segment.value)
         if config is None:
@@ -151,11 +150,22 @@ def plan_course(
                 if source_id in regulators and source_id not in permitted:
                     continue
 
-                counter += 1
                 priority += 1
                 intents.append(
                     RetrievalIntent(
-                        intent_id=f"RI-{course.course_id}-{counter:03d}",
+                        # Content-derived, not order-derived: RETRIEVAL_SEGMENTS
+                        # is a frozenset whose iteration order is randomized
+                        # per Python process (PYTHONHASHSEED), so a counter-based
+                        # id let the same string mean a different (segment,
+                        # source) pair on every re-run -- confirmed live to
+                        # silently alias one run's resolved document onto an
+                        # unrelated intent on the next run, via store.py's
+                        # INSERT OR REPLACE keyed only on intent_id. Deriving the
+                        # id from (course, segment, source) makes re-planning the
+                        # same course idempotent by construction (Hard
+                        # Constraint 5), not just internally consistent within
+                        # one process.
+                        intent_id=f"RI-{course.course_id}-{segment.value}-{source_id}",
                         course_id=course.course_id,
                         segment=segment,
                         field_ids=SEGMENT_FIELD_IDS[segment],

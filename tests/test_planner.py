@@ -121,6 +121,30 @@ def test_intent_ids_are_unique_within_a_course(registry):
     assert len({i.intent_id for i in intents}) == len(intents)
 
 
+def test_intent_id_is_stable_across_replans_regardless_of_segment_order(registry):
+    # intent_id must be derived from (course, segment, source) content, not
+    # from iteration position -- RETRIEVAL_SEGMENTS is a frozenset, and its
+    # iteration order is randomized per Python process (PYTHONHASHSEED),
+    # confirmed live (3 different orderings across 3 fresh processes). A
+    # counter-based id lets the SAME id string mean a different (segment,
+    # source) pair on every re-run, which -- combined with INSERT OR REPLACE
+    # in store.py keyed only on intent_id -- silently aliases an old run's
+    # resolved document onto a completely different intent on the next run.
+    # This test would not have caught the old counter-based scheme, since
+    # within a single process the order is internally consistent; it asserts
+    # the actual fix: the id is computable from content alone, without
+    # planning the whole course first.
+    intents = plan_course(_course(), registry)
+    for intent in intents:
+        assert intent.intent_id == f"RI-{intent.course_id}-{intent.segment.value}-{intent.source_id}"
+
+
+def test_intent_id_has_no_bare_counter_suffix(registry):
+    intents = plan_course(_course(), registry)
+    for intent in intents:
+        assert not intent.intent_id.rsplit("-", 1)[-1].isdigit()
+
+
 def test_priority_starts_at_one_within_each_segment(registry):
     by_segment: dict[Segment, list[int]] = {}
     for intent in plan_course(_course(), registry):
