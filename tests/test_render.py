@@ -73,3 +73,31 @@ def test_fetcher_closes_the_browser_even_when_navigation_fails():
         fetcher.fetch("https://example.test/")
 
     assert closed == [True]
+
+
+def test_navigation_waits_for_dom_not_network_idle():
+    # networkidle never fires on a site with polling or analytics beacons, so it
+    # fails at ANY timeout rather than being a duration problem. MoSPI timed out
+    # at 30s under networkidle and loads in 5s under domcontentloaded.
+    seen = {}
+
+    class FakePage:
+        def goto(self, url, **kwargs):
+            seen.update(kwargs)
+
+        def wait_for_timeout(self, ms):
+            pass
+
+        def content(self):
+            return "<html><body><p>x</p></body></html>"
+
+    class FakeBrowser:
+        def new_page(self, **kwargs):
+            return FakePage()
+
+        def close(self):
+            pass
+
+    RenderedFetcher(launcher=lambda: FakeBrowser()).fetch("https://example.test/")
+
+    assert seen["wait_until"] == "domcontentloaded"

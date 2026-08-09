@@ -2,8 +2,13 @@ from typing import Callable, Optional
 
 from src.retrieve.probe import BROWSER_HEADERS, MIN_LINKS, MIN_TEXT_CHARS, classify, ProbeVerdict
 
-DEFAULT_TIMEOUT_MS = 30_000
-SETTLE_MS = 2_000
+DEFAULT_TIMEOUT_MS = 60_000
+SETTLE_MS = 3_000
+# "networkidle" waits for 500ms of zero network activity, which never arrives on
+# a site that polls or beacons -- so it fails at any timeout rather than being a
+# duration problem. MoSPI timed out at 30s under networkidle and loads in 5s
+# under domcontentloaded plus a settle delay.
+WAIT_UNTIL = "domcontentloaded"
 
 
 class RenderError(Exception):
@@ -50,10 +55,12 @@ class RenderedFetcher:
         launcher: Optional[Callable[[], object]] = None,
         timeout_ms: int = DEFAULT_TIMEOUT_MS,
         settle_ms: int = SETTLE_MS,
+        wait_until: str = WAIT_UNTIL,
     ):
         self.launcher = launcher or _default_launcher
         self.timeout_ms = timeout_ms
         self.settle_ms = settle_ms
+        self.wait_until = wait_until
 
     def fetch(self, url: str) -> str:
         try:
@@ -63,7 +70,7 @@ class RenderedFetcher:
 
         try:
             page = browser.new_page(user_agent=BROWSER_HEADERS["User-Agent"])
-            page.goto(url, timeout=self.timeout_ms, wait_until="networkidle")
+            page.goto(url, timeout=self.timeout_ms, wait_until=self.wait_until)
             page.wait_for_timeout(self.settle_ms)
             return page.content()
         except Exception as exc:

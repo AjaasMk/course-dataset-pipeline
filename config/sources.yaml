@@ -580,9 +580,12 @@ sources:
     best_used_for: Labour-force and earnings context
     usage_rule: Not a direct course-placement source; use for broader context
     refresh: annual / periodic
-    status: unverified
-    # Render attempt timed out at 30s. Inconclusive rather than blocked; retry
-    # with a longer budget before drawing a conclusion.
+    status: reachable
+    # RESOLVED 2026-08-07. The 30s timeout was not a duration problem: the render
+    # waited on "networkidle", which never arrives on a site that polls, so it
+    # would have failed at any timeout. Under domcontentloaded the page loads in
+    # 5.3s and yields 11,033 chars with 12 labelled PDFs. Registered via
+    # NoticeBoardAdapter with a RenderedFetcher.
     # Serves 71 chars to a plain request; react-root marker present.
 
   NPTEL:

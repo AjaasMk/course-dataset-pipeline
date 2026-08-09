@@ -46,6 +46,7 @@ def build_adapters() -> dict:
             "APPRENTICESHIP_INDIA", [SourceTier.A],
             "https://www.apprenticeshipindia.gov.in/", fetch_html=render,
         ),
+        NoticeBoardAdapter("MOSPI_PLFS", [SourceTier.A], "https://www.mospi.gov.in/", fetch_html=render),
     ]
     return {adapter.source_id: adapter for adapter in adapters}
 
