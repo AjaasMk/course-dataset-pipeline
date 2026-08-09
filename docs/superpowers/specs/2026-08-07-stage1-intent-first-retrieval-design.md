@@ -533,9 +533,58 @@ Findings that changed the plan:
   evidence of a client-only app, which is why the classifier weights visible text
   over markers.
 
-**Still to do in this phase:** the adapters themselves. Each needs its specific
-data page confirmed before implementation — the NPTEL case shows entry-URL
-reachability is not sufficient grounds to build.
+### Phase 3 — adapters built so far
+
+Each was investigated live before implementation, per the NPTEL lesson that
+entry-URL reachability is not grounds to build.
+
+**`NIRFAdapter` — verified.** NIRF publishes a year index linking to
+per-discipline ranking pages; the ranking table is fully server-rendered (2025
+Engineering: 19,086 chars, 301 rows) with NIRF Institute IDs, city, state, score
+and rank. Serves the Ranking segment and supplies the top-N institution bound.
+Two site quirks: category anchors carry **no link text**, so titles derive from
+the href; and category names are not course vocabulary, so each carries an alias
+list.
+
+**`NTAAdapter` — verified.** NTA gives each examination its own portal
+(jeemain / neet / cuet / cmat / ugcnet / csirnet / icar / nchm-jee), all linked
+from the homepage. Same aliasing need: labels are formal expansions, not the
+names a course is described by.
+
+Live resolution, both adapters:
+
+| Query | Resolves to | Confidence |
+|---|---|---|
+| Mechanical Engineering | NIRF Engineering / JEE | 1.00 |
+| Allopathic Medicine & Surgery | NIRF Medical / NEET | 1.00 |
+| BSc Psychology | CUET | 1.00 |
+| Business Administration | NIRF Management / CMAT | 1.00 |
+| Horticulture | NIRF Agriculture / ICAR | 1.00 |
+| Hotel Management | NCHM JEE | 1.00 |
+| **Animation** | NIRF Innovation | **0.63 — unresolved** |
+| **Bharatanatyam** | NTA SWAYAM | **0.42 — unresolved** |
+
+The two low scores are the design working. Neither NIRF nor NTA covers those
+disciplines, and both fall below the 0.80 threshold rather than binding to a
+plausible-looking wrong table. Same shape as Aerospace/AICTE.
+
+**A defect in the client's Source Directory, found here:** its CUET entry points
+at `exams.nta.ac.in/CUET-UG/`, which returns HTTP 404. The live portal is
+`cuet.nta.nic.in`, found by crawling nta.ac.in. Corrected in `config/sources.yaml`.
+
+**TLS chain repair** (`src/retrieve/tls.py`) resolves sources that were failing
+verification rather than being blocked. It reads the leaf certificate, walks the
+AIA CA-Issuers chain, and appends the intermediates the server omitted to
+certifi's roots. NMC now verifies (6,540 chars) and CEE Kerala (3,823). The trust
+anchor remains a certifi root — verification is never disabled, which matters
+because these are regulators whose output is canonical. DTE Kerala serves a
+self-signed certificate with no AIA URL to repair from and stays `unverified`;
+trusting it is the one trade this pipeline will not make.
+
+**Still to do in this phase:** UGC, NBA, NQR, NCS, NSDC, NSP and NATS adapters.
+NCTE still times out. The six JS-only sources (UGC HEI Search, NAAC, Skill India
+Digital, Apprenticeship India, MoSPI, plus NPTEL's discipline page) need the
+open-data check before any Playwright decision.
 
 ## Verification
 

@@ -220,20 +220,27 @@ sources:
     best_used_for: Entrance exam bulletins, dates, results and notices
     usage_rule: Use exam-specific official bulletins
     refresh: continuous
-    status: reachable
+    status: verified
+    # VERIFIED end to end 2026-08-07 by NTAAdapter against the live site. NTA
+    # gives each examination its own portal (jeemain/neet/cuet/cmat/ugcnet/
+    # csirnet/icar/nchm-jee), all linked from the homepage. Link labels are the
+    # formal expansions, so each portal carries an alias list of the discipline
+    # vocabulary a planner would actually use.
 
   CUET:
     name: Common University Entrance Test
-    official_url: https://exams.nta.ac.in/CUET-UG/
+    official_url: https://cuet.nta.nic.in/
     authority_type: Official exam portal
     tiers: [A]
     coverage: National
     best_used_for: CUET-UG information, application and bulletin
     usage_rule: Course eligibility still depends on individual university rules
     refresh: annual
-    status: unverified
-    # Probe returned HTTP 404 — the URL given in the client Source Directory is
-    # dead. Needs a corrected URL from the client or from nta.ac.in before use.
+    status: reachable
+    # CORRECTED 2026-08-07. The client Source Directory lists
+    # https://exams.nta.nic.in/CUET-UG/, which returns HTTP 404. The live portal
+    # is https://cuet.nta.nic.in/ (3,676 chars), found by crawling nta.ac.in.
+    # This is a defect in the client spec, not in our config.
 
   JOSAA:
     name: Joint Seat Allocation Authority
