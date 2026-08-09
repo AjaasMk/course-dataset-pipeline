@@ -66,6 +66,57 @@ def test_adapter_reports_the_identity_it_was_configured_with(adapter):
     assert adapter.tiers == [SourceTier.A]
 
 
+COA_LIKE_HTML = """
+<html><body>
+  <a href="/app/myauth/notification/Circular_dt.19.07.2023-Relaxation_in_B.Arch_Eligibility.pdf">
+    Circular dt.19.07.2023 Relaxation in B.Arch Eligibility Criteria for 2023-2024</a>
+  <a href="/app/myauth/notification/COA_Approval_Process_Handbook_2024-2025.pdf">
+    COA Approval Process Handbook 2024-2025</a>
+  <a href="/app/myauth/event/SYMPHONIES_IN_ARCHITECTURE-Enigma_of_Design_ThinkingPOSTER.pdf">
+    Symphonies in Architecture</a>
+  <a href="/app/myauth/event/POSTER_-_Knowledge_and_Employability_in_Architecture.pdf">
+    Knowledge and Employability in Architecture</a>
+</body></html>
+"""
+
+
+def test_excludes_urls_matching_a_configured_pattern():
+    # Confirmed live 2026-08-09: COA's notice board mixes genuine regulatory
+    # circulars (/app/myauth/notification/) with continuing-education
+    # webinar/FDP posters (/app/myauth/event/) that happen to share topical
+    # vocabulary with course names ("Symphonies in Architecture" fuzzy-
+    # matches "Architecture" courses at high confidence despite being a
+    # seminar poster, not a curriculum/eligibility document) -- confirmed
+    # live this contaminated 36 of 36 real COA Curriculum/Eligibility
+    # matches across 5 architecture courses. A URL-path exclusion is more
+    # robust than a title keyword blacklist: many event titles ("Symphonies
+    # in Architecture", "Research in Architecture") have no event-style
+    # keyword at all, but the site's own URL categorization is reliable.
+    coa_adapter = NoticeBoardAdapter(
+        source_id="COA", tiers=[SourceTier.A], listing_page="https://www.coa.gov.in/",
+        exclude_url_patterns=["/event/"],
+    )
+    with patch("src.retrieve.notice_board.requests.get") as mock_get:
+        mock_get.return_value = _html_response(COA_LIKE_HTML)
+        index = coa_adapter.build_index()
+
+    assert "Symphonies in Architecture" not in index
+    assert "Knowledge and Employability in Architecture" not in index
+    assert any("Relaxation in B.Arch Eligibility" in t for t in index)
+    assert any("Approval Process Handbook" in t for t in index)
+
+
+def test_no_exclusion_by_default_existing_sources_unaffected():
+    with patch("src.retrieve.notice_board.requests.get") as mock_get:
+        mock_get.return_value = _html_response(COA_LIKE_HTML)
+        default_adapter = NoticeBoardAdapter(
+            source_id="COA", tiers=[SourceTier.A], listing_page="https://www.coa.gov.in/",
+        )
+        index = default_adapter.build_index()
+
+    assert "Symphonies in Architecture" in index  # unfiltered without exclude_url_patterns
+
+
 def test_supports_only_its_own_source(adapter):
     assert adapter.supports(_intent())
     assert not adapter.supports(_intent(source_id="JOSAA"))

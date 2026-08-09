@@ -54,6 +54,7 @@ class NoticeBoardAdapter:
         listing_page: str,
         document_suffixes: tuple[str, ...] = DOCUMENT_SUFFIXES,
         fetch_html: Optional[Callable[[str], str]] = None,
+        exclude_url_patterns: Optional[list[str]] = None,
     ):
         self.source_id = source_id
         self.tiers = tiers
@@ -63,6 +64,15 @@ class NoticeBoardAdapter:
         # logic entirely; only the fetch differs, so it is injected rather than
         # duplicated into a parallel adapter.
         self.fetch_html = fetch_html
+        # Some notice boards mix genuine regulatory content with unrelated
+        # material under a distinct URL path -- COA's real site puts
+        # continuing-education webinar/FDP posters under /event/ alongside
+        # actual circulars under /notification/, and the posters' topical
+        # titles ("Symphonies in Architecture") fuzzy-match course names
+        # despite being unrelated to any course's curriculum or eligibility.
+        # Optional and empty by default -- every other source using this
+        # class is unaffected unless explicitly configured otherwise.
+        self.exclude_url_patterns = exclude_url_patterns or []
         self._index: Optional[dict[str, str]] = None
 
     def _get_html(self) -> str:
@@ -89,6 +99,8 @@ class NoticeBoardAdapter:
         for link in soup.find_all("a", href=True):
             href = link["href"]
             if not href.lower().split("?")[0].endswith(self.document_suffixes):
+                continue
+            if any(pattern in href for pattern in self.exclude_url_patterns):
                 continue
             title = link.get_text(" ", strip=True) or title_from_filename(href)
             if not is_usable_title(title):

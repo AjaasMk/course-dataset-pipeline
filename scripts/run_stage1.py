@@ -39,7 +39,10 @@ def build_adapters() -> dict:
         NoticeBoardAdapter("DCI", [SourceTier.A], "https://dciindia.gov.in/"),
         NoticeBoardAdapter("INC", [SourceTier.A], "https://www.indiannursingcouncil.org/"),
         NoticeBoardAdapter("PCI", [SourceTier.A], "https://www.pci.nic.in/"),
-        NoticeBoardAdapter("COA", [SourceTier.A], "https://www.coa.gov.in/"),
+        NoticeBoardAdapter(
+            "COA", [SourceTier.A], "https://www.coa.gov.in/",
+            exclude_url_patterns=["/event/"],
+        ),
         NoticeBoardAdapter("RCI", [SourceTier.A], "https://rehabcouncil.nic.in/"),
         NoticeBoardAdapter("UGC_DEB", [SourceTier.A], "https://deb.ugc.ac.in/"),
         NoticeBoardAdapter("CEE_KERALA", [SourceTier.A], "https://cee.kerala.gov.in/"),
