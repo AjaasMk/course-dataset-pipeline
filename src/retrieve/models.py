@@ -14,20 +14,50 @@ class SourceTier(str, Enum):
 
 
 class Segment(str, Enum):
-    COURSE_IDENTITY = "Course Identity"
-    DURATION_MODE = "Duration & Mode"
-    ELIGIBILITY = "Eligibility"
-    ENTRANCE_ADMISSION = "Entrance & Admission"
-    CURRICULUM = "Curriculum"
-    SPECIALISATION = "Specialisation"
-    INSTITUTION_OFFERING = "Institution & Offering"
-    RANKING_ACCREDITATION = "Ranking & Accreditation"
-    FEES = "Fees"
-    SCHOLARSHIPS = "Scholarships"
-    CAREER_MAPPING = "Career Mapping"
-    SALARY = "Salary"
-    RECRUITERS_PLACEMENT = "Recruiters & Placement"
-    INTERNSHIPS = "Internships"
+    """The client's Segment Sources sheet (S01-S19) is the canonical chunking
+    taxonomy. It has 18 distinct values covering those 19 rows, not 19: S08
+    (institutions offering the course) and S09 (ownership classification)
+    both roll into the single INSTITUTION_OFFERING value, exactly as the
+    client's own Data Fields sheet already merges them into one field group
+    (F057-F071) -- verified against the workbook, not assumed.
+
+    14 of these own F-numbered field ranges and are used for Stage 1
+    retrieval intents (see RETRIEVAL_SEGMENTS below); the other 4 -- course
+    overview, skills developed, further-study pathways, student reviews --
+    have no atomic fields and exist only for Stage 2 chunking/routing.
+    """
+
+    COURSE_IDENTITY = "Course Identity"  # S01
+    COURSE_OVERVIEW = "Course Overview"  # S02 -- explanatory, no F-fields
+    DURATION_MODE = "Duration & Mode"  # S03
+    ELIGIBILITY = "Eligibility"  # S04
+    ENTRANCE_ADMISSION = "Entrance & Admission"  # S05
+    CURRICULUM = "Curriculum"  # S06
+    SPECIALISATION = "Specialisation"  # S07
+    INSTITUTION_OFFERING = "Institution & Offering"  # S08 + S09 merged
+    RANKING_ACCREDITATION = "Ranking & Accreditation"  # S10
+    FEES = "Fees"  # S11
+    SCHOLARSHIPS = "Scholarships"  # S12
+    CAREER_MAPPING = "Career Mapping"  # S13
+    SKILLS_DEVELOPED = "Skills Developed"  # S14 -- explanatory, no F-fields
+    SALARY = "Salary"  # S15
+    RECRUITERS_PLACEMENT = "Recruiters & Placement"  # S16
+    INTERNSHIPS = "Internships"  # S17
+    FURTHER_STUDY_PATHWAYS = "Further-Study Pathways"  # S18 -- explanatory, no F-fields
+    STUDENT_REVIEWS = "Student Reviews & Campus Experience"  # S19 -- explanatory, no F-fields
+
+
+# The 4 segments with no atomic Data Fields -- Stage 1 retrieval intents have
+# nothing to route to for these, so they are excluded from planning entirely.
+# Stage 2 chunking still classifies content into them for the Vector DB layer.
+EXPLANATORY_SEGMENTS: frozenset[Segment] = frozenset(
+    {Segment.COURSE_OVERVIEW, Segment.SKILLS_DEVELOPED, Segment.FURTHER_STUDY_PATHWAYS, Segment.STUDENT_REVIEWS}
+)
+
+# Derived, not hand-maintained: the 14-segment retrieval view is a computed
+# subset of the one canonical 18-value taxonomy, so a future taxonomy change
+# cannot let the two silently drift apart.
+RETRIEVAL_SEGMENTS: frozenset[Segment] = frozenset(Segment) - EXPLANATORY_SEGMENTS
 
 
 class IntentRole(str, Enum):

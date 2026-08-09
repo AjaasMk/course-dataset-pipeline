@@ -2,6 +2,7 @@ from typing import Optional
 
 from src.courses.taxonomy import Course
 from src.retrieve.models import (
+    RETRIEVAL_SEGMENTS,
     DocumentType,
     IntentRole,
     RetrievalIntent,
@@ -121,7 +122,10 @@ def plan_course(
     qualification_level: str = DEFAULT_QUALIFICATION_LEVEL,
     segments: Optional[list[Segment]] = None,
 ) -> list[RetrievalIntent]:
-    wanted = segments if segments is not None else list(Segment)
+    # Explanatory segments (course overview, skills, further-study, reviews)
+    # own no F-numbered fields, so there is nothing for a retrieval intent to
+    # route to -- default to the retrieval-facing subset, not the full taxonomy.
+    wanted = segments if segments is not None else list(RETRIEVAL_SEGMENTS)
     query_terms = _query_terms(course)
     regulators = _regulator_sources(registry)
     permitted = _permitted_regulators(registry, course.fields)

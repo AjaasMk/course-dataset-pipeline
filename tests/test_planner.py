@@ -1,7 +1,7 @@
 import pytest
 
 from src.courses.taxonomy import Course
-from src.retrieve.models import IntentRole, Segment, SourceTier
+from src.retrieve.models import RETRIEVAL_SEGMENTS, IntentRole, Segment, SourceTier
 from src.retrieve.planner import SEGMENT_FIELD_IDS, plan_course
 from src.retrieve.registry import load_registry
 
@@ -22,8 +22,8 @@ def _course(**overrides) -> Course:
     return Course(**fields)
 
 
-def test_every_segment_has_a_field_id_range():
-    assert set(SEGMENT_FIELD_IDS) == set(Segment)
+def test_every_retrieval_segment_has_a_field_id_range():
+    assert set(SEGMENT_FIELD_IDS) == set(RETRIEVAL_SEGMENTS)
 
 
 def test_field_ids_are_unique_across_segments():
