@@ -22,6 +22,8 @@ data/probe_*.json
 data/institutions.db
 data/stage1_report.json
 data/institution_registry_report.json
+data/facts.db
+data/facts_migration_report.json
 data/ca_bundles/
 data/chunks/
 data/extracted/
