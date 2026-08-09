@@ -1,3 +1,4 @@
+import re
 from pathlib import Path
 from typing import Optional
 from urllib.parse import urljoin
@@ -6,12 +7,7 @@ import requests
 from bs4 import BeautifulSoup
 from rapidfuzz import fuzz, utils
 
-from src.retrieve.base import (
-    REQUEST_TIMEOUT,
-    USER_AGENT,
-    document_type_of,
-    fetch_and_store,
-)
+from src.retrieve.base import REQUEST_TIMEOUT, USER_AGENT, fetch_and_store
 from src.retrieve.models import (
     DiscoveredDocument,
     DocumentRecord,
@@ -20,19 +16,29 @@ from src.retrieve.models import (
     SourceTier,
 )
 
-LISTING_PAGE = "https://www.aicte.gov.in/education/model-syllabus"
+SCHEMES_PAGE = "https://scholarships.gov.in/All-Scholarships"
 RAW_DIR = Path("data/raw")
 MAX_CANDIDATES = 5
+ANCESTOR_DEPTH = 4
 
+_SPEC_LABEL = "specifications"
+_OPEN_MARKER = re.compile(r"\s*Scheme\s*Open from.*$|\s*Open from.*$", re.I | re.S)
+_TRAILING_SCHEME = re.compile(r"\s+Scheme\s*$", re.I)
+_MIN_BLOCK_CHARS = 40
 _EXACT_SCORE = 99
 
 
-class AICTEAdapter:
-    source_id = "AICTE"
+def scheme_name_from_block(text: str) -> str:
+    name = _OPEN_MARKER.sub("", " ".join(text.split()))
+    return _TRAILING_SCHEME.sub("", name).strip()
+
+
+class NSPAdapter:
+    source_id = "NSP"
     tiers = [SourceTier.A]
 
-    def __init__(self, listing_page: str = LISTING_PAGE):
-        self.listing_page = listing_page
+    def __init__(self, schemes_page: str = SCHEMES_PAGE):
+        self.schemes_page = schemes_page
         self._index: Optional[dict[str, str]] = None
 
     def supports(self, intent: RetrievalIntent) -> bool:
@@ -40,22 +46,28 @@ class AICTEAdapter:
 
     def build_index(self) -> dict[str, str]:
         response = requests.get(
-            self.listing_page,
-            headers={"User-Agent": USER_AGENT},
-            timeout=REQUEST_TIMEOUT,
+            self.schemes_page, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT
         )
         response.raise_for_status()
         soup = BeautifulSoup(response.text, "html.parser")
 
         index: dict[str, str] = {}
         for link in soup.find_all("a", href=True):
-            href = link["href"]
-            text = link.get_text(strip=True)
-            if not href.lower().endswith(".pdf"):
+            if link.get_text(" ", strip=True).lower() != _SPEC_LABEL:
                 continue
-            if "model curriculum" not in text.lower():
-                continue
-            index[text] = urljoin(self.listing_page, href)
+            # NSP labels every scheme document "Specifications"; the scheme name
+            # lives in an ancestor block alongside its open/close dates.
+            node = link
+            for _ in range(ANCESTOR_DEPTH):
+                node = node.parent
+                if node is None:
+                    break
+                block = node.get_text(" ", strip=True)
+                if len(block) >= _MIN_BLOCK_CHARS:
+                    name = scheme_name_from_block(block)
+                    if name:
+                        index.setdefault(name, urljoin(self.schemes_page, link["href"]))
+                    break
         return index
 
     def _ensure_index(self) -> dict[str, str]:
@@ -68,31 +80,23 @@ class AICTEAdapter:
         if not index:
             return []
 
-        wanted = set(intent.required_document_type)
-        scored: list[tuple[float, int, str]] = []
-        for title, url in index.items():
-            if document_type_of(url) not in wanted:
-                continue
-            # token_set_ratio does not penalise a candidate for carrying extra
-            # words beyond the query, so a specialisation variant scores the same
-            # as the plain branch it derives from. Break ties toward the title
-            # closest in length to the query -- the less-qualified document.
+        scored: list[tuple[int, str]] = []
+        for name in index:
             best = max(
-                fuzz.token_set_ratio(term, title, processor=utils.default_process)
+                fuzz.token_set_ratio(term, name, processor=utils.default_process)
                 for term in intent.query_terms
             )
-            closest = -min(abs(len(title) - len(term)) for term in intent.query_terms)
-            scored.append((best, closest, title))
+            scored.append((best, name))
 
         scored.sort(reverse=True)
         return [
             DiscoveredDocument(
-                document_url=index[title],
-                document_title=title,
+                document_url=index[name],
+                document_title=name,
                 match_confidence=score / 100,
                 match_type=MatchType.EXACT if score >= _EXACT_SCORE else MatchType.FUZZY,
             )
-            for score, _, title in scored[:MAX_CANDIDATES]
+            for score, name in scored[:MAX_CANDIDATES]
         ]
 
     def download(self, document: DiscoveredDocument) -> DocumentRecord:

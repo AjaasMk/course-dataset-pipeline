@@ -1,12 +1,12 @@
 from pathlib import Path
 from typing import Optional
-from urllib.parse import urljoin, urlparse
+from urllib.parse import parse_qs, urljoin, urlparse
 
 import requests
 from bs4 import BeautifulSoup
 from rapidfuzz import fuzz, utils
 
-from src.retrieve.base import USER_AGENT, REQUEST_TIMEOUT, fetch_and_store
+from src.retrieve.base import REQUEST_TIMEOUT, USER_AGENT, fetch_and_store
 from src.retrieve.models import (
     DiscoveredDocument,
     DocumentRecord,
@@ -15,24 +15,29 @@ from src.retrieve.models import (
     SourceTier,
 )
 
-LISTING_PAGE = "https://www.careers360.com/courses"
+SECTORS_PAGE = "https://www.ncs.gov.in/content-repository/Pages/BrowseBySectors.aspx"
 RAW_DIR = Path("data/raw")
-MAX_CANDIDATES = 5
+MAX_CANDIDATES = 3
 
+_SECTOR_PAGE = "viewncos.aspx"
+_SECTOR_PARAM = "FilterValue1"
 _EXACT_SCORE = 99
 
 
-def _is_course_page(url: str) -> bool:
-    segments = [s for s in urlparse(url).path.split("/") if s]
-    return len(segments) == 2 and segments[0] == "courses"
+def sector_from_href(href: str) -> str:
+    parsed = urlparse(href)
+    if not parsed.path.lower().endswith(_SECTOR_PAGE):
+        return ""
+    values = parse_qs(parsed.query).get(_SECTOR_PARAM)
+    return values[0].strip() if values else ""
 
 
-class Careers360Adapter:
-    source_id = "CAREERS360"
-    tiers = [SourceTier.D]
+class NCSAdapter:
+    source_id = "NCS"
+    tiers = [SourceTier.A]
 
-    def __init__(self, listing_page: str = LISTING_PAGE):
-        self.listing_page = listing_page
+    def __init__(self, sectors_page: str = SECTORS_PAGE):
+        self.sectors_page = sectors_page
         self._index: Optional[dict[str, str]] = None
 
     def supports(self, intent: RetrievalIntent) -> bool:
@@ -40,22 +45,18 @@ class Careers360Adapter:
 
     def build_index(self) -> dict[str, str]:
         response = requests.get(
-            self.listing_page,
-            headers={"User-Agent": USER_AGENT},
-            timeout=REQUEST_TIMEOUT,
+            self.sectors_page, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT
         )
         response.raise_for_status()
         soup = BeautifulSoup(response.text, "html.parser")
 
         index: dict[str, str] = {}
         for link in soup.find_all("a", href=True):
-            text = link.get_text(strip=True)
-            if not text:
-                continue
-            url = urljoin(self.listing_page, link["href"])
-            if not _is_course_page(url):
-                continue
-            index.setdefault(text, url)
+            # NCS sector anchors carry no text at all; the sector name exists
+            # only in the FilterValue1 query parameter.
+            sector = sector_from_href(link["href"])
+            if sector:
+                index.setdefault(sector, urljoin(self.sectors_page, link["href"]))
         return index
 
     def _ensure_index(self) -> dict[str, str]:
@@ -68,24 +69,23 @@ class Careers360Adapter:
         if not index:
             return []
 
-        scored: list[tuple[int, int, str]] = []
-        for title in index:
+        scored: list[tuple[int, str]] = []
+        for sector in index:
             best = max(
-                fuzz.token_set_ratio(term, title, processor=utils.default_process)
+                fuzz.token_set_ratio(term, sector, processor=utils.default_process)
                 for term in intent.query_terms
             )
-            closest = -min(abs(len(title) - len(term)) for term in intent.query_terms)
-            scored.append((best, closest, title))
+            scored.append((best, sector))
 
         scored.sort(reverse=True)
         return [
             DiscoveredDocument(
-                document_url=index[title],
-                document_title=title,
+                document_url=index[sector],
+                document_title=sector,
                 match_confidence=score / 100,
-                match_type=MatchType.EXACT if score >= _EXACT_SCORE else MatchType.FUZZY,
+                match_type=MatchType.EXACT if score >= _EXACT_SCORE else MatchType.SEMANTIC,
             )
-            for score, _, title in scored[:MAX_CANDIDATES]
+            for score, sector in scored[:MAX_CANDIDATES]
         ]
 
     def download(self, document: DiscoveredDocument) -> DocumentRecord:

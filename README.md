@@ -1,7 +1,14 @@
 # course-dataset-pipeline
 
 Structured, fixed-schema JSON dataset for Indian courses, grounded entirely in
-official regulator/university sources. Pilot: 50 courses. Eventual target: 629.
+official regulator/university sources. Target: **754 courses** — the full client
+taxonomy in `docs/COURSE LIST.xlsx`, one course per sub-field/specialization row.
+
+**Scope change (2026-08-07):** supersedes the 50-course stratified pilot and the
+previously stated 629 target. 629 was never reconciled with the taxonomy's actual
+754 rows; the decision is to build against 754. See
+`docs/superpowers/specs/2026-08-07-stage1-intent-first-retrieval-design.md` for the
+Stage 1 redesign this is part of.
 
 ## Hard constraints
 
@@ -49,11 +56,14 @@ official regulator/university sources. Pilot: 50 courses. Eventual target: 629.
    much real automation-breakage signal.
 5. Idempotent: re-running on unchanged sources must not duplicate records or
    reprocess unnecessarily (hash-based diffing).
-6. Metrics are always reported stratified by source-quality tier
-   (strong/medium/weak) — never blended into one number. **Exception:** since
-   Careers360 is now tried before the regulator in every tier, strong/medium
-   tier results may be regulator-backed or Careers360-backed interchangeably
-   — the tier label no longer implies "regulator-sourced."
+6. Metrics are always reported stratified by source authority — never blended
+   into one number. **Revised 2026-08-07:** the axis is `segment × source_tier`
+   using the client cookbook's Tier A/B/C/D classification. The old
+   `strong`/`medium`/`weak` course-level labels are retired outright, not kept
+   for compatibility: under the intent-first redesign, different segments of the
+   same course legitimately come from different tiers, so a whole-course quality
+   label carries no information. See
+   `docs/superpowers/specs/2026-08-07-stage1-intent-first-retrieval-design.md`.
 
 ## Pilot scope — 50 courses, stratified
 

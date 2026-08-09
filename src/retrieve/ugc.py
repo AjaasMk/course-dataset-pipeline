@@ -1,17 +1,13 @@
+import re
 from pathlib import Path
 from typing import Optional
-from urllib.parse import urljoin
+from urllib.parse import unquote, urljoin
 
 import requests
 from bs4 import BeautifulSoup
 from rapidfuzz import fuzz, utils
 
-from src.retrieve.base import (
-    REQUEST_TIMEOUT,
-    USER_AGENT,
-    document_type_of,
-    fetch_and_store,
-)
+from src.retrieve.base import REQUEST_TIMEOUT, USER_AGENT, fetch_and_store
 from src.retrieve.models import (
     DiscoveredDocument,
     DocumentRecord,
@@ -20,19 +16,33 @@ from src.retrieve.models import (
     SourceTier,
 )
 
-LISTING_PAGE = "https://www.aicte.gov.in/education/model-syllabus"
+REGULATIONS_PAGE = "https://www.ugc.gov.in/regulations"
 RAW_DIR = Path("data/raw")
 MAX_CANDIDATES = 5
 
+_UPLOAD_PREFIX = re.compile(r"^\d+[_-]")
+_SEPARATORS = re.compile(r"[-_]+")
+_HASH_NAME = re.compile(r"^[0-9a-f]{16,}$", re.I)
 _EXACT_SCORE = 99
 
 
-class AICTEAdapter:
-    source_id = "AICTE"
+def is_meaningful_title(title: str) -> bool:
+    return bool(title) and not _HASH_NAME.match(title.replace(" ", ""))
+
+
+def title_from_filename(filename: str) -> str:
+    name = unquote(filename).rsplit("/", 1)[-1]
+    name = re.sub(r"\.pdf$", "", name, flags=re.I)
+    name = _UPLOAD_PREFIX.sub("", name)
+    return _SEPARATORS.sub(" ", name).strip()
+
+
+class UGCAdapter:
+    source_id = "UGC"
     tiers = [SourceTier.A]
 
-    def __init__(self, listing_page: str = LISTING_PAGE):
-        self.listing_page = listing_page
+    def __init__(self, regulations_page: str = REGULATIONS_PAGE):
+        self.regulations_page = regulations_page
         self._index: Optional[dict[str, str]] = None
 
     def supports(self, intent: RetrievalIntent) -> bool:
@@ -40,7 +50,7 @@ class AICTEAdapter:
 
     def build_index(self) -> dict[str, str]:
         response = requests.get(
-            self.listing_page,
+            self.regulations_page,
             headers={"User-Agent": USER_AGENT},
             timeout=REQUEST_TIMEOUT,
         )
@@ -50,12 +60,14 @@ class AICTEAdapter:
         index: dict[str, str] = {}
         for link in soup.find_all("a", href=True):
             href = link["href"]
-            text = link.get_text(strip=True)
-            if not href.lower().endswith(".pdf"):
+            if not href.lower().split("?")[0].endswith(".pdf"):
                 continue
-            if "model curriculum" not in text.lower():
+            # UGC labels almost every regulation link "View"; the document name
+            # only exists in the uploaded filename, behind a numeric upload id.
+            title = title_from_filename(href)
+            if not is_meaningful_title(title):
                 continue
-            index[text] = urljoin(self.listing_page, href)
+            index.setdefault(title, urljoin(self.regulations_page, href))
         return index
 
     def _ensure_index(self) -> dict[str, str]:
@@ -68,15 +80,8 @@ class AICTEAdapter:
         if not index:
             return []
 
-        wanted = set(intent.required_document_type)
-        scored: list[tuple[float, int, str]] = []
-        for title, url in index.items():
-            if document_type_of(url) not in wanted:
-                continue
-            # token_set_ratio does not penalise a candidate for carrying extra
-            # words beyond the query, so a specialisation variant scores the same
-            # as the plain branch it derives from. Break ties toward the title
-            # closest in length to the query -- the less-qualified document.
+        scored: list[tuple[int, int, str]] = []
+        for title in index:
             best = max(
                 fuzz.token_set_ratio(term, title, processor=utils.default_process)
                 for term in intent.query_terms

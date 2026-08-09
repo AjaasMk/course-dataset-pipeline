@@ -1,250 +1,847 @@
-# Source registry — finalized lineup decision (supersedes the original
-# "regulator-only" grounding rule; see CLAUDE.md Hard Constraint 3 and the new
-# "Validation rules" section for the safeguard this depends on).
+# Source registry — rebuilt 2026-08-07 against the client cookbook's Source
+# Directory sheet (44 named sources) and Regulator Map sheet.
+# See docs/superpowers/specs/2026-08-07-stage1-intent-first-retrieval-design.md
 #
-# Category meaning:
-#   regulatory_primary                          -> official, authoritative, use as-is
-#   syllabus_supplement                         -> official-adjacent, curriculum detail
-#   fact_supplement_independent_writing_required -> facts only, NEVER copied/paraphrased
-#                                                    sentences; validation runs an extra
-#                                                    n-gram/similarity check on these
-#   general_background                          -> CC BY-SA, different license basis
-#   aggregate_stats_only                        -> counts/stats fields only
-#   career_info                                 -> career_scope field only
+# Replaces the previous 6-bucket SourceCategory model and its retrieval_order /
+# strong_tier / medium_tier / weak_tier groups. Those encoded "one ordered list of
+# sources per course", which the intent-first redesign removes: source selection is
+# now per-segment, and authority is per-source-tier rather than per-course.
 #
-# status: verified      -> real, working, structure confirmed scrapeable with
-#                           requests+bs4 (or a documented equivalent)
-#         blocked        -> real content confirmed to exist, but not reachable
-#                           by a plain scripted HTTP client (bot-blocked CDN,
-#                           JS-only SPA) — needs a different retrieval strategy
-#         needs_scoping  -> real, but doesn't structurally cover what the
-#                           pilot category needs; a scoping decision, not a
-#                           URL fix, is required before building an adapter
-#         unverified     -> URL/domain is real but page structure not yet checked
+# tiers: a LIST, not a scalar — the client directory assigns several sources to two
+#   tiers (NSDC A/B, ICAR A/B, SWAYAM A/B, LBS Kerala A/B, LinkedIn Jobs C/D).
+#
+#   A -> government / statutory / professional regulator. Canonical.
+#   B -> official institutional / academic document.
+#   C -> official employer evidence.
+#   D -> commercial portal. DISCOVERY AND TRIANGULATION ONLY — never canonical
+#        without Tier A/B/C corroboration. Never overrides official evidence.
+#   E -> user reviews/forums. No named sources in the client directory.
+#   F -> AI-generated text. Never canonical, by client rule. Not a retrievable
+#        source; present in the tier enum only so precedence logic can name it.
+#
+# status: verified      -> an adapter works end to end against this source
+#         reachable     -> the ENTRY URL server-renders real content to a plain
+#                          scripted client. This is NOT the same as verified: it
+#                          says nothing about whether the specific data page we
+#                          need renders. NPTEL is the cautionary case — its
+#                          homepage renders fine while /localchapter/discipline
+#                          is a JS-only shell. Confirm the actual target page
+#                          before building an adapter.
+#         blocked       -> content exists but is unreachable by a plain scripted
+#                          client (JS-only shell, or an HTTP 403/429 bot-block)
+#         unverified    -> inconclusive: the probe could not complete (TLS chain
+#                          failure, connect timeout) or the URL 404s
+#
+# Statuses below were set from a live probe on 2026-08-07
+# (scripts/probe_sources.py, report in data/). Re-run it rather than trusting
+# these values indefinitely — several were wrong before that probe.
 
-regulatory_primary:
-  engineering:
-    regulator: AICTE
+sources:
+  UGC:
+    name: University Grants Commission
+    official_url: https://www.ugc.gov.in/
+    authority_type: Statutory regulator
+    tiers: [A]
+    coverage: National
+    best_used_for: University recognition; degree nomenclature; regulations; HEI categories
+    usage_rule: Primary canonical source for university-level recognition and degree rules
+    refresh: as regulations change
+    match_threshold: 0.65
+    status: verified
+    # VERIFIED end to end 2026-08-07 by UGCAdapter against /regulations, which
+    # serves 61 usable regulation PDFs. Site quirk: nearly every regulation link
+    # is labelled "View", so the document name exists only in the uploaded
+    # filename behind a numeric upload id — titles are derived from the filename,
+    # not the anchor text. Uploads named as a bare content hash are dropped.
+    # CORRECTED 2026-08-07 by live probe: ugc.gov.in was recorded as `blocked`,
+    # but that was only ever true of one LOCF PDF path behind CloudFront. The
+    # site itself serves 15,624 chars of text and 248 links (63 PDFs) to a plain
+    # request with browser headers. The old status generalised a path-specific
+    # 403 into a site-wide block and cost this source its Tier A role for weeks.
+
+  UGC_HEI_SEARCH:
+    name: UGC university details
+    official_url: https://www.ugc.gov.in/universitydetails/university
+    authority_type: Official directory
+    tiers: [A]
+    coverage: National
+    best_used_for: Central/state/private/deemed universities and institutions of national importance
+    usage_rule: Verify the exact institution category and current status
+    refresh: annual / ongoing
+    status: blocked
+    # Still blocked WITH a headless browser: renders to 224 chars and 0 links, so
+    # the 403 is enforced against the browser too. Rendering is not a bypass for
+    # an access control, and none will be attempted.
+    # Institution-registry critical path, and genuinely blocked: HTTP 403 to a
+    # scripted client even with full browser headers, while ugc.gov.in itself
+    # serves fine. The block is specific to this endpoint. Escalation per the
+    # spec: look for an open-data equivalent before reaching for a browser.
+
+  UGC_DEB:
+    name: Distance Education Bureau
+    official_url: https://deb.ugc.ac.in/
+    authority_type: Statutory programme directory
+    tiers: [A]
+    coverage: National
+    best_used_for: Recognised online and distance programmes by session
+    usage_rule: Verify institution, programme and admission session together
+    refresh: every admission cycle
+    status: reachable
+    # Served by NoticeBoardAdapter (4 labelled PDFs indexed live 2026-08-07).
+    # Resolution quality is UNPROVEN: these sites publish circulars and notices
+    # rather than neatly-titled regulations, so generic queries top out at 0.41.
+    # Better query_terms are the planner's job; until then many intents against
+    # this source will correctly go unresolved rather than bind to a near-match.
+
+  AISHE:
+    name: All India Survey on Higher Education
+    official_url: https://aishe.gov.in/
+    authority_type: Government directory/data
+    tiers: [A]
+    coverage: National
+    best_used_for: Universities, colleges, standalone institutions, programmes and enrolment
+    usage_rule: Use AISHE code as an institutional identifier where available
+    refresh: annual
+    status: blocked
+    # ESCALATION COMPLETE 2026-08-07, still unavailable. Headers: TLS chain
+    # repaired, site returns 200. Open data: data.gov.in and the AISHE report
+    # portal are both JS-only. Browser: the dashboard renders 9 tables, but they
+    # are national enrolment statistics, and the institution directory route
+    # (#/hedirectory/universitylist) yields 325 chars. The directory needs the UI
+    # driven, not merely rendered — a different and far more fragile problem.
+    # The institution registry therefore stays NIRF-only, covering 35% of courses.
+    # ESCALATION EXHAUSTED 2026-08-07 — all three decision-5 steps tried:
+    #  1. Realistic headers: the dashboard was failing on the same incomplete TLS
+    #     chain as NMC and returns 200 after repair, so it was never bot-blocked.
+    #  2. Open data: data.gov.in search results are themselves JS-rendered, and
+    #     the AISHE report portal (he.nic.in/aishereport) is a JS app too — 28
+    #     chars and 0 links after TLS repair.
+    #  3. Static analysis: the Angular bundle exposes route paths only, no API
+    #     base, so the directory endpoint is not recoverable without executing JS.
+    # Only a headless browser remains, which needs explicit approval. Until then
+    # the institution registry is NIRF-only, covering 35% of taxonomy courses.
+
+  NIRF:
+    name: National Institutional Ranking Framework
+    official_url: https://www.nirfindia.org/
+    authority_type: Government ranking
+    tiers: [A]
+    coverage: National
+    best_used_for: Institution/category rankings, rank bands, scores and methodology
+    usage_rule: Do not mislabel institution/category rank as course rank
+    refresh: annual
+    status: verified
+    # VERIFIED end to end 2026-08-07 by NIRFAdapter against the live site.
+    # Year index -> per-discipline ranking pages; the ranking TABLE is fully
+    # server-rendered (2025 Engineering: 19,086 chars, 301 rows) and carries NIRF
+    # Institute IDs, city, state, score and rank. Serves the Ranking segment and
+    # supplies the top-N bound on institutions per course.
+
+  NAAC:
+    name: National Assessment and Accreditation Council
+    official_url: https://www.naac.gov.in/
+    authority_type: Accreditation body
+    tiers: [A]
+    coverage: National
+    best_used_for: Institutional accreditation status and grade
+    usage_rule: Accreditation is not the same as ranking or legal recognition
+    refresh: accreditation cycle
+    status: reachable
+    # Requires a headless browser: a plain fetch returns a 69-char shell, while
+    # rendering yields 9,229 chars and 32 labelled PDFs. Registered via
+    # NoticeBoardAdapter with a RenderedFetcher.
+    # Serves 69 chars of visible text to a plain request — a JS-rendered shell.
+
+  NBA:
+    name: National Board of Accreditation
+    official_url: https://www.nbaind.org/
+    authority_type: Programme accreditation body
+    tiers: [A]
+    coverage: National
+    best_used_for: Programme-level accreditation in covered disciplines
+    usage_rule: Check programme, campus and validity period
+    refresh: accreditation cycle
+    status: blocked
+    # INVESTIGATED 2026-08-07, no crawlable data. The entry page exposes 2 PDFs,
+    # and /Accreditationprogram — the accredited-programme list — renders to 1,782
+    # chars of pure navigation even with a browser. /Downloads holds one brochure.
+    # The programme data sits behind a search form, the same class of problem as
+    # the AISHE directory: it needs the UI driven, not fetched. Not registered.
+
+  AICTE:
+    name: All India Council for Technical Education
+    official_url: https://www.aicte-india.org/
+    authority_type: Statutory regulator
+    tiers: [A]
+    coverage: National
+    best_used_for: Technical education approval, model curricula, institutions and programmes
+    usage_rule: Use for relevant technical/management disciplines
+    refresh: annual / regulatory
+    status: verified
     listing_page: https://www.aicte.gov.in/education/model-syllabus
-    doc_type: pdf
+    # build_index()/match()/download() all confirmed live end to end 2026-07-17.
+    # Aerospace Engineering has no published model curriculum — an expected
+    # unresolved case, not a bug.
+
+  NQR:
+    name: National Qualifications Register
+    official_url: https://www.nqr.gov.in/
+    authority_type: Government qualification register
+    tiers: [A]
+    coverage: National
+    best_used_for: NSQF-aligned qualifications, levels, awarding and approving bodies
+    usage_rule: Strong source for vocational and skill qualifications
+    refresh: ongoing
     status: verified
+    # VERIFIED end to end 2026-08-07 by NQRAdapter. 61 qualification sectors
+    # indexed live from the homepage, each linking to /qualifications-search/<id>.
+    # Notably the FIRST source since AICTE whose anchor text is the actual label —
+    # no href, filename or query-string extraction needed. Same planner
+    # requirement as NCS: query_terms must be sector-level, not course names.
 
-  medicine:
-    regulator: NMC
-    listing_page: https://www.nmc.org.in/information-desk/for-colleges/ug-curriculum/
-    doc_type: pdf
-    status: needs_scoping
-    # Page is real and has "UG Curriculum Volume I/II/III" PDFs — but those
-    # three volumes are ALL one combined MBBS curriculum, not per-branch
-    # documents like AICTE's page. NMC does not appear to cover "Allied
-    # Sciences" (Nursing, Pharmacy, etc.) at all — those have their own
-    # regulators in India (Indian Nursing Council, Pharmacy Council of
-    # India, ...). The "Medicine & Allied Sciences" pilot category may need
-    # to be split across multiple regulators, not treated as NMC-only.
-
-  law:
-    regulator: BCI
-    listing_page: https://www.barcouncilofindia.org/info/ler2008
-    doc_type: webpage
-    status: blocked
-    # Confirmed: barcouncilofindia.org is a client-side React/umi SPA —
-    # the raw HTML is just <div id="root"></div>, nothing for requests+bs4
-    # to parse. A university mirror of the same Rules of Legal Education
-    # 2008 text was found (klc.ac.in) but that specific URL 404'd on
-    # verification — no working mirror confirmed yet. Needs either a
-    # headless-browser adapter (different from every other adapter's
-    # requests+bs4 approach) or a working static mirror/gazette copy
-    # (e.g. indiacode.nic.in, not yet checked).
-
-  commerce_management:
-    regulator: UGC
-    listing_page: https://www.ugc.gov.in/pdfnews/8737712_LOCF-document-on-commerce-2.pdf
-    doc_type: pdf
-    status: blocked
-    # The PDF itself is real (indexed by Google, resolves in a browser) but
-    # a plain scripted request (curl, and by extension Python requests) gets
-    # HTTP 403 from CloudFront — bot-blocked at the CDN, not a wrong URL.
-    # Tried with a browser User-Agent and a Referer header, same result.
-    # Needs a different retrieval approach than plain requests.get().
-
-syllabus_supplement:
-  - name: NPTEL
-    full_name: National Programme on Technology Enhanced Learning
-    use: subject/curriculum breakdown, especially Engineering
-    listing_page: https://nptel.ac.in/localchapter/discipline
-    status: blocked
-    # CORRECTED: originally marked verified based on a WebFetch result, but
-    # WebFetch renders JavaScript before reading the page — a plain
-    # curl/requests fetch (what the actual adapter uses) gets a near-empty
-    # Svelte SPA shell, no discipline names, no links. Same category as BCI —
-    # needs a headless-browser adapter, not requests+bs4. The discipline
-    # grouping ("Aerospace, Agriculture Engineering & Architecture and
-    # Planning" as one combined category, linking out to a Google Drive
-    # folder per discipline, not a plain doc list) is real, seen via
-    # WebFetch's rendered output, but unconfirmed by a method matching what
-    # we'll actually scrape with.
-
-fact_supplement_independent_writing_required:
-  - name: Careers360
+  NCS:
+    name: National Career Service
+    official_url: https://www.ncs.gov.in/
+    authority_type: Government career service
+    tiers: [A]
+    coverage: National
+    best_used_for: Occupations, career descriptions and labour-market information
+    usage_rule: Map course pathways to occupations rather than making job guarantees
+    refresh: ongoing
     status: verified
-    # Checked a real content page (course college-list page), not just the
-    # homepage — 258KB, real target-term matches, genuinely server-rendered.
-  - name: Coursera
-    status: verified
-    # The /courses?query=... path 301-redirects to a clean /browse/<category>
-    # URL; that destination is 959KB with real content — genuinely usable.
-    # (The redirect itself is a real finding: build_index()/match() for this
-    # source would need to follow it, not treat it as a dead end.)
-  - name: edX
-    status: verified # thin signal — see caveat below
-    # Weaker confirmation than the other two: a subject page (835KB) has an
-    # accurate, specific <title> (suggests server-side rendering, likely
-    # Next.js) but only 2 body mentions of the target term — most of the
-    # visible content may still hydrate client-side. Workable, but don't
-    # assume it behaves like Careers360/Coursera without checking the
-    # specific page type actually needed when this adapter gets built.
-  - name: university_websites
-    scope: [".ac.in", ".edu"]
-
-general_background:
-  - name: Wikipedia
-    license: CC BY-SA
-    note: >
-      Usable WITH attribution + share-alike compliance — a different license
-      basis than every other source in this registry. Keep separate; don't
-      fold into fact_supplement handling, its compliance requirements differ.
-
-aggregate_stats_only:
-  # college counts etc. Originally restricted to AISHE only (never Careers360
-  # or any aggregator), on the theory that aggregator counts might be
-  # outdated/incomplete/marketing-influenced. REVISED (2026-07-18): dropped
-  # that restriction — no AISHE adapter exists yet, and it was blocking
-  # CourseDetail.colleges_available from ever being populated. Any resolved
-  # source can now ground this field, same as every other field.
-  - name: AISHE
-    listing_page: https://dashboard.aishe.gov.in/hedirectory/#/hedirectory/universityMoreDetails/ALL/ALL
-    status: unverified
-    # Confirmed real (Angular SPA, page loads). Landing on the deep-linked
-    # hash route serves the generic homepage, not the directory table — the
-    # data view needs an in-page interaction to load. First-load network
-    # trace showed no REST API call yet; the actual data-fetching endpoint
-    # hasn't been identified. Needs a browser-driven session (not plain
-    # requests) to find it, or acceptance that this needs headless-browser
-    # tooling like BCI does.
-  - name: AICTE
-    status: verified # same source as regulatory_primary.engineering above
-
-career_info:
-  - name: NCS
-    full_name: National Career Service
-    use: career scope, job profiles
     listing_page: https://www.ncs.gov.in/content-repository/Pages/BrowseBySectors.aspx
-    status: verified # page itself; matching approach is a separate open question
-    # Page confirmed real: 52 sectors, exact pattern
-    # /content-repository/Pages/ViewNcos.aspx?FilterField1=Industry_x002F_
-    # Sector...&FilterValue1=<SectorName> (e.g. Agriculture, Automotive,
-    # Aerospace and Aviation, Capital Goods and Manufacturing).
+    # VERIFIED end to end 2026-08-07 by NCSAdapter. 52 sectors indexed live.
+    # Sector anchors carry NO text; the name exists only in the FilterValue1 query
+    # parameter — a fourth distinct place these sites hide their labels.
     #
-    # DEFERRED, not blocked: course_name-to-sector matching is NOT a fuzzy
-    # string-matching problem like AICTE's — "Mechanical Engineering" shares
-    # no text with its correct sectors ("Automotive", "Capital Goods and
-    # Manufacturing"). Forcing this through SourceAdapter.match() would
-    # return a confidently-wrong result, not an honestly-low-confidence one.
-    # This is a course-category-to-sector categorization problem, likely
-    # belonging in Stage 2 (LLM-driven) rather than Stage 1 fuzzy-match —
-    # NCS may not fit the SourceAdapter shape other sources use at all.
-    # Skipped pending that design decision — do not build NCSAdapter as a
-    # copy of AICTEAdapter without resolving this first.
+    # Course-to-sector mapping is NOT fuzzy string matching: "Mechanical
+    # Engineering" is served by Automotive and Capital Goods and Manufacturing,
+    # and resembles neither. Confirmed live — that query scores 0.49 and is
+    # correctly rejected. The planner MUST supply sector-level query_terms; the
+    # adapter deliberately does not guess, which is exactly what makes this source
+    # usable under the intent-first model and unusable under the old one.
 
-# Maps each pilot category (config/pilot_courses.yaml's `category` field,
-# also src/schema.py's ManifestEntry.tier) to the tier_group that selects
-# its retrieval_order sequence below.
-categories:
-  engineering: strong_tier
-  medicine: strong_tier
-  commerce_management: medium_tier
-  law: medium_tier
-  animation_design: weak_tier
-  media_mass_comm: weak_tier
+  NSDC:
+    name: National Skill Development Corporation
+    official_url: https://nsdcindia.org/
+    authority_type: National skill ecosystem
+    tiers: [A, B]
+    coverage: National
+    best_used_for: Qualification Packs, occupational standards, sector skill councils and job roles
+    usage_rule: Use QP/NOS codes where available
+    refresh: as standards change
+    status: blocked
+    # INVESTIGATED 2026-08-07, no crawlable data: 0 PDFs on the entry page, and
+    # /reports holds news items rather than Qualification Packs. More usefully,
+    # NSDC is largely REDUNDANT here — NQR publishes the same NSQF qualification
+    # data and is verified with 61 sectors. Career Mapping and Skills should route
+    # to NQR rather than waiting on an NSDC adapter.
 
-# Confidence threshold for accepting a match() result during orchestrated
-# retrieval (src/retrieve/orchestrator.py). Below this, retrieve_course()
-# falls through to the next source in retrieval_order rather than
-# downloading a low-confidence match — this is what correctly rejects
-# AICTE's Aerospace Engineering "Textile Engineering" match (confidence
-# 0.69) instead of downloading the wrong document.
+  SKILL_INDIA_DIGITAL:
+    name: Skill India Digital Hub
+    official_url: https://www.skillindiadigital.gov.in/
+    authority_type: Government digital platform
+    tiers: [A]
+    coverage: National
+    best_used_for: Skill courses, credentials and opportunities
+    usage_rule: Useful for skills, short courses and progression routes
+    refresh: ongoing
+    status: blocked
+    # Renders to 5,278 chars but exposes ZERO document links even with a browser —
+    # its content sits behind app navigation. Not registered; rendering alone is
+    # not enough for this one.
+    # Serves 95 chars of visible text to a plain request — a JS-rendered shell.
+
+  NSP:
+    name: National Scholarship Portal
+    official_url: https://scholarships.gov.in/
+    authority_type: Government scholarship portal
+    tiers: [A]
+    coverage: National
+    best_used_for: Central scholarship schemes, eligibility and application workflow
+    usage_rule: Store scheme year and deadline
+    refresh: seasonal / ongoing
+    status: verified
+    # VERIFIED end to end 2026-08-07 by NSPAdapter against /All-Scholarships,
+    # which exposes 31 schemes. Every scheme document is labelled
+    # "Specifications", and some filenames are opaque (AICTE_3039_G.pdf), so the
+    # scheme name is taken from the ANCESTOR block that also carries the open and
+    # close dates — a sixth distinct place these sites keep their labels.
+
+  NTA:
+    name: National Testing Agency
+    official_url: https://www.nta.ac.in/
+    authority_type: National examination body
+    tiers: [A]
+    coverage: National
+    best_used_for: Entrance exam bulletins, dates, results and notices
+    usage_rule: Use exam-specific official bulletins
+    refresh: continuous
+    status: verified
+    # VERIFIED end to end 2026-08-07 by NTAAdapter against the live site. NTA
+    # gives each examination its own portal (jeemain/neet/cuet/cmat/ugcnet/
+    # csirnet/icar/nchm-jee), all linked from the homepage. Link labels are the
+    # formal expansions, so each portal carries an alias list of the discipline
+    # vocabulary a planner would actually use.
+
+  CUET:
+    name: Common University Entrance Test
+    official_url: https://cuet.nta.nic.in/
+    authority_type: Official exam portal
+    tiers: [A]
+    coverage: National
+    best_used_for: CUET-UG information, application and bulletin
+    usage_rule: Course eligibility still depends on individual university rules
+    refresh: annual
+    status: verified
+    # VERIFIED 2026-08-07 via NoticeBoardAdapter: 12 notice PDFs, and
+    # "information bulletin" resolves at 1.00. Anchor text is the label; uploads
+    # are named with an opaque timestamp, the inverse of UGC.
+    # CORRECTED 2026-08-07. The client Source Directory lists
+    # https://exams.nta.nic.in/CUET-UG/, which returns HTTP 404. The live portal
+    # is https://cuet.nta.nic.in/ (3,676 chars), found by crawling nta.ac.in.
+    # This is a defect in the client spec, not in our config.
+
+  JOSAA:
+    name: Joint Seat Allocation Authority
+    official_url: https://josaa.nic.in/
+    authority_type: Official counselling body
+    tiers: [A]
+    coverage: National
+    best_used_for: Institutions, programmes, seat matrix and opening/closing ranks
+    usage_rule: Store counselling year and category
+    refresh: annual
+    status: verified
+    # VERIFIED 2026-08-07 via NoticeBoardAdapter: 3 notice PDFs resolving at 1.00.
+
+  CSAB:
+    name: Central Seat Allocation Board
+    official_url: https://csab.nic.in/
+    authority_type: Official counselling body
+    tiers: [A]
+    coverage: National
+    best_used_for: Special rounds and technical seat allocation
+    usage_rule: Use current round rules and seat data
+    refresh: annual
+    status: reachable
+    # NoticeBoardAdapter indexes 7 PDFs, but generic admission queries top out at
+    # 0.30 — registered and usable, not yet proven on a real planner query.
+
+  MCC:
+    name: Medical Counselling Committee
+    official_url: https://mcc.nic.in/
+    authority_type: Official counselling body
+    tiers: [A]
+    coverage: National
+    best_used_for: Medical/dental counselling routes administered by MCC
+    usage_rule: State counselling may be separate
+    refresh: annual
+    status: reachable
+
+  CEE_KERALA:
+    name: Commissioner for Entrance Examinations Kerala
+    official_url: https://cee.kerala.gov.in/
+    authority_type: State exam/counselling body
+    tiers: [A]
+    coverage: Kerala
+    best_used_for: Kerala professional course exams, allotments and prospectuses
+    usage_rule: Strong source for Kerala admission cycles
+    refresh: continuous in season
+    status: reachable
+    # Served by NoticeBoardAdapter (5 labelled PDFs indexed live 2026-08-07).
+    # Resolution quality is UNPROVEN: these sites publish circulars and notices
+    # rather than neatly-titled regulations, so generic queries top out at 0.31.
+    # Better query_terms are the planner's job; until then many intents against
+    # this source will correctly go unresolved rather than bind to a near-match.
+    # RESOLVED 2026-08-07: same incomplete-chain issue as NMC. tls.py fetched 3
+    # intermediates via AIA; the site then verifies cleanly and returns 3,823 chars.
+
+  LBS_KERALA:
+    name: LBS Centre for Science and Technology
+    official_url: https://lbscentre.kerala.gov.in/
+    authority_type: State admissions body
+    tiers: [A, B]
+    coverage: Kerala
+    best_used_for: Selected Kerala centralised admissions and allotments
+    usage_rule: Use the relevant programme prospectus
+    refresh: annual
+    status: reachable
+    # NOT served by NoticeBoardAdapter. It indexes 2 PDFs and the top hit is a
+    # procurement tender — the index builds while the content is unrelated, which
+    # is why "indexes successfully" is not evidence a source is usable.
+
+  DTE_KERALA:
+    name: Directorate of Technical Education Kerala
+    official_url: https://dtekerala.gov.in/
+    authority_type: State technical authority
+    tiers: [A]
+    coverage: Kerala
+    best_used_for: Technical education institutions, diploma/engineering notices and policies
+    usage_rule: Verify programme and academic year
+    refresh: ongoing
+    status: unverified
+    # Self-signed certificate in the chain, and no AIA CA-Issuers URL to repair
+    # from — unlike NMC and CEE Kerala this is not a fixable incomplete chain.
+    # Stays unverified: trusting a self-signed cert for an authoritative source is
+    # the one trade this pipeline will not make.
+
+  NMC:
+    name: National Medical Commission
+    official_url: https://www.nmc.org.in/
+    authority_type: Professional regulator
+    tiers: [A]
+    coverage: National
+    best_used_for: Medical colleges, programmes, seats and professional rules
+    usage_rule: Use exact college/programme list and current year
+    refresh: ongoing
+    status: reachable
+    # Served by NoticeBoardAdapter (22 labelled PDFs indexed live 2026-08-07).
+    # Resolution quality is UNPROVEN: these sites publish circulars and notices
+    # rather than neatly-titled regulations, so generic queries top out at 0.75.
+    # Better query_terms are the planner's job; until then many intents against
+    # this source will correctly go unresolved rather than bind to a near-match.
+    # RESOLVED 2026-08-07. nmc.org.in serves an incomplete certificate chain, so a
+    # plain request failed verification. src/retrieve/tls.py now fetches the
+    # missing intermediate via the leaf's AIA CA-Issuers URL (Sectigo Public
+    # Server Authentication CA DV R36) and appends it to certifi's roots; the site
+    # then verifies cleanly and returns 6,540 chars. Verification was NOT
+    # disabled — the trust anchor is still a certifi root, which matters because
+    # this regulator's output is treated as canonical.
+    # Separately, and still true: UG Curriculum Volumes I-III are one combined
+    # MBBS curriculum, not per-branch documents like AICTE's page, and NMC does
+    # not cover allied sciences (INC/PCI are the regulators for those).
+
+  DCI:
+    name: Dental Council of India
+    official_url: https://dciindia.gov.in/
+    authority_type: Professional regulator
+    tiers: [A]
+    coverage: National
+    best_used_for: Dental institutions, courses and regulations
+    usage_rule: Validate course and seat approval
+    refresh: ongoing
+    status: reachable
+    # Served by NoticeBoardAdapter (40 labelled PDFs indexed live 2026-08-07).
+    # Resolution quality is UNPROVEN: these sites publish circulars and notices
+    # rather than neatly-titled regulations, so generic queries top out at 0.75.
+    # Better query_terms are the planner's job; until then many intents against
+    # this source will correctly go unresolved rather than bind to a near-match.
+
+  INC:
+    name: Indian Nursing Council
+    official_url: https://www.indiannursingcouncil.org/
+    authority_type: Professional regulator
+    tiers: [A]
+    coverage: National
+    best_used_for: Nursing programme standards and institution information
+    usage_rule: Also verify the relevant state nursing council
+    refresh: ongoing
+    status: reachable
+    # Served by NoticeBoardAdapter (24 labelled PDFs indexed live 2026-08-07).
+    # Resolution quality is UNPROVEN: these sites publish circulars and notices
+    # rather than neatly-titled regulations, so generic queries top out at 0.49.
+    # Better query_terms are the planner's job; until then many intents against
+    # this source will correctly go unresolved rather than bind to a near-match.
+
+  PCI:
+    name: Pharmacy Council of India
+    official_url: https://www.pci.nic.in/
+    authority_type: Professional regulator
+    tiers: [A]
+    coverage: National
+    best_used_for: Pharmacy education, approved institutions and regulations
+    usage_rule: Check programme and approval year
+    refresh: ongoing
+    status: reachable
+    # Served by NoticeBoardAdapter (144 labelled PDFs indexed live 2026-08-07).
+    # Resolution quality is UNPROVEN: these sites publish circulars and notices
+    # rather than neatly-titled regulations, so generic queries top out at 0.78.
+    # Better query_terms are the planner's job; until then many intents against
+    # this source will correctly go unresolved rather than bind to a near-match.
+
+  COA:
+    name: Council of Architecture
+    official_url: https://www.coa.gov.in/
+    authority_type: Professional regulator
+    tiers: [A]
+    coverage: National
+    best_used_for: Architecture education, institutions and professional rules
+    usage_rule: Use for BArch/MArch recognition and standards
+    refresh: ongoing
+    status: verified
+    # VERIFIED 2026-08-07 via NoticeBoardAdapter: 589 labelled PDFs, and an
+    # eligibility query resolves to "Amendment in Eligibility Regulations" at 0.82.
+    # Renders 63,912 chars and 600 PDF links despite carrying a react-root
+    # marker — server-rendered with a React island, not a client-only app.
+
+  NCTE:
+    name: National Council for Teacher Education
+    official_url: https://ncte.gov.in/
+    authority_type: Professional regulator
+    tiers: [A]
+    coverage: National
+    best_used_for: Teacher-education institution/programme recognition
+    usage_rule: Verify regional committee orders and validity
+    refresh: ongoing
+    status: unverified
+    # Probe could not complete: connect timeout at 25s. Retry before concluding;
+    # may be transient or may need a longer timeout.
+
+  BCI:
+    name: Bar Council of India
+    official_url: https://www.barcouncilofindia.org/
+    authority_type: Professional regulator
+    tiers: [A]
+    coverage: National
+    best_used_for: Legal education standards and recognised institutions
+    usage_rule: Check current recognition of the specific law programme
+    refresh: ongoing
+    status: blocked
+    # Client-side React/umi SPA — raw HTML is just <div id="root"></div>. Needs
+    # either a headless-browser adapter or a working static mirror/gazette copy
+    # (indiacode.nic.in not yet checked).
+
+  ICAR:
+    name: Indian Council of Agricultural Research
+    official_url: https://icar.gov.in/
+    authority_type: National agricultural body
+    tiers: [A, B]
+    coverage: National
+    best_used_for: Agricultural education standards, institutions and admissions information
+    usage_rule: Also verify university and programme approvals
+    refresh: annual / ongoing
+    status: blocked
+    # INVESTIGATED 2026-08-07, no crawlable data. The entry page carries a single
+    # Hindi administrative notice, and its one education link
+    # (/index.php/hi/agricultural-education-division/...) 404s, as does the
+    # non-prefixed path. Agriculture eligibility and curriculum therefore have no
+    # working Tier A source and will correctly go unresolved.
+
+  RCI:
+    name: Rehabilitation Council of India
+    official_url: https://rehabcouncil.nic.in/
+    authority_type: Professional regulator
+    tiers: [A]
+    coverage: National
+    best_used_for: Approved rehabilitation programmes and professional registration pathways
+    usage_rule: Critical for regulated rehabilitation roles
+    refresh: ongoing
+    status: reachable
+    # Served by NoticeBoardAdapter (9 labelled PDFs indexed live 2026-08-07).
+    # Resolution quality is UNPROVEN: these sites publish circulars and notices
+    # rather than neatly-titled regulations, so generic queries top out at 0.57.
+    # Better query_terms are the planner's job; until then many intents against
+    # this source will correctly go unresolved rather than bind to a near-match.
+
+  APPRENTICESHIP_INDIA:
+    name: Apprenticeship India
+    official_url: https://www.apprenticeshipindia.gov.in/
+    authority_type: Government opportunities portal
+    tiers: [A]
+    coverage: National
+    best_used_for: Apprenticeship courses and current openings
+    usage_rule: Treat openings as expiring records
+    refresh: weekly / ongoing
+    status: reachable
+    # Requires a headless browser: 47 chars plain, 57,334 rendered, 12 labelled
+    # PDFs (mostly Office Memoranda on eligibility and training). Registered.
+    # Serves 47 chars of visible text to a plain request — a JS-rendered shell.
+
+  NATS:
+    name: National Apprenticeship Training Scheme
+    official_url: https://nats.education.gov.in/
+    authority_type: Government apprenticeship scheme
+    tiers: [A]
+    coverage: National
+    best_used_for: Graduate/diploma apprenticeship opportunities
+    usage_rule: Store eligibility, duration, stipend and deadline
+    refresh: ongoing
+    status: reachable
+    # NoticeBoardAdapter indexes 5 PDFs (manuals) topping out at 0.40 for
+    # admission queries — not registered; apprenticeship listings need the app UI.
+
+  AICTE_INTERNSHIP:
+    name: AICTE Internship Portal
+    official_url: https://internship.aicte-india.org/
+    authority_type: Official opportunity portal
+    tiers: [A]
+    coverage: National
+    best_used_for: Internship opportunities and initiatives
+    usage_rule: Verify active status and provider
+    refresh: ongoing
+    status: reachable
+    # NOT served by NoticeBoardAdapter: the entry page exposes 0 PDFs. Needs its
+    # own investigation; opportunity listings are likely behind the app UI.
+
+  SWAYAM:
+    name: SWAYAM
+    official_url: https://swayam.gov.in/
+    authority_type: Government learning platform
+    tiers: [A, B]
+    coverage: National
+    best_used_for: Course topics, learning content and introductory explanations
+    usage_rule: Use for explanation, not degree recognition
+    refresh: ongoing
+    status: reachable
+    # NOT served by NoticeBoardAdapter: its 2 indexable PDFs are exam admit-card
+    # notices, not the curriculum content this source is listed for.
+
+  MOSPI_PLFS:
+    name: Ministry of Statistics and Programme Implementation / PLFS
+    official_url: https://www.mospi.gov.in/
+    authority_type: Official labour statistics
+    tiers: [A]
+    coverage: National
+    best_used_for: Labour-force and earnings context
+    usage_rule: Not a direct course-placement source; use for broader context
+    refresh: annual / periodic
+    status: reachable
+    # RESOLVED 2026-08-07. The 30s timeout was not a duration problem: the render
+    # waited on "networkidle", which never arrives on a site that polls, so it
+    # would have failed at any timeout. Under domcontentloaded the page loads in
+    # 5.3s and yields 11,033 chars with 12 labelled PDFs. Registered via
+    # NoticeBoardAdapter with a RenderedFetcher.
+    # Serves 71 chars to a plain request; react-root marker present.
+
+  NPTEL:
+    name: NPTEL
+    official_url: https://nptel.ac.in/
+    authority_type: Public academic learning platform
+    tiers: [B]
+    coverage: National
+    best_used_for: Subject explanations, modules and technical learning pathways
+    usage_rule: Useful for content synthesis and prerequisite understanding
+    refresh: ongoing
+    status: reachable
+    # Nuanced, and the reason `reachable` and `verified` are different statuses:
+    # nptel.ac.in itself returns 1,720 chars and 64 links to a plain request, so
+    # the blanket `blocked` was wrong. But /localchapter/discipline — the page an
+    # adapter would actually crawl — is a SvelteKit shell that renders nothing
+    # without JS (sveltekit markers still present on the entry page). Reachable
+    # entry, unusable target. Confirm the specific page before building.
+
+  LINKEDIN_JOBS:
+    name: LinkedIn Jobs
+    official_url: https://www.linkedin.com/jobs/
+    authority_type: Professional jobs platform
+    tiers: [C, D]
+    coverage: India
+    best_used_for: Employer-posted roles and current demand
+    usage_rule: Use verified company postings where possible
+    refresh: rolling
+    status: unverified
+
+  AMBITIONBOX:
+    name: AmbitionBox
+    official_url: https://www.ambitionbox.com/
+    authority_type: Commercial salary/review portal
+    tiers: [D]
+    coverage: India
+    best_used_for: Salary ranges and company reviews
+    usage_rule: Use only as secondary estimation with sample size and date
+    refresh: rolling
+    status: unverified
+
+  GLASSDOOR:
+    name: Glassdoor India
+    official_url: https://www.glassdoor.co.in/
+    authority_type: Commercial salary/job portal
+    tiers: [D]
+    coverage: India
+    best_used_for: Self-reported salaries, reviews and jobs
+    usage_rule: Triangulation only
+    refresh: rolling
+    status: unverified
+
+  INDEED:
+    name: Indeed India
+    official_url: https://in.indeed.com/
+    authority_type: Commercial jobs portal
+    tiers: [D]
+    coverage: India
+    best_used_for: Job advertisements and salary estimates
+    usage_rule: Verify employer and date
+    refresh: rolling
+    status: unverified
+
+  NAUKRI:
+    name: Naukri.com
+    official_url: https://www.naukri.com/
+    authority_type: Commercial jobs portal
+    tiers: [D]
+    coverage: India
+    best_used_for: Current job demand, role titles and requirements
+    usage_rule: Useful for skill validation; not canonical
+    refresh: rolling
+    status: unverified
+
+  SHIKSHA:
+    name: Shiksha.com
+    official_url: https://www.shiksha.com/
+    authority_type: Commercial education portal
+    tiers: [D]
+    coverage: India
+    best_used_for: Discovery of courses, colleges, fees, exams and reviews
+    usage_rule: Verify factual data against official sources
+    refresh: rolling
+    status: unverified
+
+  CAREERS360:
+    name: Careers360
+    official_url: https://www.careers360.com/
+    authority_type: Commercial education portal
+    tiers: [D]
+    coverage: India
+    best_used_for: Course/college/exam discovery and editorial guides
+    usage_rule: Discovery and cross-checking only
+    refresh: rolling
+    status: verified
+    # Live-verified 2026-07-17. Was the de-facto primary source under the old
+    # retrieval_order; under the client's directory it is Tier D and may only ever
+    # hold a discovery/secondary role. Responses use chunked transfer encoding, so
+    # there is no Content-Length header — content_length is None for these rows.
+
+  COLLEGEDUNIA:
+    name: CollegeDunia
+    official_url: https://collegedunia.com/
+    authority_type: Commercial education portal
+    tiers: [D]
+    coverage: India
+    best_used_for: Course, college, fee and review discovery
+    usage_rule: Verify with prospectus and official portals
+    refresh: rolling
+    status: unverified
+
+# Course area -> primary regulator + secondary validation, from the cookbook's
+# Regulator Map sheet. Routes a course family to the right Tier A authority.
+regulator_map:
+  general_university_degrees:
+    primary: UGC
+    secondary: [AISHE, UGC_HEI_SEARCH]
+    note: UGC recognition does not replace programme-specific professional approval where required.
+  engineering_technology:
+    primary: AICTE
+    secondary: [UGC, AISHE, NBA]
+    note: Check whether the programme category requires AICTE approval under current rules.
+  medicine:
+    primary: NMC
+    secondary: [MCC]
+    note: Use current approved-college and seat lists.
+  dentistry:
+    primary: DCI
+    secondary: [MCC]
+    note: Validate the exact institution and programme.
+  nursing:
+    primary: INC
+    secondary: [UGC]
+    note: Both national and state validation may matter.
+  pharmacy:
+    primary: PCI
+    secondary: [AICTE]
+    note: Check DPharm/BPharm/PharmD separately.
+  architecture:
+    primary: COA
+    secondary: [UGC]
+    note: Professional qualification and admission rules require precise verification.
+  teacher_education:
+    primary: NCTE
+    secondary: [UGC]
+    note: Do not rely only on the college prospectus.
+  law:
+    primary: BCI
+    secondary: [UGC]
+    note: Verify current recognition of 3-year and 5-year programmes.
+  agriculture:
+    primary: ICAR
+    secondary: [UGC]
+    note: ICAR accreditation/ranking and legal university recognition are different.
+  rehabilitation_special_education:
+    primary: RCI
+    secondary: [UGC]
+    note: Critical for regulated professional eligibility.
+  online_distance:
+    primary: UGC_DEB
+    secondary: [UGC]
+    note: Verify every session; do not assume a programme stays recognised indefinitely.
+  vocational_nsqf:
+    primary: NQR
+    secondary: [NSDC]
+    note: Use official qualification files and version.
+
+# Per-segment source preferences, from the cookbook's Segment Sources sheet.
+# `preferred` are tried as primary; `secondary` may corroborate. `min_tier` is the
+# lowest tier permitted to hold a PRIMARY role for this segment — a source below it
+# can only ever be discovery/secondary.
+segment_sources:
+  Course Identity:
+    preferred: [UGC, AICTE, NQR]
+    secondary: [UGC_HEI_SEARCH]
+    min_tier: A
+  Duration & Mode:
+    preferred: [UGC, AICTE, UGC_DEB]
+    secondary: [NQR]
+    min_tier: B
+  Eligibility:
+    preferred: [UGC, AICTE, NMC, DCI, INC, PCI, COA, NCTE, BCI, RCI, ICAR]
+    secondary: [CUET, NTA]
+    min_tier: B
+  Entrance & Admission:
+    preferred: [NTA, CUET, JOSAA, CSAB, MCC, CEE_KERALA, LBS_KERALA]
+    secondary: [UGC]
+    min_tier: A
+  Curriculum:
+    preferred: [AICTE, NMC, PCI, COA, NCTE, ICAR]
+    secondary: [NPTEL, SWAYAM]
+    min_tier: B
+  Specialisation:
+    preferred: [UGC, AICTE, NQR]
+    secondary: [SWAYAM]
+    min_tier: B
+  Institution & Offering:
+    preferred: [AISHE, UGC_HEI_SEARCH, UGC_DEB]
+    secondary: [NIRF, NBA, NAAC]
+    min_tier: B
+  Ranking & Accreditation:
+    preferred: [NIRF, NAAC, NBA]
+    secondary: [UGC]
+    min_tier: A
+  Fees:
+    preferred: [CEE_KERALA, LBS_KERALA, DTE_KERALA]
+    secondary: [JOSAA, MCC]
+    min_tier: B
+  Scholarships:
+    preferred: [NSP, AICTE]
+    secondary: [SKILL_INDIA_DIGITAL]
+    min_tier: B
+  Career Mapping:
+    preferred: [NCS, NQR, NSDC]
+    secondary: [SKILL_INDIA_DIGITAL]
+    min_tier: A
+  Salary:
+    preferred: [MOSPI_PLFS, NIRF]
+    secondary: [LINKEDIN_JOBS, AMBITIONBOX, GLASSDOOR, INDEED, NAUKRI]
+    min_tier: C
+  Recruiters & Placement:
+    preferred: [NIRF]
+    secondary: [LINKEDIN_JOBS]
+    min_tier: C
+  Internships:
+    preferred: [APPRENTICESHIP_INDIA, NATS, AICTE_INTERNSHIP]
+    secondary: [SKILL_INDIA_DIGITAL]
+    min_tier: B
+
+# Default confidence floor for accepting an adapter's discovered document. Below
+# this the resolution is recorded as failed with a reason rather than downloaded —
+# this is what correctly rejects AICTE's Aerospace Engineering "Textile
+# Engineering" match at 0.69 instead of retrieving the wrong document.
+#
+# A source may override it with its own . One global number does
+# not fit every source: 0.80 is right where candidates are short names (AICTE,
+# NIRF, NTA), but token_set_ratio scores a long document title differently, so the
+# same bar produced false negatives against UGC — the correct regulation for
+# "equivalence of degrees" scored 0.78 and for "minimum qualifications appointment
+# of teachers" 0.70, while genuine non-coverage still sat at 0.48. Overrides are
+# set from observed scores, never guessed, and should sit clear of both the
+# false-negative band and the noise floor.
 matching:
   threshold: 0.80
-
-# Declarative retrieval order per tier. Consumed by src/retrieve/orchestrator.py's
-# retrieve_course() — walks each entry in order via SourceCategory(entry), so
-# every entry here MUST be a real SourceCategory value (regulatory_primary,
-# syllabus_supplement, fact_supplement_independent_writing_required,
-# general_background, aggregate_stats_only, career_info). A source NAME within
-# a category (e.g. "university_websites" is a named entry under
-# fact_supplement_independent_writing_required, not its own category) does not
-# belong here — retrieve_course() has no concept of picking one named source
-# out of a category, only of trying a category via its registered adapter(s).
-#
-# DECISION (2026-07-17): fact_supplement_independent_writing_required
-# (Careers360) is tried FIRST in every tier, ahead of regulatory_primary —
-# reversing the original regulator-first order, including for engineering
-# where AICTE is verified and already working end-to-end. Rationale: NMC/
-# BCI/UGC are blocked/needs_scoping (see status notes above) while
-# Careers360 is verified and simpler to retrieve from uniformly across
-# tiers; rather than block retrieval on hard-to-access regulator sites,
-# Careers360 becomes the default primary source everywhere.
-#
-# Explicit, accepted tradeoff: this means strong/medium tier metrics
-# (CLAUDE.md Hard Constraint 6) will blend regulator-backed and
-# Careers360-backed results under the same tier label going forward — the
-# tier label no longer implies "regulator-sourced." Chosen deliberately in
-# favor of simplicity over that distinction; not an oversight.
-#
-# DECISION (2026-07-17, later same day): general_background (Wikipedia) added
-# as the last-resort entry for medium_tier and weak_tier, after regulatory
-# sources and Careers360 both fail. This REVISES the weak-tier hard
-# constraint in CLAUDE.md/README.md ("don't fix weak-tier failures by
-# falling back to other sources") — an explicit, deliberate policy change,
-# not an oversight; see CLAUDE.md Hard Constraint 6 note for the rationale.
-# Also removed: the redundant "university_websites" entry from medium_tier
-# (it's a named source WITHIN fact_supplement, already covered by that
-# entry, not a separate category — see note above) and
-# "university_scoped_search" from weak_tier (not a SourceCategory at all; no
-# adapter exists for the scoped-search method it referred to — see
-# weak_tier_scoped_search_notes below). The old, contradictory
-# weak_tier_fallback.order block (which disagreed with this list on
-# ordering) is removed entirely — this is now the single source of truth.
-retrieval_order:
-  strong_tier: # Engineering, Medicine
-    - fact_supplement_independent_writing_required
-    - regulatory_primary
-    - syllabus_supplement
-    - general_background
-  medium_tier: # Law, Commerce/Management
-    - fact_supplement_independent_writing_required
-    - regulatory_primary
-    - general_background
-  weak_tier: # Animation/Media/Arts — no regulator exists, no regulatory_primary step
-    - fact_supplement_independent_writing_required
-    - general_background
-
-# NOT consumed by retrieve_course() — general_background has no adapter
-# registered yet (no WikipediaAdapter exists), so this entry currently just
-# skips silently, same as any other unregistered category. Adding it above
-# is a config-level policy decision now; it becomes a real fallback only
-# once a WikipediaAdapter is built and registered.
-
-weak_tier_scoped_search_notes:
-  # Animation/Media/Arts — no regulator exists. These describe HOW a future
-  # scoped-search adapter would work; not consumed by retrieve_course() (not
-  # a SourceCategory, no adapter built). Kept as design notes for when this
-  # gets built, not as an active retrieval_order entry.
-  animation_design:
-    method: scoped_search
-    allowed_domains: [".ac.in", ".edu"]
-    query_template: "{course_name} syllabus curriculum"
-  media_mass_comm:
-    method: scoped_search
-    allowed_domains: [".ac.in", ".edu"]
-    query_template: "{course_name} syllabus curriculum"

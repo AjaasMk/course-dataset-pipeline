@@ -4,13 +4,12 @@ import sqlite3
 import httpx
 from anthropic import APIConnectionError
 
+from src.extract.extract_inputs import ExtractionInput
 from src.extract.batch_extract import (
-    ManifestRow,
     compute_chunk_hash,
     extract_all_courses,
     load_chunks,
     load_hash_store,
-    read_manifest_rows,
     save_hash_store,
 )
 from src.extract.models import Chunk
@@ -61,96 +60,16 @@ def test_load_hash_store_returns_empty_dict_when_no_file_exists(tmp_path):
     assert load_hash_store(tmp_path / "missing.json") == {}
 
 
-def test_read_manifest_rows_reads_from_real_sqlite_db(tmp_path):
-    db_path = tmp_path / "manifest.db"
-    conn = sqlite3.connect(db_path)
-    conn.execute(
-        """CREATE TABLE manifest (
-            course_name TEXT, tier TEXT, source_type TEXT, matched_url TEXT,
-            local_path TEXT, file_hash TEXT, match_confidence REAL,
-            retrieved_at TEXT, content_type TEXT, content_length INTEGER, http_status INTEGER
-        )"""
-    )
-    conn.execute(
-        "INSERT INTO manifest (course_name, tier, source_type, matched_url, local_path, "
-        "match_confidence, retrieved_at) VALUES (?, ?, ?, ?, ?, ?, ?)",
-        (
-            "Chemical Engineering",
-            "engineering",
-            "aggregator_webpage",
-            "https://example.com",
-            "data/raw/engineering/aggregator_webpage/chemical_engineering.html",
-            0.9,
-            "2026-07-17T12:00:00+00:00",
-        ),
-    )
-    conn.commit()
-    conn.close()
-
-    rows = read_manifest_rows(db_path)
-
-    assert rows == [
-        ManifestRow(
-            course_name="Chemical Engineering",
-            category="engineering",
-            source_type="aggregator_webpage",
-            local_path="data/raw/engineering/aggregator_webpage/chemical_engineering.html",
-        )
-    ]
-
-
-def test_read_manifest_rows_dedupes_by_course_keeping_most_recent(tmp_path):
-    db_path = tmp_path / "manifest.db"
-    conn = sqlite3.connect(db_path)
-    conn.execute(
-        """CREATE TABLE manifest (
-            course_name TEXT, tier TEXT, source_type TEXT, matched_url TEXT,
-            local_path TEXT, file_hash TEXT, match_confidence REAL,
-            retrieved_at TEXT, content_type TEXT, content_length INTEGER, http_status INTEGER
-        )"""
-    )
-    # older row: an isolated adapter test run
-    conn.execute(
-        "INSERT INTO manifest (course_name, tier, source_type, matched_url, local_path, "
-        "match_confidence, retrieved_at) VALUES (?, ?, ?, ?, ?, ?, ?)",
-        (
-            "Mechanical Engineering", "engineering", "regulator_pdf",
-            "https://www.aicte.gov.in/mech.pdf",
-            "data/raw/engineering/regulator_pdf/mechanical_engineering.pdf",
-            0.9, "2026-07-17T14:15:58+00:00",
-        ),
-    )
-    # newer row: the real orchestrated pilot retrieval
-    conn.execute(
-        "INSERT INTO manifest (course_name, tier, source_type, matched_url, local_path, "
-        "match_confidence, retrieved_at) VALUES (?, ?, ?, ?, ?, ?, ?)",
-        (
-            "Mechanical Engineering", "engineering", "aggregator_webpage",
-            "https://www.careers360.com/courses/mechanical-engineering-course",
-            "data/raw/engineering/aggregator_webpage/mechanical_engineering.html",
-            0.95, "2026-07-17T14:16:17+00:00",
-        ),
-    )
-    conn.commit()
-    conn.close()
-
-    rows = read_manifest_rows(db_path)
-
-    assert len(rows) == 1
-    assert rows[0].source_type == "aggregator_webpage"  # the later (real pilot) row won
-
-
 def test_extract_all_courses_writes_output_and_records_extracted(tmp_path):
     chunks_dir = tmp_path / "chunks"
     extracted_dir = tmp_path / "extracted"
-    _write_chunks(chunks_dir / "chemical_engineering__aggregator_webpage.json", [_chunk()])
+    _write_chunks(chunks_dir / "chemical_engineering__DOC-1.json", [_chunk()])
 
-    row = ManifestRow(
-        course_name="Chemical Engineering",
-        category="engineering",
-        source_type="aggregator_webpage",
-        local_path="data/raw/engineering/aggregator_webpage/chemical_engineering.html",
-    )
+    row = ExtractionInput(
+            course_id="chemical_engineering",
+            chunk_filenames=["chemical_engineering__DOC-1.json"],
+            documents_by_segment={},
+        )
     fake_detail = CourseDetail(course_name="Chemical Engineering", category="engineering")
 
     def fake_extract(chunks, course_name, category):
@@ -170,17 +89,19 @@ def test_extract_all_courses_writes_output_and_records_extracted(tmp_path):
 def test_extract_all_courses_isolates_failure_and_continues(tmp_path):
     chunks_dir = tmp_path / "chunks"
     extracted_dir = tmp_path / "extracted"
-    _write_chunks(chunks_dir / "course_one__aggregator_webpage.json", [_chunk()])
-    _write_chunks(chunks_dir / "course_two__aggregator_webpage.json", [_chunk()])
+    _write_chunks(chunks_dir / "course_one__DOC-1.json", [_chunk()])
+    _write_chunks(chunks_dir / "course_two__DOC-1.json", [_chunk()])
 
     rows = [
-        ManifestRow(
-            course_name="Course One", category="engineering", source_type="aggregator_webpage",
-            local_path="data/raw/engineering/aggregator_webpage/course_one.html",
+        ExtractionInput(
+            course_id="course_one",
+            chunk_filenames=["course_one__DOC-1.json"],
+            documents_by_segment={},
         ),
-        ManifestRow(
-            course_name="Course Two", category="engineering", source_type="aggregator_webpage",
-            local_path="data/raw/engineering/aggregator_webpage/course_two.html",
+        ExtractionInput(
+            course_id="course_two",
+            chunk_filenames=["course_two__DOC-1.json"],
+            documents_by_segment={},
         ),
     ]
 
@@ -188,7 +109,7 @@ def test_extract_all_courses_isolates_failure_and_continues(tmp_path):
 
     def flaky_extract(chunks, course_name, category):
         calls.append(course_name)
-        if course_name == "Course One":
+        if course_name == "course_one":
             raise RuntimeError("simulated model refusal")
         return CourseDetail(course_name=course_name, category=category)
 
@@ -201,19 +122,20 @@ def test_extract_all_courses_isolates_failure_and_continues(tmp_path):
     assert report.results[0].outcome == "extraction_failed"
     assert "simulated model refusal" in report.results[0].error
     assert report.results[1].outcome == "extracted"
-    assert calls == ["Course One", "Course Two"]  # RuntimeError isn't retried -- one attempt each
+    assert calls == ["course_one", "course_two"]  # RuntimeError isn't retried -- one attempt each
 
 
 def test_extract_all_courses_retries_transient_connection_error_then_succeeds(tmp_path, monkeypatch):
     monkeypatch.setattr("src.extract.retry.time.sleep", lambda seconds: None)
     chunks_dir = tmp_path / "chunks"
     extracted_dir = tmp_path / "extracted"
-    _write_chunks(chunks_dir / "course__aggregator_webpage.json", [_chunk()])
+    _write_chunks(chunks_dir / "course__DOC-1.json", [_chunk()])
 
-    row = ManifestRow(
-        course_name="Course", category="engineering", source_type="aggregator_webpage",
-        local_path="data/raw/engineering/aggregator_webpage/course.html",
-    )
+    row = ExtractionInput(
+            course_id="course",
+            chunk_filenames=["course__DOC-1.json"],
+            documents_by_segment={},
+        )
 
     attempts = {"count": 0}
 
@@ -236,12 +158,13 @@ def test_extract_all_courses_gives_up_after_exhausting_retries_on_connection_err
     monkeypatch.setattr("src.extract.retry.time.sleep", lambda seconds: None)
     chunks_dir = tmp_path / "chunks"
     extracted_dir = tmp_path / "extracted"
-    _write_chunks(chunks_dir / "course__aggregator_webpage.json", [_chunk()])
+    _write_chunks(chunks_dir / "course__DOC-1.json", [_chunk()])
 
-    row = ManifestRow(
-        course_name="Course", category="engineering", source_type="aggregator_webpage",
-        local_path="data/raw/engineering/aggregator_webpage/course.html",
-    )
+    row = ExtractionInput(
+            course_id="course",
+            chunk_filenames=["course__DOC-1.json"],
+            documents_by_segment={},
+        )
 
     attempts = {"count": 0}
 
@@ -261,12 +184,13 @@ def test_extract_all_courses_gives_up_after_exhausting_retries_on_connection_err
 def test_extract_all_courses_logs_failure(tmp_path, caplog):
     chunks_dir = tmp_path / "chunks"
     extracted_dir = tmp_path / "extracted"
-    _write_chunks(chunks_dir / "course__aggregator_webpage.json", [_chunk()])
+    _write_chunks(chunks_dir / "course__DOC-1.json", [_chunk()])
 
-    row = ManifestRow(
-        course_name="Course", category="engineering", source_type="aggregator_webpage",
-        local_path="data/raw/engineering/aggregator_webpage/course.html",
-    )
+    row = ExtractionInput(
+            course_id="course",
+            chunk_filenames=["course__DOC-1.json"],
+            documents_by_segment={},
+        )
 
     def failing_extract(chunks, course_name, category):
         raise RuntimeError("boom")
@@ -284,12 +208,13 @@ def test_extract_all_courses_skips_unchanged_course_on_second_run(tmp_path):
     chunks_dir = tmp_path / "chunks"
     extracted_dir = tmp_path / "extracted"
     hash_store_path = tmp_path / "hashes.json"
-    _write_chunks(chunks_dir / "course__aggregator_webpage.json", [_chunk(0, "same content")])
+    _write_chunks(chunks_dir / "course__DOC-1.json", [_chunk(0, "same content")])
 
-    row = ManifestRow(
-        course_name="Course", category="engineering", source_type="aggregator_webpage",
-        local_path="data/raw/engineering/aggregator_webpage/course.html",
-    )
+    row = ExtractionInput(
+            course_id="course",
+            chunk_filenames=["course__DOC-1.json"],
+            documents_by_segment={},
+        )
 
     calls = []
 
@@ -306,20 +231,21 @@ def test_extract_all_courses_skips_unchanged_course_on_second_run(tmp_path):
 
     assert first.results[0].outcome == "extracted"
     assert second.results[0].outcome == "skipped_unchanged"
-    assert calls == ["Course"]  # the model was only ever called once
+    assert calls == ["course"]  # the model was only ever called once
 
 
 def test_extract_all_courses_re_extracts_when_chunk_content_changes(tmp_path):
     chunks_dir = tmp_path / "chunks"
     extracted_dir = tmp_path / "extracted"
     hash_store_path = tmp_path / "hashes.json"
-    chunk_path = chunks_dir / "course__aggregator_webpage.json"
+    chunk_path = chunks_dir / "course__DOC-1.json"
     _write_chunks(chunk_path, [_chunk(0, "original content")])
 
-    row = ManifestRow(
-        course_name="Course", category="engineering", source_type="aggregator_webpage",
-        local_path="data/raw/engineering/aggregator_webpage/course.html",
-    )
+    row = ExtractionInput(
+            course_id="course",
+            chunk_filenames=["course__DOC-1.json"],
+            documents_by_segment={},
+        )
 
     calls = []
 
@@ -337,4 +263,4 @@ def test_extract_all_courses_re_extracts_when_chunk_content_changes(tmp_path):
     )
 
     assert second.results[0].outcome == "extracted"
-    assert calls == ["Course", "Course"]  # re-extracted both times since content differed
+    assert calls == ["course", "course"]  # re-extracted both times since content differed

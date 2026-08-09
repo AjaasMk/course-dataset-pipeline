@@ -4,23 +4,11 @@ from typing import Optional
 from pydantic import BaseModel, Field
 
 
-class SourceCategory(str, Enum):
-    REGULATORY_PRIMARY = "regulatory_primary"
-    SYLLABUS_SUPPLEMENT = "syllabus_supplement"
-    FACT_SUPPLEMENT_INDEPENDENT_WRITING_REQUIRED = (
-        "fact_supplement_independent_writing_required"
-    )
-    GENERAL_BACKGROUND = "general_background"
-    AGGREGATE_STATS_ONLY = "aggregate_stats_only"
-    CAREER_INFO = "career_info"
-
-
 class SourceType(str, Enum):
     REGULATOR_PDF = "regulator_pdf"
     REGULATOR_WEBPAGE = "regulator_webpage"
     UNIVERSITY_WEBPAGE = "university_webpage"
     AGGREGATOR_WEBPAGE = "aggregator_webpage"
-    GENERAL_BACKGROUND_WEBPAGE = "general_background_webpage"
     NONE = "none"
 
 
