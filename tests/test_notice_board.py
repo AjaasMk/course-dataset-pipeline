@@ -135,3 +135,32 @@ def test_one_adapter_class_serves_several_sources(mock_get):
 
     assert josaa.supports(_intent(source_id="JOSAA"))
     assert josaa.resolve(_intent(source_id="JOSAA"))[0].document_url.startswith("https://josaa.nic.in/")
+
+
+def test_a_rendering_fetcher_can_be_supplied():
+    # Sources whose documents only exist after JavaScript runs use the same
+    # notice-board logic; only the fetch differs.
+    rendered = '<html><body><a href="/f/bulletin.pdf">Assessment Guidelines</a></body></html>'
+    adapter = NoticeBoardAdapter(
+        source_id="NAAC",
+        tiers=[SourceTier.A],
+        listing_page="https://www.naac.gov.in/",
+        fetch_html=lambda url: rendered,
+    )
+
+    assert "Assessment Guidelines" in adapter.build_index()
+
+
+def test_a_supplied_fetcher_replaces_the_plain_request():
+    calls = []
+
+    def fetcher(url):
+        calls.append(url)
+        return '<html><body><a href="/f/x.pdf">Doc</a></body></html>'
+
+    NoticeBoardAdapter(
+        source_id="NAAC", tiers=[SourceTier.A],
+        listing_page="https://www.naac.gov.in/", fetch_html=fetcher,
+    ).build_index()
+
+    assert calls == ["https://www.naac.gov.in/"]

@@ -69,6 +69,9 @@ sources:
     usage_rule: Verify the exact institution category and current status
     refresh: annual / ongoing
     status: blocked
+    # Still blocked WITH a headless browser: renders to 224 chars and 0 links, so
+    # the 403 is enforced against the browser too. Rendering is not a bypass for
+    # an access control, and none will be attempted.
     # Institution-registry critical path, and genuinely blocked: HTTP 403 to a
     # scripted client even with full browser headers, while ugc.gov.in itself
     # serves fine. The block is specific to this endpoint. Escalation per the
@@ -99,7 +102,14 @@ sources:
     best_used_for: Universities, colleges, standalone institutions, programmes and enrolment
     usage_rule: Use AISHE code as an institutional identifier where available
     refresh: annual
-    status: reachable
+    status: blocked
+    # ESCALATION COMPLETE 2026-08-07, still unavailable. Headers: TLS chain
+    # repaired, site returns 200. Open data: data.gov.in and the AISHE report
+    # portal are both JS-only. Browser: the dashboard renders 9 tables, but they
+    # are national enrolment statistics, and the institution directory route
+    # (#/hedirectory/universitylist) yields 325 chars. The directory needs the UI
+    # driven, not merely rendered — a different and far more fragile problem.
+    # The institution registry therefore stays NIRF-only, covering 35% of courses.
     # ESCALATION EXHAUSTED 2026-08-07 — all three decision-5 steps tried:
     #  1. Realistic headers: the dashboard was failing on the same incomplete TLS
     #     chain as NMC and returns 200 after repair, so it was never bot-blocked.
@@ -136,7 +146,10 @@ sources:
     best_used_for: Institutional accreditation status and grade
     usage_rule: Accreditation is not the same as ranking or legal recognition
     refresh: accreditation cycle
-    status: blocked
+    status: reachable
+    # Requires a headless browser: a plain fetch returns a 69-char shell, while
+    # rendering yields 9,229 chars and 32 labelled PDFs. Registered via
+    # NoticeBoardAdapter with a RenderedFetcher.
     # Serves 69 chars of visible text to a plain request — a JS-rendered shell.
 
   NBA:
@@ -224,6 +237,9 @@ sources:
     usage_rule: Useful for skills, short courses and progression routes
     refresh: ongoing
     status: blocked
+    # Renders to 5,278 chars but exposes ZERO document links even with a browser —
+    # its content sits behind app navigation. Not registered; rendering alone is
+    # not enough for this one.
     # Serves 95 chars of visible text to a plain request — a JS-rendered shell.
 
   NSP:
@@ -511,7 +527,9 @@ sources:
     best_used_for: Apprenticeship courses and current openings
     usage_rule: Treat openings as expiring records
     refresh: weekly / ongoing
-    status: blocked
+    status: reachable
+    # Requires a headless browser: 47 chars plain, 57,334 rendered, 12 labelled
+    # PDFs (mostly Office Memoranda on eligibility and training). Registered.
     # Serves 47 chars of visible text to a plain request — a JS-rendered shell.
 
   NATS:
@@ -562,7 +580,9 @@ sources:
     best_used_for: Labour-force and earnings context
     usage_rule: Not a direct course-placement source; use for broader context
     refresh: annual / periodic
-    status: blocked
+    status: unverified
+    # Render attempt timed out at 30s. Inconclusive rather than blocked; retry
+    # with a longer budget before drawing a conclusion.
     # Serves 71 chars to a plain request; react-root marker present.
 
   NPTEL:

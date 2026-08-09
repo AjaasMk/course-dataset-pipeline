@@ -14,11 +14,13 @@ from src.retrieve.nta import NTAAdapter
 from src.retrieve.planner import plan_course
 from src.retrieve.models import SourceTier
 from src.retrieve.registry import load_registry
+from src.retrieve.render import RenderedFetcher
 from src.retrieve.resolver import resolve_intents
 from src.retrieve.ugc import UGCAdapter
 
 
 def build_adapters() -> dict:
+    render = RenderedFetcher().fetch
     adapters = [
         AICTEAdapter(),
         UGCAdapter(),
@@ -39,6 +41,11 @@ def build_adapters() -> dict:
         NoticeBoardAdapter("RCI", [SourceTier.A], "https://rehabcouncil.nic.in/"),
         NoticeBoardAdapter("UGC_DEB", [SourceTier.A], "https://deb.ugc.ac.in/"),
         NoticeBoardAdapter("CEE_KERALA", [SourceTier.A], "https://cee.kerala.gov.in/"),
+        NoticeBoardAdapter("NAAC", [SourceTier.A], "https://www.naac.gov.in/", fetch_html=render),
+        NoticeBoardAdapter(
+            "APPRENTICESHIP_INDIA", [SourceTier.A],
+            "https://www.apprenticeshipindia.gov.in/", fetch_html=render,
+        ),
     ]
     return {adapter.source_id: adapter for adapter in adapters}
 

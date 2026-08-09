@@ -1,6 +1,6 @@
 import re
 from pathlib import Path
-from typing import Optional
+from typing import Callable, Optional
 from urllib.parse import unquote, urljoin, urlparse
 
 import requests
@@ -53,17 +53,22 @@ class NoticeBoardAdapter:
         tiers: list[SourceTier],
         listing_page: str,
         document_suffixes: tuple[str, ...] = DOCUMENT_SUFFIXES,
+        fetch_html: Optional[Callable[[str], str]] = None,
     ):
         self.source_id = source_id
         self.tiers = tiers
         self.listing_page = listing_page
         self.document_suffixes = document_suffixes
+        # Sources whose documents only exist after JavaScript runs share this
+        # logic entirely; only the fetch differs, so it is injected rather than
+        # duplicated into a parallel adapter.
+        self.fetch_html = fetch_html
         self._index: Optional[dict[str, str]] = None
 
-    def supports(self, intent: RetrievalIntent) -> bool:
-        return intent.source_id == self.source_id
+    def _get_html(self) -> str:
+        if self.fetch_html is not None:
+            return self.fetch_html(self.listing_page)
 
-    def build_index(self) -> dict[str, str]:
         host = urlparse(self.listing_page).hostname or ""
         response = requests.get(
             self.listing_page,
@@ -72,7 +77,13 @@ class NoticeBoardAdapter:
             verify=verify_arg(host),
         )
         response.raise_for_status()
-        soup = BeautifulSoup(response.text, "html.parser")
+        return response.text
+
+    def supports(self, intent: RetrievalIntent) -> bool:
+        return intent.source_id == self.source_id
+
+    def build_index(self) -> dict[str, str]:
+        soup = BeautifulSoup(self._get_html(), "html.parser")
 
         index: dict[str, str] = {}
         for link in soup.find_all("a", href=True):
