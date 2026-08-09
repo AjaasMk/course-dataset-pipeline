@@ -19,6 +19,8 @@ data/manifest.db
 data/pilot_run_report.json
 data/source_probe_report.json
 data/probe_*.json
+data/institutions.db
+data/institution_registry_report.json
 data/ca_bundles/
 data/chunks/
 data/extracted/

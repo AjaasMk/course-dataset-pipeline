@@ -66,6 +66,17 @@ def test_ui_affordance_text_is_stripped_from_the_name():
     assert first.canonical_name == "Jamia Millia Islamia"
 
 
+def test_a_bare_close_affordance_is_also_stripped():
+    # Not every row carries the full "More Details Close" pair; the Engineering
+    # table yields "Indian Institute of Technology Madras Close".
+    html = RANKING_HTML.replace(
+        "<td>Indian Institute of Technology Madras</td>",
+        "<td>Indian Institute of Technology Madras Close</td>",
+    )
+    first = extract_institutions(html, "2025", "Engineering")[0]
+    assert first.canonical_name == "Indian Institute of Technology Madras"
+
+
 def test_institution_id_is_stable_for_the_same_nirf_id():
     a = extract_institutions(RANKING_HTML, "2025", "Engineering")[0]
     b = extract_institutions(RANKING_HTML, "2025", "Engineering")[0]
@@ -92,6 +103,34 @@ def test_different_institutions_keep_different_ids():
     a = extract_institutions(RANKING_HTML, "2025", "Engineering")[0]
     b = extract_institutions(RANKING_HTML, "2025", "Engineering")[1]
     assert a.institution_id != b.institution_id
+
+
+SCORELESS_HTML = """
+<html><body>
+<table>
+  <tr><th>Institute ID</th><th>Name</th><th>City</th><th>State</th><th>Rank</th></tr>
+  <tr>
+    <td>IR-I-U-0456</td><td>Indian Institute of Technology Madras</td>
+    <td>Chennai</td><td>Tamil Nadu</td><td>1</td>
+  </tr>
+</table>
+</body></html>
+"""
+
+
+def test_a_ranking_table_without_a_score_column_is_still_extracted():
+    # The live Innovation table has five columns and no Score. Requiring six
+    # silently dropped the whole category.
+    found = extract_institutions(SCORELESS_HTML, "2025", "Innovation")
+    assert len(found) == 1
+
+
+def test_scoreless_rows_read_location_and_rank_correctly():
+    only = extract_institutions(SCORELESS_HTML, "2025", "Innovation")[0]
+    assert only.city == "Chennai"
+    assert only.state == "Tamil Nadu"
+    assert only.nirf_rank == 1
+    assert only.nirf_score is None
 
 
 def test_the_number_alone_does_not_identify_an_institution():

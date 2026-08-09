@@ -10,15 +10,17 @@ SOURCE_ID = "NIRF"
 
 _NIRF_ID = re.compile(r"^IR-[A-Z0-9\-]+$", re.I)
 _NIRF_ID_PARTS = re.compile(r"^IR-([A-Z]+)-([A-Z]+)-(\d+)$", re.I)
-_TRAILING_COLUMNS = 4
+_MIN_CELLS = 5
+_MIN_CELLS_WITH_SCORE = 6
 # The name cell embeds a details/close widget whose text get_text() pulls in.
 # Live rows read "Jamia Millia Islamia More Details Close | | TLR (100)", so the
 # cut starts at the marker and discards everything after it.
-_UI_AFFORDANCE = re.compile(r"\s*more\s+detail(s)?\b.*$", re.I | re.S)
+# Some rows carry only the bare "Close" instead of the full pair.
+_UI_AFFORDANCE = re.compile(r"\s*(?:more\s+detail(?:s)?|close)\b.*$", re.I | re.S)
 
 
 def clean_institution_name(name: str) -> str:
-    return _UI_AFFORDANCE.sub("", " ".join(name.split())).strip(" |-")
+    return _UI_AFFORDANCE.sub("", " ".join(name.split())).strip(" |-,")
 
 
 def institution_key(nirf_id: str) -> str:
@@ -60,7 +62,7 @@ def extract_institutions(html: str, year: str, category: str) -> list[Institutio
     seen: set[str] = set()
     for row in soup.find_all("tr"):
         cells = [c.get_text(" ", strip=True) for c in row.find_all(["td", "th"])]
-        if len(cells) < 6 or not _NIRF_ID.match(cells[0]):
+        if len(cells) < _MIN_CELLS or not _NIRF_ID.match(cells[0]):
             continue
 
         nirf_id = cells[0]
@@ -69,8 +71,13 @@ def extract_institutions(html: str, year: str, category: str) -> list[Institutio
         seen.add(nirf_id)
 
         # Score-breakdown cells sit between the name and the city and vary in
-        # number, so location, score and rank are read from the end of the row.
-        city, state, score, rank = cells[-_TRAILING_COLUMNS:]
+        # number, so the row is read from the end. Not every table carries a
+        # Score column either -- the Innovation table is Institute ID / Name /
+        # City / State / Rank -- so its presence is detected rather than assumed.
+        rank = cells[-1]
+        has_score = len(cells) >= _MIN_CELLS_WITH_SCORE and _as_float(cells[-2]) is not None
+        score = cells[-2] if has_score else ""
+        state, city = (cells[-3], cells[-4]) if has_score else (cells[-2], cells[-3])
         institutions.append(
             Institution(
                 institution_id=institution_id_for(nirf_id),
