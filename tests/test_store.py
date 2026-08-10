@@ -58,6 +58,18 @@ def test_document_round_trips_by_url(tmp_path):
     assert found is not None and found.document_id == "DOC-001"
 
 
+def test_document_round_trips_by_id(tmp_path):
+    db = tmp_path / "m.db"
+    store.insert_document(_document(), db_path=db)
+    found = store.get_document_by_id("DOC-001", db_path=db)
+    assert found is not None and found.document_url == _document().document_url
+
+
+def test_get_document_by_id_returns_none_when_missing(tmp_path):
+    db = tmp_path / "m.db"
+    assert store.get_document_by_id("DOC-does-not-exist", db_path=db) is None
+
+
 def test_reinserting_the_same_url_does_not_duplicate(tmp_path):
     db = tmp_path / "m.db"
     store.insert_document(_document(), db_path=db)

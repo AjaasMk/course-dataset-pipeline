@@ -214,6 +214,17 @@ def get_document_by_url(url: str, db_path: Optional[Path] = None) -> Optional[Do
     return None if row is None else _row_to_document(row)
 
 
+def get_document_by_id(document_id: str, db_path: Optional[Path] = None) -> Optional[DocumentRecord]:
+    conn = _connect(db_path)
+    try:
+        row = conn.execute(
+            f"SELECT {_DOCUMENT_COLUMNS} FROM documents WHERE document_id = ?", (document_id,)
+        ).fetchone()
+    finally:
+        conn.close()
+    return None if row is None else _row_to_document(row)
+
+
 def count_documents(db_path: Optional[Path] = None) -> int:
     conn = _connect(db_path)
     try:
