@@ -2,7 +2,12 @@ import sqlite3
 from pathlib import Path
 from typing import Optional
 
-from src.institutions.models import Institution, InstitutionAlias, InstitutionCourseOffering
+from src.institutions.models import (
+    Institution,
+    InstitutionAlias,
+    InstitutionCourseOffering,
+    RankedProfile,
+)
 
 DEFAULT_DB_PATH = Path("data/institutions.db")
 
@@ -285,3 +290,26 @@ def rankings_for(institution_id: str, db_path: Optional[Path] = None) -> list[tu
         ).fetchall()
     finally:
         conn.close()
+
+
+def all_ranked_profiles(db_path: Optional[Path] = None) -> list[RankedProfile]:
+    """Every (institution, ranking category) pair NIRF published.
+
+    institution_rankings is the correct source for anything keyed on category:
+    upsert_institution() merges an institution ranked in several disciplines
+    into one row keeping a single ranking_category, so reading the
+    institutions table instead silently loses every other category that
+    institution appears in -- 871 real pairs collapse to 523.
+    """
+    conn = _connect(db_path)
+    try:
+        rows = conn.execute(
+            "SELECT r.institution_id, i.canonical_name, r.nirf_id, r.ranking_category, "
+            "r.ranking_year FROM institution_rankings r "
+            "JOIN institutions i ON i.institution_id = r.institution_id "
+            "WHERE r.nirf_id IS NOT NULL "
+            "ORDER BY r.ranking_category, r.rank"
+        ).fetchall()
+    finally:
+        conn.close()
+    return [RankedProfile(**dict(zip(RankedProfile.model_fields, row))) for row in rows]

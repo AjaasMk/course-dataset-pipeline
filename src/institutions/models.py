@@ -33,3 +33,11 @@ class InstitutionCourseOffering(BaseModel):
     official_course_url: Optional[str] = None
     discovered_from_source_id: str
     confidence: float = 0.0
+
+
+class RankedProfile(BaseModel):
+    institution_id: str
+    canonical_name: str
+    nirf_id: str
+    ranking_category: str
+    ranking_year: str
