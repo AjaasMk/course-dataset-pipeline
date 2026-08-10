@@ -18,14 +18,6 @@ BOILERPLATE_PATTERNS: dict[str, Pattern] = {
 
 _NON_WORD = re.compile(r"[^a-z0-9]+")
 
-# A taxonomy course name puts its specialisation marker in brackets --
-# "Animation (Design/Art Track)", "Physical Education (Teaching Track)". Those
-# words qualify the subject rather than identify it, so scoring them as
-# distinctive costs the course its own subject's document: Animation
-# (Design/Art Track) scored 0.27 against the real Animation diploma purely
-# because "design", "art" and "track" are absent from that short title.
-_QUERY_QUALIFIER = re.compile(r"\([^)]*\)")
-
 # A candidate token carries no identifying weight below this length ("of",
 # "and", "&"), so weighing it would only add noise.
 _MIN_TOKEN_LEN = 3
@@ -100,17 +92,25 @@ def guarded_score(
     Weighting by IDF fixes both -- an unmatched common word ("engineering")
     costs almost nothing, an unmatched distinctive one ("naval") is decisive.
 
+    Stripping bracketed qualifiers from the query was tried too and removed:
+    it reads "Animation (Design/Art Track)" correctly but destroys
+    "B.L.Arch. (Bachelor of Landscape Architecture)", where the brackets hold
+    the actual subject and the text outside is a bare abbreviation -- reduced
+    to the token "arch", it matched "B.Arch" at full coverage and rebound the
+    B.Arch curriculum to Landscape Architecture at 0.86. No stripping is
+    needed: the planner already supplies plain-name aliases ("B.A. in
+    Animation") that carry the subject without qualifiers.
+
     Without `weights` this degrades to plain similarity, so adapters can adopt
     it one at a time.
     """
     stripped = boilerplate.sub(" ", candidate) if boilerplate is not None else candidate
-    subject = _QUERY_QUALIFIER.sub(" ", term) or term
     candidate_tokens = _tokens(stripped)
-    term_tokens = _tokens(subject) or _tokens(term)
+    term_tokens = _tokens(term)
     if not candidate_tokens or not term_tokens:
         return 0.0
 
-    base = fuzz.token_set_ratio(subject, stripped, processor=utils.default_process) / 100
+    base = fuzz.token_set_ratio(term, stripped, processor=utils.default_process) / 100
     if weights is None:
         return base
 

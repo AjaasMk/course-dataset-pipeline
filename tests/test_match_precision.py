@@ -87,13 +87,31 @@ def test_a_course_matching_a_broader_document_survives(term, title, weights):
     assert _score(term, title, weights) >= 0.80
 
 
-def test_a_bracketed_specialisation_marker_does_not_cost_the_subject_its_document(weights):
-    # "Animation (Design/Art Track)" scored 0.27 against the real Animation
-    # diploma when the bracketed words were weighed as distinctive. They
-    # qualify the subject; they do not identify it.
-    score = _score("Animation (Design/Art Track)", "Model Curriculum for Diploma Course in Animation", weights)
+def test_a_plain_alias_carries_a_qualified_course_to_its_document(weights):
+    # The planner issues aliases alongside the course name, and resolve() takes
+    # the best-scoring term. "Animation (Design/Art Track)" scores poorly on its
+    # own -- design/art/track are absent from the short title -- but its alias
+    # does not, so the binding survives without special-casing brackets.
+    qualified = _score("Animation (Design/Art Track)", "Model Curriculum for Diploma Course in Animation", weights)
+    alias = _score("B.A. in Animation", "Model Curriculum for Diploma Course in Animation", weights)
 
-    assert score >= 0.80
+    assert alias >= 0.80
+    assert max(qualified, alias) >= 0.80
+
+
+def test_an_abbreviation_alias_cannot_bind_a_different_subject(weights):
+    # Stripping bracketed text was tried and reverted because of exactly this:
+    # "B.L.Arch. (Bachelor of Landscape Architecture)" reduces to the token
+    # "arch", which matched "B.Arch" at full coverage and rebound the B.Arch
+    # curriculum to Landscape Architecture at 0.86. Scored whole, "landscape"
+    # is distinctive and absent, so it falls away.
+    score = _score(
+        "B.L.Arch. (Bachelor of Landscape Architecture)",
+        "Model Curriculum for Bachelor of Architecture(B.Arch)-2019",
+        weights,
+    )
+
+    assert score < 0.80
 
 
 def test_an_unmatched_common_word_costs_almost_nothing(weights):
