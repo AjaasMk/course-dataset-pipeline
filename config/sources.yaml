@@ -813,7 +813,16 @@ segment_sources:
     min_tier: A
   Curriculum:
     preferred: [AICTE, NMC, PCI, COA, NCTE, ICAR]
-    secondary: [NPTEL, SWAYAM]
+    # NPTEL and SWAYAM removed 2026-08-10 after measuring the full run: between
+    # them they took 3,000 of 3,456 Curriculum intents (87%) and resolved 3.
+    # Both were already documented dead in their own entries above -- NPTEL's
+    # crawl target renders nothing without JS, SWAYAM's only indexable PDFs are
+    # admit-card notices. They were `secondary`, so they fired for all 750
+    # courses, while the sources that actually work are `preferred` and get
+    # filtered by regulator_map to their own area (COA resolves 58.8% off 68
+    # intents). Removing them does not lower coverage -- it stops spending the
+    # bulk of Curriculum retrieval on sources that cannot answer.
+    secondary: []
     min_tier: B
   Specialisation:
     preferred: [UGC, AICTE, NQR]
