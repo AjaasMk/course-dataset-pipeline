@@ -66,7 +66,7 @@ def check_course_segment_distribution(
     """Live wrapper: reads real chunk files and real retrieval-level document
     tags for a course and cross-checks each document. Requires chunks to have
     already been produced with segment_id populated (post Task 3)."""
-    from src.extract.batch_extract import load_chunks
+    from src.extract.chunk_io import load_chunks
 
     results: list[SegmentDistribution] = []
     inputs: list[ChunkInput] = [

@@ -5,7 +5,7 @@ from typing import Optional
 import anthropic
 from pydantic import BaseModel, Field
 
-from src.extract.extractor import chunks_for_segment
+from src.extract.chunk_io import chunks_for_segment
 from src.extract.models import Chunk
 from src.facts.course_facts import (
     COURSE_FIELD_IDS,
@@ -25,12 +25,11 @@ from src.retrieve.models import Segment
 MODEL = "claude-sonnet-5"
 MAX_TOKENS = 4096
 
-# Schema-in-prompt, not output_config/messages.parse(): the legacy CourseDetail
-# extractor (src/extract/extractor.py) hit a real, live API error ("the
-# compiled grammar is too large") from a much bigger schema. These models are
-# small enough that strict structured output would likely work, but the
-# pattern is kept consistent with the rest of this stage rather than mixing
-# two different extraction mechanisms for no functional reason.
+# Schema-in-prompt, not output_config/messages.parse(). The retired flat
+# 22-field course schema hit a real, live API error from strict structured
+# output ("the compiled grammar is too large"); these per-segment models are
+# small enough that it would likely work now, but one extraction mechanism
+# across the stage beats two for no functional gain.
 SYSTEM_PROMPT = """You extract structured {topic} information about an Indian academic \
 course from retrieved source documents, into the following JSON schema:
 

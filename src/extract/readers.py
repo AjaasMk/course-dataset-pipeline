@@ -76,8 +76,8 @@ def _extract_related_courses_section(soup: BeautifulSoup) -> Section | None:
     # <h3 class="heading-h3"><a>Name</a></h3> instead of a <li> — since h3 is
     # in _HEADING_TAGS, the main extraction loop below would otherwise treat
     # each course name as its own top-level heading with no content (dropped
-    # by flush()'s empty-paragraph check), losing this data for
-    # CourseDetail.related_courses entirely. Verified against the real
+    # by flush()'s empty-paragraph check), losing the related-course names
+    # entirely. Verified against the real
     # downloaded Chemical Engineering page. Extracted here as its own
     # Section, and the container is decomposed so the main loop doesn't
     # double-pick-up (or drop) these nested headings.

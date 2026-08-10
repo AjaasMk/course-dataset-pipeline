@@ -112,8 +112,8 @@ def chunk_all_documents(
     thread pool parallelizes across documents (I/O-bound network calls, shared
     anthropic.Anthropic client -- its underlying httpx.Client is thread-safe
     for concurrent requests). Each document's failure is isolated the same
-    way retrieve/batch.py and extract/batch_extract.py isolate per-item
-    failures -- one document's exception doesn't abort the batch.
+    way retrieve/batch.py isolates per-item failures -- one document's
+    exception doesn't abort the batch.
     """
     client = client or anthropic.Anthropic()
     inputs = _dedupe_by_document(read_chunk_inputs(db_path=db_path))
