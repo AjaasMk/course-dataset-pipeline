@@ -70,7 +70,7 @@ def test_an_input_lists_every_chunk_file_for_the_course(tmp_path):
 
     only = read_extraction_inputs(db_path=db)[0]
 
-    assert sorted(only.chunk_filenames) == ["mech__DOC-1.json", "mech__DOC-2.json"]
+    assert sorted(only.chunk_filenames) == ["DOC-1.json", "DOC-2.json"]
 
 
 def test_documents_are_grouped_by_the_segment_they_serve(tmp_path):
@@ -95,7 +95,7 @@ def test_a_document_serving_two_segments_appears_under_both(tmp_path):
 
     assert only.documents_by_segment[Segment.ELIGIBILITY] == ["DOC-1"]
     assert only.documents_by_segment[Segment.DURATION_MODE] == ["DOC-1"]
-    assert only.chunk_filenames == ["mech__DOC-1.json"]
+    assert only.chunk_filenames == ["DOC-1.json"]
 
 
 def test_courses_are_returned_in_a_stable_order(tmp_path):

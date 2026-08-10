@@ -81,13 +81,29 @@ def _chunk_one_document(
         )
 
 
+def _dedupe_by_document(inputs: list[ChunkInput]) -> list[ChunkInput]:
+    # read_chunk_inputs() correctly returns one row per (course, document) --
+    # extraction needs that to know which document answers which of a
+    # course's segments. But the actual chunking WORK (real, paid
+    # count_tokens() calls) only depends on the document's own content, not
+    # which course is asking -- confirmed live 2026-08-10 that chunking
+    # without this dedup step produced 7,886 chunk inputs for ~163 real
+    # unique documents, a ~48x redundancy. First-seen course per document_id
+    # is kept only as a representative label for ChunkResult.course_name;
+    # it has no bearing on the chunking output itself.
+    seen: dict[str, ChunkInput] = {}
+    for chunk_input in inputs:
+        seen.setdefault(chunk_input.document_id, chunk_input)
+    return list(seen.values())
+
+
 def chunk_all_documents(
     db_path: Optional[Path] = None,
     client: anthropic.Anthropic | None = None,
     max_workers: int = DEFAULT_MAX_WORKERS,
     chunks_dir: Path = CHUNKS_DIR,
 ) -> ChunkBatchReport:
-    """Chunk every document referenced in the manifest, concurrently.
+    """Chunk every unique document referenced in the manifest, concurrently.
 
     Each document's read+chunk+write is independent of every other document,
     but chunk_document()'s _token_count() now makes one count_tokens() network
@@ -100,7 +116,7 @@ def chunk_all_documents(
     failures -- one document's exception doesn't abort the batch.
     """
     client = client or anthropic.Anthropic()
-    inputs = read_chunk_inputs(db_path=db_path)
+    inputs = _dedupe_by_document(read_chunk_inputs(db_path=db_path))
 
     chunks_dir.mkdir(parents=True, exist_ok=True)
     results: list[ChunkResult] = []

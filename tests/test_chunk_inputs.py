@@ -153,10 +153,16 @@ def test_an_unresolved_intent_produces_no_input(tmp_path):
     assert read_chunk_inputs(db_path=db) == []
 
 
-def test_chunk_input_names_its_output_file_per_course_and_document(tmp_path):
+def test_chunk_input_names_its_output_file_by_document_only(tmp_path):
+    # Not per (course, document): chunking is a property of the document's
+    # content alone, independent of which course cites it. A course-scoped
+    # filename ("mech__DOC-1.json") would mean the same real document gets
+    # chunked from scratch once per course that resolves to it -- confirmed
+    # live 2026-08-10 this produced 7,886 chunk inputs for ~163 real unique
+    # documents (a ~48x redundancy in real, paid API calls) before this fix.
     db = tmp_path / "m.db"
     _link(db, "mech", Segment.ELIGIBILITY, "DOC-1")
 
     only = read_chunk_inputs(db_path=db)[0]
 
-    assert only.chunk_filename == "mech__DOC-1.json"
+    assert only.chunk_filename == "DOC-1.json"

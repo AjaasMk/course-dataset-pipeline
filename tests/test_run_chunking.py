@@ -105,8 +105,68 @@ def test_chunk_all_documents_chunks_every_row_and_writes_output(tmp_path):
     assert len(report.results) == 2
     assert {r.course_name for r in report.results} == {"Course One", "Course Two"}
     assert all(r.outcome == "chunked" for r in report.results)
-    assert (chunks_dir / "Course One__DOC-001.json").exists()
-    assert (chunks_dir / "Course Two__DOC-002.json").exists()
+    assert (chunks_dir / "DOC-001.json").exists()
+    assert (chunks_dir / "DOC-002.json").exists()
+
+
+def test_a_document_shared_by_two_courses_is_chunked_only_once(tmp_path):
+    # The actual bug this fixes: read_chunk_inputs() correctly returns one
+    # row per (course, document) -- needed so extraction can find a
+    # course's own evidence -- but chunk_all_documents() previously did
+    # the real, paid chunking work (real count_tokens() calls) once PER
+    # ROW, meaning a document shared by many courses got chunked from
+    # scratch once per course. Confirmed live 2026-08-10: 7,886 chunk
+    # inputs for ~163 real unique documents, a ~48x redundancy.
+    db_path = tmp_path / "manifest.db"
+    raw_dir = tmp_path / "raw"
+    chunks_dir = tmp_path / "chunks"
+    shared_doc = raw_dir / "shared.html"
+    _write_html(shared_doc, "Shared ranking table content.")
+
+    for course_id in ("mechanical_engineering", "civil_engineering"):
+        intent_id = f"RI-{course_id}"
+        store.insert_intent(
+            RetrievalIntent(
+                intent_id=intent_id, course_id=course_id, segment=Segment.RANKING_ACCREDITATION,
+                field_ids=["F072"], source_id="NIRF", priority=1, role=IntentRole.PRIMARY,
+                query_terms=["x"], required_document_type=[DocumentType.OFFICIAL_WEBPAGE],
+                qualification_level="Undergraduate",
+            ),
+            db_path=db_path,
+        )
+        store.insert_document(
+            DocumentRecord(
+                document_id="DOC-SHARED", source_id="NIRF", source_tier=SourceTier.A,
+                document_url="https://nirfindia.org/shared", document_title="Shared Ranking",
+                local_path=str(shared_doc), retrieved_at="2026-08-10T00:00:00+00:00",
+            ),
+            db_path=db_path,
+        )
+        store.insert_resolution(
+            IntentResolution(
+                intent_id=intent_id, document_id="DOC-SHARED", match_confidence=0.95,
+                match_type=MatchType.EXACT, validated=True,
+            ),
+            db_path=db_path,
+        )
+
+    call_count = {"n": 0}
+
+    class _CountingMessages(_FakeMessages):
+        def count_tokens(self, model, messages):
+            call_count["n"] += 1
+            return super().count_tokens(model, messages)
+
+    class _CountingClient:
+        def __init__(self):
+            self.messages = _CountingMessages()
+
+    report = chunk_all_documents(db_path=db_path, client=_CountingClient(), chunks_dir=chunks_dir, max_workers=2)
+
+    assert len(report.results) == 1  # one chunking operation, not one per course
+    assert (chunks_dir / "DOC-SHARED.json").exists()
+    calls_for_one_document = call_count["n"]
+    assert calls_for_one_document > 0  # sanity: chunking actually ran and called count_tokens
 
 
 def test_chunk_all_documents_isolates_failure_and_continues(tmp_path):
@@ -132,7 +192,7 @@ def test_chunk_all_documents_isolates_failure_and_continues(tmp_path):
     assert by_name["Course Missing"].outcome == "failed"
     assert by_name["Course Missing"].error is not None
     assert by_name["Course Ok"].outcome == "chunked"
-    assert (chunks_dir / "Course OK__DOC-002.json").exists()
+    assert (chunks_dir / "DOC-002.json").exists()
 
 
 def test_chunk_all_documents_runs_concurrently_not_sequentially(tmp_path):
