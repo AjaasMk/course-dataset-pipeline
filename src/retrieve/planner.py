@@ -57,6 +57,30 @@ _FIELD_TO_REGULATOR_AREAS = {
     "Agriculture, Food & Natural Res": ["agriculture"],
     "Veterinary & Animal Sciences": ["agriculture"],
     "Vocational, Trades & Applied Sk": ["vocational_nsqf"],
+    # Added 2026-08-10. AICTE's model-syllabus page publishes 47 curricula and
+    # only 20 had ever been fetched -- not because the rest were hard to reach,
+    # but because these fields fell through to general_university_degrees,
+    # which has no Curriculum source, so no AICTE intent was ever issued. The
+    # documents sit on a listing page the AICTE adapter already crawls,
+    # including Diploma curricula for Animation, Game Design, Film and TV
+    # Production and Media Communication -- courses this project had written
+    # off as having no regulator at all.
+    #
+    # Each field is mapped because AICTE demonstrably publishes a curriculum
+    # for it, checked against the real live index rather than inferred from the
+    # field name. Fields with nothing on that page are deliberately left out:
+    # routing a course to a regulator that publishes nothing for it only
+    # manufactures unresolved intents.
+    #
+    # Held back until src/retrieve/matching.py::guarded_score was wired into
+    # the AICTE adapter. Without it this mapping bound "Mass Communication" to
+    # the Electronics and Communication Engineering syllabus at 0.84, on the
+    # shared word alone.
+    "Business, Management & Entrepre": ["engineering_technology"],
+    "Design, Creative Arts & Fashion": ["engineering_technology"],
+    "Film, Animation, Gaming & Inter": ["engineering_technology"],
+    "Communication, Journalism & Med": ["engineering_technology"],
+    "Life Sciences & Biotechnology": ["engineering_technology"],
 }
 _DEFAULT_REGULATOR_AREA = "general_university_degrees"
 

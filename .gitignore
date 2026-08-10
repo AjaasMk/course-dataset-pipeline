@@ -18,6 +18,8 @@ data/raw/*
 data/manifest.db
 data/pilot_run_report.json
 data/source_probe_report.json
+data/nirf_profiles_report.json
+data/*.log
 data/probe_*.json
 data/institutions.db
 data/stage1_report.json
