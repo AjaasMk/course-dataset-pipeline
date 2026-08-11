@@ -210,7 +210,21 @@ def _run_extraction(
             f"max_tokens={MAX_TOKENS} before the JSON object finished."
         )
 
-    text = next(block.text for block in response.content if block.type == "text")
+    # Filtering on type rather than taking content[0]: a reasoning model emits a
+    # `thinking` block first, and DeepSeek's Anthropic-compatible endpoint does
+    # so on every call. That reasoning also SPENDS output tokens, so a budget
+    # sized for the JSON alone can be consumed before any text is produced --
+    # confirmed live, a max_tokens=16 call returned stop_reason "end_turn" with
+    # a thinking block and no text block at all. Raise something that names the
+    # cause instead of a bare StopIteration from next().
+    text = next((block.text for block in response.content if block.type == "text"), None)
+    if text is None:
+        raise ExtractionTruncatedError(
+            f"{topic} extraction for {context_label!r} returned no text block "
+            f"(stop_reason={response.stop_reason!r}, output_tokens="
+            f"{response.usage.output_tokens}). A reasoning model can spend the "
+            f"whole max_tokens={MAX_TOKENS} budget before emitting any answer."
+        )
     return extraction_model_cls.model_validate_json(_strip_markdown_fence(text))
 
 

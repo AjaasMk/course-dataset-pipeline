@@ -1,0 +1,413 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Course Details Page — target output schema",
+  "description": "Stage 5 output shape for one course, derived structurally from docs/specs by fmc/course-details-demo-template-v2.html (BSc Psychology demo). Field names preserve the demo's own headings and labels. Nothing here is invented from outside the template. x-size records the demo's MEASURED content sizes and, where the template states one, its declared target; the two disagree in four places and both are kept rather than picking a winner.",
+  "x-source-template": "docs/specs by fmc/course-details-demo-template-v2.html",
+  "x-derived": "2026-08-11",
+  "x-size-conventions": {
+    "note": "Word counts measured from the demo. 'declared' is the template's own section-tag text where present; where declared and measured disagree, the tag reads as the production target and the demo as an abbreviated sample.",
+    "discrepancies": [
+      { "section": "overview", "declared": "About 180 words", "measured_words": 109 },
+      { "section": "skills_you_can_develop", "declared": "9 skill areas", "measured_items": 6 },
+      { "section": "frequently_asked_questions", "declared": "6-10 questions", "measured_items": 5 },
+      { "section": "parent_corner", "declared": "About 150 words", "measured_words": 35 }
+    ]
+  },
+  "type": "object",
+  "properties": {
+    "hero": {
+      "type": "object",
+      "properties": {
+        "labels": { "type": "array", "items": { "type": "string" }, "x-size": { "measured_items": 3 } },
+        "course_title": { "type": "string" },
+        "hero_summary": { "type": "string", "x-size": { "measured_words": 32, "target_words": "30-40" } },
+        "your_possible_fit": {
+          "type": "object",
+          "properties": {
+            "heading": { "type": "string" },
+            "description": { "type": "string" },
+            "fit_score": { "type": "string" },
+            "fit_list": { "type": "array", "items": { "type": "string" }, "x-size": { "measured_items": 3, "words_per_item": "5-9" } }
+          }
+        }
+      }
+    },
+
+    "course_at_a_glance": {
+      "type": "array",
+      "x-size": { "measured_items": 6 },
+      "x-labels-present": ["Typical duration", "Entry level", "Suitable streams", "Learning style", "Indicative fees", "Career direction"],
+      "items": {
+        "type": "object",
+        "properties": { "label": { "type": "string" }, "value": { "type": "string" } }
+      }
+    },
+
+    "course_snapshot": {
+      "type": "object",
+      "x-section-tag": "Decision snapshot",
+      "properties": {
+        "heading": { "type": "string" },
+        "subheading": { "type": "string" },
+        "indicative_salary_range": {
+          "type": "object",
+          "properties": {
+            "heading": { "type": "string" },
+            "description": { "type": "string" },
+            "salary_values": {
+              "type": "array",
+              "x-size": { "measured_items": 3 },
+              "x-labels-present": ["Lower range", "Typical average", "Higher range"],
+              "items": { "type": "object", "properties": { "label": { "type": "string" }, "value": { "type": "string" } } }
+            },
+            "data_note": { "type": "string" }
+          }
+        },
+        "popular_specialisations": {
+          "type": "object",
+          "properties": {
+            "heading": { "type": "string" },
+            "description": { "type": "string" },
+            "specialisation_items": {
+              "type": "array",
+              "x-size": { "measured_items": 8 },
+              "items": { "type": "object", "properties": { "index": { "type": "string" }, "name": { "type": "string" } } }
+            }
+          }
+        },
+        "data_note": { "type": "object", "properties": { "label": { "type": "string" }, "text": { "type": "string" } } }
+      }
+    },
+
+    "overview": {
+      "type": "object",
+      "x-section-tag": "About 180 words",
+      "properties": {
+        "heading": { "type": "string" },
+        "subheading": { "type": "string" },
+        "paragraphs": {
+          "type": "array",
+          "items": { "type": "string" },
+          "x-size": { "measured_items": 3, "measured_total_words": 109, "words_per_paragraph": "31-42", "target_total_words": 180 }
+        }
+      }
+    },
+
+    "suitability": {
+      "type": "object",
+      "x-section-tag": "Student decision support",
+      "properties": {
+        "heading": { "type": "string" },
+        "subheading": { "type": "string" },
+        "you_may_enjoy_this_course_if_you": {
+          "type": "object",
+          "properties": {
+            "heading": { "type": "string" },
+            "items": { "type": "array", "items": { "type": "string" }, "x-size": { "measured_items": 4, "words_per_item": "6-9" } }
+          }
+        },
+        "think_carefully_if_you": {
+          "type": "object",
+          "properties": {
+            "heading": { "type": "string" },
+            "items": { "type": "array", "items": { "type": "string" }, "x-size": { "measured_items": 4, "words_per_item": "6-9" } }
+          }
+        },
+        "course_fit_tags": { "type": "array", "items": { "type": "string" }, "x-size": { "measured_items": 7 } }
+      }
+    },
+
+    "eligibility_and_admission": {
+      "type": "object",
+      "x-section-tag": "Verify institution rules",
+      "properties": {
+        "heading": { "type": "string" },
+        "subheading": { "type": "string" },
+        "typical_eligibility": {
+          "type": "object",
+          "properties": {
+            "heading": { "type": "string" },
+            "items": { "type": "array", "items": { "type": "string" }, "x-size": { "measured_items": 4, "words_per_item": "3-8" } }
+          }
+        },
+        "possible_admission_methods": {
+          "type": "object",
+          "properties": {
+            "heading": { "type": "string" },
+            "items": { "type": "array", "items": { "type": "string" }, "x-size": { "measured_items": 4, "words_per_item": "3-8" } }
+          }
+        },
+        "admission_pathway": {
+          "type": "array",
+          "x-size": { "measured_items": 5, "words_per_description": "6-9" },
+          "items": {
+            "type": "object",
+            "properties": { "step_number": { "type": "string" }, "title": { "type": "string" }, "description": { "type": "string" } }
+          }
+        }
+      }
+    },
+
+    "what_will_you_study": {
+      "type": "object",
+      "x-section-tag": "Year-wise tabs",
+      "properties": {
+        "heading": { "type": "string" },
+        "subheading": { "type": "string" },
+        "year_panels": {
+          "type": "array",
+          "x-size": { "measured_items": 3, "subjects_per_year": 4, "words_per_subject_description": "5-9" },
+          "items": {
+            "type": "object",
+            "properties": {
+              "tab_label": { "type": "string" },
+              "subjects": {
+                "type": "array",
+                "items": { "type": "object", "properties": { "name": { "type": "string" }, "description": { "type": "string" } } }
+              }
+            }
+          }
+        },
+        "learning_style": {
+          "type": "object",
+          "properties": {
+            "tab_label": { "type": "string" },
+            "common_learning_activities": { "type": "object", "properties": { "heading": { "type": "string" }, "text": { "type": "string" } } },
+            "common_assessment_methods": { "type": "object", "properties": { "heading": { "type": "string" }, "text": { "type": "string" } } }
+          }
+        }
+      }
+    },
+
+    "skills_you_can_develop": {
+      "type": "object",
+      "x-section-tag": "9 skill areas",
+      "properties": {
+        "heading": { "type": "string" },
+        "subheading": { "type": "string" },
+        "skills": {
+          "type": "array",
+          "x-size": { "measured_items": 6, "target_items": 9, "words_per_description": "5-7" },
+          "items": { "type": "object", "properties": { "name": { "type": "string" }, "description": { "type": "string" } } }
+        }
+      }
+    },
+
+    "career_opportunities": {
+      "type": "object",
+      "x-section-tag": "Career-route clarity",
+      "properties": {
+        "heading": { "type": "string" },
+        "subheading": { "type": "string" },
+        "careers": {
+          "type": "array",
+          "x-size": { "measured_items": 6, "words_per_description": "8-10" },
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": { "type": "string" },
+              "description": { "type": "string" },
+              "route_badge": { "type": "string" },
+              "route": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+
+    "top_recruiters_and_employment_sectors": {
+      "type": "object",
+      "x-section-tag": "Illustrative directory",
+      "properties": {
+        "heading": { "type": "string" },
+        "subheading": { "type": "string" },
+        "recruiters": {
+          "type": "array",
+          "x-size": { "measured_items": 6, "words_per_description": "7-11", "roles_per_recruiter": 2 },
+          "items": {
+            "type": "object",
+            "properties": {
+              "logo": { "type": "string" },
+              "name": { "type": "string" },
+              "sector": { "type": "string" },
+              "description": { "type": "string" },
+              "roles": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        },
+        "data_note": { "type": "string" }
+      }
+    },
+
+    "further_study_pathway": {
+      "type": "object",
+      "properties": {
+        "heading": { "type": "string" },
+        "subheading": { "type": "string" },
+        "pathway_items": { "type": "array", "items": { "type": "string" }, "x-size": { "measured_items": 5 } }
+      }
+    },
+
+    "fees_and_total_study_cost": {
+      "type": "object",
+      "x-section-tag": "Parent priority",
+      "properties": {
+        "heading": { "type": "string" },
+        "subheading": { "type": "string" },
+        "table": {
+          "type": "object",
+          "properties": {
+            "columns": { "type": "array", "items": { "type": "string" } },
+            "rows": {
+              "type": "array",
+              "x-size": { "measured_items": 4 },
+              "items": {
+                "type": "object",
+                "properties": {
+                  "cost_category": { "type": "string" },
+                  "indicative_range": { "type": "string" },
+                  "frequency": { "type": "string" },
+                  "what_parents_should_check": { "type": "string" }
+                }
+              }
+            }
+          },
+          "x-columns-present": ["Cost category", "Indicative range", "Frequency", "What parents should check"]
+        },
+        "footnote": { "type": "string" }
+      }
+    },
+
+    "top_colleges_and_universities": {
+      "type": "object",
+      "x-section-tag": "Illustrative ranking",
+      "properties": {
+        "heading": { "type": "string" },
+        "subheading": { "type": "string" },
+        "ranking_source": { "type": "string" },
+        "colleges": {
+          "type": "array",
+          "x-size": { "measured_items": 6, "meta_per_college": 4 },
+          "items": {
+            "type": "object",
+            "properties": {
+              "rank": { "type": "string" },
+              "name": { "type": "string" },
+              "location_course_duration": { "type": "string" },
+              "institution_type": { "type": "string" },
+              "meta": { "type": "array", "items": { "type": "string" } },
+              "fees": { "type": "string" }
+            }
+          }
+        },
+        "data_note": { "type": "object", "properties": { "label": { "type": "string" }, "text": { "type": "string" } } }
+      }
+    },
+
+    "compare_similar_courses": {
+      "type": "object",
+      "x-section-tag": "Decision table",
+      "properties": {
+        "heading": { "type": "string" },
+        "subheading": { "type": "string" },
+        "table": {
+          "type": "object",
+          "properties": {
+            "columns": { "type": "array", "items": { "type": "string" }, "x-size": { "measured_items": 4 } },
+            "rows": {
+              "type": "array",
+              "x-size": { "measured_items": 4 },
+              "x-features-present": ["Main focus", "Statistics", "Laboratory exposure", "Common next steps"],
+              "items": {
+                "type": "object",
+                "properties": {
+                  "feature": { "type": "string" },
+                  "values_by_course": { "type": "array", "items": { "type": "string" } }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "what_should_you_do_now": {
+      "type": "object",
+      "properties": {
+        "heading": { "type": "string" },
+        "subheading": { "type": "string" },
+        "roadmap": {
+          "type": "array",
+          "x-size": { "measured_items": 3, "words_per_description": "14-15" },
+          "items": { "type": "object", "properties": { "title": { "type": "string" }, "description": { "type": "string" } } }
+        }
+      }
+    },
+
+    "parent_corner": {
+      "type": "object",
+      "x-section-tag": "About 150 words",
+      "properties": {
+        "heading": { "type": "string" },
+        "subheading": { "type": "string" },
+        "paragraph": { "type": "string", "x-size": { "measured_words": 35, "target_words": 150 } },
+        "parent_questions": { "type": "array", "items": { "type": "string" }, "x-size": { "measured_items": 6 } }
+      }
+    },
+
+    "frequently_asked_questions": {
+      "type": "object",
+      "x-section-tag": "6-10 questions",
+      "properties": {
+        "heading": { "type": "string" },
+        "subheading": { "type": "string" },
+        "questions": {
+          "type": "array",
+          "x-size": { "measured_items": 5, "target_items": "6-10", "words_per_answer": "22-35" },
+          "items": { "type": "object", "properties": { "question": { "type": "string" }, "answer": { "type": "string" } } }
+        }
+      }
+    },
+
+    "page_verification_area": {
+      "type": "object",
+      "properties": {
+        "heading": { "type": "string" },
+        "last_reviewed": { "type": "string" },
+        "content_status": { "type": "string" },
+        "reviewer": { "type": "string" },
+        "note": { "type": "string" }
+      }
+    },
+
+    "sidebar": {
+      "type": "object",
+      "properties": {
+        "plan_your_next_step": {
+          "type": "object",
+          "properties": {
+            "heading": { "type": "string" },
+            "description": { "type": "string" },
+            "progress_label": { "type": "string" },
+            "progress_value": { "type": "string" }
+          }
+        },
+        "course_checklist": {
+          "type": "object",
+          "properties": {
+            "heading": { "type": "string" },
+            "items": {
+              "type": "array",
+              "x-size": { "measured_items": 4 },
+              "items": { "type": "object", "properties": { "index": { "type": "string" }, "text": { "type": "string" } } }
+            }
+          }
+        },
+        "need_personal_guidance": {
+          "type": "object",
+          "properties": { "heading": { "type": "string" }, "description": { "type": "string" } }
+        }
+      }
+    }
+  }
+}
