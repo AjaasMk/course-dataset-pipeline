@@ -8,7 +8,7 @@ from src.extract.retry import call_with_retry
 from src.extract.segment_match import classify_heading
 from src.retrieve.models import Segment
 
-MODEL = "claude-sonnet-5"
+MODEL = "claude-haiku-4-5-20251001"
 MAX_TOKENS = 1000
 OVERLAP_TOKENS = 125
 

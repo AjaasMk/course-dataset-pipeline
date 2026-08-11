@@ -49,9 +49,13 @@ def test_deepseek_model_names_are_the_claude_aliases_it_maps_from():
     assert model_for("deepseek", "fast") != model_for("deepseek", "strong")
 
 
-def test_anthropic_fast_tier_is_haiku_not_sonnet():
+def test_both_anthropic_tiers_resolve_to_haiku():
+    # Set 2026-08-11 by explicit instruction. The tier argument is kept so the
+    # decision is one line to revert and each caller's intent stays readable --
+    # generation still asks for "strong", which records that the job wants a
+    # larger model than it is currently getting.
     assert "haiku" in model_for("anthropic", "fast")
-    assert "sonnet" in model_for("anthropic", "strong")
+    assert "haiku" in model_for("anthropic", "strong")
 
 
 def test_deepseek_is_recorded_as_not_supporting_structured_output():

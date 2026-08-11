@@ -49,10 +49,19 @@ def client_for(provider: Provider = "anthropic") -> anthropic.Anthropic:
     raise MissingCredential(f"unknown provider {provider!r}")
 
 
+# Both Anthropic tiers resolve to Haiku, set 2026-08-11 by explicit
+# instruction. The tier argument is kept rather than deleted so the decision is
+# one line to revert and every caller's INTENT stays readable -- generation
+# still asks for "strong" because that is what the job deserves, and this
+# records that it is not currently getting it.
+ANTHROPIC_FAST = "claude-haiku-4-5-20251001"
+ANTHROPIC_STRONG = "claude-haiku-4-5-20251001"
+
+
 def model_for(provider: Provider, tier: Literal["fast", "strong"] = "fast") -> str:
     if provider == "deepseek":
         return DEEPSEEK_FLASH if tier == "fast" else DEEPSEEK_PRO
-    return "claude-haiku-4-5-20251001" if tier == "fast" else "claude-sonnet-5"
+    return ANTHROPIC_FAST if tier == "fast" else ANTHROPIC_STRONG
 
 
 def available_providers() -> list[Provider]:
