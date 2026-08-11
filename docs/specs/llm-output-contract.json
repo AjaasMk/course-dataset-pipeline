@@ -12,6 +12,9 @@
   "Curriculum": {
    "cardinality": "one record per course",
    "response": {
+    "subjects": [
+     "<string>"
+    ],
     "foundation_subjects": [
      "<string>"
     ],
@@ -23,6 +26,8 @@
     ],
     "practical_components": "<string or null>",
     "laboratory_components": "<string or null>",
+    "learning_activities": "<string or null>",
+    "assessment_methods": "<string or null>",
     "internship": "<string or null>",
     "fieldwork": "<string or null>",
     "project": "<string or null>",
@@ -143,6 +148,9 @@
       "exam_date": "<string or null>",
       "counselling_body": "<string or null>",
       "official_information_bulletin": "<string or null>",
+      "admission_steps": [
+       "<string>"
+      ],
       "citations": [
        {
         "field": "<string or null>",
@@ -172,6 +180,8 @@
       "mess_fee": "<string or null>",
       "transport_fee": "<string or null>",
       "total_estimated_cost": "<string or null>",
+      "fee_frequency": "<string or null>",
+      "parent_check_note": "<string or null>",
       "citations": [
        {
         "field": "<string or null>",
@@ -228,6 +238,7 @@
       "career_progression": "<string or null>",
       "government_opportunities": "<string or null>",
       "self_employment_possible": "<string or null>",
+      "career_note": "<string or null>",
       "citations": [
        {
         "field": "<string or null>",
@@ -277,7 +288,11 @@
       "recruiter_name": "<string or null>",
       "placement_institution": "<string or null>",
       "course_or_department": "<string or null>",
-      "role_recruited_for": "<string or null>",
+      "role_recruited_for": [
+       "<string>"
+      ],
+      "recruiter_sector": "<string or null>",
+      "recruiter_note": "<string or null>",
       "placement_year": "<string or null>",
       "number_hired": "<string or null>",
       "placement_scope": "<string or null>",
@@ -315,6 +330,11 @@
       "intake": "<string or null>",
       "approval_academic_year": "<string or null>",
       "official_course_url": "<string or null>",
+      "city_or_region": "<string or null>",
+      "course_variant": "<string or null>",
+      "admission_route": "<string or null>",
+      "offering_highlight": "<string or null>",
+      "annual_fee": "<string or null>",
       "citations": [
        {
         "field": "<string or null>",
@@ -392,6 +412,7 @@
   },
   "Curriculum": {
    "response": {
+    "subjects": "string or list of strings",
     "foundation_subjects": "string or list of strings",
     "core_subjects": "string or list of strings",
     "electives": "string or list of strings",
@@ -400,7 +421,9 @@
     "internship": "string or list of strings",
     "fieldwork": "string or list of strings",
     "project": "string or list of strings",
-    "dissertation": "string or list of strings"
+    "dissertation": "string or list of strings",
+    "learning_activities": "string or list of strings",
+    "assessment_methods": "string or list of strings"
    },
    "rule": "no citations -- generated content has no source to cite"
   },
@@ -426,7 +449,8 @@
     "application_end": "string",
     "exam_date": "typical period as a string, never a specific date",
     "counselling_body": "string",
-    "official_information_bulletin": "string"
+    "official_information_bulletin": "string",
+    "admission_steps": "list of strings"
    },
    "rule": "no citations -- generated content has no source to cite"
   },
@@ -443,7 +467,9 @@
     "transport_fee": "indicative range as a string, never a single precise figure",
     "fee_year": "indicative range as a string, never a single precise figure",
     "quota_or_seat_type": "string",
-    "total_estimated_cost": "indicative range as a string, never a single precise figure"
+    "total_estimated_cost": "indicative range as a string, never a single precise figure",
+    "fee_frequency": "indicative range as a string, never a single precise figure",
+    "parent_check_note": "string"
    },
    "rule": "no citations -- generated content has no source to cite"
   },
@@ -473,7 +499,8 @@
     "typical_entry_role": "string",
     "career_progression": "string",
     "government_opportunities": "string",
-    "self_employment_possible": "string"
+    "self_employment_possible": "string",
+    "career_note": "string"
    },
    "rule": "no citations -- generated content has no source to cite"
   },
@@ -499,12 +526,14 @@
     "placement_institution": "string",
     "course_or_department": "string",
     "recruiter_name": "string",
-    "role_recruited_for": "string",
+    "role_recruited_for": "list of strings",
     "placement_year": "typical period as a string, never a specific date",
     "number_hired": "integer",
     "placement_scope": "string",
     "official_report": "string",
-    "verified_status": "string"
+    "verified_status": "string",
+    "recruiter_sector": "string",
+    "recruiter_note": "string"
    },
    "rule": "no citations -- generated content has no source to cite"
   },
@@ -524,7 +553,12 @@
     "campus": "string",
     "intake": "integer",
     "approval_academic_year": "typical period as a string, never a specific date",
-    "official_course_url": "string"
+    "official_course_url": "string",
+    "city_or_region": "string",
+    "course_variant": "string",
+    "admission_route": "string",
+    "offering_highlight": "string",
+    "annual_fee": "indicative range as a string, never a single precise figure"
    },
    "rule": "no citations -- generated content has no source to cite"
   },
@@ -585,6 +619,12 @@
    "response": {
     "intro": "string of about 150 words addressed to a parent, on how to support the decision without making it for the student",
     "questions": "list of exactly 6 questions a parent should discuss with the student"
+   }
+  },
+  "compare": {
+   "response": {
+    "comparison_courses": "list of exactly 2 course names to compare against this one -- the closest real alternatives a student would actually weigh, chosen from the sibling courses supplied in the prompt",
+    "rows": "list of exactly 4 objects, each {feature, this_course, alternative_1, alternative_2}. feature is one of: Main focus, Statistics, Laboratory exposure, Common next steps. Each value is a short phrase, not a sentence"
    }
   },
   "faq": {

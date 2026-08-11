@@ -298,17 +298,13 @@
       "order": 16,
       "block": "compare",
       "heading": "Compare similar courses",
-      "producer": "derived",
-      "segments": [
-        "Course Identity",
-        "Curriculum",
-        "Career Mapping"
-      ],
+      "producer": "advisory",
+      "segments": [],
       "shape": {
         "comparison_courses": 3,
         "feature_rows": 4
       },
-      "note": "Cross-course. Needs facts for the sibling courses, not new retrieval for this one."
+      "note": "Sibling courses are derived from the taxonomy; the comparison cells are a judgement no regulator publishes, so they are written and marked generated."
     },
     {
       "order": 17,
@@ -374,7 +370,6 @@
     }
   ],
   "unconsumed_segments": {
-    "Scholarships": "No block. 0 mentions anywhere in the template.",
     "Student Reviews & Campus Experience": "No block. 0 mentions anywhere in the template."
   }
 }

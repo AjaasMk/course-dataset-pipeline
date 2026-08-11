@@ -51,8 +51,9 @@ def _refs():
 
 
 def test_a_complete_record_is_returned_untouched_without_an_api_call():
-    listy = {"foundation_subjects", "core_subjects", "electives"}
-    record = _record(**{name: (["x"] if name in listy else "x")
+    listy = {"subjects", "foundation_subjects", "core_subjects", "electives"}
+    record = _record(**{name: ([{"name": "x"}] if name == "subjects"
+                               else ["x"] if name in listy else "x")
                         for name in CURRICULUM_FIELD_IDS})
     client = _Client({})
 

@@ -76,6 +76,17 @@ class FilledRecord:
     empty_fields: set[str] = field(default_factory=set)
 
 
+def _name(course) -> str:
+    return getattr(course, "standard_course_name", None) or getattr(course, "name", "")
+
+
+def _field(course) -> str:
+    fields = getattr(course, "fields", None)
+    if fields:
+        return fields[0]
+    return getattr(course, "field", "") or ""
+
+
 def _is_empty(value) -> bool:
     return value in (None, "", [], {})
 
@@ -113,13 +124,13 @@ def fill_gaps(
     model = model_for(provider, TIER)
     system = SYSTEM_PROMPT.format(
         segment=segment,
-        course=course.name,
+        course=_name(course),
         level=getattr(course, "level", "Undergraduate"),
-        field=getattr(course, "field", "") or "not specified",
+        field=_field(course) or "not specified",
         known=json.dumps(known, default=str)[:2000],
         schema=json.dumps({name: schema.get(name, "string or list of strings") for name in missing}),
     )
-    produced = _generate_fields(client, model, system, segment, course.course_id, course.name)
+    produced = _generate_fields(client, model, system, segment, course.course_id, _name(course))
 
     generated: set[str] = set()
     update = {}

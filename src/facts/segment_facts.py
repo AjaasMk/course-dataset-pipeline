@@ -1,6 +1,18 @@
 from typing import Optional
 
+from enum import Enum
+
 from pydantic import BaseModel, Field
+
+
+class RouteBadge(str, Enum):
+    """The five route badges the client's career cards render, verbatim."""
+
+    AFTER_BACHELORS = "Possible after bachelor's"
+    TRAINING_REQUIRED = "Training may be required"
+    POSTGRADUATE = "Postgraduate route"
+    REGULATED = "Advanced regulated route"
+    HIGHER_STUDY = "Higher study required"
 
 # The seven segments the client's page needs that had no fact model, so
 # extraction had nowhere to write and they fell through to generation even
@@ -11,6 +23,11 @@ from pydantic import BaseModel, Field
 # Field names and F-numbers come from the client's own Data Fields sheet,
 # read directly rather than inferred from the F-number ranges in planner.py --
 # those ranges were right about the spans but say nothing about the names.
+#
+# Fields numbered P0xx are provisional: the client's page renders them but the
+# Data Fields sheet assigns no ID. They are gated exactly like F-numbers, so an
+# uncited value in one is nulled the same way -- nothing slips past Hard
+# Constraint 2 while the client decides whether to adopt them.
 #
 # Ranking & Accreditation (F072-F079) is deliberately absent: src/facts/models.py
 # already has Ranking, with 871 real NIRF rows behind it.
@@ -33,6 +50,9 @@ class EntranceAdmission(BaseModel):
     exam_date: Optional[str] = None
     counselling_body: Optional[str] = None
     official_information_bulletin: Optional[str] = None
+    # The page renders a five-step admission pathway ("Check eligibility" ->
+    # "Confirm admission") that the Data Fields sheet does not model at all.
+    admission_steps: list[str] = Field(default_factory=list)
     recorded_at: Optional[str] = None
     superseded_at: Optional[str] = None
 
@@ -60,25 +80,11 @@ class FeeStructure(BaseModel):
     mess_fee: Optional[str] = None
     transport_fee: Optional[str] = None
     total_estimated_cost: Optional[str] = None
-    recorded_at: Optional[str] = None
-    superseded_at: Optional[str] = None
-
-
-class Scholarship(BaseModel):
-    """F092-F101. One row per scheme per year, keyed by scholarship_name."""
-
-    record_id: Optional[str] = None
-    course_id: str
-    scholarship_name: str
-    provider: Optional[str] = None
-    scholarship_eligibility: Optional[str] = None
-    applicable_course: Optional[str] = None
-    income_limit: Optional[str] = None
-    category_requirement: Optional[str] = None
-    award_amount: Optional[str] = None
-    scholarship_deadline: Optional[str] = None
-    scholarship_year: Optional[str] = None
-    scholarship_source: Optional[str] = None
+    # The page's fee table is long-format -- one row per cost category with a
+    # frequency and a note for parents. The sheet is wide-format, one column
+    # per fee. These two carry the columns the wide shape cannot express.
+    fee_frequency: Optional[str] = None
+    parent_check_note: Optional[str] = None
     recorded_at: Optional[str] = None
     superseded_at: Optional[str] = None
 
@@ -94,7 +100,11 @@ class CareerMapping(BaseModel):
     record_id: Optional[str] = None
     course_id: str
     occupation_id: str
-    relationship_strength: Optional[str] = None
+    # The page renders this as one of five route badges, not free text:
+    # "Possible after bachelor's", "Training may be required", "Postgraduate
+    # route", "Advanced regulated route", "Higher study required". Constrained
+    # so a value that cannot be rendered fails here rather than on the page.
+    relationship_strength: Optional[RouteBadge] = None
     direct_entry_possible: Optional[bool] = None
     additional_degree_required: Optional[str] = None
     licence_required: Optional[str] = None
@@ -103,6 +113,10 @@ class CareerMapping(BaseModel):
     career_progression: Optional[str] = None
     government_opportunities: Optional[str] = None
     self_employment_possible: Optional[str] = None
+    # The career card's body sentence. typical_entry_role names the role and
+    # career_progression names the route; neither is the description the card
+    # renders between them.
+    career_note: Optional[str] = None
     recorded_at: Optional[str] = None
     superseded_at: Optional[str] = None
 
@@ -146,7 +160,12 @@ class PlacementRecord(BaseModel):
     recruiter_name: str
     placement_institution: Optional[str] = None
     course_or_department: Optional[str] = None
-    role_recruited_for: Optional[str] = None
+    # A list, not a string: every recruiter card on the page shows two or more
+    # role chips. Changed before any extraction has written to it, when the
+    # change is free.
+    role_recruited_for: list[str] = Field(default_factory=list)
+    recruiter_sector: Optional[str] = None
+    recruiter_note: Optional[str] = None
     placement_year: Optional[str] = None
     number_hired: Optional[int] = None
     placement_scope: Optional[str] = None
@@ -182,6 +201,14 @@ class InstitutionOfferingFact(BaseModel):
     intake: Optional[int] = None
     approval_academic_year: Optional[str] = None
     official_course_url: Optional[str] = None
+    # Everything the ranked college card shows that the sheet does not model.
+    # annual_fee is per-institution: FeeStructure is course-level, so it cannot
+    # answer "what does THIS college charge", which is what the card renders.
+    city_or_region: Optional[str] = None
+    course_variant: Optional[str] = None
+    admission_route: Optional[str] = None
+    offering_highlight: Optional[str] = None
+    annual_fee: Optional[str] = None
     recorded_at: Optional[str] = None
     superseded_at: Optional[str] = None
 
@@ -197,6 +224,7 @@ ENTRANCE_FIELD_IDS = {
     "exam_date": "F038",
     "counselling_body": "F039",
     "official_information_bulletin": "F040",
+    "admission_steps": "P002",
 }
 
 FEES_FIELD_IDS = {
@@ -212,19 +240,8 @@ FEES_FIELD_IDS = {
     "fee_year": "F089",
     "quota_or_seat_type": "F090",
     "total_estimated_cost": "F091",
-}
-
-SCHOLARSHIP_FIELD_IDS = {
-    "scholarship_name": "F092",
-    "provider": "F093",
-    "scholarship_eligibility": "F094",
-    "applicable_course": "F095",
-    "income_limit": "F096",
-    "category_requirement": "F097",
-    "award_amount": "F098",
-    "scholarship_deadline": "F099",
-    "scholarship_year": "F100",
-    "scholarship_source": "F101",
+    "fee_frequency": "P003",
+    "parent_check_note": "P004",
 }
 
 CAREER_FIELD_IDS = {
@@ -238,6 +255,7 @@ CAREER_FIELD_IDS = {
     "career_progression": "F109",
     "government_opportunities": "F110",
     "self_employment_possible": "F111",
+    "career_note": "P012",
 }
 
 SALARY_FIELD_IDS = {
@@ -265,6 +283,8 @@ PLACEMENT_FIELD_IDS = {
     "placement_scope": "F130",
     "official_report": "F131",
     "verified_status": "F132",
+    "recruiter_sector": "P005",
+    "recruiter_note": "P006",
 }
 
 OFFERING_FIELD_IDS = {
@@ -283,6 +303,11 @@ OFFERING_FIELD_IDS = {
     "intake": "F069",
     "approval_academic_year": "F070",
     "official_course_url": "F071",
+    "city_or_region": "P007",
+    "course_variant": "P008",
+    "admission_route": "P009",
+    "offering_highlight": "P010",
+    "annual_fee": "P011",
 }
 
 # What each segment stores, so extraction and the page can both look it up by
@@ -290,7 +315,6 @@ OFFERING_FIELD_IDS = {
 SEGMENT_FACTS = {
     "Entrance & Admission": (EntranceAdmission, ENTRANCE_FIELD_IDS),
     "Fees": (FeeStructure, FEES_FIELD_IDS),
-    "Scholarships": (Scholarship, SCHOLARSHIP_FIELD_IDS),
     "Career Mapping": (CareerMapping, CAREER_FIELD_IDS),
     "Salary": (SalaryObservation, SALARY_FIELD_IDS),
     "Recruiters & Placement": (PlacementRecord, PLACEMENT_FIELD_IDS),

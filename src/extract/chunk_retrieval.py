@@ -20,6 +20,15 @@ from src.extract.segment_queries import query_for
 FUSION_TOP_K = 30
 TOP_K = 5
 
+# Curriculum is the exception, and it is measured rather than assumed. Its
+# evidence is genuinely diffuse -- 136 gold chunks across 20 real extractions,
+# recall still climbing at rank 50 -- because core_subjects is an enumeration
+# (every subject across 8 semesters), not a single-passage answer that a
+# reranker can put in one slot. At 5 the fused ranking recalls 0.495; at 20 it
+# recalls 0.705. With ~700-token chunks that is ~14k tokens, still a 92% cut
+# against the 165k a whole-segment call used to send.
+TOP_K_BY_SEGMENT = {"Curriculum": 20}
+
 
 @dataclass
 class RetrievalResult:
@@ -45,13 +54,15 @@ class RetrievalResult:
 def retrieve(
     chunks: list[Chunk],
     segment: str,
-    top_k: int = TOP_K,
+    top_k: Optional[int] = None,
     fusion_top_k: int = FUSION_TOP_K,
     compress_context: bool = True,
 ) -> RetrievalResult:
     if not chunks:
         return RetrievalResult(chunks=[])
 
+    if top_k is None:
+        top_k = TOP_K_BY_SEGMENT.get(segment, TOP_K)
     query = query_for(segment)
     texts = [c.text for c in chunks]
     before = sum(len(t) for t in texts)

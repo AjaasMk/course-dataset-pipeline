@@ -82,9 +82,6 @@ SEGMENT_ALIASES: dict[Segment, list[str]] = {
     Segment.FEES: [
         "fees", "tuition fee", "fee structure", "total cost", "cost of study",
     ],
-    Segment.SCHOLARSHIPS: [
-        "scholarship", "financial aid", "fee waiver", "stipend",
-    ],
     Segment.CAREER_MAPPING: [
         "career scope", "job roles", "occupations", "employment opportunities",
     ],

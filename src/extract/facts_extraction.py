@@ -81,7 +81,17 @@ null or empty and an empty citations array."""
 # Keys the pipeline sets itself. They are never extracted, carry no citation
 # and must not appear in an entry model or the gate would demand evidence
 # for a value we chose.
-_BOOKKEEPING = {"record_id", "course_id", "recorded_at", "superseded_at"}
+_BOOKKEEPING = {
+    "record_id",
+    "course_id",
+    "recorded_at",
+    "superseded_at",
+    # Versioning keys, chosen by the caller and passed to the record
+    # explicitly. Leaving them in an entry model would both ask the model to
+    # invent a year and collide with the argument the caller already passes.
+    "curriculum_year",
+    "eligibility_year",
+}
 
 _JSON_FENCE_RE = re.compile(r"^```(?:json)?\s*|\s*```$", re.MULTILINE)
 
@@ -98,68 +108,6 @@ class _Citation(BaseModel):
     quoted_evidence: str
 
 
-class _CurriculumExtraction(BaseModel):
-    foundation_subjects: list[str] = Field(default_factory=list)
-    core_subjects: list[str] = Field(default_factory=list)
-    electives: list[str] = Field(default_factory=list)
-    practical_components: Optional[str] = None
-    laboratory_components: Optional[str] = None
-    internship: Optional[str] = None
-    fieldwork: Optional[str] = None
-    project: Optional[str] = None
-    dissertation: Optional[str] = None
-    citations: list[_Citation] = Field(default_factory=list)
-
-
-class _EligibilityExtraction(BaseModel):
-    minimum_qualification: Optional[str] = None
-    accepted_streams: list[str] = Field(default_factory=list)
-    compulsory_subjects: list[str] = Field(default_factory=list)
-    recommended_subjects: list[str] = Field(default_factory=list)
-    minimum_percentage: Optional[str] = None
-    age_requirement: Optional[str] = None
-    medical_requirement: Optional[str] = None
-    portfolio_required: Optional[bool] = None
-    interview_required: Optional[bool] = None
-    lateral_entry_available: Optional[bool] = None
-    international_equivalence: Optional[str] = None
-    citations: list[_Citation] = Field(default_factory=list)
-
-
-class _CourseExtraction(BaseModel):
-    standard_course_name: Optional[str] = None
-    common_course_name: Optional[str] = None
-    abbreviation: Optional[str] = None
-    qualification_level: Optional[str] = None
-    qualification_type: Optional[str] = None
-    academic_or_vocational: Optional[str] = None
-    regulating_body: Optional[str] = None
-    course_aliases: list[str] = Field(default_factory=list)
-    minimum_duration: Optional[str] = None
-    maximum_duration: Optional[str] = None
-    semester_count: Optional[int] = None
-    credit_count: Optional[int] = None
-    study_mode: Optional[str] = None
-    full_time_available: Optional[bool] = None
-    part_time_available: Optional[bool] = None
-    online_available: Optional[bool] = None
-    distance_available: Optional[bool] = None
-    exit_options: list[str] = Field(default_factory=list)
-    citations: list[_Citation] = Field(default_factory=list)
-
-
-class _SpecialisationEntry(BaseModel):
-    specialisation_name: str
-    available_at_level: Optional[str] = None
-    parent_course: Optional[str] = None
-    typical_subjects: list[str] = Field(default_factory=list)
-    career_focus: Optional[str] = None
-    specialisation_type: Optional[str] = None
-    citations: list[_Citation] = Field(default_factory=list)
-
-
-class _SpecialisationExtraction(BaseModel):
-    specialisations: list[_SpecialisationEntry] = Field(default_factory=list)
 
 
 def _strip_markdown_fence(text: str) -> str:
@@ -410,6 +358,21 @@ def _key_fields_present(fact_model, values: dict) -> bool:
         for name, info in fact_model.model_fields.items()
         if info.is_required() and name not in _BOOKKEEPING
     )
+
+
+# Generated from the fact models rather than hand-written. They were written out
+# once, and drifted: Curriculum gained `subjects` (P001) as a gated field while
+# _CurriculumExtraction did not, so the citation gate demanded evidence for a
+# field extraction had no way to populate. Deriving them means the field list
+# has exactly one home -- src/facts/ -- and cannot fall out of step again.
+_CurriculumExtraction = _entry_model_for(Curriculum, "_CurriculumExtraction")
+_EligibilityExtraction = _entry_model_for(EligibilityRule, "_EligibilityExtraction")
+_CourseExtraction = _entry_model_for(Course, "_CourseExtraction")
+_SpecialisationEntry = _entry_model_for(Specialisation, "_SpecialisationEntry")
+_SpecialisationExtraction = create_model(
+    "_SpecialisationExtraction",
+    specialisations=(list[_SpecialisationEntry], Field(default_factory=list)),
+)
 
 
 def extract_segment_facts(

@@ -65,13 +65,6 @@ _FEES = (
     "seat management quota NRI category government seat fee schedule"
 )
 
-_SCHOLARSHIPS = (
-    "scholarship scheme fellowship stipend financial assistance freeship provider "
-    "eligibility family income limit annual income category SC ST OBC minority "
-    "girl student disability award amount tuition reimbursement maintenance "
-    "allowance last date to apply renewal national portal"
-)
-
 _CAREER = (
     "career opportunities job roles employment occupation designation entry level "
     "role progression promotion higher study required licence registration "
@@ -108,7 +101,6 @@ SEGMENT_QUERIES: dict[str, str] = {
     "Specialisation": _SPECIALISATION,
     "Entrance & Admission": _ENTRANCE,
     "Fees": _FEES,
-    "Scholarships": _SCHOLARSHIPS,
     "Career Mapping": _CAREER,
     "Salary": _SALARY,
     "Recruiters & Placement": _PLACEMENT,

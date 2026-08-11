@@ -56,7 +56,6 @@ HIGH_RISK_SEGMENTS = frozenset(
         "Eligibility",
         "Entrance & Admission",
         "Fees",
-        "Scholarships",
         "Salary",
         "Recruiters & Placement",
         "Ranking & Accreditation",

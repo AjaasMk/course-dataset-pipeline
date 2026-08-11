@@ -2,6 +2,11 @@ from unittest.mock import Mock, patch
 
 import pytest
 
+# NSP's own segment (Scholarships) was retired 2026-08-12 when the client
+# confirmed their page template is the contract and renders no scholarships
+# block. The adapter is segment-agnostic and still verified against the live
+# 31-scheme index, so these tests exercise it under another segment rather
+# than being deleted with the routing.
 from src.retrieve.models import (
     DocumentType,
     IntentRole,
@@ -46,7 +51,7 @@ def _intent(**overrides) -> RetrievalIntent:
     fields = {
         "intent_id": "RI-070",
         "course_id": "btech_cse",
-        "segment": Segment.SCHOLARSHIPS,
+        "segment": Segment.FEES,
         "field_ids": ["F092", "F094"],
         "source_id": "NSP",
         "priority": 1,

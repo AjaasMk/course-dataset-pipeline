@@ -37,7 +37,10 @@ class Segment(str, Enum):
     INSTITUTION_OFFERING = "Institution & Offering"  # S08 + S09 merged
     RANKING_ACCREDITATION = "Ranking & Accreditation"  # S10
     FEES = "Fees"  # S11
-    SCHOLARSHIPS = "Scholarships"  # S12
+    # S12 Scholarships removed 2026-08-12: the client's page template renders
+    # no scholarships block, and they confirmed the template is the contract.
+    # It resolved 1,310 of 1,859 intents -- the highest rate of any segment --
+    # so this discards working coverage, recorded here deliberately.
     CAREER_MAPPING = "Career Mapping"  # S13
     SKILLS_DEVELOPED = "Skills Developed"  # S14 -- explanatory, no F-fields
     SALARY = "Salary"  # S15

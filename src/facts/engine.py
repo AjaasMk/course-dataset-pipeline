@@ -61,7 +61,12 @@ def check_citations(model, field_id_map: dict[str, str], refs: list[SourceRef]) 
 
 def serialize(value: Any) -> Any:
     if isinstance(value, (list, tuple)):
-        return json.dumps(list(value))
+        # A list may now hold Pydantic models, not only strings -- Curriculum
+        # carries Subject objects so the page can render a subject's name and
+        # description together. json.dumps cannot encode those directly.
+        return json.dumps([
+            item.model_dump() if hasattr(item, "model_dump") else item for item in value
+        ])
     if isinstance(value, bool):
         return int(value)
     return value

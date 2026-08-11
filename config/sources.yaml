@@ -845,10 +845,10 @@ segment_sources:
     # corroboration where the Kerala-scoped preferred sources have none.
     secondary: [JOSAA, MCC, COLLEGEDUNIA]
     min_tier: B
-  Scholarships:
-    preferred: [NSP, AICTE]
-    secondary: [SKILL_INDIA_DIGITAL]
-    min_tier: B
+  # Scholarships removed 2026-08-12. The client page renders no scholarships
+  # block and they confirmed the template is the contract. It had resolved
+  # 1,310 of 1,859 intents -- the highest rate of any segment -- so this
+  # discards working coverage, recorded rather than quietly dropped.
   Career Mapping:
     preferred: [NCS, NQR, NSDC]
     secondary: [SKILL_INDIA_DIGITAL]

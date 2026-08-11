@@ -32,7 +32,6 @@ SEGMENT_FIELD_IDS: dict[Segment, list[str]] = {
     Segment.INSTITUTION_OFFERING: _range("F", 57, 71),
     Segment.RANKING_ACCREDITATION: _range("F", 72, 79),
     Segment.FEES: _range("F", 80, 91),
-    Segment.SCHOLARSHIPS: _range("F", 92, 101),
     Segment.CAREER_MAPPING: _range("F", 102, 111),
     Segment.SALARY: _range("F", 112, 123),
     Segment.RECRUITERS_PLACEMENT: _range("F", 124, 132),
@@ -129,10 +128,6 @@ _AREA_TO_EXAM_TERMS: dict[str, list[str]] = {
 # "ICAR" scores 100 against all 4 (next closest: 15.1). Every other
 # course area is deliberately left unmapped -- there is no other
 # course-specific scheme in NSP's real index to route to.
-_AREA_TO_SCHOLARSHIP_TERMS: dict[str, list[str]] = {
-    "engineering_technology": ["AICTE Technical"],
-    "agriculture": ["ICAR"],
-}
 
 # NIRF (src/retrieve/nirf.py) already has its own category-alias system
 # (_CATEGORY_ALIASES) for exactly this reason -- one ranking table per
@@ -176,7 +171,6 @@ _AREA_TO_NIRF_TERMS: dict[str, list[str]] = {
 _AREA_VOCABULARY_BY_SEGMENT_SOURCE: dict[tuple[Segment, str], dict[str, list[str]]] = {
     (Segment.ENTRANCE_ADMISSION, "NTA"): _AREA_TO_EXAM_TERMS,
     (Segment.ENTRANCE_ADMISSION, "CUET"): _AREA_TO_EXAM_TERMS,
-    (Segment.SCHOLARSHIPS, "NSP"): _AREA_TO_SCHOLARSHIP_TERMS,
     (Segment.INSTITUTION_OFFERING, "NIRF"): _AREA_TO_NIRF_TERMS,
     (Segment.RANKING_ACCREDITATION, "NIRF"): _AREA_TO_NIRF_TERMS,
     (Segment.RECRUITERS_PLACEMENT, "NIRF"): _AREA_TO_NIRF_TERMS,

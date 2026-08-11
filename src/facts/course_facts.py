@@ -54,6 +54,22 @@ class EligibilityRule(BaseModel):
     superseded_at: Optional[str] = None
 
 
+class Subject(BaseModel):
+    """One subject as the client's page renders it.
+
+    The Data Fields sheet models curriculum as three flat name lists, but the
+    page's "What will you study?" section shows a title AND a one-line
+    description per subject, grouped into Year 1/2/3 tabs -- structure a
+    list[str] cannot carry. Added alongside those lists rather than replacing
+    them: the flat names are what the sheet defines and what existing records
+    hold."""
+
+    name: str
+    description: Optional[str] = None
+    year: Optional[int] = None
+    semester: Optional[int] = None
+
+
 class Curriculum(BaseModel):
     """F041-F050. Versioned by (course_id, curriculum_year): refreshes when
     the regulation changes, per the Segment Sources sheet."""
@@ -61,11 +77,17 @@ class Curriculum(BaseModel):
     record_id: Optional[str] = None
     course_id: str
     curriculum_year: str
+    subjects: list[Subject] = Field(default_factory=list)
     foundation_subjects: list[str] = Field(default_factory=list)
     core_subjects: list[str] = Field(default_factory=list)
     electives: list[str] = Field(default_factory=list)
     practical_components: Optional[str] = None
     laboratory_components: Optional[str] = None
+    # The "Learning style" tab renders these as two separate boxes -- how the
+    # course is taught, and how it is assessed. Both were collapsing into
+    # practical_components, which is a third thing.
+    learning_activities: Optional[str] = None
+    assessment_methods: Optional[str] = None
     internship: Optional[str] = None
     fieldwork: Optional[str] = None
     project: Optional[str] = None
@@ -129,7 +151,12 @@ ELIGIBILITY_FIELD_IDS = {
     "international_equivalence": "F029",
 }
 
+# P-numbers are provisional, assigned here because the client's Data Fields
+# sheet has no ID for content its own page renders. They are gated exactly like
+# F-numbers -- an uncited value in one is nulled the same way -- so nothing
+# slips past Hard Constraint 2 while the client decides whether to adopt them.
 CURRICULUM_FIELD_IDS = {
+    "subjects": "P001",
     "foundation_subjects": "F041",
     "core_subjects": "F042",
     "electives": "F043",
@@ -139,6 +166,8 @@ CURRICULUM_FIELD_IDS = {
     "fieldwork": "F047",
     "project": "F048",
     "dissertation": "F049",
+    "learning_activities": "P013",
+    "assessment_methods": "P014",
 }
 
 SPECIALISATION_FIELD_IDS = {

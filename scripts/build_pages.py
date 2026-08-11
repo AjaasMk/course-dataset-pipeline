@@ -51,6 +51,17 @@ PILOT = json.loads(Path("data/pilot25_courses.json").read_text(encoding="utf-8")
 ).exists() else None
 
 
+def course_name(course) -> str:
+    return course.standard_course_name
+
+
+def course_field(course) -> str:
+    # The taxonomy carries `fields` as a list because four specialisations are
+    # cross-listed under two sheets. The page shows one, so the first is the
+    # primary association.
+    return course.fields[0] if course.fields else ""
+
+
 def load_blocks() -> list[dict]:
     return json.loads(BLOCK_MAP.read_text(encoding="utf-8"))["blocks"]
 
@@ -90,10 +101,10 @@ def segment_content(course, segment: str) -> dict:
     )
     record = generate_segment(
         course_id=course.course_id,
-        course_name=course.name,
+        course_name=course_name(course),
         segment=segment,
         schema=schema_for(segment),
-        field_of_study=course.field,
+        field_of_study=course_field(course),
         reason=reason,
     )
     return {
@@ -106,9 +117,23 @@ def segment_content(course, segment: str) -> dict:
     }
 
 
+def sibling_courses(course, limit: int = 4) -> dict:
+    """Real alternatives from the taxonomy, for the comparison block.
+
+    Supplied rather than left to the model: asked to name "similar courses" it
+    will produce plausible ones that do not exist in this library, and the page
+    would then link to nothing.
+    """
+    siblings = [
+        course_name(c) for c in load_taxonomy()
+        if course_field(c) == course_field(course) and c.course_id != course.course_id
+    ]
+    return {"this_course": course_name(course), "candidate_alternatives": siblings[:limit]}
+
+
 def derived_content(course, block: str, page: dict) -> dict:
     if block == "breadcrumbs":
-        value = {"path": ["Home", "Courses", course.field, course.name]}
+        value = {"path": ["Home", "Courses", course_field(course), course_name(course)]}
     elif block == "page_verification":
         cited = sum(
             len(b.get("citations") or []) for b in page.values() if isinstance(b, dict)
@@ -118,12 +143,6 @@ def derived_content(course, block: str, page: dict) -> dict:
             "reviewer": "Career Content Team",
             "citation_count": cited,
         }
-    elif block == "compare":
-        # Left explicitly unresolved rather than invented: the comparison needs
-        # facts for three sibling courses, and nothing assembles cross-course
-        # data yet. Recording it as pending is honest; generating a comparison
-        # table would fabricate differences between real courses.
-        value = {"comparison_courses": [], "status": "pending_cross_course_assembly"}
     else:
         value = {}
     return {"provenance": "derived", "fields": value, "citations": []}
@@ -146,9 +165,10 @@ def build_one(course, blocks) -> dict:
             if producer == "advisory":
                 record = generate_block(
                     course_id=course.course_id,
-                    course_name=course.name,
+                    course_name=course_name(course),
                     block=name,
-                    field_of_study=course.field,
+                    field_of_study=course_field(course),
+                    context=sibling_courses(course) if name == "compare" else None,
                 )
                 page[name] = {
                     "provenance": "generated",
@@ -186,8 +206,8 @@ def build_one(course, blocks) -> dict:
         OUT_DIR.mkdir(parents=True, exist_ok=True)
         out_path.write_text(
             json.dumps(
-                {"course_id": course.course_id, "course_name": course.name,
-                 "field": course.field, "blocks": page},
+                {"course_id": course.course_id, "course_name": course_name(course),
+                 "field": course_field(course), "blocks": page},
                 indent=1, ensure_ascii=False, default=str,
             ),
             encoding="utf-8",

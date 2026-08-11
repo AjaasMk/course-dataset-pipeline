@@ -28,6 +28,14 @@ ADVISORY_BLOCK_SCHEMAS: dict[str, dict] = {
         "the decision without making it for the student",
         "questions": "list of exactly 6 questions a parent should discuss with the student",
     },
+    "compare": {
+        "comparison_courses": "list of exactly 2 course names to compare against "
+        "this one -- the closest real alternatives a student would actually weigh, "
+        "chosen from the sibling courses supplied in the prompt",
+        "rows": "list of exactly 4 objects, each {feature, this_course, alternative_1, "
+        "alternative_2}. feature is one of: Main focus, Statistics, Laboratory "
+        "exposure, Common next steps. Each value is a short phrase, not a sentence",
+    },
     "faq": {
         "faqs": "list of 6 to 10 objects, each {question, answer}. Answers 2-4 sentences. "
         "Cover stream eligibility, whether further study is needed for professional "
@@ -37,7 +45,14 @@ ADVISORY_BLOCK_SCHEMAS: dict[str, dict] = {
 }
 
 # Not advisory: computed from facts already held, so they are never generated.
-DERIVED_BLOCKS = frozenset({"breadcrumbs", "compare", "page_verification"})
+#
+# compare is deliberately NOT here. Its inputs are derived -- the sibling
+# courses come from the taxonomy, not from a model -- but the comparison rows
+# themselves ("Statistics: moderate vs low to moderate") are a judgement about
+# three courses that no regulator publishes. Treating it as derived would mean
+# inventing a rule to compute those cells; treating it as advisory says plainly
+# that they are written, and marks them generated on the page.
+DERIVED_BLOCKS = frozenset({"breadcrumbs", "page_verification"})
 
 
 def schema_for_block(block: str) -> dict:

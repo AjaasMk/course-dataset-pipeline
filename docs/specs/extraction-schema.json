@@ -396,7 +396,7 @@
    "model": "Curriculum",
    "extractor": "extract_curriculum",
    "client_fields": 10,
-   "mapped_fields": 9,
+   "mapped_fields": 12,
    "fields": [
     {
      "field_id": "F041",
@@ -477,6 +477,27 @@
      "description": "Year/version of curriculum",
      "cited": false,
      "status": "unmapped"
+    },
+    {
+     "field_id": "P001",
+     "name": "subjects",
+     "type": "list[src.facts.course_facts.Subject]",
+     "cited": true,
+     "status": "extra"
+    },
+    {
+     "field_id": "P013",
+     "name": "learning_activities",
+     "type": "str?",
+     "cited": true,
+     "status": "extra"
+    },
+    {
+     "field_id": "P014",
+     "name": "assessment_methods",
+     "type": "str?",
+     "cited": true,
+     "status": "extra"
     }
    ]
   },
@@ -619,7 +640,7 @@
    "model": "EntranceAdmission",
    "extractor": null,
    "client_fields": 10,
-   "mapped_fields": 10,
+   "mapped_fields": 11,
    "fields": [
     {
      "field_id": "F031",
@@ -700,6 +721,13 @@
      "cited": true,
      "status": "matched",
      "description": "Official bulletin URL/document"
+    },
+    {
+     "field_id": "P002",
+     "name": "admission_steps",
+     "type": "list[str]",
+     "cited": true,
+     "status": "extra"
     }
    ]
   },
@@ -707,7 +735,7 @@
    "model": "FeeStructure",
    "extractor": null,
    "client_fields": 12,
-   "mapped_fields": 12,
+   "mapped_fields": 14,
    "fields": [
     {
      "field_id": "F080",
@@ -804,6 +832,20 @@
      "cited": true,
      "status": "matched",
      "description": "Calculated total cost for selected components"
+    },
+    {
+     "field_id": "P003",
+     "name": "fee_frequency",
+     "type": "str?",
+     "cited": true,
+     "status": "extra"
+    },
+    {
+     "field_id": "P004",
+     "name": "parent_check_note",
+     "type": "str?",
+     "cited": true,
+     "status": "extra"
     }
    ]
   },
@@ -899,7 +941,7 @@
    "model": "CareerMapping",
    "extractor": null,
    "client_fields": 10,
-   "mapped_fields": 10,
+   "mapped_fields": 11,
    "fields": [
     {
      "field_id": "F102",
@@ -912,7 +954,7 @@
     {
      "field_id": "F103",
      "name": "relationship_strength",
-     "type": "str?",
+     "type": "Optional[src.facts.segment_facts.RouteBadge]",
      "cited": true,
      "status": "matched",
      "description": "Direct, common, related or distant pathway"
@@ -980,6 +1022,13 @@
      "cited": true,
      "status": "matched",
      "description": "Whether self-employment is common/legal"
+    },
+    {
+     "field_id": "P012",
+     "name": "career_note",
+     "type": "str?",
+     "cited": true,
+     "status": "extra"
     }
    ]
   },
@@ -1091,7 +1140,7 @@
    "model": "PlacementRecord",
    "extractor": null,
    "client_fields": 9,
-   "mapped_fields": 9,
+   "mapped_fields": 11,
    "fields": [
     {
      "field_id": "F124",
@@ -1120,7 +1169,7 @@
     {
      "field_id": "F127",
      "name": "role_recruited_for",
-     "type": "str?",
+     "type": "list[str]",
      "cited": true,
      "status": "matched",
      "description": "Role or role family"
@@ -1164,6 +1213,20 @@
      "cited": true,
      "status": "matched",
      "description": "Verification workflow status"
+    },
+    {
+     "field_id": "P005",
+     "name": "recruiter_sector",
+     "type": "str?",
+     "cited": true,
+     "status": "extra"
+    },
+    {
+     "field_id": "P006",
+     "name": "recruiter_note",
+     "type": "str?",
+     "cited": true,
+     "status": "extra"
     }
    ]
   },
@@ -1171,7 +1234,7 @@
    "model": "InstitutionOfferingFact",
    "extractor": null,
    "client_fields": 15,
-   "mapped_fields": 15,
+   "mapped_fields": 20,
    "fields": [
     {
      "field_id": "F057",
@@ -1292,6 +1355,41 @@
      "cited": true,
      "status": "matched",
      "description": "Official course or admission webpage"
+    },
+    {
+     "field_id": "P007",
+     "name": "city_or_region",
+     "type": "str?",
+     "cited": true,
+     "status": "extra"
+    },
+    {
+     "field_id": "P008",
+     "name": "course_variant",
+     "type": "str?",
+     "cited": true,
+     "status": "extra"
+    },
+    {
+     "field_id": "P009",
+     "name": "admission_route",
+     "type": "str?",
+     "cited": true,
+     "status": "extra"
+    },
+    {
+     "field_id": "P010",
+     "name": "offering_highlight",
+     "type": "str?",
+     "cited": true,
+     "status": "extra"
+    },
+    {
+     "field_id": "P011",
+     "name": "annual_fee",
+     "type": "str?",
+     "cited": true,
+     "status": "extra"
     }
    ]
   }
@@ -1451,16 +1549,128 @@
   },
   {
    "segment": "Curriculum",
+   "field_id": "P001",
+   "name": "subjects",
+   "type": "list[src.facts.course_facts.Subject]",
+   "cited": true,
+   "status": "extra"
+  },
+  {
+   "segment": "Curriculum",
+   "field_id": "P013",
+   "name": "learning_activities",
+   "type": "str?",
+   "cited": true,
+   "status": "extra"
+  },
+  {
+   "segment": "Curriculum",
+   "field_id": "P014",
+   "name": "assessment_methods",
+   "type": "str?",
+   "cited": true,
+   "status": "extra"
+  },
+  {
+   "segment": "Curriculum",
    "field_id": "F050",
    "name": "curriculum_year",
    "type": "Year/version",
    "description": "Year/version of curriculum",
    "status": "unmapped"
+  },
+  {
+   "segment": "Entrance & Admission",
+   "field_id": "P002",
+   "name": "admission_steps",
+   "type": "list[str]",
+   "cited": true,
+   "status": "extra"
+  },
+  {
+   "segment": "Fees",
+   "field_id": "P003",
+   "name": "fee_frequency",
+   "type": "str?",
+   "cited": true,
+   "status": "extra"
+  },
+  {
+   "segment": "Fees",
+   "field_id": "P004",
+   "name": "parent_check_note",
+   "type": "str?",
+   "cited": true,
+   "status": "extra"
+  },
+  {
+   "segment": "Career Mapping",
+   "field_id": "P012",
+   "name": "career_note",
+   "type": "str?",
+   "cited": true,
+   "status": "extra"
+  },
+  {
+   "segment": "Recruiters & Placement",
+   "field_id": "P005",
+   "name": "recruiter_sector",
+   "type": "str?",
+   "cited": true,
+   "status": "extra"
+  },
+  {
+   "segment": "Recruiters & Placement",
+   "field_id": "P006",
+   "name": "recruiter_note",
+   "type": "str?",
+   "cited": true,
+   "status": "extra"
+  },
+  {
+   "segment": "Institution & Offering",
+   "field_id": "P007",
+   "name": "city_or_region",
+   "type": "str?",
+   "cited": true,
+   "status": "extra"
+  },
+  {
+   "segment": "Institution & Offering",
+   "field_id": "P008",
+   "name": "course_variant",
+   "type": "str?",
+   "cited": true,
+   "status": "extra"
+  },
+  {
+   "segment": "Institution & Offering",
+   "field_id": "P009",
+   "name": "admission_route",
+   "type": "str?",
+   "cited": true,
+   "status": "extra"
+  },
+  {
+   "segment": "Institution & Offering",
+   "field_id": "P010",
+   "name": "offering_highlight",
+   "type": "str?",
+   "cited": true,
+   "status": "extra"
+  },
+  {
+   "segment": "Institution & Offering",
+   "field_id": "P011",
+   "name": "annual_fee",
+   "type": "str?",
+   "cited": true,
+   "status": "extra"
   }
  ],
  "totals": {
   "segments_with_a_model": 13,
-  "client_fields_covered": 148,
+  "client_fields_covered": 162,
   "client_fields_defined": 158,
   "segments_with_an_extractor": 5
  },

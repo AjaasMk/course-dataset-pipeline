@@ -1,4 +1,4 @@
-from src.extract.chunk_retrieval import TOP_K, retrieve
+from src.extract.chunk_retrieval import TOP_K, TOP_K_BY_SEGMENT, retrieve
 from src.extract.compression import compress
 from src.extract.models import Chunk
 from src.retrieve.models import Segment
@@ -61,6 +61,19 @@ def test_retrieval_of_a_small_set_skips_ranking_and_keeps_everything():
     assert result.stages == {}
 
 
+def test_curriculum_gets_a_wider_cut_than_the_default():
+    # Measured: Curriculum evidence is diffuse (136 gold chunks over 20 real
+    # extractions, recall still climbing at rank 50), so a top-5 that works for
+    # every other segment recalls under half of it.
+    chunks = [_chunk(i, f"Semester {i} core subjects credits elective unit {i}")
+              for i in range(40)]
+
+    result = retrieve(chunks, "Curriculum", compress_context=False)
+
+    assert len(result.chunks) == TOP_K_BY_SEGMENT["Curriculum"]
+    assert len(result.chunks) > TOP_K
+
+
 def test_retrieval_returns_top_k_in_document_order():
     # Reranked order is a relevance judgement; a curriculum reads in sequence,
     # so handing the model shuffled semesters would invent a discontinuity.
@@ -69,7 +82,7 @@ def test_retrieval_returns_top_k_in_document_order():
         for i in range(12)
     ]
 
-    result = retrieve(chunks, "Curriculum", compress_context=False)
+    result = retrieve(chunks, "Eligibility", compress_context=False)
 
     assert len(result.chunks) == TOP_K
     assert [c.chunk_id for c in result.chunks] == sorted(c.chunk_id for c in result.chunks)
@@ -79,7 +92,7 @@ def test_retrieval_reports_the_reduction_it_achieved():
     chunks = [_chunk(i, f"Semester {i} core subjects credits " + "filler " * 40)
               for i in range(12)]
 
-    result = retrieve(chunks, "Curriculum", compress_context=False)
+    result = retrieve(chunks, "Eligibility", compress_context=False)
 
     assert result.chars_before > result.chars_after
     assert 0 < result.reduction < 1

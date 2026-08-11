@@ -32,7 +32,10 @@ _ELIGIBILITY_BOOL_FIELDS = {"portfolio_required", "interview_required", "lateral
 
 _CURRICULUM_ID_COLS = ("course_id", "curriculum_year")
 _CURRICULUM_VALUE_COLS = tuple(CURRICULUM_FIELD_IDS)
-_CURRICULUM_LIST_FIELDS = {"foundation_subjects", "core_subjects", "electives"}
+# subjects holds Subject objects rather than strings, but the JSON round-trip
+# is identical -- json.dumps of a list of dicts and back. Pydantic revalidates
+# them into Subject on the way out.
+_CURRICULUM_LIST_FIELDS = {"subjects", "foundation_subjects", "core_subjects", "electives"}
 
 _SPECIALISATION_ID_COLS = ("course_id", "specialisation_name")
 # specialisation_name (F051) is in the field-ID map so the citation gate covers

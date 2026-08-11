@@ -169,6 +169,7 @@ def generate_block(
     block: str,
     field_of_study: str = "",
     qualification_level: str = "Undergraduate",
+    context: Optional[dict] = None,
     client: Optional[anthropic.Anthropic] = None,
     provider: str = "anthropic",
 ) -> GenerationRecord:
@@ -189,6 +190,12 @@ def generate_block(
         field=field_of_study or "not specified",
         schema=json.dumps(schema_for_block(block)),
     )
+    if context:
+        # The comparison block is the only one that needs facts it cannot
+        # invent -- which real courses a student would weigh against this one.
+        # Those come from the taxonomy, so they are supplied rather than left
+        # to the model, which would otherwise name courses that do not exist.
+        system += f"\n\nUse only this supplied context, do not invent alternatives:\n{json.dumps(context, default=str)}"
     fields = _generate_fields(client, model, system, block, course_id, course_name)
 
     record = GenerationRecord(
