@@ -42,3 +42,6 @@ data/pilot_extraction_log.txt
 # editor/OS noise
 .vscode/
 .DS_Store
+data/llm_chunking_pilot_report.json
+data/pilot25_documents.json
+data/stage1_report_guarded.json
