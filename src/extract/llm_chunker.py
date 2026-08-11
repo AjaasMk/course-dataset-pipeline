@@ -58,6 +58,40 @@ Assign every chunk to exactly one segment and one subsegment:
   Use "unclassified" whenever the content does not genuinely belong to one of those \
 segments -- boilerplate, committee lists, covering letters, navigation text. An honest \
 "unclassified" is correct; a forced label is not.
+
+  What each segment means. Judge by what the content is ABOUT, never by which \
+words appear in its heading:
+  * Course Identity -- the DEGREE PROGRAMME's own identity: its official name, \
+common name, abbreviation, aliases, qualification level and type, academic or \
+vocational status, regulating body.
+  * Duration & Mode -- programme length, semester and credit counts, full-time, \
+part-time, online, distance, and exit options.
+  * Eligibility -- who may apply: prior qualification, accepted streams, \
+compulsory subjects, minimum marks, age, medical fitness, portfolio, lateral entry.
+  * Entrance & Admission -- entrance examinations, application and counselling \
+process, seat allotment, admission dates.
+  * Curriculum -- what is TAUGHT: subject and module lists, syllabi, credits per \
+subject, laboratory and practical work, projects, dissertations, and internships \
+as a curriculum component.
+  * Specialisation -- named branches, streams or electives offered within the \
+programme.
+  * Institution & Offering -- which institutions run the programme, their \
+ownership, location and sanctioned intake.
+  * Ranking & Accreditation -- ranking bodies, ranks, scores, accreditation grades.
+  * Fees -- tuition and any other cost of study. Scholarships -- financial aid \
+schemes. Salary -- pay figures. Recruiters & Placement -- employers and placement \
+counts. Career Mapping -- job roles and career routes.
+
+  IMPORTANT, this is the most common mistake: in Indian syllabus documents the \
+word "course" almost always means ONE SUBJECT, not the degree. Blocks headed \
+"Course Code", "Course Title", "Course Outcomes", "Course Content", "Course \
+Objectives" or "Course Articulation Matrix" describe a single subject and are \
+therefore Curriculum. Label a chunk Course Identity ONLY when it states what the \
+whole degree programme is called or how it is classified.
+
+  Do not emit a chunk that is page furniture with no readable content -- \
+table-of-contents dot leaders, bare page numbers, running headers and footers. \
+Leave those spans out entirely.
 - subsegment: prefer the data-field name the content supports (core_subjects, \
 minimum_qualification, tuition_fee, median_salary). Fall back to the document's own \
 heading when no field fits. Never claim a field the content does not evidence.
@@ -214,7 +248,7 @@ def _page_for(offset: int, spans: list[tuple[int, int, int]]) -> Optional[int]:
     return None
 
 
-def _json_object(raw: str) -> str:
+def json_object(raw: str) -> str:
     """Isolate the JSON object from a response that wandered into prose.
 
     Measured live: some documents came back as "I need to see..." followed by
@@ -224,12 +258,72 @@ def _json_object(raw: str) -> str:
     stripped = _JSON_FENCE.sub("", raw or "").strip()
     if stripped.startswith("{"):
         return stripped
-    start, end = stripped.find("{"), stripped.rfind("}")
-    return stripped[start : end + 1] if 0 <= start < end else stripped
+    # Every "{" is a candidate start, not just the first one. Measured live: a
+    # response echoed part of the source document before answering, and that
+    # echoed text contained a brace, so first-brace-to-last-brace sliced a
+    # fragment that was not JSON at all. Scanning balanced candidates and
+    # keeping the first that actually parses cannot make that mistake.
+    for start in _brace_positions(stripped):
+        candidate = _balanced_object(stripped, start)
+        if candidate is None:
+            continue
+        try:
+            json.loads(candidate)
+        except ValueError:
+            continue
+        return candidate
+    return stripped
+
+
+MIN_READABLE_WORDS = 3
+MIN_LETTER_RATIO = 0.35
+
+
+def is_readable(body: str) -> bool:
+    """Whether a span carries enough prose to be about anything.
+
+    Thresholds are deliberately loose: this rejects dot leaders, bare page
+    numbers and running headers, not short-but-real content like a table row
+    or a one-line heading with a value.
+    """
+    words = [w for w in re.findall(r"[A-Za-z]{2,}", body)]
+    if len(words) < MIN_READABLE_WORDS:
+        return False
+    letters = sum(1 for c in body if c.isalpha() or c.isspace())
+    return letters / len(body) >= MIN_LETTER_RATIO
+
+
+def _brace_positions(text: str) -> list[int]:
+    return [i for i, char in enumerate(text) if char == "{"]
+
+
+def _balanced_object(text: str, start: int) -> Optional[str]:
+    depth = 0
+    in_string = False
+    escaped = False
+    for i in range(start, len(text)):
+        char = text[i]
+        if in_string:
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == '"':
+                in_string = False
+            continue
+        if char == '"':
+            in_string = True
+        elif char == "{":
+            depth += 1
+        elif char == "}":
+            depth -= 1
+            if depth == 0:
+                return text[start : i + 1]
+    return None
 
 
 def parse_response(raw: str, strict: bool = True) -> ChunkerResponse:
-    stripped = _json_object(raw)
+    stripped = json_object(raw)
     try:
         parsed = ChunkerResponse.model_validate_json(stripped)
     except (ValidationError, ValueError) as exc:
@@ -299,6 +393,12 @@ def slice_chunks(
                 body = text[start:end].strip()
                 if not body:
                     continue
+                # Page furniture cannot carry a segment even when the model
+                # labels it confidently. Measured live: a table-of-contents dot
+                # leader ("......... 33") was emitted as Course Identity at
+                # confidence 0.9. It survives as an unclassified chunk rather
+                # than being dropped, so the document's text stays whole.
+                chunk_segment = segment_id if is_readable(body) else UNCLASSIFIED
                 chunks.append(
                     LLMChunk(
                         chunk_id=counter,
@@ -307,7 +407,7 @@ def slice_chunks(
                         content_hash=hashlib.sha256(body.encode("utf-8")).hexdigest()[:16],
                         char_start=start + offset,
                         char_end=end + offset,
-                        segment_id=segment_id,
+                        segment_id=chunk_segment,
                         subsegment=sub.subsegment or None,
                         field_ids=sub.field_ids,
                         section_id=segment.section_id,

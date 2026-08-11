@@ -5,6 +5,8 @@ import pytest
 from src.extract.llm_chunker import (
     ChunkerResponseInvalid,
     document_text,
+    is_readable,
+    json_object,
     parse_response,
     slice_chunks,
 )
@@ -257,3 +259,51 @@ def test_sliced_chunks_are_snapped_and_stay_verbatim():
 
     assert chunks[0].text.startswith("Thermodynamics")
     assert chunks[0].text in _DOC
+
+
+def test_json_object_ignores_a_brace_inside_echoed_prose():
+    # The real failure this replaced: the model echoed part of the source
+    # document, that echo contained a brace, and first-brace-to-last-brace
+    # sliced a fragment that was not JSON.
+    raw = (
+        "Model Curriculum for Undergraduate Degree\n"
+        'the notation {x} appears in the source text\n'
+        "Given the very limited grounded info, I'll produce output.\n\n"
+        '{"standard_course_name": "Mechanical Engineering", "citations": []}'
+    )
+    assert json.loads(json_object(raw))["standard_course_name"] == "Mechanical Engineering"
+
+
+def test_json_object_keeps_braces_inside_string_values():
+    raw = 'preface\n{"quoted_evidence": "a } brace inside a string", "n": 1}'
+    parsed = json.loads(json_object(raw))
+    assert parsed["quoted_evidence"] == "a } brace inside a string"
+    assert parsed["n"] == 1
+
+
+def test_json_object_returns_input_unchanged_when_no_object_parses():
+    assert json_object("no json here at all") == "no json here at all"
+
+
+@pytest.mark.parametrize(
+    "body",
+    [
+        "............................................................... 33",
+        "  42  ",
+        "| 12 | 4 | 3.5 | 88 |",
+    ],
+)
+def test_is_readable_rejects_page_furniture(body):
+    assert not is_readable(body)
+
+
+@pytest.mark.parametrize(
+    "body",
+    [
+        "Thermodynamics and Fluid Mechanics",
+        "Course Code: ME201 | Credits: 4",
+        "Minimum qualification is a pass in Class 12.",
+    ],
+)
+def test_is_readable_keeps_short_real_content(body):
+    assert is_readable(body)
