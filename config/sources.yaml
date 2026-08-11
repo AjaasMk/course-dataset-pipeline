@@ -861,10 +861,11 @@ segment_sources:
     preferred: [NIRF]
     secondary: [LINKEDIN_JOBS]
     min_tier: C
-  Internships:
-    preferred: [APPRENTICESHIP_INDIA, NATS, AICTE_INTERNSHIP]
-    secondary: [SKILL_INDIA_DIGITAL]
-    min_tier: B
+  # Internships removed 2026-08-11. The client's page template renders no
+  # internships block, so no consumer existed for the segment; it had issued
+  # 4,500 intents across the taxonomy and resolved 6. APPRENTICESHIP_INDIA,
+  # NATS, AICTE_INTERNSHIP and SKILL_INDIA_DIGITAL stay in the registry above
+  # (it mirrors the client's Source Directory) but no segment routes to them.
 
 # Default confidence floor for accepting an adapter's discovered document. Below
 # this the resolution is recorded as failed with a reason rather than downloaded —

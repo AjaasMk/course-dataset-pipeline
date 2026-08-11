@@ -36,7 +36,6 @@ SEGMENT_FIELD_IDS: dict[Segment, list[str]] = {
     Segment.CAREER_MAPPING: _range("F", 102, 111),
     Segment.SALARY: _range("F", 112, 123),
     Segment.RECRUITERS_PLACEMENT: _range("F", 124, 132),
-    Segment.INTERNSHIPS: _range("F", 133, 142),
 }
 
 

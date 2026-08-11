@@ -97,9 +97,6 @@ SEGMENT_ALIASES: dict[Segment, list[str]] = {
     Segment.RECRUITERS_PLACEMENT: [
         "recruiters", "placement", "placement record", "hiring companies",
     ],
-    Segment.INTERNSHIPS: [
-        "internship", "apprenticeship", "industrial training",
-    ],
     Segment.FURTHER_STUDY_PATHWAYS: [
         # Deliberately NOT "higher education" alone -- that phrase collides
         # with "Department of Higher Education" (a government org name that

@@ -42,7 +42,9 @@ class Segment(str, Enum):
     SKILLS_DEVELOPED = "Skills Developed"  # S14 -- explanatory, no F-fields
     SALARY = "Salary"  # S15
     RECRUITERS_PLACEMENT = "Recruiters & Placement"  # S16
-    INTERNSHIPS = "Internships"  # S17
+    # S17 Internships removed 2026-08-11: the client's own page template renders
+    # no internships block, so nothing consumed the segment. See
+    # docs/specs/page-block-map.json.
     FURTHER_STUDY_PATHWAYS = "Further-Study Pathways"  # S18 -- explanatory, no F-fields
     STUDENT_REVIEWS = "Student Reviews & Campus Experience"  # S19 -- explanatory, no F-fields
 

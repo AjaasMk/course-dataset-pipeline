@@ -45,3 +45,20 @@ data/pilot_extraction_log.txt
 data/llm_chunking_pilot_report.json
 data/pilot25_documents.json
 data/stage1_report_guarded.json
+
+# Regenerable pipeline output -- rebuilt by scripts/, not source
+data/chunks_llm/
+data/chunks_llm_pre_labelfix/
+data/embeddings.db
+data/extracted_facts/
+data/generated/
+data/pages/
+data/web/
+data/chunk_sizing_report.json
+data/extraction_pilot_report.json
+data/generation_pilot_report.json
+data/retrieval_eval_report.json
+data/llm_chunking_pilot_report.json
+data/page_build_report.json
+data/export_pilot25.sql
+.claude/
