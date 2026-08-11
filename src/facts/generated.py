@@ -24,6 +24,13 @@ class Provenance(str, Enum):
 class GenerationReason(str, Enum):
     NO_SOURCE_FOUND = "no_source_found"
     SOURCE_SILENT = "source_found_but_silent_on_field"
+    # The client's page renders blocks -- "Is this course suitable for you?",
+    # "Parent corner", the FAQ -- that no regulator or university publishes and
+    # never will. Distinguishing these from NO_SOURCE_FOUND matters: that one
+    # names a retrieval gap worth chasing, this one names content that is
+    # advisory by nature, so a coverage report does not read them as the same
+    # failure. See docs/specs/page-block-map.json.
+    NO_ATOMIC_SOURCE_EXISTS = "no_atomic_source_exists"
 
 
 # Whether generated content may be published in the client's Mandatory Human

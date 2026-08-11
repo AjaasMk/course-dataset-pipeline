@@ -4,6 +4,8 @@ from typing import Optional
 
 import anthropic
 
+from src.extract.block_schemas import schema_for_block
+from src.extract.llm_chunker import json_object
 from src.extract.llm_clients import client_for, model_for
 from src.extract.retry import call_with_retry
 from src.facts.generated import (
@@ -52,6 +54,32 @@ is better than a confident invention.
 Respond with a single JSON object matching the schema. No prose, no markdown fences."""
 
 
+BLOCK_SYSTEM_PROMPT = """You are writing the "{block}" section of an Indian \
+higher-education course page, for students in Grades 8-12 and their parents.
+
+Course: {course}
+Qualification level: {level}
+Field of study: {field}
+
+This section is advisory guidance. No regulator or university publishes it, so \
+there is no source document to quote and none is expected.
+
+Write it into this JSON schema:
+
+{schema}
+
+Rules:
+- Be specific to THIS course. Guidance that would read identically for any \
+degree is not useful to a family deciding between two of them.
+- Say what is TYPICAL in India, hedged: "commonly", "varies by institution".
+- Never name a specific institution, deadline, cut-off score or academic year.
+- Numeric values must be indicative ranges, never single precise figures.
+- Never state or imply that a graduate is guaranteed a job, a salary or a seat.
+- Respect the item counts the schema asks for exactly.
+
+Respond with a single JSON object matching the schema. No prose, no markdown fences."""
+
+
 class GenerationFailed(Exception):
     pass
 
@@ -88,35 +116,7 @@ def generate_segment(
         schema=json.dumps(schema),
     )
 
-    response = call_with_retry(
-        lambda: client.messages.create(
-            model=model,
-            max_tokens=MAX_TOKENS,
-            system=[{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}],
-            messages=[
-                {
-                    "role": "user",
-                    "content": f"Write the {segment} section for {course_name}.",
-                }
-            ],
-        ),
-        retryable_errors=(anthropic.APIConnectionError, anthropic.RateLimitError),
-        description=f"generate {segment} for {course_id}",
-    )
-
-    body = next((b.text for b in response.content if b.type == "text"), None)
-    if body is None:
-        raise GenerationFailed(
-            f"no text block generating {segment} for {course_id} "
-            f"(stop_reason={response.stop_reason!r})"
-        )
-
-    try:
-        fields = json.loads(_JSON_FENCE.sub("", body).strip())
-    except json.JSONDecodeError as exc:
-        raise GenerationFailed(f"generated {segment} for {course_id} was not valid JSON: {exc}") from exc
-
-    fields.pop("citations", None)  # a generated record has nothing to cite
+    fields = _generate_fields(client, model, system, segment, course_id, course_name)
 
     record = GenerationRecord(
         course_id=course_id,
@@ -125,6 +125,79 @@ def generate_segment(
         reason=reason,
         generator_model=model,
         sources_attempted=attempted,
+        fields=fields,
+    )
+    validate_generated(record)
+    return record
+
+
+def _generate_fields(client, model, system, label, course_id, course_name) -> dict:
+    response = call_with_retry(
+        lambda: client.messages.create(
+            model=model,
+            max_tokens=MAX_TOKENS,
+            system=[{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}],
+            messages=[
+                {"role": "user", "content": f"Write the {label} section for {course_name}."}
+            ],
+        ),
+        retryable_errors=(anthropic.APIConnectionError, anthropic.RateLimitError),
+        description=f"generate {label} for {course_id}",
+    )
+
+    body = next((b.text for b in response.content if b.type == "text"), None)
+    if body is None:
+        raise GenerationFailed(
+            f"no text block generating {label} for {course_id} "
+            f"(stop_reason={response.stop_reason!r})"
+        )
+
+    try:
+        fields = json.loads(json_object(_JSON_FENCE.sub("", body).strip()))
+    except json.JSONDecodeError as exc:
+        raise GenerationFailed(
+            f"generated {label} for {course_id} was not valid JSON: {exc}"
+        ) from exc
+
+    fields.pop("citations", None)
+    return fields
+
+
+def generate_block(
+    course_id: str,
+    course_name: str,
+    block: str,
+    field_of_study: str = "",
+    qualification_level: str = "Undergraduate",
+    client: Optional[anthropic.Anthropic] = None,
+    provider: str = "anthropic",
+) -> GenerationRecord:
+    """Produce one of the client page's advisory blocks.
+
+    Separate from generate_segment() because the reason differs and that
+    difference is the point: a generated segment records a retrieval gap
+    somebody could close, a generated block records content that has no
+    source to find.
+    """
+    client = client or client_for(provider)
+    model = model_for(provider, TIER)
+
+    system = BLOCK_SYSTEM_PROMPT.format(
+        block=block,
+        course=course_name,
+        level=qualification_level,
+        field=field_of_study or "not specified",
+        schema=json.dumps(schema_for_block(block)),
+    )
+    fields = _generate_fields(client, model, system, block, course_id, course_name)
+
+    record = GenerationRecord(
+        course_id=course_id,
+        segment=block,
+        provenance=Provenance.GENERATED,
+        reason=GenerationReason.NO_ATOMIC_SOURCE_EXISTS,
+        generator_model=model,
+        sources_attempted=[],
         fields=fields,
     )
     validate_generated(record)
