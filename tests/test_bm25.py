@@ -48,7 +48,7 @@ def test_a_segment_without_a_query_raises_rather_than_defaulting():
     # A silent generic query would retrieve arbitrary chunks and look like it
     # worked -- worse than refusing.
     with pytest.raises(NoQueryForSegment):
-        query_for("Fees")
+        query_for("Student Reviews & Campus Experience")
 
 
 def test_curriculum_query_carries_the_keep_list_vocabulary():

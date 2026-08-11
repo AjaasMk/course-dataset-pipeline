@@ -140,7 +140,7 @@ def test_a_course_holds_several_specialisations(db):
     for name in ["Robotics", "Thermal Engineering"]:
         store.record_specialisation(
             Specialisation(course_id="mech", specialisation_name=name, available_at_level="Postgraduate"),
-            refs=[_ref("F052")],
+            refs=[_ref("F051"), _ref("F052")],
             db_path=db,
         )
 
@@ -152,7 +152,7 @@ def test_a_course_holds_several_specialisations(db):
 def test_a_specialisation_re_recorded_unchanged_does_not_duplicate(db):
     spec = Specialisation(course_id="mech", specialisation_name="Robotics", available_at_level="Postgraduate")
 
-    store.record_specialisation(spec, refs=[_ref("F052")], db_path=db)
-    store.record_specialisation(spec, refs=[_ref("F052")], db_path=db)
+    store.record_specialisation(spec, refs=[_ref("F051"), _ref("F052")], db_path=db)
+    store.record_specialisation(spec, refs=[_ref("F051"), _ref("F052")], db_path=db)
 
     assert len(store.specialisations_for("mech", db_path=db)) == 1

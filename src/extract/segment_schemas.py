@@ -9,6 +9,7 @@ been reconciled against the client's Data Fields sheet. Reconcile before these
 reach a published page.
 """
 
+from src.facts.segment_facts import SEGMENT_FACTS
 from src.facts.course_facts import (
     COURSE_FIELD_IDS,
     CURRICULUM_FIELD_IDS,
@@ -24,57 +25,49 @@ _FROM_FACT_MODELS = {
     "Specialisation": {k: "string or list of strings" for k in SPECIALISATION_FIELD_IDS},
 }
 
-# Provisional -- no fact model exists for these yet.
+# Derived from the fact models, not hand-written. These were provisional names
+# invented before src/facts/segment_facts.py existed, and the two drifted: Fees
+# generated 5 fields while extraction wrote 12, so a block's shape depended on
+# whether it happened to be sourced or generated. Generating into the same
+# F-numbered fields extraction writes is what makes a sourced and a generated
+# Fees block interchangeable on the page.
+_TYPE_HINTS = {
+    "list[str]": "list of strings",
+    "int": "integer",
+    "bool": "true or false",
+}
+
+
+def _describe(fact_model, name: str) -> str:
+    annotation = str(fact_model.model_fields[name].annotation)
+    for needle, hint in _TYPE_HINTS.items():
+        if needle in annotation:
+            return hint
+    if any(token in name for token in ("fee", "salary", "amount", "cost", "income")):
+        return "indicative range as a string, never a single precise figure"
+    if any(token in name for token in ("year", "date", "deadline")):
+        return "typical period as a string, never a specific date"
+    return "string"
+
+
 _PROVISIONAL = {
-    "Entrance & Admission": {
-        "accepted_entrance_exams": "list of exam names commonly accepted",
-        "admission_route": "merit / entrance / counselling, as a description",
-        "application_window": "typical time of year, never a specific date",
-        "selection_process": "string",
-        "reservation_notes": "string",
-    },
-    "Institution & Offering": {
-        "institution_types_offering": "list, e.g. central universities, state universities",
-        "typical_intake_range": "indicative range, never a single figure",
-        "ownership_mix": "string describing government vs private availability",
-        "approval_bodies": "list of regulators that typically approve this course",
-    },
-    "Ranking & Accreditation": {
-        "ranking_bodies": "list of bodies that rank institutions offering this course",
-        "accreditation_bodies": "list",
-        "ranking_notes": "string, must not state a rank for any institution",
-    },
-    "Fees": {
-        "tuition_fee_range": "indicative range, government and private stated separately",
-        "hostel_fee_range": "indicative range",
-        "examination_fee": "indicative range",
-        "total_indicative_cost": "indicative range for the full programme",
-        "fee_notes": "string",
-    },
-    "Scholarships": {
-        "scholarship_types": "list of the kinds commonly available",
-        "eligibility_basis": "string, e.g. merit, income, category",
-        "typical_award_range": "indicative range",
-        "scholarship_notes": "string, must not name a specific scheme deadline",
-    },
-    "Career Mapping": {
-        "career_titles": "list of job titles this course commonly leads to",
-        "sectors": "list of employing sectors",
-        "entry_level_roles": "list",
-        "further_study_routes": "list",
-        "regulated_roles": "list of roles requiring registration or a licence",
-    },
-    "Salary": {
-        "entry_salary_range": "indicative annual range",
-        "mid_career_salary_range": "indicative annual range",
-        "factors_affecting_salary": "list",
-        "salary_notes": "string, must state that figures vary widely",
-    },
-    "Recruiters & Placement": {
-        "recruiting_sectors": "list of sectors, NOT named companies",
-        "typical_roles_recruited": "list",
-        "placement_notes": "string, must not state a placement percentage",
-    },
+    segment: {name: _describe(fact_model, name) for name in field_ids}
+    for segment, (fact_model, field_ids) in SEGMENT_FACTS.items()
+}
+
+# Ranking lives in src/facts/models.py rather than segment_facts, because it
+# predates that module and already holds 871 real NIRF rows. It still needs a
+# generation shape for courses NIRF does not rank, so it is added by hand here
+# rather than being the one segment on the page with no fallback.
+_PROVISIONAL["Ranking & Accreditation"] = {
+    "ranking_body": "string, e.g. NIRF",
+    "ranking_year": "typical period as a string, never a specific year",
+    "ranking_category": "string",
+    "rank": "integer",
+    "rank_band": "indicative band as a string, never a single rank",
+    "ranking_score": "string",
+    "naac_status": "string",
+    "nba_programme_status": "string",
 }
 
 # Explanatory segments have no atomic field to populate by design -- they are

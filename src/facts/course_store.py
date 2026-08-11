@@ -35,7 +35,12 @@ _CURRICULUM_VALUE_COLS = tuple(CURRICULUM_FIELD_IDS)
 _CURRICULUM_LIST_FIELDS = {"foundation_subjects", "core_subjects", "electives"}
 
 _SPECIALISATION_ID_COLS = ("course_id", "specialisation_name")
-_SPECIALISATION_VALUE_COLS = tuple(SPECIALISATION_FIELD_IDS)
+# specialisation_name (F051) is in the field-ID map so the citation gate covers
+# it, but it is the row's identity here and already has its own column, so it
+# must not be generated a second time as a value column.
+_SPECIALISATION_VALUE_COLS = tuple(
+    name for name in SPECIALISATION_FIELD_IDS if name not in _SPECIALISATION_ID_COLS
+)
 _SPECIALISATION_LIST_FIELDS = {"typical_subjects"}
 
 _DDL = """

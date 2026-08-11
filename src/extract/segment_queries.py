@@ -16,6 +16,7 @@ from src.facts.course_facts import (
     ELIGIBILITY_FIELD_IDS,
     SPECIALISATION_FIELD_IDS,
 )
+from src.facts.segment_facts import SEGMENT_FACTS
 
 # The user's stated keep-list for curriculum content: subject names, subject
 # codes, credits, units, topics, learning outcomes, syllabus detail.
@@ -50,12 +51,68 @@ _SPECIALISATION = (
     "specialisation elective stream career focus"
 )
 
+_ENTRANCE = (
+    "entrance examination exam name conducting body national testing agency "
+    "application form opens closes last date registration schedule exam date "
+    "admit card counselling seat allotment participating institutes information "
+    "bulletin brochure admission notice important dates JEE NEET CUET CET GATE"
+)
+
+_FEES = (
+    "fee fees fee structure tuition fee admission fee examination fee laboratory "
+    "fee library fee caution deposit refundable hostel fee mess charges transport "
+    "fee per annum per semester per year total cost rupees amount payable merit "
+    "seat management quota NRI category government seat fee schedule"
+)
+
+_SCHOLARSHIPS = (
+    "scholarship scheme fellowship stipend financial assistance freeship provider "
+    "eligibility family income limit annual income category SC ST OBC minority "
+    "girl student disability award amount tuition reimbursement maintenance "
+    "allowance last date to apply renewal national portal"
+)
+
+_CAREER = (
+    "career opportunities job roles employment occupation designation entry level "
+    "role progression promotion higher study required licence registration "
+    "professional practice government jobs public sector recruitment competitive "
+    "examination self employment entrepreneurship freelance skills expected"
+)
+
+_SALARY = (
+    "salary median salary average salary annual package CTC lakhs per annum LPA "
+    "compensation remuneration pay scale stipend fresher entry level experienced "
+    "senior median of placed graduates number of students placed sector industry "
+    "location city survey year"
+)
+
+_PLACEMENT = (
+    "placement placed recruiters recruiting companies employers hiring campus "
+    "placement drive offers made number of students placed placement percentage "
+    "placement report training and placement cell department wise institute wise "
+    "graduating batch year top recruiters"
+)
+
+_OFFERING = (
+    "institution name university college institute affiliated to affiliating "
+    "university autonomous status deemed to be university government aided private "
+    "self financing UGC recognised AICTE approved council approval AISHE code NIRF "
+    "id campus sanctioned intake approved intake seats academic year"
+)
+
 SEGMENT_QUERIES: dict[str, str] = {
     "Curriculum": _CURRICULUM,
     "Eligibility": _ELIGIBILITY,
     "Course Identity": _COURSE,
     "Duration & Mode": _COURSE,
     "Specialisation": _SPECIALISATION,
+    "Entrance & Admission": _ENTRANCE,
+    "Fees": _FEES,
+    "Scholarships": _SCHOLARSHIPS,
+    "Career Mapping": _CAREER,
+    "Salary": _SALARY,
+    "Recruiters & Placement": _PLACEMENT,
+    "Institution & Offering": _OFFERING,
 }
 
 _FIELD_IDS = {
@@ -64,6 +121,7 @@ _FIELD_IDS = {
     "Course Identity": COURSE_FIELD_IDS,
     "Duration & Mode": COURSE_FIELD_IDS,
     "Specialisation": SPECIALISATION_FIELD_IDS,
+    **{segment: field_ids for segment, (_, field_ids) in SEGMENT_FACTS.items()},
 }
 
 

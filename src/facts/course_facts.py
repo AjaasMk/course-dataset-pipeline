@@ -142,6 +142,12 @@ CURRICULUM_FIELD_IDS = {
 }
 
 SPECIALISATION_FIELD_IDS = {
+    # F051. Was absent, which exempted it from the citation gate -- a
+    # specialisation could be named with no evidence and nothing objected.
+    # Its sibling F050 (curriculum_year) is deliberately NOT in
+    # CURRICULUM_FIELD_IDS: it is a versioning key set by the caller, like
+    # course_id, so requiring a quote for it would fail every record.
+    "specialisation_name": "F051",
     "available_at_level": "F052",
     "parent_course": "F053",
     "typical_subjects": "F054",

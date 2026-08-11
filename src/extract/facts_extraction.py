@@ -3,7 +3,7 @@ import re
 from typing import Optional
 
 import anthropic
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, create_model
 
 from src.extract.chunk_io import chunks_for_segment
 from src.extract.chunk_retrieval import retrieve
@@ -20,6 +20,7 @@ from src.facts.course_facts import (
     Specialisation,
 )
 from src.facts.engine import field_ref
+from src.facts.segment_facts import SEGMENT_FACTS
 from src.facts.models import SourceRef
 from src.retrieve.base import document_id_for
 from src.retrieve.models import Segment
@@ -76,6 +77,11 @@ reply with the character { and end it with }. Output nothing else -- no \
 preamble, no explanation, no restatement of these instructions. If the \
 documents above support no field at all, output the object with every field \
 null or empty and an empty citations array."""
+
+# Keys the pipeline sets itself. They are never extracted, carry no citation
+# and must not appear in an entry model or the gate would demand evidence
+# for a value we chose.
+_BOOKKEEPING = {"record_id", "course_id", "recorded_at", "superseded_at"}
 
 _JSON_FENCE_RE = re.compile(r"^```(?:json)?\s*|\s*```$", re.MULTILINE)
 
@@ -373,6 +379,78 @@ def extract_course(
     return result, refs
 
 
+def _entry_model_for(fact_model, name: str):
+    """A per-entry extraction model mirroring a fact model's own fields.
+
+    Generated rather than hand-written seven times: the fields, their types and
+    their F-numbers already live in src/facts/segment_facts.py, and a second
+    copy would be a second thing to keep in step with the client's sheet.
+
+    Every field is made Optional here even when the fact model requires it. A
+    required field missing from the response would fail the whole response and
+    lose the entries that were fine; instead the entry is dropped by
+    _key_fields_present() and the rest survive.
+    """
+    fields = {}
+    for field_name, info in fact_model.model_fields.items():
+        if field_name in _BOOKKEEPING:
+            continue
+        annotation = info.annotation
+        if info.default_factory is not None:
+            fields[field_name] = (annotation, Field(default_factory=info.default_factory))
+        else:
+            fields[field_name] = (Optional[annotation], None)
+    fields["citations"] = (list[_Citation], Field(default_factory=list))
+    return create_model(name, **fields)
+
+
+def _key_fields_present(fact_model, values: dict) -> bool:
+    return all(
+        values.get(name) not in (None, "", [], {})
+        for name, info in fact_model.model_fields.items()
+        if info.is_required() and name not in _BOOKKEEPING
+    )
+
+
+def extract_segment_facts(
+    segment: str,
+    chunks: list[Chunk],
+    course,
+    client: Optional[anthropic.Anthropic] = None,
+) -> list[tuple[object, list[SourceRef]]]:
+    """Cited extraction for the seven one-to-many segments.
+
+    All of them are genuinely one-to-many -- a course accepts several entrance
+    exams, reports salary by role and experience, and is offered by many
+    institutions -- so each returns a list of (record, refs) the way
+    extract_specialisation() does, not a single record.
+    """
+    fact_model, field_ids = SEGMENT_FACTS[segment]
+    entry_model = _entry_model_for(fact_model, f"_{fact_model.__name__}Entry")
+    wrapper = create_model(
+        f"_{fact_model.__name__}Extraction",
+        entries=(list[entry_model], Field(default_factory=list)),
+    )
+
+    parsed = _run_extraction(
+        [Segment(segment)], chunks, segment.lower(), wrapper, course.course_id, client,
+    )
+    if parsed is None:
+        return []
+
+    results = []
+    for entry in parsed.entries:
+        values = entry.model_dump(exclude={"citations"})
+        if not _key_fields_present(fact_model, values):
+            continue
+        record = fact_model(
+            course_id=course.course_id,
+            **_drop_uncited(values, entry.citations, field_ids),
+        )
+        results.append((record, _refs_from_citations(entry.citations, field_ids)))
+    return results
+
+
 def extract_specialisation(
     chunks: list[Chunk],
     course,
@@ -391,11 +469,15 @@ def extract_specialisation(
 
     results = []
     for entry in parsed.specialisations:
-        spec = Specialisation(
-            course_id=course.course_id,
-            **_drop_uncited(entry.model_dump(exclude={"citations"}), entry.citations,
-                            SPECIALISATION_FIELD_IDS),
-        )
+        values = _drop_uncited(entry.model_dump(exclude={"citations"}), entry.citations,
+                               SPECIALISATION_FIELD_IDS)
+        # specialisation_name is F051 and therefore citation-gated, so an
+        # uncited one is nulled above -- and a specialisation with no name is
+        # not a record. Dropping the entry is the honest outcome; the other
+        # entries in the same response are unaffected.
+        if not _key_fields_present(Specialisation, values):
+            continue
+        spec = Specialisation(course_id=course.course_id, **values)
         refs = _refs_from_citations(entry.citations, SPECIALISATION_FIELD_IDS)
         results.append((spec, refs))
     return results

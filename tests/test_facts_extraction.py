@@ -313,9 +313,11 @@ SPECIALISATION_PAYLOAD = {
             "career_focus": "Power plants and HVAC",
             "specialisation_type": "Elective track",
             "citations": [
+                {"field": "specialisation_name", "document_id": DOC_ID, "quoted_evidence": "Manufacturing Engineering"},
                 {"field": "available_at_level", "document_id": DOC_ID, "quoted_evidence": "offered at UG level"},
                 {"field": "parent_course", "document_id": DOC_ID, "quoted_evidence": "under Mechanical Engineering"},
                 {"field": "typical_subjects", "document_id": DOC_ID, "quoted_evidence": "Heat Transfer, Refrigeration"},
+                {"field": "specialisation_name", "document_id": DOC_ID, "quoted_evidence": "Thermal Engineering"},
                 {"field": "career_focus", "document_id": DOC_ID, "quoted_evidence": "careers in power plants and HVAC"},
                 {"field": "specialisation_type", "document_id": DOC_ID, "quoted_evidence": "an elective track"},
             ],
@@ -328,6 +330,7 @@ SPECIALISATION_PAYLOAD = {
             "career_focus": None,
             "specialisation_type": "Elective track",
             "citations": [
+                {"field": "specialisation_name", "document_id": DOC_ID, "quoted_evidence": "Manufacturing Engineering"},
                 {"field": "available_at_level", "document_id": DOC_ID, "quoted_evidence": "offered at UG level"},
                 {"field": "parent_course", "document_id": DOC_ID, "quoted_evidence": "under Mechanical Engineering"},
                 {"field": "typical_subjects", "document_id": DOC_ID, "quoted_evidence": "CAD/CAM, Automation"},
