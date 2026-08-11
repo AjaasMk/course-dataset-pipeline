@@ -114,10 +114,13 @@ def test_extract_curriculum_populates_only_cited_fields_never_fabricates():
     check_citations(curriculum, CURRICULUM_FIELD_IDS, refs)  # must not raise
 
 
-def test_extract_curriculum_raises_if_the_model_populates_a_field_with_no_citation():
+def test_extract_curriculum_nulls_a_field_the_model_populated_without_a_citation():
+    # The uncited field is dropped rather than raising. Both end states satisfy
+    # Hard Constraint 2 -- nothing uncited survives -- but dropping keeps the
+    # record's cited fields instead of losing the whole extraction to one bad
+    # field, which is what happened on real data.
     from src.facts.course_facts import CURRICULUM_FIELD_IDS
     from src.facts.engine import check_citations
-    from src.facts.models import CitationRequired
 
     payload = dict(VALID_PAYLOAD)
     payload["dissertation"] = "A dissertation is required in the final year"  # not in citations list
@@ -126,8 +129,9 @@ def test_extract_curriculum_raises_if_the_model_populates_a_field_with_no_citati
 
     curriculum, refs = extract_curriculum(chunks, _course(), "2024", client=mock_client)
 
-    with pytest.raises(CitationRequired):
-        check_citations(curriculum, CURRICULUM_FIELD_IDS, refs)
+    assert curriculum.dissertation is None
+    assert curriculum.core_subjects  # the cited fields survive
+    check_citations(curriculum, CURRICULUM_FIELD_IDS, refs)  # must not raise
 
 
 def test_extract_curriculum_returns_empty_model_when_no_curriculum_chunks_exist():
@@ -365,3 +369,31 @@ def test_extract_specialisation_returns_empty_list_when_no_relevant_chunks_exist
 
     assert results == []
     mock_client.messages.create.assert_not_called()
+
+
+def test_uncited_populated_fields_are_nulled_not_kept():
+    # Hard Constraint 4: a field the model could not quote evidence for is a
+    # guess. Nulling it keeps the rest of the record -- the alternative,
+    # measured live, lost two whole Course extractions and 8 cited fields
+    # with them because one field arrived uncited.
+    from src.extract.facts_extraction import _Citation, _drop_uncited
+
+    values = {"common_course_name": "B.Tech", "abbreviation": "BT", "course_aliases": ["x"]}
+    citations = [_Citation(field="abbreviation", document_id="DOC-1", quoted_evidence="BT")]
+    field_ids = {"common_course_name": "F002", "abbreviation": "F003", "course_aliases": "F008"}
+
+    cleaned = _drop_uncited(values, citations, field_ids)
+
+    assert cleaned["abbreviation"] == "BT"
+    assert cleaned["common_course_name"] is None
+    assert cleaned["course_aliases"] == []
+
+
+def test_drop_uncited_leaves_fields_outside_the_field_id_map_alone():
+    from src.extract.facts_extraction import _drop_uncited
+
+    values = {"course_id": "mechanical_engineering", "abbreviation": "BT"}
+    cleaned = _drop_uncited(values, [], {"abbreviation": "F003"})
+
+    assert cleaned["course_id"] == "mechanical_engineering"
+    assert cleaned["abbreviation"] is None
