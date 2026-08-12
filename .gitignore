@@ -62,3 +62,4 @@ data/llm_chunking_pilot_report.json
 data/page_build_report.json
 data/export_pilot25.sql
 .claude/
+data/*.pre-*-bak

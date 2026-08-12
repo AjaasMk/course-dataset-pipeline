@@ -193,33 +193,6 @@
     ]
    }
   },
-  "Scholarships": {
-   "cardinality": "many records per course",
-   "model": "Scholarship",
-   "response": {
-    "entries": [
-     {
-      "scholarship_name": "<string or null>",
-      "provider": "<string or null>",
-      "scholarship_eligibility": "<string or null>",
-      "applicable_course": "<string or null>",
-      "income_limit": "<string or null>",
-      "category_requirement": "<string or null>",
-      "award_amount": "<string or null>",
-      "scholarship_deadline": "<string or null>",
-      "scholarship_year": "<string or null>",
-      "scholarship_source": "<string or null>",
-      "citations": [
-       {
-        "field": "<string or null>",
-        "document_id": "<string or null>",
-        "quoted_evidence": "<string or null>"
-       }
-      ]
-     }
-    ]
-   }
-  },
   "Career Mapping": {
    "cardinality": "many records per course",
    "model": "CareerMapping",
@@ -470,21 +443,6 @@
     "total_estimated_cost": "indicative range as a string, never a single precise figure",
     "fee_frequency": "indicative range as a string, never a single precise figure",
     "parent_check_note": "string"
-   },
-   "rule": "no citations -- generated content has no source to cite"
-  },
-  "Scholarships": {
-   "response": {
-    "scholarship_name": "string",
-    "provider": "string",
-    "scholarship_eligibility": "string",
-    "applicable_course": "string",
-    "income_limit": "indicative range as a string, never a single precise figure",
-    "category_requirement": "string",
-    "award_amount": "indicative range as a string, never a single precise figure",
-    "scholarship_deadline": "typical period as a string, never a specific date",
-    "scholarship_year": "typical period as a string, never a specific date",
-    "scholarship_source": "string"
    },
    "rule": "no citations -- generated content has no source to cite"
   },

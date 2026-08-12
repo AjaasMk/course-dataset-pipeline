@@ -849,94 +849,6 @@
     }
    ]
   },
-  "Scholarships": {
-   "model": "Scholarship",
-   "extractor": null,
-   "client_fields": 10,
-   "mapped_fields": 10,
-   "fields": [
-    {
-     "field_id": "F092",
-     "name": "scholarship_name",
-     "type": "str",
-     "cited": true,
-     "status": "matched",
-     "description": "Official scheme name"
-    },
-    {
-     "field_id": "F093",
-     "name": "provider",
-     "type": "str?",
-     "cited": true,
-     "status": "matched",
-     "description": "Government/institution/provider"
-    },
-    {
-     "field_id": "F094",
-     "name": "scholarship_eligibility",
-     "type": "str?",
-     "cited": true,
-     "status": "matched",
-     "description": "Academic/income/category eligibility"
-    },
-    {
-     "field_id": "F095",
-     "name": "applicable_course",
-     "type": "str?",
-     "cited": true,
-     "status": "matched",
-     "description": "Courses or levels covered"
-    },
-    {
-     "field_id": "F096",
-     "name": "income_limit",
-     "type": "str?",
-     "cited": true,
-     "status": "matched",
-     "description": "Family income limit"
-    },
-    {
-     "field_id": "F097",
-     "name": "category_requirement",
-     "type": "str?",
-     "cited": true,
-     "status": "matched",
-     "description": "Category/gender/disability/etc. rule"
-    },
-    {
-     "field_id": "F098",
-     "name": "award_amount",
-     "type": "str?",
-     "cited": true,
-     "status": "matched",
-     "description": "Benefit amount or fee coverage"
-    },
-    {
-     "field_id": "F099",
-     "name": "scholarship_deadline",
-     "type": "str?",
-     "cited": true,
-     "status": "matched",
-     "description": "Application deadline"
-    },
-    {
-     "field_id": "F100",
-     "name": "scholarship_year",
-     "type": "str?",
-     "cited": true,
-     "status": "matched",
-     "description": "Scheme year"
-    },
-    {
-     "field_id": "F101",
-     "name": "scholarship_source",
-     "type": "str?",
-     "cited": true,
-     "status": "matched",
-     "description": "Official source URL/document"
-    }
-   ]
-  },
   "Career Mapping": {
    "model": "CareerMapping",
    "extractor": null,
@@ -1669,8 +1581,8 @@
   }
  ],
  "totals": {
-  "segments_with_a_model": 13,
-  "client_fields_covered": 162,
+  "segments_with_a_model": 12,
+  "client_fields_covered": 152,
   "client_fields_defined": 158,
   "segments_with_an_extractor": 5
  },
