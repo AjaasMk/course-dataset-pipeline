@@ -54,11 +54,29 @@ class Ranking(BaseModel):
     recorded_at: Optional[str] = None
     superseded_at: Optional[str] = None
 
+
     def identity(self) -> tuple[str, str, str, str]:
         return (self.institution_id, self.ranking_body, self.ranking_category, self.ranking_year)
 
     def values(self) -> tuple:
         return (self.rank, self.rank_band, self.ranking_score, self.naac_status, self.nba_programme_status)
+
+
+
+# Lived in scripts/dump_extraction_schema.py until 2026-08-12, which meant the
+# one segment whose field map was defined in a script was also the one segment
+# a schema audit could not see -- it read as "invented fields" against the real
+# maps. A field map belongs beside its model.
+RANKING_FIELD_IDS = {
+    "ranking_body": "F072",
+    "ranking_year": "F073",
+    "ranking_category": "F074",
+    "rank": "F075",
+    "rank_band": "F076",
+    "ranking_score": "F077",
+    "naac_status": "F078",
+    "nba_programme_status": "F079",
+}
 
 
 class InstitutionOffering(BaseModel):

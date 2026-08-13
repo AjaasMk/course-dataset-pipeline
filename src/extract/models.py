@@ -31,3 +31,8 @@ class Chunk(BaseModel):
     # this replaces.
     segment_id: Union[Segment, Literal["unclassified"]] = "unclassified"
     segment_match_confidence: float = 0.0
+    # The tier of the document this chunk came from. Optional because chunks
+    # written before this field existed do not carry it, but retrieval treats a
+    # missing tier as unusable for a canonical role rather than assuming the
+    # best case -- an unknown provenance is not an authoritative one.
+    source_tier: Optional[str] = None

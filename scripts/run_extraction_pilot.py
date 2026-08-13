@@ -34,6 +34,7 @@ from src.facts.course_facts import (
     ELIGIBILITY_FIELD_IDS,
     SPECIALISATION_FIELD_IDS,
 )
+from src.extract.chunk_io import canonical_only, course_document_ids, tiers_by_document
 from src.facts.engine import check_citations
 from src.retrieve.models import Segment
 
@@ -90,6 +91,7 @@ def load_chunks_for(document_ids) -> list[Chunk]:
     """
     chunks: list[Chunk] = []
     index = 0
+    tiers = tiers_by_document()
     for document_id in sorted(document_ids):
         path = CHUNKS_DIR / f"{document_id}.json"
         if not path.exists():
@@ -113,6 +115,7 @@ def load_chunks_for(document_ids) -> list[Chunk]:
                     token_count=max(1, len(raw.get("text", "").split())),
                     segment_id=segment_id,
                     segment_match_confidence=raw.get("segment_confidence", 0.0),
+                    source_tier=tiers.get(document_id),
                 )
             )
             index += 1
@@ -126,16 +129,25 @@ def run_one(course, kind):
         return {"course_id": course.course_id, "kind": kind, "outcome": "skipped"}
 
     started = time.time()
-    documents = set()
-    for segment in segments:
-        documents |= COURSE_DOCS[course.course_id].get(segment, set())
+    # Every document resolved for this course, not just the ones Stage 1 filed
+    # under these segments. Stage 1 records the segment an intent was ISSUED
+    # for; the chunker labels each chunk with the segment its content is ABOUT.
+    # Intersecting the two drops evidence that exists -- measured on
+    # mechanical_engineering, five segments had zero candidates while 45
+    # labelled chunks sat in documents filed elsewhere.
+    documents = course_document_ids(course.course_id)
     if not documents:
         return {"course_id": course.course_id, "kind": kind, "outcome": "no_documents"}
 
     try:
-        chunks = load_chunks_for(documents)
+        chunks, dropped = canonical_only(load_chunks_for(documents))
         if not chunks:
-            return {"course_id": course.course_id, "kind": kind, "outcome": "no_chunks"}
+            # Distinguished from no_chunks: evidence existed but every piece of
+            # it was Tier D/E/F, which Hard Constraint 3 forbids as canonical.
+            # That is a sourcing gap to report, not an empty result.
+            outcome = "non_canonical_only" if dropped else "no_chunks"
+            return {"course_id": course.course_id, "kind": kind, "outcome": outcome,
+                    "non_canonical_dropped": dropped}
 
         if kind == "Curriculum":
             record, refs = extractor(chunks, course, YEAR)

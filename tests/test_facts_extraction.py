@@ -400,3 +400,47 @@ def test_drop_uncited_leaves_fields_outside_the_field_id_map_alone():
 
     assert cleaned["course_id"] == "mechanical_engineering"
     assert cleaned["abbreviation"] is None
+
+
+def test_compact_schema_is_far_smaller_than_the_pydantic_json_schema():
+    # The verbose form spends most of its tokens on $defs, "title" keys and
+    # anyOf wrappers that restate what the type already says.
+    import json as _json
+
+    from src.extract.facts_extraction import _CourseExtraction, compact_schema
+
+    verbose = len(_json.dumps(_CourseExtraction.model_json_schema()))
+    assert len(compact_schema(_CourseExtraction)) < verbose / 3
+
+
+def test_compact_schema_names_every_field_the_model_must_return():
+    from src.extract.facts_extraction import _CurriculumExtraction, compact_schema
+    from src.facts.course_facts import CURRICULUM_FIELD_IDS
+
+    rendered = compact_schema(_CurriculumExtraction)
+    for name in CURRICULUM_FIELD_IDS:
+        assert f'"{name}"' in rendered
+
+
+def test_compact_schema_lists_enum_values_not_the_type_name():
+    # relationship_strength must come back as one of the five route badges the
+    # page renders; a bare type name would not say so.
+    from src.extract.facts_extraction import _entry_model_for, compact_schema
+    from src.facts.segment_facts import CareerMapping, RouteBadge
+
+    rendered = compact_schema(_entry_model_for(CareerMapping, "X"))
+    for member in RouteBadge:
+        assert member.value in rendered
+
+
+def test_compact_schema_keeps_nested_object_shape():
+    from src.extract.facts_extraction import _CurriculumExtraction, compact_schema
+
+    rendered = compact_schema(_CurriculumExtraction)
+    assert '"subjects": [{"name"' in rendered
+
+
+def test_compact_schema_excludes_citations_which_the_prompt_describes_itself():
+    from src.extract.facts_extraction import _CourseExtraction, compact_schema
+
+    assert "citations" not in compact_schema(_CourseExtraction)

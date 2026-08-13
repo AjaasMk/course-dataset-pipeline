@@ -17,12 +17,33 @@ from src.facts.course_facts import (
     SPECIALISATION_FIELD_IDS,
 )
 
+# Per-field wording where the generic type is not enough to get the value right.
+# Kept small and evidence-driven rather than annotating every field: each entry
+# here exists because a real extraction produced something unusable without it.
+FIELD_GUIDANCE = {
+    # AICTE's model curriculum numbers its subjects (PCC ME 201, HSMC 101).
+    # Those are the MODEL's numbering -- every university renumbers, so carrying
+    # the code makes a generic subject read as institution-specific.
+    "core_subjects": "list of subject names ONLY, with no course codes "
+                     "(write 'Heat Transfer & Thermal Machines', never "
+                     "'PCC ME 201 Heat Transfer & Thermal Machines')",
+    "foundation_subjects": "list of subject names ONLY, with no course codes",
+    "electives": "list of elective names ONLY, with no course codes",
+    "subjects": "list of objects, each {name, description, year, semester}. "
+                "name carries no course code",
+}
+
+
+def _describe_fact_field(name: str) -> str:
+    return FIELD_GUIDANCE.get(name, "string or list of strings")
+
+
 _FROM_FACT_MODELS = {
-    "Course Identity": {k: "string or list of strings" for k in COURSE_FIELD_IDS},
-    "Duration & Mode": {k: "string or list of strings" for k in COURSE_FIELD_IDS},
-    "Eligibility": {k: "string or list of strings" for k in ELIGIBILITY_FIELD_IDS},
-    "Curriculum": {k: "string or list of strings" for k in CURRICULUM_FIELD_IDS},
-    "Specialisation": {k: "string or list of strings" for k in SPECIALISATION_FIELD_IDS},
+    "Course Identity": {k: _describe_fact_field(k) for k in COURSE_FIELD_IDS},
+    "Duration & Mode": {k: _describe_fact_field(k) for k in COURSE_FIELD_IDS},
+    "Eligibility": {k: _describe_fact_field(k) for k in ELIGIBILITY_FIELD_IDS},
+    "Curriculum": {k: _describe_fact_field(k) for k in CURRICULUM_FIELD_IDS},
+    "Specialisation": {k: _describe_fact_field(k) for k in SPECIALISATION_FIELD_IDS},
 }
 
 # Derived from the fact models, not hand-written. These were provisional names

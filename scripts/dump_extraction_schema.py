@@ -34,22 +34,11 @@ from src.facts.course_facts import (
     EligibilityRule,
     Specialisation,
 )
-from src.facts.models import Ranking
+from src.facts.models import RANKING_FIELD_IDS, Ranking
 from src.facts.segment_facts import SEGMENT_FACTS
 
 WORKBOOK = Path("docs/specs by fmc/indian_course_library_ai_sources_rag.xlsx")
 OUT = Path("docs/specs/extraction-schema.json")
-
-RANKING_FIELD_IDS = {
-    "ranking_body": "F072",
-    "ranking_year": "F073",
-    "ranking_category": "F074",
-    "rank": "F075",
-    "rank_band": "F076",
-    "ranking_score": "F077",
-    "naac_status": "F078",
-    "nba_programme_status": "F079",
-}
 
 # Keys the pipeline sets itself -- identity, versioning, bookkeeping. They are
 # never extracted, so they carry no citation and are excluded from the gate.

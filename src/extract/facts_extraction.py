@@ -1,6 +1,7 @@
 import json
 import re
-from typing import Optional
+from enum import Enum
+from typing import Optional, Union, get_args, get_origin
 
 import anthropic
 from pydantic import BaseModel, Field, create_model
@@ -55,6 +56,7 @@ Each source document below is labeled with its DOCUMENT_ID. For every field you 
 - If no document covers a field, leave it null. Never fill a field from general or typical \
 knowledge -- an ungroundable field must be null, not a plausible-sounding guess.
 - List fields should be empty lists, not null, when nothing is found.
+- Subject and elective names carry NO course code. A regulator's model curriculum numbers its subjects (PCC ME 201, HSMC 101) but every university renumbers, so the code is not a property of the course. Write "Heat Transfer & Thermal Machines", never "PCC ME 201 Heat Transfer & Thermal Machines".
 
 Respond with a single JSON object with this shape: the schema's fields, plus a "citations" \
 array of {{"field": "<field name>", "document_id": "<DOCUMENT_ID>", "quoted_evidence": "<exact \
@@ -205,18 +207,17 @@ def _run_extraction(
 
     client = client or anthropic.Anthropic()
     document_text = _document_labeled_text(segment_chunks)
-    schema_json = json.dumps(extraction_model_cls.model_json_schema())
+    schema_json = compact_schema(extraction_model_cls)
 
     response = client.messages.create(
         model=MODEL,
         max_tokens=MAX_TOKENS,
-        system=[
-            {
-                "type": "text",
-                "text": SYSTEM_PROMPT.format(topic=topic, schema=schema_json),
-                "cache_control": {"type": "ephemeral"},
-            }
-        ],
+        # No cache_control. Measured: every system block here is under 1,000
+        # tokens and Haiku's minimum cacheable prompt is 2,048, so the marker
+        # was a no-op -- it read as an optimisation while doing nothing. With
+        # retrieval the document is small and varies per course, so there is
+        # genuinely nothing worth caching on this call.
+        system=[{"type": "text", "text": SYSTEM_PROMPT.format(topic=topic, schema=schema_json)}],
         # No assistant prefill: it would stop the prose at the source, but this
         # model rejects it outright ("This model does not support assistant
         # message prefill", HTTP 400, measured). Recovery in json_object() is
@@ -325,6 +326,42 @@ def extract_course(
     )
     refs = _refs_from_citations(parsed.citations, COURSE_FIELD_IDS)
     return result, refs
+
+
+def compact_schema(model) -> str:
+    """The field list in the smallest form that still says what to produce.
+
+    model_json_schema() spends most of its tokens on $defs, "title" keys and
+    anyOf wrappers that restate what the type already says. Measured on the
+    Course model: 707 tokens verbose against 142 compact, for the same
+    information. Across the pilot's 56 calls that is ~29k input tokens, 10% of
+    the total, bought for nothing.
+
+    Enum members are listed rather than named, because the allowed values are
+    the point -- relationship_strength has to come back as one of the five
+    route badges the page renders, and a bare type name would not say so.
+    """
+    return json.dumps({
+        name: _describe_annotation(info.annotation)
+        for name, info in model.model_fields.items()
+        if name != "citations"
+    })
+
+
+def _describe_annotation(annotation) -> object:
+    origin = get_origin(annotation)
+    if origin is Union:
+        inner = [a for a in get_args(annotation) if a is not type(None)]
+        described = _describe_annotation(inner[0]) if inner else "string"
+        return described if isinstance(described, (list, dict)) else f"{described} or null"
+    if origin in (list, set, tuple):
+        args = get_args(annotation)
+        return [_describe_annotation(args[0])] if args else ["string"]
+    if isinstance(annotation, type) and issubclass(annotation, Enum):
+        return "one of: " + " | ".join(str(m.value) for m in annotation)
+    if isinstance(annotation, type) and issubclass(annotation, BaseModel):
+        return {n: _describe_annotation(i.annotation) for n, i in annotation.model_fields.items()}
+    return {bool: "true or false", int: "integer", float: "number"}.get(annotation, "string")
 
 
 def _entry_model_for(fact_model, name: str):
