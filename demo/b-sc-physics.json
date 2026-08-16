@@ -1,0 +1,590 @@
+{
+  "course_id": "crs_b_sc_physics",
+  "slug": "b-sc-physics",
+  "course_name": "B.Sc Physics",
+  "currency": "INR",
+  "region": "India",
+  "category": "Pure Science",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Theory, labs, and problem-solving",
+    "fit": {
+      "indicators": [
+        "You like mathematics and working with formulas",
+        "You are comfortable with laboratory practicals",
+        "You want a science degree with options for higher study or technical/​"
+      ],
+      "note": "Best for students who enjoy understanding how nature works through maths, experiments, and regular practice.",
+      "score_percent": 82
+    },
+    "summary": "B.Sc Physics is an undergraduate science degree for students who want to study matter, energy, motion, and the laws that govern them. It suits learners who are comfortable with mathematics and practical laboratory work, and it can lead to careers in research, instrumentation, data-related roles, teaching, and further study in physics or allied fields."
+  },
+  "quick_facts": {
+    "career_direction": "Laboratory, research, instrumentation, data, teaching, and higher-stud",
+    "entry_level": "Class 12",
+    "indicative_annual_fees": {
+      "max": 90000,
+      "min": 25000
+    },
+    "learning_style": "Concept-heavy classroom learning with mathematics, problem-​",
+    "suitable_streams": [
+      "Science"
+    ],
+    "typical_duration": {
+      "max_years": 4,
+      "min_years": 3
+    }
+  },
+  "seo": {
+    "meta_description": "B.Sc Physics in India: course level, duration, fees, career paths, and who it suits best. A simple guide for students and parents.",
+    "page_title": "B.Sc Physics Course in India: Duration, Fees, Careers and Eligibility"
+  },
+  "subcategory": "Physics",
+  "overview": {
+    "heading": "What is B.Sc Physics?",
+    "paragraphs": [
+      "B.Sc Physics is a three-year undergraduate science degree that studies how the physical world works, from motion, heat, light, electricity, and magnetism to quantum and modern physics. The course is usually taught with mathematics and regular laboratory work, so students learn both theory and practical measurement.",
+      "In India, the syllabus commonly includes mechanics, waves and optics, thermal physics, mathematical physics, electronics, quantum mechanics, solid state physics, electromagnetic theory, and statistical mechanics. Many colleges also offer electives or project-based topics such as astronomy and astrophysics, nuclear physics, medical physics, materials, and instrumentation.",
+      "After the degree, graduates often move into laboratory support, data and analytics roles, technical writing, quality control, teaching support, government exams, or postgraduate study such as M.Sc Physics. It suits students who like solving problems step by step, working with formulas, and checking ideas through experiments rather than memorising facts alone."
+    ]
+  },
+  "snapshot": {
+    "data_note": "Physics pay in India varies widely because graduates enter different paths: lab work, analytics, teaching, research support, government posts, or further study. Starting pay is often lower in routine lab and support roles, and higher in data, semiconductor, IT-linked, public-sector, and postgraduate research paths.",
+    "salary": {
+      "higher_annual": 1500000,
+      "higher_is_open_ended": false,
+      "lower_annual": 300000,
+      "note": "Typical pay rises with stronger maths skills, lab and software skills, internships, postgraduate study, and the sector chosen after graduation. Research, analytics, semiconductor, and government-linked roles can pay more than general entry-level lab or teaching-support jobs.",
+      "typical_annual": 720000,
+      "marker_percent": 35
+    },
+    "specialisations": [
+      "Quantum Mechanics",
+      "Solid State Physics",
+      "Electronics and Digital Systems",
+      "Astrophysics",
+      "Nuclear Physics",
+      "Medical Physics",
+      "Instrumentation",
+      "Computational Physics"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "Be careful about these common misunderstandings",
+      "points": [
+        "The degree is not mainly about memorising formulas; it needs comfort with mathematics and regular problem-solving.",
+        "Laboratory work is part of the course, so students who dislike experiments, data recording, or precision may struggle.",
+        "A B.Sc Physics degree alone does not directly lead to licensed professional roles such as engineering; many students need postgraduate study",
+        "Career outcomes are broader than physics-only jobs, and some graduates move into analytics, coding, teaching support, or competitive exams."
+      ]
+    },
+    "good_fit": {
+      "heading": "This course may suit students who",
+      "points": [
+        "enjoy maths, logic, and understanding how things work",
+        "are comfortable with classroom theory and practical lab sessions",
+        "like physics topics such as motion, electricity, light, and modern physics",
+        "want flexible options later in research, teaching, data, or technical fields"
+      ]
+    },
+    "tags": [
+      "Science",
+      "Physics",
+      "Mathematics",
+      "Laboratory work",
+      "Research",
+      "Data and analytics",
+      "Teaching"
+    ]
+  },
+  "curriculum": {
+    "assessment_methods": "Assessment usually combines written end-semester examinations, continuous internal assessment, practical laboratory records, viva voce, seminars, and a final project or dissertation in the last year.",
+    "learning_activities": "Students usually attend concept lectures, tutorials, mathematics-based problem solving, laboratory experiments, numerical work, computer-based data analysis, seminar presentations, and project work.",
+    "years": [
+      {
+        "label": "Year 1",
+        "subjects": [
+          {
+            "description": "Introduces Newtonian motion, forces, conservation laws, and motion in one and two dimensions.",
+            "name": "Mechanics"
+          },
+          {
+            "description": "Builds the mathematical tools used in physics, including vectors, calculus, differential equations, and linear algebra.",
+            "name": "Mathematical Methods for Physics I"
+          },
+          {
+            "description": "Covers elasticity, fluid behaviour, surface effects, and oscillations in physical systems.",
+            "name": "Properties of Matter and Waves"
+          },
+          {
+            "description": "Trains students in measurements, significant figures, uncertainty, graphing, and basic laboratory technique.",
+            "name": "Physics Laboratory and Error Analysis"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Year 2",
+        "subjects": [
+          {
+            "description": "Studies electric fields, magnetic fields, circuit behaviour, and electromagnetic induction.",
+            "name": "Electricity and Magnetism"
+          },
+          {
+            "description": "Covers heat, temperature, the laws of thermodynamics, and statistical ideas used in physics.",
+            "name": "Thermal and Statistical Physics"
+          },
+          {
+            "description": "Introduces reflection, refraction, interference, diffraction, and polarization.",
+            "name": "Optics and Wave Theory"
+          },
+          {
+            "description": "Develops basic programming for simulations, numerical methods, and data handling in physics.",
+            "name": "Computational Physics with Python"
+          }
+        ],
+        "year": 2
+      },
+      {
+        "label": "Year 3",
+        "subjects": [
+          {
+            "description": "Introduces the postulates of quantum theory, wave functions, and applications to simple systems.",
+            "name": "Quantum Mechanics"
+          },
+          {
+            "description": "Covers atomic structure, radioactivity, and core ideas of nuclear physics.",
+            "name": "Atomic and Nuclear Physics"
+          },
+          {
+            "description": "Studies crystal structure, semiconductors, magnetism, and other solid-state phenomena.",
+            "name": "Solid State Physics"
+          },
+          {
+            "description": "Focuses on measurement devices, sensors, data acquisition, and experimental design.",
+            "name": "Experimental Techniques and Instrumentation"
+          }
+        ],
+        "year": 3
+      },
+      {
+        "label": "Year 4",
+        "subjects": [
+          {
+            "description": "Extends quantum ideas to more advanced systems and introduces relativistic concepts used in modern physics.",
+            "name": "Advanced Quantum and Relativity"
+          },
+          {
+            "description": "Explores materials behaviour, band structure, and methods used to study materials at the laboratory level.",
+            "name": "Condensed Matter and Materials Characterization"
+          },
+          {
+            "description": "Covers research planning, literature review, scientific writing, and presentation of results.",
+            "name": "Research Methods and Scientific Writing"
+          },
+          {
+            "description": "Requires an independent investigation, mini-project, or dissertation under faculty supervision.",
+            "name": "Physics Project and Dissertation"
+          }
+        ],
+        "year": 4
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "Class 12 admission based on board marks and/or entrance test, commonly CUET (UG) for many public universities and colleges in India.[1",
+      "Merit-based admission through college or university cut-offs where applicable.",
+      "Interview, document verification, and seat allocation where the institution uses them.",
+      "CUET subject combinations commonly include Physics, Chemistry, and Mathematics/Applied Mathematics for B.Sc. Physics or Physics honours-type"
+    ],
+    "admission_timeline": [
+      {
+        "description": "Complete Class 12 in the science stream with Physics and Mathematics; many universities also expect Chemistry or a CUET-",
+        "step": 1,
+        "title": "Finish Class 12 with the required core"
+      },
+      {
+        "description": "Appear for CUET (UG) or the relevant university entrance test in the subjects required by the programme.",
+        "step": 2,
+        "title": "Take the required entrance exam"
+      },
+      {
+        "description": "Submit the application, upload marksheets and identity documents, and choose the B.Sc. Physics programme and college.",
+        "step": 3,
+        "title": "Apply to colleges"
+      },
+      {
+        "description": "Check merit list or counselling result, complete seat acceptance, and finish document verification.",
+        "step": 4,
+        "title": "Secure admission"
+      },
+      {
+        "description": "Join the college after final fee payment and enrolment.",
+        "step": 5,
+        "title": "Confirm enrolment"
+      }
+    ],
+    "typical_requirements": [
+      "Class 12 pass from a recognised board.",
+      "Science stream with Physics and Mathematics; many programmes also prefer or require Chemistry.",
+      "Minimum subject combination in CUET (UG) commonly includes Physics + Mathematics/Applied Mathematics + Chemistry for B.Sc. Physics in CUET-",
+      "A minimum aggregate mark is set by the admitting institution and can vary by college and category."
+    ]
+  },
+  "skills": [
+    {
+      "description": "Builds strong problem solving, algebra, calculus, and modelling skills needed for physics.",
+      "name": "Mathematical reasoning"
+    },
+    {
+      "description": "Develops practical use of instruments, careful observation, and safe laboratory habits.",
+      "name": "Laboratory technique"
+    },
+    {
+      "description": "Trains students to analyse data, estimate error, and interpret graphs and trends.",
+      "name": "Data analysis"
+    },
+    {
+      "description": "Supports use of simulation tools and programming for numerical physics.",
+      "name": "Computational thinking"
+    },
+    {
+      "description": "Improves scientific report writing, seminar speaking, and teamwork in lab and project work.",
+      "name": "Scientific communication"
+    },
+    {
+      "description": "Helps students connect theory with real systems in mechanics, electricity, optics, and modern physics.",
+      "name": "Conceptual understanding"
+    }
+  ],
+  "careers": [
+    {
+      "description": "Works in labs, universities, and research centres doing experiments, analysis, and documentation. A master's degree is commonly expected for research-heavy and,",
+      "route_badge": "Possible after bachelor's",
+      "title": "Research Assistant",
+      "typical_route": "B.Sc Physics -> Research internship or project work -> Research Assistant"
+    },
+    {
+      "description": "Supports testing, calibration, and maintenance of scientific or industrial equipment. This suits graduates who want hands-on technical work in labs, hospitals,",
+      "route_badge": "Possible after bachelor's",
+      "title": "Laboratory Technician",
+      "typical_route": "B.Sc Physics -> Lab training or internship -> Laboratory Technician"
+    },
+    {
+      "description": "Uses data, statistics, and programming to find patterns and support decisions in business or technology teams. Employers often prefer stronger computer and ma",
+      "route_badge": "Possible after bachelor's",
+      "title": "Data Analyst",
+      "typical_route": "B.Sc Physics -> Excel/Python/SQL skills -> Data Analyst"
+    },
+    {
+      "description": "Teaches physics at school level after the required teacher-training route. For school teaching posts, a professional teaching qualification is usually needed a",
+      "route_badge": "Training may be required",
+      "title": "School Physics Teacher",
+      "typical_route": "B.Sc Physics -> B.Ed or other teacher-training route -> School Physics Teacher"
+    },
+    {
+      "description": "Studies matter, energy, and motion in research, higher education, or specialised technical work. A master's degree is the usual next step, and PhD study i",
+      "route_badge": "Postgraduate route",
+      "title": "Physicist",
+      "typical_route": "B.Sc Physics -> M.Sc Physics -> PhD or research experience -> Physicist"
+    },
+    {
+      "description": "Works with ionising radiation in hospitals or cancer centres to plan or support treatment and safety. This is a regulated medical role and usually requires sp",
+      "route_badge": "Advanced regulated route",
+      "title": "Medical Physicist",
+      "typical_route": "B.Sc Physics -> M.Sc Medical Physics or related postgraduate study -> clinical training / hospital appointment"
+    }
+  ],
+  "further_study_pathway": [
+    "B.Sc Physics -> M.Sc Physics",
+    "B.Sc Physics -> M.Sc Applied/Mathem",
+    "B.Sc Physics -> M.Sc Medical Physic",
+    "B.Sc Physics -> M.Sc Geophysics",
+    "B.Sc Physics -> M.Sc Physics -> NET"
+  ],
+  "recruiters": [
+    {
+      "description": "India's space agency recruits physics graduates for technical and scientific roles in space research, instrumentation, and analysis.",
+      "logo_initials": "IS",
+      "name": "Indian Space Research Organisation",
+      "roles": [
+        "Scientist/Engineer",
+        "Research support roles"
+      ],
+      "sector": "Space and aerospace"
+    },
+    {
+      "description": "India's defence research agency hires graduates for research, testing, and development work in science and technology.",
+      "logo_initials": "DR",
+      "name": "Defence Research and Development Organisation",
+      "roles": [
+        "Scientist",
+        "Research Associate"
+      ],
+      "sector": "Defence research"
+    },
+    {
+      "description": "A national laboratory system that recruits for ocean science, instrumentation, and research-related positions.",
+      "logo_initials": "NI",
+      "name": "National Institute of Oceanography",
+      "roles": [
+        "Research Assistant",
+        "Scientist support roles"
+      ],
+      "sector": "Research and ocean science"
+    },
+    {
+      "description": "A government research institute that hires for physics-based research and laboratory work.",
+      "logo_initials": "PR",
+      "name": "Physical Research Laboratory",
+      "roles": [
+        "Research Assistant",
+        "Project Associate"
+      ],
+      "sector": "Research"
+    },
+    {
+      "description": "A public sector nuclear research organisation that recruits physics graduates for laboratory and technical roles.",
+      "logo_initials": "BA",
+      "name": "Bhabha Atomic Research Centre",
+      "roles": [
+        "Scientific Assistant",
+        "Research support roles"
+      ],
+      "sector": "Nuclear research"
+    },
+    {
+      "description": "A defence public-sector company that hires for electronics, instrumentation, quality, and applied science roles.",
+      "logo_initials": "BE",
+      "name": "Bharat Electronics Limited",
+      "roles": [
+        "Engineer trainee",
+        "Technical roles"
+      ],
+      "sector": "Defence electronics"
+    }
+  ],
+  "colleges": {
+    "data_note": "The ranking shows a mix of academic standing and fee level, but it does not tell the full student experience. Fees can change by academic year, category, and quota, and some colleges add lab, exam, hostel, or other charges. Before applying, verify the exact course title, annual tuition, and any extra mandatory fees for your category and year of entry.",
+    "items": [
+      {
+        "admission_route": "Entrance-based",
+        "annual_fee": 31270,
+        "city": "New Delhi",
+        "course_name": "B.Sc. (Hons.) Physics",
+        "duration_years": 3,
+        "highlight": "CD score 1946/2000.",
+        "institution_type": "government",
+        "name": "Hindu College",
+        "rank": 1
+      },
+      {
+        "admission_route": "Entrance-based",
+        "annual_fee": 30688,
+        "city": "New Delhi",
+        "course_name": "B.Sc. (Hons.) Physics",
+        "duration_years": 3,
+        "highlight": "CD score 1929/2000.",
+        "institution_type": "private",
+        "name": "St. Stephen's College",
+        "rank": 2
+      },
+      {
+        "admission_route": "Entrance-based",
+        "annual_fee": 17115,
+        "city": "New Delhi",
+        "course_name": "B.Sc. (Hons.) Physics",
+        "duration_years": 3,
+        "highlight": "CD score 1879/2000.",
+        "institution_type": "government",
+        "name": "Kirori Mal College",
+        "rank": 3
+      },
+      {
+        "admission_route": "Entrance-based",
+        "annual_fee": 86300,
+        "city": "Kolkata",
+        "course_name": "B.Sc. (Hons.) Physics",
+        "duration_years": 3,
+        "highlight": "CD score 1871/2000.",
+        "institution_type": "private",
+        "name": "St. Xavier's College",
+        "rank": 4
+      },
+      {
+        "admission_route": "Entrance-based",
+        "annual_fee": 20213,
+        "city": "New Delhi",
+        "course_name": "B.Sc. (Hons.) Physics",
+        "duration_years": 3,
+        "highlight": "CD score 1735/2000.",
+        "institution_type": "government",
+        "name": "Ramjas College",
+        "rank": 5
+      },
+      {
+        "admission_route": "Entrance-based",
+        "annual_fee": 26135,
+        "city": "New Delhi",
+        "course_name": "B.Sc. (Hons.) Physics",
+        "duration_years": 3,
+        "highlight": "CD score 1667/2000.",
+        "institution_type": "government",
+        "name": "Sri Venkateswara College",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "Collegedunia India rankings for B.Sc. (Hons.) Physics colleges",
+    "ranking_updated": "2025-12"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "M.Sc. Physics, research projects, instrumentation, data analysis, teaching, and,",
+      "course_name": "B.Sc Physics",
+      "laboratory_exposure": "Regular physics practicals, lab records,",
+      "main_focus": "Concepts of mechanics, electricity and magnetism, thermodynamics, optics, and",
+      "statistics_level": "Low to moderate; calculations matter, as"
+    },
+    {
+      "common_next_steps": "M.Sc. Mathematics, statistics, data science, actuarial studies, teaching, and",
+      "course_name": "B.Sc Mathematics",
+      "laboratory_exposure": "Usually limited compared with physics;",
+      "main_focus": "Algebra, calculus, geometry, differential equations, and proof-based problem",
+      "statistics_level": "Moderate to high, especially in applied"
+    },
+    {
+      "common_next_steps": "M.Sc. Chemistry, analytical labs, materials, pharmaceuticals, teaching, and",
+      "course_name": "B.Sc Chemistry",
+      "laboratory_exposure": "High; routine wet-lab work, safety rules",
+      "main_focus": "Organic, inorganic, physical chemistry, reactions, and practical analysis",
+      "statistics_level": "Moderate; used in physical chemistry,"
+    }
+  ],
+  "fees": {
+    "footnote": "Use the tuition figure as the main annual cost, then check whether the college adds exam fees, lab fees, hostel charges, or category-based charges separately. Government and private colleges can differ widely, so compare",
+    "rows": [
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": true,
+        "max": 65000,
+        "min": 3000,
+        "parent_check": "Confirm the annual tuition for the exact college, quota, and category before applying."
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": true,
+        "max": 110000,
+        "min": 60000,
+        "parent_check": "Check whether the quoted amount is for tuition only or includes other compulsory fees."
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "premier_national",
+        "is_variable": true,
+        "max": 192000,
+        "min": 75000,
+        "parent_check": "Verify whether the institute follows a semester system and whether the fee includes lab charges."
+      },
+      {
+        "category": "Admission and registration",
+        "frequency": "One time",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 6000,
+        "min": 1000,
+        "parent_check": "Ask if the admission charge is refundable and whether it is separate from tuition."
+      },
+      {
+        "category": "Examination and practical charges",
+        "frequency": "As required",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 2000,
+        "min": 500,
+        "parent_check": "Check the semester-wise exam fee and any separate practical or lab fee."
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "Build a strong school base in mathematics, especially algebra, trigonometry, and basic calculus ideas. Keep science results steady and learn to solve problems step by step.",
+      "stage": "Grades 8-10",
+      "title": "Strengthen maths and science"
+    },
+    {
+      "description": "Choose the science stream with physics, chemistry, and mathematics. Pay attention to practical work, graphs, units, and how to write clear solutions.",
+      "stage": "Grade 11",
+      "title": "Prepare for physics study"
+    },
+    {
+      "description": "Check college eligibility, entrance requirements, campus lab facilities, and whether the degree is from a recognized institution. Compare tuition, location, and internship or project options before applying.",
+      "stage": "Grade 12",
+      "title": "Shortlist and apply carefully"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "Look for a Class 12 science background with physics and mathematics where required by the college. Each college may set its own subject and marks rules, so families should check the admission notice before applying.",
+      "question": "What should a student study in school for B.Sc Physics?"
+    },
+    {
+      "answer": "A B.Sc Physics course is usually a 3-year undergraduate degree, though some institutions may follow a 4-year structure under newer higher-education formats. The exact structure depends on the college.",
+      "question": "How long does B.Sc Physics take?"
+    },
+    {
+      "answer": "After the degree, common paths include higher study, laboratory work, data-oriented roles, instrumentation work, and teaching routes. A student who wants a regulated teaching or research career should also check the next qualification or recruitment step required by the employer or university.",
+      "question": "What can a student do after B.Sc Physics?"
+    },
+    {
+      "answer": "Families should confirm that the college is recognized and not listed among fake institutions. They should also check the fee, lab access, and whether the programme matches the student’s maths comfort level.",
+      "question": "What should parents check before paying fees?"
+    },
+    {
+      "answer": "Jobs in physics often depend on further study, hands-on lab skills, and the exact role. No degree alone guarantees a particular salary or role, so it is wise to plan for internships, projects, and higher study if needed.",
+      "question": "Is B.Sc Physics enough to start working right away?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "B.Sc Physics suits students who enjoy maths, experiments, and clear problem-solving more than memorizing long chapters. The course can open paths in laboratories, instrumentation, data work, teaching, and further study, but the fit depends on how comfortable the student is with calculations and abstract ideas. Parents should look beyond college brand names and check whether the institution is recognized, whether the labs are active, and whether the fee matches the family budget. If your child likes asking how things work, this subject can be a good match. If they dislike maths, ask them to try a few physics problems and practical questions before deciding. A calm, realistic choice now is better than switching later.",
+    "questions": [
+      "Do they like maths and problem-solving enough for a physics-heavy degree?",
+      "Is the college recognized and safe from fake or unapproved options?",
+      "Are the lab facilities, teaching style, and fees suitable for the family?",
+      "Does the student want work after graduation, or is higher study the main plan?",
+      "Would a different science subject suit them better if they prefer biology or pure computing?",
+      "Can the student handle a subject where success depends on steady practice, not last-minute studying?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "University Grants Commission",
+        "title": "State-wise list of Fake Universities",
+        "url": "https://www.ugc.gov.in/universitydetails/Fakeuniversity"
+      },
+      {
+        "publisher": "University Grants Commission",
+        "title": "Foreign Higher Educational Institution (FHEI) List",
+        "url": "https://www.ugc.gov.in/FHEI"
+      },
+      {
+        "publisher": "University Grants Commission",
+        "title": "State Higher Education Councils",
+        "url": "https://www.ugc.gov.in/UGCofficials/State_Higher_Education_Councils"
+      },
+      {
+        "publisher": "National Testing Agency",
+        "title": "Notice Board Archive",
+        "url": "https://nta.ac.in/NoticeBoardArchive?article_id=428610112.0"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  }
+}

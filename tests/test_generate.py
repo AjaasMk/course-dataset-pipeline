@@ -15,6 +15,7 @@ from coursegen.store import ArtifactStore
 
 COURSE_ID = "crs_bsc_psychology"
 COURSE_NAME = "BSc Psychology"
+COURSE_CATEGORY = "Health & Behavioural Sciences"
 
 
 def chunk_payload(document: dict[str, Any], chunk_key: str) -> dict[str, Any]:
@@ -70,7 +71,7 @@ def test_happy_path_produces_validated_course(settings: Settings, demo_document:
     store = ArtifactStore(settings.artifacts_dir, COURSE_ID)
 
     result = generate_course(
-        course_id=COURSE_ID, course_name=COURSE_NAME, client=client, settings=settings, store=store
+        course_id=COURSE_ID, course_name=COURSE_NAME, category=COURSE_CATEGORY, client=client, settings=settings, store=store
     )
 
     assert result.status == "validated", result.validation
@@ -96,7 +97,7 @@ def test_chunk_retries_then_succeeds(settings: Settings, demo_document: dict) ->
 
     client = FakeClient(responder)
     result = generate_course(
-        course_id=COURSE_ID, course_name=COURSE_NAME, client=client, settings=settings
+        course_id=COURSE_ID, course_name=COURSE_NAME, category=COURSE_CATEGORY, client=client, settings=settings
     )
 
     market = next(o for o in result.chunk_outcomes if o.chunk_key == "market")
@@ -126,6 +127,7 @@ def test_repair_prompt_carries_the_validation_errors(settings: Settings, demo_do
             "course_id": COURSE_ID,
             "slug": "bsc-psychology",
             "course_name": COURSE_NAME,
+            "category": COURSE_CATEGORY,
             "currency": "INR",
             "region": "India",
         },
@@ -150,7 +152,7 @@ def test_chunk_flagged_after_exhausting_attempts(settings: Settings, demo_docume
     client = FakeClient(responder)
     store = ArtifactStore(settings.artifacts_dir, COURSE_ID)
     result = generate_course(
-        course_id=COURSE_ID, course_name=COURSE_NAME, client=client, settings=settings, store=store
+        course_id=COURSE_ID, course_name=COURSE_NAME, category=COURSE_CATEGORY, client=client, settings=settings, store=store
     )
 
     flagged = next(o for o in result.chunk_outcomes if o.chunk_key == "outcomes")
@@ -171,7 +173,7 @@ def test_transport_failure_flags_without_burning_attempts(settings: Settings, de
 
     client = FakeClient(responder)
     result = generate_course(
-        course_id=COURSE_ID, course_name=COURSE_NAME, client=client, settings=settings
+        course_id=COURSE_ID, course_name=COURSE_NAME, category=COURSE_CATEGORY, client=client, settings=settings
     )
 
     academics = next(o for o in result.chunk_outcomes if o.chunk_key == "academics")
@@ -194,7 +196,7 @@ def test_unparseable_output_counts_as_a_failed_attempt(settings: Settings, demo_
 
     client = FakeClient(responder)
     result = generate_course(
-        course_id=COURSE_ID, course_name=COURSE_NAME, client=client, settings=settings
+        course_id=COURSE_ID, course_name=COURSE_NAME, category=COURSE_CATEGORY, client=client, settings=settings
     )
 
     guidance = next(o for o in result.chunk_outcomes if o.chunk_key == "guidance")
@@ -212,6 +214,7 @@ def test_only_chunks_reuses_saved_artifacts(settings: Settings, demo_document: d
     result = generate_course(
         course_id=COURSE_ID,
         course_name=COURSE_NAME,
+        category=COURSE_CATEGORY,
         client=client,
         settings=settings,
         store=store,
@@ -237,7 +240,7 @@ def test_cross_chunk_failure_retries_only_the_owning_chunk(settings: Settings, d
 
     client = FakeClient(responder)
     result = generate_course(
-        course_id=COURSE_ID, course_name=COURSE_NAME, client=client, settings=settings
+        course_id=COURSE_ID, course_name=COURSE_NAME, category=COURSE_CATEGORY, client=client, settings=settings
     )
 
     assert result.status == "validated"
@@ -272,7 +275,7 @@ def test_cross_chunk_repair_of_a_chunk_with_derived_fields(settings: Settings, d
 
     client = FakeClient(responder)
     result = generate_course(
-        course_id=COURSE_ID, course_name=COURSE_NAME, client=client, settings=settings
+        course_id=COURSE_ID, course_name=COURSE_NAME, category=COURSE_CATEGORY, client=client, settings=settings
     )
 
     assert result.status == "validated"
@@ -297,7 +300,7 @@ def test_curriculum_duration_mismatch_is_caught_inside_the_chunk_loop(
 
     client = FakeClient(responder)
     result = generate_course(
-        course_id=COURSE_ID, course_name=COURSE_NAME, client=client, settings=settings
+        course_id=COURSE_ID, course_name=COURSE_NAME, category=COURSE_CATEGORY, client=client, settings=settings
     )
 
     academics = next(o for o in result.chunk_outcomes if o.chunk_key == "academics")

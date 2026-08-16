@@ -1,0 +1,587 @@
+{
+  "course_id": "crs_bachelor_of_public_health",
+  "slug": "bachelor-of-public-health",
+  "course_name": "Bachelor of Public Health",
+  "currency": "INR",
+  "region": "India",
+  "category": "Medical & Allied Health",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Student-friendly guide",
+    "fit": {
+      "indicators": [
+        "Good fit for students interested in health, communities, and social up",
+        "Uses classroom learning, fieldwork, and data",
+        "Leads to entry roles in public health and health programmes"
+      ],
+      "note": "Best for students who want to work on health at the population level rather than only in hospitals.",
+      "score_percent": 78
+    },
+    "summary": "Bachelor of Public Health studies how to prevent disease, improve community health, and plan health programmes. It suits students who want a health career that combines biology, social science, data, and fieldwork, with roles in government, NGOs, hospitals, and health companies after graduation."
+  },
+  "quick_facts": {
+    "career_direction": "Public health programme work, community health, health education, NGO/",
+    "entry_level": "Class 12",
+    "indicative_annual_fees": {
+      "max": 250000,
+      "min": 30000
+    },
+    "learning_style": "A mix of classroom theory, community-based learning, project",
+    "suitable_streams": [
+      "Science",
+      "Commerce",
+      "Arts"
+    ],
+    "typical_duration": {
+      "max_years": 4,
+      "min_years": 3
+    }
+  },
+  "seo": {
+    "meta_description": "Bachelor of Public Health in India: course details, duration, fees, career options, and who it suits.",
+    "page_title": "Bachelor of Public Health in India: Course Profile, Fees, Duration and"
+  },
+  "subcategory": "Public Health",
+  "overview": {
+    "heading": "What is Bachelor of Public Health?",
+    "paragraphs": [
+      "Bachelor of Public Health is an undergraduate course about keeping whole communities healthy. It looks at disease prevention, health education, hygiene, vaccination awareness, nutrition, health policy, and how health services reach people. It is different from a clinical degree because the focus is not only on treating one patient at a time, but on improving health for groups of people and populations.",
+      "Students usually study a mix of classroom theory, project work, and community-based learning. The subject often brings together biology, social science, statistics, and basic management, so it suits students who want to understand why health problems spread and how systems can stop them. Many colleges in India accept Class 12 students for UG public health programmes, and some institutions accept any stream.",
+      "After this course, graduates usually move into programme support, community health, health education, NGO work, field coordination, research support, or health administration. It can also be a stepping stone to postgraduate study such as MPH, which is common for stronger specialisation and more senior public health roles in India."
+    ]
+  },
+  "snapshot": {
+    "data_note": "Public health pay in India changes a lot with the role, city, employer type, field experience, and whether the job is in programme work, education, consulting, administration, or research. A single number cannot describe every graduate because many jobs are entry roles while others need experience, higher study, or a B",
+    "salary": {
+      "higher_annual": 750000,
+      "higher_is_open_ended": false,
+      "lower_annual": 300000,
+      "note": "Entry roles in public health-related work in India commonly start around 3,00,000 a year, while stronger early-career roles and consulting paths can reach about 7,50,000 a year; experienced specialist roles can go higher. Pay rises with field experience, postgraduate study, data and programme skills, and work in larger",
+      "typical_annual": 470000,
+      "marker_percent": 38
+    },
+    "specialisations": [
+      "Community health",
+      "Health education",
+      "Epidemiology",
+      "Health administration",
+      "Health policy",
+      "Programme management",
+      "Research support",
+      "Environmental health"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "Be careful if you expect this course to be mainly hospital-based",
+      "points": [
+        "This course is more about communities, prevention, and systems than bedside treatment.",
+        "Many roles involve field visits, surveys, reports, outreach, or programme coordination, not only classroom or laboratory work.",
+        "If a student wants a high-paying specialist public health job, postgraduate study is often needed after the bachelor’s degree.",
+        "Job titles vary a lot, so the first role after graduation may be a support or trainee position rather than a fully independent officer role."
+      ]
+    },
+    "good_fit": {
+      "heading": "This course may suit you if you",
+      "points": [
+        "Care about health problems that affect many people, not just one patient.",
+        "Enjoy biology, social studies, data, or health awareness work.",
+        "Can explain ideas clearly to families or communities.",
+        "Are comfortable with project work, teamwork, and some field-based learning."
+      ]
+    },
+    "tags": [
+      "community health",
+      "health education",
+      "programme work",
+      "NGO",
+      "research support",
+      "health policy",
+      "field-based learning"
+    ]
+  },
+  "curriculum": {
+    "assessment_methods": "Continuous assessment, class tests, assignments, presentations, practical work, field reports, project work, and final semester examinations.",
+    "learning_activities": "Lectures, tutorials, lab sessions, community visits, field surveys, group discussions, case studies, data analysis exercises, and a final-year project or dissertation.",
+    "years": [
+      {
+        "label": "Year 1",
+        "subjects": [
+          {
+            "description": "Core ideas in public health, health systems, and the role of prevention in population health.",
+            "name": "Introduction to Public Health"
+          },
+          {
+            "description": "Basic structure and functions of the human body, with emphasis on health and disease.",
+            "name": "Human Anatomy and Physiology"
+          },
+          {
+            "description": "How health is shaped by social, economic, and cultural factors in communities.",
+            "name": "Sociology for Health"
+          },
+          {
+            "description": "Elementary methods for reading and presenting health information clearly.",
+            "name": "Communication Skills for Health Professionals"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Year 2",
+        "subjects": [
+          {
+            "description": "How diseases spread, their causes, and the principles of prevention and control.",
+            "name": "Epidemiology"
+          },
+          {
+            "description": "Methods for collecting, summarising, and interpreting health data.",
+            "name": "Biostatistics"
+          },
+          {
+            "description": "Nutrition across the life course and its link with community health.",
+            "name": "Public Health Nutrition"
+          },
+          {
+            "description": "Planning, running, and evaluating health education activities for different groups.",
+            "name": "Health Education and Behaviour Change"
+          }
+        ],
+        "year": 2
+      },
+      {
+        "label": "Year 3",
+        "subjects": [
+          {
+            "description": "How health services are organised, financed, staffed, and monitored in India.",
+            "name": "Health Systems and Policy"
+          },
+          {
+            "description": "Planning, implementing, and reviewing community health programmes.",
+            "name": "Programme Planning and Management"
+          },
+          {
+            "description": "Health risks in workplaces, homes, water, and waste environments.",
+            "name": "Environmental and Occupational Health"
+          },
+          {
+            "description": "Field-based study methods and a supervised community health project.",
+            "name": "Community Health Research Project"
+          }
+        ],
+        "year": 3
+      },
+      {
+        "label": "Year 4",
+        "subjects": [
+          {
+            "description": "Advanced study of population health trends, indicators, and programme evaluation.",
+            "name": "Advanced Public Health Analytics"
+          },
+          {
+            "description": "Specialised work on outbreaks, surveillance, and response planning.",
+            "name": "Disease Surveillance and Outbreak Response"
+          },
+          {
+            "description": "Elective focus such as maternal health, child health, or non-communicable diseases.",
+            "name": "Public Health Specialisation Elective"
+          },
+          {
+            "description": "Independent capstone work based on a field study, dissertation, or applied research report.",
+            "name": "Honours Research Dissertation"
+          }
+        ],
+        "year": 4
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "Merit based on Class 12 marks",
+      "Entrance test conducted by the institute",
+      "Interview or counselling round for shortlisted applicants",
+      "Direct admission at some private colleges"
+    ],
+    "admission_timeline": [
+      {
+        "description": "Complete Class 12 or an equivalent school-leaving qualification.",
+        "step": 1,
+        "title": "Finish Higher Secondary"
+      },
+      {
+        "description": "Check subject requirements and minimum marks for the chosen college.",
+        "step": 2,
+        "title": "Review Course Criteria"
+      },
+      {
+        "description": "Apply through the college portal or admission form within the announced window.",
+        "step": 3,
+        "title": "Submit Application"
+      },
+      {
+        "description": "Take an entrance test if the institution uses one.",
+        "step": 4,
+        "title": "Entrance Test"
+      },
+      {
+        "description": "Attend counselling, document verification, and seat allotment if required.",
+        "step": 5,
+        "title": "Counselling and Admission"
+      }
+    ],
+    "typical_requirements": [
+      "Class 12 pass from a recognised board",
+      "Science stream is commonly preferred; some colleges also admit students from Arts or Commerce",
+      "Biology, Mathematics, Chemistry, Psychology, or allied subjects may be preferred depending on the college",
+      "Minimum marks are often around 45% to 50% in Class 12, with relaxations in some institutions for reserved categories"
+    ]
+  },
+  "skills": [
+    {
+      "description": "Understanding how health problems affect whole populations rather than only individual patients.",
+      "name": "Population Health Thinking"
+    },
+    {
+      "description": "Collecting, organising, and interpreting basic health data.",
+      "name": "Data Analysis"
+    },
+    {
+      "description": "Explaining health information in simple language to communities and families.",
+      "name": "Health Communication"
+    },
+    {
+      "description": "Planning and supporting prevention, screening, and awareness activities.",
+      "name": "Programme Planning"
+    },
+    {
+      "description": "Working with local communities, health workers, and organisations.",
+      "name": "Community Engagement"
+    },
+    {
+      "description": "Using evidence to support decisions and improve public health work.",
+      "name": "Evidence-Based Reasoning"
+    }
+  ],
+  "careers": [
+    {
+      "description": "Work with health departments, hospitals, or NGOs on disease prevention, health education, and community programmes. Common entry roles include public health ors",
+      "route_badge": "Possible after bachelor's",
+      "title": "Public health programme officer",
+      "typical_route": "Bachelor of Public Health -> Internship/project work -> Public health programme officer"
+    },
+    {
+      "description": "Support surveys, surveillance, and analysis for health programmes and research teams. This role is usually open after a bachelor's degree with strong data and B",
+      "route_badge": "Possible after bachelor's",
+      "title": "Public health data or research assistant",
+      "typical_route": "Bachelor of Public Health -> Fieldwork/data skills -> Research assistant or programme monitoring role"
+    },
+    {
+      "description": "Plan, deliver, and review large health programmes in government, hospitals, or NGOs. Senior policy or epidemiology roles usually need an MPH or other postgradu",
+      "route_badge": "Postgraduate route",
+      "title": "Health policy or epidemiology specialist",
+      "typical_route": "Bachelor of Public Health -> MPH -> Policy, epidemiology, or monitoring and evaluation role"
+    },
+    {
+      "description": "Lead public health teaching, prevention, or service delivery in settings such as hospitals, NGOs, and national or state health programmes. In India, many pub",
+      "route_badge": "Postgraduate route",
+      "title": "Public health educator or health promotion lead",
+      "typical_route": "Bachelor of Public Health -> MPH or related master's -> Health educator or health promotion lead"
+    },
+    {
+      "description": "A postgraduate route after the bachelor's degree; MPH programmes in India commonly accept graduates from public health and related disciplines, and examples",
+      "route_badge": "Higher study required",
+      "title": "Master of Public Health (MPH)",
+      "typical_route": "Bachelor of Public Health -> MPH"
+    },
+    {
+      "description": "For students interested in hospitals or health-system management, Indian institutes also offer master's study in health administration or hospital admini",
+      "route_badge": "Higher study required",
+      "title": "Master of Hospital Administration / Health Care",
+      "typical_route": "Bachelor of Public Health -> MHA or similar master's"
+    }
+  ],
+  "further_study_pathway": [
+    "Bachelor of Public Health -> MPH ->",
+    "Bachelor of Public Health -> MHA /-",
+    "Bachelor of Public Health -> Post-",
+    "Bachelor of Public Health -> MPH at",
+    "Bachelor of Public Health -> MPH ->"
+  ],
+  "recruiters": [
+    {
+      "description": "A global public health agency that hires for programme, monitoring, research, and health systems work in India.",
+      "logo_initials": "WH",
+      "name": "World Health Organization",
+      "roles": [
+        "public health programme work",
+        "research support"
+      ],
+      "sector": "International public health"
+    },
+    {
+      "description": "A UN agency involved in child and maternal health, nutrition, and community health programmes in India.",
+      "logo_initials": "UN",
+      "name": "UNICEF",
+      "roles": [
+        "health programme officer",
+        "community health work"
+      ],
+      "sector": "International development"
+    },
+    {
+      "description": "India's national public health financing and policy foundation for system strengthening, training, and research roles.",
+      "logo_initials": "PH",
+      "name": "Public Health Foundation of India",
+      "roles": [
+        "programme associate",
+        "research assistant"
+      ],
+      "sector": "Public health / research"
+    },
+    {
+      "description": "A major Indian healthcare provider that recruits for hospital-based health education and public health support roles.",
+      "logo_initials": "AP",
+      "name": "Apollo Hospitals",
+      "roles": [
+        "health educator",
+        "quality and programme support"
+      ],
+      "sector": "Healthcare"
+    },
+    {
+      "description": "A large Indian NGO and health systems organisation that recruits for community health, project, and implementation roles.",
+      "logo_initials": "CH",
+      "name": "Clinton Health Access Initiative",
+      "roles": [
+        "project associate",
+        "implementation support"
+      ],
+      "sector": "Global health NGO"
+    },
+    {
+      "description": "A government public health programme employer in India for field, monitoring, and implementation roles.",
+      "logo_initials": "NH",
+      "name": "National Health Mission",
+      "roles": [
+        "programme officer",
+        "monitoring and evaluation"
+      ],
+      "sector": "Government health"
+    }
+  ],
+  "colleges": {
+    "data_note": "This ranking mixes fee level, course fit, and overall selectivity into a simple order for families to compare options. A higher rank does not mean a better fit for every student; campus location, internship access, and recognition for higher study should also be checked before applying.",
+    "items": [
+      {
+        "admission_route": "PGIMER CBT",
+        "annual_fee": 685,
+        "city": "Chandigarh",
+        "course_name": "Bachelor in Public Health",
+        "duration_years": 4,
+        "highlight": "Very low annual tuition and a mandatory",
+        "institution_type": "government",
+        "name": "Post Graduate Institute of Medical Education and Research (PGIMER)",
+        "rank": 1
+      },
+      {
+        "admission_route": "Institutional entrance process",
+        "annual_fee": 161500,
+        "city": "Manipal",
+        "course_name": "Bachelor in Public Health Honours",
+        "duration_years": 4,
+        "highlight": "Honours pathway with a research-oriented",
+        "institution_type": "private",
+        "name": "Manipal Academy of Higher Education (MAHE)",
+        "rank": 2
+      },
+      {
+        "admission_route": "KAHER-AIET",
+        "annual_fee": 80333,
+        "city": "Belagavi",
+        "course_name": "Bachelor in Public Health",
+        "duration_years": 3,
+        "highlight": "Three-year public health degree with a",
+        "institution_type": "private",
+        "name": "KLE Academy of Higher Education and Research",
+        "rank": 3
+      },
+      {
+        "admission_route": "LPUNEST",
+        "annual_fee": 160000,
+        "city": "Jalandhar",
+        "course_name": "B.Sc Public Health",
+        "duration_years": 3,
+        "highlight": "Large private university with a public‑",
+        "institution_type": "private",
+        "name": "Lovely Professional University",
+        "rank": 4
+      },
+      {
+        "admission_route": "Merit / university process",
+        "annual_fee": 80000,
+        "city": "Vadodara",
+        "course_name": "B.Sc Public Health",
+        "duration_years": 3,
+        "highlight": "Lower-cost private option for students",
+        "institution_type": "private",
+        "name": "Parul University",
+        "rank": 5
+      },
+      {
+        "admission_route": "University entrance / merit",
+        "annual_fee": 210000,
+        "city": "Mohali",
+        "course_name": "Bachelor in Public Health",
+        "duration_years": 4,
+        "highlight": "Higher-fee private option with a four-",
+        "institution_type": "private",
+        "name": "Rayat Bahra University",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "Course pages and public fee listings for Indian public health undergraduate and.",
+    "ranking_updated": "2026-08"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "Public health officer roles, NGO programme work, health promotion, and higher UK",
+      "course_name": "Bachelor of Public Health",
+      "laboratory_exposure": "Low to moderate; field visits, surveys,.",
+      "main_focus": "Community health, health education, prevention, and programme work",
+      "statistics_level": "Moderate: data collection, basic biostat"
+    },
+    {
+      "common_next_steps": "Public health analyst roles, programme support, and a later MPH",
+      "course_name": "B.Sc Public Health",
+      "laboratory_exposure": "Moderate; more science lab and practical",
+      "main_focus": "Public health basics with stronger science foundation",
+      "statistics_level": "Moderate to high: statistics and survey"
+    },
+    {
+      "common_next_steps": "Health programme management, policy, research, and specialised public health",
+      "course_name": "Master of Public Health",
+      "laboratory_exposure": "Low; usually more projects than lab work",
+      "main_focus": "Population health, policy, epidemiology, and management",
+      "statistics_level": "High: epidemiology, biostatistics, and"
+    }
+  ],
+  "fees": {
+    "footnote": "Tuition can change by campus, category, and year. Before applying, check the current tuition, internship requirement, hostel charge, exam fee, and refund rules for the exact campus you want.",
+    "rows": [
+      {
+        "category": "Tuition fee",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": true,
+        "max": 80000,
+        "min": 2400,
+        "parent_check": "Public institutions can be very low-cost, but the exact yearly fee depends on the campus and programme structure."
+      },
+      {
+        "category": "Tuition fee",
+        "frequency": "Per year",
+        "institution_type": "premier_national",
+        "is_variable": true,
+        "max": 11710,
+        "min": 685,
+        "parent_check": "Premier national institutes in public health often charge only a small annual tuition, but admission is competitive and"
+      },
+      {
+        "category": "Tuition fee",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": true,
+        "max": 210000,
+        "min": 80000,
+        "parent_check": "Private universities usually charge much more than public institutions, and the total cost can rise with hostel and lab"
+      },
+      {
+        "category": "Security deposit",
+        "frequency": "One time",
+        "institution_type": "premier_national",
+        "is_variable": false,
+        "max": 5000,
+        "min": 5000,
+        "parent_check": "Some institutes ask for a refundable security deposit at admission."
+      },
+      {
+        "category": "Hostel fee",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": true,
+        "max": 108000,
+        "min": 79000,
+        "parent_check": "Hostel charges are separate from tuition and can add a large amount to the total cost."
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "Use Grades 8-10 to keep Biology, Chemistry, Mathematics, Social Science, and English strong. Build habits in reading charts, writing short reports, and working on group projects, because public health uses both science,",
+      "stage": "Grades 8-10",
+      "title": "Build school foundations"
+    },
+    {
+      "description": "In Class 11, choose the stream that suits your strengths while checking college eligibility for public health programmes. Start comparing colleges for duration, internship exposure, community-based learning, and whether",
+      "stage": "Grade 11",
+      "title": "Shortlist suitable colleges"
+    },
+    {
+      "description": "In Class 12, focus on meeting admission requirements, preparing documents, and applying on time. After admission, look for chances to join field visits, community projects, health communication activities, and internship",
+      "stage": "Grade 12",
+      "title": "Apply and plan ahead"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "A Bachelor of Public Health leads to work in health education, community outreach, programme support, prevention work, and NGO or government health projects. It is a good choice for students who want to work on community health, not only in hospitals.",
+      "question": "What kind of work does this degree prepare for?"
+    },
+    {
+      "answer": "Many colleges in India accept students from Science, Commerce, and Arts at the Class 12 level. Families should still check each college’s exact subject and marks requirements before applying.",
+      "question": "Which Class 12 stream is best for this course?"
+    },
+    {
+      "answer": "The usual course length in India is 3 to 4 years. The exact duration depends on the college and whether the programme is offered as a standard degree or with an honours-style structure.",
+      "question": "How long does a Bachelor of Public Health take?"
+    },
+    {
+      "answer": "A common fee range in India is about 30000 to 250000 INR per year, depending on the college, location, and whether the institution is public or private.",
+      "question": "How much can the course cost?"
+    },
+    {
+      "answer": "For many students, the bachelor’s degree is the first step, not the final one. If your child wants roles in policy, research, or programme leadership, a master’s degree or other specialised training can be helpful later.",
+      "question": "Is this enough for a full career in public health?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "Bachelor of Public Health suits students who are interested in health, prevention, community work, and social impact. The course usually combines classroom study with projects, field exposure, and practical learning, so it fits children who enjoy both academic work and real-world application. Families often compare it with nursing or medicine, but public health is different: it focuses on populations, health education, disease prevention, data, and community programmes. That makes it a good option for students who want to work in NGOs, public health teams, health communication, research support, or government-linked programmes. When comparing colleges, ask about internships, community visits, faculty experience, and whether the syllabus includes statistics, epidemiology, and health management. It also helps to plan ahead for postgraduate study if your child later wants more specialised roles.",
+    "questions": [
+      "Does my child need Biology in Class 12 for every college?",
+      "How much fieldwork or internship exposure does the college provide?",
+      "Will this degree be enough for an entry-level job?",
+      "What does a public health professional do on a normal workday?",
+      "Is the teaching more theory-based or practical?",
+      "What will the total cost be, including hostel and travel?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "University Grants Commission",
+        "title": "State-wise list of Fake Universities",
+        "url": "https://www.ugc.gov.in/universitydetails/Fakeuniversity"
+      },
+      {
+        "publisher": "National Medical Commission",
+        "title": "Public Notice on Standard Treatment Workflows",
+        "url": "https://www.nmc.org.in/MCIRest/open/getDocument?path=/Documents/Public/Portal/LatestNews/Public%20Notice%20dt%2015-09-2025%20reg.%20STW.pdf"
+      },
+      {
+        "publisher": "National Medical Commission",
+        "title": "Public Notice on Swasth Nari, Sashakt Parivar Abhiyaan",
+        "url": "https://www.nmc.org.in/MCIRest/open/getDocument?path=/Documents/Public/Portal/LatestNews/document%20(15)_merged.pdf"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  }
+}

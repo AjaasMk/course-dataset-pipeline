@@ -11,7 +11,7 @@ from coursegen.config import Settings
 from coursegen.domains import DomainRegistry, DomainRegistryError, normalize_discipline
 from coursegen.generate import generate_course
 
-from test_generate import COURSE_ID, COURSE_NAME, FakeClient, chunk_payload
+from test_generate import COURSE_CATEGORY, COURSE_ID, COURSE_NAME, FakeClient, chunk_payload
 
 MARKET = CHUNKS_BY_KEY["market"]
 ACADEMICS = CHUNKS_BY_KEY["academics"]
@@ -206,6 +206,7 @@ def test_discipline_reaches_the_request(
     generate_course(
         course_id=COURSE_ID,
         course_name=COURSE_NAME,
+        category=COURSE_CATEGORY,
         client=Recording(lambda op, _: chunk_payload(demo_document, op.split(":")[-1])),
         settings=scoped,
         discipline="Engineering",
@@ -232,6 +233,7 @@ def test_no_domains_anywhere_sends_no_search_filter(
     result = generate_course(
         course_id=COURSE_ID,
         course_name=COURSE_NAME,
+        category=COURSE_CATEGORY,
         client=Recording(lambda op, _: chunk_payload(demo_document, op.split(":")[-1])),
         settings=scoped,
     )
@@ -276,6 +278,7 @@ def test_unfiltered_run_flags_nothing_but_warns_end_to_end(
     result = generate_course(
         course_id=COURSE_ID,
         course_name=COURSE_NAME,
+        category=COURSE_CATEGORY,
         client=FakeClient(responder),
         settings=scoped,
     )
@@ -300,6 +303,7 @@ def test_unsourced_chunks_are_surfaced(settings: Settings, demo_document: dict) 
     result = generate_course(
         course_id=COURSE_ID,
         course_name=COURSE_NAME,
+        category=COURSE_CATEGORY,
         client=NoCitations(lambda op, _: chunk_payload(demo_document, op.split(":")[-1])),
         settings=settings,
     )
@@ -317,6 +321,7 @@ def test_grounding_records_the_domains_actually_sent(
     result = generate_course(
         course_id=COURSE_ID,
         course_name=COURSE_NAME,
+        category=COURSE_CATEGORY,
         client=FakeClient(lambda op, _: chunk_payload(demo_document, op.split(":")[-1])),
         settings=scoped,
         discipline="engineering",

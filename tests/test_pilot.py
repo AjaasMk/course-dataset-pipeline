@@ -14,8 +14,8 @@ def entry(name: str, discipline: str, index: int) -> CourseEntry:
         course_id=f"crs_{index}",
         slug=f"slug-{index}",
         course_name=name,
-        category=discipline,
-        categories=(discipline,),
+        category="Health & Behavioural Sciences",
+        categories=("Health & Behavioural Sciences",),
         discipline=discipline,
     )
 

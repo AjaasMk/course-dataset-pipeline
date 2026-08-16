@@ -1,0 +1,586 @@
+{
+  "course_id": "crs_b_tech_civil_engineering",
+  "slug": "b-tech-civil-engineering",
+  "course_name": "B.Tech Civil Engineering",
+  "currency": "INR",
+  "region": "India",
+  "category": "Engineering & Technology",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Industry-linked technical degree",
+    "fit": {
+      "indicators": [
+        "Strong maths and physics",
+        "Interested in buildings, roads, bridges, water systems and site work",
+        "Good fit for problem-solving and practical design"
+      ],
+      "note": "Best for students who want to learn how infrastructure is planned, designed and built, and who are comfortable with both",
+      "score_percent": 84
+    },
+    "summary": "B.Tech Civil Engineering is a four-year undergraduate engineering degree focused on the planning, design, construction and maintenance of infrastructure such as buildings, roads, bridges, dams and water systems. It suits students who like applied science, maths and practical problem-solving, and it can lead to work in construction, design, project management, site supervision, public infrastructure and consultancy."
+  },
+  "quick_facts": {
+    "career_direction": "Civil engineer, site engineer, structural design support, project or施工",
+    "entry_level": "Class 12",
+    "indicative_annual_fees": {
+      "max": 250000,
+      "min": 75000
+    },
+    "learning_style": "Maths-heavy, lab-based and project-oriented, with fieldwork,",
+    "suitable_streams": [
+      "Science"
+    ],
+    "typical_duration": {
+      "max_years": 4,
+      "min_years": 4
+    }
+  },
+  "seo": {
+    "meta_description": "B.Tech Civil Engineering in India is a four-year undergraduate degree for students interested in infrastructure, construction, design and project work. See the",
+    "page_title": "B.Tech Civil Engineering Course in India: Duration, Fees, Careers"
+  },
+  "subcategory": "Civil Engineering",
+  "overview": {
+    "heading": "What is B.Tech Civil Engineering?",
+    "paragraphs": [
+      "B.Tech Civil Engineering is a four-year undergraduate degree that teaches how to plan, design, build, and maintain the things people use every day: buildings, roads, bridges, tunnels, water supply systems, drainage, and other public works. It is usually taken after Class 12 with Physics, Chemistry, and Mathematics, and it combines classroom learning with labs, drawings, projects, and field visits.",
+      "The course is maths-heavy and practical. Students learn structural basics, materials, soil and foundation work, transportation, surveying, construction methods, estimation, and quality control. A lot of the work is about reading site conditions, checking measurements, solving real problems, and making safe and workable decisions.",
+      "After graduation, students often start in civil engineer, site engineer, design support, estimation, quality control, or project coordination roles. Depending on the company and the training they build during college, the work may lean more toward site supervision, design office support, or large infrastructure projects."
+    ]
+  },
+  "snapshot": {
+    "data_note": "Pay in civil engineering changes with city, employer size, project type, software skill, and years of experience. Site, construction, design, and project roles can pay quite differently, so one figure cannot describe every graduate.",
+    "salary": {
+      "higher_annual": 730000,
+      "higher_is_open_ended": false,
+      "lower_annual": 150000,
+      "note": "In India, published salary ranges for civil engineers commonly sit around INR 150000 to INR 730000 a year, with an average near INR 460000. New graduates often start lower, while stronger profiles in larger firms or specialised roles can earn more.",
+      "typical_annual": 460000,
+      "marker_percent": 53
+    },
+    "specialisations": [
+      "Construction and site engineering",
+      "Structural engineering",
+      "Project engineering",
+      "Design support and drafting",
+      "Quality assurance",
+      "Surveying and estimation",
+      "Urban and infrastructure work",
+      "Transportation engineering"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "Be careful if you expect only office-based work",
+      "points": [
+        "Civil engineering often includes site visits, outdoor conditions, and coordination with contractors and workers, especially early in a job.",
+        "The first role after college may be practical and operational before it becomes fully design-focused.",
+        "Good marks help, but employers also value internships, software skills, drawing-reading ability, and comfort with deadlines and real-world施工",
+        "work. That mix can matter as much as classroom performance."
+      ]
+    },
+    "good_fit": {
+      "heading": "A good fit if you like building and problem-solving",
+      "points": [
+        "You enjoy maths, physics, and using them to understand real structures and projects.",
+        "You are comfortable with measurements, teamwork, safety rules, and practical work.",
+        "You want a career connected to roads, buildings, bridges, water systems, transport, or other infrastructure.",
+        "You can handle a course that mixes theory with labs, projects, and fieldwork."
+      ]
+    },
+    "tags": [
+      "Maths-heavy",
+      "Fieldwork",
+      "Infrastructure",
+      "Design and construction",
+      "Project-based",
+      "Science stream friendly",
+      "Regulated-style professional"
+    ]
+  },
+  "curriculum": {
+    "assessment_methods": "Semester-end written exams, continuous internal assessment, lab records, class tests, practical exams, and project evaluation; the programme runs as an 8-semester, 4-year degree.",
+    "learning_activities": "Lectures, tutorials, laboratories, surveying practice, drawing and design work, field visits, seminars, and a final-year project; the programme also includes Universal Human Values as part of the B.Tech induction programme and as a credited course in the IV semester.",
+    "years": [
+      {
+        "label": "Year 1",
+        "subjects": [
+          {
+            "description": "Engineering Mathematics and basic analytical methods for civil engineering problems.",
+            "name": "Engineering Mathematics I"
+          },
+          {
+            "description": "Engineering physics, measurement, and applied scientific concepts used in engineering.",
+            "name": "Applied Physics"
+          },
+          {
+            "description": "Fundamentals of engineering graphics, drafting, and technical communication.",
+            "name": "Engineering Graphics"
+          },
+          {
+            "description": "Basics of materials used in construction and their properties.",
+            "name": "Engineering Chemistry"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Year 2",
+        "subjects": [
+          {
+            "description": "Behaviour of rigid bodies and forces used in structural and machine-related calculations.",
+            "name": "Engineering Mechanics"
+          },
+          {
+            "description": "Measurement of land, levels, and alignment for civil works.",
+            "name": "Surveying"
+          },
+          {
+            "description": "Properties, testing, and selection of construction materials.",
+            "name": "Building Materials and Construction"
+          },
+          {
+            "description": "Fluid behaviour and flow in pipes, channels, and hydraulic systems.",
+            "name": "Fluid Mechanics"
+          }
+        ],
+        "year": 2
+      },
+      {
+        "label": "Year 3",
+        "subjects": [
+          {
+            "description": "Analysis and design of beams, columns, and basic structural members.",
+            "name": "Structural Analysis"
+          },
+          {
+            "description": "Design and construction principles for reinforced concrete elements.",
+            "name": "Reinforced Concrete Design"
+          },
+          {
+            "description": "Planning, estimation, and execution of building and infrastructure works.",
+            "name": "Construction Planning and Management"
+          },
+          {
+            "description": "Soil behaviour, bearing capacity, and foundation-related engineering.",
+            "name": "Geotechnical Engineering"
+          }
+        ],
+        "year": 3
+      },
+      {
+        "label": "Year 4",
+        "subjects": [
+          {
+            "description": "Design of roads, pavements, and transportation infrastructure.",
+            "name": "Transportation Engineering"
+          },
+          {
+            "description": "Water supply, drainage, and wastewater systems for settlements.",
+            "name": "Environmental Engineering"
+          },
+          {
+            "description": "Advanced electives or specialisation topics in civil engineering.",
+            "name": "Civil Engineering Elective Specialisation"
+          },
+          {
+            "description": "Capstone project, dissertation, or design project based on a civil engineering problem.",
+            "name": "Final Year Project"
+          }
+        ],
+        "year": 4
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "Entrance-based admission through the relevant university or state counselling route",
+      "Direct admission only where a college or university explicitly permits it for that seat category",
+      "Lateral entry only for diploma holders where the institution offers it",
+      "Class 12 science stream with Physics, Chemistry, and Mathematics"
+    ],
+    "admission_timeline": [
+      {
+        "description": "Complete Class 12 or equivalent with the required science subjects and marks.",
+        "step": 1,
+        "title": "Finish school requirements"
+      },
+      {
+        "description": "Appear for the applicable engineering entrance process or university admission process.",
+        "step": 2,
+        "title": "Entrance or application"
+      },
+      {
+        "description": "Take part in counselling, document verification, and seat allotment where required.",
+        "step": 3,
+        "title": "Counselling and verification"
+      },
+      {
+        "description": "Confirm admission, pay fees, and join the 8-semester B.Tech programme.",
+        "step": 4,
+        "title": "Seat confirmation"
+      },
+      {
+        "description": "For diploma holders, apply only if the institution allows lateral entry into B.Tech Civil Engineering.",
+        "step": 5,
+        "title": "Lateral entry route"
+      }
+    ],
+    "typical_requirements": [
+      "Class 12 or equivalent from a recognised board",
+      "Physics, Chemistry, and Mathematics in Class 12",
+      "Minimum 50% in Mathematics and 50% in Mathematics, Physics, and Chemistry together, with relaxations where the institution and category rule",
+      "follows or equivalent institute-specific cutoff as published for the year of admission"
+    ]
+  },
+  "skills": [
+    {
+      "description": "Uses algebra, calculus, and engineering reasoning to solve design and analysis problems.",
+      "name": "Mathematical problem-solving"
+    },
+    {
+      "description": "Reads drawings, plans, and site measurements accurately.",
+      "name": "Technical drawing and surveying"
+    },
+    {
+      "description": "Understands load paths, materials, and structural behaviour.",
+      "name": "Structural understanding"
+    },
+    {
+      "description": "Plans work, checks quality, and coordinates people and materials on site.",
+      "name": "Project and site coordination"
+    },
+    {
+      "description": "Applies basic environmental, transport, geotechnical, and water-system concepts in civil projects.",
+      "name": "Infrastructure systems thinking"
+    },
+    {
+      "description": "Works safely in laboratories and on construction sites while recording results clearly.",
+      "name": "Fieldwork and lab practice"
+    }
+  ],
+  "careers": [
+    {
+      "description": "Works on roads, buildings, bridges, drainage and other infrastructure; civil engineering graduates are listed for roles such as Civil Engineer, Construction or",
+      "route_badge": "Possible after bachelor's",
+      "title": "Civil Engineer",
+      "typical_route": "B.Tech Civil Engineering -> site or project experience"
+    },
+    {
+      "description": "Helps supervise day-to-day work on construction sites, check progress and coordinate labour, materials and contractors; site engineer is listed as a common role",
+      "route_badge": "Possible after bachelor's",
+      "title": "Site Engineer",
+      "typical_route": "B.Tech Civil Engineering -> site execution role"
+    },
+    {
+      "description": "Supports planning and delivery of building or infrastructure work; construction engineer is listed among common civil engineering jobs",
+      "route_badge": "Possible after bachelor's",
+      "title": "Construction Engineer",
+      "typical_route": "B.Tech Civil Engineering -> construction project role"
+    },
+    {
+      "description": "Supports analysis and design work for buildings and other structures; structural engineer is listed among civil engineering career options",
+      "route_badge": "Possible after bachelor's",
+      "title": "Structural Engineer",
+      "typical_route": "B.Tech Civil Engineering -> design office experience"
+    },
+    {
+      "description": "Works on scheduling, coordination and delivery of infrastructure projects; project engineer is listed among civil engineering jobs",
+      "route_badge": "Possible after bachelor's",
+      "title": "Project Engineer",
+      "typical_route": "B.Tech Civil Engineering -> project execution role"
+    },
+    {
+      "description": "In many central government, PSU and infrastructure employers, entry can be through UPSC Engineering Services, SSC Junior Engineer, or PSU recruitment through G",
+      "route_badge": "Advanced regulated route",
+      "title": "Assistant Engineer / Junior Engineer",
+      "typical_route": "B.Tech Civil Engineering -> UPSC ESE or SSC JE or PSU GATE recruitment -> employer training/induction"
+    }
+  ],
+  "further_study_pathway": [
+    "B.Tech Civil Engineering -> GATE ->",
+    "B.Tech Civil Engineering -> M.Tech/",
+    "B.Tech Civil Engineering -> M.Tech/",
+    "B.Tech Civil Engineering -> M.Tech/",
+    "B.Tech Civil Engineering -> M.Tech/"
+  ],
+  "recruiters": [
+    {
+      "description": "Large Indian engineering and construction company that recruits civil engineers for infrastructure work",
+      "logo_initials": "LT",
+      "name": "Larsen & Toubro",
+      "roles": [
+        "Civil Engineer",
+        "Site Engineer"
+      ],
+      "sector": "Construction and infrastructure"
+    },
+    {
+      "description": "Indian infrastructure and construction company that appears among top civil engineering recruiters",
+      "logo_initials": "TP",
+      "name": "Tata Projects",
+      "roles": [
+        "Project Engineer",
+        "Civil Engineer"
+      ],
+      "sector": "Infrastructure"
+    },
+    {
+      "description": "Indian construction and engineering company listed among civil engineering recruiters",
+      "logo_initials": "HC",
+      "name": "Hindustan Construction Company",
+      "roles": [
+        "Site Engineer",
+        "Project Engineer"
+      ],
+      "sector": "Construction"
+    },
+    {
+      "description": "Public sector organisation listed as a recruiter for civil engineering graduates",
+      "logo_initials": "CP",
+      "name": "Central Public Works Department",
+      "roles": [
+        "Assistant Engineer",
+        "Junior Engineer"
+      ],
+      "sector": "Government works and public infrastructure"
+    },
+    {
+      "description": "Public sector organisation listed as a recruiter for civil engineering graduates",
+      "logo_initials": "NH",
+      "name": "National Highways Authority of India",
+      "roles": [
+        "Civil Engineer",
+        "Project Engineer"
+      ],
+      "sector": "Roads and highways"
+    },
+    {
+      "description": "Public sector organisation listed as a recruiter for civil engineering graduates",
+      "logo_initials": "AA",
+      "name": "Airports Authority of India",
+      "roles": [
+        "Civil Engineer",
+        "Project Engineer"
+      ],
+      "sector": "Airports and infrastructure"
+    }
+  ],
+  "colleges": {
+    "data_note": "Rankings reflect overall engineering standing and do not measure every civil engineering classroom, lab, internship, or campus placement detail. Fees change with category, scholarship, and yearly revision, so families should verify the latest tuition, hostel, and mess charges before applying.",
+    "items": [
+      {
+        "admission_route": "JEE Advanced",
+        "annual_fee": 200000,
+        "city": "Chennai",
+        "course_name": "B.Tech Civil Engineering",
+        "duration_years": 4,
+        "highlight": "Strong national reputation in core and e",
+        "institution_type": "government",
+        "name": "Indian Institute of Technology Madras",
+        "rank": 1
+      },
+      {
+        "admission_route": "JEE Advanced",
+        "annual_fee": 200000,
+        "city": "New Delhi",
+        "course_name": "B.Tech Civil Engineering",
+        "duration_years": 4,
+        "highlight": "High-ranked engineering institute with a",
+        "institution_type": "government",
+        "name": "Indian Institute of Technology Delhi",
+        "rank": 2
+      },
+      {
+        "admission_route": "JEE Advanced",
+        "annual_fee": 200000,
+        "city": "Mumbai",
+        "course_name": "B.Tech Civil Engineering",
+        "duration_years": 4,
+        "highlight": "Large public engineering institute with",
+        "institution_type": "government",
+        "name": "Indian Institute of Technology Bombay",
+        "rank": 3
+      },
+      {
+        "admission_route": "JEE Advanced",
+        "annual_fee": 200000,
+        "city": "Kanpur",
+        "course_name": "B.Tech Civil Engineering",
+        "duration_years": 4,
+        "highlight": "Known for a strong technical curriculum",
+        "institution_type": "government",
+        "name": "Indian Institute of Technology Kanpur",
+        "rank": 4
+      },
+      {
+        "admission_route": "JEE Advanced",
+        "annual_fee": 200000,
+        "city": "Kharagpur",
+        "course_name": "B.Tech Civil Engineering",
+        "duration_years": 4,
+        "highlight": "Established campus with long-running cor",
+        "institution_type": "government",
+        "name": "Indian Institute of Technology Kharagpur",
+        "rank": 5
+      },
+      {
+        "admission_route": "JEE Main / state or institute-specific",
+        "annual_fee": 158000,
+        "city": "Kolkata",
+        "course_name": "B.Tech Civil Engineering",
+        "duration_years": 4,
+        "highlight": "Private university option with tuition f",
+        "institution_type": "private",
+        "name": "Techno India University, Kolkata",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "NIRF Engineering Ranking 2025 and widely published civil engineering fee pages",
+    "ranking_updated": "2025-09"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "JEE Main or JEE Advanced, then choose a college, specialisation, and internship.",
+      "course_name": "B.Tech Civil Engineering",
+      "laboratory_exposure": "Material testing, surveying, strength of",
+      "main_focus": "Planning, designing, building, and maint",
+      "statistics_level": "Moderate, mainly for data analysis, proj"
+    },
+    {
+      "common_next_steps": "JEE Main or JEE Advanced for strong engineering colleges; then internships and G",
+      "course_name": "B.Tech Mechanical Engineering",
+      "laboratory_exposure": "Machine lab, workshop, thermal and manua",
+      "main_focus": "Machines, energy systems, manufacturing",
+      "statistics_level": "Moderate, with modelling and design cal"
+    },
+    {
+      "common_next_steps": "JEE Main, then state counselling or institute counselling; further study may be",
+      "course_name": "B.Tech Electrical Engineering",
+      "laboratory_exposure": "Circuits, power systems, control systems",
+      "main_focus": "Electric power, electronics basics, mot",
+      "statistics_level": "Moderate, especially in circuit analysis"
+    }
+  ],
+  "fees": {
+    "footnote": "For most families, government and premier national colleges sit in very different fee bands from private colleges. Tuition can change by category, seat type, scholarship, and annual revision, so confirm the latest fee, ₹",
+    "rows": [
+      {
+        "category": "Government college tuition",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": true,
+        "max": 60000,
+        "min": 20000,
+        "parent_check": "Check whether the quoted amount includes only tuition or also hostel, caution money, and institute fees."
+      },
+      {
+        "category": "Premier national institute tuition",
+        "frequency": "Per year",
+        "institution_type": "premier_national",
+        "is_variable": true,
+        "max": 250000,
+        "min": 180000,
+        "parent_check": "Check the annual tuition separately from hostel, mess, and other student charges."
+      },
+      {
+        "category": "Private college tuition",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": true,
+        "max": 450000,
+        "min": 150000,
+        "parent_check": "Check whether the fee is only tuition or a combined academic fee with hostel and other charges."
+      },
+      {
+        "category": "Application and counselling charges",
+        "frequency": "As required",
+        "institution_type": null,
+        "is_variable": true,
+        "max": null,
+        "min": null,
+        "parent_check": "These are paid separately from tuition and can vary by exam board, counselling round, and college."
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "Focus on Class 11-12 Maths, Physics, and Chemistry, because B.Tech Civil Engineering admissions in India usually expect a strong science background and entrance-exam preparation.",
+      "stage": "Grades 8-10",
+      "title": "Build the right school base"
+    },
+    {
+      "description": "Work on algebra, trigonometry, coordinate geometry, and basic mechanics. These help later in surveying, structural analysis, and design subjects.",
+      "stage": "Grades 8-10",
+      "title": "Strengthen maths early"
+    },
+    {
+      "description": "Try school projects, model-making, and simple field observation such as measuring, sketching, or map reading. Civil engineering suits students who like practical work and problem-solving.",
+      "stage": "Grades 8-10",
+      "title": "Test your interest in real‑世界/"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "B.Tech Civil Engineering is a 4-year undergraduate engineering degree in India. It usually covers structures, surveying, construction materials, transportation, water resources, geotechnical engineering, and project work.",
+      "question": "What is B.Tech Civil Engineering?"
+    },
+    {
+      "answer": "Most colleges admit students after Class 12 with Physics, Chemistry, and Mathematics, usually through an engineering entrance process such as JEE Main or a state/college-level exam.",
+      "question": "What do students need after Class 12?"
+    },
+    {
+      "answer": "Civil engineering is a regulated engineering profession in the sense that some public-sector jobs, design approvals, or higher responsibility roles may require the right degree, training, and sometimes registration with a professional body or employer-specific licensing requirements.",
+      "question": "Can I work as a civil engineer straight after the degree?"
+    },
+    {
+      "answer": "Typical entry roles include site engineer, junior engineer, quantity surveyor assistant, drafting/BIM support, estimation assistant, and construction supervision roles.",
+      "question": "What jobs do graduates usually start with?"
+    },
+    {
+      "answer": "The work is a mix of classroom learning, labs, software, drawings, and site visits. Students who enjoy maths, physics, and practical problem-solving usually find it easier.",
+      "question": "Is this course theory-heavy or practical?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "B.Tech Civil Engineering is a sensible option for students who like maths, physics, drawings, and practical problem-solving. The course usually lasts 4 years and can lead to work in construction, infrastructure, design support, and site supervision. Families should look beyond college name alone and check whether the programme has good labs, software exposure, site visits, internships, and placement support. It also helps to ask how much of the learning is classroom-based versus field-based, because civil engineering is not only about design; it also involves understanding how projects are built safely and on time. If your child prefers visible, hands-on work and steady technical growth, this can be a good fit.",
+    "questions": [
+      "Does my child enjoy maths and applied science enough for this course?",
+      "Will the college provide lab work, site exposure, and internship chances?",
+      "Which entrance exams and admission routes should we prepare for?",
+      "What kind of first job roles usually follow this degree?",
+      "Is the student comfortable with fieldwork, drawings, and project deadlines?",
+      "Would a diploma route or a direct B.Tech route suit our situation better?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "National Testing Agency",
+        "title": "JEE(Main) portal",
+        "url": "https://jeemain.nta.nic.in/"
+      },
+      {
+        "publisher": "Joint Seat Allocation Authority",
+        "title": "JoSAA official website",
+        "url": "https://josaa.nic.in/"
+      },
+      {
+        "publisher": "All India Council for Technical Education",
+        "title": "AICTE official website",
+        "url": "https://www.aicte-india.org/"
+      },
+      {
+        "publisher": "University Grants Commission",
+        "title": "UGC official website",
+        "url": "https://www.ugc.gov.in/"
+      },
+      {
+        "publisher": "Council of Architecture",
+        "title": "Council of Architecture official website",
+        "url": "https://www.coa.gov.in/"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  }
+}

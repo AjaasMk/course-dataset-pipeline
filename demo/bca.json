@@ -1,0 +1,587 @@
+{
+  "course_id": "crs_bca",
+  "slug": "bca",
+  "course_name": "BCA",
+  "currency": "INR",
+  "region": "India",
+  "category": "Computer Applications & IT",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Practical, industry-facing degree",
+    "fit": {
+      "indicators": [
+        "You want to study computers and software after Class 12",
+        "You prefer coding, projects, and lab work",
+        "You are interested in IT jobs, support roles, or higher study in tech"
+      ],
+      "note": "A good fit for students who like applied computing and steady day-to-day problem solving.",
+      "score_percent": 86
+    },
+    "summary": "BCA is an undergraduate degree in computer applications that builds a base in programming, databases, web development, and IT fundamentals. In India, it is usually offered as a 3-year or 4-year programme, giving students a route into entry-level tech roles or later specialisation through MCA, an MBA, or other computing studies."
+  },
+  "quick_facts": {
+    "career_direction": "Software and IT support, web and app development, database work, QA, B",
+    "entry_level": "Class 12",
+    "indicative_annual_fees": {
+      "max": 250000,
+      "min": 50000
+    },
+    "learning_style": "Hands-on, practical, coding-based learning with projects and",
+    "suitable_streams": [
+      "Science",
+      "Commerce",
+      "Arts"
+    ],
+    "typical_duration": {
+      "max_years": 4,
+      "min_years": 3
+    }
+  },
+  "seo": {
+    "meta_description": "BCA in India is an undergraduate computer applications degree with a 3- to 4-year duration, practical coding focus, and pathways into IT and further study.",
+    "page_title": "BCA Course in India: Duration, Fees, Eligibility and Career Options"
+  },
+  "subcategory": "Computer Applications",
+  "overview": {
+    "heading": "What is BCA?",
+    "paragraphs": [
+      "BCA stands for Bachelor of Computer Applications. It is an undergraduate course for students after Class 12 who want to learn how computers are used in real jobs, especially through coding, software tools, and project-based practice. The course is usually three years long, though some colleges may structure it differently or offer it with added special modules.",
+      "The syllabus commonly covers programming, data structures, databases, web design, computer networks, operating systems, software engineering, cloud basics, and project work. Many programmes also include practical lab work, so students spend time building, testing, and fixing things rather than only reading theory. That makes the course more hands-on than many classroom-only degrees.",
+      "For many students, BCA is a route into software development, web development, database work, IT support, testing, and related fields. Good results usually come from steady coding practice, internships, and extra skills such as a modern programming language, web technologies, or industry certifications. Students who like problem-solving and regular practice often adapt well to this course."
+    ]
+  },
+  "snapshot": {
+    "data_note": "In India, BCA pay is shaped mainly by job role, city, company size, internships, certifications, and hands-on skills. Entry-level roles often start around 2.5–3.2 lakh a year, while stronger profiles in software, systems, or analyst work can reach about 10–12 lakh a year and rise further with experience.",
+    "salary": {
+      "higher_annual": 1200000,
+      "higher_is_open_ended": false,
+      "lower_annual": 250000,
+      "note": "A BCA degree does not lead to one fixed salary. Web support and basic IT roles usually pay less at the start, while software development, system analysis, database work, and stronger technical specialisations can pay more. Location, interview performance, internships, and added skills can shift pay noticeably.",
+      "typical_annual": 320000,
+      "marker_percent": 7
+    },
+    "specialisations": [
+      "Software development",
+      "Database management",
+      "Information security",
+      "Artificial intelligence and machine learning",
+      "Data science",
+      "Human-computer interaction",
+      "Web development",
+      "Cloud computing"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "Be careful if you expect this to be a shortcut to a high salary",
+      "points": [
+        "Starting pay is often modest, and the first job may be in support, testing, or junior development before moving into higher-paying work.",
+        "Many good roles need more than the degree alone, such as certifications, internships, or strong project work.",
+        "If coding, debugging, and regular practice feel tiring, the course can feel demanding because the learning is hands-on and technical.",
+        "A BCA degree helps with entry into IT, but the best roles usually go to students who keep learning new tools after class."
+      ]
+    },
+    "good_fit": {
+      "heading": "BCA suits students who",
+      "points": [
+        "like computers and want to understand how software is built and used",
+        "enjoy practical, project-based learning more than only textbook study",
+        "are comfortable with logic, problem-solving, and regular coding practice",
+        "want an early path into software, web, app, database, QA, or IT support work after Class 12"
+      ]
+    },
+    "tags": [
+      "Coding",
+      "Practical learning",
+      "IT careers",
+      "Software development",
+      "Web development",
+      "Database work",
+      "QA/testing"
+    ]
+  },
+  "curriculum": {
+    "assessment_methods": "Continuous internal assessment through assignments, lab work, quizzes, presentations, mini-projects, and semester-end written examinations; practical coding and project evaluation become important in later years.",
+    "learning_activities": "Lectures, programming labs, guided coding practice, problem-solving exercises, case studies, teamwork on software projects, and a final-year project or internship-oriented capstone.",
+    "years": [
+      {
+        "label": "Year 1",
+        "subjects": [
+          {
+            "description": "Introduction to computer systems, hardware, software, operating systems, and basic digital concepts.",
+            "name": "Computer Fundamentals"
+          },
+          {
+            "description": "Problem-solving using a beginner programming language and basic program design.",
+            "name": "Programming Logic and C"
+          },
+          {
+            "description": "Core mathematical ideas used in computing, including sets, relations, logic, and matrices.",
+            "name": "Discrete Mathematics"
+          },
+          {
+            "description": "Professional writing, speaking, and workplace communication for IT settings.",
+            "name": "English and Technical Communication"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Year 2",
+        "subjects": [
+          {
+            "description": "Structured and object-oriented programming with code organisation and reuse.",
+            "name": "Object-Oriented Programming with Java"
+          },
+          {
+            "description": "Designing and querying databases for storing and retrieving information.",
+            "name": "Database Management Systems"
+          },
+          {
+            "description": "Understanding web page structure, styling, and client-side development.",
+            "name": "Web Technologies"
+          },
+          {
+            "description": "Data structures and basic algorithm design for efficient computing.",
+            "name": "Data Structures and Algorithms"
+          }
+        ],
+        "year": 2
+      },
+      {
+        "label": "Year 3",
+        "subjects": [
+          {
+            "description": "Managing processes, memory, files, and system resources in modern operating systems.",
+            "name": "Operating Systems"
+          },
+          {
+            "description": "Designing, analysing, and administering computer networks and internet protocols.",
+            "name": "Computer Networks"
+          },
+          {
+            "description": "Building applications with secure coding practices and software engineering methods.",
+            "name": "Software Engineering and Application Development"
+          },
+          {
+            "description": "Elective work in a focused area such as mobile apps, cloud basics, data analytics, or cybersecurity.",
+            "name": "Specialisation Elective"
+          }
+        ],
+        "year": 3
+      },
+      {
+        "label": "Year 4",
+        "subjects": [
+          {
+            "description": "Using methods for collecting, analysing, and presenting research or project data.",
+            "name": "Research Methods and Project Design"
+          },
+          {
+            "description": "Advanced study in a chosen track such as full-stack development, data science, or information security.",
+            "name": "Advanced Specialisation"
+          },
+          {
+            "description": "Industry-based problem solving through internship, live project, or guided workplace practice.",
+            "name": "Industry Project or Internship"
+          },
+          {
+            "description": "Independent final-year capstone with documentation, testing, and presentation.",
+            "name": "Capstone Project and Viva"
+          }
+        ],
+        "year": 4
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "Merit-based admission through Class 12 marks",
+      "Entrance-test-based admission in some universities",
+      "Counselling or centralised seat allotment where applicable",
+      "Direct admission in some private colleges against available seats"
+    ],
+    "admission_timeline": [
+      {
+        "description": "Complete Class 12 or equivalent examination with the required subjects and marks.",
+        "step": 1,
+        "title": "Finish qualifying examination"
+      },
+      {
+        "description": "Apply to colleges or universities and, where required, register for an entrance test.",
+        "step": 2,
+        "title": "Submit application"
+      },
+      {
+        "description": "Appear for the entrance test or participate in merit-based shortlisting if the institution uses that route.",
+        "step": 3,
+        "title": "Selection process"
+      },
+      {
+        "description": "Attend counselling, document verification, and seat allotment or college-level admission.",
+        "step": 4,
+        "title": "Confirm admission"
+      },
+      {
+        "description": "Pay fees and complete enrolment before classes begin.",
+        "step": 5,
+        "title": "Final joining"
+      }
+    ],
+    "typical_requirements": [
+      "Pass Class 12 or equivalent from a recognised board",
+      "Mathematics is commonly preferred or required by many colleges",
+      "Some institutions also prefer Computer Science, Informatics Practices, Business Mathematics, or related subjects",
+      "A minimum aggregate of about 45% to 50% in Class 12 is common, with higher cut-offs in competitive colleges"
+    ]
+  },
+  "skills": [
+    {
+      "description": "Writing clear programs and solving problems step by step.",
+      "name": "Programming"
+    },
+    {
+      "description": "Building and maintaining websites and software applications.",
+      "name": "Web and app development"
+    },
+    {
+      "description": "Designing, querying, and managing databases.",
+      "name": "Database management"
+    },
+    {
+      "description": "Finding and fixing errors in code and testing software.",
+      "name": "Debugging and software testing"
+    },
+    {
+      "description": "Working with computers, networks, and operating systems.",
+      "name": "IT support and system basics"
+    },
+    {
+      "description": "Thinking logically and working on team projects with documentation.",
+      "name": "Analytical and teamwork skills"
+    }
+  ],
+  "careers": [
+    {
+      "description": "Builds and maintains software applications for desktop, web, or mobile platforms. This is a common entry role after BCA for students with programming and SQL or",
+      "route_badge": "Possible after bachelor's",
+      "title": "Software Developer",
+      "typical_route": "BCA -> programming projects -> internship or entry-level developer role"
+    },
+    {
+      "description": "Creates and updates websites and web interfaces using HTML, CSS, JavaScript, and related tools.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Web Developer",
+      "typical_route": "BCA -> web development portfolio -> internship or junior web role"
+    },
+    {
+      "description": "Tests software to find bugs, checks whether features work as expected, and documents defects for developers.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Software Tester / QA Analyst",
+      "typical_route": "BCA -> testing tools and basics -> junior QA role"
+    },
+    {
+      "description": "Helps users solve basic hardware, software, and network problems in offices or service desks.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Technical Support Engineer",
+      "typical_route": "BCA -> IT support skills -> help desk or technical support role"
+    },
+    {
+      "description": "Works with databases to store, organise, and retrieve data safely for companies.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Database Administrator / Database Associate",
+      "typical_route": "BCA -> SQL and database projects -> entry-level database role"
+    },
+    {
+      "description": "Studies business needs and helps teams turn them into software or process requirements.",
+      "route_badge": "Postgraduate route",
+      "title": "Business Analyst",
+      "typical_route": "BCA -> work experience or MBA/MCA -> business analysis role"
+    }
+  ],
+  "further_study_pathway": [
+    "MCA (Master of Computer Application",
+    "MBA with IT or systems focus",
+    "MSc Computer Science or IT",
+    "Professional certifications in Java",
+    "Python or full-stack development,,"
+  ],
+  "recruiters": [
+    {
+      "description": "Large Indian IT services company that recruits for software development, testing, support, and delivery roles.",
+      "logo_initials": "TC",
+      "name": "Tata Consultancy Services",
+      "roles": [
+        "Software Developer",
+        "QA Analyst,"
+      ],
+      "sector": "Information technology services"
+    },
+    {
+      "description": "Indian IT services and consulting company that hires graduates for development, support, infrastructure, and testing work.",
+      "logo_initials": "IN",
+      "name": "Infosys",
+      "roles": [
+        "Software Developer",
+        "Technical Support Engineer"
+      ],
+      "sector": "Information technology services"
+    },
+    {
+      "description": "Global technology services company with hiring in India for application development, testing, and consulting roles.",
+      "logo_initials": "WI",
+      "name": "Wipro",
+      "roles": [
+        "Software Developer",
+        "Software Tester"
+      ],
+      "sector": "Information technology services"
+    },
+    {
+      "description": "Indian engineering and IT services company that recruits for software, infrastructure, and support functions.",
+      "logo_initials": "HT",
+      "name": "HCLTech",
+      "roles": [
+        "Technical Support Engineer",
+        "System Administrator"
+      ],
+      "sector": "Information technology services"
+    },
+    {
+      "description": "Global consulting and technology services company that hires graduates for application support, testing, and analyst roles in India.",
+      "logo_initials": "CO",
+      "name": "Cognizant",
+      "roles": [
+        "Software Developer",
+        "Business Analyst"
+      ],
+      "sector": "Information technology services"
+    },
+    {
+      "description": "Technology consulting and outsourcing company that recruits graduates for development and test roles.",
+      "logo_initials": "CA",
+      "name": "Capgemini",
+      "roles": [
+        "Software Developer",
+        "Software Tester"
+      ],
+      "sector": "Information technology services"
+    }
+  ],
+  "colleges": {
+    "data_note": "Rankings combine broad reputation, course cost, and general student-facing indicators. A higher rank does not mean the best choice for every student. Families should still check the current syllabus, campus approval, attendance rules, and extra charges before applying.",
+    "items": [
+      {
+        "admission_route": "Class 12 merit-based admission or the 12",
+        "annual_fee": 250000,
+        "city": "Jalandhar",
+        "course_name": "BCA",
+        "duration_years": 3,
+        "highlight": "Strong campus scale and high overall BCA",
+        "institution_type": "private",
+        "name": "Lovely Professional University",
+        "rank": 1
+      },
+      {
+        "admission_route": "Class 12 merit-based admission",
+        "annual_fee": 150000,
+        "city": "Bengaluru",
+        "course_name": "BCA",
+        "duration_years": 3,
+        "highlight": "NAAC A+ and strong academics",
+        "institution_type": "private",
+        "name": "Presidency College",
+        "rank": 2
+      },
+      {
+        "admission_route": "Class 12 merit-based admission",
+        "annual_fee": 172833,
+        "city": "New Delhi",
+        "course_name": "BCA",
+        "duration_years": 3,
+        "highlight": "Well-known Delhi NCR option",
+        "institution_type": "private",
+        "name": "Jagannath Community College",
+        "rank": 3
+      },
+      {
+        "admission_route": "Class 12 merit-based admission",
+        "annual_fee": 45000,
+        "city": "Bengaluru",
+        "course_name": "BCA",
+        "duration_years": 3,
+        "highlight": "Established university option with lower",
+        "institution_type": "private",
+        "name": "Christ University",
+        "rank": 4
+      },
+      {
+        "admission_route": "Class 12 merit-based admission",
+        "annual_fee": 114500,
+        "city": "Chennai",
+        "course_name": "BCA",
+        "duration_years": 3,
+        "highlight": "Large arts and science college option",
+        "institution_type": "private",
+        "name": "Loyola College",
+        "rank": 5
+      },
+      {
+        "admission_route": "Class 12 merit-based admission",
+        "annual_fee": 81333,
+        "city": "Prayagraj",
+        "course_name": "BCA",
+        "duration_years": 3,
+        "highlight": "Government university option with lower",
+        "institution_type": "government",
+        "name": "University of Allahabad",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "Collegedunia and Careers360 BCA college listings",
+    "ranking_updated": "2026-08"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "BCA jobs, MCA, certification courses, or a software testing role",
+      "course_name": "BCA",
+      "laboratory_exposure": "Coding labs, basic databases, web/app or",
+      "main_focus": "Practical computer applications and software basics",
+      "statistics_level": "Basic statistics and data handling"
+    },
+    {
+      "common_next_steps": "MSc, analytics roles, data science preparation, or IT jobs with stronger theory",
+      "course_name": "BSc Computer Science",
+      "laboratory_exposure": "Programming and computer labs, usually",
+      "main_focus": "Computer science theory with mathematics and programming",
+      "statistics_level": "Moderate to strong mathematics and stats"
+    },
+    {
+      "common_next_steps": "Software engineering jobs, GATE, higher studies, or specialised tech roles",
+      "course_name": "BTech Computer Science and Engineering",
+      "laboratory_exposure": "More intensive engineering and coding",
+      "main_focus": "Engineering approach to computing, systems, and software",
+      "statistics_level": "Higher mathematics and applied problem"
+    }
+  ],
+  "fees": {
+    "footnote": "Tuition varies a lot by college type. Government colleges usually cost much less than private colleges, while hostel, transport, laptop, and exam fees can add to the total. Families should confirm the current tuition, if",
+    "rows": [
+      {
+        "category": "Tuition fee",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": true,
+        "max": 100000,
+        "min": 1500,
+        "parent_check": "Check whether the quoted amount is tuition only or includes university and exam charges."
+      },
+      {
+        "category": "Tuition fee",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": true,
+        "max": 250000,
+        "min": 45000,
+        "parent_check": "Check the exact annual tuition and whether it changes by campus, quota, or specialisation."
+      },
+      {
+        "category": "Tuition fee",
+        "frequency": "Per year",
+        "institution_type": "premier_national",
+        "is_variable": true,
+        "max": 175000,
+        "min": 50000,
+        "parent_check": "Check whether the institute charges a separate hostel, lab, or university fee on top of tuition."
+      },
+      {
+        "category": "Application or admission fee",
+        "frequency": "One time",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 2000,
+        "min": 500,
+        "parent_check": "Confirm whether this is refundable and whether it is separate from seat confirmation."
+      },
+      {
+        "category": "Examination, library, and lab charges",
+        "frequency": "As required",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 10000,
+        "min": 2000,
+        "parent_check": "Ask which charges repeat every semester and which are included in tuition."
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "Build Class 12 basics in mathematics, logic, and computer use. Add regular practice in typing, spreadsheets, and simple problem-solving so the transition into coding feels easier.",
+      "stage": "Grades 8-10",
+      "title": "Strengthen core habits"
+    },
+    {
+      "description": "Focus on subjects that support BCA: computer science or informatics if available, plus mathematics and English. Start learning one programming language and keep a small project file with apps, websites, or code exercises",
+      "stage": "Grade 11",
+      "title": "Start coding and keep records"
+    },
+    {
+      "description": "Check college eligibility rules, entrance requirements, and fee structure. Compare practical exposure, lab access, internship support, and placement assistance. Prepare documents, apply on time, and plan for the nextstep",
+      "stage": "Grade 12",
+      "title": "Shortlist and apply carefully"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "BCA is usually a 3-year undergraduate course in India, and some institutions may follow longer structures under newer flexible formats. Check the specific college before applying.",
+      "question": "How long does BCA take?"
+    },
+    {
+      "answer": "Most colleges ask for Class 12 completion. Many accept students from Science, Commerce, or Arts, but the exact subject and marks requirements differ by institution.",
+      "question": "Who can join BCA?"
+    },
+    {
+      "answer": "The course usually leads to work in software support, web and app development, database work, testing, and entry-level IT roles.",
+      "question": "What jobs can follow BCA?"
+    },
+    {
+      "answer": "BCA can lead to jobs directly, but many students continue with MCA, MSc Computer Science, or other postgraduate study to build stronger technical skills.",
+      "question": "Is higher study needed after BCA?"
+    },
+    {
+      "answer": "For regulated professional roles, BCA is not the final step by itself. The next requirement depends on the exact role, employer, and any later certification or postgraduate study.",
+      "question": "Does BCA give a licence to work in every IT role?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "BCA suits students who enjoy computers, practical work, and step-by-step problem solving. The course is usually a good fit for families looking for an undergraduate path into software, support, testing, databases, and app or web work. It helps when the student is comfortable with regular practice, not just exams, because coding improves through repetition and small projects. Parents can look beyond the degree name and ask about labs, project work, internships, and whether the college helps students move from classroom skills to real work. It also helps to compare total cost, commute, and the student’s willingness to spend time on practice outside class. A steady student with curiosity and patience often does well here.",
+    "questions": [
+      "Does my child enjoy computers enough for daily coding practice?",
+      "Which colleges have good labs, projects, and internships?",
+      "What is the full cost, including hostel, travel, and devices?",
+      "Will the student want a job after BCA or further study after it?",
+      "How much math and logic comfort is needed for the course?",
+      "Is the college recognized and the degree valid for higher study?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "University Grants Commission",
+        "title": "State-wise list of Fake Universities",
+        "url": "https://www.ugc.gov.in/universitydetails/Fakeuniversity"
+      },
+      {
+        "publisher": "National Testing Agency",
+        "title": "Notice Board Archive",
+        "url": "https://nta.ac.in/NoticeBoardArchive?_nlid=4avZ49BrRU&_nhids=MlgQuy9wvL"
+      },
+      {
+        "publisher": "University Grants Commission",
+        "title": "Public Notice: Stipendium Hungaricum Scholarship Programme",
+        "url": "https://www.ugc.gov.in/pdfnews/5130869_Public-Notice-Stipendium-Scholarship.pdf"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  }
+}

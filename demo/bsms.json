@@ -1,0 +1,616 @@
+{
+  "course_id": "crs_bsms",
+  "slug": "bsms",
+  "course_name": "BSMS",
+  "currency": "INR",
+  "region": "India",
+  "category": "Medical & Allied Health",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Clinical AYUSH pathway",
+    "fit": {
+      "indicators": [
+        "Strong interest in biology and human health",
+        "Comfort with patient care and long practical training",
+        "Interest in traditional Indian medical systems"
+      ],
+      "note": "Best for students who want a medical career in Siddha and are ready for a long, structured healthcare degree.",
+      "score_percent": 83
+    },
+    "summary": "BSMS is the undergraduate degree for students who want to study Siddha medicine and work in healthcare through the Indian AYUSH system. It combines classroom learning, clinical training, and an internship, so families should plan for a long professional course with regulated entry into practice."
+  },
+  "quick_facts": {
+    "career_direction": "Siddha doctor, clinical practice, AYUSH hospitals and wellness centres",
+    "entry_level": "Class 12 with Physics, Chemistry and Bi-",
+    "indicative_annual_fees": {
+      "max": 400000,
+      "min": 20000
+    },
+    "learning_style": "Biology-focused study, clinical observation, hands-on practi",
+    "suitable_streams": [
+      "Science"
+    ],
+    "typical_duration": {
+      "max_years": 5.5,
+      "min_years": 5.5
+    }
+  },
+  "seo": {
+    "meta_description": "BSMS is the undergraduate Siddha medicine degree in India. See course level, duration, fees, eligibility, career path, and quick facts for students and parents.",
+    "page_title": "BSMS Course in India: Duration, Fees, Eligibility, and Career Scope"
+  },
+  "subcategory": "Siddha Medicine",
+  "overview": {
+    "heading": "What is BSMS?",
+    "paragraphs": [
+      "BSMS, or Bachelor of Siddha Medicine and Surgery, is an undergraduate medical degree in Siddha, one of India’s traditional systems of medicine. The course usually runs for 5.5 years, including internship, and it trains students to examine patients, understand Siddha theory, and use medicines and treatments within the AYUSH system.",
+      "Students spend a large part of the course on biology-based study, clinical observation, practical training, and learning how Siddha hospitals and dispensaries work. It suits someone who is comfortable with science subjects, patient contact, and careful long-term study rather than quick job training.",
+      "After BSMS, many graduates work in Siddha clinics, AYUSH hospitals, wellness centres, teaching, research, or public health roles. To practise as a Siddha doctor, the graduate must complete the degree and then register under the relevant state or national AYUSH system before taking up clinical practice."
+    ]
+  },
+  "snapshot": {
+    "data_note": "For India, BSMS earnings vary widely by setting, experience, and location. Pay is usually lower at the start in hospitals or clinics and can rise with experience, private practice, referral base, and any postgraduate specialisation in Siddha.",
+    "salary": {
+      "higher_annual": 1200000,
+      "higher_is_open_ended": true,
+      "lower_annual": 250000,
+      "note": "Typical starting pay is often modest for fresh graduates in hospitals or clinics, while experienced practitioners in private practice or senior roles can earn much more.",
+      "typical_annual": 600000,
+      "marker_percent": 37
+    },
+    "specialisations": [
+      "Siddha Maruthuvam (General Medicine)",
+      "Gunapadam (Siddha Pharmacology)",
+      "Nanju Nool (Toxicology)",
+      "Noi Nadal (Pathology)",
+      "Sirappu Maruthuvam (Special Medicine)",
+      "Pillaippini Maruthvam (Paediatrics)",
+      "Varma therapy",
+      "Research and teaching in Siddha"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "Be careful if you expect this course to mean instant hospital work or",
+      "points": [
+        "This is a full medical degree with a long training period, not a short vocational course.",
+        "Clinical work in Siddha depends on registration and the rules for practising under the AYUSH system.",
+        "The work is patient-facing and methodical, so it may not suit students who want a non-clinical or desk-only career.",
+        "Income is not uniform after graduation; clinic location, reputation, and further study make a big difference."
+      ]
+    },
+    "good_fit": {
+      "heading": "A good fit if you like...",
+      "points": [
+        "Biology and health science subjects in Class 11-12.",
+        "Patient care and observing how treatment changes over time.",
+        "Learning a traditional medical system with modern clinical discipline.",
+        "Working in hospitals, clinics, wellness settings, or public health roles."
+      ]
+    },
+    "tags": [
+      "Science stream",
+      "Medical degree",
+      "AYUSH",
+      "Traditional medicine",
+      "Patient care",
+      "Clinical practice",
+      "Long duration"
+    ]
+  },
+  "curriculum": {
+    "assessment_methods": "University theory examinations, practical and viva voce, clinical case presentation, ward rounds, and final professional examinations; the internship year is assessed through supervised clinical postings and logbook completion.",
+    "learning_activities": "Lectures, dissection and basic sciences practicals, Siddha materia medica study, case-taking, pulse and symptom examination, clinical postings in Siddha hospitals, seminars, and supervised internship work.",
+    "years": [
+      {
+        "label": "Year 1",
+        "subjects": [
+          {
+            "description": "Study of human body structure through basic anatomical concepts and practical observation.",
+            "name": "Human Anatomy"
+          },
+          {
+            "description": "Fundamentals of body functions and normal physiological processes.",
+            "name": "Human Physiology"
+          },
+          {
+            "description": "Introduction to Siddha principles, history, and the basic framework of the system.",
+            "name": "Fundamentals of Siddha Medicine"
+          },
+          {
+            "description": "Elementary study of health, disease, and preventive care in community settings.",
+            "name": "Community Health Basics"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Year 2",
+        "subjects": [
+          {
+            "description": "Detailed study of disease processes, causes, and body changes in illness.",
+            "name": "General Pathology"
+          },
+          {
+            "description": "Study of microbes, infection, and basic laboratory understanding of disease transmission.",
+            "name": "Medical Microbiology"
+          },
+          {
+            "description": "Overview of drug action, dosage concepts, and safe use of medicines.",
+            "name": "Pharmacology Principles"
+          },
+          {
+            "description": "Systematic study of Siddha diagnostic methods and patient examination.",
+            "name": "Siddha Diagnostic Methods"
+          }
+        ],
+        "year": 2
+      },
+      {
+        "label": "Year 3",
+        "subjects": [
+          {
+            "description": "Study of Siddha medicines prepared from plants, minerals, and metals.",
+            "name": "Siddha Materia Medica"
+          },
+          {
+            "description": "Understanding of classical Siddha formulations and their preparation.",
+            "name": "Siddha Pharmaceutics"
+          },
+          {
+            "description": "Clinical features, diagnosis, and management of common disorders using Siddha principles.",
+            "name": "General Medicine in Siddha"
+          },
+          {
+            "description": "Prevention, health promotion, and patient education in public health contexts.",
+            "name": "Preventive and Social Medicine"
+          }
+        ],
+        "year": 3
+      },
+      {
+        "label": "Year 4",
+        "subjects": [
+          {
+            "description": "Special study of disorders affecting women, pregnancy, and childbirth care.",
+            "name": "Siddha Obstetrics and Gynaecology"
+          },
+          {
+            "description": "Study of illness patterns and treatment approaches for children and adolescents.",
+            "name": "Siddha Paediatrics"
+          },
+          {
+            "description": "Advanced clinical training in selected Siddha specialities and integrated patient care.",
+            "name": "Advanced Siddha Clinical Practice"
+          },
+          {
+            "description": "Review of ethical practice, clinical documentation, and doctor-patient communication.",
+            "name": "Medical Ethics and Communication"
+          }
+        ],
+        "year": 4
+      },
+      {
+        "label": "Internship",
+        "subjects": [
+          {
+            "description": "Supervised bedside care and routine work in Siddha outpatient and inpatient services.",
+            "name": "Clinical Posting in Siddha Medicine"
+          },
+          {
+            "description": "Work in medicine, paediatrics, gynaecology, and other hospital departments under supervision.",
+            "name": "Rotational Hospital Posting"
+          },
+          {
+            "description": "Recording patient histories, examination findings, and treatment notes in a clinical logbook.",
+            "name": "Case Record Documentation"
+          },
+          {
+            "description": "Practical community exposure through health camps, counselling, and referral support.",
+            "name": "Community Health Internship"
+          }
+        ],
+        "year": 5
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "NEET-UG qualification",
+      "State or central AYUSH counselling",
+      "Seat allotment through the relevant counselling authority",
+      "College reporting and document verification"
+    ],
+    "admission_timeline": [
+      {
+        "description": "Appear for NEET-UG after Class 12.",
+        "step": 1,
+        "title": "Entrance examination"
+      },
+      {
+        "description": "Register for AYUSH counselling through the national or state portal.",
+        "step": 2,
+        "title": "Counselling registration"
+      },
+      {
+        "description": "Fill course and college preferences and lock choices.",
+        "step": 3,
+        "title": "Choice filling"
+      },
+      {
+        "description": "Wait for seat allotment and download the allotment letter if selected.",
+        "step": 4,
+        "title": "Seat allotment"
+      },
+      {
+        "description": "Report to the allotted college with original documents and pay the admission fee.",
+        "step": 5,
+        "title": "Admission and reporting"
+      }
+    ],
+    "typical_requirements": [
+      "Pass Class 12 or equivalent from a recognised board.",
+      "Study Physics, Chemistry, and Biology in Class 12.",
+      "Score the minimum PCB marks required by the admitting category, commonly around 50% for the general category and 40% for reserved categories",
+      "Qualify NEET-UG for admission through AYUSH counselling in India."
+    ]
+  },
+  "skills": [
+    {
+      "description": "Examining patients carefully and recording symptoms, history, and clinical signs.",
+      "name": "Patient Assessment"
+    },
+    {
+      "description": "Using Siddha diagnostic methods to understand imbalance and disease patterns.",
+      "name": "Siddha Diagnosis"
+    },
+    {
+      "description": "Applying classical Siddha theory to plan safe and suitable treatment.",
+      "name": "Treatment Planning"
+    },
+    {
+      "description": "Preparing and understanding Siddha medicines and formulations.",
+      "name": "Pharmaceutical Knowledge"
+    },
+    {
+      "description": "Communicating clearly with patients and families in a clinical setting.",
+      "name": "Clinical Communication"
+    },
+    {
+      "description": "Working in hospitals, clinics, and community health settings with discipline and teamwork.",
+      "name": "Clinical Teamwork"
+    }
+  ],
+  "careers": [
+    {
+      "description": "Siddha medical officer or clinical practitioner in AYUSH hospitals, government dispensaries, and private Siddha clinics. In India, this role normally follows BS",
+      "route_badge": "Possible after bachelor's",
+      "title": "Siddha doctor / medical officer",
+      "typical_route": "BSMS -> compulsory internship -> registration with the relevant state/AYUSH medical register -> clinical work"
+    },
+    {
+      "description": "Siddha lecturer or faculty member in a Siddha college, usually after postgraduate study in a Siddha specialty such as Sirappu Maruthuvam, Pillaippini Maruthvam,",
+      "route_badge": "Postgraduate route",
+      "title": "Siddha lecturer / teaching faculty",
+      "typical_route": "BSMS -> MD/MS (Siddha) -> teaching experience -> college faculty role"
+    },
+    {
+      "description": "Siddha researcher in an institute working on traditional medicine, pharmacology, toxicology, pathology, or clinical studies.",
+      "route_badge": "Postgraduate route",
+      "title": "Siddha researcher",
+      "typical_route": "BSMS -> MD/MS (Siddha) or research-focused higher study -> research assistant / project roles -> research post"
+    },
+    {
+      "description": "Public health or healthcare management roles in AYUSH-linked programmes, hospitals, or health systems.",
+      "route_badge": "Higher study required",
+      "title": "Public health / healthcare management professional",
+      "typical_route": "BSMS -> postgraduate diploma or degree in health care management/public health -> programme or hospital roles"
+    },
+    {
+      "description": "Siddha pharmacology and drug-development work, especially in institutions or companies dealing with traditional medicine products.",
+      "route_badge": "Postgraduate route",
+      "title": "Siddha pharmacology / drug-development specialist",
+      "typical_route": "BSMS -> postgraduate study in Gunapadam/Pharmacology or related field -> lab, QA, or research roles"
+    },
+    {
+      "description": "Specialist practice in areas such as general medicine, toxicology, pediatrics, or pathology within the Siddha system, usually after postgraduate training.",
+      "route_badge": "Advanced regulated route",
+      "title": "Siddha specialist",
+      "typical_route": "BSMS -> MD/MS (Siddha) in a specialty -> registration and supervised specialist practice"
+    }
+  ],
+  "further_study_pathway": [
+    "MD/MS in Siddha specialisations: N",
+    "Nanju Nool (Toxicology)",
+    "Gunapadam (Pharmacology)",
+    "Sirappu Maruthuvam (Special/General",
+    "Medicine) and related Siddha fields"
+  ],
+  "recruiters": [
+    {
+      "description": "A national AYUSH ministry that oversees Siddha and other traditional medicine systems in India, offering roles in policy, programmes, and public-sector health work.",
+      "logo_initials": "AY",
+      "name": "Ministry of AYUSH, Government of India",
+      "roles": [
+        "Policy officer",
+        "Programme officer"
+      ],
+      "sector": "Government"
+    },
+    {
+      "description": "A central institute focused on Siddha medicine and research, suitable for clinical, academic, and research roles.",
+      "logo_initials": "NI",
+      "name": "National Institute of Siddha",
+      "roles": [
+        "Medical officer",
+        "Lecturer/faculty support"
+      ],
+      "sector": "Healthcare education and research"
+    },
+    {
+      "description": "A national research body for Siddha medicine, relevant for project, clinical research, and research-support roles.",
+      "logo_initials": "CC",
+      "name": "Central Council for Research in Siddha",
+      "roles": [
+        "Research officer",
+        "Project staff"
+      ],
+      "sector": "Research"
+    },
+    {
+      "description": "A postgraduate diploma in health care management accepts BSMS graduates and can lead to hospital or programme-management roles.",
+      "logo_initials": "BH",
+      "name": "Banaras Hindu University",
+      "roles": [
+        "Healthcare management trainee",
+        "Hospital administration roles"
+      ],
+      "sector": "Higher education"
+    },
+    {
+      "description": "A public-sector Siddha medical college and hospital environment where BSMS graduates may work clinically after registration.",
+      "logo_initials": "GM",
+      "name": "Government Siddha Medical College, Chennai",
+      "roles": [
+        "Medical officer",
+        "Resident doctor"
+      ],
+      "sector": "Healthcare"
+    },
+    {
+      "description": "A major private hospital group that hires doctors across many specialties and can employ Siddha graduates in integrative or wellness-facing roles where available.",
+      "logo_initials": "AP",
+      "name": "Apollo Hospitals",
+      "roles": [
+        "Wellness doctor",
+        "Clinic associate"
+      ],
+      "sector": "Healthcare"
+    }
+  ],
+  "colleges": {
+    "data_note": "This ranking compares real colleges offering BSMS in India or a close BSMS-equivalent option. Higher rank reflects a mix of fee level, institutional profile, and broad student-facing visibility; it does not mean the best fit for every student. Tuition, hostel charges, and admission rules can change each year, so families should verify the current fee notice, quota rules, internship-related costs,.",
+    "items": [
+      {
+        "admission_route": "NEET UG",
+        "annual_fee": 7724,
+        "city": "Chennai",
+        "course_name": "BSMS",
+        "duration_years": 5.5,
+        "highlight": "State government Siddha college with the",
+        "institution_type": "government",
+        "name": "Government Siddha Medical College, Chennai",
+        "rank": 1
+      },
+      {
+        "admission_route": "NEET UG",
+        "annual_fee": 30000,
+        "city": "Chennai",
+        "course_name": "BSMS",
+        "duration_years": 5.5,
+        "highlight": "Central government AYUSH institute with",
+        "institution_type": "government",
+        "name": "National Institute of Siddha, Chennai",
+        "rank": 2
+      },
+      {
+        "admission_route": "NEET UG",
+        "annual_fee": 45000,
+        "city": "Thrissur",
+        "course_name": "BSMS",
+        "duration_years": 5.5,
+        "highlight": "Health sciences university option with a",
+        "institution_type": "government",
+        "name": "Kerala University of Health Sciences, Thrissur",
+        "rank": 3
+      },
+      {
+        "admission_route": "Institutional / university process",
+        "annual_fee": 7745,
+        "city": "Tambaram",
+        "course_name": "BSMS",
+        "duration_years": 5.5,
+        "highlight": "Private Siddha college with very low",
+        "institution_type": "private",
+        "name": "Sri Sairam Siddha Medical College and Research Centre, Tambaram",
+        "rank": 4
+      },
+      {
+        "admission_route": "Institutional / university process",
+        "annual_fee": 136364,
+        "city": "Namakkal",
+        "course_name": "BSMS",
+        "duration_years": 5.5,
+        "highlight": "Private Siddha college with a much",
+        "institution_type": "private",
+        "name": "Excel Siddha Medical College & Research Centre, Namakkal",
+        "rank": 5
+      },
+      {
+        "admission_route": "Institutional / university process",
+        "annual_fee": 242482,
+        "city": "Palakkad",
+        "course_name": "BSMS",
+        "duration_years": 5.5,
+        "highlight": "Private Siddha college with one of the",
+        "institution_type": "private",
+        "name": "Santhigiri Ayurveda & Siddha Vaidyasala, Palakkad",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "Careers360 and Collegedunia college listings for BSMS in India, supplemented by",
+    "ranking_updated": "2026-08"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "Complete BSMS internship, then register for practice under the relevant AYUSH/SM",
+      "course_name": "BSMS",
+      "laboratory_exposure": "Moderate to high; anatomy, physiology,药?",
+      "main_focus": "Siddha diagnosis, medicines, clinical training, and inpatient/outpatient care",
+      "statistics_level": "Basic biostatistics and research reading"
+    },
+    {
+      "common_next_steps": "NEET UG, then BAMS admission, internship, and registration for Ayurveda practice",
+      "course_name": "BAMS",
+      "laboratory_exposure": "High; anatomy, physiology, pharmacology,",
+      "main_focus": "Ayurvedic medicine, clinical practice, and preventive care",
+      "statistics_level": "Basic biostatistics and research reading"
+    },
+    {
+      "common_next_steps": "NEET UG, then BHMS admission, internship, and council registration for homeopath",
+      "course_name": "BHMS",
+      "laboratory_exposure": "Moderate; pathology, materia medica, p",
+      "main_focus": "Homeopathic principles, case-taking, and clinical practice",
+      "statistics_level": "Basic biostatistics and research reading"
+    }
+  ],
+  "fees": {
+    "footnote": "Fees vary sharply by institution type. Government and central institutes usually charge far less than private colleges, while hostel, mess, exam, and caution-deposit costs can add to the bill. For a regulated medical one",
+    "rows": [
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": true,
+        "max": 30000,
+        "min": 8000,
+        "parent_check": "Confirm tuition, hostel, mess, and any annual exam or university charges before accepting admission."
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "premier_national",
+        "is_variable": true,
+        "max": 30000,
+        "min": 30000,
+        "parent_check": "Confirm whether hostel and other campus charges are separate from tuition."
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": true,
+        "max": 242482,
+        "min": 7745,
+        "parent_check": "Check whether the quoted amount is tuition only or includes hostel, mess, and one-time fees."
+      },
+      {
+        "category": "Hostel and mess",
+        "frequency": "Per year",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 120000,
+        "min": 30000,
+        "parent_check": "Ask for the current hostel fee, mess fee, and room-sharing rule for your batch."
+      },
+      {
+        "category": "One-time admission and caution deposit",
+        "frequency": "One time",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 50000,
+        "min": 5000,
+        "parent_check": "Verify refundable deposits separately from non-refundable admission charges."
+      },
+      {
+        "category": "Books, instruments, uniforms, and clinic",
+        "frequency": "As required",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 30000,
+        "min": 10000,
+        "parent_check": "Ask the college which items are compulsory in the first year and what they usually cost."
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "Use Classes 11-12 Science subjects, especially Biology, Chemistry and Human Physiology, because BSMS builds on medical study and clinical learning.",
+      "stage": "Grades 8-10",
+      "title": "Build the right school base"
+    },
+    {
+      "description": "Check BSMS eligibility for the colleges you want, keep Biology strong, and prepare for the admission test route used for AYUSH medical courses in India.",
+      "stage": "Grade 11",
+      "title": "Prepare for eligibility"
+    },
+    {
+      "description": "Plan for the full professional path after admission, including internship, registration steps and the first years of supervised clinical work before independent practice.",
+      "stage": "Grade 12",
+      "title": "Map the next steps after Class"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "BSMS stands for Bachelor of Siddha Medicine and Surgery. It is an undergraduate medical degree focused on Siddha, a traditional system of medicine used in clinical practice and related health settings.",
+      "question": "What is BSMS as a course?"
+    },
+    {
+      "answer": "This course suits students who are comfortable with biology, patient care, memorising medical concepts, and learning through clinical observation and practice.",
+      "question": "What kind of student does BSMS suit?"
+    },
+    {
+      "answer": "After the degree, a graduate usually needs the required internship, registration, or licence steps set by the relevant medical regulator before practising as a Siddha doctor.",
+      "question": "Can I practise immediately after BSMS?"
+    },
+    {
+      "answer": "Career options usually include Siddha clinical practice, hospitals, dispensaries, wellness settings, research support, and teaching after higher study.",
+      "question": "What can I do after BSMS?"
+    },
+    {
+      "answer": "The course is usually 5.5 years in total, including the internship period, so families should plan for a long professional degree rather than a short course.",
+      "question": "How long does BSMS take?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "BSMS is a long professional course, so families should look at both the student’s interest in biology and their comfort with patient-facing work. It suits young people who can handle steady study, memorisation, and practical learning in a clinical setting. Parents should also check whether the college is recognised, how much hospital exposure is built into the programme, and what registration steps follow graduation, because this leads to a regulated health career. It helps to compare colleges on teaching quality, clinical training, location, and total cost rather than on the course name alone. A calm discussion about workload, daily routine, and the student’s long-term interest in medicine can make the decision clearer for both student and parent.",
+    "questions": [
+      "Does my child enjoy biology and clinical work enough for a long medical course?",
+      "Is the college recognised and does it offer proper hospital or internship training?",
+      "What registration or licensing steps are needed after graduation?",
+      "Will our family be comfortable with the time and cost of a 5.5-year professional degree?",
+      "What are the realistic job paths after BSMS?",
+      "Would my child prefer a medicine-based career or a different health sciences course?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "National Testing Agency",
+        "title": "Notice Board Archive",
+        "url": "https://nta.ac.in/NoticeBoardArchive"
+      },
+      {
+        "publisher": "National Testing Agency",
+        "title": "NEET UG",
+        "url": "https://neet.nta.nic.in/"
+      },
+      {
+        "publisher": "National Medical Commission",
+        "title": "Official website",
+        "url": "https://www.nmc.org.in/"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  }
+}

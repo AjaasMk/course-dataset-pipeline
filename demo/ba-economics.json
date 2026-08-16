@@ -1,0 +1,578 @@
+{
+  "course_id": "crs_ba_economics",
+  "slug": "ba-economics",
+  "course_name": "BA Economics",
+  "currency": "INR",
+  "region": "India",
+  "category": "Arts, Humanities & Social Sciences",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Student-friendly guide",
+    "fit": {
+      "indicators": [
+        "Strong interest in numbers and current affairs",
+        "Comfortable with graphs, data, and reading",
+        "Open to policy, business, or research pathways"
+      ],
+      "note": "A good fit for students who want to study how people, markets, and public choices affect each other, and who are readyto",
+      "score_percent": 86
+    },
+    "summary": "BA Economics studies how money, markets, jobs, prices, and government choices affect people and society. It suits students who like data, reasoning, and real-world issues, and it can lead to further study or entry-level roles in analytics, banking, policy, research, and business support."
+  },
+  "quick_facts": {
+    "career_direction": "Economics, policy, banking, data analysis, research, business and civl",
+    "entry_level": "Class 12",
+    "indicative_annual_fees": {
+      "max": 150000,
+      "min": 10000
+    },
+    "learning_style": "Concept-based reading, quantitative problem-solving, data, n",
+    "suitable_streams": [
+      "Arts",
+      "Commerce",
+      "Science"
+    ],
+    "typical_duration": {
+      "max_years": 4,
+      "min_years": 3
+    }
+  },
+  "seo": {
+    "meta_description": "BA Economics in India is a 3 to 4 year undergraduate degree for students interested in markets, data, policy, and business. See course level, fees, duration, c",
+    "page_title": "BA Economics Course Details in India | Eligibility, Fees, Duration"
+  },
+  "subcategory": "Economics",
+  "overview": {
+    "heading": "What is BA Economics?",
+    "paragraphs": [
+      "BA Economics is an undergraduate degree that studies how people, businesses, and governments make choices when money, goods, and resources are limited. Students usually learn microeconomics, macroeconomics, statistics, and data-based methods, so the course mixes reading, numbers, and reasoning rather than just theory.",
+      "In India, this degree can lead toward jobs in banking, finance, policy, research, data analysis, consulting, and competitive government roles. Many colleges offer it over three years, and some now offer a four-year honours path. The exact subjects change by college, but the core idea stays the same: understand how the economy works and how to interpret data about it.",
+      "For a school student, BA Economics suits someone who likes concepts, graphs, basic mathematics, current affairs, and asking why prices, jobs, inflation, trade, or growth change. It is a good match if the student enjoys regular reading and practice with problem-solving. It is less suitable for someone who wants a course with very little number work or a direct path to a single job title."
+    ]
+  },
+  "snapshot": {
+    "data_note": "Pay varies widely because BA Economics can lead to entry-level analyst roles, banking and finance jobs, policy work, research, and further study. Colleges, internships, quantitative skills, and the next degree or professional qualification can change earnings a lot, so one figure cannot describe every graduate.",
+    "salary": {
+      "higher_annual": 3800000,
+      "higher_is_open_ended": true,
+      "lower_annual": 300000,
+      "note": "Typical early-career earnings in India often fall in the lower-to-mid range for analyst, finance, and policy roles, while strong performers in economist, investment, or data-linked roles can move much higher with skills and experience.",
+      "typical_annual": 700000,
+      "marker_percent": 11
+    },
+    "specialisations": [
+      "Microeconomics",
+      "Macroeconomics",
+      "Econometrics",
+      "Development Economics",
+      "Public Policy",
+      "Financial Economics",
+      "Labour Economics",
+      "Banking and Financial Economics"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "Be careful if you expect",
+      "points": [
+        "A job that uses only one fixed syllabus. BA Economics can lead to very different careers, and each path needs different extra skills.",
+        "Very little mathematics or data work. Even at the undergraduate level, the course usually includes statistics, graphs, and numerical problem",
+        "Immediate high pay after graduation. Stronger salaries usually come with internships, software or data skills, higher study, or competitive-",
+        "A direct route to economist roles without more training. Research, policy, and specialist economist jobs often need a master's degree or a"
+      ]
+    },
+    "good_fit": {
+      "heading": "A good fit if you",
+      "points": [
+        "Like numbers, logic, graphs, and solving problems from real-life situations.",
+        "Enjoy reading about current affairs, the economy, business, public policy, or development.",
+        "Are comfortable combining theory with data and written explanation.",
+        "May want future options in banking, analytics, consulting, research, government, or higher study."
+      ]
+    },
+    "tags": [
+      "analytical",
+      "quantitative",
+      "data-minded",
+      "policy-interest",
+      "current-affairs",
+      "research-friendly",
+      "business-aware"
+    ]
+  },
+  "curriculum": {
+    "assessment_methods": "Written examinations, problem sets, class tests, tutorials, internal assessment, and project or assignment work are the usual ways economics degrees are assessed in India; DU’s BA (Hons.) Economics programme uses theory, tutorial, and practical credit distribution across papers.",
+    "learning_activities": "Students usually read theory, solve mathematical and statistical problems, analyse data, work through tutorials, and complete electives or project-style work in the later years.",
+    "years": [
+      {
+        "label": "Year 1",
+        "subjects": [
+          {
+            "description": "How households and firms make basic choices, with graphs and models.",
+            "name": "Introductory Microeconomics"
+          },
+          {
+            "description": "Mathematical tools used in economics, including functions and optimisation basics.",
+            "name": "Introductory Mathematical Methods for Economics"
+          },
+          {
+            "description": "Descriptive statistics, data summaries, and basic probability ideas.",
+            "name": "Introductory Statistics for Economics"
+          },
+          {
+            "description": "National income, inflation, unemployment, and the basics of the overall economy.",
+            "name": "Introductory Macroeconomics"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Year 2",
+        "subjects": [
+          {
+            "description": "More advanced techniques for solving economic problems and models.",
+            "name": "Intermediate Mathematical Methods for Economics"
+          },
+          {
+            "description": "Deeper work with data, variation, estimation, and inference.",
+            "name": "Intermediate Statistics for Economics"
+          },
+          {
+            "description": "Consumer choice, production, and market behaviour in more detail.",
+            "name": "Intermediate Microeconomics I: Behavioural foundations of 시장"
+          },
+          {
+            "description": "Growth, income determination, and the working of the macroeconomy.",
+            "name": "Intermediate Macroeconomics I: Foundations of Aggregate Inco"
+          }
+        ],
+        "year": 2
+      },
+      {
+        "label": "Year 3",
+        "subjects": [
+          {
+            "description": "Market structure, government intervention, and welfare analysis.",
+            "name": "Intermediate Microeconomics II: Market, Government and Welf"
+          },
+          {
+            "description": "Policy questions in inflation, output, unemployment, and stabilisation.",
+            "name": "Intermediate Macroeconomics II: Policy Issues"
+          },
+          {
+            "description": "Introductory regression ideas and empirical economics using data.",
+            "name": "Introductory Econometrics"
+          },
+          {
+            "description": "Strategic choice, conflict, bargaining, and decision-making among players.",
+            "name": "Game Theory and Strategic Interactions"
+          }
+        ],
+        "year": 3
+      },
+      {
+        "label": "Year 4",
+        "subjects": [
+          {
+            "description": "Long-run growth, business cycles, and the forces that shape development over time.",
+            "name": "Economic Growth and Business Cycles"
+          },
+          {
+            "description": "Elective work on development ideas, policy, and India-focused economic change.",
+            "name": "Economic Development and Policy in India"
+          },
+          {
+            "description": "Elective study of trade between countries and the gains from exchange.",
+            "name": "International Trade"
+          },
+          {
+            "description": "Research-oriented analysis of data, evidence, and applied economic questions.",
+            "name": "Quantitative Methods"
+          }
+        ],
+        "year": 4
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "CUET UG-based admission in universities that use entrance testing for BA Economics.",
+      "Merit-based admission on Class 12 marks in colleges that admit through the qualifying examination.",
+      "University-specific counselling or seat allocation after eligibility verification.",
+      "College or university entrance test where a particular institution uses its own selection route."
+    ],
+    "admission_timeline": [
+      {
+        "description": "Complete Class 12 or equivalent from a recognised board.",
+        "step": 1,
+        "title": "Finish school"
+      },
+      {
+        "description": "Register for CUET UG where required and choose the language and relevant domain papers that match the programme rules.",
+        "step": 2,
+        "title": "Take the entrance test"
+      },
+      {
+        "description": "Submit the college or university application and wait for merit or counselling lists.",
+        "step": 3,
+        "title": "Apply to institutions"
+      },
+      {
+        "description": "Upload documents, confirm seat allotment, and pay the first-year admission fees after selection.",
+        "step": 4,
+        "title": "Confirm admission"
+      },
+      {
+        "description": "Check programme-specific eligibility, including subject combinations and minimum marks where a university sets them.",
+        "step": 5,
+        "title": "Verify subject rules"
+      }
+    ],
+    "typical_requirements": [
+      "Class 12 or equivalent from a recognised board.",
+      "A mainstream range of about 50% to 60% in Class 12 for many colleges offering BA/BSc Economics.",
+      "At least one language paper in entrance-based selection where CUET is used.",
+      "Economics or Business Economics is a relevant domain subject for many BA Economics routes."
+    ]
+  },
+  "skills": [
+    {
+      "description": "Understanding how individual choices and market prices work.",
+      "name": "Microeconomic reasoning"
+    },
+    {
+      "description": "Following national income, inflation, growth, and policy changes.",
+      "name": "Macroeconomic analysis"
+    },
+    {
+      "description": "Using equations, graphs, and optimisation in economic problems.",
+      "name": "Quantitative problem-solving"
+    },
+    {
+      "description": "Summarising and interpreting data patterns, averages, and spread.",
+      "name": "Statistical analysis"
+    },
+    {
+      "description": "Reading data from real situations and drawing evidence-based conclusions.",
+      "name": "Econometric thinking"
+    },
+    {
+      "description": "Writing clear arguments on policy, trade, development, and public issues.",
+      "name": "Policy interpretation and writing"
+    }
+  ],
+  "careers": [
+    {
+      "description": "Analyses financial data, prepares reports, and supports business decisions in banks, companies, and consulting firms.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Financial Analyst",
+      "typical_route": "BA Economics -> Internships or Excel/statistics skills -> Financial analyst role"
+    },
+    {
+      "description": "Studies customer, market, and competitor trends to help organisations plan products and campaigns.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Market Research Analyst",
+      "typical_route": "BA Economics -> Project or survey work -> Market research analyst role"
+    },
+    {
+      "description": "Collects, cleans, and interprets data to support reporting, planning, and forecasting.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Data Analyst",
+      "typical_route": "BA Economics -> SQL/Excel/Python skills -> Data analyst role"
+    },
+    {
+      "description": "Reviews borrower or company financial information to judge repayment risk for banks and lenders.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Credit Analyst",
+      "typical_route": "BA Economics -> Banking internship or credit-risk training -> Credit analyst role"
+    },
+    {
+      "description": "Studies economic trends, policy issues, and markets for organisations, media, or government bodies.",
+      "route_badge": "Postgraduate route",
+      "title": "Economist",
+      "typical_route": "BA Economics -> MA Economics -> Economist role"
+    },
+    {
+      "description": "Teaches economics at colleges or universities after clearing the required eligibility and recruitment steps.",
+      "route_badge": "Advanced regulated route",
+      "title": "Assistant Professor / Lecturer",
+      "typical_route": "BA Economics -> MA Economics -> UGC NET -> college/university recruitment"
+    }
+  ],
+  "further_study_pathway": [
+    "MA Economics",
+    "MBA in Finance or Business",
+    "MSc Economics or Quantitative/Anal-",
+    "Data-oriented postgraduate diplomas",
+    "UGC NET for college teaching roles"
+  ],
+  "recruiters": [
+    {
+      "description": "India's central bank; hires for banking, research, policy, and economic analysis roles.",
+      "logo_initials": "RB",
+      "name": "Reserve Bank of India",
+      "roles": [
+        "Economist",
+        "Research Assistant related to,"
+      ],
+      "sector": "Banking and financial regulation"
+    },
+    {
+      "description": "A central government policy think tank that hires for research and policy analysis roles.",
+      "logo_initials": "NA",
+      "name": "NITI Aayog",
+      "roles": [
+        "Research Officer",
+        "Policy Analyst"
+      ],
+      "sector": "Public policy"
+    },
+    {
+      "description": "India's official statistical organisation, with roles linked to economic and data analysis.",
+      "logo_initials": "MO",
+      "name": "Ministry of Statistics and Programme Implementation",
+      "roles": [
+        "Statistician",
+        "Economic research support"
+      ],
+      "sector": "Government statistics"
+    },
+    {
+      "description": "A major public-sector bank that recruits graduates for banking and credit-related roles.",
+      "logo_initials": "SB",
+      "name": "State Bank of India",
+      "roles": [
+        "Probationary Officer",
+        "Credit Analyst"
+      ],
+      "sector": "Banking"
+    },
+    {
+      "description": "India's largest listed private bank, hiring graduates for banking, analysis, and finance roles.",
+      "logo_initials": "HD",
+      "name": "HDFC Bank",
+      "roles": [
+        "Relationship Manager",
+        "Credit Analyst"
+      ],
+      "sector": "Banking"
+    },
+    {
+      "description": "A global professional services firm that recruits for analytics, consulting, and finance-related roles.",
+      "logo_initials": "DE",
+      "name": "Deloitte",
+      "roles": [
+        "Analyst",
+        "Consulting support"
+      ],
+      "sector": "Consulting"
+    }
+  ],
+  "colleges": {
+    "data_note": "This ranking balances tuition level, overall college reputation, and how widely the programme is recognised by families. It is only a guide; fee changes, seat rules, and course titles can change from year to year, so the exact college prospectus and current fee notice should be checked before applying.",
+    "items": [
+      {
+        "admission_route": "CUET UG",
+        "annual_fee": 28872,
+        "city": "New Delhi",
+        "course_name": "B.A. (Hons.) Economics",
+        "duration_years": 3,
+        "highlight": "Very low tuition and a strong Delhi-Unvi",
+        "institution_type": "government",
+        "name": "Hansraj College, University of Delhi",
+        "rank": 1
+      },
+      {
+        "admission_route": "CUET UG",
+        "annual_fee": 17000,
+        "city": "New Delhi",
+        "course_name": "B.A. (Hons.) Economics",
+        "duration_years": 3,
+        "highlight": "Well-known Delhi University college with",
+        "institution_type": "government",
+        "name": "Hindu College, University of Delhi",
+        "rank": 2
+      },
+      {
+        "admission_route": "CUET UG",
+        "annual_fee": 19015,
+        "city": "New Delhi",
+        "course_name": "B.A. (Hons.) Economics",
+        "duration_years": 3,
+        "highlight": "Established DU option with a moderate an",
+        "institution_type": "government",
+        "name": "Miranda House, University of Delhi",
+        "rank": 3
+      },
+      {
+        "admission_route": "College admission test/interview or the",
+        "annual_fee": 23360,
+        "city": "Mumbai",
+        "course_name": "B.A. Economics",
+        "duration_years": 3,
+        "highlight": "Popular private college option with rela",
+        "institution_type": "private",
+        "name": "St. Xavier's College, Mumbai",
+        "rank": 4
+      },
+      {
+        "admission_route": "College admission process",
+        "annual_fee": 84660,
+        "city": "Chennai",
+        "course_name": "B.A. Economics",
+        "duration_years": 3,
+        "highlight": "Well-known private college with a higher",
+        "institution_type": "private",
+        "name": "Loyola College, Chennai",
+        "rank": 5
+      },
+      {
+        "admission_route": "Christ University entrance/admission pro",
+        "annual_fee": 115000,
+        "city": "Bengaluru",
+        "course_name": "B.A. Economics",
+        "duration_years": 3,
+        "highlight": "Higher-fee private university option wit",
+        "institution_type": "private",
+        "name": "Christ University, Bengaluru",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "Published college fee listings and broad college standing across Indian degree-­",
+    "ranking_updated": "2026-08"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "Move into M.A. Economics, data analytics, public policy, banking exams, or civil",
+      "course_name": "BA Economics",
+      "laboratory_exposure": "Very limited; the work is mainly theory,",
+      "main_focus": "Economic theory, markets, statistics, po",
+      "statistics_level": "Moderate to high; calculus, graphs, and"
+    },
+    {
+      "common_next_steps": "M.Com, CA, CMA, banking, finance, audit,",
+      "course_name": "BCom",
+      "laboratory_exposure": "None; classwork is mainly accounting, bu",
+      "main_focus": "Accounting, commerce, taxation, finance,",
+      "statistics_level": "Low to moderate; more numbers than data"
+    },
+    {
+      "common_next_steps": "MSc Economics, data science, research, p",
+      "course_name": "BSc Economics",
+      "laboratory_exposure": "Usually limited; some programmes include",
+      "main_focus": "Economics with a stronger quantitative a",
+      "statistics_level": "High; more mathematics, econometrics, a"
+    }
+  ],
+  "fees": {
+    "footnote": "Tuition is the main academic fee families compare first. Hostel, mess, transport, exam charges, and caution deposits can add a lot to the final yearly cost, especially in private colleges. In government and many Delhi or",
+    "rows": [
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": false,
+        "max": 19550,
+        "min": 1000,
+        "parent_check": "This covers the broad published tuition range for government colleges offering economics or closely related economics h"
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": false,
+        "max": 85000,
+        "min": 23000,
+        "parent_check": "This covers the common tuition range for private colleges offering BA Economics or a close equivalent."
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "premier_national",
+        "is_variable": false,
+        "max": 95500,
+        "min": 540,
+        "parent_check": "This covers well-known premier colleges within universities such as Delhi University, where fees can be much lower than"
+      },
+      {
+        "category": "Hostel and meals",
+        "frequency": "As required",
+        "institution_type": null,
+        "is_variable": true,
+        "max": null,
+        "min": null,
+        "parent_check": "This depends on the college, city, room type, and meal plan, and is usually separate from tuition."
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "In Grades 8-10, build comfort with mathematics, graphs, basic statistics, current affairs, and reading newspapers or economic articles.",
+      "stage": "Grades 8-10",
+      "title": "Strengthen the school base"
+    },
+    {
+      "description": "In Grade 11, choose the stream that keeps mathematics available if possible, and start reading Class 12-level economics and accountancy topics if your school offers them.",
+      "stage": "Grade 11",
+      "title": "Choose subjects with care"
+    },
+    {
+      "description": "In Grade 12, prepare for economics-related entrance tests used by many Indian universities, including CUET UG where required, and keep academic documents ready for applications.",
+      "stage": "Grade 12",
+      "title": "Prepare for admission"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "BA Economics is usually a 3-year undergraduate degree in India, though some institutions may offer a 4-year honours structure under the current higher-education framework.",
+      "question": "How long does BA Economics take?"
+    },
+    {
+      "answer": "Students from Arts, Commerce, and Science backgrounds can usually apply, but each college sets its own subject and score requirements.",
+      "question": "Which school stream is needed for this course?"
+    },
+    {
+      "answer": "Common next steps are postgraduate study in economics or related subjects, and then UGC-NET for those who want to move toward college teaching or research.",
+      "question": "What can a student do after BA Economics?"
+    },
+    {
+      "answer": "Many colleges in India use CUET UG for admission, so families should check the entrance route of each university before applying.",
+      "question": "Do all colleges admit through the same exam?"
+    },
+    {
+      "answer": "Economics is useful for work in policy, banking, data analysis, research, business, and civil services preparation, but each of those paths needs different further study or exams.",
+      "question": "What careers does BA Economics support?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "BA Economics suits students who enjoy reading, logical thinking, graphs, and numbers. It can work well for a child who likes understanding why prices change, how government decisions affect people, or how data is used in business and policy. The course is not only for “maths toppers”; many strong economics students are steady readers and careful writers too. Parents should check whether the target colleges ask for mathematics in Class 12, whether admission is through CUET UG, and whether the student wants a later path into postgraduate study. If teaching or research becomes the goal, UGC-NET is one of the common later steps after a master’s degree. The best choice is a college that matches the student’s comfort with reading, calculations, and long-term study.",
+    "questions": [
+      "Is my child comfortable with reading-heavy and data-heavy work?",
+      "Does the preferred college require CUET UG or any subject combination?",
+      "Is the student planning for a job right after graduation or for postgraduate study first?",
+      "Would a BA Economics path keep the option open for banking, policy, analytics, or further study?",
+      "Does the student enjoy discussing public issues, graphs, and numbers?",
+      "Should we compare honours and general degree structures before applying?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "University Grants Commission",
+        "title": "FHEI List",
+        "url": "https://www.ugc.gov.in/FHEI"
+      },
+      {
+        "publisher": "National Testing Agency",
+        "title": "Notice Board Archive",
+        "url": "https://nta.ac.in/NoticeBoardArchive?_nlid=4avZ49BrRU&_nhids=MlgQuy9wvL"
+      },
+      {
+        "publisher": "National Testing Agency",
+        "title": "Advertisement for Engagement of Young Professionals (PDF)",
+        "url": "https://www.nta.ac.in/Download/Notice/Notice_20260801151430.pdf"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  }
+}

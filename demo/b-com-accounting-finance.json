@@ -1,0 +1,583 @@
+{
+  "course_id": "crs_b_com_accounting_finance",
+  "slug": "b-com-accounting-finance",
+  "course_name": "B.Com Accounting & Finance",
+  "currency": "INR",
+  "region": "India",
+  "category": "Commerce & Finance",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Commerce degree with finance focus",
+    "fit": {
+      "indicators": [
+        "Strong fit for students who like numbers and business subjects",
+        "Useful for accounting, taxation, banking, audit, and finance paths",
+        "Works well for students from Commerce, and also accessible after Class"
+      ],
+      "note": "Best for students who want a business degree with a clear number-and-finance focus.",
+      "score_percent": 84
+    },
+    "summary": "B.Com Accounting & Finance combines core commerce subjects with accounting, financial management, taxation, and business law. It suits students who want a practical undergraduate route into banking, audit, tax, corporate accounts, and finance roles, while keeping options open for higher study and professional qualifications."
+  },
+  "quick_facts": {
+    "career_direction": "Accounting, audit, taxation, banking, financial analysis, and commerce",
+    "entry_level": "Class 12",
+    "indicative_annual_fees": {
+      "max": 200000,
+      "min": 30000
+    },
+    "learning_style": "Number-focused study with accounts practice, problem-solving",
+    "suitable_streams": [
+      "Commerce",
+      "Science",
+      "Arts"
+    ],
+    "typical_duration": {
+      "max_years": 4,
+      "min_years": 3
+    }
+  },
+  "seo": {
+    "meta_description": "B.Com Accounting & Finance in India: duration, fees, subjects, career options, and who it suits. A clear guide for students and parents.",
+    "page_title": "B.Com Accounting & Finance Course Details in India | Duration, Fees, &"
+  },
+  "subcategory": "Accounting & Finance",
+  "overview": {
+    "heading": "What is B.Com Accounting & Finance?",
+    "paragraphs": [
+      "B.Com Accounting & Finance is a three-year undergraduate commerce degree that builds core knowledge in accounting, taxation, auditing, banking, business economics, and financial reporting. Students spend much of the course working with accounts, calculations, case studies, and practical finance topics rather than only theory.",
+      "It suits students who want a strong base for office-based finance work in companies, banks, audit firms, and tax teams. The degree is also used as a starting point for higher study and professional courses such as CA, CMA, CS, MBA, or specialised finance certifications, which can open more roles over time.",
+      "The course is not only for students who already plan to become accountants. It can also suit those who like numbers, structured problem-solving, and careful work with records, rules, and deadlines. In India, admissions are usually open after Class 12, and many colleges accept Commerce, Science, or Arts students with the required marks."
+    ]
+  },
+  "snapshot": {
+    "data_note": "Pay changes with the job role, city, employer type, and additional qualifications. Entry-level commerce roles often begin around INR 250000 to INR 400000 a year, while stronger profiles in finance, audit, taxation, or analytics can earn more as experience and certifications grow. No single figure fits every graduate.",
+    "salary": {
+      "higher_annual": 800000,
+      "higher_is_open_ended": false,
+      "lower_annual": 250000,
+      "note": "For B.Com Accounting & Finance graduates in India, starting pay commonly sits around INR 250000 to INR 400000 a year. With internships, professional certifications, postgraduate study, or roles in audit, taxation, banking, or financial analysis, earnings can rise well beyond that range.",
+      "typical_annual": 400000,
+      "marker_percent": 27
+    },
+    "specialisations": [
+      "Financial accounting",
+      "Taxation",
+      "Auditing",
+      "Banking and financial services",
+      "Financial analysis",
+      "Corporate finance",
+      "Cost and management accounting",
+      "Insurance and risk-related finance"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "Good to know before choosing this course",
+      "points": [
+        "This degree does not automatically lead to a high-paying finance job; pay is usually modest at entry level and rises with skills, experience",
+        "It is not a shortcut past professional study; many better-paid roles in accounting and finance need CA, CMA, MBA, or similar qualifications",
+        "The course involves regular number work, rules, and deadlines, so it suits students who are comfortable with detail and accuracy",
+        "Students who want a purely creative or mostly field-based course may find this programme too office- and spreadsheet-focused"
+      ]
+    },
+    "good_fit": {
+      "heading": "This course may suit students who",
+      "points": [
+        "Enjoy accounts, calculations, and logical problem-solving",
+        "Like studying business, money, and how companies keep records",
+        "Can work carefully with deadlines and step-by-step processes",
+        "Want a commerce degree that can lead to jobs or further professional study"
+      ]
+    },
+    "tags": [
+      "numbers-oriented",
+      "commerce",
+      "accounting",
+      "finance",
+      "audit",
+      "taxation",
+      "banking"
+    ]
+  },
+  "curriculum": {
+    "assessment_methods": "End-semester theory exams, internal assignments, case-based problem solving, presentations, spreadsheet work, and project/report evaluation; financial statement analysis courses also use practical analysis of listed-company reports and ratios.",
+    "learning_activities": "Lectures, tutorials, accounts practice, numerical problem solving, spreadsheet exercises, case analysis, and guided project work; DU’s B.Com papers also include practical components and finance/accounting-focused electives such as Financial Accounting, Financial Statement Analysis, Corporate Finance",
+    "years": [
+      {
+        "label": "Year 1",
+        "subjects": [
+          {
+            "description": "Introduction to recording business transactions, ledgers, trial balance, and preparation of final accounts.",
+            "name": "Financial Accounting I"
+          },
+          {
+            "description": "Basic ideas of management, money, markets, and personal finance.",
+            "name": "Finance for Everyone"
+          },
+          {
+            "description": "Foundations of business mathematics and quantitative methods used in commerce.",
+            "name": "Business Mathematics and Statistics"
+          },
+          {
+            "description": "Business communication, office writing, and presentation skills for commerce settings.",
+            "name": "Business Communication"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Year 2",
+        "subjects": [
+          {
+            "description": "Cost concepts, cost sheet preparation, and control of business costs.",
+            "name": "Cost Accounting"
+          },
+          {
+            "description": "Company law basics, incorporation, governance, and compliance.",
+            "name": "Corporate Law"
+          },
+          {
+            "description": "Income tax structure, taxable income, and basic return filing concepts.",
+            "name": "Direct Tax Basics"
+          },
+          {
+            "description": "Accounting for companies, share capital, debentures, and company final accounts.",
+            "name": "Corporate Accounting"
+          }
+        ],
+        "year": 2
+      },
+      {
+        "label": "Year 3",
+        "subjects": [
+          {
+            "description": "Checking accounts, audit evidence, and the audit process.",
+            "name": "Auditing Principles"
+          },
+          {
+            "description": "Budgeting, capital structure, and investment decision basics.",
+            "name": "Financial Management"
+          },
+          {
+            "description": "Goods and Services Tax, indirect tax process, and compliance basics.",
+            "name": "Indirect Taxation"
+          },
+          {
+            "description": "Analysis and interpretation of financial statements using ratios and cash flow tools.",
+            "name": "Financial Statement Analysis"
+          }
+        ],
+        "year": 3
+      },
+      {
+        "label": "Year 4",
+        "subjects": [
+          {
+            "description": "Research design, sampling, data collection, and report writing for commerce topics.",
+            "name": "Business Research Methodology"
+          },
+          {
+            "description": "Sources and uses of long-term and short-term business finance.",
+            "name": "Corporate Finance"
+          },
+          {
+            "description": "Banking, insurance, mutual funds, and other financial intermediation services.",
+            "name": "Financial Services"
+          },
+          {
+            "description": "Use of accounting information for planning, control, and managerial decisions.",
+            "name": "Accounting for Managerial Decisions"
+          }
+        ],
+        "year": 4
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "Completion of Class 12 from a recognised board",
+      "Merit on Class 12 marks in colleges that admit by marks",
+      "Entrance-based selection in institutions that use a university-level test or central admissions process",
+      "Document verification and seat confirmation after the merit list or counselling round"
+    ],
+    "admission_timeline": [
+      {
+        "description": "Finish Class 12 with the required subjects and minimum marks set by the college or university.",
+        "step": 1,
+        "title": "Complete school-leaving examination"
+      },
+      {
+        "description": "Submit the application form, academic records, and identity documents.",
+        "step": 2,
+        "title": "Apply to colleges or universities"
+      },
+      {
+        "description": "Appear for the required entrance test, if the institution uses one, or wait for merit ranking.",
+        "step": 3,
+        "title": "Selection stage"
+      },
+      {
+        "description": "Attend counselling or document verification and confirm the allotted seat.",
+        "step": 4,
+        "title": "Admission confirmation"
+      },
+      {
+        "description": "Start classes after fee payment and final enrolment.",
+        "step": 5,
+        "title": "Begin the programme"
+      }
+    ],
+    "typical_requirements": [
+      "Pass in Class XII from a recognised board",
+      "Minimum marks set by the institution, commonly in the 45% to 50% range for general admission rules",
+      "Commerce is helpful, but many colleges also consider students from Science and Arts",
+      "Basic comfort with accounts, numbers, and spreadsheet-style work"
+    ]
+  },
+  "skills": [
+    {
+      "description": "Record and classify business transactions correctly.",
+      "name": "Accounting accuracy"
+    },
+    {
+      "description": "Read balance sheets, profit and loss statements, and cash flow statements.",
+      "name": "Financial statement analysis"
+    },
+    {
+      "description": "Work with ratios, percentages, budgets, and business calculations.",
+      "name": "Numerical problem solving"
+    },
+    {
+      "description": "Use spreadsheet tools for tables, comparisons, and analysis.",
+      "name": "Spreadsheet handling"
+    },
+    {
+      "description": "Understand tax, audit, and compliance basics.",
+      "name": "Compliance awareness"
+    },
+    {
+      "description": "Explain financial findings clearly in writing and in class presentations.",
+      "name": "Business communication"
+    }
+  ],
+  "careers": [
+    {
+      "description": "Handles bookkeeping, financial records, invoicing, reconciliations, and basic reporting in businesses and firms.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Accountant",
+      "typical_route": "B.Com Accounting & Finance -> Entry-level accountant role"
+    },
+    {
+      "description": "Prepares financial data, supports budgeting, reviews performance, and helps interpret company accounts.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Financial Analyst",
+      "typical_route": "B.Com Accounting & Finance -> Financial analyst role"
+    },
+    {
+      "description": "Supports GST, income tax, returns, filings, and day-to-day tax compliance work.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Tax Consultant",
+      "typical_route": "B.Com Accounting & Finance -> Tax consultant role"
+    },
+    {
+      "description": "Supports accounts teams with vouchers, ledgers, billing, and month-end tasks.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Accounts Executive",
+      "typical_route": "B.Com Accounting & Finance -> Accounts executive role"
+    },
+    {
+      "description": "Uses data, finance knowledge, and business logic to support reports, planning, and decisions.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Business Analyst",
+      "typical_route": "B.Com Accounting & Finance -> Business analyst role"
+    },
+    {
+      "description": "Works in audit, assurance, taxation, and financial reporting after passing the professional exam and completing articleship.",
+      "route_badge": "Advanced regulated route",
+      "title": "Chartered Accountant",
+      "typical_route": "B.Com Accounting & Finance -> CA Foundation -> CA Intermediate -> Articleship -> CA Final -> Chartered Account"
+    }
+  ],
+  "further_study_pathway": [
+    "M.Com",
+    "MBA in Finance",
+    "Chartered Accountancy (CA)",
+    "Company Secretary (CS)",
+    "CFA (Chartered Financial Analyst)"
+  ],
+  "recruiters": [
+    {
+      "description": "Global professional services firm that hires for audit, tax, consulting, and finance support roles.",
+      "logo_initials": "EY",
+      "name": "EY (Ernst & Young)",
+      "roles": [
+        "Audit Associate",
+        "Tax Associate"
+      ],
+      "sector": "Professional services"
+    },
+    {
+      "description": "Professional services firm that recruits for audit, risk, tax, and advisory functions.",
+      "logo_initials": "DP",
+      "name": "Deloitte",
+      "roles": [
+        "Audit Analyst",
+        "Consulting Analyst"
+      ],
+      "sector": "Professional services"
+    },
+    {
+      "description": "Large private-sector bank that hires commerce graduates for branch operations, banking support, and finance-related roles.",
+      "logo_initials": "HB",
+      "name": "HDFC Bank",
+      "roles": [
+        "Relationship Manager",
+        "Operations Executive"
+      ],
+      "sector": "Banking"
+    },
+    {
+      "description": "Private-sector bank that recruits for retail banking, operations, and finance roles.",
+      "logo_initials": "IB",
+      "name": "ICICI Bank",
+      "roles": [
+        "Probationary Officer",
+        "Relationship Manager"
+      ],
+      "sector": "Banking"
+    },
+    {
+      "description": "Public-sector bank that hires graduates for clerical, probationary officer, and banking operations roles.",
+      "logo_initials": "SB",
+      "name": "State Bank of India",
+      "roles": [
+        "Probationary Officer",
+        "Junior Associate"
+      ],
+      "sector": "Banking"
+    },
+    {
+      "description": "Central bank of India that recruits for clerical and officer-level banking roles through competitive examinations.",
+      "logo_initials": "RB",
+      "name": "Reserve Bank of India",
+      "roles": [
+        "Assistant",
+        "Grade B Officer"
+      ],
+      "sector": "Banking and financial regulation"
+    }
+  ],
+  "colleges": {
+    "data_note": "This ranking groups a few well-known Indian colleges that offer B.Com Accounting & Finance or a close equivalent. A higher score usually signals stronger overall profile in the ranking used here, but it does not guarantee the best fit for every student. Fees, intake, and seat rules can change each year, and some colleges charge differently by campus, stream, or student category.",
+    "items": [
+      {
+        "admission_route": "Merit / entrance as per college rules",
+        "annual_fee": 75000,
+        "city": "Mumbai",
+        "course_name": "B.Com Accounting & Finance",
+        "duration_years": 3,
+        "highlight": "Established commerce college with a high",
+        "institution_type": "private",
+        "name": "Narsee Monjee College of Commerce and Economics",
+        "rank": 1
+      },
+      {
+        "admission_route": "Merit / entrance as per college rules",
+        "annual_fee": 100000,
+        "city": "Bengaluru",
+        "course_name": "B.Com (Finance and Accountancy / Honours)",
+        "duration_years": 4,
+        "highlight": "Well-known private university option",
+        "institution_type": "private",
+        "name": "Christ University",
+        "rank": 2
+      },
+      {
+        "admission_route": "Merit / college selection process",
+        "annual_fee": 66840,
+        "city": "Ernakulam",
+        "course_name": "B.Com Accounting & Finance",
+        "duration_years": 3,
+        "highlight": "Strong commerce option with moderate fee",
+        "institution_type": "private",
+        "name": "Sacred Heart College",
+        "rank": 3
+      },
+      {
+        "admission_route": "Merit / college selection process",
+        "annual_fee": 1203,
+        "city": "Kolkata",
+        "course_name": "B.Com",
+        "duration_years": 3,
+        "highlight": "Low-fee government commerce college",
+        "institution_type": "government",
+        "name": "Goenka College of Commerce and Business Administration",
+        "rank": 4
+      },
+      {
+        "admission_route": "Merit / entrance as per university rules",
+        "annual_fee": 70000,
+        "city": "Bengaluru",
+        "course_name": "B.Com Accounting & Finance",
+        "duration_years": 3,
+        "highlight": "Private university with specialized BCom",
+        "institution_type": "private",
+        "name": "Jain University",
+        "rank": 5
+      },
+      {
+        "admission_route": "Merit / college selection process",
+        "annual_fee": 37867,
+        "city": "Mumbai",
+        "course_name": "B.Com Accounting & Finance",
+        "duration_years": 3,
+        "highlight": "Affordable commerce college option",
+        "institution_type": "private",
+        "name": "S K Somaiya College",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "Collegedunia India B.Com college rankings and college-specific fee pages",
+    "ranking_updated": "2026-08"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "M.Com, CA, CMA, MBA, banking jobs, audit and finance roles",
+      "course_name": "B.Com Accounting & Finance",
+      "laboratory_exposure": "No lab work; spreadsheet, accounting, T-",
+      "main_focus": "Accounting, finance, taxation, audit, and commerce",
+      "statistics_level": "Basic to moderate"
+    },
+    {
+      "common_next_steps": "M.Com, CA, CMA, banking, government exams, sales and operations roles",
+      "course_name": "B.Com",
+      "laboratory_exposure": "No lab work; theory and spreadsheet work",
+      "main_focus": "Broad commerce subjects such as accounting, economics, and business law",
+      "statistics_level": "Basic"
+    },
+    {
+      "common_next_steps": "MBA, company roles, sales, marketing, operations, startup support",
+      "course_name": "BBA",
+      "laboratory_exposure": "Usually no lab work; presentations, case",
+      "main_focus": "Business management, organization, marketing, and operations",
+      "statistics_level": "Moderate"
+    }
+  ],
+  "fees": {
+    "footnote": "Fees usually change by college, city, reservation category, and whether the programme is three years or four years. Families should check the exact tuition, exam charges, admission fee, and any extra charges such as lab,",
+    "rows": [
+      {
+        "category": "Government college tuition",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": true,
+        "max": 50000,
+        "min": 3000,
+        "parent_check": "Typical annual tuition in government colleges is low, but the final amount depends on the specific college and student’s"
+      },
+      {
+        "category": "Private college tuition",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": true,
+        "max": 120000,
+        "min": 65000,
+        "parent_check": "Many private colleges charge mid-range annual tuition, with some higher-fee colleges charging more depending on campus,"
+      },
+      {
+        "category": "Premier national college tuition",
+        "frequency": "Per year",
+        "institution_type": "premier_national",
+        "is_variable": true,
+        "max": 125000,
+        "min": 48780,
+        "parent_check": "Top national-level colleges can range from modest fees to higher fees, especially in elite commerce colleges in major ci"
+      },
+      {
+        "category": "Other compulsory charges",
+        "frequency": "Per year",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 15000,
+        "min": 1000,
+        "parent_check": "Students may also pay exam, registration, or activity charges on top of tuition, and these can change by college and"
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "Start with your strongest school subjects, especially Mathematics, and build comfort with basic bookkeeping, tables, and word problems. Use Grade 8-10 to get used to careful calculation and regular revision.",
+      "stage": "Grades 8-10",
+      "title": "Build number confidence"
+    },
+    {
+      "description": "In Grade 11, choose a commerce-oriented subject mix if available and focus on Accounts, Business Studies, Economics, and Mathematics. Begin comparing colleges that offer B.Com Accounting & Finance and note their subject,",
+      "stage": "Grade 11",
+      "title": "Map your route"
+    },
+    {
+      "description": "In Grade 12, aim for strong board marks and prepare a short list of colleges, fees, and admission requirements. After results, apply early, keep documents ready, and choose the college where the teaching style, commute,",
+      "stage": "Grade 12",
+      "title": "Apply with a shortlist"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "It suits students who like working with numbers, ledgers, records, and structured problem-solving. A steady, careful approach matters more than speed.",
+      "question": "Who usually enjoys this course?"
+    },
+    {
+      "answer": "Expect a mix of theory and practice, with subjects around accounting, finance, business, and related commerce topics. The work is usually detail-heavy and regular.",
+      "question": "What kind of study style does it need?"
+    },
+    {
+      "answer": "It can lead toward accounting, audit, taxation, banking, financial analysis, and broader commerce roles. The exact path depends on later study, internships, and skills.",
+      "question": "What careers can follow this degree?"
+    },
+    {
+      "answer": "For regulated roles such as Chartered Accountant, graduation is only one step. Students still need to complete the professional course, articleship or practical training, and the final professional examination before they can practice in that role.",
+      "question": "Can this degree make someone a CA directly?"
+    },
+    {
+      "answer": "Yes. Students from Commerce, Science, or Arts commonly consider this course, but the final admission rules depend on the college.",
+      "question": "Can students from any stream apply?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "This course is a good fit for students who are comfortable with logic, accuracy, and regular practice. Families can discuss whether the student prefers structured work, can stay consistent with calculations, and is open to careers that may continue beyond the degree through professional exams or further study. It also helps to compare colleges on teaching quality, commute, total cost, and placement support rather than choosing by name alone. A calm plan works best: build school marks, keep documents ready, and make a realistic shortlist early. The goal is not just admission, but choosing an environment where the student can manage numbers steadily and grow into a reliable commerce professional.",
+    "questions": [
+      "Does the student enjoy careful, repetitive work with numbers?",
+      "Are they open to further qualifications after the degree if they want a regulated career?",
+      "Which college fits our budget, travel time, and learning needs best?",
+      "Will the student benefit from extra support in accounting or mathematics?",
+      "What backup options should be kept alongside this course?",
+      "How will we judge whether the college offers enough practical exposure?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "National Testing Agency",
+        "title": "PUBLIC NOTICE 08.10.2025 Subject",
+        "url": "https://nta.ac.in/Download/Notice/Notice_20251008160925.pdf"
+      },
+      {
+        "publisher": "National Testing Agency",
+        "title": "Annexure-I",
+        "url": "https://www.nta.ac.in/Download/Notice/Notice_20260112140126.pdf"
+      },
+      {
+        "publisher": "University Grants Commission",
+        "title": "Foreign Higher Educational Institution (FHEI) List",
+        "url": "https://www.ugc.gov.in/FHEI"
+      },
+      {
+        "publisher": "University Grants Commission",
+        "title": "State-wise list of Fake Universities",
+        "url": "https://www.ugc.gov.in/universitydetails/Fakeuniversity"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  }
+}

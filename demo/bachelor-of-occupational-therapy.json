@@ -1,0 +1,621 @@
+{
+  "course_id": "crs_bachelor_of_occupational_therapy",
+  "slug": "bachelor-of-occupational-therapy",
+  "course_name": "Bachelor of Occupational Therapy",
+  "currency": "INR",
+  "region": "India",
+  "category": "Medical & Allied Health",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Clinical healthcare degree",
+    "fit": {
+      "indicators": [
+        "Needs Class 12 Science with Biology",
+        "Includes practical and clinical training",
+        "Builds skills for rehabilitation care"
+      ],
+      "note": "A good fit for students who want direct patient-facing work in rehabilitation and are comfortable with science and hands",
+      "score_percent": 82
+    },
+    "summary": "Bachelor of Occupational Therapy prepares students to help people regain independence in daily life after illness, injury, or disability. The course combines science, practical training, and supervised clinical work, so it suits families looking for a healthcare degree with clear patient-care pathways."
+  },
+  "quick_facts": {
+    "career_direction": "Rehabilitation and patient-care services in hospitals, clinics, rehab,",
+    "entry_level": "Class 12",
+    "indicative_annual_fees": {
+      "max": 200000,
+      "min": 50000
+    },
+    "learning_style": "A mix of biology-based study, hands-on practicals, and field",
+    "suitable_streams": [
+      "Science"
+    ],
+    "typical_duration": {
+      "max_years": 4.5,
+      "min_years": 4
+    }
+  },
+  "seo": {
+    "meta_description": "Bachelor of Occupational Therapy in India: course duration, eligibility, fees, career direction, and what students learn in this rehabilitation-focused healthc",
+    "page_title": "Bachelor of Occupational Therapy Course in India | Duration, Fees, E"
+  },
+  "subcategory": "Occupational Therapy",
+  "overview": {
+    "heading": "What is a Bachelor of Occupational Therapy?",
+    "paragraphs": [
+      "Bachelor of Occupational Therapy is an undergraduate health course that trains students to help people regain everyday skills after illness, injury, disability, or developmental conditions. In India, it is usually a 4 to 4.5 year programme with classroom study, practical work, and clinical training, and most colleges ask for Class 12 Science with Physics, Chemistry, and Biology.",
+      "Students learn how to assess a person's movement, memory, hand function, self-care, school tasks, and work routines, then plan activities and exercises that make daily life easier. The work is practical and people-focused, so students spend time in labs, hospital wards, rehabilitation settings, and field placements rather than only studying theory.",
+      "After graduation, most people work with hospitals, rehabilitation centres, clinics, special schools, elderly-care services, or community health teams. Because entry requirements can change by institution and the field is health-care based, families should check the current admission rules and the steps needed for local practice or registration before choosing the course."
+    ]
+  },
+  "snapshot": {
+    "data_note": "Pay changes with the type of employer, city, experience, and the patient group served. Private hospitals, rehabilitation centres, teaching roles, and specialist practice can pay differently, so one figure cannot describe every graduate.",
+    "salary": {
+      "higher_annual": 800000,
+      "higher_is_open_ended": false,
+      "lower_annual": 30000,
+      "note": "Typical earnings for occupational therapists in India are around INR 3.9 lakh a year, with reported ranges from about INR 0.3 lakh to INR 8 lakh a year. Early-career pay is usually lower, while experience and specialist roles can raise income.",
+      "typical_annual": 390000,
+      "marker_percent": 47
+    },
+    "specialisations": [
+      "Pediatric occupational therapy",
+      "Geriatric occupational therapy",
+      "Mental health occupational therapy",
+      "Rehabilitation practice",
+      "Hand therapy",
+      "Community-based rehabilitation",
+      "School-based therapy",
+      "Neurological rehabilitation"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "Be careful if you expect this course to be mostly hospital medicine",
+      "points": [
+        "The work is about helping people function in daily life, not about diagnosing disease or prescribing medicine.",
+        "The course needs steady practical effort; students who dislike labs, observation, and supervised clinical work may find it difficult.",
+        "Pay can start modestly in some settings, so it suits students who are motivated by care work and long-term growth rather than quick earnings",
+        "Admission requirements vary by college, and some institutions expect specific Science subjects and marks at Class 12."
+      ]
+    },
+    "good_fit": {
+      "heading": "Good fit for students who",
+      "points": [
+        "like Biology and human-body topics",
+        "enjoy hands-on learning and patient interaction",
+        "are patient, observant, and calm with people who need support",
+        "want a career in rehabilitation, disability support, or community health services"
+      ]
+    },
+    "tags": [
+      "Health-care course",
+      "Rehabilitation",
+      "Patient care",
+      "Hands-on practicals",
+      "Science stream",
+      "Human body and movement",
+      "Clinical training"
+    ]
+  },
+  "curriculum": {
+    "assessment_methods": "Written exams, practical laboratory tests, viva voce, case studies, clinical postings, and internship evaluation.",
+    "learning_activities": "Lectures, anatomy and physiology labs, demonstrations, patient observation, supervised clinical practice, community exposure, and project work.",
+    "years": [
+      {
+        "label": "Year 1",
+        "subjects": [
+          {
+            "description": "Introduction to occupational therapy history, scope, ethics, and team roles in rehabilitation.",
+            "name": "Foundations of Occupational Therapy"
+          },
+          {
+            "description": "Study of human body structure for movement, function, and clinical assessment.",
+            "name": "Human Anatomy"
+          },
+          {
+            "description": "Study of body functions and homeostasis as they relate to health and disability.",
+            "name": "Human Physiology"
+          },
+          {
+            "description": "Basic principles of communication, documentation, and professional behaviour in healthcare.",
+            "name": "Healthcare Communication and Professional Practice"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Year 2",
+        "subjects": [
+          {
+            "description": "Study of illness patterns, causes, and their effects on function and participation.",
+            "name": "General Pathology and Microbiology"
+          },
+          {
+            "description": "Study of medicines commonly used in rehabilitation settings and safe practice awareness.",
+            "name": "Pharmacology for Rehabilitation"
+          },
+          {
+            "description": "Assessment of movement, muscle action, and joint function in daily activities.",
+            "name": "Kinesiology and Biomechanics"
+          },
+          {
+            "description": "Practical methods for measuring range of motion, strength, and functional limitation.",
+            "name": "Clinical Assessment Techniques"
+          }
+        ],
+        "year": 2
+      },
+      {
+        "label": "Year 3",
+        "subjects": [
+          {
+            "description": "Use of purposeful activity to improve self-care, work, and leisure participation.",
+            "name": "Activity Analysis and Therapeutic Media"
+          },
+          {
+            "description": "Assessment and intervention for neurological conditions affecting daily function.",
+            "name": "Neurological Occupational Therapy"
+          },
+          {
+            "description": "Assessment and intervention for orthopaedic and musculoskeletal conditions.",
+            "name": "Musculoskeletal Occupational Therapy"
+          },
+          {
+            "description": "Study of child development and therapy approaches for developmental needs.",
+            "name": "Paediatric Occupational Therapy"
+          }
+        ],
+        "year": 3
+      },
+      {
+        "label": "Year 4",
+        "subjects": [
+          {
+            "description": "Training in work rehabilitation, assistive devices, and return-to-activity planning.",
+            "name": "Community and Vocational Rehabilitation"
+          },
+          {
+            "description": "Methods for finding, reading, and using research in occupational therapy.",
+            "name": "Research Methods and Biostatistics"
+          },
+          {
+            "description": "Independent project or dissertation based on a supervised occupational therapy topic.",
+            "name": "Dissertation and Seminar"
+          },
+          {
+            "description": "Supervised clinical posting in hospitals and rehabilitation settings with progressive patient care responsibilities.",
+            "name": "Advanced Fieldwork Placement"
+          }
+        ],
+        "year": 4
+      },
+      {
+        "label": "Year 5",
+        "subjects": [
+          {
+            "description": "Full-time supervised practice in a clinical setting to build independent patient-care readiness.",
+            "name": "Occupational Therapy Internship"
+          },
+          {
+            "description": "Advanced clinical decision-making across common rehabilitation cases and treatment planning.",
+            "name": "Advanced Clinical Reasoning"
+          },
+          {
+            "description": "Specialised study of one rehabilitation area such as neurorehabilitation, paediatrics, orthopaedics, or hand therapy.",
+            "name": "Specialisation in Occupational Therapy"
+          },
+          {
+            "description": "Final research or capstone project presenting supervised work on a chosen occupational therapy topic.",
+            "name": "Final Project and Dissertation"
+          }
+        ],
+        "year": 5
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "Merit-based admission on Class 12 marks in the science stream",
+      "Entrance-test or interview-based admission at some institutions",
+      "NEET-UG qualification where required by a college or state counselling process",
+      "Direct counselling or centralised allotment in participating colleges"
+    ],
+    "admission_timeline": [
+      {
+        "description": "Complete Class 12 in Science with the required subjects.",
+        "step": 1,
+        "title": "Finish higher secondary education"
+      },
+      {
+        "description": "Apply to colleges or counselling portals during the admission window.",
+        "step": 2,
+        "title": "Submit application"
+      },
+      {
+        "description": "Take the entrance test or attend merit-based counselling if asked.",
+        "step": 3,
+        "title": "Selection process"
+      },
+      {
+        "description": "Present original marksheets, identity proof, and medical fitness documents at admission.",
+        "step": 4,
+        "title": "Document verification"
+      },
+      {
+        "description": "Confirm the seat by paying the first fee instalment and completing enrollment.",
+        "step": 5,
+        "title": "Seat confirmation"
+      }
+    ],
+    "typical_requirements": [
+      "Class 12 or equivalent from a recognised board",
+      "Physics, Chemistry, and Biology as main subjects",
+      "English at 10+2 level in many colleges",
+      "Typical minimum aggregate around 50% in PCB, with relaxation in some institutions for reserved categories"
+    ]
+  },
+  "skills": [
+    {
+      "description": "Ability to observe movement problems and daily-life difficulties in patients.",
+      "name": "Clinical observation"
+    },
+    {
+      "description": "Skill in guiding exercises, activities, and adaptive methods safely.",
+      "name": "Therapeutic handling"
+    },
+    {
+      "description": "Understanding of anatomy, physiology, and function for rehabilitation planning.",
+      "name": "Biomedical knowledge"
+    },
+    {
+      "description": "Clear speaking and listening with patients, families, and healthcare teams.",
+      "name": "Communication"
+    },
+    {
+      "description": "Careful recording of findings, progress notes, and treatment plans.",
+      "name": "Documentation"
+    },
+    {
+      "description": "Patience, empathy, and respect for people with disability or illness.",
+      "name": "Compassion and professionalism"
+    }
+  ],
+  "careers": [
+    {
+      "description": "Works with patients who have injury, illness, disability, or developmental needs to improve daily living skills, mobility, and independence. In India, practice/",
+      "route_badge": "Advanced regulated route",
+      "title": "Occupational Therapist",
+      "typical_route": "Bachelor of Occupational Therapy -> internship/clinical training -> registration where required -> practice as"
+    },
+    {
+      "description": "Supports children with movement, learning, sensory, or self-care challenges in hospitals, rehabilitation centres, or schools.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Pediatric Occupational Therapist",
+      "typical_route": "Bachelor of Occupational Therapy -> clinical experience in paediatric rehabilitation"
+    },
+    {
+      "description": "Helps older adults maintain independence after stroke, arthritis, injury, or general age-related decline.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Geriatric Occupational Therapist",
+      "typical_route": "Bachelor of Occupational Therapy -> clinical experience in geriatric rehabilitation"
+    },
+    {
+      "description": "Works with people recovering from injury, surgery, neurological conditions, or disability to rebuild everyday function.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Rehabilitation Specialist",
+      "typical_route": "Bachelor of Occupational Therapy -> work in a rehabilitation setting -> supervised clinical experience"
+    },
+    {
+      "description": "Leads therapy services, schedules, and patient-care workflows in a hospital or rehab unit.",
+      "route_badge": "Postgraduate route",
+      "title": "Therapy Manager",
+      "typical_route": "Bachelor of Occupational Therapy -> Master of Occupational Therapy -> department or service experience"
+    },
+    {
+      "description": "Teaches, studies, and helps improve occupational therapy practice in colleges or research settings.",
+      "route_badge": "Postgraduate route",
+      "title": "Research Assistant",
+      "typical_route": "Bachelor of Occupational Therapy -> Master of Occupational Therapy or research experience -> research role"
+    }
+  ],
+  "further_study_pathway": [
+    "Master of Occupational Therapy (MOT",
+    "Postgraduate diploma or certificate",
+    "PhD in Occupational Therapy",
+    "Allied health or rehabilitation",
+    "Clinical specialisation in paediat"
+  ],
+  "recruiters": [
+    {
+      "description": "Large multi-specialty hospital group that hires rehabilitation and therapy staff across India.",
+      "logo_initials": "AH",
+      "name": "Apollo Hospitals",
+      "roles": [
+        "Occupational Therapist",
+        "Rehabilitation Therapist"
+      ],
+      "sector": "Healthcare"
+    },
+    {
+      "description": "Multi-specialty hospital network with rehabilitation and allied health services.",
+      "logo_initials": "FH",
+      "name": "Fortis Healthcare",
+      "roles": [
+        "Occupational Therapist",
+        "Rehabilitation Therapist"
+      ],
+      "sector": "Healthcare"
+    },
+    {
+      "description": "Indian hospital group with orthopaedics, neurology, and rehabilitation services.",
+      "logo_initials": "HM",
+      "name": "HOSMAT Hospitals",
+      "roles": [
+        "Occupational Therapist",
+        "Rehabilitation Therapist"
+      ],
+      "sector": "Healthcare"
+    },
+    {
+      "description": "Non-profit organisation working with older adults and community care, where therapy support roles may be relevant.",
+      "logo_initials": "HI",
+      "name": "HelpAge India",
+      "roles": [
+        "Rehabilitation Therapist",
+        "Community Health Support"
+      ],
+      "sector": "Non-profit"
+    },
+    {
+      "description": "Healthcare services company that can recruit allied health professionals for patient-care and rehabilitation support.",
+      "logo_initials": "MB",
+      "name": "Medybiz Pvt Ltd",
+      "roles": [
+        "Occupational Therapist",
+        "Rehabilitation Therapist"
+      ],
+      "sector": "Healthcare services"
+    },
+    {
+      "description": "Hospital group with rehabilitation and therapy services.",
+      "logo_initials": "FH",
+      "name": "Fortis Hospital",
+      "roles": [
+        "Occupational Therapist",
+        "Rehabilitation Therapist"
+      ],
+      "sector": "Healthcare"
+    }
+  ],
+  "colleges": {
+    "data_note": "This ranking reflects a practical mix of affordability, visibility, and course availability for families comparing Occupational Therapy options. It does not measure teaching quality, hospital exposure, internship placement, or campus fit, and fees can change by admission year, category, and hostel choice.",
+    "items": [
+      {
+        "admission_route": "Undergraduate admission through the own/",
+        "annual_fee": 160000,
+        "city": "Chennai",
+        "course_name": "Bachelor of Occupational Therapy",
+        "duration_years": 4.5,
+        "highlight": "Private deemed university with a BOT fee",
+        "institution_type": "private",
+        "name": "Saveetha Institute of Medical and Technical Sciences",
+        "rank": 1
+      },
+      {
+        "admission_route": "Undergraduate admission through the own/",
+        "annual_fee": 157500,
+        "city": "Bengaluru",
+        "course_name": "Bachelor of Occupational Therapy",
+        "duration_years": 4,
+        "highlight": "Private university with a clearly stated",
+        "institution_type": "private",
+        "name": "Jain (Deemed-to-be University)",
+        "rank": 2
+      },
+      {
+        "admission_route": "State/college admission process",
+        "annual_fee": 100000,
+        "city": "Coimbatore",
+        "course_name": "Bachelor of Occupational Therapy",
+        "duration_years": 4,
+        "highlight": "Private occupational therapy college",
+        "institution_type": "private",
+        "name": "KMCH College of Occupational Therapy",
+        "rank": 3
+      },
+      {
+        "admission_route": "State/college admission process",
+        "annual_fee": 122667,
+        "city": "Mangalore",
+        "course_name": "Bachelor of Occupational Therapy",
+        "duration_years": 4.5,
+        "highlight": "Private university offering BOT with a 4",
+        "institution_type": "private",
+        "name": "Yenepoya University",
+        "rank": 4
+      },
+      {
+        "admission_route": "State/college admission process",
+        "annual_fee": 55200,
+        "city": "Mumbai",
+        "course_name": "Bachelor of Occupational Therapy",
+        "duration_years": 4,
+        "highlight": "Government-funded municipal medical",
+        "institution_type": "government",
+        "name": "Lokmanya Tilak Municipal Medical College",
+        "rank": 5
+      },
+      {
+        "admission_route": "State/college admission process",
+        "annual_fee": 70211,
+        "city": "Nagpur",
+        "course_name": "Bachelor of Occupational Therapy",
+        "duration_years": 4.5,
+        "highlight": "Government medical college option with a",
+        "institution_type": "government",
+        "name": "Government Medical College, Nagpur",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "Current Indian college and course listings that publish BOT course pages and fee",
+    "ranking_updated": "2026-08"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "Internship, registration for clinical practice where required, and work in rehab",
+      "course_name": "Bachelor of Occupational Therapy",
+      "laboratory_exposure": "High: anatomy, physiology, hand-function",
+      "main_focus": "Helping people regain daily living skills after injury, illness, or disability",
+      "statistics_level": "Moderate"
+    },
+    {
+      "common_next_steps": "Internship, licensure/registration where applicable, and hospital or rehab",
+      "course_name": "Bachelor of Physiotherapy",
+      "laboratory_exposure": "High: anatomy, biomechanics, exercise",
+      "main_focus": "Movement, mobility, pain management, and physical rehabilitation",
+      "statistics_level": "Moderate"
+    },
+    {
+      "common_next_steps": "State nursing council registration after the degree and clinical posting",
+      "course_name": "BSc Nursing",
+      "laboratory_exposure": "Moderate: nursing skills labs and wards",
+      "main_focus": "Bedside care, medicines support, monitoring, and patient assistance",
+      "statistics_level": "Low to moderate"
+    }
+  ],
+  "fees": {
+    "footnote": "For a family, the annual tuition is the main number to compare, but the full cost can be higher because of hostel, mess, exam, internship, and one-time university charges. BOT programmes in India commonly run for 4 to 4.",
+    "rows": [
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": false,
+        "max": 80000,
+        "min": 50000,
+        "parent_check": "Confirm whether the figure covers only tuition or also university and exam charges."
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": false,
+        "max": 200000,
+        "min": 100000,
+        "parent_check": "Confirm whether internship-year charges are included in the published annual amount."
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "premier_national",
+        "is_variable": false,
+        "max": 150000,
+        "min": 70000,
+        "parent_check": "Confirm whether the institute publishes a separate hostel or development fee."
+      },
+      {
+        "category": "Hostel",
+        "frequency": "Per year",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 150000,
+        "min": 22000,
+        "parent_check": "Check room type, mess charges, and whether electricity or laundry are extra."
+      },
+      {
+        "category": "One-time admission and registration",
+        "frequency": "One time",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 20000,
+        "min": 1500,
+        "parent_check": "Check the admission confirmation, registration, and refundable deposit amounts before paying."
+      },
+      {
+        "category": "Total programme",
+        "frequency": "Total programme",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 800000,
+        "min": 221104,
+        "parent_check": "Compare the total only after checking whether it includes internship and all mandatory university charges."
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "Choose Physics, Chemistry, and Biology in Class 11–12, since this course is usually open to Science students.",
+      "stage": "Grades 8-10",
+      "title": "Plan the right subject stream"
+    },
+    {
+      "description": "Build comfort with biology, human anatomy, and communication, because the course combines classroom study with hands-on practical work and patient interaction.",
+      "stage": "Grades 8-10",
+      "title": "Strengthen core subjects and 1"
+    },
+    {
+      "description": "Check admission rules carefully; many colleges use Class 12 marks, while some may also ask for an entrance test or interview.",
+      "stage": "Grade 11",
+      "title": "Track admission requirements"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "It is an undergraduate health-sciences degree focused on helping people improve daily living skills after injury, illness, disability, or surgery. Graduates often work in hospitals, rehabilitation centres, schools, and community care settings.",
+      "question": "What is Bachelor of Occupational Therapy?"
+    },
+    {
+      "answer": "Most programmes in India run for about 4 to 4.5 years, including practical training or internship.",
+      "question": "How long does the course take?"
+    },
+    {
+      "answer": "Most colleges expect Class 12 Science with Physics, Chemistry, and Biology. A few institutions may set minimum marks or additional entrance criteria.",
+      "question": "What subjects are needed after Class 10?"
+    },
+    {
+      "answer": "The usual next step is registration with the relevant state or national professional body where required by local rules. That registration is what lets a graduate work as an occupational therapist in regulated settings.",
+      "question": "What comes after graduation?"
+    },
+    {
+      "answer": "The work is practical and people-focused: therapy planning, daily-activity training, rehabilitation exercises, assistive devices, and progress tracking.",
+      "question": "What kind of work does an occupational therapist do?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "Bachelor of Occupational Therapy suits students who are patient, observant, and comfortable working closely with people. The course is not only about classroom biology; it also includes hands-on practice, communication, and learning how to support recovery and independence. Families should check three things early: whether the college is recognised, whether it includes supervised clinical training, and whether the graduate can register for practice in the state or region where they plan to work. It also helps to ask about hospital postings, internship length, and whether the campus has access to rehabilitation facilities. For students, this course works best when they genuinely enjoy service-oriented work and can handle steady study plus practical training.",
+    "questions": [
+      "Is the college recognised for this course?",
+      "Does the programme include clinical training and internship?",
+      "What registration is needed after graduation to practise?",
+      "What kind of hospitals or rehabilitation centres do students train in?",
+      "What are the usual job options after the degree?",
+      "How competitive is admission, and what marks are typically expected?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "National Commission for Allied and Healthcare Professions",
+        "title": "National Commission for Allied and Healthcare Professions",
+        "url": "https://ncahp.abdm.gov.in/"
+      },
+      {
+        "publisher": "National Career Service",
+        "title": "Occupational Therapist",
+        "url": "https://www.ncs.gov.in/"
+      },
+      {
+        "publisher": "University Grants Commission",
+        "title": "University Grants Commission",
+        "url": "https://www.ugc.gov.in/"
+      },
+      {
+        "publisher": "National Testing Agency",
+        "title": "National Testing Agency",
+        "url": "https://www.nta.ac.in/"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  }
+}

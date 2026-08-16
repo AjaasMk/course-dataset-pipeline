@@ -1,0 +1,583 @@
+{
+  "course_id": "crs_b_com",
+  "slug": "b-com",
+  "course_name": "B.Com",
+  "currency": "INR",
+  "region": "India",
+  "category": "Commerce & Finance",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Student-friendly guide",
+    "fit": {
+      "indicators": [
+        "Class 12 graduates interested in commerce",
+        "Students comfortable with numbers and business basics",
+        "Good fit for accounting, banking, taxation, and operations pathways"
+      ],
+      "note": "A practical undergraduate commerce degree for students who want a broad base in business, accounts, and finance before a",
+      "score_percent": 84
+    },
+    "summary": "B.Com is a broad undergraduate degree in commerce that builds core skills in accounting, economics, business law, taxation, and finance. It suits students who want a flexible path into jobs or higher study in business and finance, and it is commonly offered in both 3-year and 4-year formats in India."
+  },
+  "quick_facts": {
+    "career_direction": "Accounting, banking, taxation, audit, finance, business operations, or",
+    "entry_level": "Class 12",
+    "indicative_annual_fees": {
+      "max": 120000,
+      "min": 15000
+    },
+    "learning_style": "Theory plus practical problem-solving, case studies, numerac",
+    "suitable_streams": [
+      "Commerce",
+      "Science",
+      "Arts"
+    ],
+    "typical_duration": {
+      "max_years": 4,
+      "min_years": 3
+    }
+  },
+  "seo": {
+    "meta_description": "B.Com in India: duration, fees, eligibility, and career options explained for students and parents.",
+    "page_title": "B.Com Course in India: Duration, Fees, Eligibility and Career Options"
+  },
+  "subcategory": "Commerce",
+  "overview": {
+    "heading": "What is B.Com?",
+    "paragraphs": [
+      "B.Com, or Bachelor of Commerce, is a three-year undergraduate degree in commerce that usually follows Class 12. It covers the basics of accounting, economics, business law, taxation, finance, and related business subjects, so students learn how money, records, markets, and organisations work in everyday business life.",
+      "The course suits students who are comfortable with numbers, careful reading, and regular practice. Learning is usually a mix of theory, problem-solving, case studies, and practical business concepts. It can lead to work in accounting, banking, taxation, audit, finance, business operations, or further professional study after graduation.",
+      "B.Com is a broad foundation, not a single job track. A graduate’s earnings depend on the job role, city, employer, internships, and extra qualifications. Students who plan to add courses such as CA, CS, CFA, or similar credentials often have more options and stronger pay growth than those relying on the degree alone."
+    ]
+  },
+  "snapshot": {
+    "data_note": "B.Com pay in India changes with the job, city, employer, internships, and extra qualifications. Entry roles are often around INR 200000 to INR 400000 a year, while stronger early-career outcomes can reach roughly INR 800000 or more in specialised finance and commerce roles.",
+    "salary": {
+      "higher_annual": 800000,
+      "higher_is_open_ended": false,
+      "lower_annual": 200000,
+      "note": "A common early-career range for B.Com graduates in India is about INR 200000 to INR 800000 a year, with the middle of the market often around INR 400000. Professional credentials and role choice can move pay well above this band.",
+      "typical_annual": 400000,
+      "marker_percent": 33
+    },
+    "specialisations": [
+      "Accounting",
+      "Finance",
+      "Taxation",
+      "Banking",
+      "Audit",
+      "Business operations",
+      "Economics",
+      "Business law"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "Watch-outs before choosing B.Com",
+      "points": [
+        "A B.Com degree alone does not guarantee a high-paying job; many better-paid roles need extra qualifications or postgraduate study.",
+        "The course involves steady work with numbers, accounts, spreadsheets, and business rules, so students who want very little calculation may a",
+        "find it less comfortable.",
+        "Some careers linked to B.Com, such as banking, auditing, and professional finance roles, have extra selection steps or certification after a"
+      ]
+    },
+    "good_fit": {
+      "heading": "B.Com may suit you if you",
+      "points": [
+        "Like commerce, business, money management, and how companies operate.",
+        "Are comfortable with maths-based work, structured study, and careful writing.",
+        "Want a flexible degree that can lead to jobs, competitive exams, or professional courses after graduation.",
+        "Prefer a course that keeps options open across accounting, banking, taxation, audit, and finance."
+      ]
+    },
+    "tags": [
+      "commerce",
+      "finance",
+      "accounting",
+      "banking",
+      "taxation",
+      "undergraduate",
+      "numbers"
+    ]
+  },
+  "curriculum": {
+    "assessment_methods": "End-semester written exams, internal tests, class presentations, case studies, practical assignments, project work, and in some colleges a dissertation or research project in the final year.",
+    "learning_activities": "Lectures, tutorials, problem-solving exercises, accounting practice, case studies, spreadsheet-based tasks, group discussions, seminars, and project or internship-based learning in the final year.",
+    "years": [
+      {
+        "label": "Year 1",
+        "subjects": [
+          {
+            "description": "Introduces bookkeeping, financial statements, and the logic of double-entry accounting.",
+            "name": "Financial Accounting"
+          },
+          {
+            "description": "Covers management functions, planning, organising, and basic business decision-making.",
+            "name": "Management Principles and Applications"
+          },
+          {
+            "description": "Builds understanding of contracts, commercial obligations, and the legal framework for business.",
+            "name": "Business Laws"
+          },
+          {
+            "description": "Develops numerical and quantitative tools used in commerce courses, including business calculations.",
+            "name": "Business Mathematics"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Year 2",
+        "subjects": [
+          {
+            "description": "Focuses on accounting for company-level transactions and annual reports.",
+            "name": "Corporate Accounting"
+          },
+          {
+            "description": "Explains the legal structure, powers, and duties of companies.",
+            "name": "Company Law"
+          },
+          {
+            "description": "Studies people management, staffing, training, and workplace organisation.",
+            "name": "Human Resource Management"
+          },
+          {
+            "description": "Trains students to classify, analyse, and interpret business data for decisions.",
+            "name": "Business Statistics"
+          }
+        ],
+        "year": 2
+      },
+      {
+        "label": "Year 3",
+        "subjects": [
+          {
+            "description": "Covers financial planning, investment choices, and capital structure.",
+            "name": "Financial Management"
+          },
+          {
+            "description": "Introduces pricing, markets, promotion, and consumer behaviour.",
+            "name": "Principles of Marketing"
+          },
+          {
+            "description": "Explains taxation concepts, income heads, and practical filing basics.",
+            "name": "Income Tax Law and Practice"
+          },
+          {
+            "description": "Develops product costing, cost control, and budgeting methods.",
+            "name": "Cost Accounting"
+          }
+        ],
+        "year": 3
+      },
+      {
+        "label": "Year 4",
+        "subjects": [
+          {
+            "description": "Covers data-led decision-making in commerce using business tools and reports.",
+            "name": "Business Analytics"
+          },
+          {
+            "description": "Introduces corporate ethics, compliance, and board-level oversight.",
+            "name": "Corporate Governance"
+          },
+          {
+            "description": "Focuses on indirect taxation, GST rules, and customs basics.",
+            "name": "Goods and Services Tax and Customs Law"
+          },
+          {
+            "description": "Includes a capstone dissertation, research project, or advanced specialisation paper.",
+            "name": "Research Project and Dissertation"
+          }
+        ],
+        "year": 4
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "CUET UG-based admission in many central and state universities",
+      "Merit-based admission on Class 12 marks in some colleges",
+      "College-level counselling or seat allocation where applicable",
+      "Direct application through university or college admission portals"
+    ],
+    "admission_timeline": [
+      {
+        "description": "Complete Class 12 from a recognised board.",
+        "step": 1,
+        "title": "Finish school board exam"
+      },
+      {
+        "description": "Check the college or university's subject and percentage rules for B.Com.",
+        "step": 2,
+        "title": "Review eligibility"
+      },
+      {
+        "description": "Apply for the entrance test or merit-based admission process used by the institution.",
+        "step": 3,
+        "title": "Submit application"
+      },
+      {
+        "description": "Take CUET UG where required and appear in the subjects linked to the chosen programme.",
+        "step": 4,
+        "title": "Entrance exam"
+      },
+      {
+        "description": "Join counselling, document verification, and seat allotment or direct admission steps.",
+        "step": 5,
+        "title": "Admission and verification"
+      }
+    ],
+    "typical_requirements": [
+      "Pass Class 12 from a recognised board.",
+      "Commerce, Science, or Arts students are commonly eligible.",
+      "Many institutions ask for English and Mathematics or Accountancy at Class 12, especially for honours routes.",
+      "Typical cut-offs or minimum marks generally fall in the broad 45% to 60% range, depending on college and admission route."
+    ]
+  },
+  "skills": [
+    {
+      "description": "Recording transactions, preparing ledgers, and reading financial statements.",
+      "name": "Accounting"
+    },
+    {
+      "description": "Working with numbers, ratios, and business calculations accurately.",
+      "name": "Numeracy"
+    },
+    {
+      "description": "Understanding tax rules, business law, and compliance basics.",
+      "name": "Commercial awareness"
+    },
+    {
+      "description": "Analysing data, trends, and business performance using tables and reports.",
+      "name": "Data analysis"
+    },
+    {
+      "description": "Explaining ideas clearly in class discussions, reports, and presentations.",
+      "name": "Communication"
+    },
+    {
+      "description": "Using spreadsheets and basic business software for calculations and reporting.",
+      "name": "Digital and spreadsheet skills"
+    }
+  ],
+  "careers": [
+    {
+      "description": "Handles financial records, ledgers, invoices, and basic reporting in companies, firms, and offices.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Accountant",
+      "typical_route": "B.Com -> Entry-level accounting role"
+    },
+    {
+      "description": "Reviews financial data and supports budgeting, reporting, and business decisions.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Financial Analyst",
+      "typical_route": "B.Com -> Financial analyst role"
+    },
+    {
+      "description": "Works on tax filing, GST, compliance, and related client or company work.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Tax Consultant",
+      "typical_route": "B.Com -> Taxation or compliance role"
+    },
+    {
+      "description": "Supports day-to-day business operations, customer work, and office processes in commercial organisations.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Business Executive",
+      "typical_route": "B.Com -> Business operations role"
+    },
+    {
+      "description": "Handles banking operations, customer service, and transaction support in banks and financial services.",
+      "route_badge": "Training may be required",
+      "title": "Bank Probationary Officer",
+      "typical_route": "B.Com -> Competitive exam (IBPS PO/SBI PO) -> Probationary training -> Bank officer"
+    },
+    {
+      "description": "Prepares for a specialist finance qualification and later works in audit, taxation, and assurance.",
+      "route_badge": "Advanced regulated route",
+      "title": "Chartered Accountant",
+      "typical_route": "B.Com -> CA Foundation/Inter -> Articleship -> CA Final -> Membership with ICAI"
+    }
+  ],
+  "further_study_pathway": [
+    "M.Com",
+    "MBA in Finance, Accounting, or HR",
+    "B.Ed",
+    "CA (Chartered Accountancy)",
+    "CS (Company Secretary)"
+  ],
+  "recruiters": [
+    {
+      "description": "Major audit, tax, and consulting firm that hires commerce graduates for assurance and advisory work.",
+      "logo_initials": "EY",
+      "name": "EY India",
+      "roles": [
+        "Audit",
+        "Taxation"
+      ],
+      "sector": "Professional services"
+    },
+    {
+      "description": "Global consulting and audit firm with roles in advisory, risk, and finance services.",
+      "logo_initials": "DZ",
+      "name": "Deloitte India",
+      "roles": [
+        "Audit",
+        "Consulting"
+      ],
+      "sector": "Professional services"
+    },
+    {
+      "description": "Large private-sector bank offering roles in banking operations, customer service, and finance.",
+      "logo_initials": "HB",
+      "name": "HDFC Bank",
+      "roles": [
+        "Banking operations",
+        "Relationship roles"
+      ],
+      "sector": "Banking"
+    },
+    {
+      "description": "Public-sector bank recruiting for clerical, officer, and branch operations roles.",
+      "logo_initials": "SB",
+      "name": "State Bank of India",
+      "roles": [
+        "Probationary Officer",
+        "Clerical roles"
+      ],
+      "sector": "Banking"
+    },
+    {
+      "description": "Private-sector bank that hires for retail banking, operations, and finance-related roles.",
+      "logo_initials": "IC",
+      "name": "ICICI Bank",
+      "roles": [
+        "Banking operations",
+        "Sales and service"
+      ],
+      "sector": "Banking"
+    },
+    {
+      "description": "Life insurer with roles in finance, operations, and sales support.",
+      "logo_initials": "LI",
+      "name": "Life Insurance Corporation of India",
+      "roles": [
+        "Operations",
+        "Finance support"
+      ],
+      "sector": "Insurance"
+    }
+  ],
+  "colleges": {
+    "data_note": "This ranking highlights well-known colleges that offer B.Com or a closely related commerce degree in India. A higher rank shows stronger overall prominence in the ranking source, but it does not prove the best fit for every student. Fees, seat availability, and admission cut-offs can change each year, so families should verify the exact B.Com stream, campus, and current fee structure before short",
+    "items": [
+      {
+        "admission_route": "CUET UG / college admission process",
+        "annual_fee": 32420,
+        "city": "New Delhi",
+        "course_name": "B.Com",
+        "duration_years": 3,
+        "highlight": "Top-ranked commerce college with a long,",
+        "institution_type": "government",
+        "name": "Shri Ram College of Commerce",
+        "rank": 1
+      },
+      {
+        "admission_route": "CUET UG / University of Delhi admission",
+        "annual_fee": 28670,
+        "city": "New Delhi",
+        "course_name": "B.Com",
+        "duration_years": 3,
+        "highlight": "Well-known Delhi University commerce co",
+        "institution_type": "government",
+        "name": "Hindu College",
+        "rank": 2
+      },
+      {
+        "admission_route": "CUET UG / University of Delhi admission",
+        "annual_fee": 31435,
+        "city": "New Delhi",
+        "course_name": "B.Com",
+        "duration_years": 3,
+        "highlight": "Large North Campus college with a stron",
+        "institution_type": "government",
+        "name": "Hansraj College",
+        "rank": 3
+      },
+      {
+        "admission_route": "College application / merit-based or CU",
+        "annual_fee": 169240,
+        "city": "Chennai",
+        "course_name": "B.Com",
+        "duration_years": 3,
+        "highlight": "Private autonomous college with a long",
+        "institution_type": "private",
+        "name": "Loyola College",
+        "rank": 4
+      },
+      {
+        "admission_route": "CUET UG / University of Delhi admission",
+        "annual_fee": 17055,
+        "city": "New Delhi",
+        "course_name": "B.Com",
+        "duration_years": 3,
+        "highlight": "Economics and commerce-focused Delhi U",
+        "institution_type": "government",
+        "name": "Kirori Mal College",
+        "rank": 5
+      },
+      {
+        "admission_route": "College admission process / merit-based",
+        "annual_fee": 20000,
+        "city": "Mumbai",
+        "course_name": "B.Com",
+        "duration_years": 3,
+        "highlight": "Private commerce college with strong ba",
+        "institution_type": "private",
+        "name": "Narsee Monjee College of Commerce and Economics",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "Collegedunia B.Com colleges in India",
+    "ranking_updated": "2026-08"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "M.Com, MBA, CA, CMA, CS, bank exams, accounting roles, taxation work",
+      "course_name": "B.Com",
+      "laboratory_exposure": "Very low; mainly classroom learning, GST",
+      "main_focus": "Commerce, accounting, economics, business law, finance, and taxation",
+      "statistics_level": "Basic to moderate; useful for accounts,,"
+    },
+    {
+      "common_next_steps": "MBA, PGDM, sales, operations, marketing, business analysis",
+      "course_name": "BBA",
+      "laboratory_exposure": "Very low; mainly projects, presentations",
+      "main_focus": "Business management, marketing, HR, operations, and entrepreneurship",
+      "statistics_level": "Moderate; more business data and case m"
+    },
+    {
+      "common_next_steps": "ICAI CA Foundation, CA Intermediate, articleship, CA Final, audit and taxation",
+      "course_name": "Chartered Accountancy (CA)",
+      "laboratory_exposure": "None in the usual sense; practical work",
+      "main_focus": "Professional accounting, audit, taxation, financial reporting, and compliance",
+      "statistics_level": "Moderate to high; accounts and finance"
+    }
+  ],
+  "fees": {
+    "footnote": "For most families, B.Com costs depend mainly on whether the college is government, part of a central university, or private. Tuition can change by year and by campus, and hostel, exam, and activity charges can sit on top",
+    "rows": [
+      {
+        "category": "B.Com tuition at government colleges",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": true,
+        "max": 60000,
+        "min": 3000,
+        "parent_check": "Check the exact college, because government college fees can differ sharply between universities and campuses."
+      },
+      {
+        "category": "B.Com tuition at premier national, high-",
+        "frequency": "Per year",
+        "institution_type": "premier_national",
+        "is_variable": true,
+        "max": 87700,
+        "min": 540,
+        "parent_check": "For central and top national colleges, confirm whether the figure covers tuition only or also has separate university or"
+      },
+      {
+        "category": "B.Com tuition at private colleges",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": true,
+        "max": 1500000,
+        "min": 20000,
+        "parent_check": "Private colleges may add registration, exam, lab, or activity charges, so the first-year bill can be higher than tuition"
+      },
+      {
+        "category": "B.Com at-a-glance mainstream annual fee",
+        "frequency": "Per year",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 120000,
+        "min": 15000,
+        "parent_check": "This is a middle-of-the-market planning range for tuition only; always verify the full first-year bill before applying."
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "Build steady habits in mathematics, reading, and spreadsheet use. B.Com becomes easier when students are comfortable with tables, percentages, simple data interpretation, and writing clear answers.",
+      "stage": "Grades 8-10",
+      "title": "Strengthen core skills"
+    },
+    {
+      "description": "If available, choose Commerce in Class 11-12 and keep Accounts, Economics, Business Studies, and Mathematics strong. Students from Science or Arts can also apply in many colleges, but each college sets its own admission",
+      "stage": "Grade 11",
+      "title": "Plan for B.Com entry"
+    },
+    {
+      "description": "Shortlist colleges by admission route, fees, location, and whether they offer B.Com or B.Com (Hons). Compare workload, timetable, internship support, and whether the college fits the student’s goals in accounting,",
+      "stage": "Grade 12",
+      "title": "Choose the right college"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "B.Com is usually a 3-year undergraduate degree in India, and some institutions now also offer a 4-year option under the newer degree structure.",
+      "question": "How long does B.Com take?"
+    },
+    {
+      "answer": "Commerce is the most common stream, but many colleges admit students from Science and Arts too. The exact eligibility depends on the college or university.",
+      "question": "Do I need Commerce in Class 12 to study B.Com?"
+    },
+    {
+      "answer": "B.Com suits students who are comfortable with numbers, business concepts, accounts, and regular reading and writing. It is a good fit for students interested in finance, taxation, banking, audit, and business operations.",
+      "question": "What kind of student does B.Com suit?"
+    },
+    {
+      "answer": "B.Com alone does not make someone a Chartered Accountant, Cost Accountant, or Company Secretary. Those roles need the separate professional qualification and the exams or training that come after graduation.",
+      "question": "Can B.Com alone lead to regulated careers like CA, CMA, or CS?"
+    },
+    {
+      "answer": "Typical annual fees in India vary widely by college type, from lower-fee public colleges to higher-fee private colleges. A common published range is about INR 15000 to INR 120000 per year.",
+      "question": "How much does B.Com usually cost?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "B.Com is a practical undergraduate option for students who are comfortable with numbers, business ideas, and regular reading and writing. It can lead toward accounting, banking, taxation, audit, finance, and operations work, but it is not a licence for regulated careers such as CA, CMA, or CS. Families should treat B.Com as a base degree: the college matters, but so do the student’s habits, communication skills, and later choices. In school years, steady progress in mathematics, accounts, English, and computer use helps a lot. By Class 11-12, the key decisions are the stream, the college list, and whether the student wants a general B.Com or a more specialised honours track.",
+    "questions": [
+      "Does the student need Commerce in Class 12, or can Science or Arts students also apply?",
+      "Is the goal a job after B.Com, or a longer path such as CA, CMA, or CS?",
+      "Which colleges are affordable and recognised, and what is the total cost after fees, travel, and books?",
+      "Will the student be comfortable with accounts, spreadsheets, and exam-style problem solving?",
+      "Does the college offer internships, placement support, and a useful honours or specialisation option?",
+      "What is the backup plan if the student later decides to switch from commerce to another field?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "University Grants Commission",
+        "title": "University Grants Commission official website",
+        "url": "https://www.ugc.gov.in/"
+      },
+      {
+        "publisher": "The Institute of Chartered Accountants of India",
+        "title": "ICAI official website",
+        "url": "https://www.icai.org/"
+      },
+      {
+        "publisher": "The Institute of Company Secretaries of India",
+        "title": "ICSI official website",
+        "url": "https://www.icsi.edu/"
+      },
+      {
+        "publisher": "National Testing Agency",
+        "title": "National Testing Agency official website",
+        "url": "https://nta.ac.in/"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  }
+}

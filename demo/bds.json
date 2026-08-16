@@ -1,0 +1,608 @@
+{
+  "course_id": "crs_bds",
+  "slug": "bds",
+  "course_name": "BDS",
+  "currency": "INR",
+  "region": "India",
+  "category": "Medical & Allied Health",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Clinical healthcare course",
+    "fit": {
+      "indicators": [
+        "Strong interest in Biology",
+        "Comfort with patient-facing work",
+        "Good hand-eye coordination and fine motor skills"
+      ],
+      "note": "Best for students who like science, practical lab work, and helping people with oral health and treatment.",
+      "score_percent": 88
+    },
+    "summary": "BDS is the undergraduate course for becoming a dentist in India. It combines classroom study with clinical training in oral health, dental procedures, and patient care, and is suited to students who want a healthcare career with direct contact with people."
+  },
+  "quick_facts": {
+    "career_direction": "Dentist / oral healthcare professional",
+    "entry_level": "Class 12",
+    "indicative_annual_fees": {
+      "max": 250000,
+      "min": 50000
+    },
+    "learning_style": "Hands-on clinical training with biology, lab work, and long-",
+    "suitable_streams": [
+      "Science (Physics, Chemistry, &",
+      "Biology)"
+    ],
+    "typical_duration": {
+      "max_years": 5,
+      "min_years": 5
+    }
+  },
+  "seo": {
+    "meta_description": "BDS in India is the undergraduate dental degree for students who want to become dentists. See duration, fees, entry level, and career pathway.",
+    "page_title": "BDS Course in India: Duration, Fees, Eligibility & Career Path"
+  },
+  "subcategory": "Dentistry",
+  "overview": {
+    "heading": "What is BDS?",
+    "paragraphs": [
+      "BDS, or Bachelor of Dental Surgery, is an undergraduate degree in dentistry in India that usually takes five years to complete, including four years of study and a compulsory one-year internship. It prepares students to care for teeth, gums, and other parts of the mouth through classroom learning, lab work, and supervised clinical practice.",
+      "Students who choose BDS usually need a strong foundation in Physics, Chemistry, and Biology, and admission is generally through NEET UG. The course suits people who want a healthcare career with regular patient contact and practical procedures rather than mainly desk-based study.",
+      "After BDS, graduates may work as dentists in clinics, hospitals, public health settings, or teaching roles, and some go on to MDS for further specialisation. A BDS degree is an important step toward practice, but independent work comes after the internship and the required registration or licence."
+    ]
+  },
+  "snapshot": {
+    "data_note": "In India, BDS pay changes with the type of workplace, city, experience, and whether a graduate works in a private clinic, hospital, teaching role, or specialist setting. New graduates are often near the lower end, while experienced dentists and those with postgraduate study can earn more, so one number cannot describe.",
+    "salary": {
+      "higher_annual": 700000,
+      "higher_is_open_ended": false,
+      "lower_annual": 100000,
+      "note": "Published figures for India commonly place BDS starting pay around INR 300000 to INR 320000 a year, with broader ranges extending from about INR 100000 to INR 700000 and senior or specialist roles reaching higher.",
+      "typical_annual": 300000,
+      "marker_percent": 33
+    },
+    "specialisations": [
+      "General dentistry",
+      "Dental surgery",
+      "Oral pathology",
+      "Dental hygiene",
+      "Dental science",
+      "Teaching/lecturer roles",
+      "MDS specialisation after BDS later on",
+      "Oral healthcare in clinics and hospitals"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "Things to think about first",
+      "points": [
+        "BDS is a five-year course with a compulsory internship, so it takes longer than many other undergraduate degrees before full clinical work[2",
+        "Admission depends on NEET UG, so students need to be ready for a national entrance exam before joining the course.",
+        "Dental work is practical and patient-facing, so it asks for patience, concentration, and steady hands as much as academic interest.",
+        "A BDS degree alone does not make someone an independent dentist immediately; the internship and required registration or licence come first["
+      ]
+    },
+    "good_fit": {
+      "heading": "BDS may suit you if you...",
+      "points": [
+        "like Biology and want a healthcare course focused on the mouth, teeth, and gums.",
+        "are comfortable with lab work, clinical training, and close supervision with patients.",
+        "can stay calm and careful while doing detailed procedures.",
+        "want a career that can lead to clinic work, hospital work, public service, teaching, or further study."
+      ]
+    },
+    "tags": [
+      "Health care",
+      "Clinical training",
+      "Patient interaction",
+      "Biology",
+      "Hands-on learning",
+      "NEET UG",
+      "Dentistry"
+    ]
+  },
+  "curriculum": {
+    "assessment_methods": "Continuous internal assessment, theory examinations, practical examinations, viva voce, clinical case presentation, logbook review, and completion of the compulsory rotatory internship.",
+    "learning_activities": "Lectures, dissection and laboratory sessions, pre-clinical and clinical simulations, chairside patient care, departmental postings, case discussions, community oral health work, seminars, and supervised internship rotations.",
+    "years": [
+      {
+        "label": "Year 1",
+        "subjects": [
+          {
+            "description": "Human body structure, tissues, organs, and oral anatomy foundations.",
+            "name": "Human Anatomy"
+          },
+          {
+            "description": "Cell biology, genetics, embryology, and basic body functions.",
+            "name": "Human Physiology and Biochemistry"
+          },
+          {
+            "description": "General and organic chemistry concepts needed for dental science.",
+            "name": "Dental and General Chemistry"
+          },
+          {
+            "description": "Basic dental materials, instruments, and introductory prosthetic concepts.",
+            "name": "Pre-clinical Dental Materials"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Year 2",
+        "subjects": [
+          {
+            "description": "Tooth morphology, occlusion, and development of the dentition.",
+            "name": "Dental Anatomy and Oral Histology"
+          },
+          {
+            "description": "Microbial causes of oral disease and methods of control.",
+            "name": "Oral Microbiology and Immunology"
+          },
+          {
+            "description": "Disease processes, tissue changes, and diagnosis basics.",
+            "name": "General Pathology and Oral Pathology"
+          },
+          {
+            "description": "Pharmacology for pain control, infection control, and safe prescribing.",
+            "name": "Dental Pharmacology"
+          }
+        ],
+        "year": 2
+      },
+      {
+        "label": "Year 3",
+        "subjects": [
+          {
+            "description": "Diagnosis and treatment planning for common oral diseases.",
+            "name": "Oral Medicine and Radiology"
+          },
+          {
+            "description": "Prevention, diagnosis, and non-surgical treatment of gum disease.",
+            "name": "Periodontology"
+          },
+          {
+            "description": "Restoration of teeth with fillings, inlays, and crown preparation.",
+            "name": "Conservative Dentistry and Endodontics"
+          },
+          {
+            "description": "Tooth replacement, denture design, and bite rehabilitation.",
+            "name": "Prosthodontics"
+          }
+        ],
+        "year": 3
+      },
+      {
+        "label": "Year 4",
+        "subjects": [
+          {
+            "description": "Surgical extraction, minor oral surgery, and management of dental emergencies.",
+            "name": "Oral and Maxillofacial Surgery"
+          },
+          {
+            "description": "Growth-related jaw and tooth alignment treatment.",
+            "name": "Orthodontics and Dentofacial Orthopaedics"
+          },
+          {
+            "description": "Dental care for children, preventive care, and behaviour management.",
+            "name": "Pedodontics and Preventive Dentistry"
+          },
+          {
+            "description": "Community oral health, epidemiology, research basics, and dissertation or project work.",
+            "name": "Public Health Dentistry and Research Project"
+          }
+        ],
+        "year": 4
+      },
+      {
+        "label": "Year 5",
+        "subjects": [
+          {
+            "description": "Supervised patient care across dental departments during compulsory rotatory internship.",
+            "name": "Rotatory Clinical Internship"
+          },
+          {
+            "description": "Full-mouth diagnosis and treatment planning in real cases.",
+            "name": "Comprehensive Dental Case Management"
+          },
+          {
+            "description": "Emergency triage, pain control, and referral decisions.",
+            "name": "Clinical Emergency and Referral Practice"
+          },
+          {
+            "description": "Professional ethics, communication, and practice management in dental care.",
+            "name": "Dental Ethics and Practice Administration"
+          }
+        ],
+        "year": 5
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "Entrance through NEET-UG followed by state or all-India counselling for approved dental seats.",
+      "Direct admission is not the standard route for government or recognised BDS seats in India.",
+      "Seat allocation through central counselling, state counselling, deemed university counselling, or institution-specific counselling where the",
+      "admission_timeline"
+    ],
+    "admission_timeline": [
+      {
+        "description": "Complete Class 12 or equivalent with the required science subjects and minimum marks.",
+        "step": 1,
+        "title": "Finish Higher Secondary"
+      },
+      {
+        "description": "Appear for NEET-UG and obtain a qualifying score.",
+        "step": 2,
+        "title": "Qualify Entrance Exam"
+      },
+      {
+        "description": "Register for the relevant counselling process and choose BDS colleges.",
+        "step": 3,
+        "title": "Counselling and Choice Filling"
+      },
+      {
+        "description": "Attend document verification, seat allotment, fee payment, and college reporting.",
+        "step": 4,
+        "title": "Admission and Reporting"
+      },
+      {
+        "description": "Complete the 5-year BDS programme, including the compulsory internship, before licensure steps for practice.",
+        "step": 5,
+        "title": "Finish the Course"
+      }
+    ],
+    "typical_requirements": [
+      "Class 12 or equivalent with Physics, Chemistry, Biology or Biotechnology, and English.",
+      "Minimum aggregate marks usually around 50% for General category, 40% for SC/ST/OBC, with some institutions setting higher cut-offs.",
+      "NEET-UG qualification is required for admission to recognised BDS seats in India.",
+      "Minimum age is generally 17 years by 31 December of the admission year."
+    ]
+  },
+  "skills": [
+    {
+      "description": "Careful examination of teeth, gums, jaws, and oral tissues to identify problems early.",
+      "name": "Clinical diagnosis"
+    },
+    {
+      "description": "Hand skill and precision needed for restorations, extractions, impressions, and instrumentation.",
+      "name": "Manual dexterity"
+    },
+    {
+      "description": "Safe use of dental instruments, radiographs, and infection-control protocols.",
+      "name": "Clinical procedure handling"
+    },
+    {
+      "description": "Explaining treatment, building trust, and reassuring children, adults, and anxious patients.",
+      "name": "Patient communication"
+    },
+    {
+      "description": "Staying calm during pain, bleeding, emergencies, and long treatment sessions.",
+      "name": "Attention to detail"
+    },
+    {
+      "description": "Working with orthodontic, surgical, paediatric, and public-health teams during patient care.",
+      "name": "Team coordination"
+    }
+  ],
+  "careers": [
+    {
+      "description": "Treats common tooth and gum problems in clinics, hospitals, and dental centres; after BDS, practice starts only after registration with the State Dental Council",
+      "route_badge": "Possible after bachelor's",
+      "title": "General dentist",
+      "typical_route": "BDS -> 1-year internship -> State Dental Council registration -> general dental practice"
+    },
+    {
+      "description": "Provides routine oral care in private or government hospitals and dental clinics; BDS graduates are commonly employed in these settings",
+      "route_badge": "Possible after bachelor's",
+      "title": "Clinical practitioner",
+      "typical_route": "BDS -> internship -> practice in a clinic or hospital setting"
+    },
+    {
+      "description": "Works with military oral-health services treating serving personnel and families; this is an entry role available after BDS in the defence sector",
+      "route_badge": "Possible after bachelor's",
+      "title": "Dental officer, defence services",
+      "typical_route": "BDS -> internship -> recruitment into defence medical or dental services"
+    },
+    {
+      "description": "Works in railway health services as a dental doctor for employees and dependants; this is an entry role after BDS in the public sector",
+      "route_badge": "Possible after bachelor's",
+      "title": "Dentist in Indian Railways",
+      "typical_route": "BDS -> internship -> recruitment into railway health services"
+    },
+    {
+      "description": "Runs or joins a private dental clinic; many BDS graduates choose private practice after completing internship and registration",
+      "route_badge": "Possible after bachelor's",
+      "title": "Private practitioner",
+      "typical_route": "BDS -> 1-year internship -> State Dental Council registration -> own clinic or group practice"
+    },
+    {
+      "description": "Diagnoses and treats alignment problems in teeth and jaws; this role needs postgraduate study in orthodontics after BDS",
+      "route_badge": "Postgraduate route",
+      "title": "Orthodontist",
+      "typical_route": "BDS -> NEET-MDS -> MDS in Orthodontics -> specialist practice"
+    }
+  ],
+  "further_study_pathway": [
+    "BDS -> NEET-MDS -> MDS in Oral and/",
+    "Maxillofacial Surgery",
+    "BDS -> NEET-MDS -> MDS in Orthodont",
+    "ics and Dentofacial Orthopaedics",
+    "BDS -> NEET-MDS -> MDS in Prosthodo"
+  ],
+  "recruiters": [
+    {
+      "description": "Major multi-specialty hospital group that can employ dentists in dental departments and oral healthcare services.",
+      "logo_initials": "AH",
+      "name": "Apollo Hospitals",
+      "roles": [
+        "Dentist",
+        "Dental surgeon"
+      ],
+      "sector": "Healthcare"
+    },
+    {
+      "description": "Large private hospital network with dental and oral healthcare positions.",
+      "logo_initials": "FH",
+      "name": "Fortis Healthcare",
+      "roles": [
+        "Dentist",
+        "Clinical practitioner"
+      ],
+      "sector": "Healthcare"
+    },
+    {
+      "description": "National dental care chain with clinic-based dental practice roles.",
+      "logo_initials": "CD",
+      "name": "Clove Dental",
+      "roles": [
+        "Dentist",
+        "Dental consultant"
+      ],
+      "sector": "Dental healthcare"
+    },
+    {
+      "description": "Public medical education and hospital system that hires dentists for hospital and teaching settings.",
+      "logo_initials": "AI",
+      "name": "All India Institute of Medical Sciences",
+      "roles": [
+        "Dentist",
+        "Lecturer"
+      ],
+      "sector": "Healthcare and medical education"
+    },
+    {
+      "description": "Public sector employer that recruits dental officers for service in defence medical establishments.",
+      "logo_initials": "AF",
+      "name": "Armed Forces Medical Services",
+      "roles": [
+        "Dental officer",
+        "Dentist"
+      ],
+      "sector": "Defence healthcare"
+    },
+    {
+      "description": "National rail employer with medical and dental postings in railway health services.",
+      "logo_initials": "IR",
+      "name": "Indian Railways",
+      "roles": [
+        "Dentist in railway health",
+        "Dental officer"
+      ],
+      "sector": "Public sector transport"
+    }
+  ],
+  "colleges": {
+    "data_note": "Rankings indicate how institutions performed in a recent national assessment of dental colleges, but they do not capture every family concern such as seat type, clinic exposure, hostel costs, or commute. Tuition, hostels, and counselling rules can change by year and quota, so families should check the current admission notice, fee sheet, and internship details before applying.",
+    "items": [
+      {
+        "admission_route": "NEET-UG",
+        "annual_fee": 38000,
+        "city": "Lucknow",
+        "course_name": "BDS",
+        "duration_years": 5,
+        "highlight": "Public university dental faculty with a",
+        "institution_type": "government",
+        "name": "King George's Medical University",
+        "rank": 1
+      },
+      {
+        "admission_route": "NEET-UG",
+        "annual_fee": 172000,
+        "city": "Chennai",
+        "course_name": "BDS",
+        "duration_years": 5,
+        "highlight": "High-ranked private dental college with",
+        "institution_type": "private",
+        "name": "Saveetha Institute of Medical and Technical Sciences",
+        "rank": 2
+      },
+      {
+        "admission_route": "NEET-UG",
+        "annual_fee": 45000,
+        "city": "Delhi",
+        "course_name": "BDS",
+        "duration_years": 5,
+        "highlight": "Government dental college with lower-tui",
+        "institution_type": "government",
+        "name": "Maulana Azad Institute of Dental Sciences",
+        "rank": 3
+      },
+      {
+        "admission_route": "NEET-UG",
+        "annual_fee": 125000,
+        "city": "Pune",
+        "course_name": "BDS",
+        "duration_years": 5,
+        "highlight": "Private deemed university with strong na",
+        "institution_type": "private",
+        "name": "Dr. D. Y. Patil Vidyapeeth",
+        "rank": 4
+      },
+      {
+        "admission_route": "NEET-UG",
+        "annual_fee": 312000,
+        "city": "Manipal",
+        "course_name": "BDS",
+        "duration_years": 5,
+        "highlight": "Private dental college with clinical tra",
+        "institution_type": "private",
+        "name": "Manipal College of Dental Sciences, Manipal",
+        "rank": 5
+      },
+      {
+        "admission_route": "NEET-UG",
+        "annual_fee": 124000,
+        "city": "Mangaluru",
+        "course_name": "BDS",
+        "duration_years": 5,
+        "highlight": "Private dental college with strong clin",
+        "institution_type": "private",
+        "name": "A.B.Shetty Memorial Institute of Dental Sciences",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "NIRF India Rankings 2025, Dental Colleges",
+    "ranking_updated": "2025-09"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "NEET-UG, BDS degree, compulsory rotating internship, then State Dental Council/…",
+      "course_name": "BDS",
+      "laboratory_exposure": "High: pre-clinical labs, dental anatomy,",
+      "main_focus": "Teeth, gums, oral surgery, preventive a",
+      "statistics_level": "Basic to moderate for diagnosis, resea"
+    },
+    {
+      "common_next_steps": "NEET-UG, MBBS degree, compulsory intern",
+      "course_name": "MBBS",
+      "laboratory_exposure": "Moderate to high: anatomy, pathology, ph",
+      "main_focus": "Full medical diagnosis and treatment fo",
+      "statistics_level": "Moderate to high for clinical decision-m"
+    },
+    {
+      "common_next_steps": "NEET-UG, BHMS degree, compulsory intern",
+      "course_name": "BHMS",
+      "laboratory_exposure": "Moderate: pharmacy, anatomy, physiology",
+      "main_focus": "Homeopathic practice and primary care u",
+      "statistics_level": "Basic; less intensive than MBBS or BDS"
+    }
+  ],
+  "fees": {
+    "footnote": "BDS fees differ sharply by institution type. Government seats usually sit much lower than private seats, while premier national institutions may be lower or similar to government levels. In addition to tuition, families,",
+    "rows": [
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": true,
+        "max": 80000,
+        "min": 37000,
+        "parent_check": "Verify whether the quoted amount is for all years or only the first year, and whether it changes by state quota or year."
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": true,
+        "max": 262500,
+        "min": 150556,
+        "parent_check": "Check whether the seat is management quota or government quota, because the fee can differ a lot."
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "premier_national",
+        "is_variable": true,
+        "max": 45000,
+        "min": 38000,
+        "parent_check": "Confirm whether the institute has BDS seats under the current counselling route and whether hostel charges are separate."
+      },
+      {
+        "category": "Hostel and mess",
+        "frequency": "Per year",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 180000,
+        "min": 60000,
+        "parent_check": "Ask for the latest hostel, mess, and security deposit charges separately from tuition."
+      },
+      {
+        "category": "Exam, counselling, and admission charges",
+        "frequency": "As required",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 25000,
+        "min": 1000,
+        "parent_check": "Check NEET-UG counselling, application, and university charges before paying."
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "Build a strong base in Biology, Chemistry, and Physics. Focus on concepts, lab work, and steady revision, because BDS admissions in India are tied to science preparation at Class 12 level. Start looking at college types,",
+      "stage": "Grades 8-10",
+      "title": "Strengthen school science and"
+    },
+    {
+      "description": "Choose the Science stream with Physics, Chemistry, and Biology. Track NEET UG preparation seriously, since it is the main national entrance route for dental seats. Compare college options, seat types, and fee ranges, and",
+      "stage": "Grade 11",
+      "title": "Select PCB and start NEET UG"
+    },
+    {
+      "description": "Finish Class 12 with the needed science subjects and sit for NEET UG. After admission, BDS usually runs for 5 years in total, including a clinical internship year. After graduation, complete the required registration",
+      "stage": "Grade 12",
+      "title": "Take NEET UG and complete BDS"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "BDS is the Bachelor of Dental Surgery, an undergraduate degree for students who want to become dentists and work in oral healthcare.",
+      "question": "What is BDS in simple words?"
+    },
+    {
+      "answer": "In India, BDS normally takes 5 years in total, including the clinical internship year.",
+      "question": "How long does BDS take?"
+    },
+    {
+      "answer": "Yes. Students usually need Physics, Chemistry, and Biology in Class 12, and admission is commonly through NEET UG.",
+      "question": "Which subjects and entrance exam are needed?"
+    },
+    {
+      "answer": "After BDS, a graduate must complete the registration steps required to practise as a dentist before working independently.",
+      "question": "Can a BDS graduate start practising right after college?"
+    },
+    {
+      "answer": "BDS suits students who are comfortable with biology, patient care, clinical work, and a hands-on learning style.",
+      "question": "Who should consider this course?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "BDS suits students who like biology, patient interaction, and practical work. The course is a serious professional path, so families should look beyond just admission and think about the full route: Class 12 science, entrance preparation, the five-year degree, and the steps needed before independent practice. In India, the usual entry route is through NEET UG, so academic consistency matters more than last-minute cramming. After graduation, a student cannot simply open a clinic without completing the required registration process. Parents can help by checking whether the child enjoys clinical settings, can handle long hours of focused study, and is willing to work with hygiene, responsibility, and communication. It also helps to compare private and government colleges carefully, because fees can vary widely.",
+    "questions": [
+      "Does my child enjoy biology and patient-facing work enough for a dental career?",
+      "Are we ready for the cost difference between government and private colleges?",
+      "Will my child be comfortable with clinical training and internship work?",
+      "What is the next step after BDS for legal practice in India?",
+      "Which college options are realistic after NEET UG?",
+      "How much support will my child need during entrance preparation?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "National Testing Agency",
+        "title": "Notice Board Archive",
+        "url": "https://nta.ac.in/NoticeBoardArchive?pfrom"
+      },
+      {
+        "publisher": "National Medical Commission",
+        "title": "Doctor Registration",
+        "url": "https://application.nmc.org.in/doctor/register"
+      },
+      {
+        "publisher": "National Medical Commission",
+        "title": "Public Notice / FAQ merged PDF",
+        "url": "https://www.nmc.org.in/MCIRest/open/getDocument?path=/Documents/Public/Portal/LatestNews/PubNotice_FAQ_merged.pdf"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  }
+}

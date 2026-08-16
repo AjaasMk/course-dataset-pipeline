@@ -1,0 +1,603 @@
+{
+  "course_id": "crs_bhms",
+  "slug": "bhms",
+  "course_name": "BHMS",
+  "currency": "INR",
+  "region": "India",
+  "category": "Medical & Allied Health",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Clinical health pathway",
+    "fit": {
+      "indicators": [
+        "Best for students who want a medical-style course focused on homeopaty",
+        "Needs interest in biology, patient care, and long training",
+        "Suitable for learners comfortable with memorising concepts and working"
+      ],
+      "note": "A BHMS degree prepares students for homeopathic medical practice after statutory registration and internship.",
+      "score_percent": 74
+    },
+    "summary": "BHMS is an undergraduate degree in homeopathic medicine for students who want a patient-facing healthcare career. In India, it typically takes 5.5 years including internship, and graduates must complete the required internship and registration steps before practising as homeopathic doctors."
+  },
+  "quick_facts": {
+    "career_direction": "Homeopathic doctor, clinic practice, healthcare counselling, and later",
+    "entry_level": "Class 12",
+    "indicative_annual_fees": {
+      "max": 300000,
+      "min": 100000
+    },
+    "learning_style": "Heavy on biology, medical theory, patient interaction, and a",
+    "suitable_streams": [
+      "Science"
+    ],
+    "typical_duration": {
+      "max_years": 5.5,
+      "min_years": 5.5
+    }
+  },
+  "seo": {
+    "meta_description": "BHMS in India is an undergraduate homeopathy degree with clinical training, internship, and registration before practice. See duration, fees, and who it suits.",
+    "page_title": "BHMS Course in India: Duration, Fees, Eligibility and Career Path"
+  },
+  "subcategory": "Homeopathy",
+  "overview": {
+    "heading": "What is BHMS?",
+    "paragraphs": [
+      "BHMS stands for Bachelor of Homeopathic Medicine and Surgery. It is a 5.5-year undergraduate course in India, usually with 4.5 years of classroom and clinical study plus a 1-year internship. Students study biology, medical basics, homeopathic principles, and how to speak with patients and record symptoms carefully.",
+      "The course is for students who want to work in homeopathic healthcare rather than general medicine. Entry is usually after Class 12 Science with Physics, Chemistry and Biology, and admission is commonly through NEET. The learning style is steady and detailed, with a strong focus on theory, practice, and patient interaction.",
+      "After BHMS, many graduates work in clinics, hospitals, teaching, counselling, or related healthcare roles. To practise as a homeopathic doctor, a graduate usually needs the recognised degree, internship completion, and state registration before independent practice. It suits students who are patient, interested in biology, and comfortable with a medical path that builds slowly through study and experience."
+    ]
+  },
+  "snapshot": {
+    "data_note": "Pay in this field varies widely by city, type of workplace, years of experience, and whether the doctor works in a clinic, hospital, consultancy role, or private practice. New graduates often start lower, while established practitioners can earn more after building patient trust and experience.",
+    "salary": {
+      "higher_annual": 750000,
+      "higher_is_open_ended": false,
+      "lower_annual": 60000,
+      "note": "India-wide published salary ranges for homeopathic doctors commonly span about INR 60,000 to INR 7,50,000 a year, with an average around INR 3,70,000. Private practice, location, experience, and additional responsibilities can move earnings up or down.",
+      "typical_annual": 370000,
+      "marker_percent": 45
+    },
+    "specialisations": [
+      "Homeopathic practice",
+      "Clinic consultation",
+      "Healthcare counselling",
+      "Homeopathic paediatrics",
+      "Homeopathic skin care",
+      "Teaching",
+      "Research",
+      "Health services work"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "Be careful about these common misunderstandings",
+      "points": [
+        "BHMS is not the same as MBBS, and it prepares a student for homeopathic practice rather than allopathic medicine.",
+        "Graduation alone does not mean immediate independent practice; internship and the required registration step matter before working as a home",
+        "Earnings are not fixed, and many early roles pay modestly until a doctor gains experience or builds a practice.",
+        "The course suits students who can handle long hours of study and patient interaction, not only textbook learning."
+      ]
+    },
+    "good_fit": {
+      "heading": "BHMS may suit a student who",
+      "points": [
+        "likes biology and wants a medical career with regular patient contact.",
+        "is patient, observant, and comfortable listening carefully to symptoms and history.",
+        "can handle theory-heavy study along with practical training.",
+        "wants a healthcare route that may lead to clinic work, counselling, teaching, or further study."
+      ]
+    },
+    "tags": [
+      "Science stream",
+      "Medical path",
+      "Patient care",
+      "Biology-focused",
+      "NEET-based admission",
+      "Homeopathy",
+      "Undergraduate"
+    ]
+  },
+  "curriculum": {
+    "assessment_methods": "Written university examinations, practical and viva voce examinations, clinical case presentation, internal assessment, hospital or dispensary postings, and internship performance evaluation.",
+    "learning_activities": "Lectures, anatomy and laboratory sessions, bedside and outpatient clinical observation, case taking, repertorisation practice, pharmacy work, community medicine postings, seminars, tutorials, and internship-based patient care.",
+    "years": [
+      {
+        "label": "Year 1",
+        "subjects": [
+          {
+            "description": "Study of body structure through gross anatomy, histology, and related practical work.",
+            "name": "Human Anatomy"
+          },
+          {
+            "description": "Study of normal body functions, homeostasis, and basic physiology practicals.",
+            "name": "Human Physiology"
+          },
+          {
+            "description": "Introduction to homoeopathic principles, drug preparation, and dispensing methods.",
+            "name": "Homoeopathic Pharmacy"
+          },
+          {
+            "description": "Foundations of the Organon, including the philosophy and principles of homoeopathic medicine.",
+            "name": "Organon of Medicine I"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Year 2",
+        "subjects": [
+          {
+            "description": "Study of disease processes, tissue changes, and laboratory correlation.",
+            "name": "Pathology"
+          },
+          {
+            "description": "Basic causes and spread of disease, with focus on infectious agents.",
+            "name": "Microbiology"
+          },
+          {
+            "description": "Core concepts of chemical processes relevant to medicine and diagnostics.",
+            "name": "Biochemistry"
+          },
+          {
+            "description": "First major study of homoeopathic drug pictures and remedy understanding.",
+            "name": "Materia Medica I"
+          }
+        ],
+        "year": 2
+      },
+      {
+        "label": "Year 3",
+        "subjects": [
+          {
+            "description": "Study of legal medicine, death investigation, and related statutory topics.",
+            "name": "Forensic Medicine and Toxicology"
+          },
+          {
+            "description": "Clinical principles of surgical care, injuries, and minor procedures.",
+            "name": "General Surgery and Minor Procedures"
+          },
+          {
+            "description": "Study of women’s health, pregnancy, childbirth, and related care.",
+            "name": "Obstetrics and Gynaecology"
+          },
+          {
+            "description": "Second-stage study of homoeopathic drug pictures and comparative remedies.",
+            "name": "Materia Medica II"
+          }
+        ],
+        "year": 3
+      },
+      {
+        "label": "Year 4",
+        "subjects": [
+          {
+            "description": "Diagnosis and management of common medical disorders in homoeopathic practice.",
+            "name": "Practice of Medicine"
+          },
+          {
+            "description": "Use of repertories for case analysis and remedy selection.",
+            "name": "Repertory"
+          },
+          {
+            "description": "Public health, prevention, sanitation, and family welfare topics.",
+            "name": "Community Medicine"
+          },
+          {
+            "description": "Methods of patient history, symptom analysis, and case interpretation.",
+            "name": "Case Taking and Case Analysis"
+          }
+        ],
+        "year": 4
+      },
+      {
+        "label": "Year 5",
+        "subjects": [
+          {
+            "description": "Supervised clinical work in outpatient and inpatient settings across core specialties.",
+            "name": "Clinical Internship Posting"
+          },
+          {
+            "description": "Hands-on patient care, follow-up, and treatment planning under supervision.",
+            "name": "Advanced Homoeopathic Practice"
+          },
+          {
+            "description": "Project-based study or dissertation on a selected homoeopathic topic.",
+            "name": "Research Project"
+          },
+          {
+            "description": "Documentation, prescription records, and professional conduct in practice.",
+            "name": "Medical Ethics and Record Keeping"
+          }
+        ],
+        "year": 5
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "NEET-UG based counselling for AYUSH seats",
+      "State counselling for government and private BHMS seats",
+      "Institutional merit only where the official admission process permits it under current rules",
+      "Document verification and seat allotment through the relevant counselling authority"
+    ],
+    "admission_timeline": [
+      {
+        "description": "Complete 10+2 with Physics, Chemistry, Biology or Biotechnology, then apply for NEET-UG.",
+        "step": 1,
+        "title": "Finish school and register for NEET-UG"
+      },
+      {
+        "description": "Qualify NEET-UG and take part in central or state AYUSH counselling.",
+        "step": 2,
+        "title": "Counselling registration"
+      },
+      {
+        "description": "Choose BHMS colleges, submit required documents, and attend seat allotment.",
+        "step": 3,
+        "title": "Seat selection and allotment"
+      },
+      {
+        "description": "Report to the allotted college, complete admission formalities, and join classes.",
+        "step": 4,
+        "title": "College reporting"
+      },
+      {
+        "description": "Complete the internship year attached to the degree before full registration for practice.",
+        "step": 5,
+        "title": "Internship and registration"
+      }
+    ],
+    "typical_requirements": [
+      "Class 12 or equivalent with Physics, Chemistry and Biology or Biotechnology",
+      "Passing marks in the qualifying examination, with many colleges using a higher minimum for general category seats",
+      "Qualifying score in NEET-UG",
+      "Minimum age of 17 years by the end of the admission year as commonly required for AYUSH admissions"
+    ]
+  },
+  "skills": [
+    {
+      "description": "Careful physical examination and patient history taking for homoeopathic case work.",
+      "name": "Clinical observation"
+    },
+    {
+      "description": "Understanding anatomy, physiology, pathology, and common disease processes.",
+      "name": "Medical science foundation"
+    },
+    {
+      "description": "Repertorisation and remedy selection using homoeopathic principles.",
+      "name": "Case analysis"
+    },
+    {
+      "description": "Clear communication with patients and families, including counselling and follow-up instructions.",
+      "name": "Patient communication"
+    },
+    {
+      "description": "Professional conduct, confidentiality, and accurate clinical record keeping.",
+      "name": "Ethics and documentation"
+    },
+    {
+      "description": "Basic public health awareness and preventive care guidance.",
+      "name": "Community health"
+    }
+  ],
+  "careers": [
+    {
+      "description": "Work in a homeopathic clinic, private practice, or a hospital as a homeopathic doctor after completing BHMS and the required registration for practice in India.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Homeopathic doctor",
+      "typical_route": "BHMS -> compulsory internship -> registration -> practice in clinic or hospital"
+    },
+    {
+      "description": "Support patient care in wellness centres, integrative care settings, or outpatient clinics with homeopathy-based counselling and follow-up.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Homeopathy clinic consultant",
+      "typical_route": "BHMS -> internship -> entry-level clinic role -> experience in patient counselling"
+    },
+    {
+      "description": "Take up roles in hospitals or health organisations that use homeopathy and allied care, especially in outpatient and consulting settings.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Hospital-based homeopathic practitioner",
+      "typical_route": "BHMS -> internship -> registration -> hospital or dispensary role"
+    },
+    {
+      "description": "Move into teaching, academic support, or specialist practice after postgraduate study in homoeopathy.",
+      "route_badge": "Higher study required",
+      "title": "Homoeopathic lecturer or specialist",
+      "typical_route": "BHMS -> MD (Hom.) / postgraduate study -> teaching or specialist role"
+    },
+    {
+      "description": "Work in research, medical writing, public health, or healthcare management after further study or additional training.",
+      "route_badge": "Postgraduate route",
+      "title": "Health researcher or healthcare manager",
+      "typical_route": "BHMS -> postgraduate diploma/MPH/MBA/MSc -> research or management role"
+    },
+    {
+      "description": "Large hospital chains that may hire BHMS graduates for clinical, outpatient, and wellness-related roles.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Apollo Hospitals",
+      "typical_route": "BHMS -> internship -> apply for hospital or clinic roles -> work in outpatient or wellness services"
+    }
+  ],
+  "further_study_pathway": [
+    "MD (Homoeopathy)",
+    "Postgraduate diploma in public or a",
+    "Master of Public Health (MPH)",
+    "MBA in Hospital Administration or a",
+    "MSc in Clinical Research"
+  ],
+  "recruiters": [
+    {
+      "description": "Hospital chain with roles in outpatient care, wellness services, and hospital-based medical support.",
+      "logo_initials": "AH",
+      "name": "Apollo Hospitals",
+      "roles": [
+        "Homeopathic doctor",
+        "Outpatient clinic support"
+      ],
+      "sector": "Healthcare & hospital chains"
+    },
+    {
+      "description": "Hospital group that may recruit for clinical support, patient care, and wellness-related services.",
+      "logo_initials": "FH",
+      "name": "Fortis Healthcare",
+      "roles": [
+        "Homeopathic doctor",
+        "Clinic consultant"
+      ],
+      "sector": "Healthcare & hospital chains"
+    },
+    {
+      "description": "Healthcare network with roles in hospital care and patient-facing services.",
+      "logo_initials": "MH",
+      "name": "Max Healthcare",
+      "roles": [
+        "Homeopathic doctor",
+        "Patient care support"
+      ],
+      "sector": "Healthcare & hospital chains"
+    },
+    {
+      "description": "Hospital chain that may hire BHMS graduates for hospital-based and outpatient roles.",
+      "logo_initials": "MP",
+      "name": "Manipal Hospitals",
+      "roles": [
+        "Homeopathic doctor",
+        "Wellness and outpatient care"
+      ],
+      "sector": "Healthcare & hospital chains"
+    },
+    {
+      "description": "Government and private healthcare employers also hire BHMS graduates for practitioner and counselling roles.",
+      "logo_initials": "HC",
+      "name": "Homeopathic clinics and hospitals",
+      "roles": [
+        "Homeopathic practitioner",
+        "Clinic consultant"
+      ],
+      "sector": "Healthcare"
+    },
+    {
+      "description": "Pharmaceutical employers in homeopathy and related healthcare areas can hire graduates for product support, consulting, and research-facing roles.",
+      "logo_initials": "HP",
+      "name": "Homeopathic pharmaceutical companies",
+      "roles": [
+        "Medical representative",
+        "Product consultant"
+      ],
+      "sector": "Pharmaceuticals"
+    }
+  ],
+  "colleges": {
+    "data_note": "This ranking reflects a mix of tuition level, course visibility, and institutional profile for BHMS in India. It does not measure a college’s teaching quality for every student, and fees can change each year with university and state revisions.",
+    "items": [
+      {
+        "admission_route": "NEET-UG followed by state or university,",
+        "annual_fee": 147000,
+        "city": "Kolkata",
+        "course_name": "BHMS",
+        "duration_years": 5.5,
+        "highlight": "Central homeopathy institute with a long",
+        "institution_type": "government",
+        "name": "National Institute of Homoeopathy",
+        "rank": 1
+      },
+      {
+        "admission_route": "NEET-UG followed by state counselling",
+        "annual_fee": 14040,
+        "city": "New Delhi",
+        "course_name": "BHMS",
+        "duration_years": 5.5,
+        "highlight": "Low tuition in a government college",
+        "institution_type": "government",
+        "name": "Nehru Homoeopathic Medical College and Hospital",
+        "rank": 2
+      },
+      {
+        "admission_route": "NEET-UG followed by state counselling",
+        "annual_fee": 116000,
+        "city": "Bengaluru",
+        "course_name": "BHMS",
+        "duration_years": 5.5,
+        "highlight": "Government college with comparatively",
+        "institution_type": "government",
+        "name": "Government Homoeopathic Medical College and Hospital",
+        "rank": 3
+      },
+      {
+        "admission_route": "NEET-UG followed by management or merit",
+        "annual_fee": 204545,
+        "city": "Pune",
+        "course_name": "BHMS",
+        "duration_years": 5.5,
+        "highlight": "Well-known private deemed university",
+        "institution_type": "private",
+        "name": "Dr. D. Y. Patil Homoeopathic Medical College and Research Centre",
+        "rank": 4
+      },
+      {
+        "admission_route": "NEET-UG followed by university or state",
+        "annual_fee": 196000,
+        "city": "Vadodara",
+        "course_name": "BHMS",
+        "duration_years": 5.5,
+        "highlight": "Private university with BHMS and other",
+        "institution_type": "private",
+        "name": "Parul University",
+        "rank": 5
+      },
+      {
+        "admission_route": "NEET-UG followed by university admission",
+        "annual_fee": 25000,
+        "city": "Anand",
+        "course_name": "BHMS",
+        "duration_years": 5.5,
+        "highlight": "Lower-fee private option",
+        "institution_type": "private",
+        "name": "Anand Homoeopathic Medical College & Research Institute",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "Compiled from current college fee listings and BHMS college pages for India",
+    "ranking_updated": "2026-08"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "Internship, BHMS registration with the relevant state council, and clinic or OPD",
+      "course_name": "BHMS",
+      "laboratory_exposure": "Moderate anatomy, physiology, pathology,",
+      "main_focus": "Homeopathic medicine, case-taking, clinical assessment, and patient counselling",
+      "statistics_level": "Basic to moderate; enough for medical"
+    },
+    {
+      "common_next_steps": "Internship, state registration, and practice in ayurvedic hospitals or clinics",
+      "course_name": "BAMS",
+      "laboratory_exposure": "Moderate to strong; includes anatomy,",
+      "main_focus": "Ayurvedic medicine, herbal treatment, physiology, and clinical training",
+      "statistics_level": "Basic to moderate; enough for medical"
+    },
+    {
+      "common_next_steps": "Internship, dental registration, and then dental practice or specialization",
+      "course_name": "BDS",
+      "laboratory_exposure": "Strong; labs, pre-clinical work, and",
+      "main_focus": "Dental anatomy, oral health, diagnosis, procedures, and patient treatment",
+      "statistics_level": "Moderate; used for clinical"
+    }
+  ],
+  "fees": {
+    "footnote": "Government and private BHMS tuition differ widely, so the ranges below reflect the middle of the market rather than the cheapest or most expensive colleges. Always verify the yearly tuition, hostel charges, internship or",
+    "rows": [
+      {
+        "category": "Government BHMS tuition",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": true,
+        "max": 116000,
+        "min": 14040,
+        "parent_check": "Annual tuition at government colleges is usually much lower than at private colleges, but hostel, exam, and university-}"
+      },
+      {
+        "category": "Private BHMS tuition",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": true,
+        "max": 300000,
+        "min": 100000,
+        "parent_check": "Private colleges commonly charge much more, and the total course cost can be several lakhs. Check whether the quoted fee"
+      },
+      {
+        "category": "Premier national institute BHMS tuition",
+        "frequency": "Per year",
+        "institution_type": "premier_national",
+        "is_variable": true,
+        "max": 147000,
+        "min": 147000,
+        "parent_check": "National institutes can have separate fee structures, so confirm tuition, hostel, and any annual charges before applying"
+      },
+      {
+        "category": "Typical BHMS total programme cost",
+        "frequency": "Total programme",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 1650000,
+        "min": 77000,
+        "parent_check": "BHMS is usually a 5.5-year programme, so the whole-course cost is the annual fee multiplied across the full course"
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "Build a strong Class 8-10 base in biology, chemistry, physics, and English so the transition to medical study is smoother later.",
+      "stage": "Grades 8-10",
+      "title": "Choose the right school focus"
+    },
+    {
+      "description": "In Classes 11-12, choose Science with Physics, Chemistry, and Biology, and prepare for the national entrance route used for BHMS admissions in India.",
+      "stage": "Grade 11",
+      "title": "Set up BHMS eligibility"
+    },
+    {
+      "description": "Apply through the official counselling process after the entrance exam, then complete the 4.5-year academic phase and the 1-year compulsory internship before independent practice.",
+      "stage": "Grade 12",
+      "title": "Enter the course and finish it"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "BHMS usually takes 5.5 years in India: 4.5 years of study and 1 year of internship.",
+      "question": "How long is BHMS?"
+    },
+    {
+      "answer": "For most Indian colleges, students need Class 12 with Physics, Chemistry, and Biology, and admission is linked to the national entrance process used for medical courses.",
+      "question": "What subjects do I need in Class 12?"
+    },
+    {
+      "answer": "Yes. BHMS admissions in India are tied to the national entrance exam used for undergraduate medical and allied health courses, followed by counselling.",
+      "question": "Is there an entrance exam for BHMS?"
+    },
+    {
+      "answer": "After graduation, the next step is registration with the relevant state or national homeopathy authority before independent practice.",
+      "question": "Can I start working as a doctor right after BHMS?"
+    },
+    {
+      "answer": "Typical work options include clinic practice, assisting a senior practitioner, patient counselling, and roles in homeopathy-focused healthcare settings.",
+      "question": "What kind of work can BHMS lead to?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "BHMS suits students who are comfortable with biology, patient interaction, and steady reading. It is an undergraduate medical course in homeopathy, so families should look at the whole pathway, not only the degree title. The course is commonly 5.5 years long, with a long clinical and internship phase that matters as much as classroom study. Admission usually depends on the national entrance route used for undergraduate medical courses, so performance in Class 11-12 is important. After the degree, graduates still need the correct professional registration before practising independently. When comparing colleges, check recognition, internship arrangements, distance from home, and the full cost of the programme, including hostel and other charges.",
+    "questions": [
+      "Does my child need Biology in Class 12 for BHMS?",
+      "Which entrance exam and counselling process apply for admission?",
+      "How much of the course is classroom learning versus internship?",
+      "What registration is needed before practising homeopathy independently?",
+      "Is the college recognised and does it have a proper internship arrangement?",
+      "What are the total fees, including hostel and exam costs?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "National Testing Agency",
+        "title": "NEET (UG)",
+        "url": "https://neet.nta.nic.in/"
+      },
+      {
+        "publisher": "National Testing Agency",
+        "title": "Notice Board Archive",
+        "url": "https://nta.ac.in/NoticeBoardArchive"
+      },
+      {
+        "publisher": "National Commission for Allied and Healthcare Professions",
+        "title": "Home page",
+        "url": "https://ncahp.abdm.gov.in/"
+      },
+      {
+        "publisher": "National Medical Commission",
+        "title": "Home page",
+        "url": "https://nmc.org.in/"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  }
+}

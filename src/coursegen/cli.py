@@ -73,6 +73,7 @@ def cmd_generate(args: argparse.Namespace, settings: Settings) -> int:
             store=store,
             only_chunks=only,
             discipline=discipline,
+            category=args.category,
         )
 
     if not result.publishable:
@@ -433,6 +434,7 @@ def build_parser() -> argparse.ArgumentParser:
     gen.add_argument("--course-id")
     gen.add_argument("--chunk", action="append", help="regenerate only these chunks; repeatable")
     gen.add_argument("--discipline", help="discipline key declared in config/domains.json")
+    gen.add_argument("--category", help="breadcrumb category; taken from the course list when batching")
     gen.set_defaults(handler=cmd_generate)
 
     val = sub.add_parser("validate", help="validate a saved course document")

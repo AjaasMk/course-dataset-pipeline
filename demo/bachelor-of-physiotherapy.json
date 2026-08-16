@@ -1,0 +1,620 @@
+{
+  "course_id": "crs_bachelor_of_physiotherapy",
+  "slug": "bachelor-of-physiotherapy",
+  "course_name": "Bachelor of Physiotherapy",
+  "currency": "INR",
+  "region": "India",
+  "category": "Medical & Allied Health",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Student-friendly guide",
+    "fit": {
+      "indicators": [
+        "Strong interest in biology and human anatomy",
+        "Comfort with practical, hands-on learning",
+        "Willingness to work directly with patients"
+      ],
+      "note": "A good fit for students who want a healthcare course focused on movement, recovery, and rehabilitation.",
+      "score_percent": 84
+    },
+    "summary": "Bachelor of Physiotherapy prepares students to assess movement problems and support recovery after injury, illness, or surgery. It suits students who like science, hands-on clinical learning, and patient care, and it can lead to work in hospitals, rehabilitation centres, sports settings, and private practice."
+  },
+  "quick_facts": {
+    "career_direction": "Physiotherapist / rehabilitation clinician",
+    "entry_level": "Class 12 (Science, usually with Physics,",
+    "indicative_annual_fees": {
+      "max": 200000,
+      "min": 50000
+    },
+    "learning_style": "Practical, lab-based and clinical learning with anatomy, mus",
+    "suitable_streams": [
+      "Science"
+    ],
+    "typical_duration": {
+      "max_years": 4.5,
+      "min_years": 4
+    }
+  },
+  "seo": {
+    "meta_description": "Bachelor of Physiotherapy in India: duration, fees, eligibility, learning style, and career options for students considering rehabilitation and patient care.",
+    "page_title": "Bachelor of Physiotherapy (BPT) in India: Course Profile, Fees, and S"
+  },
+  "subcategory": "Physiotherapy",
+  "overview": {
+    "heading": "What is a Bachelor of Physiotherapy?",
+    "paragraphs": [
+      "Bachelor of Physiotherapy is a four-year undergraduate health course, often followed by compulsory internship time, that trains students to assess movement problems, reduce pain, and help people recover after injury, surgery, stroke, or illness. It is a practical course with anatomy, physiology, exercise therapy, electrotherapy, and clinical training.",
+      "Students spend a lot of time in labs and clinical settings, not just classrooms. The work suits people who want direct patient contact and enjoy understanding how the body moves. Admission is usually after Class 12 Science with Physics, Chemistry, and Biology, and some colleges also require English and a minimum score.",
+      "After graduation, a physiotherapy licence or registration is usually needed before practising independently as a physiotherapist. A BPT can lead to hospital, private clinic, sports rehabilitation, home care, and teaching or research roles later, often after further study and experience."
+    ]
+  },
+  "snapshot": {
+    "data_note": "In India, pay for physiotherapy graduates changes with experience, city, employer type, and the work setting. Private hospitals, clinics, sports rehab centres, home-care work, and teaching or research can sit in very different pay bands, so one figure cannot describe every starter job.",
+    "salary": {
+      "higher_annual": 800000,
+      "higher_is_open_ended": false,
+      "lower_annual": 200000,
+      "note": "Mainstream published ranges for BPT graduates in India place starting pay around 2 LPA, with many physiotherapist roles averaging around 3.2 to 4.5 LPA and higher pay for experienced, specialist, or academic roles.",
+      "typical_annual": 320000,
+      "marker_percent": 20
+    },
+    "specialisations": [
+      "Orthopaedic physiotherapy",
+      "Neurological physiotherapy",
+      "Sports physiotherapy",
+      "Cardiopulmonary physiotherapy",
+      "Pediatric physiotherapy",
+      "Geriatric physiotherapy",
+      "Community rehabilitation",
+      "Rehabilitation and pain management"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "Be careful if you expect this course to be mostly fitness or gym work",
+      "points": [
+        "The job is clinical and patient-facing, so comfort with sick, injured, or older patients matters more than sports enthusiasm alone.",
+        "Recovery can be slow, so patience and steady follow-up are part of the work; quick visible results are not guaranteed.",
+        "A physiotherapist often needs physical stamina for long standing hours, repeated demonstrations, and careful manual work.",
+        "Entry into independent practice is not just the degree; a practice licence or registration is part of the path in many roles."
+      ]
+    },
+    "good_fit": {
+      "heading": "You may like this course if you",
+      "points": [
+        "Enjoy biology, anatomy, and understanding how the body works.",
+        "Prefer practical learning, lab work, and clinical observation over theory alone.",
+        "Are calm, patient, and able to explain exercises clearly to different kinds of people.",
+        "Want a healthcare career focused on movement, recovery, and rehabilitation."
+      ]
+    },
+    "tags": [
+      "Science stream",
+      "Health and rehabilitation",
+      "Patient care",
+      "Practical learning",
+      "Licensing required",
+      "Body movement and exercise",
+      "Undergraduate medical-adjacent"
+    ]
+  },
+  "curriculum": {
+    "assessment_methods": "Continuous internal assessment, practical laboratory examinations, case presentations, clinical postings, written university examinations, and final internship evaluation.",
+    "learning_activities": "Lectures, anatomy and physiology labs, demonstrations, supervised hospital rotations, patient assessment practice, treatment planning, case discussions, community posting, research/project work, and compulsory internship.",
+    "years": [
+      {
+        "label": "Year 1",
+        "subjects": [
+          {
+            "description": "Study of human body structure, with focus on bones, muscles, joints, and organs relevant to movement and rehabilitation.",
+            "name": "Human Anatomy"
+          },
+          {
+            "description": "Study of normal body functions, including muscular, nervous, respiratory, and cardiovascular systems.",
+            "name": "Human Physiology"
+          },
+          {
+            "description": "Introduction to body chemistry, nutrition basics, and biochemical processes that support health and recovery.",
+            "name": "Biochemistry"
+          },
+          {
+            "description": "Foundations of physiotherapy practice, patient handling, ethics, and professional communication.",
+            "name": "Introduction to Physiotherapy"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Year 2",
+        "subjects": [
+          {
+            "description": "Study of disease processes, tissue injury, inflammation, healing, and the body’s response to illness.",
+            "name": "Pathology"
+          },
+          {
+            "description": "Study of drugs commonly used in rehabilitation settings, their effects, and safety considerations.",
+            "name": "Pharmacology"
+          },
+          {
+            "description": "Principles and use of physical agents such as heat, cold, sound, and electrical modalities.",
+            "name": "Electrotherapy"
+          },
+          {
+            "description": "Therapeutic movement, posture correction, and graded exercise methods used in rehabilitation.",
+            "name": "Exercise Therapy"
+          }
+        ],
+        "year": 2
+      },
+      {
+        "label": "Year 3",
+        "subjects": [
+          {
+            "description": "Physiotherapy for bone, joint, fracture, and sports-related conditions.",
+            "name": "Orthopaedic Physiotherapy"
+          },
+          {
+            "description": "Physiotherapy for stroke, nerve injury, and other nervous system conditions.",
+            "name": "Neurological Physiotherapy"
+          },
+          {
+            "description": "Breathing rehabilitation for respiratory and cardiac conditions.",
+            "name": "Cardiopulmonary Physiotherapy"
+          },
+          {
+            "description": "Rehabilitation for families and communities, including disability support and home-based care.",
+            "name": "Community-Based Rehabilitation"
+          }
+        ],
+        "year": 3
+      },
+      {
+        "label": "Year 4",
+        "subjects": [
+          {
+            "description": "Advanced clinical decision-making across complex patient cases and mixed rehabilitation needs.",
+            "name": "Advanced Physiotherapy Practice"
+          },
+          {
+            "description": "Choice-based study in an area such as sports, paediatrics, geriatrics, or women’s health.",
+            "name": "Clinical Elective in Physiotherapy"
+          },
+          {
+            "description": "Planning and completion of a supervised research or dissertation project.",
+            "name": "Research Project"
+          },
+          {
+            "description": "Clinical reasoning, evidence appraisal, and professional standards for independent practice.",
+            "name": "Evidence-Based Rehabilitation"
+          }
+        ],
+        "year": 4
+      },
+      {
+        "label": "Year 5",
+        "subjects": [
+          {
+            "description": "Full-time supervised hospital internship with patient evaluation, treatment, and record keeping.",
+            "name": "Clinical Internship"
+          },
+          {
+            "description": "Rotational exposure across wards, outpatient departments, and rehabilitation units.",
+            "name": "Clinical Rotation Posting"
+          },
+          {
+            "description": "Advanced bedside assessment, case management, and treatment planning under supervision.",
+            "name": "Supervised Patient Management"
+          },
+          {
+            "description": "Final logbook completion, internship appraisal, and viva-style review of clinical competence.",
+            "name": "Internship Logbook and Viva"
+          }
+        ],
+        "year": 5
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "Merit-based admission on Class 12 marks",
+      "Entrance test followed by counselling, where the institution uses one",
+      "Direct application to the college or university as per its admission process",
+      "Interview or document verification at some institutions"
+    ],
+    "admission_timeline": [
+      {
+        "description": "Complete Class 12 in the Science stream with Physics, Chemistry, and Biology or equivalent subjects.",
+        "step": 1,
+        "title": "Finish school eligibility"
+      },
+      {
+        "description": "Apply to colleges or entrance examinations after Class 12 results are available.",
+        "step": 2,
+        "title": "Submit application"
+      },
+      {
+        "description": "Take the entrance test, if required, and participate in counselling or merit allocation.",
+        "step": 3,
+        "title": "Selection process"
+      },
+      {
+        "description": "Confirm admission by document verification, fee payment, and medical fitness requirements, if any.",
+        "step": 4,
+        "title": "Seat confirmation"
+      },
+      {
+        "description": "Begin classes and complete supervised clinical training during the course.",
+        "step": 5,
+        "title": "Start the programme"
+      }
+    ],
+    "typical_requirements": [
+      "Class 12 pass in Science with Physics, Chemistry, and Biology",
+      "Minimum aggregate marks often around 50% in mainstream admissions, with some colleges setting a lower or higher range",
+      "English as a studied subject is often preferred or required by some institutions",
+      "Minimum age of 17 years by the time of admission in many colleges"
+    ]
+  },
+  "skills": [
+    {
+      "description": "Assess a patient’s movement, pain, strength, posture, and functional limits.",
+      "name": "Clinical assessment"
+    },
+    {
+      "description": "Plan and guide exercise programmes for recovery and mobility.",
+      "name": "Therapeutic exercise planning"
+    },
+    {
+      "description": "Use physical treatment methods safely, including electrotherapy and other modalities.",
+      "name": "Modalities and equipment use"
+    },
+    {
+      "description": "Communicate clearly with patients, families, doctors, and therapy teams.",
+      "name": "Patient communication"
+    },
+    {
+      "description": "Keep accurate case notes, treatment records, and clinical reports.",
+      "name": "Clinical documentation"
+    },
+    {
+      "description": "Work safely in hospitals, outpatient clinics, and rehabilitation settings.",
+      "name": "Infection control and safety"
+    }
+  ],
+  "careers": [
+    {
+      "description": "Provides assessment, treatment, rehabilitation exercises, and pain management for people recovering from injury, surgery, or movement problems.",
+      "route_badge": "Advanced regulated route",
+      "title": "Physiotherapist",
+      "typical_route": "BPT -> State registration/licence -> hospital, clinic, or rehabilitation practice"
+    },
+    {
+      "description": "Works on recovery plans for people with injuries, disability, stroke, spinal cord injury, or other long-term movement problems.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Rehabilitation specialist",
+      "typical_route": "BPT -> clinical experience -> rehabilitation centre or multidisciplinary care team"
+    },
+    {
+      "description": "Helps athletes with injury prevention, performance support, and rehabilitation after sports injuries.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Sports physiotherapist",
+      "typical_route": "BPT -> sports or orthopaedic clinical exposure -> sports clinic, academy, or team support"
+    },
+    {
+      "description": "Provides physiotherapy care in a patient’s home, often for older adults or people who find travel difficult.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Home care physiotherapist",
+      "typical_route": "BPT -> home-based care experience -> home healthcare service or independent practice"
+    },
+    {
+      "description": "Advises on posture, ergonomics, injury prevention, and rehabilitation planning for individuals or organisations.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Consultant physiotherapist",
+      "typical_route": "BPT -> clinical experience -> consulting work with hospitals, clinics, sports teams, or companies"
+    },
+    {
+      "description": "Teaches physiotherapy subjects in colleges and may also support academic work or supervision.",
+      "route_badge": "Postgraduate route",
+      "title": "Lecturer in physiotherapy",
+      "typical_route": "BPT -> MPT -> teaching or academic appointment"
+    }
+  ],
+  "further_study_pathway": [
+    "BPT -> MPT in a chosen specialism,",
+    "BPT -> Doctor of Physiotherapy (DPT",
+    "BPT -> MSc or PhD in physiotherapy,",
+    "BPT -> postgraduate study in sports",
+    "BPT -> postgraduate study in orthop"
+  ],
+  "recruiters": [
+    {
+      "description": "Large hospital chain with physiotherapy roles in outpatient, inpatient, and rehabilitation settings.",
+      "logo_initials": "AH",
+      "name": "Apollo Hospitals",
+      "roles": [
+        "Physiotherapist",
+        "Sports physiotherapist"
+      ],
+      "sector": "Healthcare"
+    },
+    {
+      "description": "Private healthcare provider that hires physiotherapy staff across hospitals and specialty centres.",
+      "logo_initials": "FH",
+      "name": "Fortis Healthcare",
+      "roles": [
+        "Physiotherapist",
+        "Rehabilitation specialist"
+      ],
+      "sector": "Healthcare"
+    },
+    {
+      "description": "Multispecialty hospital group with rehabilitation and clinical physiotherapy services.",
+      "logo_initials": "MH",
+      "name": "Max Healthcare",
+      "roles": [
+        "Physiotherapist",
+        "Consultant physiotherapist"
+      ],
+      "sector": "Healthcare"
+    },
+    {
+      "description": "Hospital network with patient rehabilitation and musculoskeletal care needs.",
+      "logo_initials": "MI",
+      "name": "Manipal Hospitals",
+      "roles": [
+        "Physiotherapist",
+        "Home care physiotherapist"
+      ],
+      "sector": "Healthcare"
+    },
+    {
+      "description": "Home healthcare provider that uses physiotherapists for home-based rehabilitation and mobility support.",
+      "logo_initials": "PM",
+      "name": "Portea Medical",
+      "roles": [
+        "Home care physiotherapist",
+        "Rehabilitation specialist"
+      ],
+      "sector": "Home healthcare"
+    },
+    {
+      "description": "Fitness and rehabilitation organisation that may hire physiotherapists for movement, recovery, and injury-prevention work.",
+      "logo_initials": "QI",
+      "name": "Qi Spine Clinic",
+      "roles": [
+        "Physiotherapist",
+        "Sports physiotherapist"
+      ],
+      "sector": "Rehabilitation"
+    }
+  ],
+  "colleges": {
+    "data_note": "Ranking here reflects a mix of academic reputation, fee level, and visibility in India; it does not measure teaching quality, hospital exposure, or fit for a specific student. Fees and admission rules can change each year, so families should verify the latest tuition, entrance route, internship posting, and hostel charges before applying.",
+    "items": [
+      {
+        "admission_route": "University entrance exam / merit-based",
+        "annual_fee": 34000,
+        "city": "Vellore",
+        "course_name": "Bachelor of Physiotherapy",
+        "duration_years": 4,
+        "highlight": "Very low tuition for a private medical-;",
+        "institution_type": "private",
+        "name": "Christian Medical College",
+        "rank": 1
+      },
+      {
+        "admission_route": "NEET / merit-based",
+        "annual_fee": 71750,
+        "city": "Mumbai",
+        "course_name": "Bachelor of Physiotherapy",
+        "duration_years": 4,
+        "highlight": "Large public medical college with low to",
+        "institution_type": "government",
+        "name": "Grant Medical College",
+        "rank": 2
+      },
+      {
+        "admission_route": "University entrance exam",
+        "annual_fee": 194000,
+        "city": "New Delhi",
+        "course_name": "Bachelor of Physiotherapy",
+        "duration_years": 4,
+        "highlight": "Urban private university option with a c",
+        "institution_type": "private",
+        "name": "Jamia Hamdard",
+        "rank": 3
+      },
+      {
+        "admission_route": "University entrance exam",
+        "annual_fee": 129000,
+        "city": "New Delhi",
+        "course_name": "Bachelor of Physiotherapy",
+        "duration_years": 4,
+        "highlight": "Government university option with relati",
+        "institution_type": "government",
+        "name": "Guru Gobind Singh Indraprastha University",
+        "rank": 4
+      },
+      {
+        "admission_route": "Merit-based / university counselling",
+        "annual_fee": 50000,
+        "city": "Chandigarh",
+        "course_name": "Bachelor of Physiotherapy",
+        "duration_years": 4,
+        "highlight": "Premier national hospital setting; fee i",
+        "institution_type": "government",
+        "name": "Postgraduate Institute of Medical Education and Research",
+        "rank": 5
+      },
+      {
+        "admission_route": "University entrance exam",
+        "annual_fee": 160000,
+        "city": "Chennai",
+        "course_name": "Bachelor of Physiotherapy",
+        "duration_years": 4.5,
+        "highlight": "Private health sciences university with",
+        "institution_type": "private",
+        "name": "Saveetha Institute of Medical and Technical Sciences",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "College rankings and fee listings for BPT in India from publicly published India",
+    "ranking_updated": "2026-08"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "Complete the internship, then register with the relevant state council or board;",
+      "course_name": "Bachelor of Physiotherapy",
+      "laboratory_exposure": "High: anatomy lab, exercise therapy, and",
+      "main_focus": "Assessment and rehabilitation of people",
+      "statistics_level": "Basic to moderate; enough for evidence-b"
+    },
+    {
+      "common_next_steps": "Pass the NExT or relevant licensing path only if moving to a medical degree;",
+      "course_name": "MBBS",
+      "laboratory_exposure": "High in anatomy, pathology, and clinical",
+      "main_focus": "Diagnosis and treatment of disease by a",
+      "statistics_level": "Moderate to high; more emphasis on medi"
+    },
+    {
+      "common_next_steps": "Apply for MSc Nursing or specialised cl",
+      "course_name": "BSc Nursing",
+      "laboratory_exposure": "Moderate: skills lab, ward-based procedu",
+      "main_focus": "Patient care, medication support, and ho",
+      "statistics_level": "Basic; enough for dosage, records, and c"
+    }
+  ],
+  "fees": {
+    "footnote": "In India, tuition varies most by institution type: government and premier national institutes are usually far cheaper than private colleges. The annual figures below are tuition-only ranges meant to show the middle of a",
+    "rows": [
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": false,
+        "max": 50000,
+        "min": 10000,
+        "parent_check": "Check whether the quoted amount includes university charges, exam fees, and the compulsory internship year."
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": false,
+        "max": 500000,
+        "min": 100000,
+        "parent_check": "Private college tuition can rise sharply if hostel, clinical, or lab fees are billed separately."
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "premier_national",
+        "is_variable": false,
+        "max": 50000,
+        "min": 10000,
+        "parent_check": "Premier national institutes often charge lower tuition than many private colleges, but seat numbers are limited."
+      },
+      {
+        "category": "Hostel",
+        "frequency": "Per year",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 175000,
+        "min": 84000,
+        "parent_check": "Ask whether the hostel fee is for a shared room, AC room, mess, and security deposit."
+      },
+      {
+        "category": "One-time admission charges",
+        "frequency": "One time",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 20000,
+        "min": 5000,
+        "parent_check": "This may include admission, registration, library, and caution deposit charges."
+      },
+      {
+        "category": "Total programme",
+        "frequency": "Total programme",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 1258000,
+        "min": 10500,
+        "parent_check": "If a college lists a whole-course amount, divide it across the course length to compare true annual tuition."
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "Choose Physics, Chemistry, and Biology in Class 11-12 and keep your marks solid, because BPT admission in India usually asks for Science background.",
+      "stage": "Grades 8-10",
+      "title": "Build the right school base"
+    },
+    {
+      "description": "Focus on anatomy, biology, and basic health sciences, and look at colleges that teach BPT with labs and hospital-based practice.",
+      "stage": "Grade 11",
+      "title": "Check course fit and college’'"
+    },
+    {
+      "description": "Prepare for college applications and entrance or merit-based admission, then plan for the clinical internship that comes before independent practice.",
+      "stage": "Grade 12",
+      "title": "Apply and plan for clinical/"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "BPT usually takes 4 to 4.5 years in India, including the compulsory internship year in many programmes.",
+      "question": "How long is Bachelor of Physiotherapy?"
+    },
+    {
+      "answer": "Most colleges expect Class 12 Science, usually with Physics, Chemistry, and Biology. Some institutions also set a minimum percentage and may use merit or entrance-based admission.",
+      "question": "What do students need after Class 12?"
+    },
+    {
+      "answer": "The course is practical and clinical. Students learn anatomy, physiology, biomechanics, exercise therapy, and patient rehabilitation, then apply them in labs and hospital settings.",
+      "question": "What do students study in BPT?"
+    },
+    {
+      "answer": "A graduate can work in hospitals, rehabilitation centres, sports clinics, outpatient clinics, elder-care services, and community health settings.",
+      "question": "Where can a physiotherapy graduate work?"
+    },
+    {
+      "answer": "In India, physiotherapy practice is a regulated health profession. After graduation, graduates usually need the required registration or recognition under the relevant health-professions framework before working independently where the rules apply.",
+      "question": "Can a BPT graduate practice right away?"
+    },
+    {
+      "answer": "The degree can lead to further study such as MPT or specialisation in orthopaedics, neurology, cardiopulmonary care, sports physiotherapy, or paediatrics.",
+      "question": "Can students study more after BPT?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "Bachelor of Physiotherapy suits students who like science, hands-on learning, and helping people recover movement and independence. It is not a desk-based degree: students spend time in anatomy labs, movement and exercise practice, and supervised clinical work with patients. Families should look at three things early: whether the college has recognised clinical training, whether the admission route matches the student’s Class 12 subjects and marks, and whether the child is comfortable working closely with sick, injured, or older patients. After graduation, practice is tied to professional rules, so internship and registration matter, not just the degree certificate. If your child enjoys biology, patient interaction, and steady practical work, this course can be a strong fit.",
+    "questions": [
+      "Does my child enjoy biology and patient-facing work enough for a health-care degree?",
+      "Does the college offer real clinical exposure and a supervised internship?",
+      "What registration or licence step is needed before independent practice?",
+      "Would the student prefer rehabilitation work over surgery or medicine?",
+      "Is the student comfortable with physical, emotional, and time demands of hospital-based training?",
+      "Would postgraduate study be important later for the student’s goals?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "National Commission for Allied and Healthcare Professions",
+        "title": "National Commission for Allied and Healthcare Professions",
+        "url": "https://ncahp.abdm.gov.in/"
+      },
+      {
+        "publisher": "University Grants Commission",
+        "title": "University Grants Commission",
+        "url": "https://www.ugc.gov.in/"
+      },
+      {
+        "publisher": "Kerala University of Health Sciences",
+        "title": "Kerala University of Health Sciences",
+        "url": "https://kuhs.ac.in/"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  }
+}

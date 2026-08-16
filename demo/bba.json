@@ -1,0 +1,578 @@
+{
+  "course_id": "crs_bba",
+  "slug": "bba",
+  "course_name": "BBA",
+  "currency": "INR",
+  "region": "India",
+  "category": "Business & Management",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Career-ready business degree",
+    "fit": {
+      "indicators": [
+        "Works well for students who like business, teamwork, presentations, or",
+        "A common first degree for management, marketing, HR, sales, and start-",
+        "Builds practical skills in communication, planning, and basic business"
+      ],
+      "note": "A good fit for students who want a broad business degree with practical learning and early exposure to management topics",
+      "score_percent": 82
+    },
+    "summary": "BBA is a broad undergraduate degree in business administration that introduces students to management, marketing, finance, human resources, and operations. It suits families looking for a practical degree that can lead to entry-level corporate roles or further study such as an MBA."
+  },
+  "quick_facts": {
+    "career_direction": "Business, management, marketing, sales, HR, operations, and entreprene",
+    "entry_level": "Class 12",
+    "indicative_annual_fees": {
+      "max": 300000,
+      "min": 30000
+    },
+    "learning_style": "Classroom learning with presentations, case studies, group",
+    "suitable_streams": [
+      "Commerce",
+      "Humanities",
+      "Science"
+    ],
+    "typical_duration": {
+      "max_years": 4,
+      "min_years": 3
+    }
+  },
+  "seo": {
+    "meta_description": "BBA is a 3 to 4 year undergraduate business degree in India. See course level, subject family, career direction, entry requirements, duration, and typical fees.",
+    "page_title": "BBA Course in India: Duration, Fees, Career Scope & Quick Facts"
+  },
+  "subcategory": "Business Administration",
+  "overview": {
+    "heading": "What is BBA?",
+    "paragraphs": [
+      "BBA is an undergraduate course in business administration. It introduces how companies work and gives students a base in areas such as management, marketing, sales, finance, human resources, operations, and business communication. In India, it is usually open after Class 12, and students from Commerce, Humanities, and Science streams can often apply.",
+      "The course is usually taught through classroom lessons, presentations, case studies, group projects, and practical tasks. That makes it a good fit for students who like discussing ideas, solving real business problems, and learning how decisions are made in organisations. It is less about one fixed job and more about building useful business skills.",
+      "After BBA, some students look for entry-level jobs in offices, sales teams, marketing, operations, HR, banking support, or business development. Others use it as a stepping stone to postgraduate study such as an MBA. The best path depends on the college, specialisation, internships, and the skills a student builds alongside the degree."
+    ]
+  },
+  "snapshot": {
+    "data_note": "BBA salaries in India vary a lot by college, city, internship experience, specialisation, industry, and the kind of company a graduate joins. Entry pay can start near the lower end of the published graduate range, while strong campuses, analytics, finance, and larger organisations can pay much more.",
+    "salary": {
+      "higher_annual": 1000000,
+      "higher_is_open_ended": true,
+      "lower_annual": 180000,
+      "note": "Commonly published starting pay for BBA graduates in India is around INR 250000 to INR 600000 a year, while broader graduate salary figures are often shown around INR 180000 to INR 610000 a year. Higher pay is more likely with stronger internships, better communication skills, Excel and presentation ability, relevant,.",
+      "typical_annual": 560000,
+      "marker_percent": 46
+    },
+    "specialisations": [
+      "Finance",
+      "Marketing Management",
+      "Human Resource Management",
+      "Business Analytics",
+      "Digital Marketing",
+      "International Business",
+      "Operations & Supply Chain Management",
+      "Sales and Marketing"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "Think carefully if you expect BBA alone to decide your career",
+      "points": [
+        "BBA gives broad business training, but it does not by itself lead to regulated roles such as chartered accountancy, company secretarial work",
+        "or law; those careers need separate professional qualifications and stages after graduation.",
+        "The first job usually depends on more than marks alone. Internships, communication, Excel, presentations, and interview practice often shape",
+        "outcomes as much as classroom performance does."
+      ]
+    },
+    "good_fit": {
+      "heading": "BBA may suit you well if you like",
+      "points": [
+        "business ideas, people, teamwork, and practical problem-solving.",
+        "presentations, projects, case studies, and discussion-based learning.",
+        "keeping options open for jobs in management fields or for later study such as an MBA.",
+        "building confidence in communication, organisation, and decision-making during college."
+      ]
+    },
+    "tags": [
+      "Business and Management",
+      "Undergraduate",
+      "Class 12 entry",
+      "Commerce friendly",
+      "Open to multiple streams",
+      "MBA pathway",
+      "India"
+    ]
+  },
+  "curriculum": {
+    "assessment_methods": "Students are usually assessed through internal tests, presentations, case studies, class participation, assignments, quizzes, practical projects, semester-end exams, internships, and a final project or dissertation in the last year.",
+    "learning_activities": "Typical learning activities include classroom lectures, group discussions, business case analysis, presentations, spreadsheet exercises, role plays, field projects, internships, and project work.",
+    "years": [
+      {
+        "label": "Year 1",
+        "subjects": [
+          {
+            "description": "Introductory study of how organisations work, their goals, structure, and role in the economy.",
+            "name": "Principles of Management"
+          },
+          {
+            "description": "Basics of financial record-keeping, journal entries, ledgers, trial balance, and final accounts.",
+            "name": "Financial Accounting"
+          },
+          {
+            "description": "Core ideas about markets, consumers, demand, supply, and prices.",
+            "name": "Microeconomics"
+          },
+          {
+            "description": "Business writing, speaking, and workplace communication skills for presentations and reports.",
+            "name": "Business Communication"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Year 2",
+        "subjects": [
+          {
+            "description": "Study of product planning, pricing, promotion, and distribution decisions.",
+            "name": "Marketing Management"
+          },
+          {
+            "description": "How firms raise, use, and manage money for day-to-day and long-term needs.",
+            "name": "Corporate Finance"
+          },
+          {
+            "description": "Use of data, averages, probability, and basic analysis for business decisions.",
+            "name": "Business Statistics"
+          },
+          {
+            "description": "People management, recruitment, training, motivation, and workplace relations.",
+            "name": "Human Resource Management"
+          }
+        ],
+        "year": 2
+      },
+      {
+        "label": "Year 3",
+        "subjects": [
+          {
+            "description": "Planning, quality, supply, and delivery of goods and services in organisations.",
+            "name": "Operations Management"
+          },
+          {
+            "description": "Basic legal rules for business contracts, companies, and commercial activity in India.",
+            "name": "Business Law"
+          },
+          {
+            "description": "How to frame business questions, collect data, and write a structured report.",
+            "name": "Research Methods"
+          },
+          {
+            "description": "Use of digital tools, spreadsheets, and data-driven decisions in management.",
+            "name": "Business Analytics"
+          }
+        ],
+        "year": 3
+      },
+      {
+        "label": "Year 4",
+        "subjects": [
+          {
+            "description": "Advanced study in a chosen area such as marketing, finance, HR, or operations.",
+            "name": "Specialisation Paper"
+          },
+          {
+            "description": "Student-selected subject that deepens knowledge in one business area of interest.",
+            "name": "Discipline Elective"
+          },
+          {
+            "description": "Real workplace experience in an organisation, usually through supervised training.",
+            "name": "Industry Internship"
+          },
+          {
+            "description": "Independent academic work that may involve a dissertation, capstone, or final project.",
+            "name": "Final Project"
+          }
+        ],
+        "year": 4
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "Merit in Class 12 marks",
+      "Entrance test such as CUET or a college-specific exam",
+      "Interview or group discussion at some colleges",
+      "Document verification and counselling"
+    ],
+    "admission_timeline": [
+      {
+        "description": "Complete Class 12 from a recognised board, usually in any stream.",
+        "step": 1,
+        "title": "Finish school"
+      },
+      {
+        "description": "Check the college rule for minimum marks, often around 50% and sometimes higher or lower depending on the institution.",
+        "step": 2,
+        "title": "Meet the mark requirement"
+      },
+      {
+        "description": "Apply through merit, CUET, or the college admission portal, depending on the institution.",
+        "step": 3,
+        "title": "Submit application"
+      },
+      {
+        "description": "Attend the entrance test, interview, or counselling round if the college requires one.",
+        "step": 4,
+        "title": "Take admission rounds"
+      },
+      {
+        "description": "Confirm the seat by document verification and fee payment within the deadline.",
+        "step": 5,
+        "title": "Confirm admission"
+      }
+    ],
+    "typical_requirements": [
+      "Class 12 pass from a recognised board",
+      "Any stream is usually accepted, including commerce, science, or humanities",
+      "Common minimum marks are about 45% to 60%, depending on the college",
+      "English is often required as a subject or as the medium of instruction"
+    ]
+  },
+  "skills": [
+    {
+      "description": "Understanding how businesses are run, how decisions are made, and how departments work together.",
+      "name": "Business understanding"
+    },
+    {
+      "description": "Explaining ideas clearly in class discussions, presentations, emails, and reports.",
+      "name": "Communication"
+    },
+    {
+      "description": "Working with classmates on case studies, projects, and presentations.",
+      "name": "Teamwork"
+    },
+    {
+      "description": "Looking at facts, comparing options, and choosing sensible next steps.",
+      "name": "Analytical thinking"
+    },
+    {
+      "description": "Using spreadsheets, data, and basic digital tools for business tasks.",
+      "name": "Digital and data skills"
+    },
+    {
+      "description": "Planning work, meeting deadlines, and keeping records neatly.",
+      "name": "Organisation and time management"
+    }
+  ],
+  "careers": [
+    {
+      "description": "Supports planning and running promotional campaigns, market research, and customer outreach in companies across retail, FMCG, e-commerce, and services.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Marketing Executive",
+      "typical_route": "BBA -> Marketing internship or first job -> Marketing Executive"
+    },
+    {
+      "description": "Helps generate leads, build client relationships, and grow sales for a business.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Business Development Executive",
+      "typical_route": "BBA -> Sales or business development internship -> Business Development Executive"
+    },
+    {
+      "description": "Handles recruitment support, employee records, onboarding, and workplace coordination.",
+      "route_badge": "Possible after bachelor's",
+      "title": "HR Executive",
+      "typical_route": "BBA -> HR internship -> HR Executive"
+    },
+    {
+      "description": "Analyses company data, market trends, and business performance to support decisions.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Business Analyst",
+      "typical_route": "BBA -> Strong Excel/analytics skills -> Business Analyst"
+    },
+    {
+      "description": "Works with budgets, reports, and financial analysis for companies in banking, finance, and corporate teams.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Financial Analyst",
+      "typical_route": "BBA -> Finance specialisation or internship -> Financial Analyst"
+    },
+    {
+      "description": "Prepares students for entry roles in banks such as customer service, sales, operations, or officer-level roles where recruitment is through bank exams or campus",
+      "route_badge": "Possible after bachelor's",
+      "title": "Banking Officer / Relationship Manager",
+      "typical_route": "BBA -> Bank exam preparation or banking internship -> Banking role"
+    }
+  ],
+  "further_study_pathway": [
+    "BBA -> MBA",
+    "BBA -> PGDM",
+    "BBA -> specialised postgraduate or/",
+    "career certification pathway suchas",
+    "BBA -> professional qualifications:"
+  ],
+  "recruiters": [
+    {
+      "description": "A major Indian bank that recruits for banking, relationship, operations, and business roles.",
+      "logo_initials": "HB",
+      "name": "HDFC Bank",
+      "roles": [
+        "Relationship Manager",
+        "Branch Operations Executive"
+      ],
+      "sector": "Banking"
+    },
+    {
+      "description": "An Indian financial services company that recruits across insurance, sales, and client-facing roles.",
+      "logo_initials": "IC",
+      "name": "ICICI Prudential Life Insurance",
+      "roles": [
+        "Sales Executive",
+        "Relationship Manager"
+      ],
+      "sector": "Insurance"
+    },
+    {
+      "description": "A major Indian conglomerate with hiring across retail, consumer businesses, and operations.",
+      "logo_initials": "RE",
+      "name": "Reliance Retail",
+      "roles": [
+        "Business Analyst",
+        "Operations Executive"
+      ],
+      "sector": "Retail"
+    },
+    {
+      "description": "A global consultancy and professional services firm with roles in business analysis and consulting support.",
+      "logo_initials": "AC",
+      "name": "Accenture",
+      "roles": [
+        "Business Analyst",
+        "Operations Associate"
+      ],
+      "sector": "Consulting and Technology"
+    },
+    {
+      "description": "An Indian IT services company that hires for business support, operations, and analyst roles.",
+      "logo_initials": "TC",
+      "name": "Tata Consultancy Services",
+      "roles": [
+        "Business Analyst",
+        "Project Coordinator"
+      ],
+      "sector": "Information Technology"
+    },
+    {
+      "description": "An Indian e-commerce and logistics company that hires for operations, category, and business roles.",
+      "logo_initials": "FL",
+      "name": "Flipkart",
+      "roles": [
+        "Operations Executive",
+        "Business Analyst"
+      ],
+      "sector": "E-commerce"
+    }
+  ],
+  "colleges": {
+    "data_note": "This list highlights well-known Indian colleges and universities that offer BBA or a close undergraduate business-administration equivalent. The score is a relative course-popularity and standing marker, not a promise of fit, cut-off, or placement. Fees change by campus, quota, and year, so families should verify the exact tuition, hostel, and admission charges before applying.",
+    "items": [
+      {
+        "admission_route": "CUET",
+        "annual_fee": 24933,
+        "city": "Delhi",
+        "course_name": "BBA",
+        "duration_years": 3,
+        "highlight": "Highly selective government college in a",
+        "institution_type": "government",
+        "name": "Shaheed Sukhdev College of Business Studies, University of Delhi",
+        "rank": 1
+      },
+      {
+        "admission_route": "Christ University Entrance Test, CUET, +",
+        "annual_fee": 292667,
+        "city": "Bengaluru",
+        "course_name": "BBA",
+        "duration_years": 3,
+        "highlight": "Large private university with a strong B",
+        "institution_type": "private",
+        "name": "Christ University",
+        "rank": 2
+      },
+      {
+        "admission_route": "NPAT",
+        "annual_fee": 533333,
+        "city": "Mumbai",
+        "course_name": "BBA",
+        "duration_years": 3,
+        "highlight": "Well-known private commerce and manageme",
+        "institution_type": "private",
+        "name": "Narsee Monjee Institute of Management Studies",
+        "rank": 3
+      },
+      {
+        "admission_route": "Entrance-based",
+        "annual_fee": 175000,
+        "city": "Bengaluru",
+        "course_name": "BBA",
+        "duration_years": 3,
+        "highlight": "Established college with a strong underg",
+        "institution_type": "private",
+        "name": "Mount Carmel College",
+        "rank": 4
+      },
+      {
+        "admission_route": "Merit-based / college process",
+        "annual_fee": 106333,
+        "city": "Chennai",
+        "course_name": "BBA",
+        "duration_years": 3,
+        "highlight": "Old-established arts and science college",
+        "institution_type": "private",
+        "name": "Loyola College",
+        "rank": 5
+      },
+      {
+        "admission_route": "CUET",
+        "annual_fee": 170333,
+        "city": "New Delhi",
+        "course_name": "BBA",
+        "duration_years": 3,
+        "highlight": "Government university option with a lowe",
+        "institution_type": "government",
+        "name": "Delhi Technological University",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "Compiled from widely used India BBA college rankings and fee listings for India,",
+    "ranking_updated": "2026-08"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "Apply for internships, learn Excel and presentation skills, and consider an MBA,",
+      "course_name": "BBA",
+      "laboratory_exposure": "Very low; the work is mainly classroom,",
+      "main_focus": "Business management, marketing, HR, sales, operations, and entrepreneurship",
+      "statistics_level": "Basic to moderate"
+    },
+    {
+      "common_next_steps": "Add accounting software, GST basics, and internship experience; many students go",
+      "course_name": "BCom",
+      "laboratory_exposure": "Very low; practical work is usually in",
+      "main_focus": "Accounting, finance, taxation, audit, and commerce fundamentals",
+      "statistics_level": "Moderate, especially in accounting and"
+    },
+    {
+      "common_next_steps": "Apply for internships, build Excel and communication skills, and then decide on",
+      "course_name": "BMS / BBM",
+      "laboratory_exposure": "Very low; case studies and presentations",
+      "main_focus": "Management basics, team leadership, marketing, and operations",
+      "statistics_level": "Basic to moderate"
+    }
+  ],
+  "fees": {
+    "footnote": "Tuition varies widely across India by college type, city, and admission route. Government colleges usually sit at the lower end, private colleges at the higher end, and hostel, exam, and caution-deposit costs can add ase",
+    "rows": [
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": false,
+        "max": 175000,
+        "min": 25000,
+        "parent_check": "Compare the yearly tuition, not the total programme amount, and ask whether university fees, exam fees, and lab or club費"
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": false,
+        "max": 600000,
+        "min": 200000,
+        "parent_check": "Check whether the quoted amount is tuition only or includes development and activity charges."
+      },
+      {
+        "category": "Application, entrance, and counselling",
+        "frequency": "One time",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 5000,
+        "min": 500,
+        "parent_check": "These are usually separate from tuition and may not be refundable."
+      },
+      {
+        "category": "Books, materials, and projects",
+        "frequency": "As required",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 40000,
+        "min": 10000,
+        "parent_check": "Budget for textbooks, software, printing, and project work."
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "Finish Class 12 with a focus on consistent marks, because BBA admissions in India usually start after Class 12.",
+      "stage": "Grades 8-10",
+      "title": "Build the base"
+    },
+    {
+      "description": "Choose Commerce, Humanities, or Science based on interest and strength in English, maths, and general studies; keep working on communication and presentation skills.",
+      "stage": "Grades 8-10",
+      "title": "Pick subjects and skills"
+    },
+    {
+      "description": "Shortlist colleges that offer BBA, check whether they use merit or an entrance test, and note the application dates and document list.",
+      "stage": "Grade 11",
+      "title": "Research colleges early"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "BBA is a 3-year undergraduate business degree in India, and some colleges may offer an integrated or extended 4-year option.",
+      "question": "How long does BBA take?"
+    },
+    {
+      "answer": "Most colleges accept students after Class 12. Many are open to Commerce, Humanities, and Science students, but each college can set its own subject or marks rules.",
+      "question": "Which stream is best for BBA?"
+    },
+    {
+      "answer": "Many BBA graduates start in business, marketing, sales, HR, operations, customer service, or support roles, or use the degree to prepare for an MBA later.",
+      "question": "What jobs can I do after BBA?"
+    },
+    {
+      "answer": "Some colleges admit through Class 12 marks, while others use their own entrance tests or interviews. The exact route depends on the institution.",
+      "question": "Is there an entrance exam for BBA?"
+    },
+    {
+      "answer": "A BBA can be a useful base for management work, but higher-level business roles usually need experience, and some career paths may need postgraduate study.",
+      "question": "Should I do MBA after BBA?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "BBA suits students who like structured study, communication, teamwork, and practical business topics. In India, families usually compare colleges by faculty, internship exposure, location, fees, and admission route rather than by one fixed national ranking. A student can come from Commerce, Humanities, or Science, so the bigger question is whether the student enjoys presentations, group work, and business thinking. For parents, the most useful check is whether the college is clear about eligibility, fee structure, and placement support, and whether the student is choosing BBA for a specific goal such as management, marketing, HR, or preparing for further study. It also helps to discuss whether the student wants a general degree first or already has a preferred direction.",
+    "questions": [
+      "Do you want a general business degree or a path toward a specific job area?",
+      "Which colleges fit our budget and location?",
+      "Does the college offer internships, projects, or practical learning?",
+      "Will this student be more interested in work after BBA or further study later?",
+      "What admission route does each college use?",
+      "Are the fees annual, semester-wise, or for the full programme?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "National Testing Agency",
+        "title": "Notice Board Archive",
+        "url": "https://nta.ac.in/NoticeBoardArchive?article_id=444043138.0"
+      },
+      {
+        "publisher": "National Testing Agency",
+        "title": "Notice",
+        "url": "https://nta.ac.in/Download/Notice/Notice_20260424201625.pdf"
+      },
+      {
+        "publisher": "University Grants Commission",
+        "title": "UGC official website",
+        "url": "https://www.ugc.gov.in/"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  }
+}

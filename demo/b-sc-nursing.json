@@ -1,0 +1,576 @@
+{
+  "course_id": "crs_b_sc_nursing",
+  "slug": "b-sc-nursing",
+  "course_name": "B.Sc Nursing",
+  "currency": "INR",
+  "region": "India",
+  "category": "Medical & Allied Health",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Clinical care and patient-focused study",
+    "fit": {
+      "indicators": [
+        "Strong interest in biology and health care",
+        "Comfort with hospital training and practical work",
+        "Good communication and empathy for patients"
+      ],
+      "note": "A good fit for students who want structured science learning with hands-on clinical training and a clear path into a lic",
+      "score_percent": 86
+    },
+    "summary": "B.Sc Nursing prepares students for professional nursing through classroom study, labs, and clinical training in hospitals and community settings. In India, graduates usually need registration with the relevant nursing council before they can practise as a nurse, so the degree is the academic base for a regulated health-care career."
+  },
+  "quick_facts": {
+    "career_direction": "Nurse in hospitals, clinics, community health, emergency care, and, in",
+    "entry_level": "Class 12 (science stream with Biology; 2",
+    "indicative_annual_fees": {
+      "max": 200000,
+      "min": 50000
+    },
+    "learning_style": "Science-based learning with anatomy, physiology, nursing lab",
+    "suitable_streams": [
+      "Science"
+    ],
+    "typical_duration": {
+      "max_years": 4,
+      "min_years": 4
+    }
+  },
+  "seo": {
+    "meta_description": "B.Sc Nursing in India is a 4-year undergraduate course for students who want clinical training and a career in nursing. See duration, fees, eligibility, and key",
+    "page_title": "B.Sc Nursing Course in India: Duration, Fees, Eligibility and Career"
+  },
+  "subcategory": "Nursing",
+  "overview": {
+    "heading": "What is B.Sc Nursing?",
+    "paragraphs": [
+      "B.Sc Nursing is a 4-year undergraduate course that prepares students to work in patient care in hospitals, clinics, community health, emergency care, and related settings. It combines classroom learning with nursing labs and clinical training, so students study both science and practical care skills.",
+      "The course usually fits students who studied Science in Class 12, especially with Biology, and who are comfortable with anatomy, physiology, and careful hands-on work. It suits learners who can follow routines, observe small changes in a patient’s condition, and stay calm when work is busy or stressful.",
+      "After graduation, many students start as staff nurses and can later move into ICU care, nursing education, community health, military nursing, or specialist clinical roles. Pay varies widely by city, employer, experience, and role: fresh graduates are commonly around INR 250000 to 400000 a year, mid-career nurses often earn INR 300000 to 600000, and senior or specialist roles can reach INR 800000 or more."
+    ]
+  },
+  "snapshot": {
+    "data_note": "In India, B.Sc Nursing pay changes with experience, city, hospital type, and the kind of ward or unit a nurse works in. Government hospitals, private hospitals, teaching roles, and specialist roles can sit in different pay bands, so no single figure fits every graduate.",
+    "salary": {
+      "higher_annual": 800000,
+      "higher_is_open_ended": true,
+      "lower_annual": 250000,
+      "note": "Fresh graduates often start around INR 250000 to 400000 a year, mid-level nurses commonly earn around INR 300000 to 600000, and experienced or specialist nurses can earn INR 800000 or more.",
+      "typical_annual": 300000,
+      "marker_percent": 9
+    },
+    "specialisations": [
+      "Staff Nurse",
+      "ICU Nurse",
+      "OT Nurse",
+      "Community Health Nurse",
+      "Nursing Instructor",
+      "Clinical Nurse Specialist",
+      "Nurse Manager",
+      "Military Nursing"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "Be careful if you expect a mostly classroom-based course",
+      "points": [
+        "This course includes clinical posting and patient-facing work, so a large part of training happens in hospitals and other care settings.[",
+        "The first jobs are often demanding, with shift work, routine tasks, and emotional pressure that can feel different from what students expect",
+        "Moving into higher-paying specialist, teaching, or management roles usually takes experience and, in some cases, extra training.",
+        "Nursing is a regulated profession, so finishing the degree is not the final step before practice; registration and employer-specific hiring,"
+      ]
+    },
+    "good_fit": {
+      "heading": "A good fit if you are someone who",
+      "points": [
+        "wants a direct route into healthcare after Class 12.",
+        "is comfortable with Biology, lab work, and practical learning in clinical settings.",
+        "can stay calm, follow instructions carefully, and work shifts when needed.",
+        "likes helping people and can take responsibility in stressful situations."
+      ]
+    },
+    "tags": [
+      "Healthcare",
+      "Patient care",
+      "Science-based",
+      "Clinical training",
+      "Shift work",
+      "Regulated profession",
+      "Undergraduate"
+    ]
+  },
+  "curriculum": {
+    "assessment_methods": "University examinations, internal assessments, practical and clinical evaluations, case presentations, viva voce, and project or research work in the final year.",
+    "learning_activities": "Lectures, anatomy and nursing laboratory practice, demonstrations, simulation sessions, bedside clinical posting, community and public health fieldwork, seminars, tutorials, and project work.",
+    "years": [
+      {
+        "label": "Year 1",
+        "subjects": [
+          {
+            "description": "Structure and function of the human body as the scientific base for nursing care.",
+            "name": "Anatomy and Physiology"
+          },
+          {
+            "description": "Basic principles of diet, nutrients, and how food supports health and recovery.",
+            "name": "Nutrition and Biochemistry"
+          },
+          {
+            "description": "Foundations of nursing practice, bedside procedures, hygiene, safety, and communication.",
+            "name": "Nursing Foundations"
+          },
+          {
+            "description": "Study of behaviour, development, and social factors that affect health and care.",
+            "name": "Psychology and Sociology"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Year 2",
+        "subjects": [
+          {
+            "description": "Care of adult patients with common medical and surgical conditions.",
+            "name": "Medical-Surgical Nursing I"
+          },
+          {
+            "description": "Drug actions, safe dosage, administration, and side effects.",
+            "name": "Pharmacology"
+          },
+          {
+            "description": "Disease-causing organisms, infection control, and laboratory basics.",
+            "name": "Microbiology"
+          },
+          {
+            "description": "Basic disease processes, tissue changes, heredity, and screening concepts.",
+            "name": "Pathology and Genetics"
+          }
+        ],
+        "year": 2
+      },
+      {
+        "label": "Year 3",
+        "subjects": [
+          {
+            "description": "Nursing care for infants, children, and adolescents.",
+            "name": "Child Health Nursing"
+          },
+          {
+            "description": "Care during pregnancy, labour, birth, and after delivery.",
+            "name": "Obstetric and Gynaecological Nursing"
+          },
+          {
+            "description": "Health promotion, disease prevention, and care in homes and communities.",
+            "name": "Community Health Nursing I"
+          },
+          {
+            "description": "Assessment and care of people with mental health conditions.",
+            "name": "Mental Health Nursing"
+          }
+        ],
+        "year": 3
+      },
+      {
+        "label": "Year 4",
+        "subjects": [
+          {
+            "description": "Research methods, data handling, and evidence-based nursing inquiry with a project or dissertation.",
+            "name": "Nursing Research and Statistics"
+          },
+          {
+            "description": "Planning, organising, staffing, and supervising nursing services.",
+            "name": "Nursing Administration and Leadership"
+          },
+          {
+            "description": "Advanced study in a chosen area such as critical care, oncology, or emergency nursing.",
+            "name": "Elective Specialty Nursing"
+          },
+          {
+            "description": "Community-focused advanced practice, public health programmes, and field internship.",
+            "name": "Advanced Community Health Nursing and Internship"
+          }
+        ],
+        "year": 4
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "Entrance examination based admission through central, state, or institutional selection",
+      "Merit-based admission in some colleges after 10+2 screening",
+      "Counselling and document verification after entrance or merit shortlisting",
+      "Direct admission only where the college or university policy allows it"
+    ],
+    "admission_timeline": [
+      {
+        "description": "Complete Class 12 with science subjects, then apply to the nursing programme.",
+        "step": 1,
+        "title": "Meet entry eligibility"
+      },
+      {
+        "description": "Appear for the relevant nursing entrance test where required.",
+        "step": 2,
+        "title": "Entrance test"
+      },
+      {
+        "description": "Take part in counselling, choice filling, and seat allotment where applicable.",
+        "step": 3,
+        "title": "Counselling"
+      },
+      {
+        "description": "Submit originals, pay fees, and finish medical and document checks.",
+        "step": 4,
+        "title": "Admission confirmation"
+      },
+      {
+        "description": "Start classes and complete the first semester or year induction.",
+        "step": 5,
+        "title": "Course enrolment"
+      }
+    ],
+    "typical_requirements": [
+      "Class 12 in the science stream with Physics, Chemistry, Biology, and English",
+      "Minimum age of 17 years at the time of admission or by the cut-off date used by the admitting authority",
+      "Minimum qualifying marks commonly in the 45% to 50% range in PCB for general category students, with relaxation for reserved categories as a",
+      "Medical fitness for clinical training and field postings"
+    ]
+  },
+  "skills": [
+    {
+      "description": "Safe bedside care, monitoring, hygiene, and basic nursing procedures.",
+      "name": "Patient care"
+    },
+    {
+      "description": "Clear speaking, listening, and record keeping with patients, families, and the care team.",
+      "name": "Communication"
+    },
+    {
+      "description": "Observation of symptoms, timely reporting, and use of clinical judgment.",
+      "name": "Clinical assessment"
+    },
+    {
+      "description": "Infection prevention, hand hygiene, and safe handling of equipment and waste.",
+      "name": "Infection control"
+    },
+    {
+      "description": "Basic drug calculation, dosage checking, and medication safety.",
+      "name": "Medication administration"
+    },
+    {
+      "description": "Teamwork with doctors, nurses, laboratory staff, and community health workers.",
+      "name": "Collaboration"
+    }
+  ],
+  "careers": [
+    {
+      "description": "Works in hospitals and clinics, giving bedside care, monitoring patients, and helping doctors with treatment. Common entry roles after B.Sc Nursing include ward",
+      "route_badge": "Possible after bachelor's",
+      "title": "Staff Nurse",
+      "typical_route": "B.Sc Nursing -> Nursing Council registration -> Staff Nurse"
+    },
+    {
+      "description": "Provides intensive care for patients in ICUs or critical care units, including close monitoring and emergency support. This role is commonly available after the",
+      "route_badge": "Possible after bachelor's",
+      "title": "ICU Nurse",
+      "typical_route": "B.Sc Nursing -> Nursing Council registration -> ICU placement"
+    },
+    {
+      "description": "Cares for patients in emergency departments and supports urgent treatment, triage, and stabilization. This is a direct hospital role for nursing graduates.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Emergency Room Nurse",
+      "typical_route": "B.Sc Nursing -> Nursing Council registration -> Emergency department role"
+    },
+    {
+      "description": "Supports health education, outreach, and preventive care in communities and public-health programmes. Nursing graduates can move into this work with employers",
+      "route_badge": "Possible after bachelor's",
+      "title": "Community Health Nurse",
+      "typical_route": "B.Sc Nursing -> Nursing Council registration -> Community or public-health posting"
+    },
+    {
+      "description": "The Nursing Officer role is a government and large-hospital post open to B.Sc Nursing graduates, but selection is through a recruitment exam and council",
+      "route_badge": "Training may be required",
+      "title": "Nursing Officer",
+      "typical_route": "B.Sc Nursing -> Nursing Council registration -> Competitive recruitment exam -> Nursing Officer"
+    },
+    {
+      "description": "Teaches nursing students or supports clinical teaching in colleges and training settings. This role usually needs postgraduate study such as M.Sc Nursing, and",
+      "route_badge": "Postgraduate route",
+      "title": "Nurse Educator",
+      "typical_route": "B.Sc Nursing -> Clinical experience -> M.Sc Nursing -> Nurse Educator"
+    }
+  ],
+  "further_study_pathway": [
+    "M.Sc Nursing -> specialisation in a",
+    "Post Basic B.Sc Nursing -> advanced",
+    "Postgraduate Diploma in Nursing ->",
+    "Clinical experience -> recruitment",
+    "Licensure/registration renewal and,"
+  ],
+  "recruiters": [
+    {
+      "description": "A major hospital group that hires nurses for inpatient care, critical care, emergency, and speciality units.",
+      "logo_initials": "AP",
+      "name": "Apollo Hospitals Enterprise",
+      "roles": [
+        "Staff Nurse",
+        "ICU Nurse"
+      ],
+      "sector": "Hospital & acute care"
+    },
+    {
+      "description": "A large private healthcare provider that recruits nursing graduates for hospital and speciality-care roles.",
+      "logo_initials": "FH",
+      "name": "Fortis Healthcare",
+      "roles": [
+        "Staff Nurse",
+        "Emergency Room Nurse"
+      ],
+      "sector": "Hospital & acute care"
+    },
+    {
+      "description": "A multi-hospital healthcare network that employs nurses across wards, ICUs, and emergency departments.",
+      "logo_initials": "MH",
+      "name": "Manipal Hospitals",
+      "roles": [
+        "Staff Nurse",
+        "ICU Nurse"
+      ],
+      "sector": "Hospital & acute care"
+    },
+    {
+      "description": "A major hospital chain that hires nurses for clinical care and patient support roles.",
+      "logo_initials": "MX",
+      "name": "Max Healthcare",
+      "roles": [
+        "Staff Nurse",
+        "Nursing Officer"
+      ],
+      "sector": "Hospital & acute care"
+    },
+    {
+      "description": "A hospital and healthcare provider that recruits nurses for critical care and ward-based clinical work.",
+      "logo_initials": "MD",
+      "name": "Medanta - The Medicity",
+      "roles": [
+        "Staff Nurse",
+        "ICU Nurse"
+      ],
+      "sector": "Hospital & acute care"
+    },
+    {
+      "description": "A national public-sector medical institution that recruits nursing staff through competitive recruitment.",
+      "logo_initials": "AI",
+      "name": "All India Institute of Medical Sciences",
+      "roles": [
+        "Nursing Officer",
+        "Staff Nurse"
+      ],
+      "sector": "Government healthcare"
+    }
+  ],
+  "colleges": {
+    "data_note": "This ranking shows a practical order built from public fees and course visibility, not a promise of quality, placement, or admission ease. Fees can change by category, quota, year, and extra charges, so families should verify the current tuition, hostel, and exam costs before applying.",
+    "items": [
+      {
+        "admission_route": "AIIMS B.Sc Nursing entrance process",
+        "annual_fee": 9750,
+        "city": "New Delhi",
+        "course_name": "B.Sc Nursing",
+        "duration_years": 4,
+        "highlight": "Premier national institute with very low",
+        "institution_type": "government",
+        "name": "AIIMS New Delhi",
+        "rank": 1
+      },
+      {
+        "admission_route": "AIIMS B.Sc Nursing entrance process",
+        "annual_fee": 1201,
+        "city": "Jodhpur",
+        "course_name": "B.Sc Nursing",
+        "duration_years": 4,
+        "highlight": "Very low tuition and strong public-hosp",
+        "institution_type": "government",
+        "name": "AIIMS Jodhpur",
+        "rank": 2
+      },
+      {
+        "admission_route": "AIIMS B.Sc Nursing entrance process",
+        "annual_fee": 867,
+        "city": "Bathinda",
+        "course_name": "B.Sc Nursing",
+        "duration_years": 4,
+        "highlight": "Low tuition at a newer AIIMS campus",
+        "institution_type": "government",
+        "name": "AIIMS Bathinda",
+        "rank": 3
+      },
+      {
+        "admission_route": "University admission / merit and nursing",
+        "annual_fee": 48000,
+        "city": "Lucknow",
+        "course_name": "B.Sc Nursing",
+        "duration_years": 4,
+        "highlight": "Established state university option with",
+        "institution_type": "government",
+        "name": "King George's Medical University",
+        "rank": 4
+      },
+      {
+        "admission_route": "Entrance test and institute counselling",
+        "annual_fee": 40000,
+        "city": "Vellore",
+        "course_name": "B.Sc Nursing",
+        "duration_years": 4,
+        "highlight": "Well-known private medical college with",
+        "institution_type": "private",
+        "name": "Christian Medical College",
+        "rank": 5
+      },
+      {
+        "admission_route": "University entrance and counselling",
+        "annual_fee": 145000,
+        "city": "Gurugram",
+        "course_name": "B.Sc Nursing",
+        "duration_years": 4,
+        "highlight": "Private university option with much h",
+        "institution_type": "private",
+        "name": "Amity University Gurugram",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "Publicly available India college fee and course listings for B.Sc Nursing and B.",
+    "ranking_updated": "2026-08"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "Appear for nursing council registration and begin hospital or community nursing;",
+      "course_name": "B.Sc Nursing",
+      "laboratory_exposure": "High: anatomy, physiology, microbiology,",
+      "main_focus": "Professional nursing care, patient assessment, medicine administration, mat",
+      "statistics_level": "Basic to moderate for evidence-based"
+    },
+    {
+      "common_next_steps": "Work as a general nurse after registration, or move into B.Sc Nursing later",
+      "course_name": "GNM (General Nursing and Midwifery)",
+      "laboratory_exposure": "Moderate: practical nursing skills and",
+      "main_focus": "General bedside nursing and midwifery with a diploma route",
+      "statistics_level": "Basic"
+    },
+    {
+      "common_next_steps": "Take a physiotherapy internship, then register where required and work in ho",
+      "course_name": "BPT (Bachelor of Physiotherapy)",
+      "laboratory_exposure": "High: musculoskeletal assessment, ex",
+      "main_focus": "Movement, rehabilitation, exercise therapy, and recovery after injury or",
+      "statistics_level": "Basic to moderate"
+    }
+  ],
+  "fees": {
+    "footnote": "These are tuition-oriented annual ranges for India. They do not include hostel, mess, uniforms, books, transport, or exam and registration charges. Government and premier national institutes usually sit much lower than a",
+    "rows": [
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": true,
+        "max": 50000,
+        "min": 10000,
+        "parent_check": "Typical public-college tuition for B.Sc Nursing is often in this band, but state and quota differences can change it."
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": true,
+        "max": 250000,
+        "min": 40000,
+        "parent_check": "Private-college tuition is usually much higher than government college tuition and can vary widely by city and brand."
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "premier_national",
+        "is_variable": true,
+        "max": 10000,
+        "min": 1000,
+        "parent_check": "Premier national institutes such as AIIMS-class colleges are usually the lowest-cost options for this course."
+      },
+      {
+        "category": "Other compulsory charges",
+        "frequency": "As required",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 30000,
+        "min": 2000,
+        "parent_check": "Uniforms, lab charges, exam fees, and similar costs can add several thousand rupees each year."
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "Build a strong base in Biology, Chemistry, Physics, and English. Keep marks steady in Class 8–10, because B.Sc Nursing later depends on science subjects and clear writing for records and exams.",
+      "stage": "Grades 8-10",
+      "title": "Strengthen science basics"
+    },
+    {
+      "description": "Choose the Science stream with Biology. Start checking admission routes for nursing colleges in India, since some colleges use merit and many also use entrance tests. Collect information on age rules, subject rules, and",
+      "stage": "Grade 11",
+      "title": "Plan for admission rules"
+    },
+    {
+      "description": "Focus on Class 12 Science with Biology and prepare documents, entrance-test practice, and college choices. After the degree, complete the registration step required to work as a nurse in India, usually through the State/",
+      "stage": "Grade 12",
+      "title": "Prepare for college and licen"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "B.Sc Nursing is a 4-year undergraduate degree that prepares students for nursing work in hospitals, clinics, community health, emergency care, and related settings.",
+      "question": "What is B.Sc Nursing?"
+    },
+    {
+      "answer": "Most students need Class 12 in the Science stream with Biology. Individual colleges may also ask for minimum marks, age limits, or an entrance test.",
+      "question": "Who can apply for B.Sc Nursing?"
+    },
+    {
+      "answer": "The course is usually 4 years long. Some colleges include clinical training throughout the programme so students learn in classrooms, labs, and hospital settings.",
+      "question": "How long does the course take?"
+    },
+    {
+      "answer": "Graduates usually cannot work as registered nurses immediately after the degree alone. They must complete the registration step required by the nursing regulator in the state where they want to work.",
+      "question": "What comes after the degree?"
+    },
+    {
+      "answer": "Fees vary widely across India. A practical planning range for many colleges is about INR 50000 to INR 200000 per year, depending on the institution.",
+      "question": "How much does B.Sc Nursing cost?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "B.Sc Nursing suits students who are comfortable with science, patient care, and steady practical work. Families should check three things early: whether the college is recognised, what the admission route is, and what clinical training is included. The degree is usually 4 years, and students spend time in classrooms, laboratories, and hospital wards. Since nursing is a regulated profession, graduation is not the final step; registration with the relevant nursing council is needed before working as a registered nurse. Parents should also ask about hostel safety, hospital tie-ups, distance from home, and total yearly cost, including uniforms, books, transport, and exam fees. A calm check of these basics helps avoid surprises later and gives the student a clearer picture of daily life in the course.",
+    "questions": [
+      "Is the college recognised for nursing education?",
+      "Does the admission process need an entrance test or only Class 12 marks?",
+      "Where do students do clinical training?",
+      "What is the total yearly cost, including extras?",
+      "What registration is needed after graduation to work as a nurse?",
+      "Is hostel accommodation available and safe?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "Indian Nursing Council",
+        "title": "Indian Nursing Council",
+        "url": "https://indiannursingcouncil.org/"
+      },
+      {
+        "publisher": "National Testing Agency",
+        "title": "National Testing Agency",
+        "url": "https://nta.ac.in/"
+      },
+      {
+        "publisher": "National Testing Agency",
+        "title": "Notice Board Archive",
+        "url": "https://nta.ac.in/NoticeBoardArchive?article_id=428610112.0"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  }
+}

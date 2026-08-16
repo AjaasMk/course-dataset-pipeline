@@ -1,0 +1,590 @@
+{
+  "course_id": "crs_bachelor_of_medical_laboratory_technology",
+  "slug": "bachelor-of-medical-laboratory-technology",
+  "course_name": "Bachelor of Medical Laboratory Technology",
+  "currency": "INR",
+  "region": "India",
+  "category": "Medical & Allied Health",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Lab-based healthcare pathway",
+    "fit": {
+      "indicators": [
+        "Strong interest in biology and chemistry",
+        "Comfortable with lab work and careful sample handling",
+        "Wants a healthcare role behind the scenes"
+      ],
+      "note": "A good fit for students who like practical science, precision, and healthcare support work.",
+      "score_percent": 84
+    },
+    "summary": "Bachelor of Medical Laboratory Technology trains students to test blood, urine, tissue, and other samples used in diagnosis and treatment. It suits families looking for a practical healthcare degree with steady lab-based work, and it can lead to roles in hospitals, diagnostic centres, research labs, and public health settings."
+  },
+  "quick_facts": {
+    "career_direction": "Medical laboratory technologist in hospitals, diagnostic laboratories,",
+    "entry_level": "Class 12",
+    "indicative_annual_fees": {
+      "max": 200000,
+      "min": 40000
+    },
+    "learning_style": "Lab-intensive, science-based, and detail-oriented with a mix",
+    "suitable_streams": [
+      "Science"
+    ],
+    "typical_duration": {
+      "max_years": 4,
+      "min_years": 3
+    }
+  },
+  "seo": {
+    "meta_description": "Bachelor of Medical Laboratory Technology in India: course duration, fees, eligibility, career options, and what students learn in this healthcare science path.",
+    "page_title": "Bachelor of Medical Laboratory Technology (BMLT) in India | Course, Fe"
+  },
+  "subcategory": "Medical Laboratory Technology",
+  "overview": {
+    "heading": "What is Bachelor of Medical Laboratory Technology?",
+    "paragraphs": [
+      "Bachelor of Medical Laboratory Technology (BMLT) is an undergraduate course that trains students to work in hospital and diagnostic laboratories. It usually runs for 3 to 4 years, with classroom study, lab work, and often an internship or practical training period. The course covers how to collect, handle, test, and report patient samples used in diagnosis and treatment.",
+      "Students learn core lab areas such as pathology, hematology, biochemistry, microbiology, immunology, blood bank work, and related quality-control practices. The job is important because doctors rely on accurate test results before making treatment decisions. A BMLT graduate can work in hospitals, diagnostic centres, blood banks, research labs, and similar healthcare settings.",
+      "This course suits students who like science, steady routines, and careful work with instruments and samples. It is more about precision and responsibility than direct patient care. The day-to-day work can be busy, especially in hospitals and diagnostic chains where testing volume is high."
+    ]
+  },
+  "snapshot": {
+    "data_note": "In India, pay for BMLT graduates depends strongly on the employer, city, sector, and experience. Government hospitals and large diagnostic chains often pay differently from small private labs, and salaries rise with seniority, specialisation, and added responsibility.",
+    "salary": {
+      "higher_annual": 400000,
+      "higher_is_open_ended": false,
+      "lower_annual": 240000,
+      "note": "A common entry-level range is about INR 240000 to INR 400000 a year, with some fresher roles around INR 18000 to INR 30000 a month and experienced or senior roles reaching higher levels. Public-sector openings may start around INR 25000 to INR 40000 a month, while specialised or supervisory roles can go beyond the mid-",
+      "typical_annual": 300000,
+      "marker_percent": 38
+    },
+    "specialisations": [
+      "Hematology",
+      "Biochemistry",
+      "Microbiology",
+      "Clinical pathology",
+      "Blood bank technology",
+      "Immunology",
+      "Molecular diagnostics",
+      "Quality control"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "Be careful if you expect this course to be mostly theory",
+      "points": [
+        "The work is hands-on and accuracy matters every day; small mistakes in sample handling or reporting can affect patient care.",
+        "The role is usually behind the scenes, so students who want direct bedside care may find this course less suitable.",
+        "Pay can vary a lot at the start, so one salary figure does not describe every graduate.",
+        "Advancement often depends on experience, special training, and the type of lab or hospital you join."
+      ]
+    },
+    "good_fit": {
+      "heading": "A good fit if you",
+      "points": [
+        "Like biology, chemistry, and applied science.",
+        "Enjoy careful, methodical work and following procedures.",
+        "Are comfortable working in a lab environment for long periods.",
+        "Want a healthcare career connected to diagnosis rather than direct treatment."
+      ]
+    },
+    "tags": [
+      "Science-focused",
+      "Lab-intensive",
+      "Healthcare support",
+      "Detail-oriented",
+      "Career after Class 12 Science",
+      "Diagnostic medicine",
+      "Hospital and lab work"
+    ]
+  },
+  "curriculum": {
+    "assessment_methods": "Written exams, practical laboratory tests, viva voce, internal assessments, case-based assignments, and clinical postings/internship evaluation.",
+    "learning_activities": "Lectures, laboratory demonstrations, specimen handling practice, microscopy, quality-control exercises, hospital lab postings, case discussions, and supervised internship work.",
+    "years": [
+      {
+        "label": "Year 1",
+        "subjects": [
+          {
+            "description": "Foundations of the human body, organ systems, and how structure relates to function in health and disease.",
+            "name": "Human Anatomy and Physiology"
+          },
+          {
+            "description": "Basic inorganic and organic chemistry for understanding body fluids, reagents, and lab reactions.",
+            "name": "General and Biochemistry"
+          },
+          {
+            "description": "Core laboratory techniques, instruments, glassware, safety rules, and specimen handling basics.",
+            "name": "Introduction to Medical Laboratory Technology"
+          },
+          {
+            "description": "Professional communication, medical terminology, and report writing for lab settings.",
+            "name": "Medical English and Communication"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Year 2",
+        "subjects": [
+          {
+            "description": "Study of bacteria, viruses, fungi, and parasites relevant to diagnostic laboratories.",
+            "name": "Medical Microbiology"
+          },
+          {
+            "description": "Microscopic study of blood cells, blood disorders, and haemoglobin-related testing.",
+            "name": "Haematology"
+          },
+          {
+            "description": "Collection, preservation, and testing of urine, blood, and other body fluids.",
+            "name": "Clinical Pathology"
+          },
+          {
+            "description": "Basic disease mechanisms, tissue changes, and interpretation of lab findings in illness.",
+            "name": "General Pathology"
+          }
+        ],
+        "year": 2
+      },
+      {
+        "label": "Year 3",
+        "subjects": [
+          {
+            "description": "Laboratory methods for enzyme, hormone, protein, lipid, and electrolyte testing.",
+            "name": "Clinical Biochemistry"
+          },
+          {
+            "description": "Blood grouping, transfusion safety, donor screening, and compatibility testing.",
+            "name": "Immunohaematology and Blood Banking"
+          },
+          {
+            "description": "Detection of parasites, specimen concentration methods, and diagnostic interpretation in parasitology.",
+            "name": "Parasitology and Mycology"
+          },
+          {
+            "description": "Laboratory quality systems, documentation, audit practices, and accreditation basics.",
+            "name": "Quality Assurance in Laboratory Medicine"
+          }
+        ],
+        "year": 3
+      },
+      {
+        "label": "Year 4",
+        "subjects": [
+          {
+            "description": "Research planning, evidence review, data collection, and basic biostatistics for laboratory studies.",
+            "name": "Research Methodology and Biostatistics"
+          },
+          {
+            "description": "Advanced diagnostic technologies used in modern pathology and molecular testing.",
+            "name": "Advanced Diagnostic Techniques"
+          },
+          {
+            "description": "Specialised laboratory posting with supervised practice across major sections of the clinical laboratory.",
+            "name": "Clinical Internship and Rotation"
+          },
+          {
+            "description": "Independent project or dissertation based on a laboratory topic, with written and oral submission.",
+            "name": "Project Work and Dissertation"
+          }
+        ],
+        "year": 4
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "Merit based on Class 12 marks",
+      "Entrance test followed by counselling",
+      "Direct admission where private colleges have seats available",
+      "Interview or document verification in some institutions"
+    ],
+    "admission_timeline": [
+      {
+        "description": "Complete Class 12 with Science subjects and meet the college minimum marks requirement.",
+        "step": 1,
+        "title": "Finish school eligibility"
+      },
+      {
+        "description": "Apply to the college or university and submit marksheets, identity proof, and category certificates if needed.",
+        "step": 2,
+        "title": "Submit application"
+      },
+      {
+        "description": "Take the entrance test if the institution requires one, or wait for merit listing where admission is score-based.",
+        "step": 3,
+        "title": "Entrance or merit selection"
+      },
+      {
+        "description": "Attend counselling, document verification, and fee payment to confirm the seat.",
+        "step": 4,
+        "title": "Seat confirmation"
+      },
+      {
+        "description": "Begin classes and complete lab and hospital postings as part of the programme.",
+        "step": 5,
+        "title": "Join the course"
+      }
+    ],
+    "typical_requirements": [
+      "Class 12 or equivalent from a recognised board",
+      "Science stream with Physics, Chemistry, and Biology as the usual combination",
+      "English as a studied subject",
+      "Typical minimum marks around 45% to 50% in Class 12, with higher cut-offs in some colleges and reserved-category relaxations where permitted"
+    ]
+  },
+  "skills": [
+    {
+      "description": "Ability to work carefully with samples, instruments, and records without mixing up results.",
+      "name": "Attention to detail"
+    },
+    {
+      "description": "Comfort with microscopy, staining, pipetting, and other hands-on lab work.",
+      "name": "Laboratory technique"
+    },
+    {
+      "description": "Understanding of basic human biology, disease processes, and diagnostic test meaning.",
+      "name": "Applied science knowledge"
+    },
+    {
+      "description": "Following safety, infection-control, and waste-disposal rules in clinical settings.",
+      "name": "Biosafety and hygiene"
+    },
+    {
+      "description": "Writing clear reports and communicating findings to doctors and lab teams.",
+      "name": "Documentation and communication"
+    },
+    {
+      "description": "Organising workloads, matching specimens to requests, and finishing tests on time.",
+      "name": "Time management and organisation"
+    }
+  ],
+  "careers": [
+    {
+      "description": "Works in hospitals, diagnostic laboratories, and pathology labs by preparing and analysing samples for tests such as blood counts, biochemistry, and microbiolgy",
+      "route_badge": "Possible after bachelor's",
+      "title": "Medical Laboratory Technologist",
+      "typical_route": "BMLT -> Hospital or diagnostic lab training -> Medical Laboratory Technologist"
+    },
+    {
+      "description": "Supports diagnostic testing and sample handling in pathology departments and labs",
+      "route_badge": "Possible after bachelor's",
+      "title": "Pathology Technician",
+      "typical_route": "BMLT -> Internship in pathology lab -> Pathology Technician"
+    },
+    {
+      "description": "Runs routine microbiology tests on samples and helps identify infections and contaminants",
+      "route_badge": "Possible after bachelor's",
+      "title": "Microbiology Technician",
+      "typical_route": "BMLT -> Clinical microbiology posting -> Microbiology Technician"
+    },
+    {
+      "description": "Performs biochemical testing on body fluids and tissue samples for diagnosis support",
+      "route_badge": "Possible after bachelor's",
+      "title": "Biochemistry Technician",
+      "typical_route": "BMLT -> Biochemistry lab experience -> Biochemistry Technician"
+    },
+    {
+      "description": "Works in blood banks with collection, processing, testing, and storage of blood and components",
+      "route_badge": "Possible after bachelor's",
+      "title": "Blood Bank Technician",
+      "typical_route": "BMLT -> Blood bank posting -> Blood Bank Technician"
+    },
+    {
+      "description": "Checks laboratory processes, records, and test quality standards in larger labs and hospital chains",
+      "route_badge": "Possible after bachelor's",
+      "title": "Laboratory Quality Control Officer",
+      "typical_route": "BMLT -> Lab quality training -> Laboratory Quality Control Officer"
+    }
+  ],
+  "further_study_pathway": [
+    "MSc Medical Laboratory Technology",
+    "MSc Clinical Biochemistry",
+    "MSc Microbiology",
+    "MSc Biotechnology",
+    "Postgraduate Diploma in Medical Lab"
+  ],
+  "recruiters": [
+    {
+      "description": "Large multi-speciality hospital chain that hires medical laboratory staff for clinical and diagnostic services",
+      "logo_initials": "AH",
+      "name": "Apollo Hospitals",
+      "roles": [
+        "Medical Laboratory Technologit",
+        "Pathology Technician"
+      ],
+      "sector": "Hospitals"
+    },
+    {
+      "description": "Private healthcare provider with hospital-based diagnostics and laboratory services",
+      "logo_initials": "FH",
+      "name": "Fortis Healthcare",
+      "roles": [
+        "Medical Laboratory Technologit",
+        "Blood Bank Technician"
+      ],
+      "sector": "Hospitals"
+    },
+    {
+      "description": "National pathology and diagnostics company that employs laboratory professionals across testing centres",
+      "logo_initials": "DL",
+      "name": "Dr. Lal PathLabs",
+      "roles": [
+        "Medical Laboratory Technologit",
+        "Biochemistry Technician"
+      ],
+      "sector": "Diagnostics"
+    },
+    {
+      "description": "Hospital and diagnostics network with laboratory operations across India",
+      "logo_initials": "MH",
+      "name": "Max Healthcare",
+      "roles": [
+        "Medical Laboratory Technologit",
+        "Microbiology Technician"
+      ],
+      "sector": "Hospitals"
+    },
+    {
+      "description": "Healthcare company with diagnostics and laboratory services in India",
+      "logo_initials": "TH",
+      "name": "Thyrocare Technologies Limited",
+      "roles": [
+        "Medical Laboratory Technologit",
+        "Laboratory Quality Control O t"
+      ],
+      "sector": "Diagnostics"
+    },
+    {
+      "description": "Multi-speciality healthcare organisation with clinical laboratory services",
+      "logo_initials": "NH",
+      "name": "Narayana Health",
+      "roles": [
+        "Medical Laboratory Technologit",
+        "Pathology Technician"
+      ],
+      "sector": "Hospitals"
+    }
+  ],
+  "colleges": {
+    "data_note": "Ranks compare published course listings and fee information for BMLT and close-equivalent programs in India. A better rank here suggests a stronger overall match on that list, but it does not measure fit, hospital exposure, teaching quality, or campus life for every student. Fees can change each admission cycle, and colleges may add exam, hostel, lab, or caution-deposit charges that are not part",
+    "items": [
+      {
+        "admission_route": "Merit/college admission process",
+        "annual_fee": 72000,
+        "city": "Lucknow",
+        "course_name": "Bachelor of Medical Laboratory Technology",
+        "duration_years": 3,
+        "highlight": "Paramedical college with listed BMLT fee",
+        "institution_type": "private",
+        "name": "Avadh Institute of Medical Technology and Hospital",
+        "rank": 1
+      },
+      {
+        "admission_route": "Merit/college admission process",
+        "annual_fee": 52000,
+        "city": "Greater Noida",
+        "course_name": "Bachelor of Medical Laboratory Technology",
+        "duration_years": 3,
+        "highlight": "Paramedical college with listed BMLT fee",
+        "institution_type": "private",
+        "name": "Kailash Institute of Nursing and Paramedical Sciences",
+        "rank": 2
+      },
+      {
+        "admission_route": "University admission process",
+        "annual_fee": 100000,
+        "city": "Jaipur",
+        "course_name": "Bachelor of Medical Laboratory Technology",
+        "duration_years": 4,
+        "highlight": "Private university with listed BMLT fee",
+        "institution_type": "private",
+        "name": "Vivekananda Global University",
+        "rank": 3
+      },
+      {
+        "admission_route": "University admission process",
+        "annual_fee": 122900,
+        "city": "Moradabad",
+        "course_name": "Bachelor of Medical Laboratory Technology",
+        "duration_years": 4,
+        "highlight": "Private university with listed BMLT fee",
+        "institution_type": "private",
+        "name": "Teerthanker Mahaveer University",
+        "rank": 4
+      },
+      {
+        "admission_route": "University admission process",
+        "annual_fee": 97000,
+        "city": "Ranchi",
+        "course_name": "Bachelor of Medical Laboratory Technology",
+        "duration_years": 4,
+        "highlight": "Established university with BMLT annual-",
+        "institution_type": "private",
+        "name": "Birla Institute of Technology, Mesra",
+        "rank": 5
+      },
+      {
+        "admission_route": "State admission process",
+        "annual_fee": 76300,
+        "city": "Greater Noida",
+        "course_name": "Bachelor of Medical Laboratory Technology",
+        "duration_years": 3,
+        "highlight": "Government institute with listed BMLT 1<",
+        "institution_type": "government",
+        "name": "Government Institute of Medical Sciences",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "Collegedunia BMLT colleges in India rankings",
+    "ranking_updated": "2025-11"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "Internship or entry-level lab work, then specialization through experience or a",
+      "course_name": "Bachelor of Medical Laboratory Technology",
+      "laboratory_exposure": "High; regular work with samples, microsc",
+      "main_focus": "Clinical laboratory testing, instrument handling, and reporting",
+      "statistics_level": "Moderate"
+    },
+    {
+      "common_next_steps": "Hospital lab roles, quality control, or further study in diagnostics",
+      "course_name": "Diploma in Medical Laboratory Technology",
+      "laboratory_exposure": "High; very practical and skills-first",
+      "main_focus": "Basic lab techniques and routine diagnostic support",
+      "statistics_level": "Low to moderate"
+    },
+    {
+      "common_next_steps": "Staff nurse roles after registration, then wards, critical care, or postgraduate",
+      "course_name": "Bachelor of Science in Nursing",
+      "laboratory_exposure": "Low to moderate; more bedside and ward",
+      "main_focus": "Patient care, medication support, and clinical nursing skills",
+      "statistics_level": "Low"
+    }
+  ],
+  "fees": {
+    "footnote": "Families should check the current annual tuition, exam fees, hostel charges, lab fees, and any deposit before applying. Government colleges are usually much cheaper than private colleges, and the total cost can rise if a",
+    "rows": [
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": true,
+        "max": 86000,
+        "min": 3000,
+        "parent_check": "Government BMLT and close-equivalent programs can range from low-fee public institutes to higher-fee state medical or g"
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": true,
+        "max": 170000,
+        "min": 52000,
+        "parent_check": "Private BMLT and close-equivalent programs vary by university, city, and whether the fee includes development or exam c"
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "premier_national",
+        "is_variable": true,
+        "max": 97000,
+        "min": 66000,
+        "parent_check": "Nationally known institutions with BMLT or close-equivalent listings fall in a mid-range rather than the lowest public"
+      },
+      {
+        "category": "Hostel and living costs",
+        "frequency": "Per year",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 150000,
+        "min": 50000,
+        "parent_check": "Hostel, mess, transport, and daily living costs are separate from tuition and change a lot by city and room type."
+      },
+      {
+        "category": "Admission and other one-time charges",
+        "frequency": "One time",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 15000,
+        "min": 1000,
+        "parent_check": "Application, registration, admission, and caution-deposit charges may be collected separately from tuition."
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "Choose Physics, Chemistry and Biology in Class 11 and Class 12. Keep your lab records, practical marks and subject scores strong, because this course is science-heavy and practical work matters.",
+      "stage": "Grades 8-10",
+      "title": "Build the right school base"
+    },
+    {
+      "description": "Explore medical laboratories by visiting hospitals, diagnostic centres, or school science labs if possible. Notice the work style: careful sample handling, machine use, accuracy, and following safety rules.",
+      "stage": "Grades 8-10",
+      "title": "Check whether lab work suits"
+    },
+    {
+      "description": "Prepare for BMLT admissions after Class 12 Science, usually with Physics, Chemistry and Biology. Some colleges may ask for minimum marks or an entrance process, so keep documents ready.",
+      "stage": "Grade 11",
+      "title": "Plan for Class 12 and entry to"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "BMLT usually stands for Bachelor of Medical Laboratory Technology. It is a 3 to 4 year undergraduate course that trains students to work in hospital and diagnostic laboratories.",
+      "question": "What is BMLT in simple words?"
+    },
+    {
+      "answer": "The usual school base is Class 12 Science, especially Physics, Chemistry and Biology. Many colleges expect these subjects because the course is built on lab science.",
+      "question": "Which stream is best for this course?"
+    },
+    {
+      "answer": "Students learn how to collect, process and test samples such as blood and other body fluids, and how to use lab equipment safely and correctly.",
+      "question": "What do students study in BMLT?"
+    },
+    {
+      "answer": "Graduates usually work in hospitals, diagnostic laboratories, research labs, blood banks, and other healthcare testing settings.",
+      "question": "Where can I work after BMLT?"
+    },
+    {
+      "answer": "In India, the role is part of a regulated healthcare environment. After graduation, the next step is usually to meet employer requirements for lab technologist roles and follow any state or institutional registration rules where applicable.",
+      "question": "Can I start working immediately after graduation?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "Bachelor of Medical Laboratory Technology suits students who are comfortable with science, careful observation, and routine work that must be accurate every time. It is a practical healthcare course, so families should look for students who can stay focused in a lab, follow safety rules, and work neatly with samples and instruments. The course can lead to work in hospitals, diagnostic centres, and other testing settings, where the quality of the work affects patient care. Before applying, compare college lab facilities, internship links, and whether the programme is recognized by the relevant university and healthcare bodies. Also check the total duration, fee structure, and whether the college expects Biology in Class 12. A good fit matters more than prestige alone.",
+    "questions": [
+      "Does my child enjoy careful, hands-on science work?",
+      "Will they be comfortable with lab discipline, cleanliness, and accuracy?",
+      "Does the college have proper laboratories and clinical exposure?",
+      "What are the exact entry requirements after Class 12?",
+      "Is the degree accepted for the jobs we are considering?",
+      "What further study options are possible later?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "National Commission for Allied and Healthcare Professions",
+        "title": "National Commission for Allied and Healthcare Professions",
+        "url": "https://ncahp.abdm.gov.in/"
+      },
+      {
+        "publisher": "University Grants Commission",
+        "title": "University Grants Commission",
+        "url": "https://ugc.gov.in/"
+      },
+      {
+        "publisher": "National Career Service",
+        "title": "National Career Service",
+        "url": "https://www.ncs.gov.in/"
+      },
+      {
+        "publisher": "National Testing Agency",
+        "title": "National Testing Agency",
+        "url": "https://nta.ac.in/"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  }
+}

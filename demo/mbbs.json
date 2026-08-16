@@ -1,0 +1,598 @@
+{
+  "course_id": "crs_mbbs",
+  "slug": "mbbs",
+  "course_name": "MBBS",
+  "currency": "INR",
+  "region": "India",
+  "category": "Medical & Allied Health",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Student and parent guide",
+    "fit": {
+      "indicators": [
+        "Fixed-length professional degree",
+        "Leads to medical registration after internship and licensing",
+        "Strong fit for students interested in science, patient care and public"
+      ],
+      "note": "MBBS is the standard first medical degree in India for students who want to become doctors. It suits learners who are at",
+      "score_percent": 88
+    },
+    "summary": "MBBS is the undergraduate medical degree for students who want to become doctors in India. It combines classroom study, laboratory work and hospital-based clinical training, and the path to independent practice continues after the degree through internship and medical registration."
+  },
+  "quick_facts": {
+    "career_direction": "Doctor / physician",
+    "entry_level": "Class 12",
+    "indicative_annual_fees": {
+      "max": 1000000,
+      "min": 100000
+    },
+    "learning_style": "Science-heavy, patient-facing, practical and clinical",
+    "suitable_streams": [
+      "Science"
+    ],
+    "typical_duration": {
+      "max_years": 5.5,
+      "min_years": 5.5
+    }
+  },
+  "seo": {
+    "meta_description": "MBBS in India is the undergraduate medical degree for future doctors. Explore duration, fees, eligibility, and what comes after graduation.",
+    "page_title": "MBBS Course in India: Duration, Fees, Eligibility and Career Path"
+  },
+  "subcategory": "Medicine",
+  "overview": {
+    "heading": "What is MBBS?",
+    "paragraphs": [
+      "MBBS is the main undergraduate medical degree in India for students who want to become doctors. It usually takes 5.5 years: 4.5 years of academic study and 1 year of compulsory rotating internship in a hospital, where students learn under supervision and work with patients. The course is designed to build the knowledge and habits needed for safe medical practice, not just exam success.",
+      "The course is science-heavy and practical. Students study subjects like anatomy, physiology, pharmacology, pathology, microbiology, and clinical medicine, then use that learning in wards, clinics, labs, and emergency settings. It suits students who are comfortable with biology, steady study routines, careful observation, and following procedures closely. Communication also matters, because doctors must listen to patients, explain clearly, and work with senior doctors and other health workers.",
+      "After MBBS, a graduate cannot practise independently without completing the required internship and then registering with the relevant medical authority. Many doctors later choose further training or specialisation, which changes the kind of work they do and can change how much they earn. The degree is a starting point for a long medical career, not the end of training."
+    ]
+  },
+  "snapshot": {
+    "data_note": "Pay in India changes a lot by city, employer, department, experience, and whether the doctor is in a hospital, clinic, teaching role, or further training. A single figure cannot describe every MBBS graduate because earnings rise over time and differ widely between entry-level roles and more specialised or senior posts.",
+    "salary": {
+      "higher_annual": 1320000,
+      "higher_is_open_ended": false,
+      "lower_annual": 50000,
+      "note": "An MBBS doctor in India is commonly shown around 730000 per year, with reported ranges from about 50000 to 1320000 per year. Freshers and doctors in smaller hospitals or training roles may be near the lower end, while doctors with more experience or in better-paying institutions can earn more.",
+      "typical_annual": 730000,
+      "marker_percent": 54
+    },
+    "specialisations": [
+      "General medicine",
+      "General surgery",
+      "Paediatrics",
+      "Obstetrics and gynaecology",
+      "Orthopaedics",
+      "Psychiatry",
+      "Anaesthesia",
+      "Radiology"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "Good to know before choosing MBBS",
+      "points": [
+        "MBBS is not just classroom science; it includes long clinical hours, hospital duties, and regular contact with sick or distressed patients.",
+        "The degree alone does not make someone a fully independent doctor; the internship and registration step still come after graduation.",
+        "Early-career pay can be modest compared with the length and intensity of the course, and salaries vary sharply by workplace and location.",
+        "The work often includes urgent decisions, responsibility for patient safety, and emotionally difficult situations, so steady judgement is as"
+      ]
+    },
+    "good_fit": {
+      "heading": "MBBS may suit a student who",
+      "points": [
+        "Likes biology and can handle science-based learning over many years.",
+        "Stays calm when work is busy, noisy, or emotionally demanding.",
+        "Enjoys helping people directly and communicating with patients and families.",
+        "Can study consistently, follow procedures carefully, and accept regular feedback from teachers and senior doctors."
+      ]
+    },
+    "tags": [
+      "Science-heavy",
+      "Patient-facing",
+      "Long training path",
+      "High responsibility",
+      "Clinical work",
+      "Needs strong biology base",
+      "Can lead to specialisation"
+    ]
+  },
+  "curriculum": {
+    "assessment_methods": "University theory exams, practical/viva examinations, internal assessments, clinical postings, and compulsory rotatory internship completion.",
+    "learning_activities": "Lectures, dissection and laboratory work, small-group tutorials, ward rounds, bedside case work, community medicine postings, skills-lab practice, and supervised internship rotations.",
+    "years": [
+      {
+        "label": "Year 1",
+        "subjects": [
+          {
+            "description": "Study of the human body's gross structure through cadaver dissection and anatomy labs.",
+            "name": "Human Anatomy"
+          },
+          {
+            "description": "Microscopic structure of tissues and organs.",
+            "name": "Histology and Embryology"
+          },
+          {
+            "description": "Chemical processes, biomolecules, and metabolism relevant to medicine.",
+            "name": "Medical Biochemistry"
+          },
+          {
+            "description": "Basic functions of cells, organs, and body systems.",
+            "name": "Medical Physiology"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Year 2",
+        "subjects": [
+          {
+            "description": "Cause, nature, and effects of disease, with tissue-level changes.",
+            "name": "General Pathology"
+          },
+          {
+            "description": "Bacteria, viruses, fungi, and parasitic infections in clinical medicine.",
+            "name": "Medical Microbiology"
+          },
+          {
+            "description": "How drugs act, their uses, adverse effects, and safe prescribing principles.",
+            "name": "Pharmacology"
+          },
+          {
+            "description": "Behaviour of the body in illness, including immune response and disease mechanisms.",
+            "name": "Pathophysiology"
+          }
+        ],
+        "year": 2
+      },
+      {
+        "label": "Year 3",
+        "subjects": [
+          {
+            "description": "Legal medicine, medical ethics, and post-mortem examination basics.",
+            "name": "Forensic Medicine and Toxicology"
+          },
+          {
+            "description": "Health of women before, during, and after pregnancy.",
+            "name": "Obstetrics"
+          },
+          {
+            "description": "Diagnosis and treatment of diseases in children and adolescents.",
+            "name": "Paediatrics"
+          },
+          {
+            "description": "Community health, epidemiology, prevention, and public health practice.",
+            "name": "Community Medicine I"
+          }
+        ],
+        "year": 3
+      },
+      {
+        "label": "Year 4",
+        "subjects": [
+          {
+            "description": "Medical management of adult diseases across organ systems.",
+            "name": "General Medicine"
+          },
+          {
+            "description": "Operative care, surgical principles, and perioperative management.",
+            "name": "General Surgery"
+          },
+          {
+            "description": "Diseases of the eye and visual system.",
+            "name": "Ophthalmology"
+          },
+          {
+            "description": "Diseases of the ear, nose, and throat.",
+            "name": "Otorhinolaryngology"
+          }
+        ],
+        "year": 4
+      },
+      {
+        "label": "Year 5",
+        "subjects": [
+          {
+            "description": "Final compulsory hospital postings in medicine, surgery, and allied specialties.",
+            "name": "Rotatory Internship"
+          },
+          {
+            "description": "Practical community and primary-care service during internship.",
+            "name": "Community Medicine II"
+          },
+          {
+            "description": "Hands-on exposure in anaesthesia, emergency care, and pain management.",
+            "name": "Anaesthesia and Emergency Care"
+          },
+          {
+            "description": "Advanced bedside learning in dermatology, psychiatry, and orthopaedics.",
+            "name": "Clinical Speciality Rotations"
+          }
+        ],
+        "year": 5
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "National Eligibility cum Entrance Test for Undergraduate (NEET-UG) followed by state or central counselling and seat allotment.",
+      "Admission to government, private, and deemed medical colleges through the counselling system after meeting the qualifying NEET-UG percentile",
+      "The candidate must also satisfy the medical college and regulatory requirements at the time of admission.",
+      "Direct admission without NEET-UG is not the standard route for MBBS in India."
+    ],
+    "admission_timeline": [
+      {
+        "description": "Complete Class 12 or equivalent with Physics, Chemistry, Biology/Biotechnology, and English.",
+        "step": 1,
+        "title": "Finish qualifying school subjects"
+      },
+      {
+        "description": "Meet the minimum age requirement of 17 years on or before 31 January of the admission year.",
+        "step": 2,
+        "title": "Check age eligibility"
+      },
+      {
+        "description": "Appear for NEET-UG and obtain the required qualifying percentile.",
+        "step": 3,
+        "title": "Qualify NEET-UG"
+      },
+      {
+        "description": "Register for the relevant counselling authority and submit college preferences and documents.",
+        "step": 4,
+        "title": "Join counselling"
+      },
+      {
+        "description": "Receive allotment, report to the college, complete document verification, and pay fees.",
+        "step": 5,
+        "title": "Confirm admission"
+      }
+    ],
+    "typical_requirements": [
+      "Class 12 or equivalent with Physics, Chemistry, Biology/Biotechnology, and English.",
+      "Minimum age of 17 years on or before 31 January of the admission year.",
+      "NEET-UG qualification.",
+      "Mainstream qualifying percentile: 50th percentile for General/EWS, 40th percentile for OBC/SC/ST, and 45th percentile for PwD in the General"
+    ]
+  },
+  "skills": [
+    {
+      "description": "Examines patients, takes a history, and notices important symptoms and signs.",
+      "name": "Clinical assessment"
+    },
+    {
+      "description": "Understands the structure and function of the human body.",
+      "name": "Biomedical knowledge"
+    },
+    {
+      "description": "Uses evidence to identify likely diagnoses from symptoms, tests, and examination findings.",
+      "name": "Diagnostic reasoning"
+    },
+    {
+      "description": "Communicates clearly with patients, families, and healthcare teams.",
+      "name": "Patient communication"
+    },
+    {
+      "description": "Applies safe, ethical, and legal practices in clinical work.",
+      "name": "Professional ethics"
+    },
+    {
+      "description": "Works in hospitals, clinics, and community health settings as part of a team.",
+      "name": "Teamwork in healthcare"
+    }
+  ],
+  "careers": [
+    {
+      "description": "Works as a doctor in hospitals, clinics, or public health services after MBBS, compulsory rotating internship, and valid registration with a State Medical Counc",
+      "route_badge": "Possible after bachelor's",
+      "title": "Medical Officer",
+      "typical_route": "MBBS -> 1-year compulsory rotating medical internship -> State Medical Council registration -> Medical Officer"
+    },
+    {
+      "description": "Treats patients in a specialised area such as medicine, surgery, or paediatrics after MBBS and postgraduate training.",
+      "route_badge": "Postgraduate route",
+      "title": "Specialist Doctor",
+      "typical_route": "MBBS -> 1-year compulsory rotating medical internship -> NEET PG -> MD/MS or DNB -> Specialist practice"
+    },
+    {
+      "description": "Provides advanced clinical care after MBBS followed by a recognised postgraduate medical qualification and registration.",
+      "route_badge": "Postgraduate route",
+      "title": "Consultant Physician or Consultant Surgeon",
+      "typical_route": "MBBS -> 1-year compulsory rotating medical internship -> NEET PG -> MD/MS or DNB -> Consultant role"
+    },
+    {
+      "description": "Higher medical specialisation after MBBS. MD and MS are 3-year postgraduate degrees; DNB is also a 3-year postgraduate route after MBBS and internship.",
+      "route_badge": "Higher study required",
+      "title": "MD, MS or DNB",
+      "typical_route": "MBBS -> internship -> NEET PG -> MD/MS or DNB"
+    },
+    {
+      "description": "Needed before independent practice in India. Medical graduates must complete the compulsory rotating internship and obtain registration with the relevant State/",
+      "route_badge": "Advanced regulated route",
+      "title": "Licensed Medical Practitioner",
+      "typical_route": "MBBS -> internship -> State Medical Council registration"
+    },
+    {
+      "description": "A common entry role in hospitals and training institutions after MBBS, usually followed by postgraduate study for wider advancement.",
+      "route_badge": "Possible after bachelor's",
+      "title": "House Officer / Junior Doctor",
+      "typical_route": "MBBS -> internship -> registration -> hospital posting"
+    }
+  ],
+  "further_study_pathway": [
+    "MBBS -> 1-year compulsory rotating/",
+    "medical internship in India -> full",
+    "registration with a State Medical/C",
+    "NEET PG -> MD or MS (3 years)",
+    "MBBS -> internship -> NEET PG -> D/"
+  ],
+  "recruiters": [
+    {
+      "description": "Recruits Medical Officer candidates for its healthcare-related vacancies in Punjab.",
+      "logo_initials": "BF",
+      "name": "Baba Farid University of Health Sciences",
+      "roles": [
+        "Medical Officer",
+        "Doctor"
+      ],
+      "sector": "Medical education and healthcare recruitment"
+    },
+    {
+      "description": "Can recruit MBBS graduates for hospital-based clinical and administrative doctor roles through state health services and affiliated institutions.",
+      "logo_initials": "NH",
+      "name": "National Health Mission",
+      "roles": [
+        "Medical Officer",
+        "Resident Medical Officer"
+      ],
+      "sector": "Public healthcare"
+    },
+    {
+      "description": "Employs doctors across hospitals and clinics in India, including MBBS-qualified medical officers and residents.",
+      "logo_initials": "AH",
+      "name": "Apollo Hospitals Enterprise Limited",
+      "roles": [
+        "Medical Officer",
+        "Resident Doctor"
+      ],
+      "sector": "Private healthcare"
+    },
+    {
+      "description": "Employs doctors across multispecialty hospitals in India, including MBBS-qualified medical officers and resident doctors.",
+      "logo_initials": "FH",
+      "name": "Fortis Healthcare Limited",
+      "roles": [
+        "Medical Officer",
+        "Resident Doctor"
+      ],
+      "sector": "Private healthcare"
+    },
+    {
+      "description": "Public medical teaching and referral institution that recruits doctors for clinical posts.",
+      "logo_initials": "AI",
+      "name": "All India Institute of Medical Sciences",
+      "roles": [
+        "Junior Resident",
+        "Medical Officer"
+      ],
+      "sector": "Public healthcare"
+    },
+    {
+      "description": "Largest government hospital network that hires medical officers and resident doctors across its hospitals.",
+      "logo_initials": "MH",
+      "name": "Employees' State Insurance Corporation",
+      "roles": [
+        "Medical Officer",
+        "Junior Resident"
+      ],
+      "sector": "Public healthcare"
+    }
+  ],
+  "colleges": {
+    "data_note": "This shortlist balances national standing with fee level. A higher position does not promise easier admission, lower living costs, or better outcomes for every student; seat rules, category, and yearly fee notices can change.",
+    "items": [
+      {
+        "admission_route": "NEET-UG",
+        "annual_fee": 1628,
+        "city": "New Delhi",
+        "course_name": "MBBS",
+        "duration_years": 5.5,
+        "highlight": "Very low tuition and one of India’s most",
+        "institution_type": "government",
+        "name": "All India Institute of Medical Sciences, New Delhi",
+        "rank": 1
+      },
+      {
+        "admission_route": "NEET-UG",
+        "annual_fee": 56330,
+        "city": "Vellore",
+        "course_name": "MBBS",
+        "duration_years": 4.5,
+        "highlight": "Private medical college with much higher",
+        "institution_type": "private",
+        "name": "Christian Medical College, Vellore",
+        "rank": 2
+      },
+      {
+        "admission_route": "NEET-UG",
+        "annual_fee": 6770,
+        "city": "Puducherry",
+        "course_name": "MBBS",
+        "duration_years": 5.5,
+        "highlight": "Low tuition at a premier national health",
+        "institution_type": "government",
+        "name": "Jawaharlal Institute of Postgraduate Medical Education and Research",
+        "rank": 3
+      },
+      {
+        "admission_route": "NEET-UG",
+        "annual_fee": 17300,
+        "city": "New Delhi",
+        "course_name": "MBBS",
+        "duration_years": 5.5,
+        "highlight": "Government college with very low tuition",
+        "institution_type": "government",
+        "name": "Maulana Azad Medical College",
+        "rank": 4
+      },
+      {
+        "admission_route": "NEET-UG",
+        "annual_fee": 1655,
+        "city": "New Delhi",
+        "course_name": "MBBS",
+        "duration_years": 5.5,
+        "highlight": "Among the lowest tuition fees in India",
+        "institution_type": "government",
+        "name": "Lady Hardinge Medical College",
+        "rank": 5
+      },
+      {
+        "admission_route": "NEET-UG",
+        "annual_fee": 913000,
+        "city": "Navi Mumbai",
+        "course_name": "MBBS",
+        "duration_years": 5.5,
+        "highlight": "Private college fee sits in the mid-to-h",
+        "institution_type": "private",
+        "name": "Terna Medical College & Hospital",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "NIRF Medical rankings and current tuition notices for listed colleges",
+    "ranking_updated": "2025-08"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "Appear for NEET-UG, then apply through state or national counselling; complete 1",
+      "course_name": "MBBS",
+      "laboratory_exposure": "High: anatomy, pathology, biochemistry,",
+      "main_focus": "Training to become a doctor/physician through medical science, clinical posting",
+      "statistics_level": "Moderate: enough for evidence-based"
+    },
+    {
+      "common_next_steps": "Appear for NEET-UG, then apply through dental counselling and choose BDS seat",
+      "course_name": "BDS",
+      "laboratory_exposure": "Moderate: dental materials, oral anatomy",
+      "main_focus": "Training to become a dentist, with focus on oral health and dental procedu",
+      "statistics_level": "Low to moderate: enough for patient care"
+    },
+    {
+      "common_next_steps": "Appear for NEET-UG, then apply through AYUSH counselling for BAMS",
+      "course_name": "BAMS",
+      "laboratory_exposure": "Moderate: anatomy, physiology, pharmacy,",
+      "main_focus": "Training in Ayurveda with a mix of traditional medicine theory and clinical app",
+      "statistics_level": "Low to moderate: less intensive than MB"
+    }
+  ],
+  "fees": {
+    "footnote": "MBBS tuition in India varies sharply by seat type. Government colleges are usually far cheaper than private colleges, while premier national institutes often charge the lowest tuition. Hostel, mess, caution deposit, exam",
+    "rows": [
+      {
+        "category": "Government medical colleges",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": false,
+        "max": 162100,
+        "min": 1360,
+        "parent_check": "Tuition only; some states charge a few thousand rupees while others are much higher, so verify the exact college and the"
+      },
+      {
+        "category": "Premier national institutes such as AI",
+        "frequency": "Per year",
+        "institution_type": "premier_national",
+        "is_variable": false,
+        "max": 6770,
+        "min": 1360,
+        "parent_check": "These institutes often charge the lowest tuition, but hostel and other charges still apply."
+      },
+      {
+        "category": "Private medical colleges, government/qu",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": false,
+        "max": 1560000,
+        "min": 620000,
+        "parent_check": "This is the common tuition band families see for private MBBS seats; management quota can sit at the upper end or above."
+      },
+      {
+        "category": "Total MBBS programme in government col",
+        "frequency": "Total programme",
+        "institution_type": "government",
+        "is_variable": false,
+        "max": 17300,
+        "min": 5356,
+        "parent_check": "This is tuition across the full course only; living costs are extra."
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "Take Physics, Chemistry and Biology in Class 11 and Class 12, and keep your school marks strong because MBBS is a science-heavy medical path for students who want to become doctors. The usual entry route in India is the",
+      "stage": "Grades 8-10",
+      "title": "Build the school base"
+    },
+    {
+      "description": "Prepare for NEET-UG while finishing Class 12. Focus on Biology, Chemistry, Physics, speed, accuracy, and regular revision. Keep checking medical admission rules and seat requirements for the year you plan to apply.",
+      "stage": "Grade 11",
+      "title": "Start entrance-exam prep"
+    },
+    {
+      "description": "After Class 12, apply for MBBS seats through the medical admission process, complete the 5.5-year programme including the compulsory internship year, and then move to the registration step needed for medical practice in",
+      "stage": "Grade 12",
+      "title": "Apply, study, and complete the"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "MBBS is the undergraduate medical degree that leads toward becoming a doctor or physician in India.",
+      "question": "What does MBBS lead to?"
+    },
+    {
+      "answer": "Students usually need Physics, Chemistry, and Biology at Class 12 level, along with the medical entrance route used for MBBS admission in India.",
+      "question": "Which subjects are needed in school?"
+    },
+    {
+      "answer": "MBBS is a 5.5-year programme in India, which includes the compulsory internship year.",
+      "question": "How long does MBBS take?"
+    },
+    {
+      "answer": "After MBBS, a graduate must complete the steps needed for medical registration before independent practice, and many doctors later choose postgraduate study for specialisation.",
+      "question": "What happens after MBBS?"
+    },
+    {
+      "answer": "Yes. MBBS is a patient-facing course with practical work, clinical postings, and a strong science workload, so it suits students who are comfortable with biology and long study hours.",
+      "question": "Is MBBS only about memorising theory?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "MBBS suits a student who likes Biology, can handle a long and structured study path, and is comfortable with patient-facing work. Families should look beyond marks and ask whether the student can stay steady under pressure, revise science regularly, and cope with hospital routines, blood, illness, and direct interaction with people. The course is demanding because it combines classroom learning, labs, ward work, and a compulsory internship. It is also a serious time commitment, so planning matters from Class 11 onward. In India, the main admission route is the medical entrance pathway, and after graduation there is still a registration step before practice. Parents can help by checking the student’s interest in care work, their tolerance for hard study, and whether they want to continue into specialisation later.",
+    "questions": [
+      "Does my child genuinely enjoy Biology and helping people, or only the idea of becoming a doctor?",
+      "Can they manage a long course with regular revision and hospital-based training?",
+      "Are they prepared for the admission competition and the study pressure that comes with it?",
+      "Do they understand that MBBS is the start of medical training, not the end of it?",
+      "Would they prefer a shorter course with less clinical intensity, or is this the right fit?",
+      "Can the family support the time, cost, and years of training involved?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "National Medical Commission",
+        "title": "Public Notice No. U-15024/9/2023-UGMEB dated 07.12.2023 and Corrigendum",
+        "url": "https://www.nmc.org.in/MCIRest/open/getDocument?path=/Documents/Public/Portal/LatestNews/Secy_corri_merged.pdf"
+      },
+      {
+        "publisher": "National Medical Commission",
+        "title": "Official website",
+        "url": "https://www.nmc.org.in/"
+      },
+      {
+        "publisher": "National Medical Commission",
+        "title": "Under Graduate Medical Education Board",
+        "url": "https://www.nmc.org.in/information-desk/ug-board/"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  }
+}

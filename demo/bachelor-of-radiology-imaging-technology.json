@@ -1,0 +1,580 @@
+{
+  "course_id": "crs_bachelor_of_radiology_imaging_technology",
+  "slug": "bachelor-of-radiology-imaging-technology",
+  "course_name": "Bachelor of Radiology & Imaging Technology",
+  "currency": "INR",
+  "region": "India",
+  "category": "Medical & Allied Health",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Hospital-based healthcare training",
+    "fit": {
+      "indicators": [
+        "Enjoys biology and applied science",
+        "Comfortable with machines and lab work",
+        "Interested in medical imaging and patient support"
+      ],
+      "note": "A strong fit for students who want a healthcare career that combines science, technology and day-to-day work in a clinic",
+      "score_percent": 82
+    },
+    "summary": "Bachelor of Radiology & Imaging Technology prepares students to work with diagnostic imaging systems such as X-ray, CT, MRI and related hospital equipment. It suits students who want a science-based healthcare course with practical training and a clear role in hospitals, diagnostic centres and clinics."
+  },
+  "quick_facts": {
+    "career_direction": "Diagnostic imaging technologist in hospitals, diagnostic centres and 0",
+    "entry_level": "Class 12 with Science",
+    "indicative_annual_fees": {
+      "max": 250000,
+      "min": 50000
+    },
+    "learning_style": "Practical, lab-based and hospital-rotation focused",
+    "suitable_streams": [
+      "Science"
+    ],
+    "typical_duration": {
+      "max_years": 4,
+      "min_years": 3
+    }
+  },
+  "seo": {
+    "meta_description": "Bachelor of Radiology & Imaging Technology in India trains students for diagnostic imaging careers in hospitals and scan centres. Check duration, fees, streams,",
+    "page_title": "Bachelor of Radiology & Imaging Technology: Course Profile, Fees, and"
+  },
+  "subcategory": "Radiology & Imaging Technology",
+  "overview": {
+    "heading": "What is Bachelor of Radiology & Imaging Technology?",
+    "paragraphs": [
+      "Bachelor of Radiology & Imaging Technology is an undergraduate health-sciences course that trains students to assist in medical diagnosis through imaging. The work centres on operating and checking machines used for X-rays, CT scans, MRI scans and related tests, while also helping with correct patient positioning, image quality and radiation safety. It is a practical course, and much of the learning takes place in labs and hospital settings.",
+      "Students usually study anatomy, physiology, radiographic techniques, imaging physics and radiation protection. They also learn how to prepare patients, follow safety rules, work with doctors and technologists, and support the smooth running of an imaging department. Because the job involves real equipment and real patients, steady hands, attention to detail and calm communication matter as much as classroom knowledge.",
+      "After graduation, students can start as radiology or imaging technologists in hospitals, diagnostic centres and clinics. Pay depends on the city, employer, shift pattern, experience and the type of imaging work handled. Someone starting in general X-ray may earn less than a technologist who later moves into CT, MRI, emergency imaging or other specialised roles, so one salary figure cannot describe every graduate."
+    ]
+  },
+  "snapshot": {
+    "data_note": "Pay in this field changes with city, hospital type, shift duties, experience and the imaging area handled. Entry roles are usually in general radiography, while higher earnings are more common after moving into CT, MRI, emergency or other specialised work.",
+    "salary": {
+      "higher_annual": 800000,
+      "higher_is_open_ended": false,
+      "lower_annual": 250000,
+      "note": "A common entry-level range is about INR 250000 to INR 450000 a year, while a broader India range for radiologic technologists runs from about INR 30000 to INR 800000 a year. Experience, specialisation and location can move pay well above or below the middle.",
+      "typical_annual": 280000,
+      "marker_percent": 5
+    },
+    "specialisations": [
+      "X-ray / Radiography",
+      "CT Imaging",
+      "MRI Imaging",
+      "Ultrasound / Sonography support",
+      "Interventional Radiology",
+      "Nuclear Medicine",
+      "Mammography",
+      "Cath lab imaging support"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "Things students should know before choosing this course",
+      "points": [
+        "The job is not limited to pressing buttons; safe patient handling, positioning and image quality are part of daily work.",
+        "Busy hospitals can mean long shifts, night duty and emergency cases.",
+        "Specialised roles such as CT, MRI or nuclear medicine usually need extra skill-building after the degree.",
+        "Students who dislike close contact with patients or strict safety routines may find this field uncomfortable."
+      ]
+    },
+    "good_fit": {
+      "heading": "A good fit for students who",
+      "points": [
+        "Like science subjects and want a health-care career without becoming a doctor.",
+        "Are comfortable with machines, technology and step-by-step lab work.",
+        "Can stay careful with details, safety rules and patient instructions.",
+        "Handle hospital environments, teamwork and regular interaction with people."
+      ]
+    },
+    "tags": [
+      "Science stream",
+      "Practical learning",
+      "Hospital rotations",
+      "Patient care",
+      "Imaging technology",
+      "Shift work ready",
+      "Detail-oriented"
+    ]
+  },
+  "curriculum": {
+    "assessment_methods": "Continuous internal assessment through class tests, practical records, lab demonstrations, viva voce, clinical logbooks, hospital rotation performance, semester-end written exams, and final project or dissertation evaluation in the last year.",
+    "learning_activities": "Classroom teaching, imaging lab practice, hospital and diagnostic-centre rotations, supervised patient positioning practice, machine handling demonstrations, case discussions, report observation, simulation exercises, and project work.",
+    "years": [
+      {
+        "label": "Year 1",
+        "subjects": [
+          {
+            "description": "Foundations of human body structure, including cells, tissues, organs and systems relevant to imaging practice.",
+            "name": "Human Anatomy"
+          },
+          {
+            "description": "Basic body functions and how major systems work, with emphasis on normal physiology for safe imaging support.",
+            "name": "Human Physiology"
+          },
+          {
+            "description": "Introduction to radiography, equipment parts, radiation rooms, safety rules and professional conduct.",
+            "name": "Introduction to Radiology Technology"
+          },
+          {
+            "description": "Core concepts of chemicals, solutions and contrast media used in imaging and patient preparation.",
+            "name": "Applied Chemistry for Imaging"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Year 2",
+        "subjects": [
+          {
+            "description": "Plain X-ray techniques, exposure factors, image formation and routine diagnostic positioning.",
+            "name": "Radiographic Procedures I"
+          },
+          {
+            "description": "Basic protection from ionising radiation for patients, staff and the public.",
+            "name": "Radiation Safety and Protection"
+          },
+          {
+            "description": "Operation and routine care of radiographic equipment, generators and detectors.",
+            "name": "Imaging Equipment Handling"
+          },
+          {
+            "description": "Specialised study of patient anatomy as seen on images, with emphasis on recognising normal structures.",
+            "name": "Radiographic Anatomy"
+          }
+        ],
+        "year": 2
+      },
+      {
+        "label": "Year 3",
+        "subjects": [
+          {
+            "description": "Advanced X-ray views, trauma imaging, portable radiography and special contrast studies.",
+            "name": "Radiographic Procedures II"
+          },
+          {
+            "description": "Cross-sectional imaging concepts, scan workflow and support work in CT and MRI areas.",
+            "name": "Advanced Imaging Techniques"
+          },
+          {
+            "description": "Patient care before, during and after imaging, including communication, comfort and monitoring.",
+            "name": "Clinical Patient Care"
+          },
+          {
+            "description": "Professional training in departments through supervised postings, case logs and a short research or seminar component.",
+            "name": "Clinical Posting and Project I"
+          }
+        ],
+        "year": 3
+      },
+      {
+        "label": "Year 4",
+        "subjects": [
+          {
+            "description": "Special study of a chosen area such as CT, MRI, mammography, interventional imaging or nuclear medicine support.",
+            "name": "Radiology Specialisation"
+          },
+          {
+            "description": "Advanced image analysis, quality assurance, error reduction and equipment calibration principles.",
+            "name": "Image Quality Assurance"
+          },
+          {
+            "description": "Research design, data collection, analysis and report writing for imaging studies.",
+            "name": "Research Methods and Dissertation"
+          },
+          {
+            "description": "Final hospital internship with case presentation, portfolio submission and exit-level clinical competency review.",
+            "name": "Advanced Internship and Capstone"
+          }
+        ],
+        "year": 4
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "Merit-based admission using Class 12 marks",
+      "Entrance-test-based admission where the institution conducts or accepts a test",
+      "Counselling or interview after shortlisting",
+      "Management quota or direct admission at some private institutions, subject to local rules"
+    ],
+    "admission_timeline": [
+      {
+        "description": "Complete Class 12 in the Science stream with the required subjects and marks.",
+        "step": 1,
+        "title": "Finish school-level eligibility"
+      },
+      {
+        "description": "Apply to colleges offering Radiology and Imaging Technology after board results or during the admission window.",
+        "step": 2,
+        "title": "Submit application"
+      },
+      {
+        "description": "Appear for the college or university entrance test, if one is used.",
+        "step": 3,
+        "title": "Take entrance examination"
+      },
+      {
+        "description": "Attend counselling, document verification and interview where required.",
+        "step": 4,
+        "title": "Counselling and verification"
+      },
+      {
+        "description": "Accept the seat, pay the first fees and join the course.",
+        "step": 5,
+        "title": "Confirm admission"
+      }
+    ],
+    "typical_requirements": [
+      "Class 12 pass from a recognised board",
+      "Physics, Chemistry and Biology or Physics, Chemistry and Mathematics in Class 12",
+      "Typical minimum marks are usually around 45% to 50% in aggregate, with higher cut-offs at some colleges",
+      "English at Class 12 is often preferred or required by some institutions"
+    ]
+  },
+  "skills": [
+    {
+      "description": "Recognising human anatomy and matching the correct imaging view to the body part being examined.",
+      "name": "Anatomy awareness"
+    },
+    {
+      "description": "Positioning patients correctly and clearly explaining instructions before scans or X-rays.",
+      "name": "Patient positioning and communication"
+    },
+    {
+      "description": "Operating radiography and related imaging equipment safely under supervision.",
+      "name": "Equipment handling"
+    },
+    {
+      "description": "Following radiation protection rules for self, patients and the department.",
+      "name": "Radiation safety"
+    },
+    {
+      "description": "Checking image quality and noticing common technical errors.",
+      "name": "Image evaluation"
+    },
+    {
+      "description": "Maintaining records, schedules, reports and department workflow accurately.",
+      "name": "Clinical documentation"
+    }
+  ],
+  "careers": [
+    {
+      "description": "Operates X-ray and fluoroscopy equipment, positions patients correctly, and supports basic diagnostic imaging in hospitals and diagnostic centres.",
+      "route_badge": "Possible after bachelor's",
+      "title": "X-ray / Radiologic Technologist",
+      "typical_route": "Bachelor of Radiology & Imaging Technology -> Hospital or diagnostic centre training -> X-ray / Radiologic Teс"
+    },
+    {
+      "description": "Runs CT scanners, prepares patients for scans, and handles image capture for trauma, stroke, and other diagnostic needs.",
+      "route_badge": "Possible after bachelor's",
+      "title": "CT Technologist",
+      "typical_route": "Bachelor of Radiology & Imaging Technology -> Clinical internship or hospital rotation -> CT Technologist"
+    },
+    {
+      "description": "Operates MRI systems, screens patients for safety, and supports soft-tissue imaging in hospitals and imaging centres.",
+      "route_badge": "Possible after bachelor's",
+      "title": "MRI Technologist",
+      "typical_route": "Bachelor of Radiology & Imaging Technology -> Clinical posting in MRI unit -> MRI Technologist"
+    },
+    {
+      "description": "Assists in non-invasive ultrasound and sonography procedures in some settings, especially where additional training has been completed.",
+      "route_badge": "Training may be required",
+      "title": "Ultrasound / Sonography Assistant",
+      "typical_route": "Bachelor of Radiology & Imaging Technology -> Additional sonography training or specialization -> Ultrasound /"
+    },
+    {
+      "description": "Supports imaging during minimally invasive procedures such as angiography and stent placement under a specialist doctor.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Interventional Radiology Assistant",
+      "typical_route": "Bachelor of Radiology & Imaging Technology -> Training in interventional radiology workflow -> Interventional"
+    },
+    {
+      "description": "Handles image storage and retrieval systems used across hospitals and diagnostic departments.",
+      "route_badge": "Possible after bachelor's",
+      "title": "PACS Administrator",
+      "typical_route": "Bachelor of Radiology & Imaging Technology -> PACS or health-IT training -> PACS Administrator"
+    }
+  ],
+  "further_study_pathway": [
+    "MSc in Radiology & Imaging / Radio-",
+    "MSc in Nuclear Medicine Technology",
+    "Master of Hospital Administration (",
+    "Specialised certification in MRI, C",
+    "Radiation safety certification for"
+  ],
+  "recruiters": [
+    {
+      "description": "India's national tertiary care institute network; hires imaging graduates in hospital radiology departments and teaching hospitals.",
+      "logo_initials": "AI",
+      "name": "All India Institute of Medical Sciences",
+      "roles": [
+        "X-ray Technologist",
+        "CT Technologist"
+      ],
+      "sector": "Public healthcare and medical education"
+    },
+    {
+      "description": "A major postgraduate medical institute and hospital in Chandigarh that trains and employs imaging staff.",
+      "logo_initials": "PG",
+      "name": "Post Graduate Institute of Medical Education & Research",
+      "roles": [
+        "Radiology Technologist",
+        "MRI Technologist"
+      ],
+      "sector": "Public healthcare and medical education"
+    },
+    {
+      "description": "A private teaching hospital and medical college known for imaging and diagnostic services.",
+      "logo_initials": "CM",
+      "name": "Christian Medical College",
+      "roles": [
+        "Radiographer",
+        "MRI Technologist"
+      ],
+      "sector": "Private healthcare and medical education"
+    },
+    {
+      "description": "A large private hospital group with diagnostic imaging units across India.",
+      "logo_initials": "AP",
+      "name": "Apollo Hospitals",
+      "roles": [
+        "Radiology Technologist",
+        "CT Technologist"
+      ],
+      "sector": "Private healthcare"
+    },
+    {
+      "description": "A global medical technology company that hires imaging graduates for applications and product support roles.",
+      "logo_initials": "SI",
+      "name": "Siemens Healthineers",
+      "roles": [
+        "Application Specialist",
+        "Clinical Support Specialist"
+      ],
+      "sector": "Medical devices"
+    },
+    {
+      "description": "A global healthcare technology company with imaging equipment and service roles in India.",
+      "logo_initials": "GE",
+      "name": "GE HealthCare",
+      "roles": [
+        "Application Specialist",
+        "Customer Support Specialist"
+      ],
+      "sector": "Medical devices"
+    }
+  ],
+  "colleges": {
+    "data_note": "This ranking reflects a practical mix of reputation, fee level and course fit for families comparing Bachelor of Radiology & Imaging Technology and closely related imaging degrees in India. A higher rank does not guarantee better placement, and yearly fees, internship structure, and exact course title can change from one admission cycle to the next; always confirm the current syllabus, total fee,",
+    "items": [
+      {
+        "admission_route": "Entrance-based or merit-based, depending",
+        "annual_fee": 65000,
+        "city": "New Delhi",
+        "course_name": "B.Voc Radiology and Imaging Technology",
+        "duration_years": 3,
+        "highlight": "Affordable private option with a lower-t",
+        "institution_type": "private",
+        "name": "Delhi Paramedical & Management Institute",
+        "rank": 1
+      },
+      {
+        "admission_route": "Merit and institute process",
+        "annual_fee": 1500,
+        "city": "Vellore",
+        "course_name": "B.Sc Medical Imaging Technology",
+        "duration_years": 3.5,
+        "highlight": "Very low tuition at a long-established m",
+        "institution_type": "government",
+        "name": "Christian Medical College, Vellore",
+        "rank": 2
+      },
+      {
+        "admission_route": "Entrance and institute selection",
+        "annual_fee": 6000,
+        "city": "Chandigarh",
+        "course_name": "B.Sc Medical Radiology & Imaging Technology",
+        "duration_years": 3,
+        "highlight": "Premier public medical institute with ve",
+        "institution_type": "government",
+        "name": "Postgraduate Institute of Medical Education and Research",
+        "rank": 3
+      },
+      {
+        "admission_route": "Entrance and merit-based, depending on",
+        "annual_fee": 42500,
+        "city": "Ludhiana",
+        "course_name": "B.Sc Medical Radiology and Imaging Technology",
+        "duration_years": 4,
+        "highlight": "Established medical college with low pu",
+        "institution_type": "government",
+        "name": "Dayanand Medical College and Hospital",
+        "rank": 4
+      },
+      {
+        "admission_route": "Entrance and merit-based, depending on",
+        "annual_fee": 150000,
+        "city": "Bengaluru",
+        "course_name": "B.Sc Radiology and Imaging Technology",
+        "duration_years": 3,
+        "highlight": "Higher-cost private option with full cl",
+        "institution_type": "private",
+        "name": "Bharath Institute of Higher Education and Research",
+        "rank": 5
+      },
+      {
+        "admission_route": "Entrance and merit-based, depending on",
+        "annual_fee": 153000,
+        "city": "Visakhapatnam",
+        "course_name": "B.Sc Radiology and Imaging Technology",
+        "duration_years": 3,
+        "highlight": "Private university with a mid-to-high c",
+        "institution_type": "private",
+        "name": "GITAM (Deemed to be University)",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "Indian colleges offering radiology and imaging technology degrees, cross-checked",
+    "ranking_updated": "2026-08"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "Clinical internship, on-the-job training, and then work in hospitals, diagnostic",
+      "course_name": "Bachelor of Radiology & Imaging Technology",
+      "laboratory_exposure": "High. Expect anatomy labs, imaging labs,",
+      "main_focus": "How to operate imaging equipment, support radiologists, and produce accurate",
+      "statistics_level": "Low to moderate. Basic measurement, data"
+    },
+    {
+      "common_next_steps": "Clinical internship, then roles in MRI, CT, X-ray, ultrasound support, or higher",
+      "course_name": "B.Sc Medical Imaging Technology",
+      "laboratory_exposure": "High. Strong focus on scanners, image p",
+      "main_focus": "Broader imaging skills across multiple modalities and patient positioning.",
+      "statistics_level": "Low to moderate. Basic measurement, data"
+    },
+    {
+      "common_next_steps": "Hospital internship and technician roles in X-ray and imaging departments; some",
+      "course_name": "B.Sc Radiography",
+      "laboratory_exposure": "High. More focused on X-ray rooms, radi",
+      "main_focus": "X-ray imaging, radiation safety, and assisting in diagnostic radiography.",
+      "statistics_level": "Low. Mostly operational rather than mat"
+    }
+  ],
+  "fees": {
+    "footnote": "Government and national institute fees are usually much lower than private college fees, and hostel, caution money, exam, and uniform charges can change the total a family pays. For this course area, the middle of the 3-",
+    "rows": [
+      {
+        "category": "Tuition for government colleges",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": true,
+        "max": 50000,
+        "min": 10000,
+        "parent_check": "Confirm whether the quoted fee includes only tuition or also exam, lab, and internship charges."
+      },
+      {
+        "category": "Tuition for private colleges",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": true,
+        "max": 200000,
+        "min": 65000,
+        "parent_check": "Ask for the first-year fee and the total programme fee separately, because private colleges often add other charges."
+      },
+      {
+        "category": "Tuition for premier national institutes",
+        "frequency": "Per year",
+        "institution_type": "premier_national",
+        "is_variable": true,
+        "max": 10000,
+        "min": 1000,
+        "parent_check": "Check whether the figure covers the whole course or only tuition, and whether hostel is separate."
+      },
+      {
+        "category": "Typical total programme cost at common 3",
+        "frequency": "Total programme",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 600000,
+        "min": 4500,
+        "parent_check": "Compare the total academic fee, not just the first-year payment."
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "Use Grades 8-10 to build the right science base: biology, physics, chemistry, maths, and clear English. Spend time on lab work, charts, and basic computer skills because imaging courses are practical from the start.",
+      "stage": "Grades 8-10",
+      "title": "Build the school foundation"
+    },
+    {
+      "description": "Choose Science in Class 11 and 12, with Biology and Physics as the most important subjects for this course. Keep marks steady and practise aptitude, basic anatomy, and hospital etiquette.",
+      "stage": "Grade 11",
+      "title": "Pick the right subject mix"
+    },
+    {
+      "description": "Shortlist colleges that offer a 3- to 4-year Bachelor of Radiology & Imaging Technology in India. Check admission rules, internship hours, lab facilities, hospital tie-ups, and total fees before applying.",
+      "stage": "Grade 12",
+      "title": "Apply with a practical plan"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "This course trains students to help operate imaging equipment such as X-ray, CT, MRI, and related diagnostic systems under clinical supervision. Graduates usually work in hospitals, diagnostic centres, and imaging departments.",
+      "question": "What does a radiology and imaging technology graduate do?"
+    },
+    {
+      "answer": "Most colleges ask for Class 12 Science. Biology and Physics are usually the key subjects, and some colleges also look at Chemistry and minimum marks in Class 12.",
+      "question": "What should students study in Class 12 to be eligible?"
+    },
+    {
+      "answer": "The usual duration is 3 to 4 years, depending on the university and the structure of the programme. Some colleges include a clinical internship or rotation in the final part of the course.",
+      "question": "How long does the course take?"
+    },
+    {
+      "answer": "This is a hands-on course. Students spend time in labs, imaging departments, and supervised clinical settings, so comfort with equipment, patient handling, and shift-based work matters.",
+      "question": "Is the course mostly theory or practical?"
+    },
+    {
+      "answer": "In India, the imaging technologist role is generally not a separate medical licence role like a doctor’s specialty. After graduation, students usually join hospital or diagnostic-centre jobs and may need employer training, and for higher responsibility they often add certification, experience, or a postgraduate course.",
+      "question": "What comes after graduation before working in the field?"
+    },
+    {
+      "answer": "Fees vary widely across India, but a common annual range for this kind of private undergraduate health-science course is about INR 50000 to INR 250000. Government or aided colleges can be lower, and many private colleges are higher.",
+      "question": "How much can the course cost?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "Bachelor of Radiology & Imaging Technology suits students who enjoy biology, physics, and applied science, and who are comfortable in a hospital setting. It is a practical undergraduate path into diagnostic imaging support, not a desk-based degree. Families should check whether the college has good lab equipment, real clinical posting arrangements, and clear internship support. A child choosing this course should be ready for patient contact, discipline, and shift-style work later on. It also helps to ask how much of the programme is classroom learning versus supervised practice, because that balance shapes job readiness. For many families, the main questions are about safety, future study options, and whether the college has strong hospital exposure.",
+    "questions": [
+      "Does the college have attached hospital or clinical training tie-ups?",
+      "How many hours of practical and internship work are included?",
+      "What are the next study options after this degree?",
+      "Are graduates prepared for work in X-ray, CT, MRI, and department support roles?",
+      "What is the total fee, and does it include lab, exam, and internship charges?",
+      "What kind of shifts or work hours do imaging technologists usually have?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "National Testing Agency",
+        "title": "Notice Board Archive",
+        "url": "https://nta.ac.in/NoticeBoardArchive?article_id=444043138.0"
+      },
+      {
+        "publisher": "National Commission for Allied and Healthcare Professions",
+        "title": "National Commission for Allied and Healthcare Professions",
+        "url": "https://ncahp.abdm.gov.in/"
+      },
+      {
+        "publisher": "National Medical Commission",
+        "title": "National Medical Commission",
+        "url": "https://nmc.org.in/"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  }
+}

@@ -97,14 +97,19 @@ def slugify(value: str) -> str:
     return "-".join(parts)
 
 
-def injected_fields(course_id: str, course_name: str, settings: Settings) -> dict[str, Any]:
-    return {
+def injected_fields(
+    course_id: str, course_name: str, settings: Settings, category: str | None = None
+) -> dict[str, Any]:
+    fields: dict[str, Any] = {
         "course_id": course_id,
         "slug": slugify(course_name),
         "course_name": course_name,
         "currency": settings.currency,
         "region": settings.region,
     }
+    if category:
+        fields["category"] = category
+    return fields
 
 
 def strip_citation_markers(node: Any) -> Any:
@@ -439,11 +444,12 @@ def generate_course(
     store: ArtifactStore | None = None,
     only_chunks: tuple[str, ...] | None = None,
     discipline: str | None = None,
+    category: str | None = None,
 ) -> CourseResult:
     root_schema = load_root_schema(settings.schema_path)
     registry = DomainRegistry.load(settings.domains_path)
     discipline = normalize_discipline(discipline)
-    base_fields = injected_fields(course_id, course_name, settings)
+    base_fields = injected_fields(course_id, course_name, settings, category)
     selected = tuple(CHUNKS_BY_KEY[key] for key in only_chunks) if only_chunks else CHUNKS
 
     document: dict[str, Any] = dict(base_fields)

@@ -1,0 +1,581 @@
+{
+  "course_id": "crs_bachelor_of_pharmacy",
+  "slug": "bachelor-of-pharmacy",
+  "course_name": "Bachelor of Pharmacy",
+  "currency": "INR",
+  "region": "India",
+  "category": "Medical & Allied Health",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Industry-linked health science pathway",
+    "fit": {
+      "indicators": [
+        "Enjoys chemistry and biology",
+        "Comfortable with laboratory work",
+        "Interested in medicines and patient care"
+      ],
+      "note": "Best suited to students who like science, accuracy, and practical lab-based learning.",
+      "score_percent": 86
+    },
+    "summary": "Bachelor of Pharmacy prepares students to understand medicines, how they are made, and how they are used safely. It suits families looking for a science-based professional degree with options in hospitals, community pharmacies, research, manufacturing, and regulatory work."
+  },
+  "quick_facts": {
+    "career_direction": "Pharmacist, hospital pharmacy, community pharmacy, pharmaceutical QA/Q",
+    "entry_level": "Class 12",
+    "indicative_annual_fees": {
+      "max": 200000,
+      "min": 100000
+    },
+    "learning_style": "Theory plus laboratory practicals, chemistry-focused study,药",
+    "suitable_streams": [
+      "Science (Physics, Chemistry, &"
+    ],
+    "typical_duration": {
+      "max_years": 4,
+      "min_years": 4
+    }
+  },
+  "seo": {
+    "meta_description": "Bachelor of Pharmacy in India is a 4-year undergraduate science and health course focused on medicines, pharmacy practice, and pharmaceutical careers.",
+    "page_title": "Bachelor of Pharmacy (B.Pharm) in India | Course Profile, Fees, Career"
+  },
+  "subcategory": "Pharmacy",
+  "overview": {
+    "heading": "What is Bachelor of Pharmacy?",
+    "paragraphs": [
+      "Bachelor of Pharmacy is a four-year undergraduate course for students who want to work with medicines, drug safety, and pharmacy practice. It usually follows Class 12 science with Physics and Chemistry, and often Biology or Mathematics. The course is built around pharmaceutical chemistry, pharmaceutics, pharmacology, and laboratory work, so students spend time in class and in practical sessions, not only in lectures.",
+      "A BPharm degree can lead to roles in community pharmacies, hospitals, pharmaceutical companies, quality assurance, quality control, production, regulatory affairs, and drug safety-related work. Some students also continue to MPharm or other specialised study after graduation. For direct pharmacist jobs in India, registration with the State Pharmacy Council is part of the path after the degree.",
+      "This course suits students who are comfortable with chemistry, careful with details, and willing to follow procedures. The work can be practical and people-facing, especially in retail or hospital settings, while industry jobs may involve testing, documentation, and manufacturing standards. It is a good fit for students who want a healthcare-linked career that combines science with responsibility."
+    ]
+  },
+  "snapshot": {
+    "data_note": "Pay varies by role, employer type, city, and experience. Entry jobs in retail or support roles can start lower, while hospital, regulatory, quality, and industry roles usually pay more. Government, private, and multinational employers can differ a lot, so no single salary figure fits every graduate.",
+    "salary": {
+      "higher_annual": 800000,
+      "higher_is_open_ended": false,
+      "lower_annual": 240000,
+      "note": "Typical starting pay is often around 2.4 lakh to 4 lakh a year, with stronger roles in hospital, QA/QC, regulatory, or industry settings reaching about 6 lakh to 8 lakh a year or more with experience.",
+      "typical_annual": 400000,
+      "marker_percent": 29
+    },
+    "specialisations": [
+      "Hospital pharmacy",
+      "Community pharmacy",
+      "Pharmaceutical quality assurance",
+      "Quality control",
+      "Production and manufacturing",
+      "Regulatory affairs",
+      "Drug safety and pharmacovigilance",
+      "Clinical research"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "Be careful if you expect this course to be only about dispensing pills",
+      "points": [
+        "A large part of the course is chemistry, formulations, and laboratory work, so students need steady attention to detail and comfort with lab",
+        "Some jobs are in manufacturing, testing, and documentation rather than direct patient contact.",
+        "A pharmacist role in practice usually needs the degree plus state registration, so graduation alone is not the full endpoint.",
+        "The same degree can lead to very different pay bands, so placement figures from one college do not represent every job path."
+      ]
+    },
+    "good_fit": {
+      "heading": "A good fit for students who",
+      "points": [
+        "Like chemistry and biology and can handle regular practical work.",
+        "Prefer a healthcare career that is science-based and structured.",
+        "Are careful with rules, dosage details, and record keeping.",
+        "May want options in hospitals, industry, or further study after the degree."
+      ]
+    },
+    "tags": [
+      "Science-focused",
+      "Healthcare",
+      "Lab practicals",
+      "Chemistry-heavy",
+      "Registration needed for direct",
+      "Hospital and industry pathways",
+      "Moderate-to-strong salary with"
+    ]
+  },
+  "curriculum": {
+    "assessment_methods": "End-semester theory examinations, internal assessments, practical laboratory exams, viva voce, tutorials, seminars, assignments, and project or dissertation evaluation in the final year.",
+    "learning_activities": "Classroom lectures, chemistry and pharmaceutics laboratory work, dosage-form preparation, prescription study, dispensing practice, pharmacology and pharmacognosy experiments, hospital or community pharmacy observation, seminars, case discussions, and project work.",
+    "years": [
+      {
+        "label": "Year 1",
+        "subjects": [
+          {
+            "description": "Study of inorganic and organic chemistry with emphasis on reactions, structure, and analysis used in pharmacy.",
+            "name": "Pharmaceutical Chemistry I"
+          },
+          {
+            "description": "Introduction to drug dosage forms, excipients, and basic manufacturing methods.",
+            "name": "Pharmaceutics I"
+          },
+          {
+            "description": "Study of human body systems, tissues, and cells relevant to drug action.",
+            "name": "Human Anatomy and Physiology I"
+          },
+          {
+            "description": "Foundations of pharmaceutical biology, including the medicinal use of natural products.",
+            "name": "Pharmacognosy I"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Year 2",
+        "subjects": [
+          {
+            "description": "Advanced study of medicinal chemistry and drug-related chemical properties.",
+            "name": "Pharmaceutical Chemistry II"
+          },
+          {
+            "description": "Design, preparation, and quality control of dosage forms and formulations.",
+            "name": "Pharmaceutics II"
+          },
+          {
+            "description": "Principles of how drugs act on the body, including basic therapeutic effects and adverse effects.",
+            "name": "Pharmacology I"
+          },
+          {
+            "description": "Basics of microbiology, infection control, and laboratory methods used in pharmacy.",
+            "name": "Pharmaceutical Microbiology"
+          }
+        ],
+        "year": 2
+      },
+      {
+        "label": "Year 3",
+        "subjects": [
+          {
+            "description": "Industrial production methods, scale-up, and equipment used in making medicines.",
+            "name": "Pharmaceutical Engineering"
+          },
+          {
+            "description": "Formulation and evaluation of solid, liquid, and novel drug delivery systems.",
+            "name": "Dosage Form Design"
+          },
+          {
+            "description": "Study of drug analysis, standards, and quality testing for medicines.",
+            "name": "Pharmaceutical Analysis"
+          },
+          {
+            "description": "Public health pharmacy, pharmacy law, and patient counselling basics.",
+            "name": "Hospital and Clinical Pharmacy"
+          }
+        ],
+        "year": 3
+      },
+      {
+        "label": "Year 4",
+        "subjects": [
+          {
+            "description": "Advanced study of drug discovery, development, and therapeutic use with a research focus.",
+            "name": "Advanced Pharmacology and Therapeutics"
+          },
+          {
+            "description": "Elective study in a focused area such as industrial pharmacy, clinical pharmacy, or pharmaceutical technology.",
+            "name": "Pharmacy Elective Specialisation"
+          },
+          {
+            "description": "Research planning, data collection, and interpretation for pharmacy projects.",
+            "name": "Research Methodology and Biostatistics"
+          },
+          {
+            "description": "Independent capstone project, dissertation, or final-year project in pharmacy.",
+            "name": "Project Work and Dissertation"
+          }
+        ],
+        "year": 4
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "State or national pharmacy entrance test followed by counselling or merit-based admission where permitted by the institution.",
+      "Direct admission through the admission process of an approved college, subject to seat availability and eligibility rules.",
+      "Admission through management quota or institution-level counselling where allowed by state policy.",
+      "Lateral entry is not the usual route for entry into BPharm; standard entry is after Class 12."
+    ],
+    "admission_timeline": [
+      {
+        "description": "Appear for Class 12 board examination in the science stream with the required subjects.",
+        "step": 1,
+        "title": "Complete higher secondary school"
+      },
+      {
+        "description": "Register for the applicable pharmacy entrance examination or college admission process.",
+        "step": 2,
+        "title": "Apply"
+      },
+      {
+        "description": "Attend counselling, document verification, and seat allotment where required.",
+        "step": 3,
+        "title": "Counselling and verification"
+      },
+      {
+        "description": "Confirm admission and begin the first semester after fee payment and enrolment.",
+        "step": 4,
+        "title": "Join the programme"
+      },
+      {
+        "description": "Continue through four years of study, practical training, and final-year project work.",
+        "step": 5,
+        "title": "Complete the degree"
+      }
+    ],
+    "typical_requirements": [
+      "Pass Class 12 or equivalent from a recognised board.",
+      "Study Physics and Chemistry as compulsory subjects in Class 12.",
+      "Study Mathematics or Biology, depending on the admission rules of the state or institution.",
+      "Meet the minimum marks required by the admitting authority, commonly around 45% to 50% in the required science subjects for general category"
+    ]
+  },
+  "skills": [
+    {
+      "description": "Understanding of chemistry and how medicines are made and tested.",
+      "name": "Pharmaceutical chemistry"
+    },
+    {
+      "description": "Ability to prepare and handle dosage forms in laboratory settings.",
+      "name": "Formulation and compounding"
+    },
+    {
+      "description": "Knowledge of how drugs work, their effects, and common side effects.",
+      "name": "Drug action and pharmacology"
+    },
+    {
+      "description": "Careful record-keeping, calculation, and quality checking in pharmacy work.",
+      "name": "Accuracy and quality control"
+    },
+    {
+      "description": "Communication for patient counselling, teamwork, and professional reporting.",
+      "name": "Communication skills"
+    },
+    {
+      "description": "Basic research, data handling, and interpretation for projects and experiments.",
+      "name": "Research and data analysis"
+    }
+  ],
+  "careers": [
+    {
+      "description": "Works in a hospital, clinic, or retail pharmacy to dispense medicines and counsel patients. In India, this is a regulated role; licensing and recruitment rules,",
+      "route_badge": "Advanced regulated route",
+      "title": "Pharmacist",
+      "typical_route": "BPharm -> State Pharmacy Council registration where required -> licensed pharmacist role"
+    },
+    {
+      "description": "Checks products during manufacturing and helps keep medicines within quality standards in a pharmaceutical plant.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Quality Control / Quality Assurance Executive",
+      "typical_route": "BPharm -> plant internship or trainee role -> quality control / quality assurance job"
+    },
+    {
+      "description": "Assists with drug development, testing, or documentation in a pharma or healthcare company.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Research Assistant / Clinical Research Associate",
+      "typical_route": "BPharm -> project or internship experience -> clinical research or R&D role"
+    },
+    {
+      "description": "Supports medicine sales and product promotion for pharmaceutical companies.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Medical Representative",
+      "typical_route": "BPharm -> communication and sales training -> field sales role"
+    },
+    {
+      "description": "Helps prepare and review medicine information, labels, and compliance documents for pharma companies.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Drug Safety / Medical Writing Associate",
+      "typical_route": "BPharm -> entry-level documentation or safety role -> specialised pharma communications work"
+    },
+    {
+      "description": "Can lead to teaching, advanced research, or specialist industry roles after higher study.",
+      "route_badge": "Postgraduate route",
+      "title": "College Lecturer / Research Scientist",
+      "typical_route": "BPharm -> MPharm or higher study -> teaching or research role"
+    }
+  ],
+  "further_study_pathway": [
+    "BPharm -> GPAT or other institute/0",
+    "BPharm -> MPharm",
+    "BPharm -> MBA or PGDM in pharma/0",
+    "BPharm -> PhD after postgraduate or",
+    "BPharm -> postgraduate study in cl"
+  ],
+  "recruiters": [
+    {
+      "description": "Large Indian pharmaceutical company that recruits for manufacturing, quality, research, and sales roles.",
+      "logo_initials": "CI",
+      "name": "Cipla",
+      "roles": [
+        "Quality control",
+        "Production trainee"
+      ],
+      "sector": "Pharmaceuticals"
+    },
+    {
+      "description": "Indian pharmaceutical company hiring for formulation, manufacturing, and technical roles.",
+      "logo_initials": "DR",
+      "name": "Dr. Reddy’s Laboratories",
+      "roles": [
+        "Production",
+        "Quality assurance"
+      ],
+      "sector": "Pharmaceuticals"
+    },
+    {
+      "description": "Pharmaceutical manufacturer with opportunities in plant operations, quality, and sales.",
+      "logo_initials": "LU",
+      "name": "Lupin",
+      "roles": [
+        "Quality control",
+        "Medical representative"
+      ],
+      "sector": "Pharmaceuticals"
+    },
+    {
+      "description": "Large pharma company that hires across manufacturing, quality, and commercial functions.",
+      "logo_initials": "SU",
+      "name": "Sun Pharmaceutical Industries Ltd",
+      "roles": [
+        "Production",
+        "Quality assurance"
+      ],
+      "sector": "Pharmaceuticals"
+    },
+    {
+      "description": "Indian pharma company offering roles in manufacturing, quality, and regulatory work.",
+      "logo_initials": "AU",
+      "name": "Aurobindo Pharma",
+      "roles": [
+        "Quality control",
+        "Regulatory affairs"
+      ],
+      "sector": "Pharmaceuticals"
+    },
+    {
+      "description": "Pharmaceutical company that recruits for technical, plant, and field roles.",
+      "logo_initials": "ZY",
+      "name": "Zydus Lifesciences",
+      "roles": [
+        "Production",
+        "Medical representative"
+      ],
+      "sector": "Pharmaceuticals"
+    }
+  ],
+  "colleges": {
+    "data_note": "This ranking is a practical snapshot for families comparing B.Pharm options in India. A higher rank usually reflects a stronger mix of reputation, fees, and course visibility, but it does not promise better teaching, placements, or internship access. Verify current approval, seat intake, and the latest tuition and hostel charges before applying.",
+    "items": [
+      {
+        "admission_route": "10+2 with Physics, Chemistry, and either",
+        "annual_fee": 189960,
+        "city": "Mumbai",
+        "course_name": "Bachelor of Pharmacy",
+        "duration_years": 4,
+        "highlight": "Strong public-sector pharmacy option; B.",
+        "institution_type": "government",
+        "name": "Institute of Chemical Technology",
+        "rank": 1
+      },
+      {
+        "admission_route": "10+2 with Physics, Chemistry, and either",
+        "annual_fee": 19005,
+        "city": "Chandigarh",
+        "course_name": "Bachelor of Pharmacy",
+        "duration_years": 4,
+        "highlight": "Low tuition compared with many private B",
+        "institution_type": "government",
+        "name": "Panjab University",
+        "rank": 2
+      },
+      {
+        "admission_route": "10+2 with Physics, Chemistry, and either",
+        "annual_fee": 16160,
+        "city": "Chennai",
+        "course_name": "Bachelor of Pharmacy",
+        "duration_years": 4,
+        "highlight": "Very low annual tuition; a major govern",
+        "institution_type": "government",
+        "name": "Madras Medical College",
+        "rank": 3
+      },
+      {
+        "admission_route": "10+2 with Physics, Chemistry, and either",
+        "annual_fee": 81000,
+        "city": "Vadodara",
+        "course_name": "Bachelor of Pharmacy",
+        "duration_years": 4,
+        "highlight": "Large private university with an establ",
+        "institution_type": "private",
+        "name": "Parul University",
+        "rank": 4
+      },
+      {
+        "admission_route": "10+2 with Physics, Chemistry, and either",
+        "annual_fee": 105000,
+        "city": "New Delhi",
+        "course_name": "Bachelor of Pharmacy",
+        "duration_years": 4,
+        "highlight": "Well-known pharmacy-focused university;",
+        "institution_type": "private",
+        "name": "Jamia Hamdard",
+        "rank": 5
+      },
+      {
+        "admission_route": "10+2 with Physics, Chemistry, and either",
+        "annual_fee": 158125,
+        "city": "Pilani",
+        "course_name": "Bachelor of Pharmacy",
+        "duration_years": 4,
+        "highlight": "Premium-priced private option; fees are",
+        "institution_type": "private",
+        "name": "BITS Pilani",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "Published college listing and fee summaries for B.Pharm in India",
+    "ranking_updated": "2026-08"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "Register as a pharmacist where required; then work in community pharmacy, a hos",
+      "course_name": "Bachelor of Pharmacy",
+      "laboratory_exposure": "High. Chemistry, pharmaceutics, pharmac",
+      "main_focus": "A full undergraduate study of medicines, dosage forms, dispensing, and pharmace",
+      "statistics_level": "Basic to moderate. Used for lab reports,"
+    },
+    {
+      "common_next_steps": "Enter dispensing support roles, retail pharmacy, or later complete B.Pharm for a",
+      "course_name": "Diploma in Pharmacy",
+      "laboratory_exposure": "Moderate. Practical pharmacy labs with",
+      "main_focus": "Shorter, job-oriented training for dispensing, storage, prescriptions, and patie",
+      "statistics_level": "Basic. Enough for calculations, dosing,"
+    },
+    {
+      "common_next_steps": "After registration and any required internship or licensing steps, work in hosp",
+      "course_name": "Doctor of Pharmacy",
+      "laboratory_exposure": "Very high. Strong clinical and hospital",
+      "main_focus": "Advanced patient-facing pharmacy education with more clinical practice and drug",
+      "statistics_level": "Moderate. Includes data handling, clini"
+    }
+  ],
+  "fees": {
+    "footnote": "For most families, the useful figure is the annual tuition, because hostel, mess, exam, and caution deposits can change the total sharply. Government colleges usually sit at the lower end, private colleges often charge a",
+    "rows": [
+      {
+        "category": "Government college tuition",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": true,
+        "max": 75000,
+        "min": 15000,
+        "parent_check": "Check state university affiliation, PCI approval, and whether laboratory or exam charges are extra."
+      },
+      {
+        "category": "Private college tuition",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": true,
+        "max": 300000,
+        "min": 80000,
+        "parent_check": "Check whether the quoted fee includes tuition only or also lab, exam, and development charges."
+      },
+      {
+        "category": "Premier national / top-tier private",
+        "frequency": "Per year",
+        "institution_type": "premier_national",
+        "is_variable": true,
+        "max": 650000,
+        "min": 190000,
+        "parent_check": "Check the full four-year cost, not only first-year tuition, and confirm hostel charges separately."
+      },
+      {
+        "category": "Common total programme cost",
+        "frequency": "Total programme",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 2600000,
+        "min": 60000,
+        "parent_check": "Divide whole-course totals by four years to compare them with annual tuition."
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "Choose Physics, Chemistry, and Biology or Mathematics in Class 11 and 12, and keep chemistry strong because pharmacy courses use it heavily.",
+      "stage": "Grades 8-10",
+      "title": "Build the right school base"
+    },
+    {
+      "description": "Focus on Class 12 marks, college entrance rules, and practical science work. Check that the college is approved for pharmacy education before applying.",
+      "stage": "Grade 11",
+      "title": "Prepare for admission"
+    },
+    {
+      "description": "Complete the 4-year BPharm, including laboratory work and internship or practical training where required by the college or university.",
+      "stage": "Grade 12",
+      "title": "Start the degree and track the"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "BPharm is a 4-year undergraduate course in India that prepares students for pharmacy practice and pharmaceutical work.",
+      "question": "How long is Bachelor of Pharmacy?"
+    },
+    {
+      "answer": "The usual entry point is Class 12 with Physics and Chemistry, along with Biology or Mathematics, depending on the institute's admission rules.",
+      "question": "What subjects should students take in school?"
+    },
+    {
+      "answer": "Graduates can work in community pharmacies, hospitals, the pharmaceutical industry, quality assurance, quality control, and related roles.",
+      "question": "What jobs can come after BPharm?"
+    },
+    {
+      "answer": "To work as a pharmacist in India, graduation alone is not always enough; the role is regulated, and registration with the State Pharmacy Council is needed under pharmacy law.",
+      "question": "Can a graduate work as a pharmacist immediately?"
+    },
+    {
+      "answer": "Yes. Many students move on to MPharm, MBA in pharmaceutical management, clinical research, or other healthcare and science programmes.",
+      "question": "Can students study further after BPharm?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "Bachelor of Pharmacy suits students who like biology, chemistry, and practical lab work. It is a professional degree with a clear path into healthcare and the pharmaceutical sector, but it is not a shortcut to a pharmacist job on its own. Families should check whether a college is approved, what practical training it provides, and how graduates usually register for practice in their state. The course is more chemistry-heavy than many parents expect, and students should be comfortable with formulas, calculations, and laboratory discipline. It can lead to work in hospitals, retail pharmacies, manufacturing, quality control, and further study. A good question to ask is whether the college helps students understand both patient-facing pharmacy work and industry roles.",
+    "questions": [
+      "Does the college have current approval for pharmacy education?",
+      "What practical labs, projects, and internship support are included?",
+      "What are the state registration steps after graduation?",
+      "How many graduates go into hospital, retail, or industry roles?",
+      "What higher-study options do students usually choose after BPharm?",
+      "How demanding is the chemistry and lab workload in the first year?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "Pharmacy Council of India",
+        "title": "Pharmacy Council of India official website",
+        "url": "https://www.pci.nic.in/"
+      },
+      {
+        "publisher": "Pharmacy Council of India",
+        "title": "Education Regulations for Diploma, Undergraduate and Postgraduate Pharmacy Programmes, 2020",
+        "url": "https://www.pci.nic.in/pdf/ER2020.pdf"
+      },
+      {
+        "publisher": "All India Council for Technical Education",
+        "title": "All India Council for Technical Education official website",
+        "url": "https://www.aicte-india.org/"
+      },
+      {
+        "publisher": "All India Council for Technical Education",
+        "title": "Approval Process Handbook",
+        "url": "https://www.aicte-india.org/education/approval-process-handbook"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  }
+}

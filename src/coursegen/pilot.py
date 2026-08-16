@@ -176,6 +176,7 @@ def run_pilot(
                     settings=settings,
                     store=store,
                     discipline=entry.discipline,
+                    category=entry.category,
                 )
             except Exception as exc:
                 _log(

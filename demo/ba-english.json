@@ -1,0 +1,579 @@
+{
+  "course_id": "crs_ba_english",
+  "slug": "ba-english",
+  "course_name": "BA English",
+  "currency": "INR",
+  "region": "India",
+  "category": "Arts, Humanities & Social Sciences",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Student-friendly guide",
+    "fit": {
+      "indicators": [
+        "Enjoy reading and discussing texts",
+        "Comfortable with writing and clear communication",
+        "Interested in language, literature, media, or teaching"
+      ],
+      "note": "A strong fit for students who like reading, analysis, and expressing ideas in writing and speech.",
+      "score_percent": 82
+    },
+    "summary": "BA English studies literature, language, and writing across different periods and genres. It suits students who want a broad arts degree that can lead to careers in teaching, content, media, publishing, communication, and further study."
+  },
+  "quick_facts": {
+    "career_direction": "Writing, teaching, publishing, content, media, communication, and post",
+    "entry_level": "Class 12",
+    "indicative_annual_fees": {
+      "max": 50000,
+      "min": 10000
+    },
+    "learning_style": "Reading-heavy, discussion-based, and essay-writing focused",
+    "suitable_streams": [
+      "Any stream",
+      "Arts/Humanities",
+      "Commerce",
+      "Science"
+    ],
+    "typical_duration": {
+      "max_years": 4,
+      "min_years": 3
+    }
+  },
+  "seo": {
+    "meta_description": "BA English in India is a 3-4 year undergraduate arts degree focused on literature, language, and writing, with careers in teaching, media, publishing, and more.",
+    "page_title": "BA English Course in India: Duration, Fees, Careers & Eligibility"
+  },
+  "subcategory": "English",
+  "overview": {
+    "heading": "What is BA English?",
+    "paragraphs": [
+      "BA English is an undergraduate degree that focuses on English literature, language, and close reading. In many colleges it runs for three years, while some newer honours routes can extend to four years. The course is usually built around reading, class discussion, essays, and careful interpretation of texts rather than lab work or memorisation.",
+      "Students usually study poetry, prose, drama, fiction, literary criticism, and writing from different periods and regions. Depending on the college, the syllabus may also include Indian writing in English, world literature, language studies, and basic ideas from literary theory. Admission is usually after Class 12, and students from any stream may be eligible where the college allows it.",
+      "After graduation, students often move toward writing, teaching, editing, publishing, media, content, communication, or further study. It suits readers who enjoy analysing ideas, writing clearly, and spending steady time on text-based work. Families should see it as a broad humanities degree that can lead to several different paths, not just one fixed job."
+    ]
+  },
+  "snapshot": {
+    "data_note": "For BA English in India, pay usually starts around 3 to 5 LPA for fresher roles, and stronger portfolios, internships, higher study, location, and the kind of role can raise earnings in writing, teaching, media, publishing, and corporate communication.",
+    "salary": {
+      "higher_annual": 1200000,
+      "higher_is_open_ended": true,
+      "lower_annual": 360000,
+      "note": "Entry-level English-related roles such as teaching, content writing, journalism, and editorial work commonly sit around the 3.6 to 5.9 LPA band, while corporate communication and technical writing can reach higher levels.",
+      "typical_annual": 500000,
+      "marker_percent": 17
+    },
+    "specialisations": [
+      "English literature",
+      "Creative writing",
+      "Linguistics",
+      "Literary theory",
+      "Journalism and media writing",
+      "Technical writing",
+      "Communication and public relations",
+      "Teaching and education"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "Good to know before choosing this course",
+      "points": [
+        "This degree is not mainly about speaking English fluently; it is more about reading, analysis, writing, and interpretation of texts.",
+        "Many jobs linked to the degree are not automatic after graduation and may need a strong portfolio, internships, or postgraduate study, such.",
+        "A student planning for regulated teaching or university-level teaching should expect the extra qualifications required for that path beyond.",
+        "Earnings vary a lot by role, city, and writing strength, so one salary figure cannot describe every graduate."
+      ]
+    },
+    "good_fit": {
+      "heading": "A good fit if you...",
+      "points": [
+        "like reading books, poems, essays, and plays closely.",
+        "enjoy writing long answers, editing your own work, and discussing ideas in class.",
+        "want options in writing, content, media, publishing, communication, teaching, or further study.",
+        "can manage steady reading and deadline-based essay work rather than mostly practical labs or memorisation."
+      ]
+    },
+    "tags": [
+      "Reading-heavy",
+      "Writing-focused",
+      "Discussion-based",
+      "Suitable after Class 12",
+      "Arts and humanities",
+      "Content and communication path",
+      "Teaching and publishing path"
+    ]
+  },
+  "curriculum": {
+    "assessment_methods": "Written examinations, internal assessment, class presentations, essays, seminar papers, and a final-year research project or dissertation are common in English honours-style study.",
+    "learning_activities": "Reading literary texts, close analysis, class discussion, essay writing, presentations, and guided research are central to the course.",
+    "years": [
+      {
+        "label": "Year 1",
+        "subjects": [
+          {
+            "description": "How to read, discuss, and write about literature using basic critical terms.",
+            "name": "Introduction to Literary Studies"
+          },
+          {
+            "description": "Major texts from ancient Greek and Roman traditions and their literary ideas.",
+            "name": "European Classical Literature"
+          },
+          {
+            "description": "Key works from early Indian literary traditions in translation and critical context.",
+            "name": "Indian Classical Literature"
+          },
+          {
+            "description": "Major English poetry from the 14th to the 17th century.",
+            "name": "14th to 17th Century English Poetry"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Year 2",
+        "subjects": [
+          {
+            "description": "English drama from the 16th and 17th centuries, including stage form and language.",
+            "name": "16th & 17th Century English Drama"
+          },
+          {
+            "description": "Literature of the 18th century with focus on form, satire, and social change.",
+            "name": "18th Century Literature"
+          },
+          {
+            "description": "Romantic-era poetry and prose, with attention to imagination and nature.",
+            "name": "Romantic Literature"
+          },
+          {
+            "description": "Victorian writing and its treatment of society, industry, and reform.",
+            "name": "Victorian Literature"
+          }
+        ],
+        "year": 2
+      },
+      {
+        "label": "Year 3",
+        "subjects": [
+          {
+            "description": "Major approaches to literary interpretation and criticism.",
+            "name": "Literary Criticism"
+          },
+          {
+            "description": "Key developments in literature from the United States.",
+            "name": "American Literature"
+          },
+          {
+            "description": "Indian literature written in English, with attention to themes and historical context.",
+            "name": "Indian Writing in English"
+          },
+          {
+            "description": "Translation-based study of Indian writing in English and related texts.",
+            "name": "Indian Writing in English Translation"
+          }
+        ],
+        "year": 3
+      },
+      {
+        "label": "Year 4",
+        "subjects": [
+          {
+            "description": "Later modern poetry and drama, with advanced reading and interpretation.",
+            "name": "Twentieth Century Poetry & Drama"
+          },
+          {
+            "description": "Major twentieth-century prose fiction and novel form.",
+            "name": "Twentieth Century Novel"
+          },
+          {
+            "description": "Postcolonial approaches to texts, culture, and power.",
+            "name": "Postcolonial Literature"
+          },
+          {
+            "description": "Advanced elective work with guided research, topic selection, and a capstone project or dissertation.",
+            "name": "Research Methodology and Project Work"
+          }
+        ],
+        "year": 4
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "Merit-based admission on Class 12 marks in some colleges and universities.",
+      "CUET-UG based admission in many public universities.",
+      "College or university entrance and counselling where the institution uses its own process.",
+      "For CUET-based universities such as Delhi University, the English paper and the required language or domain subjects are part of the subject"
+    ],
+    "admission_timeline": [
+      {
+        "description": "Complete Class 12 or equivalent from a recognised board.",
+        "step": 1,
+        "title": "Finish school"
+      },
+      {
+        "description": "Apply through the college portal, CUET-UG route, or merit form, depending on the institution.",
+        "step": 2,
+        "title": "Submit application"
+      },
+      {
+        "description": "Take the required entrance test or use Class 12/CUET marks, then complete counselling and document verification.",
+        "step": 3,
+        "title": "Admission and verification"
+      },
+      {
+        "description": "In Delhi University-style CUET admission, candidates must appear in the language they studied in Class 12 and meet the B",
+        "step": 4,
+        "title": "Check programme-specific rules"
+      },
+      {
+        "description": "Choose the final seat after merit lists or counselling rounds close.",
+        "step": 5,
+        "title": "Confirm seat"
+      }
+    ],
+    "typical_requirements": [
+      "Class 12 or equivalent from a recognised board.",
+      "English is commonly required as a subject or as the language used in the qualifying examination.",
+      "Many colleges accept students from any stream if they meet the cut-off or entrance requirement.",
+      "For CUET-based universities, the student must appear in the language paper and the required domain subjects for the programme."
+    ]
+  },
+  "skills": [
+    {
+      "description": "Understanding poems, plays, fiction, and essays closely and accurately.",
+      "name": "Close reading"
+    },
+    {
+      "description": "Explaining themes, style, context, and literary devices in clear writing and speech.",
+      "name": "Critical analysis"
+    },
+    {
+      "description": "Writing structured essays, answers, and seminar papers.",
+      "name": "Academic writing"
+    },
+    {
+      "description": "Speaking clearly in class discussions, presentations, and viva-style conversations.",
+      "name": "Communication"
+    },
+    {
+      "description": "Finding, comparing, and using sources for assignments and projects.",
+      "name": "Research skills"
+    },
+    {
+      "description": "Editing and revising writing for clarity, grammar, and tone.",
+      "name": "Editing"
+    }
+  ],
+  "careers": [
+    {
+      "description": "Writes articles, features, scripts, or online copy for newspapers, websites, and media teams.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Content Writer",
+      "typical_route": "BA English -> Writing portfolio -> Entry-level content role"
+    },
+    {
+      "description": "Reports, researches, and writes news stories for print, broadcast, or digital media.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Journalist",
+      "typical_route": "BA English -> Internships or campus media -> Junior reporting role"
+    },
+    {
+      "description": "Checks, revises, and polishes written text for clarity, accuracy, and style.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Editor",
+      "typical_route": "BA English -> Strong writing/editing samples -> Assistant editor role"
+    },
+    {
+      "description": "Creates scripts for video, audio, advertising, or entertainment content.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Script Writer",
+      "typical_route": "BA English -> Writing practice -> Scriptwriting assistant role"
+    },
+    {
+      "description": "Works on language translation and related writing tasks for organisations that need multilingual communication.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Translator",
+      "typical_route": "BA English -> Language skills -> Translation work or certification"
+    },
+    {
+      "description": "Assists with literature, language, or communications research in colleges, universities, media, or marketing teams.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Research Assistant",
+      "typical_route": "BA English -> Research projects -> Assistant role in academics or media"
+    }
+  ],
+  "further_study_pathway": [
+    "BA English -> MA English",
+    "BA English -> MA English -> PhD in/",
+    "BA English -> postgraduate study in",
+    "BA English -> journalism, media, or",
+    "communication-focused postgraduate"
+  ],
+  "recruiters": [
+    {
+      "description": "News and digital media organisation that hires for reporting, editing, and content roles.",
+      "logo_initials": "ND",
+      "name": "NDTV Convergence",
+      "roles": [
+        "Journalist",
+        "Content Writer"
+      ],
+      "sector": "Media"
+    },
+    {
+      "description": "Publishing and media group with roles in editorial and content operations.",
+      "logo_initials": "IY",
+      "name": "India Today Group",
+      "roles": [
+        "Editor",
+        "Writer"
+      ],
+      "sector": "Media"
+    },
+    {
+      "description": "University and higher-education employer that hires for teaching, research, and library-related roles.",
+      "logo_initials": "DU",
+      "name": "Delhi University",
+      "roles": [
+        "Assistant Professor",
+        "Research Assistant"
+      ],
+      "sector": "Education"
+    },
+    {
+      "description": "Language-learning platform that can hire English graduates for tutoring and language support work.",
+      "logo_initials": "PR",
+      "name": "Preply",
+      "roles": [
+        "English Tutor",
+        "Language Support"
+      ],
+      "sector": "EdTech"
+    },
+    {
+      "description": "Technology and consulting company with roles in content, communication, and documentation.",
+      "logo_initials": "AC",
+      "name": "Accenture",
+      "roles": [
+        "Content Writer",
+        "Technical Writer"
+      ],
+      "sector": "Technology consulting"
+    },
+    {
+      "description": "Technology company with content, UX writing, and communication-related roles.",
+      "logo_initials": "GG",
+      "name": "Google",
+      "roles": [
+        "Content Writer",
+        "UX Writer"
+      ],
+      "sector": "Technology"
+    }
+  ],
+  "colleges": {
+    "data_note": "Ranked by a college score used by the listing platform; a higher score usually reflects stronger overall demand and reputation, but it does not measure fit, teaching style, or subject choice. Annual fees can change by category, college rules, and year, so families should confirm the latest tuition, exam charges, and any extra hostel or service fees before applying.",
+    "items": [
+      {
+        "admission_route": "CUET-UG / college admission",
+        "annual_fee": 28900,
+        "city": "Madurai",
+        "course_name": "BA English",
+        "duration_years": 3,
+        "highlight": "Very low-cost public university option;",
+        "institution_type": "government",
+        "name": "Madurai Kamaraj University",
+        "rank": 1
+      },
+      {
+        "admission_route": "University or college admission",
+        "annual_fee": 28670,
+        "city": "New Delhi",
+        "course_name": "BA (Hons) English",
+        "duration_years": 3,
+        "highlight": "Strong public-college option with a low,",
+        "institution_type": "government",
+        "name": "Hindu College, Delhi University",
+        "rank": 2
+      },
+      {
+        "admission_route": "University or college admission",
+        "annual_fee": 29437,
+        "city": "New Delhi",
+        "course_name": "BA (Hons) English",
+        "duration_years": 3,
+        "highlight": "Highly sought-after humanities college;",
+        "institution_type": "private",
+        "name": "St. Stephen's College",
+        "rank": 3
+      },
+      {
+        "admission_route": "College admission",
+        "annual_fee": 74300,
+        "city": "Kolkata",
+        "course_name": "BA English",
+        "duration_years": 3,
+        "highlight": "Established private college with a much",
+        "institution_type": "private",
+        "name": "St. Xavier's College, Kolkata",
+        "rank": 4
+      },
+      {
+        "admission_route": "University or college admission",
+        "annual_fee": 27180,
+        "city": "New Delhi",
+        "course_name": "BA English",
+        "duration_years": 3,
+        "highlight": "Women’s college with a mid-range annual",
+        "institution_type": "government",
+        "name": "Jesus and Mary College",
+        "rank": 5
+      },
+      {
+        "admission_route": "University or college admission",
+        "annual_fee": 16500,
+        "city": "New Delhi",
+        "course_name": "BA English",
+        "duration_years": 3,
+        "highlight": "Lower-fee Delhi University option; re",
+        "institution_type": "government",
+        "name": "Kamala Nehru College",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "CollegeDunia and Shiksha college listings for BA English / English honours in 25",
+    "ranking_updated": "2026-08"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "MA English, journalism, content writing, teaching routes, civil services prep,",
+      "course_name": "BA English",
+      "laboratory_exposure": "No laboratory work; reading, seminars,",
+      "main_focus": "English literature, language, literary criticism, writing, and communication",
+      "statistics_level": "Very low; only basic data use in essays,"
+    },
+    {
+      "common_next_steps": "MA History, civil services prep, museum and archive work, research, teaching",
+      "course_name": "BA History",
+      "laboratory_exposure": "No laboratory work; source reading,",
+      "main_focus": "Historical periods, events, documents, and interpretation",
+      "statistics_level": "Low; some interpretation of dates, caus"
+    },
+    {
+      "common_next_steps": "MA Journalism/Mass Communication, reporting, editing, digital content, public",
+      "course_name": "BA Journalism and Mass Communication",
+      "laboratory_exposure": "Limited practical exposure through media",
+      "main_focus": "News writing, media ethics, reporting, editing, and communication",
+      "statistics_level": "Low to moderate; basic survey and audi"
+    }
+  ],
+  "fees": {
+    "footnote": "The figures below describe typical annual tuition in India for BA English and closely related English-honours courses. Government colleges are usually much lower than private colleges, and fees can shift each year with a",
+    "rows": [
+      {
+        "category": "Government college tuition",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": true,
+        "max": 28900,
+        "min": 7005,
+        "parent_check": "Public college fees are usually the best value, but admission cut-offs can be high and some colleges add exam or society"
+      },
+      {
+        "category": "Private college tuition",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": true,
+        "max": 147200,
+        "min": 34940,
+        "parent_check": "Private college tuition is typically much higher and may include annual fee rises, so families should check whether the"
+      },
+      {
+        "category": "Open university tuition",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": false,
+        "max": 3833,
+        "min": 3833,
+        "parent_check": "Open university fees are usually lower, but the learning format is different from a regular campus degree and may suit"
+      },
+      {
+        "category": "Government-aided college tuition",
+        "frequency": "Per year",
+        "institution_type": "government_aided",
+        "is_variable": true,
+        "max": 37400,
+        "min": 29437,
+        "parent_check": "Government-aided colleges can sit between public and private fee levels; verify whether the quoted amount is tuition"
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "Focus on reading habits, grammar, and writing practice in Classes 8-10. Build comfort with essays, summaries, speeches, and group discussion so Class 12 feels less sudden.",
+      "stage": "Grades 8-10",
+      "title": "Build the reading-and-writing习"
+    },
+    {
+      "description": "Choose Class 11-12 subjects carefully and keep strong English marks. Prepare for undergraduate admission tests used by Indian universities, including CUET UG where required by the college you want to join.",
+      "stage": "Grade 11",
+      "title": "Prepare for college entry"
+    },
+    {
+      "description": "Apply for BA English at colleges that suit your budget, commute, and teaching style. After graduation, decide whether to move into writing, media, publishing, communication, teaching, or postgraduate study; teaching and,",
+      "stage": "Grade 12",
+      "title": "Choose a path after BA English"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "BA English is a good fit for students who like reading, discussion, writing essays, and working with language. It suits students from any stream in Class 12.",
+      "question": "Who should consider BA English?"
+    },
+    {
+      "answer": "The usual duration is 3 years, and some colleges follow a 4-year structure under the current undergraduate framework.",
+      "question": "How long does BA English take?"
+    },
+    {
+      "answer": "Many colleges in India use CUET UG or their own admission process for undergraduate seats, so families should check the exact college requirement early.",
+      "question": "How do admissions usually work?"
+    },
+    {
+      "answer": "A BA English degree can lead to roles in content, communication, publishing, media, editing, and teaching support, and many students continue with postgraduate study before specialising further.",
+      "question": "What can students do after this course?"
+    },
+    {
+      "answer": "For college planning, the common fee range for this course in India is about INR 10000 to INR 50000 per year, depending on the institution.",
+      "question": "What is the typical fee range?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "BA English suits a child who reads willingly, writes with care, and can explain ideas in plain language. The course is usually discussion-based and essay-heavy, so the day-to-day work is less about memorising facts and more about close reading, writing, and speaking clearly. That makes it a good option for students from Arts, Commerce, or Science who enjoy language and want flexibility after Class 12. Families should look at the college’s teaching quality, library access, class size, and placement support, because outcomes vary widely by institution. It also helps to ask whether the college uses CUET UG or another admission route. After graduation, the next step may be work, a master’s degree, or a professional course depending on the student’s goals.",
+    "questions": [
+      "Does my child enjoy reading and writing enough for this course?",
+      "Which colleges are affordable and easy to commute to?",
+      "Does the target college require CUET UG or another entrance route?",
+      "Will a postgraduate degree be needed for the career the student wants?",
+      "How strong is the college’s English department and library support?",
+      "What kinds of internships or campus opportunities are available?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "National Testing Agency",
+        "title": "Notice Board Archive",
+        "url": "https://nta.ac.in/NoticeBoardArchive?_nlid=4avZ49BrRU&_nhids=MlgQuy9wvL"
+      },
+      {
+        "publisher": "National Testing Agency",
+        "title": "Notice on CUET PG and related admissions information",
+        "url": "https://nta.ac.in/Download/Notice/Notice_20260424201625.pdf"
+      },
+      {
+        "publisher": "University Grants Commission",
+        "title": "Public Notice: Stipendium Hungaricum Scholarship Programme",
+        "url": "https://www.ugc.gov.in/pdfnews/5130869_Public-Notice-Stipendium-Scholarship.pdf"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  }
+}

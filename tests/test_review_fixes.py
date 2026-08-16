@@ -9,7 +9,7 @@ from coursegen.generate import _chunks_for_paths, generate_course, merge_usage
 from coursegen.perplexity import ProviderOutputError
 from coursegen.prompts import build_repair_prompt, build_user_prompt
 
-from test_generate import COURSE_ID, COURSE_NAME, FakeClient, chunk_payload
+from test_generate import COURSE_CATEGORY, COURSE_ID, COURSE_NAME, FakeClient, chunk_payload
 
 
 def total_requests(result) -> int:
@@ -31,6 +31,7 @@ def test_unparseable_response_still_counts_as_a_billed_request(
     result = generate_course(
         course_id=COURSE_ID,
         course_name=COURSE_NAME,
+        category=COURSE_CATEGORY,
         client=FakeClient(responder),
         settings=settings,
     )
@@ -51,6 +52,7 @@ def test_validation_retries_are_counted(settings: Settings, demo_document: dict)
     result = generate_course(
         course_id=COURSE_ID,
         course_name=COURSE_NAME,
+        category=COURSE_CATEGORY,
         client=FakeClient(responder),
         settings=settings,
     )
@@ -74,6 +76,7 @@ def test_document_repair_keeps_the_earlier_rounds_usage(
     result = generate_course(
         course_id=COURSE_ID,
         course_name=COURSE_NAME,
+        category=COURSE_CATEGORY,
         client=FakeClient(responder),
         settings=settings,
     )
@@ -148,6 +151,7 @@ def test_settings_switch_reaches_the_prompt(settings: Settings, demo_document: d
     generate_course(
         course_id=COURSE_ID,
         course_name=COURSE_NAME,
+        category=COURSE_CATEGORY,
         client=FakeClient(responder),
         settings=dataclasses.replace(settings, include_schema_in_prompt=True),
     )
@@ -157,6 +161,7 @@ def test_settings_switch_reaches_the_prompt(settings: Settings, demo_document: d
     generate_course(
         course_id=COURSE_ID,
         course_name=COURSE_NAME,
+        category=COURSE_CATEGORY,
         client=FakeClient(responder),
         settings=settings,
     )

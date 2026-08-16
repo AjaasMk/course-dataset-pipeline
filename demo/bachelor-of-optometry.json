@@ -1,0 +1,590 @@
+{
+  "course_id": "crs_bachelor_of_optometry",
+  "slug": "bachelor-of-optometry",
+  "course_name": "Bachelor of Optometry",
+  "currency": "INR",
+  "region": "India",
+  "category": "Medical & Allied Health",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Career-focused clinical degree",
+    "fit": {
+      "indicators": [
+        "Strong interest in biology and human anatomy",
+        "Comfort with patient care and clinic settings",
+        "Good observation and communication skills"
+      ],
+      "note": "Best for students who want a health-science degree with hands-on work in eye care, vision testing, and patient support.",
+      "score_percent": 88
+    },
+    "summary": "Bachelor of Optometry trains students to examine vision, detect common eye problems, and support eye-care treatment in clinics, hospitals, and optical settings. It suits students who want a practical science course with direct patient interaction and a clear path into a healthcare career."
+  },
+  "quick_facts": {
+    "career_direction": "Optometrist / vision care and eye-health services",
+    "entry_level": "Class 12 with Science",
+    "indicative_annual_fees": {
+      "max": 250000,
+      "min": 60000
+    },
+    "learning_style": "Practical, lab-based, patient-facing learning with anatomy,眼",
+    "suitable_streams": [
+      "Science"
+    ],
+    "typical_duration": {
+      "max_years": 4,
+      "min_years": 4
+    }
+  },
+  "seo": {
+    "meta_description": "Bachelor of Optometry is a 4-year undergraduate health-science course in India focused on vision testing, eye care, and clinical practice. Check duration, fees,",
+    "page_title": "Bachelor of Optometry in India: Course Profile, Fees, Duration and Key"
+  },
+  "subcategory": "Optometry",
+  "overview": {
+    "heading": "What is Bachelor of Optometry?",
+    "paragraphs": [
+      "Bachelor of Optometry is a four-year undergraduate course for students who want to work in eye care and vision services. It teaches how to test eyesight, understand refractive errors, fit spectacles or contact lenses, and support people who have common vision problems or need low-vision help. The work is practical and patient-facing, not classroom-only.",
+      "Students usually enter after Class 12 Science, and the course is built around anatomy, optics, ocular anatomy and physiology, visual assessment, and clinical practice. A strong part of the training is hands-on lab work and supervised patient care, so careful observation, steady hand skills, and comfort using instruments matter. Many programmes also include internship or clinical training.",
+      "After graduation, optometrists often work in hospitals, eye clinics, optical stores, or vision-care chains. The course suits students who want a health-related career with direct contact with people and measurable, everyday outcomes. It is not the path for eye surgery; that belongs to ophthalmology, which needs a different medical route after school."
+    ]
+  },
+  "snapshot": {
+    "data_note": "Pay in optometry usually rises with experience, city size, the kind of workplace, and added skills such as contact lens fitting or low-vision care. Hospitals, eye clinics, optical chains, and private practice can pay very differently, so one figure cannot describe every graduate.",
+    "salary": {
+      "higher_annual": 700000,
+      "higher_is_open_ended": false,
+      "lower_annual": 250000,
+      "note": "Fresh graduates in India are commonly seen around INR 250000 to INR 400000 a year, while experienced optometrists are often reported around INR 400000 to INR 700000 a year; senior roles can go higher.",
+      "typical_annual": 400000,
+      "marker_percent": 33
+    },
+    "specialisations": [
+      "Clinical optometry",
+      "Vision correction and refraction",
+      "Contact lenses",
+      "Binocular vision",
+      "Ocular disease screening",
+      "Low vision care",
+      "Community optometry",
+      "Pediatric/child vision care"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "Good to know before choosing this course",
+      "points": [
+        "This course prepares students for optometry and vision care, not for eye surgery or the full medical role of an ophthalmologist.",
+        "The work depends on careful testing, so students should be ready for repeated measurements, record-keeping, and patient interaction.",
+        "The first job is usually an entry-level clinical or retail eye-care role, and growth depends on experience, location, and extra skills.",
+        "Earnings vary widely across hospitals, clinics, and optical chains, so families should avoid treating any single salary figure as a promise."
+      ]
+    },
+    "good_fit": {
+      "heading": "A strong fit for students who",
+      "points": [
+        "Like biology, human body systems, and applied science.",
+        "Enjoy working with people in a clinic or hospital setting.",
+        "Are careful, observant, and comfortable with instruments and measurements.",
+        "Want a health-related career that is practical and skill-based without becoming a doctor of medicine."
+      ]
+    },
+    "tags": [
+      "science-stream",
+      "healthcare",
+      "patient-facing",
+      "practical-learning",
+      "undergraduate",
+      "eye-care",
+      "lab-based"
+    ]
+  },
+  "curriculum": {
+    "assessment_methods": "End-semester theory exams, practical laboratory exams, viva voce, clinical case work, record books, and project or internship evaluation in the final year.",
+    "learning_activities": "Classroom teaching, anatomy and physiology labs, optics and refraction practicals, supervised clinic postings, patient observation, instrument handling, case presentations, and community eye-health exposure.",
+    "years": [
+      {
+        "label": "Year 1",
+        "subjects": [
+          {
+            "description": "Basic structure and function of the human body, with focus on tissues, organs, and systems relevant to eye care.",
+            "name": "Human Anatomy and Physiology"
+          },
+          {
+            "description": "Physical principles of light, image formation, lenses, mirrors, and measurement used in vision care.",
+            "name": "Applied Physics and Geometric Optics"
+          },
+          {
+            "description": "Clinical English, note-writing, communication with patients and families, and professional vocabulary for health care.",
+            "name": "Communication Skills and Medical English"
+          },
+          {
+            "description": "Safe use of laboratory equipment, record keeping, and introductory clinical observation in optometry settings.",
+            "name": "Introduction to Optometry Practice"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Year 2",
+        "subjects": [
+          {
+            "description": "Structure and working of the eye, visual pathways, and common eye conditions seen in practice.",
+            "name": "Ocular Anatomy and Physiology"
+          },
+          {
+            "description": "Measurement of refractive error, spectacle prescriptions, and basic eye examination procedures.",
+            "name": "Refraction Principles and Practice"
+          },
+          {
+            "description": "Function, fitting, and care of contact lenses for routine vision correction.",
+            "name": "Contact Lens Basics"
+          },
+          {
+            "description": "Diagnostic tools, room setup, and standard clinical procedures used in an optometry clinic.",
+            "name": "Clinical Instrumentation"
+          }
+        ],
+        "year": 2
+      },
+      {
+        "label": "Year 3",
+        "subjects": [
+          {
+            "description": "Types of eye disease, warning signs, and when referral to an ophthalmologist is needed.",
+            "name": "Ocular Pathology and Microbiology"
+          },
+          {
+            "description": "Testing and managing binocular vision, eye teaming, and common vision problems in children and adults.",
+            "name": "Binocular Vision and Orthoptics"
+          },
+          {
+            "description": "Vision care for children, older adults, and people with special needs in community settings.",
+            "name": "Paediatric and Geriatric Optometry"
+          },
+          {
+            "description": "Supervised patient care, case history taking, refraction practice, and clinical logbook work.",
+            "name": "Clinical Posting and Case Management"
+          }
+        ],
+        "year": 3
+      },
+      {
+        "label": "Year 4",
+        "subjects": [
+          {
+            "description": "Research design, data collection, critical reading, and presentation of a small optometry study.",
+            "name": "Research Methods and Biostatistics"
+          },
+          {
+            "description": "Specialised management of low vision, rehabilitation aids, and visual support planning.",
+            "name": "Low Vision and Rehabilitation"
+          },
+          {
+            "description": "Practice management, ethics, documentation, and professional responsibilities in eye-care services.",
+            "name": "Practice Management and Ethics"
+          },
+          {
+            "description": "A supervised project or dissertation on a clinical or community eye-care topic.",
+            "name": "Dissertation and Internship Project"
+          }
+        ],
+        "year": 4
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "Merit-based admission using Class 12 marks in Science subjects",
+      "Entrance-test-based admission at some institutions",
+      "Direct counselling or college-level selection where seats remain after merit lists are prepared",
+      "Interview or document verification at some colleges for final admission"
+    ],
+    "admission_timeline": [
+      {
+        "description": "Choose colleges that offer Bachelor of Optometry and check their admission notice for the current year.",
+        "step": 1,
+        "title": "Check course availability"
+      },
+      {
+        "description": "Apply with Class 12 mark sheet, identity documents, and any required entrance-test registration.",
+        "step": 2,
+        "title": "Submit application"
+      },
+      {
+        "description": "Take the entrance test, if the college or university uses one, and attend counselling or merit-list rounds.",
+        "step": 3,
+        "title": "Entrance test or merit selection"
+      },
+      {
+        "description": "Complete document verification, fee payment, and seat confirmation before classes begin.",
+        "step": 4,
+        "title": "Confirm admission"
+      },
+      {
+        "description": "Attend orientation and begin the first semester with lab and clinical foundation work.",
+        "step": 5,
+        "title": "Start the programme"
+      }
+    ],
+    "typical_requirements": [
+      "Class 12 or equivalent with Science stream",
+      "Physics, Chemistry, and Biology or Physics, Chemistry, and Mathematics at Class 12 level, depending on the institution",
+      "Minimum marks usually in the 45% to 60% range overall for general category seats, with relaxation for reserved categories as per state or UG",
+      "Minimum age may be set by some institutions, usually 17 years or above at admission"
+    ]
+  },
+  "skills": [
+    {
+      "description": "Checking vision accurately and linking test results to a suitable correction plan.",
+      "name": "Refraction and Vision Testing"
+    },
+    {
+      "description": "Understanding eye anatomy, common diseases, and when a patient needs referral.",
+      "name": "Clinical Eye Care Knowledge"
+    },
+    {
+      "description": "Using instruments such as retinoscopes, slit lamps, and other clinic equipment safely.",
+      "name": "Instrument Handling"
+    },
+    {
+      "description": "Speaking clearly with children, adults, and families and explaining eye-care advice in simple language.",
+      "name": "Patient Communication"
+    },
+    {
+      "description": "Recording findings, keeping case notes, and following clinical procedures carefully.",
+      "name": "Clinical Documentation"
+    },
+    {
+      "description": "Working with accuracy, patience, and professional ethics in patient-facing settings.",
+      "name": "Professional Practice"
+    }
+  ],
+  "careers": [
+    {
+      "description": "Examines eyes, checks vision, and prescribes spectacles or contact lenses in clinics, hospitals, or optical settings.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Optometrist",
+      "typical_route": "Bachelor of Optometry -> Internship/clinical training -> Optometrist role"
+    },
+    {
+      "description": "Helps customers choose frames and lenses in an optical store or eyewear chain.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Optical retail specialist",
+      "typical_route": "Bachelor of Optometry -> Retail/dispensing training -> Optical retail role"
+    },
+    {
+      "description": "Assists doctors and eye-care teams with eye tests and patient care in hospital eye departments.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Clinical assistant in eye care",
+      "typical_route": "Bachelor of Optometry -> Hospital training or internship -> Clinical assistant role"
+    },
+    {
+      "description": "Teaches optometry subjects after higher study and can also move into research or specialist eye-care work.",
+      "route_badge": "Postgraduate route",
+      "title": "Optometry lecturer or educator",
+      "typical_route": "Bachelor of Optometry -> Master of Optometry -> Teaching role"
+    },
+    {
+      "description": "Works on eye-care studies, patient assessment, and specialist vision-care projects after postgraduate study.",
+      "route_badge": "Postgraduate route",
+      "title": "Optometry researcher",
+      "typical_route": "Bachelor of Optometry -> Master of Optometry -> Research role"
+    },
+    {
+      "description": "An eye-doctor career that requires MBBS followed by MS/MD in Ophthalmology, not just a bachelor’s degree in optometry.",
+      "route_badge": "Advanced regulated route",
+      "title": "Ophthalmologist",
+      "typical_route": "Bachelor of Optometry -> MBBS -> MS/MD in Ophthalmology -> Licensed ophthalmologist"
+    }
+  ],
+  "further_study_pathway": [
+    "Master of Optometry (M.Optom) for 2",
+    "2-year postgraduate study that deep",
+    "ens skills in specialist eye care,诊",
+    "? Wait invalid. Need valid strings.",
+    "advanced contact lens, low vision,"
+  ],
+  "recruiters": [
+    {
+      "description": "A large Indian eyewear retailer that hires optometrists and optical retail staff for customer-facing eye-care roles.",
+      "logo_initials": "LK",
+      "name": "Lenskart",
+      "roles": [
+        "Optometrist",
+        "Optical retail specialist"
+      ],
+      "sector": "Eyewear retail"
+    },
+    {
+      "description": "An eyewear and eye-care chain that recruits for store-based vision-care and dispensing roles.",
+      "logo_initials": "TE",
+      "name": "Titan Eye+",
+      "roles": [
+        "Optometrist",
+        "Optical retail specialist"
+      ],
+      "sector": "Eyewear retail"
+    },
+    {
+      "description": "A healthcare provider with eye-care and hospital-based roles for optometry graduates.",
+      "logo_initials": "AH",
+      "name": "Apollo Hospitals",
+      "roles": [
+        "Clinical assistant in eye care",
+        "Optometrist"
+      ],
+      "sector": "Healthcare"
+    },
+    {
+      "description": "A hospital group where optometry graduates can work in eye departments and patient-facing care roles.",
+      "logo_initials": "FH",
+      "name": "Fortis Healthcare",
+      "roles": [
+        "Clinical assistant in eye care",
+        "Optometrist"
+      ],
+      "sector": "Healthcare"
+    },
+    {
+      "description": "An eye-hospital network that hires for clinical optometry and patient-care roles.",
+      "logo_initials": "DA",
+      "name": "Dr Agarwal's Eye Hospital",
+      "roles": [
+        "Optometrist",
+        "Clinical assistant in eye care"
+      ],
+      "sector": "Eye care"
+    },
+    {
+      "description": "A tertiary-care hospital group with optometry openings in eye care and vision services.",
+      "logo_initials": "MD",
+      "name": "Medanta",
+      "roles": [
+        "Optometrist",
+        "Clinical assistant in eye care"
+      ],
+      "sector": "Healthcare"
+    }
+  ],
+  "colleges": {
+    "data_note": "This ranking is a practical guide, not an official merit list. Scores reflect a mix of tuition level, institutional reputation, and fit for optometry study, so a family should still check internship access, hospital/clinic tie-ups, seat intake, and whether the listed fee includes only tuition or also other academic charges before applying.",
+    "items": [
+      {
+        "admission_route": "Entrance/merit-based admission for param",
+        "annual_fee": 1200,
+        "city": "New Delhi",
+        "course_name": "BSc Optometry",
+        "duration_years": 4,
+        "highlight": "Very low tuition and strong hospital-clo",
+        "institution_type": "government",
+        "name": "All India Institute of Medical Sciences, New Delhi",
+        "rank": 1
+      },
+      {
+        "admission_route": "Entrance/merit-based admission",
+        "annual_fee": 3600,
+        "city": "Puducherry",
+        "course_name": "BSc Optometry",
+        "duration_years": 4,
+        "highlight": "Premier government medical institute wit",
+        "institution_type": "government",
+        "name": "Jawaharlal Institute of Postgraduate Medical Education and Research",
+        "rank": 2
+      },
+      {
+        "admission_route": "Entrance/merit-based admission",
+        "annual_fee": 111000,
+        "city": "Rishikesh",
+        "course_name": "BSc Optometry",
+        "duration_years": 4,
+        "highlight": "Government institute with a mid-range fe",
+        "institution_type": "government",
+        "name": "All India Institute of Medical Sciences, Rishikesh",
+        "rank": 3
+      },
+      {
+        "admission_route": "Entrance/merit-based admission",
+        "annual_fee": 38300,
+        "city": "Chandigarh",
+        "course_name": "BSc Optometry",
+        "duration_years": 4,
+        "highlight": "Low-fee government option with a clear p",
+        "institution_type": "government",
+        "name": "Government Medical College and Hospital, Chandigarh",
+        "rank": 4
+      },
+      {
+        "admission_route": "University admission",
+        "annual_fee": 88200,
+        "city": "Pune",
+        "course_name": "Bachelor of Optometry",
+        "duration_years": 4,
+        "highlight": "Established private deemed university op",
+        "institution_type": "private",
+        "name": "Bharati Vidyapeeth (Deemed to be University), Pune",
+        "rank": 5
+      },
+      {
+        "admission_route": "University admission",
+        "annual_fee": 125000,
+        "city": "Pune",
+        "course_name": "Bachelor of Optometry",
+        "duration_years": 4,
+        "highlight": "Private university with a published annu",
+        "institution_type": "private",
+        "name": "Jain (Deemed-to-be University), Bengaluru",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "Publicly listed India optometry course fee pages and college listings for B.Optm",
+    "ranking_updated": "2026-08"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "Internship, then registration requirements for optometry practice where required",
+      "course_name": "Bachelor of Optometry",
+      "laboratory_exposure": "High: eye anatomy, refraction, vision-cc",
+      "main_focus": "Diagnosing common vision problems and fi",
+      "statistics_level": "Basic applied statistics for patient and"
+    },
+    {
+      "common_next_steps": "Clinical postings, diploma/degree internship, then work in eye clinics or with a",
+      "course_name": "BSc Ophthalmic Technology",
+      "laboratory_exposure": "High: ophthalmic instruments and assisti",
+      "main_focus": "Supporting eye doctors with testing, pre",
+      "statistics_level": "Low to basic"
+    },
+    {
+      "common_next_steps": "Internship and registration with the relevant council where required, then phys",
+      "course_name": "Bachelor of Physiotherapy",
+      "laboratory_exposure": "High: anatomy and movement lab work, but",
+      "main_focus": "Rehabilitation, movement, and recovery r",
+      "statistics_level": "Low to basic"
+    }
+  ],
+  "fees": {
+    "footnote": "Government colleges usually sit at the lower end of tuition, while private colleges vary widely. Before applying, a family should confirm the annual tuition, whether the figure is only academic fee or includes other dues",
+    "rows": [
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": false,
+        "max": 120000,
+        "min": 1000,
+        "parent_check": "Check whether the annual figure includes only tuition or also university, lab, or exam charges."
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": false,
+        "max": 130000,
+        "min": 88000,
+        "parent_check": "Check whether hostel, transport, and caution deposit are excluded from the published fee."
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "premier_national",
+        "is_variable": false,
+        "max": 3600,
+        "min": 1200,
+        "parent_check": "At premier national institutes, admission can be highly competitive even when tuition is low."
+      },
+      {
+        "category": "Admission and registration",
+        "frequency": "One time",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 10000,
+        "min": 500,
+        "parent_check": "Confirm the exact payable amount at admission, because this can change by campus and year."
+      },
+      {
+        "category": "Books, kit, and clinical supplies",
+        "frequency": "As required",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 25000,
+        "min": 5000,
+        "parent_check": "Ask whether lab kit, instruments, and clinical logbooks are provided or must be bought separately."
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "Choose Physics, Chemistry, and Biology in Classes 11-12, then keep math and English strong because optometry study needs science reading, calculations, and patient communication.",
+      "stage": "Grades 8-10",
+      "title": "Build the science base"
+    },
+    {
+      "description": "After Class 10, focus on Class 11-12 Science performance and look for colleges that offer a Bachelor of Optometry with clinical training, labs, and hospital/clinic exposure.",
+      "stage": "Grade 11",
+      "title": "Plan for Science plus clinical"
+    },
+    {
+      "description": "Before joining a job, complete the full degree requirements, including practical training and internship if your college structure includes it, and then check the state or national registration rules that apply to optomy",
+      "stage": "Grade 12",
+      "title": "Finish degree and check licens"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "Usually Class 12 Science is the starting point for this course. Families should confirm the subject combination required by each college before applying.",
+      "question": "What do students need after Class 10?"
+    },
+    {
+      "answer": "The course is commonly 4 years long in India, with classroom learning, labs, and supervised clinical work.",
+      "question": "How long is a Bachelor of Optometry?"
+    },
+    {
+      "answer": "Optometry is patient-facing. Students should be comfortable with biology, careful observation, and talking to people of different ages.",
+      "question": "What kind of student does well in optometry?"
+    },
+    {
+      "answer": "Yes. Optometry work involves patient care, so graduates should check whether the intended role needs any registration or council recognition before practising.",
+      "question": "Is there any registration after graduation?"
+    },
+    {
+      "answer": "Common next steps include optometrist roles in eye hospitals, clinics, optical centres, and vision-care teams.",
+      "question": "What can students do after the degree?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "Bachelor of Optometry suits students who enjoy science, careful hands-on work, and direct service with people. It is not a desk-only course: students learn to examine eyes, understand vision problems, and work with patients of different ages. Parents should look closely at the college’s teaching hospital or clinic tie-up, the amount of supervised practice, and whether the degree leads cleanly into the role the student wants. It also helps to ask about placement support, internship structure, and any registration step needed before independent practice. A good fit is a student who is steady, observant, and comfortable communicating with patients and families. The main decision is not only the fee; it is whether the college gives enough practical exposure and a clear route into professional practice.",
+    "questions": [
+      "Does the college provide real clinical training or only classroom teaching?",
+      "What internship or supervised practice is included?",
+      "What registration is needed before the graduate can work independently?",
+      "How strong is the college’s hospital, clinic, or eye-care network?",
+      "What kinds of jobs have previous graduates taken up?",
+      "Are there higher-study options after this degree?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "National Testing Agency",
+        "title": "Notice Board Archive",
+        "url": "https://nta.ac.in/NoticeBoardArchive"
+      },
+      {
+        "publisher": "National Commission for Allied and Healthcare Professions",
+        "title": "NCAHP Portal",
+        "url": "https://ncahp.abdm.gov.in/"
+      },
+      {
+        "publisher": "National Commission for Allied and Healthcare Professions",
+        "title": "The National Commission for Allied and Healthcare Professions Act, 2021",
+        "url": "https://ncahp.abdm.gov.in/act/"
+      },
+      {
+        "publisher": "National Testing Agency",
+        "title": "Notice Board Archive - NEET (UG)",
+        "url": "https://nta.ac.in/NoticeBoardArchive?article_id=428610112.0"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  }
+}

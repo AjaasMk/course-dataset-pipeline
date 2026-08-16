@@ -1,0 +1,618 @@
+{
+  "course_id": "crs_b_arch",
+  "slug": "b-arch",
+  "course_name": "B.Arch",
+  "currency": "INR",
+  "region": "India",
+  "category": "Architecture, Design & Planning",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Student-friendly guide",
+    "fit": {
+      "indicators": [
+        "Strong interest in drawing, design and buildings",
+        "Comfort with mathematics and spatial thinking",
+        "Enjoys studio work, model-making and technical learning"
+      ],
+      "note": "A B.Arch suits students who want a design-led degree that combines creativity with technical knowledge about buildings,.",
+      "score_percent": 88
+    },
+    "summary": "B.Arch is a five-year undergraduate degree in architecture that leads toward professional practice in the built environment. In India, it is a regulated course under the Council of Architecture, so students usually need the required school subjects and a valid aptitude test before admission, and later registration is needed to practise as an architect."
+  },
+  "quick_facts": {
+    "career_direction": "Architecture and built-environment design",
+    "entry_level": "Class 12",
+    "indicative_annual_fees": {
+      "max": 300000,
+      "min": 75000
+    },
+    "learning_style": "Studio-based, design-heavy, with drawing, modelling, and a 5",
+    "suitable_streams": [
+      "Science",
+      "Commerce",
+      "Arts"
+    ],
+    "typical_duration": {
+      "max_years": 5,
+      "min_years": 5
+    }
+  },
+  "seo": {
+    "meta_description": "B.Arch in India is a five-year undergraduate architecture degree. Explore duration, entry requirements, fees, and career direction for students and parents.",
+    "page_title": "B.Arch Course in India: Duration, Fees, Eligibility and Career Path"
+  },
+  "subcategory": "Architecture",
+  "overview": {
+    "heading": "What is B.Arch?",
+    "paragraphs": [
+      "B.Arch is a five-year undergraduate degree for students who want to design buildings and other parts of the built environment. It mixes creative work with technical study, so students learn to turn ideas into plans, sections, models, and drawings that can be built in real life. The course usually involves studio work, assignments, site understanding, and regular critiques.",
+      "A student in B.Arch spends a lot of time drawing, making models, using design software, and thinking about how people will use spaces. The work is not only about how a building looks. It also covers structure, function, climate, materials, and how a design fits into a city or neighbourhood. That is why the course suits people who enjoy both art and problem-solving.",
+      "In India, a B.Arch degree leads toward the profession of architect, but graduation alone is not the final step for legal practice. A person must register with the Council of Architecture to use the title Architect and practise the profession, and that registration needs renewal. For families, the course makes sense when the student wants a design career that combines creativity, discipline, and long-term technical learning."
+    ]
+  },
+  "snapshot": {
+    "data_note": "Pay in architecture changes with portfolio quality, software skills, project type, city, employer size, and experience. Entry roles can start near the lower end of the range, while stronger firms, better credentials, and specialised work can raise earnings over time. Registration with the Council of Architecture is the",
+    "salary": {
+      "higher_annual": 700000,
+      "higher_is_open_ended": false,
+      "lower_annual": 250000,
+      "note": "Typical early-career pay in India is around INR 400000 a year, with many entry roles reported in the INR 300000 to INR 500000 band and some starting roles closer to INR 250000. Pay rises with stronger design portfolios, software skills, project responsibility, firm size, and experience. To work as an architect in India",
+      "typical_annual": 400000,
+      "marker_percent": 33
+    },
+    "specialisations": [
+      "Architectural design",
+      "Interior architecture",
+      "Urban design",
+      "Landscape architecture",
+      "BIM and digital design",
+      "Conservation architecture",
+      "Sustainable design",
+      "Project architecture"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "Things families should understand before choosing B.Arch",
+      "points": [
+        "This is a five-year studio-heavy degree, so the workload is steady and time-consuming rather than exam-only.",
+        "A good drawing ability helps, but it is not enough on its own; the course also needs patience with technical rules, materials, structure, a",
+        "Starting pay is often modest compared with the long training path, and earnings can differ a lot between firms and cities.",
+        "Graduation does not by itself make someone a practising architect in India; registration with the Council of Architecture is required for th"
+      ]
+    },
+    "good_fit": {
+      "heading": "B.Arch may suit a student who",
+      "points": [
+        "likes drawing, making models, and turning ideas into clear visual plans.",
+        "enjoys both creative work and technical problem-solving.",
+        "is comfortable revising work after feedback from teachers, clients, or studio juries.",
+        "can handle detail, deadlines, and long projects with many steps."
+      ]
+    },
+    "tags": [
+      "Design thinking",
+      "Technical drawing",
+      "Studio-based learning",
+      "Built-environment interest",
+      "Patience with detail",
+      "Long-term training",
+      "Site and city awareness"
+    ]
+  },
+  "curriculum": {
+    "assessment_methods": "Studio juries, design reviews, written exams, portfolio submission, model and drawing assessments, site study reports, and final thesis review are common in B.Arch programmes in India.",
+    "learning_activities": "Students usually spend time in design studios, drawing and drafting classes, model making, site visits, measurement exercises, computer-aided design work, group presentations, and internship or practical training linked to professional practice.",
+    "years": [
+      {
+        "label": "Year 1",
+        "subjects": [
+          {
+            "description": "Introductory design exercises focused on form, space, proportion, and basic architectural thinking.",
+            "name": "Basic Design Studio"
+          },
+          {
+            "description": "Freehand and technical drawing practice for communicating buildings and spaces.",
+            "name": "Architectural Drawing and Graphics"
+          },
+          {
+            "description": "Understanding materials used in buildings and how they behave in construction.",
+            "name": "Building Materials Foundations"
+          },
+          {
+            "description": "Introduction to the social role of architecture and the built environment in India.",
+            "name": "Built Environment Studies"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Year 2",
+        "subjects": [
+          {
+            "description": "Study of load paths, structural behaviour, and the first principles of building systems.",
+            "name": "Structural Mechanics I"
+          },
+          {
+            "description": "Reading and preparing site plans, surveys, and measured drawings.",
+            "name": "Surveying and Site Analysis"
+          },
+          {
+            "description": "Core methods for planning rooms, circulation, and functional relationships.",
+            "name": "Space Planning Workshop"
+          },
+          {
+            "description": "Climate, light, heat, and ventilation as factors in design.",
+            "name": "Environmental Studies for Buildings"
+          }
+        ],
+        "year": 2
+      },
+      {
+        "label": "Year 3",
+        "subjects": [
+          {
+            "description": "Detailed methods of walling, roofing, finishes, and construction sequencing.",
+            "name": "Building Construction Techniques"
+          },
+          {
+            "description": "How cities, neighbourhoods, and public spaces are organised and studied.",
+            "name": "Urban Studies"
+          },
+          {
+            "description": "Designing water supply, sanitation, electrical, and service requirements for buildings.",
+            "name": "Building Services Systems"
+          },
+          {
+            "description": "History of architecture in India and major world periods.",
+            "name": "Architectural History"
+          }
+        ],
+        "year": 3
+      },
+      {
+        "label": "Year 4",
+        "subjects": [
+          {
+            "description": "Larger and more complex design problems with stronger attention to function and context.",
+            "name": "Advanced Design Studio"
+          },
+          {
+            "description": "Energy-conscious planning, passive design, and climate-responsive solutions.",
+            "name": "Sustainable Design Strategies"
+          },
+          {
+            "description": "Professional responsibilities, contracts, office practice, and project delivery.",
+            "name": "Professional Practice and Ethics"
+          },
+          {
+            "description": "Methods for reading, framing, and documenting a design or built-environment question.",
+            "name": "Research Methods"
+          }
+        ],
+        "year": 4
+      },
+      {
+        "label": "Year 5",
+        "subjects": [
+          {
+            "description": "Independent major design project developed from concept to final presentation.",
+            "name": "Architectural Thesis Project"
+          },
+          {
+            "description": "Focused study in a chosen area such as housing, interiors, urban design, conservation, or landscape.",
+            "name": "Specialisation Studio"
+          },
+          {
+            "description": "A subject chosen from the institute's approved list to broaden skills and interests.",
+            "name": "Open Elective Seminar"
+          },
+          {
+            "description": "Practical work placement and reflection on real office and site processes.",
+            "name": "Professional Internship and Report"
+          }
+        ],
+        "year": 5
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "Qualifying in NATA conducted by the Council of Architecture or in JEE Main Paper 2, followed by the college or counselling process.",
+      "Merit-based admission using the qualifying aptitude-test score and class 12 or diploma eligibility.",
+      "Seat allocation through state, central, university, or institute counselling where applicable.",
+      "Completed 10+2 with Physics, Chemistry, and Mathematics, or a 10+3 diploma with Mathematics."
+    ],
+    "admission_timeline": [
+      {
+        "description": "Complete Class 12 with Physics, Chemistry, and Mathematics, or finish a 10+3 diploma with Mathematics.",
+        "step": 1,
+        "title": "Meet academic eligibility"
+      },
+      {
+        "description": "Register for and qualify the architecture aptitude test accepted for admission, such as NATA or JEE Main Paper 2.",
+        "step": 2,
+        "title": "Take the entrance test"
+      },
+      {
+        "description": "Apply to participating colleges and join the relevant counselling or institute selection process.",
+        "step": 3,
+        "title": "Apply for admission"
+      },
+      {
+        "description": "Confirm the allotted seat, submit documents, and pay the admission fee within the college schedule.",
+        "step": 4,
+        "title": "Complete enrolment"
+      },
+      {
+        "description": "Begin the five-year professional architecture programme after admission is confirmed.",
+        "step": 5,
+        "title": "Start the course"
+      }
+    ],
+    "typical_requirements": [
+      "Class 12 pass with Physics, Chemistry, and Mathematics, or a 10+3 diploma with Mathematics.",
+      "A qualifying score in NATA or JEE Main Paper 2 for admission to the architecture degree course.",
+      "Minimum marks and relaxation rules can vary by year and by institution within the national and state admission framework.",
+      "Architecture education in India is regulated by the Council of Architecture, which sets standards for eligibility, course content, and the B"
+    ]
+  },
+  "skills": [
+    {
+      "description": "Turning ideas into clear building layouts, forms, and spatial solutions.",
+      "name": "Design thinking"
+    },
+    {
+      "description": "Making hand sketches, technical drawings, and presentation sheets that others can read.",
+      "name": "Drawing and visual communication"
+    },
+    {
+      "description": "Understanding how buildings stand up, use materials, and respond to climate.",
+      "name": "Technical understanding"
+    },
+    {
+      "description": "Building small-scale and digital models to test and present ideas.",
+      "name": "Model making"
+    },
+    {
+      "description": "Reading sites, users, and context before starting a design.",
+      "name": "Observation and analysis"
+    },
+    {
+      "description": "Explaining design choices clearly in reviews, presentations, and reports.",
+      "name": "Communication"
+    }
+  ],
+  "careers": [
+    {
+      "description": "Work on building design, drawings, coordination, and site documentation under an architecture team.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Junior Architect",
+      "typical_route": "B.Arch -> Internship or entry-level studio experience -> Junior Architect"
+    },
+    {
+      "description": "Support design development, 2D and 3D drafting, presentation boards, and project coordination.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Architectural Assistant",
+      "typical_route": "B.Arch -> Internship -> Architectural Assistant"
+    },
+    {
+      "description": "After graduating, complete registration with the Council of Architecture before using the title and practising as an architect in India.",
+      "route_badge": "Advanced regulated route",
+      "title": "Architect",
+      "typical_route": "B.Arch -> COA registration -> Architect"
+    },
+    {
+      "description": "Take on city-scale planning and design work after additional postgraduate study.",
+      "route_badge": "Postgraduate route",
+      "title": "Urban Designer",
+      "typical_route": "B.Arch -> M.Arch / Master of Urban Design -> Urban Designer"
+    },
+    {
+      "description": "Move into teaching, research, or advanced design specialisation after higher study.",
+      "route_badge": "Higher study required",
+      "title": "Architecture Lecturer / Researcher",
+      "typical_route": "B.Arch -> M.Arch / PhD -> Teaching or research role"
+    },
+    {
+      "description": "Work with building interiors, furniture layout, and spatial planning in design consultancies.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Interior Designer",
+      "typical_route": "B.Arch -> Portfolio development -> Interior Designer"
+    }
+  ],
+  "further_study_pathway": [
+    "M.Arch",
+    "Master of Urban Design",
+    "Master of Landscape Architecture",
+    "Master of Construction Management",
+    "M.Plan (Urban and Regional Planning"
+  ],
+  "recruiters": [
+    {
+      "description": "India's statutory body for architectural registration and professional regulation; suitable for roles linked to architectural practice and administration.",
+      "logo_initials": "CO",
+      "name": "Council of Architecture",
+      "roles": [
+        "Architectural administration",
+        "Professional regulation"
+      ],
+      "sector": "Public regulatory body"
+    },
+    {
+      "description": "National professional body for architects in India; relevant for membership, events, practice networks, and professional development.",
+      "logo_initials": "II",
+      "name": "The Indian Institute of Architects",
+      "roles": [
+        "Professional support",
+        "Practice network"
+      ],
+      "sector": "Professional association"
+    },
+    {
+      "description": "Large Indian infrastructure and construction group that hires for building and project delivery work.",
+      "logo_initials": "LT",
+      "name": "Larsen & Toubro",
+      "roles": [
+        "Architectural coordination",
+        "Design support"
+      ],
+      "sector": "Infrastructure and construction"
+    },
+    {
+      "description": "Real estate developer with building projects across India that can hire architecture graduates for project coordination and design support.",
+      "logo_initials": "DL",
+      "name": "DLF Limited",
+      "roles": [
+        "Project coordination",
+        "Design management"
+      ],
+      "sector": "Real estate"
+    },
+    {
+      "description": "Global engineering and design consultancy with an India presence, suitable for architecture and built-environment roles.",
+      "logo_initials": "AE",
+      "name": "AECOM",
+      "roles": [
+        "Urban design support",
+        "Built-environment design"
+      ],
+      "sector": "Engineering and design consultancy"
+    },
+    {
+      "description": "Indian architecture and design practice that works on building projects and can hire B.Arch graduates.",
+      "logo_initials": "CH",
+      "name": "CP Kukreja Architects",
+      "roles": [
+        "Architectural assistant",
+        "Design support"
+      ],
+      "sector": "Architecture practice"
+    }
+  ],
+  "colleges": {
+    "data_note": "Ranks reflect overall architecture standing for 2025 and help compare institutions, but they do not guarantee the best fit for studio culture, location, affordability, or admission chances. Fees, hostel costs, and cut-offs can change each year, so families should verify the latest intake rules, entrance test requirements, and total tuition before applying.",
+    "items": [
+      {
+        "admission_route": "JEE Main Paper 2",
+        "annual_fee": 200000,
+        "city": "Roorkee",
+        "course_name": "B.Arch",
+        "duration_years": 5,
+        "highlight": "Top-ranked architecture institute in the",
+        "institution_type": "government",
+        "name": "Indian Institute of Technology Roorkee",
+        "rank": 1
+      },
+      {
+        "admission_route": "JEE Main Paper 2",
+        "annual_fee": 125000,
+        "city": "Kozhikode",
+        "course_name": "B.Arch",
+        "duration_years": 5,
+        "highlight": "Strong public option with lower tuition",
+        "institution_type": "government",
+        "name": "National Institute of Technology Calicut",
+        "rank": 2
+      },
+      {
+        "admission_route": "JEE Main Paper 2",
+        "annual_fee": 200000,
+        "city": "Kharagpur",
+        "course_name": "B.Arch",
+        "duration_years": 5,
+        "highlight": "Long-established IIT architecture school",
+        "institution_type": "government",
+        "name": "Indian Institute of Technology Kharagpur",
+        "rank": 3
+      },
+      {
+        "admission_route": "JEE Main Paper 2",
+        "annual_fee": 125000,
+        "city": "Kolkata",
+        "course_name": "B.Arch",
+        "duration_years": 5,
+        "highlight": "Well-known public engineering and design",
+        "institution_type": "government",
+        "name": "Indian Institute of Engineering Science and Technology, Shibpur",
+        "rank": 4
+      },
+      {
+        "admission_route": "NATA",
+        "annual_fee": 19325,
+        "city": "New Delhi",
+        "course_name": "B.Arch",
+        "duration_years": 5,
+        "highlight": "Affordable central university option",
+        "institution_type": "government",
+        "name": "Jamia Millia Islamia",
+        "rank": 5
+      },
+      {
+        "admission_route": "NATA",
+        "annual_fee": 455000,
+        "city": "Ahmedabad",
+        "course_name": "B.Arch",
+        "duration_years": 5,
+        "highlight": "Private university with a strong design",
+        "institution_type": "private",
+        "name": "Centre for Environmental Planning and Technology University",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "NIRF Architecture and Planning 2025 rankings as reported in 2025 coverage",
+    "ranking_updated": "2025-09"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "Council registration and architecture internship, then registration for practice",
+      "course_name": "B.Arch",
+      "laboratory_exposure": "High studio work, model-making, drawing,",
+      "main_focus": "Building design, planning, and construction-aware design thinking",
+      "statistics_level": "Low to moderate; enough for design data,"
+    },
+    {
+      "common_next_steps": "Engineering internships, GATE or higher studies, then project roles",
+      "course_name": "Civil Engineering",
+      "laboratory_exposure": "Moderate to high lab and site exposure",
+      "main_focus": "Structures, materials, transportation, and construction systems",
+      "statistics_level": "Moderate to high; used more for analysis"
+    },
+    {
+      "common_next_steps": "Entry-level design jobs, portfolio building, and specialised diploma or master's",
+      "course_name": "Interior Design",
+      "laboratory_exposure": "Moderate studio and material lab work",
+      "main_focus": "Interior spaces, furnishings, lighting, and finishes",
+      "statistics_level": "Low; more design and presentation than"
+    }
+  ],
+  "fees": {
+    "footnote": "Tuition here shows the middle of the market in India for the full 5-year B.Arch route converted to an annual figure. Public institutes usually cost far less than private ones, while hostel, mess, drawing materials, site-",
+    "rows": [
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": false,
+        "max": 125000,
+        "min": 19325,
+        "parent_check": "Verify whether the quoted amount includes only tuition or also institute charges and semester fees."
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "premier_national",
+        "is_variable": false,
+        "max": 200000,
+        "min": 125000,
+        "parent_check": "Check whether fees change after any yearly revision, scholarship, or category-wise concession."
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": false,
+        "max": 455000,
+        "min": 300000,
+        "parent_check": "Check whether the fee is quoted for the full programme or for one year, and whether it excludes exam and lab charges."
+      },
+      {
+        "category": "Hostel and mess",
+        "frequency": "Per year",
+        "institution_type": null,
+        "is_variable": true,
+        "max": null,
+        "min": null,
+        "parent_check": "Confirm hostel, mess, and refundable security deposit separately because they are often billed outside tuition."
+      },
+      {
+        "category": "Books, drawing materials, and model work",
+        "frequency": "As required",
+        "institution_type": null,
+        "is_variable": true,
+        "max": null,
+        "min": null,
+        "parent_check": "Budget separately for sheets, printing, art materials, and model-making items, which rise in studio-heavy terms."
+      },
+      {
+        "category": "Application and admission",
+        "frequency": "One time",
+        "institution_type": null,
+        "is_variable": true,
+        "max": null,
+        "min": null,
+        "parent_check": "Check entrance-test, counselling, and admission-processing charges before paying any seat acceptance fee."
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "Build drawing habits now: sketch daily, practise spatial reasoning, and keep a portfolio of class projects, models, and design ideas.",
+      "stage": "Grades 8-10",
+      "title": "Start visual thinking early"
+    },
+    {
+      "description": "Choose subjects that support architecture study, especially Mathematics, and strengthen computer skills, observation, and presentation work.",
+      "stage": "Grades 8-10",
+      "title": "Keep academics and drawing in"
+    },
+    {
+      "description": "Look at architecture as a 5-year undergraduate degree and learn how studio work, design reviews, and site-related learning fit together.",
+      "stage": "Grade 11",
+      "title": "Understand the course format"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "B.Arch is a 5-year undergraduate degree in architecture in India. The course is designed around studio work, design learning, and built-environment thinking.",
+      "question": "How long is B.Arch?"
+    },
+    {
+      "answer": "The Council of Architecture regulates architectural education in India under the Architects Act, 1972, and the minimum standards for B.Arch.",
+      "question": "Who oversees B.Arch in India?"
+    },
+    {
+      "answer": "A person who wants to practise as an architect must register with the Council of Architecture and hold a valid Certificate of Registration.",
+      "question": "Can someone work as an architect right after B.Arch?"
+    },
+    {
+      "answer": "No. Graduation is only the academic step. To use the title architect and practise professionally in India, registration with the Council of Architecture is required.",
+      "question": "What comes after the degree if the goal is to become an architect?"
+    },
+    {
+      "answer": "B.Arch is commonly open to students from different school streams, but individual colleges may have their own admission rules and subject requirements.",
+      "question": "Which school stream is best for B.Arch?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "B.Arch suits students who like drawing, design, and thinking about how buildings shape daily life. In India, it is a 5-year undergraduate degree, and the field is regulated by the Council of Architecture under the Architects Act, 1972. Families should separate two steps: earning the degree and qualifying to practise. A student can complete B.Arch, but to use the title architect and work professionally, registration with the Council of Architecture is required. That makes the course both creative and regulated. The work style is studio-heavy, so steady effort matters more than last-minute study. Parents can help by checking whether the student enjoys sketching, model-making, careful observation, and long projects, not only exams. It also helps to confirm the admission rules of each college early, because institutions may differ in entry requirements.",
+    "questions": [
+      "Does my child need to be very strong in drawing before joining B.Arch?",
+      "Is B.Arch a degree first, and then separate registration for practice?",
+      "What kind of day-to-day work does an architecture student do?",
+      "How should we compare colleges if admission rules are different?",
+      "What signs show that this course suits a student?",
+      "What is the next step after completing B.Arch?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "Council of Architecture",
+        "title": "Council of Architecture",
+        "url": "https://coa.gov.in/index1.php?lang=1&level=0&linkid=13&lid=14"
+      },
+      {
+        "publisher": "Council of Architecture",
+        "title": "Architectural Education",
+        "url": "https://coa.gov.in/index1.php?lang=1&level=0&linkid=7&lid=11&key=education"
+      },
+      {
+        "publisher": "Council of Architecture",
+        "title": "Registration As an Architect",
+        "url": "https://coa.gov.in/index1.php?lang=1&level=1&sublinkid=926&lid=814"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  }
+}

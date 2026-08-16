@@ -1,0 +1,586 @@
+{
+  "course_id": "crs_b_sc_agriculture",
+  "slug": "b-sc-agriculture",
+  "course_name": "B.Sc Agriculture",
+  "currency": "INR",
+  "region": "India",
+  "category": "Agriculture & Veterinary",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Fieldwork-heavy degree",
+    "fit": {
+      "indicators": [
+        "Class 12 with science or agriculture subjects",
+        "Interest in plants, soils, farming systems and food production",
+        "Comfort with laboratory work, field visits and practical training"
+      ],
+      "note": "Good fit for students who like applied science and want work connected to crops, farms, agribusiness, research, or rural",
+      "score_percent": 84
+    },
+    "summary": "B.Sc Agriculture is an undergraduate degree that teaches crop production, soil science, plant protection, farm management, and related agricultural science. It suits students who want a practical science course with fieldwork, lab work, and career options in farming, agribusiness, advisory services, research support, and government or private sector roles."
+  },
+  "quick_facts": {
+    "career_direction": "Agriculture, agribusiness, farm management, seed and fertiliser firms,",
+    "entry_level": "Class 12",
+    "indicative_annual_fees": {
+      "max": 150000,
+      "min": 30000
+    },
+    "learning_style": "Practical, field-based, and lab-oriented, with science and a",
+    "suitable_streams": [
+      "Science",
+      "Agriculture"
+    ],
+    "typical_duration": {
+      "max_years": 4,
+      "min_years": 3
+    }
+  },
+  "seo": {
+    "meta_description": "B.Sc Agriculture in India is an undergraduate degree in crop production, soil science, plant protection, and farm management. Explore duration, fees, entry, and",
+    "page_title": "B.Sc Agriculture Course in India: Duration, Fees, Career Scope and Key"
+  },
+  "subcategory": "Agriculture",
+  "overview": {
+    "heading": "What is B.Sc Agriculture?",
+    "paragraphs": [
+      "B.Sc Agriculture is a four-year undergraduate degree that teaches how crops are grown, protected, and improved, along with soil science, plant breeding, agronomy, agricultural engineering, and farm management. It is usually a practical course with classes in laboratories, fields, and farms, not only in lecture rooms. In India, many programmes ask for Class 12 science or agriculture, and some require Physics, Chemistry, and Biology or related subjects.",
+      "The course connects science with real farm work and the wider food system. Students learn how seeds, fertilisers, irrigation, pests, machinery, storage, and marketing fit together. That makes the degree useful for work in farms, agri-business companies, seed and fertiliser firms, research support, banks, and rural development roles.",
+      "Earnings after graduation vary widely because the first job, location, and employer matter a lot. Entry-level private roles are often in the 3 to 5 LPA range, while broader published India salary ranges for agriculture careers run from about 1 to 10 LPA, with some roles paying more as experience grows. Many government posts also need a competitive exam after graduation, so the degree is only the starting point for those paths."
+    ]
+  },
+  "snapshot": {
+    "data_note": "Pay changes with job type, sector, state, and experience. Private company roles, bank roles, research support work, and government posts can start at different levels, and higher pay usually comes after proven field skills, specialization, or competitive-exam selection for public-sector jobs. One salary number",
+    "salary": {
+      "higher_annual": 1000000,
+      "higher_is_open_ended": false,
+      "lower_annual": 100000,
+      "note": "Typical first salaries in agriculture careers are often around 3 to 5 LPA, while published India ranges for agriculture jobs run roughly from 1 to 10 LPA. Freshers in support or field roles may start lower, and pay can rise with experience, responsibility, and entry into better-paying private, banking, research, or a",
+      "typical_annual": 400000,
+      "marker_percent": 33
+    },
+    "specialisations": [
+      "Agronomy",
+      "Plant breeding and genetics",
+      "Soil science",
+      "Horticulture",
+      "Plant protection",
+      "Agricultural engineering",
+      "Agricultural economics",
+      "Seed technology"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "When this course may feel harder than expected",
+      "points": [
+        "It is not a pure classroom degree; regular field visits, lab work, and practical farm tasks are part of the learning.",
+        "Many good public-sector roles are not automatic after graduation and may need a competitive exam, cutoff marks, and sometimes extra training",
+        "Work may involve rural postings, seasonal schedules, and weather-dependent results rather than fixed office routines.",
+        "The course is broader than farming alone; students who only want a computer-based business role may need to choose their electives and jobs"
+      ]
+    },
+    "good_fit": {
+      "heading": "This course suits students who",
+      "points": [
+        "like biology, chemistry, plants, and how food is produced from soil to market",
+        "are comfortable with outdoor practical work as well as experiments and reports",
+        "enjoy solving real-world problems such as pests, yield loss, irrigation, and soil health",
+        "want options in farm management, agri-business, quality control, research support, or government agriculture services"
+      ]
+    },
+    "tags": [
+      "Science",
+      "Field-based learning",
+      "Biology",
+      "Agriculture",
+      "Rural work",
+      "Government exams",
+      "Agri-business"
+    ]
+  },
+  "curriculum": {
+    "assessment_methods": "Internal tests, practical record work, field/laboratory performance, semester-end written exams, viva voce, and project or internship evaluation are common in B.Sc Agriculture programmes in India.",
+    "learning_activities": "Students usually spend time in classrooms, laboratories, experimental farms, nurseries, field visits, crop observation, practicals, and project or internship work tied to agriculture and allied sciences.",
+    "years": [
+      {
+        "label": "Year 1",
+        "subjects": [
+          {
+            "description": "Basic crop science, plant structure, and the foundation of field crop production.",
+            "name": "Fundamentals of Agronomy"
+          },
+          {
+            "description": "Plant cells, tissues, and the basics of crop improvement.",
+            "name": "Principles of Botany and Genetics"
+          },
+          {
+            "description": "Soil formation, soil properties, and nutrient basics for farming.",
+            "name": "Introductory Soil Science"
+          },
+          {
+            "description": "The role of agriculture in India, farming systems, and rural development.",
+            "name": "Agricultural Orientation and Rural Society"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Year 2",
+        "subjects": [
+          {
+            "description": "Fruit, vegetable, and ornamental crop production principles.",
+            "name": "Horticultural Crops"
+          },
+          {
+            "description": "Insects, pests, and safe crop protection methods.",
+            "name": "Agricultural Entomology"
+          },
+          {
+            "description": "Plant diseases, their causes, and basic disease management.",
+            "name": "Plant Pathology"
+          },
+          {
+            "description": "Irrigation methods, drainage, and water management on farms.",
+            "name": "Farm Irrigation and Water Use"
+          }
+        ],
+        "year": 2
+      },
+      {
+        "label": "Year 3",
+        "subjects": [
+          {
+            "description": "Crop breeding methods, seed development, and varietal improvement.",
+            "name": "Plant Breeding and Seed Technology"
+          },
+          {
+            "description": "Farm power, machinery, and equipment used in crop production.",
+            "name": "Farm Machinery and Power"
+          },
+          {
+            "description": "Farm accounts, price concepts, and market basics for agriculture.",
+            "name": "Agricultural Economics and Marketing"
+          },
+          {
+            "description": "Communication methods, extension approaches, and farmer training.",
+            "name": "Agricultural Extension Methods"
+          }
+        ],
+        "year": 3
+      },
+      {
+        "label": "Year 4",
+        "subjects": [
+          {
+            "description": "Advanced crop production, local specialisation choices, and applied field management.",
+            "name": "Advanced Specialisation in Crop Production"
+          },
+          {
+            "description": "Research planning, data handling, and report writing for agriculture.",
+            "name": "Research Methods and Statistics"
+          },
+          {
+            "description": "On-farm or institute-based practical training in real farming situations.",
+            "name": "Field Internship and Rural Experience"
+          },
+          {
+            "description": "Independent final project, dissertation, or major field study.",
+            "name": "Final Year Project and Viva Voce"
+          }
+        ],
+        "year": 4
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "ICAR CUET-UG based counselling for B.Sc. Agriculture seats in participating institutions",
+      "State university or university-level agriculture entrance examination where applicable",
+      "Admission through merit in the qualifying examination, where a university’s own rules allow it",
+      "Counselling and college preference selection after rank-based allotment"
+    ],
+    "admission_timeline": [
+      {
+        "description": "Complete Class 12 or equivalent from a recognised board with science subjects before applying.",
+        "step": 1,
+        "title": "Finish qualifying examination"
+      },
+      {
+        "description": "Apply for the relevant agriculture entrance test or university admission portal.",
+        "step": 2,
+        "title": "Submit application"
+      },
+      {
+        "description": "Take the entrance examination, where required, using the subject combination asked by the admitting body.",
+        "step": 3,
+        "title": "Appear for exam"
+      },
+      {
+        "description": "Join counselling, submit college preferences, and wait for seat allotment.",
+        "step": 4,
+        "title": "Counselling and seat allocation"
+      },
+      {
+        "description": "Report to the allotted college, verify documents, and pay admission fees.",
+        "step": 5,
+        "title": "Document verification and admission"
+      }
+    ],
+    "typical_requirements": [
+      "Class 12 or equivalent from a recognised board",
+      "Physics, Chemistry, Biology, Mathematics, Agriculture, or a suitable science combination at 10+2 level, depending on the admitting body",
+      "A mainstream minimum of about 50% marks in Class 12 for general category applicants, with a lower range around 40% to 45% for reserved or Pw",
+      "Candidates must meet age, subject, and domicile rules set by the admitting university or state, where applicable"
+    ]
+  },
+  "skills": [
+    {
+      "description": "Understanding of crop growth, soil needs, and seasonal farming practices.",
+      "name": "Crop and soil management"
+    },
+    {
+      "description": "Ability to observe pests, diseases, and plant stress in the field.",
+      "name": "Field diagnosis"
+    },
+    {
+      "description": "Basic handling of laboratory and farm tools used in agriculture study.",
+      "name": "Practical laboratory work"
+    },
+    {
+      "description": "Recording observations, analysing results, and writing project reports.",
+      "name": "Data collection and reporting"
+    },
+    {
+      "description": "Communicating farm advice clearly to farmers and rural communities.",
+      "name": "Extension communication"
+    },
+    {
+      "description": "Using teamwork and planning skills during farm, nursery, and internship work.",
+      "name": "Field teamwork"
+    }
+  ],
+  "careers": [
+    {
+      "description": "Works on crop production, soil, and farm advisory roles in private companies, farms, and agri-input businesses. Common entry roles include agronomist, farm/soil",
+      "route_badge": "Possible after bachelor's",
+      "title": "Agronomist / Farm Manager",
+      "typical_route": "B.Sc Agriculture -> Entry-level field or farm role"
+    },
+    {
+      "description": "Supports sales, field trials, and farmer guidance for seeds, fertilisers, pesticides, and related products. Common entry roles include field officer, assistant",
+      "route_badge": "Possible after bachelor's",
+      "title": "Agricultural Field Officer / Field Officer",
+      "typical_route": "B.Sc Agriculture -> Company field role or bank/agri-finance role"
+    },
+    {
+      "description": "Helps with agricultural lending, rural credit, and crop-linked finance in banks and rural financial institutions.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Agriculture Finance / Credit Officer",
+      "typical_route": "B.Sc Agriculture -> Bank recruitment or agri-finance role"
+    },
+    {
+      "description": "Works in seed production, grading, quality checks, and crop improvement support for seed companies.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Seed Technologist / Seed Quality Officer",
+      "typical_route": "B.Sc Agriculture -> Seed company or quality-control role"
+    },
+    {
+      "description": "May work in food safety, processing, or quality roles in food companies and allied industries.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Food Technologist / Quality Role",
+      "typical_route": "B.Sc Agriculture -> Food or quality-control job"
+    },
+    {
+      "description": "Works in extension and field services for state agriculture departments and related public-sector posts. Many posts are filled through state recruitment exams.",
+      "route_badge": "Advanced regulated route",
+      "title": "Agriculture Officer / Agriculture Extension Role",
+      "typical_route": "B.Sc Agriculture -> State recruitment exam -> Department posting"
+    }
+  ],
+  "further_study_pathway": [
+    "M.Sc Agriculture in specialisations",
+    "Specialisations such as Agronomy, H",
+    "orticulture, Plant Pathology, Soil",
+    "Science, Agricultural Economics,",
+    "or Agricultural Biotechnology"
+  ],
+  "recruiters": [
+    {
+      "description": "Central government food and storage organisation that hires for allied and management roles relevant to agriculture graduates.",
+      "logo_initials": "FC",
+      "name": "Food Corporation of India",
+      "roles": [
+        "Managerial roles",
+        "agri-linked operations roles"
+      ],
+      "sector": "Government food and storage"
+    },
+    {
+      "description": "National seed company with roles connected to seed production, quality, and agri-input work.",
+      "logo_initials": "NS",
+      "name": "National Seeds Corporation",
+      "roles": [
+        "Seed quality roles",
+        "production and field roles"
+      ],
+      "sector": "Seeds and agri-inputs"
+    },
+    {
+      "description": "Farmers' cooperative involved in fertiliser and agri-input distribution.",
+      "logo_initials": "IF",
+      "name": "IFFCO",
+      "roles": [
+        "Field officer roles",
+        "agri-input sales and support"
+      ],
+      "sector": "Fertilisers and agri-inputs"
+    },
+    {
+      "description": "Cooperative organisation with fertiliser and rural-agri business operations.",
+      "logo_initials": "KR",
+      "name": "KRIBHCO",
+      "roles": [
+        "Field roles",
+        "agri-business support"
+      ],
+      "sector": "Fertilisers and agri-inputs"
+    },
+    {
+      "description": "Large agribusiness company with roles in field support, crop advisory, and agri-marketing.",
+      "logo_initials": "IT",
+      "name": "ITC Limited",
+      "roles": [
+        "Field officer roles",
+        "agri-supply chain roles"
+      ],
+      "sector": "Agribusiness and food"
+    },
+    {
+      "description": "Major crop protection and farm solutions company hiring agriculture graduates for technical and field work.",
+      "logo_initials": "UP",
+      "name": "UPL Limited",
+      "roles": [
+        "Technical sales roles",
+        "field agronomy roles"
+      ],
+      "sector": "Crop protection and agri-inputs"
+    }
+  ],
+  "colleges": {
+    "data_note": "Ranks reflect a practical mix of programme reputation, breadth of agricultural training, and fee level. A rank does not predict campus fit, local language support, hostel availability, or the exact specialisations offered in a given year, so families should still check the current syllabus, eligibility rules, and total costs before applying.",
+    "items": [
+      {
+        "admission_route": "Class 12 merit or entrance, depending on",
+        "annual_fee": 85180,
+        "city": "Ludhiana",
+        "course_name": "B.Sc Agriculture",
+        "duration_years": 4,
+        "highlight": "Strong public agricultural university; a",
+        "institution_type": "government",
+        "name": "Punjab Agricultural University",
+        "rank": 1
+      },
+      {
+        "admission_route": "Class 12 merit or entrance, depending on",
+        "annual_fee": 120325,
+        "city": "Coimbatore",
+        "course_name": "B.Sc Agriculture",
+        "duration_years": 4,
+        "highlight": "Large state agricultural university with",
+        "institution_type": "government",
+        "name": "Tamil Nadu Agricultural University",
+        "rank": 2
+      },
+      {
+        "admission_route": "Class 12 merit or entrance, depending on",
+        "annual_fee": 56613,
+        "city": "Pantnagar",
+        "course_name": "B.Sc Agriculture",
+        "duration_years": 4,
+        "highlight": "Well-known agricultural university; fee",
+        "institution_type": "government",
+        "name": "Govind Ballabh Pant University of Agriculture and Technology",
+        "rank": 3
+      },
+      {
+        "admission_route": "Class 12 merit or entrance, depending on",
+        "annual_fee": 46238,
+        "city": "Guntur",
+        "course_name": "B.Sc Agriculture",
+        "duration_years": 4,
+        "highlight": "State agricultural university with a",
+        "institution_type": "government",
+        "name": "Acharya N.G. Ranga Agricultural University",
+        "rank": 4
+      },
+      {
+        "admission_route": "Class 12 merit or entrance, depending on",
+        "annual_fee": 112000,
+        "city": "Prayagraj",
+        "course_name": "B.Sc Agriculture",
+        "duration_years": 4,
+        "highlight": "Private university with a dedicated",
+        "institution_type": "private",
+        "name": "Sam Higginbottom University of Agriculture, Technology and Sciences",
+        "rank": 5
+      },
+      {
+        "admission_route": "Class 12 merit or entrance, depending on",
+        "annual_fee": 122000,
+        "city": "Nashik",
+        "course_name": "B.Sc Agriculture",
+        "duration_years": 4,
+        "highlight": "Private agriculture-focused group with",
+        "institution_type": "private",
+        "name": "K.K. Wagh Agriculture and Agriculture Allied Colleges",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "Collegedunia B.Sc (Agriculture) colleges in India ranking and fee listings, with",
+    "ranking_updated": "2026-08"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "Apply for MSc Agriculture, MBA Agribusiness, seed technology, soil science, or",
+      "course_name": "B.Sc Agriculture",
+      "laboratory_exposure": "High: crop science, soil, plant breeding",
+      "main_focus": "Crop production, soil health, farm systems, and agriculture technology",
+      "statistics_level": "Basic statistics for field trials, yield"
+    },
+    {
+      "common_next_steps": "MSc Horticulture, nursery and landscape roles, protected cultivation, post-har",
+      "course_name": "B.Sc Horticulture",
+      "laboratory_exposure": "High: plant propagation, nursery work,",
+      "main_focus": "Fruits, vegetables, flowers, and landscape crop management",
+      "statistics_level": "Basic statistics for trials, grading,"
+    },
+    {
+      "common_next_steps": "MSc Forestry, forest management, wildlife support roles, conservation work, or",
+      "course_name": "B.Sc Forestry",
+      "laboratory_exposure": "Moderate to high: tree nursery, ecology,",
+      "main_focus": "Forest ecosystems, tree biology, conservation, and resource management",
+      "statistics_level": "Moderate statistics for ecology surveys,"
+    }
+  ],
+  "fees": {
+    "footnote": "Tuition can change by university, category, and hostel choice, and many colleges add lab, exam, and one-time admission charges. Families should confirm the current semester-wise fee, any refund rules, and whether the fee",
+    "rows": [
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": true,
+        "max": 120325,
+        "min": 46238,
+        "parent_check": "Government university tuition for B.Sc Agriculture often falls in this range, with some well-known agricultural"
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": true,
+        "max": 122000,
+        "min": 62000,
+        "parent_check": "Private university tuition for B.Sc Agriculture commonly sits in this range, though some campuses charge more when host"
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "premier_national",
+        "is_variable": true,
+        "max": 120325,
+        "min": 46238,
+        "parent_check": "For highly ranked public agricultural universities with national visibility, tuition commonly sits in this range;"
+      },
+      {
+        "category": "Registration or admission",
+        "frequency": "One time",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 15000,
+        "min": 1000,
+        "parent_check": "Application, counselling, and admission charges vary widely and may be separate from tuition."
+      },
+      {
+        "category": "Hostel and mess",
+        "frequency": "Per year",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 90000,
+        "min": 30000,
+        "parent_check": "Hostel and food costs vary by city, room type, and meal plan, and are usually charged separately from tuition."
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "Use school years to build a strong base in Biology, Chemistry, Physics and Mathematics, and get used to practical work outdoors and in a lab. B.Sc. Agriculture admission in India begins after Class 12 or an equivalent 10",
+      "stage": "Grades 8-10",
+      "title": "Build your science base"
+    },
+    {
+      "description": "Keep Science subjects strong and learn about crops, soils, water, livestock and farm inputs. For the ICAR undergraduate entrance route, students may come from PCB, PCM, PCA or ABC subject combinations after 10+2.",
+      "stage": "Grade 11",
+      "title": "Choose subjects with care"
+    },
+    {
+      "description": "In Class 12, prepare for the university or ICAR-UG admission route, then apply only to recognised agricultural universities and colleges listed in the official accredited institutions list.",
+      "stage": "Grade 12",
+      "title": "Apply for approved colleges"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "B.Sc. Agriculture in India is an undergraduate degree taken after Class 12 or an equivalent 10+2 qualification from a recognised board.",
+      "question": "What is the basic eligibility for B.Sc. Agriculture?"
+    },
+    {
+      "answer": "The ICAR undergraduate admission route accepts students who studied PCB, PCM, PCA or ABC in Class 12, so students should check subject requirements for each university before applying.",
+      "question": "Which school subjects are useful for admission?"
+    },
+    {
+      "answer": "The course is designed around practical agricultural learning; ICAR also runs field-linked training for B.Sc. Agriculture students in later semesters, which shows the importance of hands-on work in this field.",
+      "question": "Is B.Sc. Agriculture mostly classroom-based?"
+    },
+    {
+      "answer": "Admission should be limited to accredited agricultural universities and colleges, because the official ICAR list tracks approved institutions and programmes.",
+      "question": "How do we check if a college is recognised?"
+    },
+    {
+      "answer": "The next step after graduation is usually entry-level work in farming, agribusiness, seed and fertiliser firms, or further study; there is no separate professional licence mentioned for the degree itself in the official admission material.",
+      "question": "Do graduates need a licence before working?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "B.Sc. Agriculture suits students who enjoy science, practical work and learning how crops, soils and farm systems work together. The admission route in India starts after Class 12 or an equivalent 10+2 qualification, and the ICAR undergraduate pathway accepts several science subject combinations, including PCB, PCM, PCA and ABC. Families should also check whether a college appears in the official accredited list of agricultural universities and colleges before applying. The course is not only about farming; it can lead into agribusiness, seed and fertiliser companies, and farm management roles. For parents, the main questions are usually about whether the student likes fieldwork, can handle lab work, and is willing to study science consistently through higher secondary school.",
+    "questions": [
+      "Does my child actually enjoy practical, outdoor and lab-based work?",
+      "Are the Class 11 and Class 12 subject choices suitable for the admission route?",
+      "Is the college on the official accredited list for agricultural programmes?",
+      "What kinds of jobs or further studies can follow the degree?",
+      "Will the student be comfortable with regular field visits and applied science?",
+      "Does this course match the family’s budget and distance preferences?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "Indian Council of Agricultural Research (ICAR)",
+        "title": "Public Notice and Information Bulletin CUET (ICAR-UG) 2026",
+        "url": "https://icar.org.in/en/public-notice-and-information-bulletin-cuet-icar-ug-2026"
+      },
+      {
+        "publisher": "Indian Council of Agricultural Research (ICAR)",
+        "title": "Online process for Entrance Examination for Agriculture and Allied Subjects",
+        "url": "https://www.icar.org.in/en/node/11234"
+      },
+      {
+        "publisher": "Indian Council of Agricultural Research (ICAR)",
+        "title": "Updated list of Accreditation Agricultural Universities, Colleges and their Programmes",
+        "url": "https://icar.org.in/en/updated-list-accreditation-agricultural-universitiescolleges-and-their-programs"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  }
+}

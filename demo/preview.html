@@ -1,0 +1,2389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course JSON preview</title>
+  <style>
+    :root {
+      --primary: #123f5a;
+      --primary-2: #1c6687;
+      --accent: #eeb64a;
+      --accent-soft: #fff3d3;
+      --green: #27725a;
+      --green-soft: #eaf6f1;
+      --blue-soft: #edf6fb;
+      --red-soft: #fff0ef;
+      --ink: #17202a;
+      --muted: #5c6975;
+      --line: #dce4ea;
+      --surface: #ffffff;
+      --canvas: #f5f8fa;
+      --shadow: 0 12px 34px rgba(18, 63, 90, 0.09);
+      --radius-lg: 22px;
+      --radius-md: 14px;
+      --radius-sm: 9px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 126px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--canvas);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .topbar {
+      background: #0b2e43;
+      color: #e9f3f8;
+      font-size: 0.84rem;
+    }
+
+    .topbar-inner,
+    .header-inner,
+    .page,
+    .tab-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding-left: 22px;
+      padding-right: 22px;
+    }
+
+    .topbar-inner {
+      min-height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .topbar a {
+      color: white;
+      font-weight: 700;
+    }
+
+    .site-header {
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+    }
+
+    .header-inner {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 850;
+      letter-spacing: -0.03em;
+      color: var(--primary);
+      font-size: 1.15rem;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(145deg, var(--primary), var(--primary-2));
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      box-shadow: 0 8px 20px rgba(18, 63, 90, .22);
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: .93rem;
+      font-weight: 700;
+      color: #394957;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 11px;
+      padding: 11px 16px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      color: white;
+      background: var(--primary);
+      box-shadow: 0 9px 20px rgba(18, 63, 90, .18);
+    }
+
+    .btn-secondary {
+      color: var(--primary);
+      background: white;
+      border: 1px solid #bbcad4;
+    }
+
+    .btn-accent {
+      color: #2f240e;
+      background: var(--accent);
+    }
+
+    .breadcrumbs {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 20px 22px 12px;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .breadcrumbs span {
+      color: #9aabb6;
+      margin: 0 7px;
+    }
+
+    .hero {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 8px 22px 24px;
+    }
+
+    .hero-card {
+      background:
+        radial-gradient(circle at 88% 14%, rgba(238, 182, 74, .22), transparent 22%),
+        linear-gradient(135deg, #10394f, #165d79);
+      color: white;
+      border-radius: 28px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 34px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-card::after {
+      content: "";
+      width: 250px;
+      height: 250px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 50%;
+      position: absolute;
+      right: -80px;
+      bottom: -120px;
+    }
+
+    .label-row,
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .eyebrow,
+    .chip {
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .01em;
+    }
+
+    .eyebrow {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.16);
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.55rem);
+      line-height: 1.05;
+      letter-spacing: -0.055em;
+      margin: 17px 0 13px;
+      max-width: 800px;
+    }
+
+    .hero-summary {
+      max-width: 760px;
+      color: #dcebf1;
+      font-size: 1.05rem;
+      margin: 0 0 23px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .hero .btn-secondary {
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.24);
+      color: white;
+    }
+
+    .fit-panel {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 20px;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+      align-self: stretch;
+    }
+
+    .fit-panel h2 {
+      font-size: 1.05rem;
+      margin: 0 0 5px;
+    }
+
+    .fit-panel p {
+      color: #d9e8ee;
+      font-size: .9rem;
+      margin: 0 0 20px;
+    }
+
+    .fit-score {
+      width: 132px;
+      height: 132px;
+      border-radius: 50%;
+      margin: 0 auto 18px;
+      background: conic-gradient(var(--accent) 0 76%, rgba(255,255,255,.18) 76% 100%);
+      display: grid;
+      place-items: center;
+    }
+
+    .fit-score::before {
+      content: "";
+      width: 102px;
+      height: 102px;
+      border-radius: 50%;
+      background: #16536e;
+      position: absolute;
+    }
+
+    .fit-score strong {
+      font-size: 1.8rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .fit-list {
+      display: grid;
+      gap: 9px;
+      font-size: .86rem;
+      color: #f2f8fa;
+    }
+
+    .fit-list span::before {
+      content: "✓";
+      color: var(--accent);
+      font-weight: 900;
+      margin-right: 8px;
+    }
+
+    .quick-grid {
+      max-width: var(--max);
+      margin: 0 auto 24px;
+      padding: 0 22px;
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .quick-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      min-height: 115px;
+      box-shadow: 0 6px 18px rgba(18, 63, 90, .04);
+    }
+
+    .quick-icon {
+      font-size: 1.15rem;
+      margin-bottom: 11px;
+    }
+
+    .quick-card small {
+      display: block;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .quick-card strong {
+      display: block;
+      color: var(--primary);
+      line-height: 1.35;
+    }
+
+    .section-tabs {
+      position: sticky;
+      top: 74px;
+      z-index: 40;
+      background: rgba(245, 248, 250, .96);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .tab-inner {
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+      gap: 4px;
+      padding-top: 9px;
+      padding-bottom: 9px;
+    }
+
+    .tab-inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-inner a {
+      padding: 9px 12px;
+      border-radius: 9px;
+      white-space: nowrap;
+      font-size: .88rem;
+      color: #50616d;
+      font-weight: 800;
+    }
+
+    .tab-inner a:hover {
+      background: white;
+      color: var(--primary);
+    }
+
+    .page {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 24px;
+      padding-top: 26px;
+      padding-bottom: 80px;
+    }
+
+    .main-column,
+    .sidebar {
+      min-width: 0;
+    }
+
+    .content-section {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      margin-bottom: 18px;
+      box-shadow: 0 7px 23px rgba(18, 63, 90, .045);
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 17px;
+    }
+
+    .section-heading h2 {
+      font-size: 1.45rem;
+      letter-spacing: -0.035em;
+      margin: 0;
+      color: var(--primary);
+    }
+
+    .section-heading p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .section-tag {
+      background: var(--blue-soft);
+      color: var(--primary-2);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: .75rem;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .info-box {
+      border-radius: var(--radius-md);
+      padding: 18px;
+      border: 1px solid var(--line);
+      background: #fbfdfe;
+    }
+
+    .info-box h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      color: var(--primary);
+    }
+
+    .info-box p,
+    .info-box ul {
+      margin: 0;
+      color: #455763;
+      font-size: .93rem;
+    }
+
+    .info-box ul {
+      padding-left: 18px;
+    }
+
+    .positive {
+      background: var(--green-soft);
+      border-color: #cde8dc;
+    }
+
+    .caution {
+      background: var(--red-soft);
+      border-color: #f2d4d0;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    .tags span {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: #f0f4f6;
+      color: #41535f;
+      font-size: .82rem;
+      font-weight: 750;
+      border: 1px solid #dde6eb;
+    }
+
+    .check-list {
+      display: grid;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .check-list li {
+      position: relative;
+      padding-left: 26px;
+    }
+
+    .check-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 9px;
+      margin-top: 18px;
+    }
+
+    .timeline-step {
+      position: relative;
+      background: #f7fafb;
+      border: 1px solid var(--line);
+      padding: 16px 13px;
+      border-radius: 13px;
+      min-height: 116px;
+    }
+
+    .timeline-step strong {
+      display: block;
+      color: var(--primary);
+      margin: 8px 0 4px;
+      font-size: .9rem;
+    }
+
+    .timeline-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .8rem;
+      line-height: 1.45;
+    }
+
+    .step-number {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: var(--primary);
+      color: white;
+      font-size: .75rem;
+      font-weight: 900;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 16px;
+    }
+
+    .tab-btn {
+      border: 1px solid var(--line);
+      color: #4b5e69;
+      background: #f6f9fa;
+      padding: 9px 12px;
+      border-radius: 9px;
+      font-weight: 800;
+      font-size: .86rem;
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    .subject-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .subject-card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+      background: #fbfdfe;
+    }
+
+    .subject-card strong {
+      display: block;
+      color: var(--primary);
+      font-size: .92rem;
+      margin-bottom: 4px;
+    }
+
+    .subject-card span {
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    .skill-grid,
+    .career-grid,
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .skill-card,
+    .career-card,
+    .roadmap-card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      background: #fbfdfe;
+    }
+
+    .skill-card h3,
+    .career-card h3,
+    .roadmap-card h3 {
+      color: var(--primary);
+      font-size: .98rem;
+      margin: 0 0 8px;
+    }
+
+    .skill-card p,
+    .career-card p,
+    .roadmap-card p {
+      color: var(--muted);
+      font-size: .85rem;
+      margin: 0;
+    }
+
+    .career-card .route {
+      display: block;
+      margin-top: 12px;
+      padding-top: 11px;
+      border-top: 1px dashed #cbd7de;
+      color: #344955;
+      font-size: .8rem;
+      font-weight: 750;
+    }
+
+    .route-badge {
+      display: inline-block;
+      margin-top: 10px;
+      background: var(--accent-soft);
+      color: #6b5118;
+      font-size: .74rem;
+      border-radius: 999px;
+      padding: 5px 8px;
+      font-weight: 850;
+    }
+
+    .pathway {
+      display: flex;
+      align-items: stretch;
+      overflow-x: auto;
+      gap: 8px;
+      padding-bottom: 7px;
+    }
+
+    .pathway-item {
+      min-width: 148px;
+      border-radius: 13px;
+      padding: 15px;
+      background: var(--blue-soft);
+      border: 1px solid #d8e9f1;
+      color: var(--primary);
+      font-weight: 850;
+      text-align: center;
+      display: grid;
+      place-items: center;
+      font-size: .88rem;
+    }
+
+    .pathway-arrow {
+      display: grid;
+      place-items: center;
+      color: #8195a2;
+      font-weight: 900;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 640px;
+      background: white;
+    }
+
+    th,
+    td {
+      padding: 13px 14px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+      font-size: .86rem;
+    }
+
+    th {
+      color: var(--primary);
+      background: #f1f6f8;
+      font-size: .8rem;
+      letter-spacing: .02em;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .parent-section {
+      background:
+        radial-gradient(circle at 100% 0, rgba(238, 182, 74, .2), transparent 27%),
+        #fffaf0;
+      border-color: #ead9b1;
+    }
+
+    .parent-questions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      counter-reset: parentq;
+    }
+
+    .parent-question {
+      counter-increment: parentq;
+      border: 1px solid #eadfca;
+      background: rgba(255,255,255,.78);
+      border-radius: 12px;
+      padding: 13px 14px;
+      font-weight: 750;
+      color: #4e4534;
+      font-size: .88rem;
+    }
+
+    .parent-question::before {
+      content: counter(parentq);
+      display: inline-grid;
+      place-items: center;
+      width: 25px;
+      height: 25px;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #37270d;
+      font-weight: 900;
+      margin-right: 8px;
+    }
+
+    .accordion {
+      display: grid;
+      gap: 9px;
+    }
+
+    .accordion-item {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .accordion-button {
+      width: 100%;
+      border: 0;
+      background: #fbfdfe;
+      padding: 15px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-align: left;
+      font-weight: 850;
+      color: #284351;
+    }
+
+    .accordion-button span:last-child {
+      font-size: 1.1rem;
+      color: var(--primary-2);
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 0 16px 15px;
+      color: var(--muted);
+      font-size: .9rem;
+      background: #fbfdfe;
+    }
+
+    .accordion-item.open .accordion-content {
+      display: block;
+    }
+
+    .source-box {
+      font-size: .86rem;
+      color: var(--muted);
+    }
+
+    .source-box strong {
+      color: var(--primary);
+    }
+
+    .sidebar {
+      align-self: start;
+      position: sticky;
+      top: 130px;
+    }
+
+    .side-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 14px;
+    }
+
+    .side-card h3 {
+      margin: 0 0 7px;
+      color: var(--primary);
+      font-size: 1.05rem;
+    }
+
+    .side-card p {
+      margin: 0 0 15px;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+
+    .side-card .btn {
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 10px;
+      margin: 14px 0 0;
+    }
+
+    .mini-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: .84rem;
+      color: #40545f;
+    }
+
+    .mini-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 9px;
+      background: var(--blue-soft);
+      color: var(--primary);
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      font-weight: 900;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: .78rem;
+      color: var(--muted);
+      font-weight: 750;
+      margin-bottom: 6px;
+    }
+
+    .progress {
+      height: 8px;
+      border-radius: 999px;
+      background: #e6edf1;
+      overflow: hidden;
+    }
+
+    .progress > span {
+      display: block;
+      height: 100%;
+      width: 58%;
+      background: var(--primary-2);
+      border-radius: inherit;
+    }
+
+    .mobile-bar {
+      display: none;
+    }
+
+    footer {
+      background: #0b2e43;
+      color: #d9e8ef;
+      padding: 35px 22px;
+      text-align: center;
+      font-size: .88rem;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+
+    /* Course snapshot */
+    .snapshot-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 16px;
+    }
+
+    .snapshot-panel {
+      border: 1px solid var(--line);
+      background: #fbfdfe;
+      border-radius: 16px;
+      padding: 19px;
+    }
+
+    .snapshot-panel h3 {
+      color: var(--primary);
+      margin: 0 0 5px;
+      font-size: 1.02rem;
+    }
+
+    .snapshot-panel > p {
+      color: var(--muted);
+      margin: 0 0 17px;
+      font-size: .84rem;
+    }
+
+    .salary-values {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 9px;
+      margin-bottom: 16px;
+    }
+
+    .salary-value {
+      border: 1px solid #dce6eb;
+      border-radius: 12px;
+      padding: 13px 10px;
+      background: white;
+      text-align: center;
+    }
+
+    .salary-value small {
+      display: block;
+      color: var(--muted);
+      font-weight: 750;
+      font-size: .73rem;
+      margin-bottom: 3px;
+    }
+
+    .salary-value strong {
+      display: block;
+      color: var(--primary);
+      font-size: 1.17rem;
+      line-height: 1.2;
+    }
+
+    .salary-value.featured {
+      border-color: #e6c875;
+      background: var(--accent-soft);
+    }
+
+    .salary-scale {
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #dcebf1 0%, #89bed1 52%, #1c6687 100%);
+      position: relative;
+      margin: 24px 10px 8px;
+    }
+
+    .salary-scale::before,
+    .salary-scale::after {
+      position: absolute;
+      top: 15px;
+      color: var(--muted);
+      font-size: .7rem;
+      font-weight: 750;
+    }
+
+    .salary-scale::before {
+      content: "Entry";
+      left: 0;
+      transform: translateX(-6px);
+    }
+
+    .salary-scale::after {
+      content: "Experienced / specialised";
+      right: 0;
+      transform: translateX(6px);
+    }
+
+    .salary-marker {
+      position: absolute;
+      left: 38%;
+      top: 50%;
+      width: 18px;
+      height: 18px;
+      border: 4px solid white;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 2px 9px rgba(18,63,90,.26);
+      transform: translate(-50%, -50%);
+    }
+
+    .specialisation-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px;
+    }
+
+    .specialisation-item {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 48px;
+      border: 1px solid #dce6eb;
+      background: white;
+      border-radius: 11px;
+      padding: 10px 11px;
+      color: #40545f;
+      font-size: .82rem;
+      font-weight: 760;
+    }
+
+    .specialisation-item span:first-child {
+      width: 27px;
+      height: 27px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: var(--blue-soft);
+      color: var(--primary);
+      flex: 0 0 auto;
+    }
+
+    .data-note {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      margin-top: 17px;
+      border-radius: 11px;
+      padding: 11px 13px;
+      background: #fff9e9;
+      border: 1px solid #efdfb7;
+      color: #685630;
+      font-size: .77rem;
+    }
+
+    /* Ranked college directory */
+    .college-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .college-filters {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .college-filter-btn {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 9px 13px;
+      background: #f6f9fa;
+      color: #4c5f6a;
+      font-size: .84rem;
+      font-weight: 850;
+    }
+
+    .college-filter-btn.active {
+      color: white;
+      border-color: var(--primary);
+      background: var(--primary);
+    }
+
+    .ranking-source {
+      color: var(--muted);
+      font-size: .76rem;
+      font-weight: 720;
+    }
+
+    .college-list {
+      display: grid;
+      gap: 11px;
+    }
+
+    .college-card {
+      display: grid;
+      grid-template-columns: 64px minmax(0, 1fr) auto;
+      gap: 15px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      padding: 16px;
+      background: #fbfdfe;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+
+    .college-card:hover {
+      transform: translateY(-1px);
+      border-color: #b9cad4;
+      box-shadow: 0 8px 22px rgba(18,63,90,.07);
+    }
+
+    .college-card[hidden] {
+      display: none;
+    }
+
+    .college-rank {
+      width: 52px;
+      height: 52px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: var(--primary);
+      color: white;
+      font-size: 1.12rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .college-rank small {
+      display: block;
+      font-size: .55rem;
+      opacity: .75;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 2px;
+    }
+
+    .college-main h3 {
+      margin: 0 0 4px;
+      color: var(--primary);
+      font-size: 1rem;
+    }
+
+    .college-main > p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .81rem;
+    }
+
+    .college-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 9px;
+    }
+
+    .college-meta span,
+    .institution-type {
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: #f0f4f6;
+      border: 1px solid #dde6eb;
+      color: #445762;
+      font-size: .7rem;
+      font-weight: 790;
+    }
+
+    .institution-type.gov {
+      background: var(--green-soft);
+      border-color: #cde8dc;
+      color: #26644f;
+    }
+
+    .institution-type.private {
+      background: var(--accent-soft);
+      border-color: #eddcae;
+      color: #70571f;
+    }
+
+    .college-actions {
+      min-width: 126px;
+      text-align: right;
+    }
+
+    .college-actions strong {
+      display: block;
+      color: var(--primary);
+      font-size: .82rem;
+      margin-bottom: 7px;
+    }
+
+    .college-actions .btn {
+      padding: 9px 12px;
+      font-size: .76rem;
+    }
+
+    /* Recruiters */
+    .recruiter-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 11px;
+    }
+
+    .recruiter-card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 15px;
+      background: #fbfdfe;
+      min-height: 150px;
+    }
+
+    .recruiter-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .recruiter-logo {
+      width: 41px;
+      height: 41px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(145deg, var(--primary), var(--primary-2));
+      font-weight: 900;
+      letter-spacing: -.03em;
+      flex: 0 0 auto;
+    }
+
+    .recruiter-card h3 {
+      margin: 0;
+      color: var(--primary);
+      font-size: .91rem;
+      line-height: 1.3;
+    }
+
+    .recruiter-sector {
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 700;
+    }
+
+    .recruiter-card p {
+      color: #4b5d68;
+      font-size: .8rem;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .recruiter-roles {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      margin-top: 11px;
+    }
+
+    .recruiter-roles span {
+      background: var(--blue-soft);
+      color: var(--primary-2);
+      border-radius: 999px;
+      padding: 4px 7px;
+      font-size: .67rem;
+      font-weight: 800;
+    }
+
+    @media (max-width: 1050px) {
+      .snapshot-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .recruiter-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .quick-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .page {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .sidebar {
+        position: static;
+      }
+
+      .skill-grid,
+      .career-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 820px) {
+      .main-nav {
+        display: none;
+      }
+
+      .hero-card {
+        grid-template-columns: 1fr;
+      }
+
+      .fit-panel {
+        display: grid;
+        grid-template-columns: 145px 1fr;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .fit-panel h2,
+      .fit-panel p {
+        grid-column: 1 / -1;
+      }
+
+      .timeline {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .roadmap-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .topbar-inner {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .topbar-inner span:last-child,
+      .header-actions .btn-secondary {
+        display: none;
+      }
+
+      .header-inner {
+        min-height: 64px;
+      }
+
+      .hero {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .hero-card {
+        padding: 24px 20px;
+        border-radius: 22px;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .fit-panel {
+        display: block;
+      }
+
+      .quick-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .section-tabs {
+        top: 64px;
+      }
+
+      .page,
+      .tab-inner {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .content-section {
+        padding: 20px 17px;
+        border-radius: 17px;
+      }
+
+      .two-col,
+      .subject-grid,
+      .skill-grid,
+      .career-grid,
+      .parent-questions,
+      .recruiter-grid,
+      .specialisation-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .salary-values {
+        grid-template-columns: 1fr;
+      }
+
+      .college-card {
+        grid-template-columns: 52px minmax(0, 1fr);
+        align-items: start;
+      }
+
+      .college-rank {
+        width: 46px;
+        height: 46px;
+      }
+
+      .college-actions {
+        grid-column: 1 / -1;
+        text-align: left;
+        padding-left: 62px;
+      }
+
+      .timeline {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading {
+        display: block;
+      }
+
+      .section-tag {
+        display: inline-block;
+        margin-top: 9px;
+      }
+
+      .mobile-bar {
+        position: fixed;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 90;
+        background: rgba(255,255,255,.97);
+        border-top: 1px solid var(--line);
+        padding: 9px 10px max(9px, env(safe-area-inset-bottom));
+        box-shadow: 0 -8px 24px rgba(18, 63, 90, .1);
+      }
+
+      .mobile-bar .btn {
+        padding: 10px 6px;
+        font-size: .78rem;
+      }
+
+      footer {
+        padding-bottom: 90px;
+      }
+    }
+  
+    .dropzone {
+      min-height: 100vh; display: grid; place-items: center; padding: 40px 20px;
+    }
+    .dropzone.dragging .dropzone-inner { border-color: var(--primary); background: var(--blue-soft); }
+    .dropzone-inner {
+      border: 2px dashed #b9cad4; border-radius: var(--radius-lg); background: var(--surface);
+      padding: 48px 40px; text-align: center; max-width: 560px; display: grid; gap: 14px;
+      justify-items: center; box-shadow: var(--shadow);
+    }
+    .dropzone-inner strong { font-size: 1.3rem; color: var(--primary); letter-spacing: -.03em; }
+    .dropzone-inner span { color: var(--muted); font-size: .9rem; }
+    .dropzone-hint { color: var(--muted); font-size: .82rem; margin: 6px 0 0; line-height: 1.6; }
+    .dropzone-hint code { background: #eef3f6; padding: 2px 6px; border-radius: 6px; }
+    .error-box {
+      max-width: var(--max); margin: 20px auto; padding: 14px 18px; border-radius: var(--radius-md);
+      background: var(--red-soft); border: 1px solid #f2d4d0; color: #8d2f26; font-size: .9rem;
+    }
+    .preview-meta { font-weight: 700; opacity: .85; }
+    .raw-json {
+      max-height: 420px; overflow: auto; background: #0b2e43; color: #d9e8ef; padding: 14px;
+      border-radius: var(--radius-sm); font-size: .72rem; line-height: 1.5; margin-top: 12px;
+    }
+    .college-card[hidden] { display: none; }
+    .audit-only {
+      border-style: dashed !important;
+      border-color: #c9b98a !important;
+      background: #fffdf6 !important;
+    }
+    .audit-banner {
+      display: inline-block;
+      background: var(--accent-soft);
+      border: 1px solid #e6d3a3;
+      color: #6b5118;
+      font-size: .72rem;
+      font-weight: 850;
+      letter-spacing: .02em;
+      border-radius: 999px;
+      padding: 4px 10px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .audit-only strong { color: var(--primary); display: block; margin-bottom: 4px; }
+    .side-card.audit-only h3 { color: #6b5118; }
+    @media (min-width: 1051px) {
+      .sidebar { position: sticky; top: 130px; align-self: start; }
+    }
+    .audit-only p { color: var(--muted); font-size: .84rem; margin: 0 0 8px; }
+    .data-note > span:first-child {
+      white-space: nowrap;
+      font-weight: 800;
+      flex: 0 0 auto;
+    }
+    .paste-area {
+      width: 100%; min-height: 110px; border: 1px solid var(--line); border-radius: var(--radius-sm);
+      padding: 10px 12px; font-family: ui-monospace, Consolas, monospace; font-size: .78rem;
+      resize: vertical; color: var(--ink); background: #fbfdfe;
+    }
+    kbd {
+      background: #eef3f6; border: 1px solid #d3dee4; border-bottom-width: 2px; border-radius: 5px;
+      padding: 1px 5px; font-size: .78rem; font-family: ui-monospace, Consolas, monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="dropzone" id="dropzone">
+    <div class="dropzone-inner">
+      <strong>Drop a course.json here</strong>
+      <span>or</span>
+      <label class="btn btn-primary" for="fileInput">Choose file</label>
+      <input type="file" id="fileInput" accept="application/json,.json" hidden />
+      <p class="dropzone-hint">
+        Or press <kbd>Ctrl</kbd>+<kbd>V</kbd> to paste JSON, or paste it below.
+      </p>
+      <textarea id="pasteArea" class="paste-area" placeholder="Paste the contents of course.json here, then press Render"></textarea>
+      <button class="btn btn-secondary" id="renderPaste">Render pasted JSON</button>
+      <p class="dropzone-hint">
+        Files live in <code>artifacts/&lt;course_id&gt;/course.json</code>.
+        Nothing is uploaded &mdash; rendering happens in this page.
+      </p>
+    </div>
+  </div>
+
+  <div id="errorBox" class="error-box" hidden></div>
+  <div id="page" hidden>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span>Career information for students in Grades 8&ndash;12 and their parents</span>
+      <span id="previewMeta" class="preview-meta"></span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#"><span class="brand-mark">C</span> Career Portal</a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="#">Courses</a><a href="#">Careers</a><a href="#">Colleges</a><a href="#">Assessments</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn btn-secondary" id="reloadBtn">Load another</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb" id="breadcrumbs"></nav>
+
+  <main>
+    <section class="hero"><div class="hero-card">
+      <div>
+        <div class="label-row" id="heroBadges"></div>
+        <h1 id="courseName"></h1>
+        <p class="hero-summary" id="heroSummary"></p>
+        <div class="hero-actions">
+          <button class="btn btn-accent">&hearts; Save course</button>
+          <button class="btn btn-secondary">&#8646; Add to compare</button>
+          <a class="btn btn-secondary" href="#colleges">&#8982; Find colleges</a>
+        </div>
+      </div>
+      <aside class="fit-panel">
+        <h2>Your possible fit</h2>
+        <p id="fitNote"></p>
+        <div class="fit-score" id="fitScore"><strong></strong></div>
+        <div class="fit-list" id="fitList"></div>
+      </aside>
+    </div></section>
+
+    <section class="quick-grid" aria-label="Course at a glance" id="quickGrid"></section>
+
+    <nav class="section-tabs" aria-label="Course section navigation"><div class="tab-inner">
+      <a href="#snapshot">Snapshot</a><a href="#overview">Overview</a><a href="#fit">Suitability</a>
+      <a href="#eligibility">Eligibility</a><a href="#subjects">Subjects</a><a href="#careers">Careers</a>
+      <a href="#recruiters">Recruiters</a><a href="#fees">Fees</a><a href="#colleges">Colleges</a>
+      <a href="#compare">Compare</a><a href="#parent">Parent guide</a><a href="#faq">FAQs</a>
+    </div></nav>
+
+    <div class="page">
+      <div class="main-column">
+
+        <section class="content-section" id="snapshot">
+          <div class="section-heading">
+            <div><h2>Course snapshot</h2><p>Salary outlook and possible specialisation pathways</p></div>
+            <span class="section-tag">Decision snapshot</span>
+          </div>
+          <div class="snapshot-grid">
+            <article class="snapshot-panel">
+              <h3>Indicative salary range</h3>
+              <p>Annual figures for the stated region.</p>
+              <div class="salary-values" id="salaryValues"></div>
+              <div class="salary-scale"><span class="salary-marker" id="salaryMarker"></span></div>
+              <div class="data-note"><span>&#9432;</span><span id="salaryNote"></span></div>
+            </article>
+            <article class="snapshot-panel">
+              <h3>Popular specialisations</h3>
+              <p>Students normally select a specialisation during later or postgraduate study.</p>
+              <div class="specialisation-grid" id="specialisations"></div>
+            </article>
+          </div>
+          <div class="data-note"><span>Note</span><span id="snapshotNote"></span></div>
+        </section>
+
+        <section class="content-section" id="overview">
+          <div class="section-heading">
+            <div><h2 id="overviewHeading"></h2><p>A simple explanation for students and parents</p></div>
+            <span class="section-tag" id="overviewWords"></span>
+          </div>
+          <div id="overviewBody"></div>
+        </section>
+
+        <section class="content-section" id="fit">
+          <div class="section-heading">
+            <div><h2>Is this course suitable for you?</h2><p>Interest, learning preference and reality check</p></div>
+            <span class="section-tag">Student decision support</span>
+          </div>
+          <div class="two-col">
+            <article class="info-box positive"><h3 id="goodFitHeading"></h3><ul class="check-list" id="goodFitPoints"></ul></article>
+            <article class="info-box caution"><h3 id="cautionHeading"></h3><ul id="cautionPoints"></ul></article>
+          </div>
+          <div class="tags" id="fitTags"></div>
+        </section>
+
+        <section class="content-section" id="eligibility">
+          <div class="section-heading">
+            <div><h2>Eligibility and admission</h2><p>Requirements vary by university and country</p></div>
+            <span class="section-tag">Verify institution rules</span>
+          </div>
+          <div class="two-col">
+            <article class="info-box"><h3>Typical eligibility</h3><ul id="eligTypical"></ul></article>
+            <article class="info-box"><h3>Possible admission methods</h3><ul id="eligMethods"></ul></article>
+          </div>
+          <div class="timeline" id="timeline"></div>
+        </section>
+
+        <section class="content-section" id="subjects">
+          <div class="section-heading">
+            <div><h2>What will you study?</h2><p>Illustrative subjects; actual curriculum varies</p></div>
+            <span class="section-tag" id="yearCount"></span>
+          </div>
+          <div class="tabs" role="tablist" id="yearTabs"></div>
+          <div id="yearPanels"></div>
+        </section>
+
+        <section class="content-section">
+          <div class="section-heading">
+            <div><h2>Skills you can develop</h2><p>Subject knowledge, transferable skills and career readiness</p></div>
+            <span class="section-tag" id="skillCount"></span>
+          </div>
+          <div class="skill-grid" id="skills"></div>
+        </section>
+
+        <section class="content-section" id="careers">
+          <div class="section-heading">
+            <div><h2>Career opportunities</h2><p>Separate direct-entry roles from regulated professional roles</p></div>
+            <span class="section-tag">Career-route clarity</span>
+          </div>
+          <div class="career-grid" id="careerGrid"></div>
+        </section>
+
+        <section class="content-section" id="recruiters">
+          <div class="section-heading">
+            <div><h2>Top recruiters and employment sectors</h2><p>Organisations together with the roles they typically recruit for</p></div>
+            <span class="section-tag">Directory</span>
+          </div>
+          <div class="recruiter-grid" id="recruiterGrid"></div>
+        </section>
+
+        <section class="content-section">
+          <div class="section-heading"><div><h2>Further-study pathway</h2><p>One possible route toward a specialised career</p></div></div>
+          <div class="pathway" id="pathway"></div>
+        </section>
+
+        <section class="content-section" id="fees">
+          <div class="section-heading">
+            <div><h2>Fees and total study cost</h2><p>Indicative ranges for the stated region</p></div>
+            <span class="section-tag">Parent priority</span>
+          </div>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Cost category</th><th>Institutions</th><th>Indicative range</th><th>Frequency</th><th>What parents should check</th></tr></thead>
+            <tbody id="feeRows"></tbody>
+          </table></div>
+          <p style="font-size:.8rem;color:var(--muted);margin-bottom:0;" id="feeFootnote"></p>
+        </section>
+
+        <section class="content-section" id="colleges">
+          <div class="section-heading">
+            <div><h2>Top colleges and universities</h2><p>Ranked directory with All, Government and Private filters</p></div>
+            <span class="section-tag">Ranked directory</span>
+          </div>
+          <div class="college-toolbar">
+            <div class="college-filters" role="group" aria-label="Filter institutions by type">
+              <button class="college-filter-btn active" data-college-filter="all">All institutions</button>
+              <button class="college-filter-btn" data-college-filter="government">Government</button>
+              <button class="college-filter-btn" data-college-filter="private">Private</button>
+            </div>
+            <div class="ranking-source" id="rankingSource"></div>
+          </div>
+          <div class="college-list" id="collegeList"></div>
+          <div class="data-note"><span>Ranking note</span><span id="collegeNote"></span></div>
+        </section>
+
+        <section class="content-section" id="compare">
+          <div class="section-heading">
+            <div><h2>Compare similar courses</h2><p>Help families understand meaningful differences</p></div>
+            <span class="section-tag">Decision table</span>
+          </div>
+          <div class="table-wrap"><table>
+            <thead><tr id="compareHead"></tr></thead>
+            <tbody id="compareBody"></tbody>
+          </table></div>
+        </section>
+
+        <section class="content-section">
+          <div class="section-heading"><div><h2>What should you do now?</h2><p>Different guidance by school stage</p></div></div>
+          <div class="roadmap-grid" id="roadmap"></div>
+        </section>
+
+        <section class="content-section parent-section" id="parent">
+          <div class="section-heading">
+            <div><h2>Parent corner</h2><p>Questions that support informed family discussion</p></div>
+            <span class="section-tag" id="parentWords"></span>
+          </div>
+          <p id="parentIntro"></p>
+          <div class="parent-questions" id="parentQuestions"></div>
+        </section>
+
+        <section class="content-section" id="faq">
+          <div class="section-heading">
+            <div><h2>Frequently asked questions</h2><p>Short, expandable answers</p></div>
+            <span class="section-tag" id="faqCount"></span>
+          </div>
+          <div class="accordion" id="faqs"></div>
+        </section>
+
+        <section class="content-section audit-only">
+          <div class="audit-banner">Audit only &mdash; not rendered on the production page</div>
+          <strong>Verification</strong>
+          <p id="verificationLine"></p>
+          <p id="seoLine" style="font-size:.82rem"></p>
+          <div class="mini-list" id="sources"></div>
+        </section>
+      </div>
+
+      <aside class="sidebar">
+        <section class="side-card">
+          <h3>Plan your next step</h3>
+          <p>Save your progress and return to this course from your dashboard.</p>
+          <div class="progress-label"><span>Course exploration</span><span>58%</span></div>
+          <div class="progress"><span></span></div>
+          <button class="btn btn-primary">&hearts; Save this course</button>
+          <button class="btn btn-secondary">&#8646; Compare courses</button>
+          <button class="btn btn-secondary">&#8599; Share with parent</button>
+        </section>
+
+        <section class="side-card">
+          <h3>Course checklist</h3>
+          <div class="mini-list">
+            <div class="mini-item"><span class="mini-icon">1</span><span>Understand the course and subjects.</span></div>
+            <div class="mini-item"><span class="mini-icon">2</span><span>Check your eligibility and entrance route.</span></div>
+            <div class="mini-item"><span class="mini-icon">3</span><span>Compare career and further-study requirements.</span></div>
+            <div class="mini-item"><span class="mini-icon">4</span><span>Calculate tuition and living costs.</span></div>
+          </div>
+        </section>
+
+        <section class="side-card">
+          <h3>Need personal guidance?</h3>
+          <p>Discuss course fit, subject selection and pathways with a career counsellor.</p>
+          <button class="btn btn-accent">Book counselling</button>
+        </section>
+
+        <section class="side-card audit-only">
+          <div class="audit-banner">Audit only</div>
+          <h3>Preview checks</h3>
+          <p>Automated sanity checks run against this document in the browser.</p>
+          <div class="mini-list" id="checks"></div>
+        </section>
+        <section class="side-card audit-only">
+          <div class="audit-banner">Audit only</div>
+          <h3>Raw JSON</h3>
+          <p>Inspect any field exactly as generated.</p>
+          <button class="btn btn-secondary" id="toggleRaw">Show raw JSON</button>
+          <pre id="rawJson" class="raw-json" hidden></pre>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <strong>Career Portal &mdash; local preview</strong><br />
+    Rendered from generated JSON. Not the production page; use this to check data, not styling.
+  </footer>
+  </div>
+
+  <script>
+const CURRENCY_SYMBOL = { INR: "₹", USD: "$", GBP: "£", EUR: "€", AED: "AED " };
+
+function groupIndian(value) {
+  const s = String(Math.round(value));
+  if (s.length <= 3) return s;
+  const head = s.slice(0, -3);
+  const tail = s.slice(-3);
+  return head.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + "," + tail;
+}
+
+function formatMoney(amount, currency) {
+  if (amount === null || amount === undefined) return "—";
+  const symbol = CURRENCY_SYMBOL[currency] || "";
+  if (currency !== "INR") return symbol + amount.toLocaleString("en-US");
+  if (amount >= 100000) {
+    const lakh = amount / 100000;
+    const text = lakh >= 10 ? lakh.toFixed(0) : lakh.toFixed(2).replace(/\.?0+$/, "");
+    return symbol + text + " lakh";
+  }
+  return symbol + groupIndian(amount);
+}
+
+function formatLPA(amount, currency) {
+  if (currency !== "INR") return formatMoney(amount, currency);
+  const lpa = amount / 100000;
+  const text = lpa >= 10 ? lpa.toFixed(0) : lpa.toFixed(1).replace(/\.0$/, "");
+  return CURRENCY_SYMBOL.INR + text + " LPA";
+}
+
+function formatRange(min, max, currency, suffix) {
+  if (min === null || max === null) return "Varies";
+  const tail = suffix ? suffix : "";
+  if (min === max) return formatMoney(min, currency) + tail;
+  return formatMoney(min, currency) + "–" + formatMoney(max, currency) + tail;
+}
+
+function formatFeeCell(row, currency) {
+  const hasRange = row.min !== null && row.min !== undefined
+                && row.max !== null && row.max !== undefined;
+  if (row.is_variable && hasRange) {
+    return "Varies · typically " + formatRange(row.min, row.max, currency, "");
+  }
+  if (row.is_variable) return "Varies";
+  if (!hasRange) return "—";
+  return formatRange(row.min, row.max, currency, "");
+}
+
+function el(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined && text !== null) node.textContent = text;
+  return node;
+}
+
+function fill(id, text) {
+  const node = document.getElementById(id);
+  if (node) node.textContent = text === undefined || text === null ? "" : String(text);
+}
+
+function replace(id, children) {
+  const node = document.getElementById(id);
+  if (!node) return;
+  node.innerHTML = "";
+  children.forEach((child) => node.appendChild(child));
+}
+
+function wordCount(text) {
+  return (String(text).match(/[\w'’-]+/g) || []).length;
+}
+
+function renderCourse(doc) {
+  const cur = doc.currency || "INR";
+  const q = doc.quick_facts || {};
+
+  fill("courseName", doc.course_name);
+  document.title = doc.course_name + " — preview";
+  fill("previewMeta", (doc.region || "") + " · " + (doc.course_id || ""));
+
+  const crumbs = document.getElementById("breadcrumbs");
+  crumbs.innerHTML = "";
+  ["Home", "Courses", doc.category, doc.subcategory].filter(Boolean).forEach((part, i, arr) => {
+    crumbs.appendChild(document.createTextNode(" " + part + " "));
+    if (i < arr.length - 1) crumbs.appendChild(el("span", null, "›"));
+  });
+
+  replace("heroBadges", [doc.course_level, doc.category, (doc.hero || {}).badge]
+    .filter(Boolean).map((t) => el("span", "eyebrow", t)));
+  fill("heroSummary", (doc.hero || {}).summary);
+
+  const fit = (doc.hero || {}).fit || {};
+  fill("fitNote", fit.note);
+  const score = document.getElementById("fitScore");
+  score.innerHTML = "";
+  score.appendChild(el("strong", null, (fit.score_percent ?? 0) + "%"));
+  score.style.background =
+    "conic-gradient(var(--accent) 0 " + (fit.score_percent ?? 0) + "%, rgba(255,255,255,.18) " +
+    (fit.score_percent ?? 0) + "% 100%)";
+  replace("fitList", (fit.indicators || []).map((t) => el("span", null, t)));
+
+  const duration = q.typical_duration || {};
+  const durationText = duration.min_years === duration.max_years
+    ? duration.min_years + " years"
+    : duration.min_years + "–" + duration.max_years + " years";
+  const feeCard = q.indicative_annual_fees || {};
+  const quick = [
+    ["⏱", "Typical duration", durationText],
+    ["🎓", "Entry level", q.entry_level],
+    ["📚", "Suitable streams", (q.suitable_streams || []).join(", ")],
+    ["🧪", "Learning style", q.learning_style],
+    ["💰", "Indicative fees", formatRange(feeCard.min, feeCard.max, cur, "/year")],
+    ["🧭", "Career direction", q.career_direction],
+  ];
+  replace("quickGrid", quick.map(([icon, label, value]) => {
+    const card = el("article", "quick-card");
+    card.appendChild(el("div", "quick-icon", icon));
+    card.appendChild(el("small", null, label));
+    card.appendChild(el("strong", null, value));
+    return card;
+  }));
+
+  const salary = (doc.snapshot || {}).salary || {};
+  const salaryCells = [
+    ["Lower range", formatLPA(salary.lower_annual, cur), false],
+    ["Typical average", formatLPA(salary.typical_annual, cur), true],
+    ["Higher range", formatLPA(salary.higher_annual, cur) + (salary.higher_is_open_ended ? "+" : ""), false],
+  ];
+  replace("salaryValues", salaryCells.map(([label, value, featured]) => {
+    const cell = el("div", "salary-value" + (featured ? " featured" : ""));
+    cell.appendChild(el("small", null, label));
+    cell.appendChild(el("strong", null, value));
+    return cell;
+  }));
+  document.getElementById("salaryMarker").style.left = (salary.marker_percent ?? 50) + "%";
+  fill("salaryNote", salary.note);
+  fill("snapshotNote", (doc.snapshot || {}).data_note);
+  replace("specialisations", ((doc.snapshot || {}).specialisations || []).map((name, i) => {
+    const item = el("div", "specialisation-item");
+    item.appendChild(el("span", null, String(i + 1).padStart(2, "0")));
+    item.appendChild(document.createTextNode(name));
+    return item;
+  }));
+
+  const overview = doc.overview || {};
+  fill("overviewHeading", overview.heading);
+  const words = (overview.paragraphs || []).reduce((n, p) => n + wordCount(p), 0);
+  fill("overviewWords", "About " + words + " words");
+  replace("overviewBody", (overview.paragraphs || []).map((p) => el("p", null, p)));
+
+  const suit = doc.suitability || {};
+  fill("goodFitHeading", (suit.good_fit || {}).heading);
+  replace("goodFitPoints", ((suit.good_fit || {}).points || []).map((t) => el("li", null, t)));
+  fill("cautionHeading", (suit.caution || {}).heading);
+  replace("cautionPoints", ((suit.caution || {}).points || []).map((t) => el("li", null, t)));
+  replace("fitTags", (suit.tags || []).map((t) => el("span", null, t)));
+
+  const elig = doc.eligibility || {};
+  replace("eligTypical", (elig.typical_requirements || []).map((t) => el("li", null, t)));
+  replace("eligMethods", (elig.admission_methods || []).map((t) => el("li", null, t)));
+  replace("timeline", (elig.admission_timeline || []).map((step) => {
+    const node = el("article", "timeline-step");
+    node.appendChild(el("span", "step-number", step.step));
+    node.appendChild(el("strong", null, step.title));
+    node.appendChild(el("p", null, step.description));
+    return node;
+  }));
+
+  const curriculum = doc.curriculum || {};
+  const years = curriculum.years || [];
+  fill("yearCount", years.length + " year tabs");
+  const tabs = [];
+  const panels = [];
+  years.forEach((year, index) => {
+    const btn = el("button", "tab-btn" + (index === 0 ? " active" : ""), year.label);
+    btn.dataset.tab = "year" + year.year;
+    tabs.push(btn);
+    const panel = el("div", "tab-panel" + (index === 0 ? " active" : ""));
+    panel.id = "year" + year.year;
+    const grid = el("div", "subject-grid");
+    (year.subjects || []).forEach((subject) => {
+      const card = el("article", "subject-card");
+      card.appendChild(el("strong", null, subject.name));
+      card.appendChild(el("span", null, subject.description));
+      grid.appendChild(card);
+    });
+    panel.appendChild(grid);
+    panels.push(panel);
+  });
+  const learnBtn = el("button", "tab-btn", "Learning style");
+  learnBtn.dataset.tab = "learning";
+  tabs.push(learnBtn);
+  const learnPanel = el("div", "tab-panel");
+  learnPanel.id = "learning";
+  const twoCol = el("div", "two-col");
+  [["Common learning activities", curriculum.learning_activities],
+   ["Common assessment methods", curriculum.assessment_methods]].forEach(([heading, body]) => {
+    const box = el("article", "info-box");
+    box.appendChild(el("h3", null, heading));
+    box.appendChild(el("p", null, body));
+    twoCol.appendChild(box);
+  });
+  learnPanel.appendChild(twoCol);
+  panels.push(learnPanel);
+  replace("yearTabs", tabs);
+  replace("yearPanels", panels);
+
+  fill("skillCount", (doc.skills || []).length + " skill areas");
+  replace("skills", (doc.skills || []).map((skill) => {
+    const card = el("article", "skill-card");
+    card.appendChild(el("h3", null, skill.name));
+    card.appendChild(el("p", null, skill.description));
+    return card;
+  }));
+
+  replace("careerGrid", (doc.careers || []).map((career) => {
+    const card = el("article", "career-card");
+    card.appendChild(el("h3", null, career.title));
+    card.appendChild(el("p", null, career.description));
+    card.appendChild(el("span", "route-badge", career.route_badge));
+    card.appendChild(el("span", "route", "Typical route: " + career.typical_route));
+    return card;
+  }));
+
+  replace("recruiterGrid", (doc.recruiters || []).map((rec) => {
+    const card = el("article", "recruiter-card");
+    const head = el("div", "recruiter-head");
+    head.appendChild(el("div", "recruiter-logo", rec.logo_initials));
+    const meta = el("div");
+    meta.appendChild(el("h3", null, rec.name));
+    meta.appendChild(el("div", "recruiter-sector", rec.sector));
+    head.appendChild(meta);
+    card.appendChild(head);
+    card.appendChild(el("p", null, rec.description));
+    const roles = el("div", "recruiter-roles");
+    (rec.roles || []).forEach((role) => roles.appendChild(el("span", null, role)));
+    card.appendChild(roles);
+    return card;
+  }));
+
+  const pathway = [];
+  (doc.further_study_pathway || []).forEach((step, index, arr) => {
+    pathway.push(el("div", "pathway-item", step));
+    if (index < arr.length - 1) pathway.push(el("div", "pathway-arrow", "→"));
+  });
+  replace("pathway", pathway);
+
+  const fees = doc.fees || {};
+  replace("feeRows", (fees.rows || []).map((row) => {
+    const tr = el("tr");
+    tr.appendChild(el("td", null, row.category));
+    tr.appendChild(el("td", null, row.institution_type ? row.institution_type.replace(/_/g, " ") : "All"));
+    tr.appendChild(el("td", null, formatFeeCell(row, cur)));
+    tr.appendChild(el("td", null, row.frequency));
+    tr.appendChild(el("td", null, row.parent_check));
+    return tr;
+  }));
+  fill("feeFootnote", fees.footnote);
+
+  const colleges = doc.colleges || {};
+  fill("rankingSource", (colleges.ranking_source || "") + " · Updated " + (colleges.ranking_updated || ""));
+  fill("collegeNote", colleges.data_note);
+  replace("collegeList", (colleges.items || []).map((college) => {
+    const card = el("article", "college-card");
+    card.dataset.collegeType = college.institution_type;
+    const rank = el("div", "college-rank");
+    const rankInner = el("div");
+    rankInner.appendChild(el("small", null, "Rank"));
+    rankInner.appendChild(document.createTextNode(String(college.rank).padStart(2, "0")));
+    rank.appendChild(rankInner);
+    card.appendChild(rank);
+    const main = el("div", "college-main");
+    main.appendChild(el("h3", null, college.name));
+    main.appendChild(el("p", null,
+      college.city + " · " + college.course_name + " · " + college.duration_years + " years"));
+    const meta = el("div", "college-meta");
+    const type = el("span", "institution-type " + (college.institution_type === "government" ? "gov" : "private"),
+      college.institution_type === "government" ? "Government" : "Private");
+    meta.appendChild(type);
+    meta.appendChild(el("span", null, college.admission_route));
+    meta.appendChild(el("span", null, college.highlight));
+    main.appendChild(meta);
+    card.appendChild(main);
+    const actions = el("div", "college-actions");
+    actions.appendChild(el("strong", null, formatMoney(college.annual_fee, cur) + "/year"));
+    actions.appendChild(el("button", "btn btn-secondary", "View details"));
+    card.appendChild(actions);
+    return card;
+  }));
+
+  const comparison = doc.comparison || [];
+  const headRow = [el("th", null, "Feature")].concat(comparison.map((c) => el("th", null, c.course_name)));
+  replace("compareHead", headRow);
+  const features = [
+    ["Main focus", "main_focus"],
+    ["Statistics", "statistics_level"],
+    ["Laboratory exposure", "laboratory_exposure"],
+    ["Common next steps", "common_next_steps"],
+  ];
+  replace("compareBody", features.map(([label, key]) => {
+    const tr = el("tr");
+    tr.appendChild(el("td", null, label));
+    comparison.forEach((c) => tr.appendChild(el("td", null, c[key])));
+    return tr;
+  }));
+
+  replace("roadmap", (doc.action_roadmap || []).map((stage) => {
+    const card = el("article", "roadmap-card");
+    card.appendChild(el("h3", null, stage.stage + ": " + stage.title));
+    card.appendChild(el("p", null, stage.description));
+    return card;
+  }));
+
+  const parent = doc.parent_corner || {};
+  fill("parentIntro", parent.intro);
+  fill("parentWords", "About " + wordCount(parent.intro || "") + " words");
+  replace("parentQuestions", (parent.questions || []).map((q2) => el("div", "parent-question", q2)));
+
+  fill("faqCount", (doc.faqs || []).length + " questions");
+  replace("faqs", (doc.faqs || []).map((faq, index) => {
+    const item = el("article", "accordion-item" + (index === 0 ? " open" : ""));
+    const button = el("button", "accordion-button");
+    button.appendChild(el("span", null, faq.question));
+    button.appendChild(el("span", null, index === 0 ? "−" : "+"));
+    const content = el("div", "accordion-content", faq.answer);
+    item.appendChild(button);
+    item.appendChild(content);
+    return item;
+  }));
+
+  const seo = doc.seo || {};
+  fill("seoLine",
+    "slug: /" + (doc.slug || "") +
+    "  ·  title (" + (seo.page_title || "").length + "/70): " + (seo.page_title || "") +
+    "  ·  meta (" + (seo.meta_description || "").length + "/160): " + (seo.meta_description || ""));
+
+  const ver = doc.verification || {};
+  fill("verificationLine", "Last reviewed: " + (ver.last_reviewed || ""));
+  replace("sources", (ver.sources || []).map((source, index) => {
+    const row = el("div", "mini-item");
+    row.appendChild(el("span", "mini-icon", index + 1));
+    const link = el("a", null, source.title + " — " + source.publisher);
+    link.href = source.url;
+    link.target = "_blank";
+    link.rel = "noopener";
+    link.style.textDecoration = "underline";
+    const wrap = el("span");
+    wrap.appendChild(link);
+    row.appendChild(wrap);
+    return row;
+  }));
+
+  replace("checks", runChecks(doc, cur).map((check) => {
+    const row = el("div", "mini-item");
+    row.appendChild(el("span", "mini-icon", check.ok ? "✓" : "!"));
+    const label = el("span", null, check.label);
+    if (!check.ok) label.style.color = "#a3352b";
+    row.appendChild(label);
+    return row;
+  }));
+
+  document.getElementById("rawJson").textContent = JSON.stringify(doc, null, 2);
+  wireInteractions();
+}
+
+function runChecks(doc, cur) {
+  const checks = [];
+  const q = doc.quick_facts || {};
+  const salary = (doc.snapshot || {}).salary || {};
+  const years = (doc.curriculum || {}).years || [];
+  const duration = q.typical_duration || {};
+  const fee = q.indicative_annual_fees || {};
+
+  checks.push({
+    label: "Curriculum years match duration (" + years.length + " vs " +
+      duration.min_years + "–" + duration.max_years + ")",
+    ok: years.length >= Math.floor(duration.min_years || 0) &&
+        years.length <= Math.ceil(duration.max_years || 99),
+  });
+  checks.push({
+    label: "Salary ordered low ≤ typical ≤ high",
+    ok: salary.lower_annual <= salary.typical_annual && salary.typical_annual <= salary.higher_annual,
+  });
+  const spread = fee.min > 0 ? fee.max / fee.min : Infinity;
+  checks.push({
+    label: "At-a-glance fee spread " + (isFinite(spread) ? spread.toFixed(0) + "x" : "unbounded"),
+    ok: isFinite(spread) && spread <= 25,
+  });
+  const types = new Set(((doc.colleges || {}).items || []).map((c) => c.institution_type));
+  checks.push({ label: "Both government and private colleges present", ok: types.size >= 2 });
+  const first = (doc.comparison || [])[0] || {};
+  checks.push({
+    label: "Comparison anchors on this course",
+    ok: (first.course_name || "").toLowerCase() === (doc.course_name || "").toLowerCase(),
+  });
+  const badges = new Set((doc.careers || []).map((c) => c.route_badge));
+  checks.push({
+    label: "Careers mix direct-entry and regulated routes",
+    ok: badges.has("Possible after bachelor's") && badges.size > 1,
+  });
+  checks.push({
+    label: "Sources present (" + ((doc.verification || {}).sources || []).length + ")",
+    ok: (((doc.verification || {}).sources) || []).length >= 3,
+  });
+  const seo = doc.seo || {};
+  checks.push({
+    label: "SEO title within 70 chars (" + (seo.page_title || "").length + ")",
+    ok: (seo.page_title || "").length > 0 && (seo.page_title || "").length <= 70,
+  });
+  checks.push({
+    label: "Meta description 50-160 chars (" + (seo.meta_description || "").length + ")",
+    ok: (seo.meta_description || "").length >= 50 && (seo.meta_description || "").length <= 160,
+  });
+  return checks;
+}
+
+function wireInteractions() {
+  document.querySelectorAll(".tab-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
+      document.querySelectorAll(".tab-panel").forEach((p) => p.classList.remove("active"));
+      button.classList.add("active");
+      const panel = document.getElementById(button.dataset.tab);
+      if (panel) panel.classList.add("active");
+    });
+  });
+
+  document.querySelectorAll(".college-filter-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.dataset.collegeFilter;
+      document.querySelectorAll(".college-filter-btn").forEach((b) => b.classList.remove("active"));
+      button.classList.add("active");
+      document.querySelectorAll(".college-card").forEach((card) => {
+        card.hidden = !(filter === "all" || card.dataset.collegeType === filter);
+      });
+    });
+  });
+
+  document.querySelectorAll(".accordion-button").forEach((button) => {
+    button.addEventListener("click", () => {
+      const item = button.closest(".accordion-item");
+      const open = item.classList.toggle("open");
+      button.querySelector("span:last-child").textContent = open ? "−" : "+";
+    });
+  });
+}
+
+function showError(message) {
+  const box = document.getElementById("errorBox");
+  box.textContent = message;
+  box.hidden = false;
+  window.scrollTo(0, 0);
+}
+
+function renderText(text, label) {
+  let doc;
+  try {
+    doc = JSON.parse(text);
+  } catch (err) {
+    showError("That is not valid JSON" + (label ? " (" + label + ")" : "") + ": " + err.message);
+    return false;
+  }
+  if (!doc || typeof doc !== "object" || Array.isArray(doc)) {
+    showError("Expected a single course object, got " + (Array.isArray(doc) ? "an array" : typeof doc));
+    return false;
+  }
+  if (!doc.course_name) {
+    showError("This JSON has no course_name — is it a course.json, or a run.json / validation.json?");
+    return false;
+  }
+  try {
+    document.getElementById("errorBox").hidden = true;
+    document.getElementById("dropzone").hidden = true;
+    document.getElementById("page").hidden = false;
+    renderCourse(doc);
+    window.scrollTo(0, 0);
+    return true;
+  } catch (err) {
+    document.getElementById("dropzone").hidden = false;
+    document.getElementById("page").hidden = true;
+    showError("Rendering failed: " + err.message);
+    return false;
+  }
+}
+
+function loadFile(file) {
+  const reader = new FileReader();
+  reader.onload = () => renderText(String(reader.result), file.name);
+  reader.onerror = () => showError("Could not read " + file.name);
+  reader.readAsText(file);
+}
+
+function handleFiles(list) {
+  if (list && list.length) {
+    loadFile(list[0]);
+    return true;
+  }
+  return false;
+}
+
+document.getElementById("fileInput").addEventListener("change", (e) => handleFiles(e.target.files));
+
+document.getElementById("renderPaste").addEventListener("click", () => {
+  const text = document.getElementById("pasteArea").value.trim();
+  if (!text) {
+    showError("Nothing pasted yet — paste the contents of course.json into the box first.");
+    return;
+  }
+  renderText(text, "pasted text");
+});
+
+document.addEventListener("paste", (e) => {
+  if (document.getElementById("dropzone").hidden) return;
+  if (e.target && e.target.id === "pasteArea") return;
+  const files = e.clipboardData && e.clipboardData.files;
+  if (files && files.length) {
+    e.preventDefault();
+    handleFiles(files);
+    return;
+  }
+  const text = e.clipboardData && e.clipboardData.getData("text");
+  if (text && text.trim().startsWith("{")) {
+    e.preventDefault();
+    renderText(text, "clipboard");
+  }
+});
+
+const dropzone = document.getElementById("dropzone");
+["dragenter", "dragover"].forEach((type) =>
+  document.addEventListener(type, (e) => {
+    e.preventDefault();
+    dropzone.classList.add("dragging");
+  })
+);
+["dragleave", "dragend"].forEach((type) =>
+  document.addEventListener(type, () => dropzone.classList.remove("dragging"))
+);
+document.addEventListener("drop", (e) => {
+  e.preventDefault();
+  dropzone.classList.remove("dragging");
+  if (!handleFiles(e.dataTransfer && e.dataTransfer.files)) {
+    const text = e.dataTransfer && e.dataTransfer.getData("text");
+    if (text && text.trim().startsWith("{")) renderText(text, "dropped text");
+  }
+});
+
+document.getElementById("reloadBtn").addEventListener("click", () => {
+  document.getElementById("page").hidden = true;
+  document.getElementById("dropzone").hidden = false;
+  document.getElementById("errorBox").hidden = true;
+  document.getElementById("fileInput").value = "";
+  document.getElementById("pasteArea").value = "";
+});
+
+document.getElementById("toggleRaw").addEventListener("click", (e) => {
+  const pre = document.getElementById("rawJson");
+  pre.hidden = !pre.hidden;
+  e.target.textContent = pre.hidden ? "Show raw JSON" : "Hide raw JSON";
+});
+
+  </script>
+</body>
+</html>

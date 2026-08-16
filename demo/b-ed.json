@@ -1,0 +1,537 @@
+{
+  "course_id": "crs_b_ed",
+  "slug": "b-ed",
+  "course_name": "B.Ed",
+  "currency": "INR",
+  "region": "India",
+  "category": "Education",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Teacher-preparation course",
+    "fit": {
+      "indicators": [
+        "For students who want to teach in schools",
+        "Built around pedagogy, school practice, and subject teaching",
+        "Ends with teacher-eligibility steps before classroom jobs"
+      ],
+      "note": "Best suited to graduates who want a structured route into school teaching.",
+      "score_percent": 86
+    },
+    "summary": "B.Ed is the standard professional degree for school teaching in India. It prepares graduates in teaching methods, classroom practice, child development, and school assessment. After the degree, candidates usually also need to clear the teacher-eligibility tests and meet school or state hiring rules before taking up a teaching post."
+  },
+  "quick_facts": {
+    "career_direction": "School teaching",
+    "entry_level": "Bachelor's degree",
+    "indicative_annual_fees": {
+      "max": 100000,
+      "min": 20000
+    },
+    "learning_style": "Theory, lesson planning, school observation, practice-teach,",
+    "suitable_streams": [
+      "Any stream"
+    ],
+    "typical_duration": {
+      "max_years": 2,
+      "min_years": 2
+    }
+  },
+  "seo": {
+    "meta_description": "B.Ed in India: course level, duration, fees range, eligibility, and teacher-career pathway for students planning school teaching.",
+    "page_title": "B.Ed Course in India: Duration, Fees, Eligibility and Career Path"
+  },
+  "subcategory": "Bachelor of Education",
+  "overview": {
+    "heading": "What is B.Ed?",
+    "paragraphs": [
+      "B.Ed stands for Bachelor of Education. It is a professional teacher-training degree for school teaching in India, usually taken after completing a bachelor’s degree. Recognised programmes follow National Council for Teacher Education norms, and the course is generally two years long.",
+      "The course is about learning how to teach, not just learning a subject. Students study education theory, lesson planning, classroom management, assessment, child development, school observation, and practice teaching in real classrooms. Many programmes also include subject pedagogy, where future teachers learn how to explain Maths, Science, languages, or Social Science at school level.",
+      "A B.Ed is a strong step toward school teaching, but it is not the final step for every job. Graduates still need to meet recruitment rules for the school system they want to enter. For example, teaching the primary stage may require an extra bridge course or a different qualification pathway, while middle and secondary school jobs usually depend on the state, school type, and teacher eligibility rules."
+    ]
+  },
+  "snapshot": {
+    "data_note": "In India, B.Ed salaries vary by school type, state, subject taught, and years of experience. Government schools usually pay more than many private schools, and pay can rise with seniority, teacher-eligibility status, and movement into higher school grades or specialist roles.",
+    "salary": {
+      "higher_annual": 800000,
+      "higher_is_open_ended": false,
+      "lower_annual": 250000,
+      "note": "Fresh graduates often begin around INR 250000 to INR 450000 a year. Many teachers move into the INR 350000 to INR 650000 range with experience, and stronger government-school or senior roles can go higher.",
+      "typical_annual": 350000,
+      "marker_percent": 18
+    },
+    "specialisations": [
+      "Mathematics pedagogy",
+      "Science pedagogy",
+      "English pedagogy",
+      "Hindi pedagogy",
+      "Social Science pedagogy",
+      "ICT in Education",
+      "Classroom management",
+      "Assessment and evaluation"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "When B.Ed may not be the right first step",
+      "points": [
+        "It is a teacher-training course, not a subject degree, so students who want deep study in one academic subject may find it less suitable.",
+        "A B.Ed alone does not automatically lead to a teaching job; recruitment tests, eligibility rules, and school-specific hiring still matter.",
+        "Primary teaching can need an extra bridge course or another route, so students should check the stage they want to teach before choosing.",
+        "Pay depends heavily on school type, location, and experience, so it should not be chosen only because of a salary figure."
+      ]
+    },
+    "good_fit": {
+      "heading": "B.Ed suits students who",
+      "points": [
+        "want a school-teaching career and are ready for lesson planning, classroom practice, and observation in real schools.",
+        "enjoy working with children or teenagers and explaining ideas clearly in simple language.",
+        "can handle both theory and practical work, including internships and feedback-based improvement.",
+        "have already completed a bachelor’s degree or are planning that step before teacher training."
+      ]
+    },
+    "tags": [
+      "school teaching",
+      "teacher training",
+      "lesson planning",
+      "classroom practice",
+      "practice teaching",
+      "regulated career",
+      "NCTE-recognised course"
+    ]
+  },
+  "careers": [
+    {
+      "description": "Teach classes in private schools as a trained school teacher after B.Ed; many schools also ask for a school-level interview and subject knowledge.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Private school teacher",
+      "typical_route": "B.Ed -> school recruitment -> classroom teaching"
+    },
+    {
+      "description": "Support lesson planning, worksheets, and classroom materials for schools or education companies.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Education content developer",
+      "typical_route": "B.Ed -> content or curriculum work in schools or education companies"
+    },
+    {
+      "description": "Teach in government schools only after passing CTET or the relevant state Teacher Eligibility Test; these tests sit between B.Ed and recruitment.",
+      "route_badge": "Training may be required",
+      "title": "Government school teacher",
+      "typical_route": "B.Ed -> CTET or state TET -> teacher recruitment"
+    },
+    {
+      "description": "Apply for teaching posts in Kendriya Vidyalaya Sangathan after B.Ed, but CTET is required for TGT and PRT roles.",
+      "route_badge": "Advanced regulated route",
+      "title": "KVS teacher",
+      "typical_route": "B.Ed -> CTET Paper I or II -> KVS recruitment"
+    },
+    {
+      "description": "Apply for teaching posts in Navodaya Vidyalaya Samiti; these recruitment drives usually expect teacher eligibility and school-teaching qualifications.",
+      "route_badge": "Advanced regulated route",
+      "title": "NVS teacher",
+      "typical_route": "B.Ed -> CTET or other required qualification -> NVS recruitment"
+    },
+    {
+      "description": "Move into senior school roles such as vice-principal or principal after postgraduation and teaching experience; these posts ask for a master's degree along with",
+      "route_badge": "Postgraduate route",
+      "title": "Vice-principal or principal",
+      "typical_route": "B.Ed -> teaching experience -> master's degree -> leadership recruitment"
+    }
+  ],
+  "further_study_pathway": [
+    "M.Ed after B.Ed for deeper study in",
+    "a teaching subject or pedagogy",
+    "Master's degree in a school subject",
+    "B.Ed-M.Ed integrated programme",
+    "CTET or the relevant state Teacher"
+  ],
+  "recruiters": [
+    {
+      "description": "Central government school system that recruits trained teachers for Kendriya Vidyalayas across India.",
+      "logo_initials": "KV",
+      "name": "Kendriya Vidyalaya Sangathan",
+      "roles": [
+        "PRT",
+        "TGT"
+      ],
+      "sector": "School education"
+    },
+    {
+      "description": "Autonomous school system that recruits teachers for Jawahar Navodaya Vidyalayas across India.",
+      "logo_initials": "NV",
+      "name": "Navodaya Vidyalaya Samiti",
+      "roles": [
+        "PRT",
+        "TGT"
+      ],
+      "sector": "School education"
+    },
+    {
+      "description": "Large private school network that hires B.Ed-qualified teachers for classroom teaching roles.",
+      "logo_initials": "DP",
+      "name": "Delhi Public School Society",
+      "roles": [
+        "Teacher",
+        "TGT"
+      ],
+      "sector": "School education"
+    },
+    {
+      "description": "India-based school management body that runs many schools and regularly hires trained teachers.",
+      "logo_initials": "DA",
+      "name": "DAV College Managing Committee",
+      "roles": [
+        "Teacher",
+        "TGT"
+      ],
+      "sector": "School education"
+    },
+    {
+      "description": "A well-known Indian school that recruits teachers for classroom and subject teaching roles.",
+      "logo_initials": "TD",
+      "name": "The Doon School",
+      "roles": [
+        "Teacher",
+        "Subject teacher"
+      ],
+      "sector": "School education"
+    },
+    {
+      "description": "A national private-school chain that hires trained teachers for school teaching roles.",
+      "logo_initials": "BS",
+      "name": "Billabong High International School",
+      "roles": [
+        "Teacher",
+        "Primary teacher"
+      ],
+      "sector": "School education"
+    }
+  ],
+  "colleges": {
+    "data_note": "Higher scores indicate stronger placement in the referenced ranking, but the best fit still depends on campus location, cost, subject options, and the college’s current recognition for B.Ed. Annual fees can change by year, and one-time charges, hostel, and exam fees may sit outside the tuition shown here.",
+    "items": [
+      {
+        "admission_route": "Varies by institution",
+        "annual_fee": 25140,
+        "city": "New Delhi",
+        "course_name": "B.Ed",
+        "duration_years": 2,
+        "highlight": "Constituent college of the University of",
+        "institution_type": "government",
+        "name": "Lady Shri Ram College for Women",
+        "rank": 1
+      },
+      {
+        "admission_route": "Varies by institution",
+        "annual_fee": 60000,
+        "city": "Jalandhar",
+        "course_name": "B.Ed",
+        "duration_years": 2,
+        "highlight": "Private university option with a large B",
+        "institution_type": "private",
+        "name": "Lovely Professional University",
+        "rank": 2
+      },
+      {
+        "admission_route": "Varies by institution",
+        "annual_fee": 13025,
+        "city": "New Delhi",
+        "course_name": "B.Ed",
+        "duration_years": 2,
+        "highlight": "Central university with comparatively lo",
+        "institution_type": "government",
+        "name": "Jamia Millia Islamia University",
+        "rank": 3
+      },
+      {
+        "admission_route": "Varies by institution",
+        "annual_fee": 40000,
+        "city": "Lucknow",
+        "course_name": "B.Ed",
+        "duration_years": 2,
+        "highlight": "Public university option with a moderate",
+        "institution_type": "government",
+        "name": "University of Lucknow",
+        "rank": 4
+      },
+      {
+        "admission_route": "Varies by institution",
+        "annual_fee": 20610,
+        "city": "New Delhi",
+        "course_name": "B.Ed",
+        "duration_years": 2,
+        "highlight": "Strong low-cost government college route",
+        "institution_type": "government",
+        "name": "Miranda House",
+        "rank": 5
+      },
+      {
+        "admission_route": "Varies by institution",
+        "annual_fee": 135500,
+        "city": "New Delhi",
+        "course_name": "B.Ed",
+        "duration_years": 2,
+        "highlight": "University-run option with a higher fee",
+        "institution_type": "government",
+        "name": "Guru Gobind Singh Indraprastha University",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "College ranking tables and course pages for B.Ed colleges in India",
+    "ranking_updated": "2025-11"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "Complete B.Ed, then qualify for CTET or the relevant State TET, and apply for TG",
+      "course_name": "B.Ed",
+      "laboratory_exposure": "Low; the main hands-on part is school in",
+      "main_focus": "Secondary and senior-secondary school te",
+      "statistics_level": "Basic to moderate; enough for classroom"
+    },
+    {
+      "common_next_steps": "Complete D.El.Ed, then take the relevant TET and apply for primary-school posts.",
+      "course_name": "D.El.Ed",
+      "laboratory_exposure": "Moderate; school observation and practic",
+      "main_focus": "Primary teaching and early-school classr",
+      "statistics_level": "Basic; more teaching practice than data"
+    },
+    {
+      "common_next_steps": "Complete B.El.Ed, then take the relevant TET and apply for primary or middle-sch",
+      "course_name": "B.El.Ed",
+      "laboratory_exposure": "High; built-in school observation, pract",
+      "main_focus": "Integrated preparation for teaching youn",
+      "statistics_level": "Moderate; more education studies than a"
+    }
+  ],
+  "fees": {
+    "footnote": "These figures show tuition only, because the real yearly bill can rise with hostel, transport, books, and one-time college charges. Government colleges are usually far cheaper than private colleges, while a few premier-n",
+    "rows": [
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": false,
+        "max": 40000,
+        "min": 8000,
+        "parent_check": "Most public universities and colleges offering B.Ed sit in this band, with some well-known campuses charging much less."
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": false,
+        "max": 145500,
+        "min": 60000,
+        "parent_check": "Private universities and self-financed colleges usually fall in this higher band."
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "premier_national",
+        "is_variable": false,
+        "max": 25140,
+        "min": 13025,
+        "parent_check": "Some central and nationally known institutions charge close to government-college levels rather than private-college lev"
+      },
+      {
+        "category": "Examination and other mandatory charges",
+        "frequency": "As required",
+        "institution_type": null,
+        "is_variable": true,
+        "max": null,
+        "min": null,
+        "parent_check": "These charges differ by campus and session and should be checked before applying."
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "Choose a recognised B.Ed college that accepts graduates from your stream and check whether it offers a 2-year programme with school observation, lesson planning, practice teaching, and internship work.",
+      "stage": "Grades 8-10",
+      "title": "Know what the course looks for"
+    },
+    {
+      "description": "In Classes 11-12, focus on steady marks, reading, writing, and communication because B.Ed is a postgraduate teaching course taken after a bachelor’s degree.",
+      "stage": "Grades 8-10",
+      "title": "Build the basics early"
+    },
+    {
+      "description": "After graduation, apply only to institutions recognised for B.Ed and compare fees, internship support, and school tie-ups before joining.",
+      "stage": "Grade 11",
+      "title": "Shortlist recognised colleges"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "B.Ed is a 2-year teacher-education programme in India that prepares graduates for school teaching through theory, practicum, and internship work.",
+      "question": "What is B.Ed, in simple words?"
+    },
+    {
+      "answer": "The usual entry route is after a bachelor’s degree, and B.Ed colleges are expected to follow the national norms for teacher-education programmes.",
+      "question": "Who can study B.Ed?"
+    },
+    {
+      "answer": "A B.Ed graduate usually still needs to clear the teacher-eligibility route required by the school system before teaching in many schools.",
+      "question": "Can I start teaching directly after B.Ed?"
+    },
+    {
+      "answer": "B.Ed usually includes classroom theory, lesson planning, school observation, practice teaching, and internship-based work.",
+      "question": "What will I study in B.Ed?"
+    },
+    {
+      "answer": "For Indian teacher-education programmes, the national framework places B.Ed at 2 years and recognises it as a professional preparation course for school teachers.",
+      "question": "How long does B.Ed take?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "B.Ed is a practical degree for students who want to teach in schools, and it is usually taken after graduation rather than after Class 12. The course is short, intensive, and built around classroom theory, lesson planning, school observation, practice teaching, and internship work. Families should look closely at whether the college is recognised, how much supervised school practice it provides, and whether the student is comfortable with regular communication, patience, and discipline. B.Ed by itself does not always complete the route into school teaching; in many settings, the next step is the teacher-eligibility requirement used by the school system. A calm, realistic plan is best: choose a recognised college, understand the fees, and check the pathway into the type of school the student wants to work in.",
+    "questions": [
+      "Is this the right course for a child who enjoys explaining things and working with children?",
+      "Does the college have recognised B.Ed approval and enough school-practice support?",
+      "What comes after B.Ed for government or private school teaching?",
+      "Can we compare fees, internship support, and placement help before applying?",
+      "Is the student ready for a course that includes observation, lesson planning, and practice teaching?",
+      "What subject combination or graduation background is best for the intended school level?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "National Council for Teacher Education",
+        "title": "Introduction",
+        "url": "https://web.ncte.gov.in/page/introduction"
+      },
+      {
+        "publisher": "National Council for Teacher Education",
+        "title": "Act and Regulation",
+        "url": "https://web.ncte.gov.in/page/act-and-regulation"
+      },
+      {
+        "publisher": "National Council for Teacher Education",
+        "title": "Minimum Qualifications of Teachers",
+        "url": "https://web.ncte.gov.in/page/minimum-qualifications-of-teachers"
+      },
+      {
+        "publisher": "National Council for Teacher Education",
+        "title": "TET Guidelines",
+        "url": "https://web.ncte.gov.in/page/tet-guidelines"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  },
+  "curriculum": {
+    "assessment_methods": "Semester examinations, internal assignments, lesson plans, school observation records, micro-teaching, practice-teaching, internship reports, viva voce, and a final action-research or project report.",
+    "learning_activities": "Lectures, tutorials, micro-teaching, classroom simulations, school observation, lesson planning, peer teaching, reflective writing, practice-teaching, and teaching internship in partner schools.",
+    "years": [
+      {
+        "label": "Year 1",
+        "subjects": [
+          {
+            "description": "Development of children and adolescents, including learning, motivation, and social and emotional growth.",
+            "name": "Childhood and Growing Up"
+          },
+          {
+            "description": "Structure, diversity, and major policy ideas in Indian schooling and education.",
+            "name": "Contemporary India and Education"
+          },
+          {
+            "description": "Principles of teaching, classroom interaction, and planning for one chosen school subject.",
+            "name": "Pedagogy of School Subject I"
+          },
+          {
+            "description": "How to use reading, writing, speaking, and listening across school subjects.",
+            "name": "Language Across the Curriculum"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Year 2",
+        "subjects": [
+          {
+            "description": "Methods for measuring learning, designing tests, and using assessment to improve teaching.",
+            "name": "Assessment and Evaluation in Education"
+          },
+          {
+            "description": "School guidance, learner support, and basic counselling approaches for teachers.",
+            "name": "Guidance, Counselling and Student Support"
+          },
+          {
+            "description": "Extended school placement with supervised teaching, observation, and reflective practice.",
+            "name": "School Internship and Practice Teaching"
+          },
+          {
+            "description": "A small classroom-based inquiry that studies a teaching problem or learning need.",
+            "name": "Action Research Project"
+          }
+        ],
+        "year": 2
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "Merit based on graduation marks",
+      "Entrance examination used by many universities and state bodies",
+      "Counselling, document verification, and seat allotment where applicable",
+      "Interview or aptitude round at some institutions"
+    ],
+    "admission_timeline": [
+      {
+        "description": "Complete a recognised bachelor's degree and check the institution's admission notice.",
+        "step": 1,
+        "title": "Meet entry requirements"
+      },
+      {
+        "description": "Submit the application form within the announced dates.",
+        "step": 2,
+        "title": "Apply"
+      },
+      {
+        "description": "Take the entrance test if the college or university conducts one.",
+        "step": 3,
+        "title": "Entrance examination"
+      },
+      {
+        "description": "Attend counselling and document verification, and take part in seat allotment where applicable.",
+        "step": 4,
+        "title": "Counselling and verification"
+      },
+      {
+        "description": "Pay the fee and confirm admission after selection.",
+        "step": 5,
+        "title": "Final enrolment"
+      }
+    ],
+    "typical_requirements": [
+      "A recognised bachelor's degree in any stream",
+      "Usually at least 50% marks in graduation, with relaxation for reserved categories as per state or institutional rules",
+      "Some institutions may ask for subject-specific background for the teaching subject chosen",
+      "Valid identity, degree, mark sheets, and category or domicile documents where required"
+    ]
+  },
+  "skills": [
+    {
+      "description": "Explaining ideas clearly to school students of different ages.",
+      "name": "Classroom communication"
+    },
+    {
+      "description": "Planning lessons with clear objectives, activities, and checks for understanding.",
+      "name": "Lesson planning"
+    },
+    {
+      "description": "Managing classrooms and maintaining student attention and discipline.",
+      "name": "Classroom management"
+    },
+    {
+      "description": "Checking learning through quizzes, assignments, and feedback.",
+      "name": "Assessment and feedback"
+    },
+    {
+      "description": "Adapting teaching for mixed-ability and diverse classrooms.",
+      "name": "Inclusive teaching"
+    },
+    {
+      "description": "Using textbooks, teaching aids, and subject methods effectively.",
+      "name": "Subject pedagogy"
+    }
+  ]
+}

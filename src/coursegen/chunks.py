@@ -20,6 +20,7 @@ INJECTED_PROPERTIES: tuple[str, ...] = (
     "course_id",
     "slug",
     "course_name",
+    "category",
     "currency",
     "region",
 )
@@ -29,10 +30,11 @@ CHUNKS: tuple[Chunk, ...] = (
     Chunk(
         key="profile",
         title="Course profile, hero and quick facts",
-        properties=("course_level", "category", "subcategory", "seo", "hero", "quick_facts"),
+        properties=("course_level", "subcategory", "seo", "hero", "quick_facts"),
         focus=(
             "Classify the course and write the page header. Establish the academic level, the "
-            "subject family it belongs to, the search-engine title and description, the hero "
+            "specific subject the breadcrumb ends on, the search-engine title and description, "
+            "the hero "
             "summary aimed jointly at a student and a parent, and the six at-a-glance facts. "
             "Duration and fee figures here must be the mainstream range for this course in the "
             "stated region, not the range for a single institution. "

@@ -1,0 +1,581 @@
+{
+  "course_id": "crs_b_tech_mechanical_engineering",
+  "slug": "b-tech-mechanical-engineering",
+  "course_name": "B.Tech Mechanical Engineering",
+  "currency": "INR",
+  "region": "India",
+  "category": "Engineering & Technology",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Core engineering pathway",
+    "fit": {
+      "indicators": [
+        "Strong in Physics and Mathematics",
+        "Interested in machines, design and manufacturing",
+        "Comfortable with labs, projects and problem-solving"
+      ],
+      "note": "A good fit for students who want to understand how engines, tools, systems and production processes work.",
+      "score_percent": 88
+    },
+    "summary": "B.Tech Mechanical Engineering is a four-year undergraduate engineering degree focused on the design, analysis, manufacturing and maintenance of mechanical systems. It suits students who like Physics, Mathematics and practical problem-solving, and it can lead to roles in core engineering, production, design and operations."
+  },
+  "quick_facts": {
+    "career_direction": "Mechanical design, production, maintenance, quality, manufacturing, R",
+    "entry_level": "Class 12",
+    "indicative_annual_fees": {
+      "max": 250000,
+      "min": 100000
+    },
+    "learning_style": "Math-heavy, lab-based and application-oriented, with CAD, CA",
+    "suitable_streams": [
+      "Science with Physics, Chemist",
+      "Mathematics"
+    ],
+    "typical_duration": {
+      "max_years": 4,
+      "min_years": 4
+    }
+  },
+  "seo": {
+    "meta_description": "B.Tech Mechanical Engineering in India is a four-year undergraduate course for students interested in machines, design, manufacturing and core engineering jobs.",
+    "page_title": "B.Tech Mechanical Engineering Course in India | Eligibility, Duration,"
+  },
+  "subcategory": "Mechanical Engineering",
+  "overview": {
+    "heading": "What is B.Tech Mechanical Engineering?",
+    "paragraphs": [
+      "B.Tech Mechanical Engineering is a four-year undergraduate degree focused on machines, motion, materials, manufacturing, maintenance, and product design. In India, admission commonly expects Class 12 with Physics and Mathematics, plus another approved science or technical subject, and many colleges ask for a minimum marks cutoff.",
+      "The course suits students who like applied maths and learning how real-world systems work. Graduates often move into production, manufacturing, research and development, quality assurance, construction and site engineering, project roles, automotive, power, aerospace, and robotics-linked work.",
+      "For a family, the key idea is that this is a broad engineering degree, not one fixed job. Some graduates start in core mechanical roles, while others use the degree to enter allied fields or continue into higher study. The strength of the college, the internship exposure, and the role chosen after graduation can change the outcome a lot."
+    ]
+  },
+  "snapshot": {
+    "data_note": "Pay in mechanical engineering changes with college reputation, job role, city, company, and whether the graduate enters core manufacturing, design, quality, project, or site work. A single number cannot describe every graduate because entry-level salaries are lower, while experienced engineers and top-institute hires,",
+    "salary": {
+      "higher_annual": 900000,
+      "higher_is_open_ended": false,
+      "lower_annual": 130000,
+      "note": "India salary figures for mechanical engineers commonly fall around ₹1.3 lakh to ₹6 lakh a year for graduate mechanical engineers, and a broader mechanical engineer range is about ₹1.5 lakh to ₹9 lakh a year. Stronger roles in top institutes, larger firms, or specialised areas can go higher.",
+      "typical_annual": 250000,
+      "marker_percent": 16
+    },
+    "specialisations": [
+      "Production and manufacturing",
+      "Research and development",
+      "Quality assurance",
+      "Construction and site engineering",
+      "Project and program management",
+      "Design/CAD-linked mechanical roles",
+      "Automotive and energy-related mechanical work",
+      "Robotics-linked mechanical work"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "Be careful if you expect...",
+      "points": [
+        "A guaranteed core-design job straight after graduation; many entry roles are in production, quality, maintenance, or site work first.",
+        "One uniform salary for all graduates; pay varies widely by institute, role, sector, and experience.",
+        "A purely classroom-based degree; the subject is strongly linked to labs, practical problem-solving, and industry-style work.",
+        "That higher salaries come automatically without skill building, internships, or, in some cases, further study."
+      ]
+    },
+    "good_fit": {
+      "heading": "Good fit if you...",
+      "points": [
+        "Enjoy Physics and Mathematics and are comfortable with applied problem-solving.",
+        "Like understanding how machines, tools, and systems are built and kept running.",
+        "Are open to lab work, drawing, testing, and practical projects as part of learning.",
+        "Want flexible options after graduation across manufacturing, design, quality, projects, and allied engineering fields."
+      ]
+    },
+    "tags": [
+      "Math-heavy",
+      "Lab-based",
+      "Application-oriented",
+      "Mechanical systems",
+      "Manufacturing",
+      "Design",
+      "Quality and production"
+    ]
+  },
+  "curriculum": {
+    "assessment_methods": "Semester examinations, internal tests, laboratory work, tutorials, mini-projects, and a final-year project or dissertation. Practical subjects usually count through lab records, viva voce, and continuous assessment.",
+    "learning_activities": "Classroom teaching, problem-solving sessions, CAD and workshop labs, machine drawing, measurement and testing labs, simulation/software work, team projects, industrial visits, and project presentations.",
+    "years": [
+      {
+        "label": "Year 1",
+        "subjects": [
+          {
+            "description": "Core engineering mathematics for calculus, linear algebra, and basic problem-solving used across later mechanical topics",
+            "name": "Engineering Mathematics I"
+          },
+          {
+            "description": "Fundamentals of physics for mechanics, heat, and materials applications",
+            "name": "Engineering Physics"
+          },
+          {
+            "description": "Basic principles of chemistry relevant to materials, corrosion, and manufacturing processes",
+            "name": "Engineering Chemistry"
+          },
+          {
+            "description": "Hands-on introduction to engineering tools, measurements, workshop practice, and safety",
+            "name": "Engineering Workshop Practice"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Year 2",
+        "subjects": [
+          {
+            "description": "Statics, force systems, and equilibrium of particles and rigid bodies",
+            "name": "Engineering Mechanics"
+          },
+          {
+            "description": "Geometry, orthographic projection, and technical communication for machine components",
+            "name": "Engineering Graphics"
+          },
+          {
+            "description": "Material behaviour, crystal structure, and engineering metals and alloys",
+            "name": "Engineering Materials"
+          },
+          {
+            "description": "Thermodynamic laws, properties, and basic energy systems",
+            "name": "Basic Thermodynamics"
+          }
+        ],
+        "year": 2
+      },
+      {
+        "label": "Year 3",
+        "subjects": [
+          {
+            "description": "Fluid properties, flow behaviour, and applications in pipelines and machines",
+            "name": "Fluid Mechanics"
+          },
+          {
+            "description": "Heat transfer modes and thermal analysis of engineering systems",
+            "name": "Heat Transfer"
+          },
+          {
+            "description": "Machine elements, mechanisms, and motion transmission in mechanical systems",
+            "name": "Machine Design Basics"
+          },
+          {
+            "description": "Computer-aided modelling, drafting, and part assembly for mechanical components",
+            "name": "CAD and Product Modelling"
+          }
+        ],
+        "year": 3
+      },
+      {
+        "label": "Year 4",
+        "subjects": [
+          {
+            "description": "Advanced mechanical design, selection, and optimisation of components and systems",
+            "name": "Advanced Machine Design"
+          },
+          {
+            "description": "Elective study in a chosen area such as automotive, thermal, production, or robotics",
+            "name": "Mechanical Engineering Elective"
+          },
+          {
+            "description": "Planning, execution, and documentation of an individual or team engineering project",
+            "name": "Final Year Project"
+          },
+          {
+            "description": "Engineering economics, professional practice, and preparation for industry or higher study",
+            "name": "Professional Practice and Engineering Economics"
+          }
+        ],
+        "year": 4
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "Class 12 admission through engineering entrance examination and counselling",
+      "Institute-specific entrance or merit process where applicable",
+      "Lateral entry to the second year for eligible diploma holders at some institutions in India",
+      "Management quota or direct admission only where permitted by the institution and state rules"
+    ],
+    "admission_timeline": [
+      {
+        "description": "Complete Class 12 with Physics, Chemistry, and Mathematics, then check the entrance route used by the target institute.",
+        "step": 1,
+        "title": "Finish school with PCM"
+      },
+      {
+        "description": "Register for the relevant engineering entrance test or state-level admission process.",
+        "step": 2,
+        "title": "Apply for entrance or counselling"
+      },
+      {
+        "description": "Meet the institute's subject and marks requirements; published examples commonly ask for PCM and minimum marks in Maths/",
+        "step": 3,
+        "title": "Check eligibility cut-off"
+      },
+      {
+        "description": "Attend counselling, choose Mechanical Engineering, and confirm admission after seat allotment and document verification.",
+        "step": 4,
+        "title": "Join through counselling"
+      },
+      {
+        "description": "If entering through diploma lateral entry, apply separately for second-year admission after a recognised engineering/te",
+        "step": 5,
+        "title": "Use lateral entry if eligible"
+      }
+    ],
+    "typical_requirements": [
+      "Pass Class 12 or equivalent with Physics, Chemistry, and Mathematics",
+      "Secure the minimum marks required by the chosen institute or entrance route",
+      "Qualify the applicable engineering entrance examination or state counselling process",
+      "For lateral entry, hold a recognised engineering diploma with the required percentage and branch rules"
+    ]
+  },
+  "skills": [
+    {
+      "description": "Ability to analyse forces, motion, energy, and machine behaviour using mathematics and physics",
+      "name": "Mechanical reasoning"
+    },
+    {
+      "description": "Use of CAD tools for drawing, modelling, and assembly of parts",
+      "name": "CAD and drafting"
+    },
+    {
+      "description": "Understanding of manufacturing methods, workshop processes, and quality checks",
+      "name": "Manufacturing awareness"
+    },
+    {
+      "description": "Troubleshooting of machines, equipment, and thermal or fluid systems",
+      "name": "Problem-solving"
+    },
+    {
+      "description": "Reading technical drawings and turning them into workable components",
+      "name": "Technical drawing interpretation"
+    },
+    {
+      "description": "Working in labs, teams, and project groups with safe engineering practice",
+      "name": "Practical lab skills"
+    }
+  ],
+  "careers": [
+    {
+      "description": "Works on machine parts, tools, products, and assemblies using CAD and testing.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Mechanical Design Engineer",
+      "typical_route": "B.Tech Mechanical Engineering -> CAD/CAE projects -> Entry-level design role"
+    },
+    {
+      "description": "Plans shop-floor processes, improves output, and supports production lines in factories.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Production Engineer",
+      "typical_route": "B.Tech Mechanical Engineering -> Internship or plant training -> Production role"
+    },
+    {
+      "description": "Checks product quality, measurements, and manufacturing standards in plants and labs.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Quality Engineer",
+      "typical_route": "B.Tech Mechanical Engineering -> Quality tools and inspection exposure -> Quality role"
+    },
+    {
+      "description": "Keeps machines, equipment, and plant systems running safely and efficiently.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Maintenance Engineer",
+      "typical_route": "B.Tech Mechanical Engineering -> Industrial training -> Maintenance role"
+    },
+    {
+      "description": "Supports product development, simulation, and applied research in advanced engineering teams.",
+      "route_badge": "Postgraduate route",
+      "title": "R&D Engineer",
+      "typical_route": "B.Tech Mechanical Engineering -> M.Tech or research-focused postgraduate study -> R&D role"
+    },
+    {
+      "description": "Works on system design and analysis for vehicles, machines, and industrial equipment.",
+      "route_badge": "Postgraduate route",
+      "title": "CAE Engineer",
+      "typical_route": "B.Tech Mechanical Engineering -> M.Tech or strong simulation portfolio -> CAE role"
+    }
+  ],
+  "further_study_pathway": [
+    "M.Tech in Mechanical Engineering",
+    "M.Tech in Thermal Engineering",
+    "M.Tech in Design Engineering",
+    "M.Tech in Manufacturing / Product /",
+    "M.Tech in Automotive Engineering"
+  ],
+  "recruiters": [
+    {
+      "description": "Large Indian engineering and infrastructure company that hires for design, projects, manufacturing, and plant roles.",
+      "logo_initials": "LT",
+      "name": "Larsen & Toubro",
+      "roles": [
+        "Design Engineer",
+        "Project Engineer','Production/"
+      ],
+      "sector": "Engineering and Infrastructure"
+    },
+    {
+      "description": "Indian automotive manufacturer with roles in design, testing, production, and quality.",
+      "logo_initials": "TM",
+      "name": "Tata Motors",
+      "roles": [
+        "Design Engineer",
+        "Production Engineer"
+      ],
+      "sector": "Automotive"
+    },
+    {
+      "description": "Indian automotive manufacturer that recruits for manufacturing, quality, and product engineering roles.",
+      "logo_initials": "MM",
+      "name": "Mahindra & Mahindra",
+      "roles": [
+        "Manufacturing Engineer",
+        "Quality Engineer"
+      ],
+      "sector": "Automotive"
+    },
+    {
+      "description": "Indian oil and energy company that hires mechanical graduates for plant and maintenance work.",
+      "logo_initials": "HP",
+      "name": "Hindustan Petroleum Corporation Limited",
+      "roles": [
+        "Maintenance Engineer",
+        "Plant Engineer"
+      ],
+      "sector": "Energy and Oil and Gas"
+    },
+    {
+      "description": "Public sector engineering company that recruits mechanical engineers for fabrication, manufacturing, and project work.",
+      "logo_initials": "BH",
+      "name": "Bharat Heavy Electricals Limited",
+      "roles": [
+        "Production Engineer",
+        "Project Engineer"
+      ],
+      "sector": "Heavy Engineering"
+    },
+    {
+      "description": "Indian aerospace and defence organisation that offers roles in design, testing, and systems support.",
+      "logo_initials": "HA",
+      "name": "Hindustan Aeronautics Limited",
+      "roles": [
+        "Design Engineer",
+        "Test Engineer"
+      ],
+      "sector": "Aerospace and Defence"
+    }
+  ],
+  "colleges": {
+    "data_note": "Scores are a practical ordering for families, not a promise of fit or outcome. Fees can change with category, quota, and yearly revisions, so check the latest admission notice, tuition schedule, and any separate charges before applying.",
+    "items": [
+      {
+        "admission_route": "JEE Main / institute admission",
+        "annual_fee": 5210,
+        "city": "Kolkata",
+        "course_name": "B.Tech Mechanical Engineering",
+        "duration_years": 4,
+        "highlight": "Very low tuition for a state university;",
+        "institution_type": "government",
+        "name": "Jadavpur University",
+        "rank": 1
+      },
+      {
+        "admission_route": "MHT CET / institute admission",
+        "annual_fee": 80000,
+        "city": "Pune",
+        "course_name": "B.Tech Mechanical Engineering",
+        "duration_years": 4,
+        "highlight": "Strong public engineering option with a",
+        "institution_type": "government",
+        "name": "COEP Technological University",
+        "rank": 2
+      },
+      {
+        "admission_route": "JEE Main / JoSAA",
+        "annual_fee": 166000,
+        "city": "Tiruchirappalli",
+        "course_name": "B.Tech Mechanical Engineering",
+        "duration_years": 4,
+        "highlight": "National institute with widely used core",
+        "institution_type": "private",
+        "name": "National Institute of Technology, Tiruchirappalli",
+        "rank": 3
+      },
+      {
+        "admission_route": "JEE Main / JoSAA",
+        "annual_fee": 223000,
+        "city": "New Delhi",
+        "course_name": "B.Tech Mechanical Engineering",
+        "duration_years": 4,
+        "highlight": "Central government engineering institute",
+        "institution_type": "government",
+        "name": "National Institute of Technology, Delhi",
+        "rank": 4
+      },
+      {
+        "admission_route": "VITEEE / institute admission",
+        "annual_fee": 195000,
+        "city": "Vellore",
+        "course_name": "B.Tech Mechanical Engineering",
+        "duration_years": 4,
+        "highlight": "Large private university with a common B",
+        "institution_type": "private",
+        "name": "VIT Vellore",
+        "rank": 5
+      },
+      {
+        "admission_route": "MHT CET / institute admission",
+        "annual_fee": 130000,
+        "city": "Mumbai",
+        "course_name": "B.Tech Mechanical Engineering",
+        "duration_years": 4,
+        "highlight": "Private deemed university option with a",
+        "institution_type": "private",
+        "name": "K J Somaiya School of Engineering",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "Collegedunia fee pages and course pages for the named institutions",
+    "ranking_updated": "2026-08"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "B.Tech + internship or placement into design, production, maintenance, quality,",
+      "course_name": "B.Tech Mechanical Engineering",
+      "laboratory_exposure": "High: workshops, materials testing, CAD,",
+      "main_focus": "Machines, manufacturing, thermodynamics, mechanics, design, and production",
+      "statistics_level": "Moderate"
+    },
+    {
+      "common_next_steps": "B.Tech + entry into power, electronics, automation, electric vehicles, or higher",
+      "course_name": "B.Tech Electrical Engineering",
+      "laboratory_exposure": "High: circuit, machines, power systems,",
+      "main_focus": "Electric circuits, power, control, machines, and energy systems",
+      "statistics_level": "Moderate"
+    },
+    {
+      "common_next_steps": "B.Tech + entry into site engineering, estimation, structural design, or higher",
+      "course_name": "B.Tech Civil Engineering",
+      "laboratory_exposure": "Moderate to high: surveying, materials,",
+      "main_focus": "Buildings, roads, bridges, construction methods, and structural systems",
+      "statistics_level": "Low to moderate"
+    }
+  ],
+  "fees": {
+    "footnote": "Tuition is shown as an annual figure for one academic year. Public colleges usually cost far less than private ones, while premier national institutes often sit between the two. Hostel, mess, exam, and one-time charges,",
+    "rows": [
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": true,
+        "max": 185000,
+        "min": 5000,
+        "parent_check": "Check the annual tuition, category-wise fees, and any extra institute charges before applying."
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": true,
+        "max": 520000,
+        "min": 195000,
+        "parent_check": "Check whether the quoted amount is tuition only or includes caution, development, or other fees."
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "premier_national",
+        "is_variable": true,
+        "max": 237250,
+        "min": 166000,
+        "parent_check": "Check tuition, hostel, mess, and other annual charges separately because they can change by institute and quota."
+      },
+      {
+        "category": "Other charges",
+        "frequency": "As required",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 200000,
+        "min": 10000,
+        "parent_check": "Confirm hostel, mess, examination, caution deposit, and transport charges separately."
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "In Grades 8-10, focus on Mathematics, Physics and hands-on problem solving. Build basics in algebra, geometry, vectors, machines, and simple coding or CAD exposure if available.",
+      "stage": "Grades 8-10",
+      "title": "Build core STEM skills"
+    },
+    {
+      "description": "In Grade 11, choose the Science stream with Physics, Chemistry and Mathematics. Keep your marks strong because engineering admissions usually look at Class 12 performance along with entrance scores.",
+      "stage": "Grade 11",
+      "title": "Choose the right stream"
+    },
+    {
+      "description": "In Grade 12, prepare for engineering entrance exams and college applications. Practice physics, maths and speed-based problem solving, then compare colleges by accreditation, lab access, placement history and total cost.",
+      "stage": "Grade 12",
+      "title": "Prepare for admission and fees"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "B.Tech Mechanical Engineering is an undergraduate engineering degree that usually takes 4 years and suits students who enjoy Maths, Physics and practical lab work.",
+      "question": "What is B.Tech Mechanical Engineering?"
+    },
+    {
+      "answer": "The usual school background is Science with Physics, Chemistry and Mathematics in Class 12.",
+      "question": "Which Class 12 stream is needed?"
+    },
+    {
+      "answer": "Mechanical engineering covers machine design, production, maintenance, quality control, manufacturing systems and related work in industry.",
+      "question": "What do mechanical engineering students study?"
+    },
+    {
+      "answer": "Common entry routes are engineering entrance exams followed by college counselling or institute admission rounds.",
+      "question": "How do students get admission?"
+    },
+    {
+      "answer": "For many entry-level industry jobs, a B.Tech degree is enough to start applying. Some roles may ask for extra skills in CAD, simulation software, or shop-floor and internship experience.",
+      "question": "Is anything needed after graduation?"
+    },
+    {
+      "answer": "The indicative annual fee range for India on this course page is INR 100000 to INR 250000.",
+      "question": "How much does the course usually cost?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "This is a practical, math-heavy course for students who like how things work and enjoy solving real-world problems. It suits families who want an engineering degree that can lead into design, manufacturing, maintenance, quality, production or plant operations. The strongest school preparation is steady performance in Mathematics and Physics, plus comfort with problem solving and lab work. In college, students should look beyond the course title and check whether the institute has proper labs, workshop access, internships and industry links. A good fit is more important than brand names alone. Parents can help by watching for consistent effort, not only exam scores, because this field rewards accuracy, patience and practice.",
+    "questions": [
+      "Does my child enjoy Maths and Physics enough for this course?",
+      "Will the college give enough lab, workshop and project exposure?",
+      "What are the total annual costs, including hostel and travel?",
+      "Are internships and placement support available in the colleges we are considering?",
+      "Would another engineering branch suit their interests better?",
+      "Can they handle the workload of theory, drawing, labs and project work?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "NTA",
+        "title": "Notice Board Archive",
+        "url": "https://nta.ac.in/NoticeBoardArchive?pfrom=home-business_topstories"
+      },
+      {
+        "publisher": "JoSAA",
+        "title": "Joint Seat Allocation Authority",
+        "url": "https://josaa.nic.in/"
+      },
+      {
+        "publisher": "AICTE",
+        "title": "All India Council for Technical Education",
+        "url": "https://www.aicte-india.org/"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  }
+}

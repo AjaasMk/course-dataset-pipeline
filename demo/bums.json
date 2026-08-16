@@ -1,0 +1,616 @@
+{
+  "course_id": "crs_bums",
+  "slug": "bums",
+  "course_name": "BUMS",
+  "currency": "INR",
+  "region": "India",
+  "category": "Medical & Allied Health",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Regulated medical pathway",
+    "fit": {
+      "indicators": [
+        "Best for students interested in Unani medicine and patient care",
+        "Requires science at school level and admission through a medical entry",
+        "Leads toward a clinical role after internship and registration"
+      ],
+      "note": "A suitable choice for students who want a medicine-focused degree with a traditional healthcare system and a clear route",
+      "score_percent": 74
+    },
+    "summary": "BUMS is an undergraduate medical degree in Unani medicine and surgery. It suits students who want to study diagnosis, treatment, and patient care in a traditional medical system, and it leads to clinical practice after completing the degree, internship, and required registration."
+  },
+  "quick_facts": {
+    "career_direction": "Unani practitioner or clinical healthcare roles in the Unani system",
+    "entry_level": "Class 12 with science subjects",
+    "indicative_annual_fees": {
+      "max": 200000,
+      "min": 30000
+    },
+    "learning_style": "Theory-heavy study with clinical training, practical ward/OP",
+    "suitable_streams": [
+      "Science"
+    ],
+    "typical_duration": {
+      "max_years": 5.5,
+      "min_years": 5.5
+    }
+  },
+  "seo": {
+    "meta_description": "BUMS is an undergraduate degree in Unani medicine and surgery in India. See course level, duration, eligibility, fees range, and career path.",
+    "page_title": "BUMS Course in India: Eligibility, Duration, Fees and Career Path"
+  },
+  "subcategory": "Unani Medicine",
+  "overview": {
+    "heading": "What is BUMS?",
+    "paragraphs": [
+      "BUMS, or Bachelor of Unani Medicine and Surgery, is a 5.5-year undergraduate degree in the Unani system of medicine. The course usually combines about 4.5 years of classroom study with a 1-year compulsory internship, so students learn both medical theory and patient care before entering practice.",
+      "The syllabus is theory-heavy and includes subjects such as anatomy, physiology, pathology, pharmacology, and Unani principles and treatments. Training also includes clinical exposure in hospital and outpatient settings, which helps students learn how Unani care is used with real patients.",
+      "BUMS is meant for students who want a healthcare career in Unani medicine rather than a general MBBS path. After graduation, the usual direction is work as a Unani practitioner or in related clinical roles, but professional practice still depends on completing the internship and the required registration to work as a licensed Unani doctor."
+    ]
+  },
+  "snapshot": {
+    "data_note": "Earnings in BUMS depend on experience, location, employer type, and whether the graduate works in a clinic, hospital, government post, or private practice. Early salaries are usually modest, while income can rise with experience, patient trust, and postgraduate study; one figure cannot describe every graduate because a",
+    "salary": {
+      "higher_annual": 1000000,
+      "higher_is_open_ended": true,
+      "lower_annual": 250000,
+      "note": "In India, BUMS graduates commonly start around INR 250000 to INR 300000 a year, while experienced practitioners and senior roles can reach INR 1000000 a year or more. Pay can be higher in established private practice or some urban and specialist roles, and lower in early-career or entry-level posts.",
+      "typical_annual": 360000,
+      "marker_percent": 15
+    },
+    "specialisations": [
+      "Unani practitioner",
+      "Unani physician",
+      "Unani therapist",
+      "Unani chemist",
+      "clinical healthcare roles in the Unani system",
+      "private Unani practice",
+      "hospital-based Unani care",
+      "government Unani services"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "Be careful if you expect this course to work like MBBS",
+      "points": [
+        "BUMS is based on the Unani medical system, so the training and treatment approach are different from allopathic medicine.",
+        "Graduates do not start independent practice immediately; the compulsory internship and the required registration are part of the route to a",
+        "Income is not fixed after graduation, and building a patient base in private practice can take time.",
+        "The course asks for steady study habits because it combines long theory modules with clinical training."
+      ]
+    },
+    "good_fit": {
+      "heading": "This course may suit you if you...",
+      "points": [
+        "Want to study a traditional medical system with real clinical training.",
+        "Like biology and learning how medicines are used in patient care.",
+        "Are comfortable with a long undergraduate programme and a compulsory internship.",
+        "May want a career in consulting, clinic work, or community healthcare in the Unani system."
+      ]
+    },
+    "tags": [
+      "science-stream",
+      "healthcare",
+      "traditional medicine",
+      "clinical training",
+      "undergraduate medical course",
+      "India",
+      "regulated practice"
+    ]
+  },
+  "curriculum": {
+    "assessment_methods": "Theory papers, practical examinations, viva voce, internal assessment, clinical postings, and internship performance at the end of the programme.",
+    "learning_activities": "Lectures, tutorials, dissection and practical classes, ward and OPD postings, case taking, pharmacy work, community health exposure, and supervised internship training.",
+    "years": [
+      {
+        "label": "First professional B",
+        "subjects": [
+          {
+            "description": "Core ideas of Unani principles, temperament, and basic theory of health and disease.",
+            "name": "Kulliyat-e-Umoor-e-Tabiya"
+          },
+          {
+            "description": "Study of human anatomy with structure-based practical learning.",
+            "name": "Tashreeh-ul-Badan"
+          },
+          {
+            "description": "Study of the mental and logical foundations used in classical Unani learning.",
+            "name": "Mantiq wa Falsafa"
+          },
+          {
+            "description": "Introduction to basic Unani materia medica and simple drugs.",
+            "name": "Mufradat wa Aghziya"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Second professional",
+        "subjects": [
+          {
+            "description": "Functions of organs and body systems in Unani and modern terms.",
+            "name": "Munafe-ul-Aza"
+          },
+          {
+            "description": "Basics of diseases, causes, and patterns of illness.",
+            "name": "Mahiyat-ul-Amraz"
+          },
+          {
+            "description": "Study of preventive and public health ideas in Unani medicine.",
+            "name": "Tahaffuzi wa Samaji Tibb-I"
+          },
+          {
+            "description": "First part of pharmacology and drug actions used in Unani practice.",
+            "name": "Ilmul Advia-I"
+          }
+        ],
+        "year": 2
+      },
+      {
+        "label": "Third professional",
+        "subjects": [
+          {
+            "description": "Primary study of treatment methods, regimens, and clinical care.",
+            "name": "Moalejat-I"
+          },
+          {
+            "description": "Women’s health, pregnancy, and delivery in Unani clinical study.",
+            "name": "Amraz-e-Niswan wa Qabalat"
+          },
+          {
+            "description": "Basic surgery and minor procedural care in the Unani system.",
+            "name": "Jarahat-I"
+          },
+          {
+            "description": "Study of dispensing, preparation, and storage of medicines.",
+            "name": "Ilmul Saidla"
+          }
+        ],
+        "year": 3
+      },
+      {
+        "label": "Fourth professional",
+        "subjects": [
+          {
+            "description": "Advanced study of treatment, differential diagnosis, and case management.",
+            "name": "Moalejat-II"
+          },
+          {
+            "description": "Diseases of the eye, ear, nose, and throat.",
+            "name": "Amraz-e-Ain, Uzn, Anf wa Halaq"
+          },
+          {
+            "description": "Skin and external disease management.",
+            "name": "Amraz-e-Jild"
+          },
+          {
+            "description": "Applied research methods, record keeping, and clinical case analysis.",
+            "name": "Research Methods and Case Study"
+          }
+        ],
+        "year": 4
+      },
+      {
+        "label": "Internship and final",
+        "subjects": [
+          {
+            "description": "Supervised rotation through Unani medicine, specialty clinics, and inpatient care.",
+            "name": "Clinical Internship Rotations"
+          },
+          {
+            "description": "Community health and preventive care posting.",
+            "name": "Community Health Posting"
+          },
+          {
+            "description": "Practical dispensing, compounding, and pharmacy supervision.",
+            "name": "Pharmacy Practice"
+          },
+          {
+            "description": "Final project, case presentation, and viva voce.",
+            "name": "Project Report and Viva"
+          }
+        ],
+        "year": 5
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "Qualify NEET-UG and take part in AYUSH counselling through the relevant central or state admission process.",
+      "Apply through merit lists and seat allotment at recognised Unani colleges.",
+      "Some institutions may require document verification and medical fitness at admission.",
+      "Admission is typically based on Class 12 science marks and counselling rank."
+    ],
+    "admission_timeline": [
+      {
+        "description": "Complete Class 12 with Physics, Chemistry, and Biology before applying.",
+        "step": 1,
+        "title": "Finish school eligibility"
+      },
+      {
+        "description": "Register for NEET-UG and seek the required qualifying score.",
+        "step": 2,
+        "title": "Entrance qualification"
+      },
+      {
+        "description": "Join AYUSH counselling for central or state seats and choose BUMS colleges.",
+        "step": 3,
+        "title": "Counselling and choice filling"
+      },
+      {
+        "description": "Attend document verification, seat allotment, and fee payment after selection.",
+        "step": 4,
+        "title": "Admission formalities"
+      },
+      {
+        "description": "Report to the allotted college for classes and later internship placement.",
+        "step": 5,
+        "title": "College reporting"
+      }
+    ],
+    "typical_requirements": [
+      "Class 12 or equivalent with Physics, Chemistry, and Biology.",
+      "Minimum age of 17 years by the end of the admission year.",
+      "NEET-UG qualification for undergraduate medical admission.",
+      "Strong English reading ability is useful for textbooks and clinical records."
+    ]
+  },
+  "skills": [
+    {
+      "description": "Taking patient history and noting symptoms clearly.",
+      "name": "Clinical history taking"
+    },
+    {
+      "description": "Understanding Unani principles, temperament, and diagnosis.",
+      "name": "Unani medical reasoning"
+    },
+    {
+      "description": "Basic examination and observation of patients in OPD and wards.",
+      "name": "Patient assessment"
+    },
+    {
+      "description": "Preparing and dispensing medicines safely under supervision.",
+      "name": "Pharmacy and dispensing"
+    },
+    {
+      "description": "Communicating calmly with patients and families.",
+      "name": "Patient communication"
+    },
+    {
+      "description": "Recording cases and writing clinical notes.",
+      "name": "Medical record keeping"
+    }
+  ],
+  "careers": [
+    {
+      "description": "A Unani practitioner or physician diagnoses and treats patients using Unani principles; in India, graduates from recognised BUMS programmes can practise after B",
+      "route_badge": "Possible after bachelor's",
+      "title": "Unani practitioner / physician",
+      "typical_route": "BUMS -> compulsory internship -> recognised registration and practice"
+    },
+    {
+      "description": "Unani therapists provide treatment and therapy based on Unani methods in clinics or hospitals.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Unani therapist",
+      "typical_route": "BUMS -> clinical training and internship -> work in Unani clinics or hospitals"
+    },
+    {
+      "description": "Unani medical college teacher or lecturer roles usually need postgraduate study in Unani before teaching.",
+      "route_badge": "Postgraduate route",
+      "title": "Unani lecturer / teacher",
+      "typical_route": "BUMS -> MD (Unani) -> teaching experience"
+    },
+    {
+      "description": "Research roles in Unani medicine often need postgraduate study and can lead into academic or applied research.",
+      "route_badge": "Postgraduate route",
+      "title": "Unani researcher",
+      "typical_route": "BUMS -> MD (Unani) or PhD -> research position"
+    },
+    {
+      "description": "Manufacturing or development roles in Unani and herbal products can suit graduates who move into product work or quality roles.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Unani / herbal product assistant",
+      "typical_route": "BUMS -> internship -> entry into Unani pharmaceutical or product teams"
+    },
+    {
+      "description": "Specialist practice, advanced academic posts, and senior clinical roles are commonly pursued after postgraduate Unani study.",
+      "route_badge": "Advanced regulated route",
+      "title": "Senior Unani specialist",
+      "typical_route": "BUMS -> MD (Unani) -> clinical specialisation / advanced practice"
+    }
+  ],
+  "further_study_pathway": [
+    "MD (Unani) after BUMS and the one‑a",
+    "PhD in Unani Medicine after a PG Un",
+    "Diplomas and fellowships in special",
+    "Specialised clinical or teaching tr",
+    "One-year compulsory internship aft"
+  ],
+  "recruiters": [
+    {
+      "description": "Large healthcare group that can employ doctors and allied healthcare staff in hospitals and clinical services.",
+      "logo_initials": "FH",
+      "name": "Fortis Healthcare",
+      "roles": [
+        "Clinical roles",
+        "Hospital-based care support"
+      ],
+      "sector": "Healthcare"
+    },
+    {
+      "description": "Indian FMCG and wellness company with herbal and traditional medicine interests.",
+      "logo_initials": "DI",
+      "name": "Dabur India Limited",
+      "roles": [
+        "Herbal product roles",
+        "Quality and development"
+      ],
+      "sector": "Consumer health and wellness"
+    },
+    {
+      "description": "Indian Unani and herbal healthcare company associated with traditional medicine products.",
+      "logo_initials": "HL",
+      "name": "Hamdard",
+      "roles": [
+        "Unani medicine roles",
+        "Product and pharmacy support"
+      ],
+      "sector": "Traditional medicine and pharma"
+    },
+    {
+      "description": "Global health services company with roles in healthcare operations and support.",
+      "logo_initials": "OU",
+      "name": "Optum",
+      "roles": [
+        "Healthcare operations",
+        "Health services support"
+      ],
+      "sector": "Healthcare services"
+    },
+    {
+      "description": "Private hospital and healthcare network that may hire clinical and patient-care staff.",
+      "logo_initials": "FH",
+      "name": "Fortis Healthcare Limited",
+      "roles": [
+        "Clinical roles",
+        "Patient-care support"
+      ],
+      "sector": "Healthcare"
+    },
+    {
+      "description": "Indian Unani healthcare and product organisation.",
+      "logo_initials": "HM",
+      "name": "Hamdard Laboratories (India)",
+      "roles": [
+        "Unani product roles",
+        "Pharmacy support"
+      ],
+      "sector": "Traditional medicine and pharma"
+    }
+  ],
+  "colleges": {
+    "data_note": "Rankings indicate relative visibility, fees, and reputation across listed colleges, but they do not capture every factor that matters to a family, such as hostel cost, hospital load, distance from home, or yearly fee changes. Always check the latest admission notice, seat count, internship rules, and document requirements before applying.",
+    "items": [
+      {
+        "admission_route": "NEET-UG, then counselling through the AY",
+        "annual_fee": 76500,
+        "city": "Aligarh",
+        "course_name": "BUMS",
+        "duration_years": 5.5,
+        "highlight": "Affordable government university option;",
+        "institution_type": "government",
+        "name": "Aligarh Muslim University, Ajmal Khan Tibbiya College",
+        "rank": 1
+      },
+      {
+        "admission_route": "NEET-UG, then university/counselling",
+        "annual_fee": 179000,
+        "city": "New Delhi",
+        "course_name": "BUMS",
+        "duration_years": 5.5,
+        "highlight": "Private university with a strong AYUSH/醫",
+        "institution_type": "private",
+        "name": "Jamia Hamdard",
+        "rank": 2
+      },
+      {
+        "admission_route": "NEET-UG, then state counselling",
+        "annual_fee": 8500,
+        "city": "Hyderabad",
+        "course_name": "BUMS",
+        "duration_years": 5.5,
+        "highlight": "Low tuition government medical college",
+        "institution_type": "government",
+        "name": "Government Nizamia Tibbi College",
+        "rank": 3
+      },
+      {
+        "admission_route": "NEET-UG, then state counselling",
+        "annual_fee": 61818,
+        "city": "Bengaluru",
+        "course_name": "BUMS",
+        "duration_years": 5.5,
+        "highlight": "State health university option with BUMS",
+        "institution_type": "government",
+        "name": "Rajiv Gandhi University of Health Sciences",
+        "rank": 4
+      },
+      {
+        "admission_route": "NEET-UG, then state/university admission",
+        "annual_fee": 204000,
+        "city": "Aligarh",
+        "course_name": "BUMS",
+        "duration_years": 5.5,
+        "highlight": "Private college with higher tuition",
+        "institution_type": "private",
+        "name": "Aligarh Unani Ayurvedic Medical College & ACN Hospital",
+        "rank": 5
+      },
+      {
+        "admission_route": "NEET-UG, then state/university admission",
+        "annual_fee": 54400,
+        "city": "Lucknow",
+        "course_name": "BUMS",
+        "duration_years": 5.5,
+        "highlight": "Lower-fee private Unani college",
+        "institution_type": "private",
+        "name": "Eram Unani Medical College and Hospital",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "Collegedunia, Careers360, and Shiksha course and college listings for India",
+    "ranking_updated": "2026-08"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "Complete the compulsory internship, obtain the AYUSH/State Unani registration, e",
+      "course_name": "BUMS",
+      "laboratory_exposure": "Moderate practical work in anatomy, bi o",
+      "main_focus": "Unani medicine, diagnosis, and treatment using the Unani system",
+      "statistics_level": "Basic biostatistics, research reading, a"
+    },
+    {
+      "common_next_steps": "Complete internship, pass final MBBS exams, and register with the National Medic",
+      "course_name": "MBBS",
+      "laboratory_exposure": "High lab and clinical exposure across bi",
+      "main_focus": "Modern allopathic medicine, diagnosis, surgery, emergency care, and hospital-ba",
+      "statistics_level": "Moderate; statistics and evidence-based"
+    },
+    {
+      "common_next_steps": "Complete internship, register with the State Council, and practise or pursue MD",
+      "course_name": "BHMS",
+      "laboratory_exposure": "Moderate practical work in anatomy, phar",
+      "main_focus": "Homeopathy, patient assessment, remedy selection, and community healthcare",
+      "statistics_level": "Basic biostatistics and homeopathy rese"
+    }
+  ],
+  "fees": {
+    "footnote": "Tuition varies a lot by institution type. Government and national-level institutions usually cost far less than private colleges, while hostel, caution money, examination, and registration charges can raise the total. A",
+    "rows": [
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": true,
+        "max": 70000,
+        "min": 8500,
+        "parent_check": "Government BUMS colleges are usually the lowest-cost option, but yearly tuition can still differ by state university and"
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": true,
+        "max": 204000,
+        "min": 54400,
+        "parent_check": "Private BUMS colleges usually cost much more than government colleges, and hostel or exam fees can add a lot to the full"
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "premier_national",
+        "is_variable": true,
+        "max": 179000,
+        "min": 76500,
+        "parent_check": "Premier national or central university options sit between low-cost government colleges and the higher-fee private end,"
+      },
+      {
+        "category": "Hostel",
+        "frequency": "Per year",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 90000,
+        "min": 25000,
+        "parent_check": "Hostel charges are separate from tuition and depend on room type, mess, and campus location."
+      },
+      {
+        "category": "One-time admission and registration",
+        "frequency": "One time",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 50000,
+        "min": 5000,
+        "parent_check": "Admission-related charges may include registration, university fees, and kit or document costs."
+      },
+      {
+        "category": "Examination and practical charges",
+        "frequency": "As required",
+        "institution_type": null,
+        "is_variable": true,
+        "max": 60000,
+        "min": 10000,
+        "parent_check": "Some colleges collect exam fees across the programme rather than inside tuition."
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "Check that Class 12 has Science with Physics, Chemistry, and Biology, since BUMS entry is for students from the science stream.",
+      "stage": "Grades 8-10",
+      "title": "Plan the school subjects"
+    },
+    {
+      "description": "Focus on Biology, Chemistry, and basic anatomy, and look for exposure to Unani medicine through career talks or local healthcare visits.",
+      "stage": "Grades 8-10",
+      "title": "Build the foundation"
+    },
+    {
+      "description": "Choose a Class 11–12 Science path and keep marks strong in the board exam, because BUMS admission is usually based on Class 12 eligibility and entrance requirements.",
+      "stage": "Grade 11",
+      "title": "Select the right stream and do"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "BUMS means Bachelor of Unani Medicine and Surgery. It is an undergraduate course in the Unani system of medicine.",
+      "question": "What does BUMS stand for?"
+    },
+    {
+      "answer": "The usual path is Class 12 Science, followed by the entrance and admission steps required by the college or state. After graduation, a doctor must complete the required internship and register with the relevant medical authority before practising.",
+      "question": "What do I need after Class 12 to become a Unani doctor?"
+    },
+    {
+      "answer": "BUMS is a long course with classroom study, clinical training, and practical work in wards and outpatient settings. It is a good fit for students who like biology and patient care.",
+      "question": "What is the course style like?"
+    },
+    {
+      "answer": "Fees vary a lot across India. Government colleges are usually much lower, while private colleges can be far higher.",
+      "question": "How much does BUMS cost?"
+    },
+    {
+      "answer": "A BUMS graduate can work in Unani hospitals, clinics, teaching, research, or public-health related roles. Independent clinical practice comes only after completing the required internship and registration.",
+      "question": "What can I do after BUMS?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "BUMS is a long professional course for students who want to study Unani medicine after Class 12 Science. Families should treat it as a healthcare pathway, not just a degree choice. The student will need comfort with biology, patient-facing work, and a disciplined study routine. Because it leads to clinical practice, the important questions are not only about college fees, but also about admission rules, internship, and registration after graduation. It helps to compare government and private colleges carefully, check whether the institute is recognised, and ask where clinical training happens. Parents can also discuss whether the student is genuinely interested in medicine as a system of care, because the course is practical, long, and responsibility-heavy.",
+    "questions": [
+      "Is the college recognised for Unani medicine?",
+      "Where will the clinical training and internship happen?",
+      "What are the total fees, hostel costs, and other yearly expenses?",
+      "What exam and registration steps are needed before a student can practise?",
+      "Is the student comfortable with a long healthcare course and patient contact?",
+      "What are the realistic job options after graduation?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "National Testing Agency",
+        "title": "Notice Board Archive",
+        "url": "https://nta.ac.in/NoticeBoardArchive"
+      },
+      {
+        "publisher": "National Testing Agency",
+        "title": "Notice Board Archive",
+        "url": "https://nta.ac.in/NoticeBoardArchive?article_id=422421688.0"
+      },
+      {
+        "publisher": "National Testing Agency",
+        "title": "National Testing Agency",
+        "url": "https://www.nta.ac.in/?mode=light"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  }
+}

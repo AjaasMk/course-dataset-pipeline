@@ -1,0 +1,598 @@
+{
+  "course_id": "crs_bams",
+  "slug": "bams",
+  "course_name": "BAMS",
+  "currency": "INR",
+  "region": "India",
+  "category": "Medical & Allied Health",
+  "course_level": "Undergraduate",
+  "hero": {
+    "badge": "Student-friendly guide",
+    "fit": {
+      "indicators": [
+        "Class 12 with Physics, Chemistry and Biology",
+        "Interest in Ayurveda, patient care and long-term clinical study",
+        "Usually needs NEET-UG for admission in India"
+      ],
+      "note": "A good fit for students who want to study traditional Indian medicine and move toward licensed practice after the degree",
+      "score_percent": 82
+    },
+    "summary": "BAMS is an undergraduate degree in Ayurveda that prepares students to learn diagnosis, treatment and preventive care through the Ayurvedic system. In India, it usually runs for 5.5 years including internship, and admission commonly depends on Class 12 science subjects and NEET-UG."
+  },
+  "quick_facts": {
+    "career_direction": "Ayurvedic doctor, clinical practice, hospitals, wellness centres, or a",
+    "entry_level": "Class 12",
+    "indicative_annual_fees": {
+      "max": 300000,
+      "min": 50000
+    },
+    "learning_style": "Classroom science, anatomy and physiology study, practicals,",
+    "suitable_streams": [
+      "Science"
+    ],
+    "typical_duration": {
+      "max_years": 5.5,
+      "min_years": 5.5
+    }
+  },
+  "seo": {
+    "meta_description": "BAMS is an undergraduate Ayurveda degree in India. See duration, fees, entry route, career direction and who it suits.",
+    "page_title": "BAMS Course in India: Duration, Fees, Admission and Career Options"
+  },
+  "subcategory": "Ayurveda",
+  "overview": {
+    "heading": "What is BAMS?",
+    "paragraphs": [
+      "BAMS stands for Bachelor of Ayurvedic Medicine and Surgery. It is an undergraduate course in Ayurveda, India’s traditional medical system, and usually runs for 5.5 years, including a compulsory internship. Admission is commonly through NEET UG after Class 12 in the Science stream with Physics, Chemistry and Biology.",
+      "The course teaches both classroom theory and hands-on clinical training. Students study anatomy, physiology, diagnosis, Ayurvedic principles, medicines, and treatment methods, so the work is not only about herbs or home remedies. It is a professional health degree, and graduates are trained to care for patients in an Ayurvedic framework.",
+      "After graduating, many students move into Ayurvedic clinical practice, hospitals, wellness centres, Panchkarma practice, teaching, counselling, research, or pharmacy-related roles. The best fit is usually someone who likes biology, patient interaction, regular study, and a career that combines medical work with traditional Indian healthcare."
+    ]
+  },
+  "snapshot": {
+    "data_note": "Pay in this field changes with role, location, employer type, and experience. Clinic jobs, hospital roles, teaching posts, and wellness-centre work can all pay differently, so one figure cannot describe every graduate.",
+    "salary": {
+      "higher_annual": 900000,
+      "higher_is_open_ended": false,
+      "lower_annual": 30000,
+      "note": "Reported BAMS salary ranges in India run from about INR 30,000 a year to INR 900,000 a year, with an average around INR 430,000 a year. Early-career roles are often lower, while experienced doctors, hospital staff, teachers, or specialists can earn more.",
+      "typical_annual": 430000,
+      "marker_percent": 46
+    },
+    "specialisations": [
+      "Clinical practice",
+      "Panchkarma Practitioner",
+      "Pharmacist",
+      "Teacher",
+      "Counsellor",
+      "Dietician",
+      "Research and training",
+      "Wellness centres"
+    ]
+  },
+  "suitability": {
+    "caution": {
+      "heading": "Think twice if you expect...",
+      "points": [
+        "A shortcut to an MBBS-style doctor path; BAMS is a different medical system with its own training, rules, and clinical practice.",
+        "A course with little science; the syllabus is built on Physics, Chemistry, Biology, anatomy, physiology, and practical work.",
+        "A fixed starting salary for all graduates; pay varies widely by job type, workplace, city, and experience.",
+        "Admission without a competitive entrance route; BAMS seats are generally linked to NEET UG-based admission."
+      ]
+    },
+    "good_fit": {
+      "heading": "A good fit if you...",
+      "points": [
+        "Want to study Ayurveda and work with patients in a health-care setting.",
+        "Are comfortable with biology, anatomy, physiology, and regular practical classes.",
+        "Can commit to a long professional course with an internship year built in.",
+        "Are open to roles in clinics, hospitals, wellness centres, Panchkarma, teaching, or counselling after graduation."
+      ]
+    },
+    "tags": [
+      "Science stream",
+      "NEET UG",
+      "Ayurveda",
+      "Patient-facing",
+      "Clinical training",
+      "Internship based",
+      "Undergraduate medicine"
+    ]
+  },
+  "curriculum": {
+    "assessment_methods": "Theory exams, practical exams, viva voce, internal assessment, case records, ward postings, and university examinations; the final professional phase also includes clinical and internship evaluation.",
+    "learning_activities": "Lectures, dissection and anatomy demonstrations, physiology and biochemistry practicals, Sanskrit and classical text study, herbal drug identification, clinical observations, patient case discussions, hospital postings, panchakarma demonstrations, and supervised internship work.",
+    "years": [
+      {
+        "label": "Year 1",
+        "subjects": [
+          {
+            "description": "Study of human body structure, organ systems, and anatomical terminology.",
+            "name": "Rachana Sharira"
+          },
+          {
+            "description": "Study of body functions and physiological balance in health.",
+            "name": "Kriya Sharira"
+          },
+          {
+            "description": "Introduction to Ayurvedic principles, basic concepts, and classical terminology.",
+            "name": "Padartha Vigyana"
+          },
+          {
+            "description": "Introduction to medical vocabulary, communication, and reading of Sanskrit-rooted Ayurvedic terms.",
+            "name": "Ayurvedic Sanskrit and Terminology"
+          }
+        ],
+        "year": 1
+      },
+      {
+        "label": "Year 2",
+        "subjects": [
+          {
+            "description": "Study of disease causes, mechanisms, and pathological changes.",
+            "name": "Roga Nidana and Vikriti Vigyana"
+          },
+          {
+            "description": "Study of Ayurvedic pharmacology, drug actions, and formulation principles.",
+            "name": "Dravyaguna Vigyana"
+          },
+          {
+            "description": "Study of toxic substances, poisoning, and management principles.",
+            "name": "Agada Tantra"
+          },
+          {
+            "description": "Study of basic preventive health, diet, and daily regimen concepts.",
+            "name": "Swasthavritta and Yoga"
+          }
+        ],
+        "year": 2
+      },
+      {
+        "label": "Year 3",
+        "subjects": [
+          {
+            "description": "Study of diagnostic methods, examination of patients, and clinical reasoning.",
+            "name": "Roga Pariksha and Clinical Methods"
+          },
+          {
+            "description": "Study of Ayurvedic medicines, preparation methods, and formulation practice.",
+            "name": "Bhaishajya Kalpana"
+          },
+          {
+            "description": "Study of internal medicine conditions and Ayurvedic treatment approaches.",
+            "name": "Kayachikitsa"
+          },
+          {
+            "description": "Study of blood disorders, metabolic conditions, and general medicine case work.",
+            "name": "Advanced Kayachikitsa Cases"
+          }
+        ],
+        "year": 3
+      },
+      {
+        "label": "Year 4",
+        "subjects": [
+          {
+            "description": "Study of surgery-related principles, instruments, and perioperative care in Ayurveda.",
+            "name": "Shalya Tantra"
+          },
+          {
+            "description": "Study of ear, nose, throat, eye, and head-neck conditions from an Ayurvedic and clinical view.",
+            "name": "Shalakya Tantra"
+          },
+          {
+            "description": "Study of reproductive health, obstetrics, and gynaecology in Ayurveda.",
+            "name": "Prasuti Tantra and Stree Roga"
+          },
+          {
+            "description": "Study of paediatrics, child health, and preventive care in children.",
+            "name": "Kaumarbhritya"
+          }
+        ],
+        "year": 4
+      },
+      {
+        "label": "Year 5",
+        "subjects": [
+          {
+            "description": "Supervised hospital work, patient care, and clinical application of Ayurveda during internship.",
+            "name": "Clinical Internship and Ward Postings"
+          },
+          {
+            "description": "Study of public health practice, community care, and health education.",
+            "name": "Community Medicine and Public Health"
+          },
+          {
+            "description": "Study of research writing, dissertation planning, and evidence-based reading.",
+            "name": "Research Methods and Dissertation Work"
+          },
+          {
+            "description": "Study of professional ethics, record keeping, and medico-legal responsibilities.",
+            "name": "Professional Ethics and Medical Jurisprudence"
+          }
+        ],
+        "year": 5
+      }
+    ]
+  },
+  "eligibility": {
+    "admission_methods": [
+      "NEET-UG merit-based counselling",
+      "State AYUSH counselling",
+      "All India AYUSH counselling where applicable",
+      "Admission through recognised university or government/private college allotment after counselling"
+    ],
+    "admission_timeline": [
+      {
+        "description": "Finish Class 12 with Physics, Chemistry, Biology, and English from a recognised board.",
+        "step": 1,
+        "title": "School completion"
+      },
+      {
+        "description": "Apply and qualify in NEET-UG for BAMS admission.",
+        "step": 2,
+        "title": "Entrance examination"
+      },
+      {
+        "description": "Register for state or All India AYUSH counselling and select BAMS colleges.",
+        "step": 3,
+        "title": "Counselling and choice filling"
+      },
+      {
+        "description": "Complete document verification, seat allotment, fee payment, and medical admission formalities.",
+        "step": 4,
+        "title": "Admission confirmation"
+      },
+      {
+        "description": "Join the college and begin the academic programme, followed by clinical training and internship.",
+        "step": 5,
+        "title": "Course commencement"
+      }
+    ],
+    "typical_requirements": [
+      "Class 12 with Physics, Chemistry, and Biology as core subjects",
+      "English studied in Class 12",
+      "Minimum aggregate marks usually around 50% for the general category, with relaxations for reserved categories according to government rules",
+      "Qualifying NEET-UG score for admission into BAMS programs in India','Minimum age of 17 years by 31 December of the admission year"
+    ]
+  },
+  "skills": [
+    {
+      "description": "Understanding of human anatomy, physiology, and disease processes for patient care.",
+      "name": "Medical science foundation"
+    },
+    {
+      "description": "Ability to identify medicinal plants, raw drugs, and Ayurvedic preparations.",
+      "name": "Herbal and drug identification"
+    },
+    {
+      "description": "Skill in patient history taking, clinical examination, and case documentation.",
+      "name": "Clinical observation"
+    },
+    {
+      "description": "Knowledge of Ayurvedic diagnosis, treatment planning, and formulation use.",
+      "name": "Ayurvedic therapeutics"
+    },
+    {
+      "description": "Communication with patients and families in simple, respectful language.",
+      "name": "Patient communication"
+    },
+    {
+      "description": "Safe conduct in clinics, wards, laboratories, and internship settings.",
+      "name": "Clinical discipline"
+    }
+  ],
+  "careers": [
+    {
+      "description": "Works in clinics, hospitals, wellness centres or private practice, diagnosing and treating patients with Ayurveda after completing BAMS and registering to work.",
+      "route_badge": "Advanced regulated route",
+      "title": "Ayurvedic Doctor",
+      "typical_route": "BAMS -> compulsory internship -> registration -> Ayurvedic Doctor"
+    },
+    {
+      "description": "Supports patient care in Ayurvedic hospitals and clinics, often in inpatient or outpatient settings.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Resident Medical Officer (RMO)",
+      "typical_route": "BAMS -> internship -> Resident Medical Officer (RMO)"
+    },
+    {
+      "description": "Provides Ayurvedic therapies such as Panchakarma in clinics, wellness centres and hospitals.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Panchakarma Specialist or Therapist",
+      "typical_route": "BAMS -> internship -> Panchakarma Specialist or Therapist"
+    },
+    {
+      "description": "Teaches core Ayurvedic subjects in colleges or universities after higher study.",
+      "route_badge": "Postgraduate route",
+      "title": "Ayurveda Lecturer",
+      "typical_route": "BAMS -> MD Ayurveda or PhD Ayurveda -> Ayurveda Lecturer"
+    },
+    {
+      "description": "Works in companies involved in herbal medicines and Ayurvedic products, helping with product development, quality or sales roles.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Ayurvedic Pharmacist",
+      "typical_route": "BAMS -> Ayurvedic Pharmacist"
+    },
+    {
+      "description": "Works on studies, trials and documentation in healthcare or pharmaceutical settings.",
+      "route_badge": "Possible after bachelor's",
+      "title": "Clinical Research Associate",
+      "typical_route": "BAMS -> Clinical research experience -> Clinical Research Associate"
+    }
+  ],
+  "further_study_pathway": [
+    "MD Ayurveda",
+    "PhD in Ayurveda",
+    "MBA in Hospital Administration",
+    "Clinical Research",
+    "Public Health & Nutrition & Dietet"
+  ],
+  "recruiters": [
+    {
+      "description": "Ayurvedic and herbal products company that hires for product, sales and wellness roles.",
+      "logo_initials": "PA",
+      "name": "Patanjali Ayurved Limited",
+      "roles": [
+        "Ayurvedic Doctor",
+        "Product specialist roles"
+      ],
+      "sector": "Ayurveda and consumer health"
+    },
+    {
+      "description": "Pharmaceutical and consumer health company with Ayurvedic and wellness products.",
+      "logo_initials": "DA",
+      "name": "Dabur",
+      "roles": [
+        "Ayurvedic product roles",
+        "Wellness roles"
+      ],
+      "sector": "Ayurvedic products and healthcare"
+    },
+    {
+      "description": "Herbal and natural healthcare company that employs graduates for product and wellness-related roles.",
+      "logo_initials": "TH",
+      "name": "The Himalaya Drug Company",
+      "roles": [
+        "Ayurvedic product roles",
+        "Research support roles"
+      ],
+      "sector": "Herbal healthcare"
+    },
+    {
+      "description": "Ayurvedic medicine company with roles in formulation, sales and product support.",
+      "logo_initials": "ZP",
+      "name": "Zandu Pharmaceuticals Works Limited",
+      "roles": [
+        "Ayurvedic product roles",
+        "Sales roles"
+      ],
+      "sector": "Ayurvedic pharmaceuticals"
+    },
+    {
+      "description": "Traditional healthcare company that recruits for Ayurveda-oriented product and practice support roles.",
+      "logo_initials": "HD",
+      "name": "Hamdard Laboratories",
+      "roles": [
+        "Ayurvedic product roles",
+        "Healthcare roles"
+      ],
+      "sector": "Traditional and herbal healthcare"
+    },
+    {
+      "description": "Herbal medicine company with opportunities linked to Ayurvedic products and field roles.",
+      "logo_initials": "BL",
+      "name": "Baidyanath",
+      "roles": [
+        "Ayurvedic product roles",
+        "Field roles"
+      ],
+      "sector": "Ayurvedic pharmaceuticals"
+    }
+  ],
+  "colleges": {
+    "data_note": "This list gives a practical mix of government and private BAMS options in India. The order reflects a broad read on reputation, affordability, and visibility, but it is not a guarantee of quality, seats, clinical exposure, or internship conditions. Fees change with state, quota, hostel choice, and yearly revisions, so families should verify the latest tuition, bond rules, internship posting, and N",
+    "items": [
+      {
+        "admission_route": "NEET UG, then state or institutional AYU",
+        "annual_fee": 10730,
+        "city": "New Delhi",
+        "course_name": "BAMS",
+        "duration_years": 5.5,
+        "highlight": "Very low tuition among government BAMS o",
+        "institution_type": "government",
+        "name": "Ayurvedic and Unani Tibbia College",
+        "rank": 1
+      },
+      {
+        "admission_route": "NEET UG, then state counselling",
+        "annual_fee": 14000,
+        "city": "Lucknow",
+        "course_name": "BAMS",
+        "duration_years": 5.5,
+        "highlight": "Low government tuition and a long-establ",
+        "institution_type": "government",
+        "name": "Government Ayurveda Medical College",
+        "rank": 2
+      },
+      {
+        "admission_route": "NEET UG, then state counselling",
+        "annual_fee": 18000,
+        "city": "Ahmedabad",
+        "course_name": "BAMS",
+        "duration_years": 5.5,
+        "highlight": "Government option with low annual fee",
+        "institution_type": "government",
+        "name": "Government Akhandanand Ayurved College",
+        "rank": 3
+      },
+      {
+        "admission_route": "NEET UG, then state counselling",
+        "annual_fee": 1800,
+        "city": "New Delhi",
+        "course_name": "BAMS",
+        "duration_years": 5.5,
+        "highlight": "Very low first-year fee quoted for a gov",
+        "institution_type": "government",
+        "name": "Ch. Brahm Prakash Ayurved Charak Sansthan",
+        "rank": 4
+      },
+      {
+        "admission_route": "NEET UG, then counselling through the ci",
+        "annual_fee": 341000,
+        "city": "Hassan",
+        "course_name": "BAMS",
+        "duration_years": 5.5,
+        "highlight": "Private college with mid-range tuition a",
+        "institution_type": "private",
+        "name": "SDM College of Ayurveda",
+        "rank": 5
+      },
+      {
+        "admission_route": "NEET UG, then institutional admission or",
+        "annual_fee": 450000,
+        "city": "Pune",
+        "course_name": "BAMS",
+        "duration_years": 5.5,
+        "highlight": "Private option with higher tuition and a",
+        "institution_type": "private",
+        "name": "College of Ayurved, Bharati Vidyapeeth",
+        "rank": 6
+      }
+    ],
+    "ranking_source": "Collegedunia and Shiksha BAMS college listings, India",
+    "ranking_updated": "2026-08"
+  },
+  "comparison": [
+    {
+      "common_next_steps": "NEET UG, then AYUSH counselling, college allotment, and internship before State/",
+      "course_name": "BAMS",
+      "laboratory_exposure": "Anatomy, physiology, pathology, pharmac",
+      "main_focus": "Ayurvedic medicine, diagnosis, treatment,",
+      "statistics_level": "Basic"
+    },
+    {
+      "common_next_steps": "NEET UG, then AYUSH counselling, college allotment, and internship before State/",
+      "course_name": "BHMS",
+      "laboratory_exposure": "Biology and basic lab work with smaller",
+      "main_focus": "Homeopathic principles, patient history,",
+      "statistics_level": "Basic"
+    },
+    {
+      "common_next_steps": "NEET UG, then MCC or state medical counselling, MBBS admission, and mandatory in",
+      "course_name": "MBBS",
+      "laboratory_exposure": "Extensive anatomy, physiology, pathology",
+      "main_focus": "Modern medicine, diagnosis, treatment, s",
+      "statistics_level": "Moderate"
+    }
+  ],
+  "fees": {
+    "footnote": "BAMS tuition varies sharply by ownership and state quota. Government colleges usually sit in the lower fee band, while private colleges often charge several times more. The annual figures below are typical tuition ranges",
+    "rows": [
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "government",
+        "is_variable": false,
+        "max": 200000,
+        "min": 50000,
+        "parent_check": "Verify the exact annual tuition under your quota, because the same college can charge differently for different seats."
+      },
+      {
+        "category": "Tuition",
+        "frequency": "Per year",
+        "institution_type": "private",
+        "is_variable": false,
+        "max": 800000,
+        "min": 300000,
+        "parent_check": "Check whether the quoted amount includes only tuition or also development, lab, and other compulsory charges."
+      },
+      {
+        "category": "Admission and counselling",
+        "frequency": "As required",
+        "institution_type": null,
+        "is_variable": true,
+        "max": null,
+        "min": null,
+        "parent_check": "Check NEET registration, counselling, and college admission charges before applying because these are separate from year"
+      },
+      {
+        "category": "Hostel and mess",
+        "frequency": "Per year",
+        "institution_type": null,
+        "is_variable": true,
+        "max": null,
+        "min": null,
+        "parent_check": "Hostel and food costs vary widely by city and room type, so verify them separately from tuition."
+      }
+    ]
+  },
+  "action_roadmap": [
+    {
+      "description": "Confirm that Ayurveda is the right field for you by reading about patient care, anatomy, physiology, and daily study habits. Speak with an Ayurveda graduate or teacher about what the work feels like in real life.",
+      "stage": "Grades 8-10",
+      "title": "Explore the field"
+    },
+    {
+      "description": "Choose Science subjects and keep biology, chemistry, and English strong. Start watching official admission notices and entrance-exam updates from national bodies and approved colleges.",
+      "stage": "Grade 11",
+      "title": "Build the foundation"
+    },
+    {
+      "description": "Prepare for entrance-based admission, shortlist approved colleges, and check the steps needed after the degree for clinical practice, including internship and registration requirements where applicable.",
+      "stage": "Grade 12",
+      "title": "Apply and plan ahead"
+    }
+  ],
+  "faqs": [
+    {
+      "answer": "It is the undergraduate route for students who want to study Ayurveda and later work in clinical care or related health settings.",
+      "question": "What is BAMS in simple words?"
+    },
+    {
+      "answer": "Science stream is the usual starting point, and families should also check the latest admission notice and college requirements before applying.",
+      "question": "Which school subjects should a student focus on?"
+    },
+    {
+      "answer": "Admission usually depends on an entrance-based selection process and the rules of the college or admission authority, so students should follow official notices closely.",
+      "question": "How does admission usually work?"
+    },
+    {
+      "answer": "Students should plan for the degree course, any required internship, and the registration step needed before independent practice.",
+      "question": "What comes after graduation?"
+    },
+    {
+      "answer": "A student should compare the teaching hospital, internship exposure, approval status, location, and total cost of study before choosing a college.",
+      "question": "How should a family choose a good college?"
+    }
+  ],
+  "parent_corner": {
+    "intro": "BAMS suits students who are comfortable with biology, patient interaction, and long-term professional training. Parents should look beyond the course title and check the college’s approval status, teaching hospital exposure, internship structure, and the step needed for registration after graduation. It also helps to ask whether the student is interested in evidence-based learning, steady routines, and working with people over time. This is a career that needs patience, discipline, and comfort with health-related responsibility. A calm conversation at home can focus on whether the student enjoys science, can handle a full professional course, and is open to clinical work after graduation. If the answer is yes, the next step is to compare colleges carefully and follow the official admission notices for that year.",
+    "questions": [
+      "Does my child really enjoy science and patient-facing work?",
+      "Is the college properly approved and does it have a teaching hospital?",
+      "What are the internship and registration steps after graduation?",
+      "How much will the full course and living costs add up to?",
+      "Is the student ready for a long professional pathway rather than a quick qualification?",
+      "What kind of work would suit this student after graduation?"
+    ]
+  },
+  "verification": {
+    "sources": [
+      {
+        "publisher": "National Testing Agency",
+        "title": "NTA official website",
+        "url": "https://www.nta.ac.in/?mode=light"
+      },
+      {
+        "publisher": "National Testing Agency",
+        "title": "Notice Board Archive",
+        "url": "https://nta.ac.in/NoticeBoardArchive"
+      },
+      {
+        "publisher": "National Testing Agency",
+        "title": "Notice Board Archive article page",
+        "url": "https://nta.ac.in/NoticeBoardArchive?article_id=444043138.0"
+      }
+    ],
+    "last_reviewed": "2026-08-16"
+  }
+}
