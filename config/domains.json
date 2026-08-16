@@ -1,0 +1,353 @@
+{
+  "default": {
+    "_all": [
+      "ugc.gov.in"
+    ],
+    "market": [
+      "nirfindia.org",
+      "careers360.com",
+      "collegedunia.com",
+      "shiksha.com"
+    ],
+    "guidance": [
+      "ugc.gov.in",
+      "nta.ac.in"
+    ],
+    "outcomes": [
+      "ncs.gov.in",
+      "ambitionbox.com",
+      "careers360.com",
+      "shiksha.com"
+    ],
+    "snapshot": [
+      "ambitionbox.com",
+      "payscale.com",
+      "careers360.com",
+      "shiksha.com"
+    ]
+  },
+  "medical-allied-health": {
+    "_all": [
+      "nmc.org.in",
+      "ncahp.abdm.gov.in"
+    ],
+    "academics": [
+      "nmc.org.in",
+      "pci.nic.in",
+      "indiannursingcouncil.org",
+      "kuhs.ac.in",
+      "ncahp.abdm.gov.in"
+    ],
+    "market": [
+      "mcc.nic.in",
+      "neet.nta.nic.in",
+      "nirfindia.org",
+      "careers360.com",
+      "collegedunia.com",
+      "shiksha.com"
+    ],
+    "outcomes": [
+      "nmc.org.in",
+      "pci.nic.in",
+      "ncahp.abdm.gov.in"
+    ]
+  },
+  "engineering-technology": {
+    "_all": [
+      "aicte-india.org",
+      "-internship.aicte-india.org"
+    ],
+    "academics": [
+      "aicte-india.org",
+      "ktu.edu.in",
+      "cusat.ac.in",
+      "-internship.aicte-india.org"
+    ],
+    "market": [
+      "josaa.nic.in",
+      "jeemain.nta.nic.in",
+      "jeeadv.ac.in",
+      "nirfindia.org",
+      "careers360.com",
+      "collegedunia.com",
+      "shiksha.com"
+    ],
+    "outcomes": [
+      "aicte-india.org"
+    ]
+  },
+  "law": {
+    "_all": [
+      "barcouncilofindia.org"
+    ],
+    "academics": [
+      "barcouncilofindia.org",
+      "mgu.ac.in"
+    ],
+    "market": [
+      "consortiumofnlus.ac.in",
+      "nirfindia.org",
+      "careers360.com",
+      "collegedunia.com",
+      "shiksha.com"
+    ],
+    "outcomes": [
+      "barcouncilofindia.org"
+    ]
+  },
+  "arts-humanities-social-sciences": {
+    "_all": [
+      "ugc.gov.in"
+    ],
+    "academics": [
+      "uoc.ac.in",
+      "mgu.ac.in",
+      "du.ac.in",
+      "lpu.in"
+    ],
+    "market": [
+      "cuet.nta.nic.in",
+      "nirfindia.org",
+      "careers360.com",
+      "collegedunia.com",
+      "shiksha.com"
+    ],
+    "outcomes": []
+  },
+  "pure-science": {
+    "_all": [
+      "ugc.gov.in"
+    ],
+    "academics": [
+      "uoc.ac.in",
+      "cusat.ac.in",
+      "du.ac.in"
+    ],
+    "market": [
+      "cuet.nta.nic.in",
+      "nirfindia.org",
+      "careers360.com",
+      "collegedunia.com",
+      "shiksha.com"
+    ],
+    "outcomes": []
+  },
+  "commerce-finance": {
+    "_all": [
+      "ugc.gov.in"
+    ],
+    "academics": [
+      "uoc.ac.in",
+      "du.ac.in",
+      "icai.org"
+    ],
+    "market": [
+      "cuet.nta.nic.in",
+      "nirfindia.org",
+      "careers360.com",
+      "collegedunia.com",
+      "shiksha.com"
+    ],
+    "outcomes": [
+      "icai.org",
+      "icsi.edu"
+    ]
+  },
+  "business-management": {
+    "_all": [
+      "aicte-india.org",
+      "-internship.aicte-india.org"
+    ],
+    "academics": [
+      "aicte-india.org",
+      "du.ac.in",
+      "lpu.in",
+      "-internship.aicte-india.org"
+    ],
+    "market": [
+      "cuet.nta.nic.in",
+      "nirfindia.org",
+      "careers360.com",
+      "collegedunia.com",
+      "shiksha.com"
+    ],
+    "outcomes": []
+  },
+  "computer-applications-it": {
+    "_all": [
+      "aicte-india.org",
+      "-internship.aicte-india.org"
+    ],
+    "academics": [
+      "aicte-india.org",
+      "cusat.ac.in",
+      "ktu.edu.in",
+      "-internship.aicte-india.org"
+    ],
+    "market": [
+      "cuet.nta.nic.in",
+      "nirfindia.org",
+      "careers360.com",
+      "collegedunia.com",
+      "shiksha.com"
+    ],
+    "outcomes": []
+  },
+  "architecture-design-planning": {
+    "_all": [
+      "coa.gov.in"
+    ],
+    "academics": [
+      "coa.gov.in",
+      "nid.edu",
+      "ktu.edu.in"
+    ],
+    "market": [
+      "nata.in",
+      "coa.gov.in",
+      "nirfindia.org",
+      "careers360.com",
+      "collegedunia.com",
+      "shiksha.com"
+    ],
+    "outcomes": [
+      "coa.gov.in"
+    ]
+  },
+  "education": {
+    "_all": [
+      "ncte.gov.in"
+    ],
+    "academics": [
+      "ncte.gov.in",
+      "ncert.nic.in"
+    ],
+    "market": [
+      "ncte.gov.in",
+      "nirfindia.org",
+      "careers360.com",
+      "collegedunia.com",
+      "shiksha.com"
+    ],
+    "outcomes": [
+      "ncte.gov.in"
+    ]
+  },
+  "agriculture-veterinary": {
+    "_all": [
+      "icar.org.in"
+    ],
+    "academics": [
+      "icar.org.in",
+      "vci.nic.in",
+      "kau.in"
+    ],
+    "market": [
+      "icar.org.in",
+      "nirfindia.org",
+      "careers360.com",
+      "collegedunia.com",
+      "shiksha.com"
+    ],
+    "outcomes": [
+      "icar.org.in",
+      "vci.nic.in"
+    ]
+  },
+  "media-film-communication": {
+    "_all": [
+      "iimc.gov.in"
+    ],
+    "academics": [
+      "iimc.gov.in",
+      "ftii.ac.in",
+      "uoc.ac.in"
+    ],
+    "market": [
+      "ftii.ac.in",
+      "cuet.nta.nic.in",
+      "nirfindia.org",
+      "careers360.com",
+      "collegedunia.com",
+      "shiksha.com"
+    ],
+    "outcomes": []
+  },
+  "fine-arts-performing-arts": {
+    "_all": [
+      "ugc.gov.in"
+    ],
+    "academics": [
+      "sangeetnatak.gov.in",
+      "du.ac.in",
+      "uoc.ac.in"
+    ],
+    "market": [
+      "cuet.nta.nic.in",
+      "nirfindia.org",
+      "careers360.com",
+      "collegedunia.com",
+      "shiksha.com"
+    ],
+    "outcomes": []
+  },
+  "sports-fitness": {
+    "_all": [
+      "lnipe.edu.in"
+    ],
+    "academics": [
+      "lnipe.edu.in",
+      "ncte.gov.in"
+    ],
+    "market": [
+      "lnipe.edu.in",
+      "nirfindia.org",
+      "careers360.com",
+      "collegedunia.com",
+      "shiksha.com"
+    ],
+    "outcomes": [
+      "sportsauthorityofindia.nic.in"
+    ]
+  },
+  "hotel-management-tourism": {
+    "_all": [
+      "nchm.gov.in"
+    ],
+    "academics": [
+      "nchm.gov.in",
+      "ihmctan.edu"
+    ],
+    "market": [
+      "nchmjee.nta.nic.in",
+      "nchm.gov.in",
+      "nirfindia.org",
+      "careers360.com",
+      "collegedunia.com",
+      "shiksha.com"
+    ],
+    "outcomes": [
+      "tourism.gov.in"
+    ]
+  },
+  "emerging-interdisciplinary": {
+    "_all": [
+      "ugc.gov.in"
+    ],
+    "academics": [
+      "ugc.gov.in",
+      "aicte-india.org",
+      "cusat.ac.in",
+      "lpu.in",
+      "-internship.aicte-india.org"
+    ],
+    "market": [
+      "cuet.nta.nic.in",
+      "nirfindia.org",
+      "careers360.com",
+      "collegedunia.com",
+      "shiksha.com"
+    ],
+    "outcomes": []
+  }
+}

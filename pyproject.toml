@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "coursegen"
+version = "0.1.0"
+description = "Grounded course-dataset generation, validation and publishing pipeline"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.28",
+    "jsonschema>=4.26",
+    "openpyxl>=3.1",
+    "python-dotenv>=1.2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=9.1"]
+
+[project.scripts]
+coursegen = "coursegen.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

@@ -1,0 +1,574 @@
+{
+  "course_id": "crs_bsc_psychology",
+  "slug": "bsc-psychology",
+  "course_name": "BSc Psychology",
+  "course_level": "Undergraduate",
+  "category": "Health & Behavioural Sciences",
+  "subcategory": "Psychology",
+  "currency": "INR",
+  "region": "India",
+  "seo": {
+    "page_title": "BSc Psychology | Enhanced Course Library Demo",
+    "meta_description": "Demo course details page for a student and parent career portal covering eligibility, subjects, fees, colleges and careers."
+  },
+  "hero": {
+    "badge": "Student-friendly guide",
+    "summary": "Study how people think, feel, learn and behave using scientific research, observation and practical applications. This page helps students and parents understand the course, admission path, costs, career options and further-study requirements.",
+    "fit": {
+      "score_percent": 76,
+      "note": "Illustrative score based on interests and learning preferences.",
+      "indicators": [
+        "Enjoys understanding people",
+        "Comfortable with reading and research",
+        "Open to statistics and scientific study"
+      ]
+    }
+  },
+  "quick_facts": {
+    "typical_duration": {
+      "min_years": 3,
+      "max_years": 4
+    },
+    "entry_level": "Class 12",
+    "suitable_streams": [
+      "Science",
+      "Commerce",
+      "Humanities"
+    ],
+    "learning_style": "Theory + research + practical work",
+    "indicative_annual_fees": {
+      "min": 20000,
+      "max": 300000
+    },
+    "career_direction": "Psychology, HR, research and support roles"
+  },
+  "snapshot": {
+    "salary": {
+      "lower_annual": 250000,
+      "typical_annual": 420000,
+      "higher_annual": 800000,
+      "higher_is_open_ended": true,
+      "marker_percent": 31,
+      "note": "Salary depends on qualification level, specialisation, job role, employer, experience and location. Regulated psychology roles usually require postgraduate training."
+    },
+    "specialisations": [
+      "Clinical Psychology",
+      "Counselling Psychology",
+      "Organisational Psychology",
+      "Educational Psychology",
+      "Health Psychology",
+      "Forensic Psychology",
+      "Neuropsychology",
+      "Sports Psychology"
+    ],
+    "data_note": "In the production portal, display the salary year, country/region, sample size, role level and source. Avoid showing one salary figure as guaranteed for every graduate."
+  },
+  "overview": {
+    "heading": "What is BSc Psychology?",
+    "paragraphs": [
+      "BSc Psychology is an undergraduate course that studies human behaviour, emotions, thought processes, learning, memory and social interaction. It uses scientific methods rather than intuition to understand why people behave differently in different situations, which means a large part of the course is about how evidence is gathered and judged.",
+      "Students commonly study areas such as cognitive psychology, developmental psychology, social psychology, biological psychology, research methods and statistics. Depending on the university, the course may include laboratory activities, surveys, case analysis, field visits, projects or internships. Assessment usually mixes written examinations with reports on work the student has designed and carried out.",
+      "This degree can be a foundation for careers in research, human resources, education, community support and behavioural services. However, professional roles such as clinical psychologist or counselling psychologist generally require postgraduate education, supervised training and any registration required by the relevant authority, so students should treat the bachelor's degree as the first stage of a longer route rather than a complete qualification."
+    ]
+  },
+  "suitability": {
+    "good_fit": {
+      "heading": "You may enjoy this course if you…",
+      "points": [
+        "Are curious about thoughts, feelings and behaviour.",
+        "Enjoy reading, discussion, observation and research.",
+        "Can listen patiently and respect different viewpoints.",
+        "Are willing to study statistics and scientific methods."
+      ]
+    },
+    "caution": {
+      "heading": "Think carefully if you…",
+      "points": [
+        "Expect the course to involve only counselling conversations.",
+        "Strongly dislike reading, report writing or basic statistics.",
+        "Expect to become a clinical psychologist immediately after graduation.",
+        "Do not want further study for specialised professional roles."
+      ]
+    },
+    "tags": [
+      "Understanding people",
+      "Scientific thinking",
+      "Reading and writing",
+      "Research",
+      "Empathy",
+      "Statistics",
+      "Communication"
+    ]
+  },
+  "eligibility": {
+    "typical_requirements": [
+      "Completion of Class 12 or an equivalent qualification.",
+      "Many institutions accept Science, Commerce and Humanities students.",
+      "A minimum percentage may apply at most institutions.",
+      "Some universities may prefer Psychology, Biology or Mathematics."
+    ],
+    "admission_methods": [
+      "Class 12 marks or merit-based admission.",
+      "Common entrance examination.",
+      "University-specific entrance examination.",
+      "Interview, counselling or document verification."
+    ],
+    "admission_timeline": [
+      {
+        "step": 1,
+        "title": "Check eligibility",
+        "description": "Confirm accepted streams, subjects and minimum marks."
+      },
+      {
+        "step": 2,
+        "title": "Shortlist colleges",
+        "description": "Compare recognition, curriculum, fees and location."
+      },
+      {
+        "step": 3,
+        "title": "Track entrance exams",
+        "description": "Check whether merit, CUET or another test is used."
+      },
+      {
+        "step": 4,
+        "title": "Submit applications",
+        "description": "Prepare certificates, identification and required documents."
+      },
+      {
+        "step": 5,
+        "title": "Confirm admission",
+        "description": "Complete counselling, fee payment and enrolment."
+      }
+    ]
+  },
+  "curriculum": {
+    "years": [
+      {
+        "year": 1,
+        "label": "Year 1",
+        "subjects": [
+          {
+            "name": "Introduction to Psychology",
+            "description": "Core ideas, approaches and applications of psychology."
+          },
+          {
+            "name": "Biological Psychology",
+            "description": "Connections between the brain, body and behaviour."
+          },
+          {
+            "name": "Research Methods I",
+            "description": "Observation, surveys, experiments and research ethics."
+          },
+          {
+            "name": "Basic Statistics",
+            "description": "Understanding, organising and interpreting behavioural data."
+          }
+        ]
+      },
+      {
+        "year": 2,
+        "label": "Year 2",
+        "subjects": [
+          {
+            "name": "Cognitive Psychology",
+            "description": "Attention, memory, language and problem-solving."
+          },
+          {
+            "name": "Developmental Psychology",
+            "description": "Human development from childhood through later life."
+          },
+          {
+            "name": "Social Psychology",
+            "description": "How groups, relationships and society influence behaviour."
+          },
+          {
+            "name": "Research Methods II",
+            "description": "Advanced analysis, interpretation and project preparation."
+          }
+        ]
+      },
+      {
+        "year": 3,
+        "label": "Year 3",
+        "subjects": [
+          {
+            "name": "Abnormal Psychology",
+            "description": "Introduction to psychological difficulties and classification."
+          },
+          {
+            "name": "Organisational Psychology",
+            "description": "Behaviour, motivation and performance in workplaces."
+          },
+          {
+            "name": "Elective or Specialisation",
+            "description": "Choose an area such as health, education or counselling."
+          },
+          {
+            "name": "Final Project",
+            "description": "Conduct and present an independent research project."
+          }
+        ]
+      },
+      {
+        "year": 4,
+        "label": "Year 4",
+        "subjects": [
+          {
+            "name": "Advanced Research Methods",
+            "description": "Design, run and defend an independent study to publishable standard."
+          },
+          {
+            "name": "Psychological Assessment",
+            "description": "Administer and interpret standardised tests under supervision."
+          },
+          {
+            "name": "Applied Psychology Placement",
+            "description": "Supervised practice in a clinical, school or workplace setting."
+          },
+          {
+            "name": "Dissertation",
+            "description": "Extended written research project on a self-chosen question."
+          }
+        ]
+      }
+    ],
+    "learning_activities": "Lectures, reading, group discussion, experiments, surveys, case analysis, presentations and supervised projects.",
+    "assessment_methods": "Written examinations, assignments, presentations, research reports, practical work, viva and final projects."
+  },
+  "skills": [
+    {
+      "name": "Research skills",
+      "description": "Plan studies, gather information and interpret findings."
+    },
+    {
+      "name": "Data understanding",
+      "description": "Use basic statistics and evaluate evidence carefully."
+    },
+    {
+      "name": "Critical thinking",
+      "description": "Question assumptions and compare competing explanations."
+    },
+    {
+      "name": "Communication",
+      "description": "Present ideas clearly in writing and in speech."
+    },
+    {
+      "name": "Observation",
+      "description": "Notice patterns in behaviour and social interaction."
+    },
+    {
+      "name": "Ethical awareness",
+      "description": "Respect privacy, consent and responsible practice."
+    }
+  ],
+  "careers": [
+    {
+      "title": "Research Assistant",
+      "description": "Support surveys, data collection, analysis and reporting in research projects.",
+      "route_badge": "Possible after bachelor's",
+      "typical_route": "BSc Psychology -> Research experience"
+    },
+    {
+      "title": "Human Resources Associate",
+      "description": "Support recruitment, employee engagement, training and workplace processes.",
+      "route_badge": "Possible after bachelor's",
+      "typical_route": "BSc Psychology -> HR internship or certification"
+    },
+    {
+      "title": "Behaviour Support Assistant",
+      "description": "Assist trained professionals in education, community or support settings.",
+      "route_badge": "Training may be required",
+      "typical_route": "BSc Psychology -> Relevant supervised training"
+    },
+    {
+      "title": "Counselling Psychologist",
+      "description": "Provide professional psychological support within an approved scope of practice.",
+      "route_badge": "Postgraduate route",
+      "typical_route": "Bachelor's -> Master's -> Supervision and registration"
+    },
+    {
+      "title": "Clinical Psychologist",
+      "description": "Assess and support people with psychological and behavioural difficulties.",
+      "route_badge": "Advanced regulated route",
+      "typical_route": "Bachelor's -> Approved postgraduate clinical training"
+    },
+    {
+      "title": "Academic or Researcher",
+      "description": "Teach, conduct advanced research and publish in specialist areas.",
+      "route_badge": "Higher study required",
+      "typical_route": "Bachelor's -> Master's -> PhD or doctoral research"
+    }
+  ],
+  "recruiters": [
+    {
+      "logo_initials": "HN",
+      "name": "Healthcare Network A",
+      "sector": "Hospitals & behavioural health",
+      "description": "May recruit graduates for support, coordination, research and patient-service positions.",
+      "roles": [
+        "Support assistant",
+        "Research"
+      ]
+    },
+    {
+      "logo_initials": "HR",
+      "name": "People Consulting Group B",
+      "sector": "HR & talent consulting",
+      "description": "Uses psychology-related knowledge in recruitment, assessment, learning and employee experience.",
+      "roles": [
+        "HR associate",
+        "Talent analyst"
+      ]
+    },
+    {
+      "logo_initials": "ES",
+      "name": "Education Services C",
+      "sector": "Schools & learning support",
+      "description": "May offer student-support, learning-assistance and programme-coordination opportunities.",
+      "roles": [
+        "Student support",
+        "Programme assistant"
+      ]
+    },
+    {
+      "logo_initials": "RL",
+      "name": "Behavioural Research Lab D",
+      "sector": "Research organisations",
+      "description": "Recruits for data collection, field research, survey administration and research coordination.",
+      "roles": [
+        "Research assistant",
+        "Field investigator"
+      ]
+    },
+    {
+      "logo_initials": "NG",
+      "name": "Community Foundation E",
+      "sector": "NGOs & social services",
+      "description": "Offers community outreach, youth programmes, case support and monitoring roles.",
+      "roles": [
+        "Project associate",
+        "Community support"
+      ]
+    },
+    {
+      "logo_initials": "MR",
+      "name": "Consumer Insights Firm F",
+      "sector": "Market research & insights",
+      "description": "Applies behavioural understanding in consumer research, interviews, surveys and data interpretation.",
+      "roles": [
+        "Research executive",
+        "Insights trainee"
+      ]
+    }
+  ],
+  "further_study_pathway": [
+    "Class 12",
+    "BSc Psychology",
+    "Master's Degree",
+    "Specialised Training",
+    "Professional Role"
+  ],
+  "fees": {
+    "rows": [
+      {
+        "category": "Tuition",
+        "min": 20000,
+        "max": 300000,
+        "is_variable": false,
+        "frequency": "Per year",
+        "parent_check": "Government/private status and included facilities"
+      },
+      {
+        "category": "Books and materials",
+        "min": 5000,
+        "max": 20000,
+        "is_variable": false,
+        "frequency": "Per year",
+        "parent_check": "Library access, software and printing costs"
+      },
+      {
+        "category": "Hostel and living",
+        "min": 60000,
+        "max": 200000,
+        "is_variable": false,
+        "frequency": "Per year",
+        "parent_check": "Food, travel, deposit and local cost of living"
+      },
+      {
+        "category": "Fieldwork or project",
+        "min": null,
+        "max": null,
+        "is_variable": true,
+        "frequency": "As required",
+        "parent_check": "Travel, data collection and project expenses"
+      }
+    ],
+    "footnote": "Replace demo figures with sourced ranges for the selected country, academic year and institution type."
+  },
+  "colleges": {
+    "ranking_source": "Demo composite ranking",
+    "ranking_updated": "2026-08",
+    "items": [
+      {
+        "rank": 1,
+        "name": "National University of Behavioural Sciences",
+        "city": "New Delhi",
+        "course_name": "BSc (Hons) Psychology",
+        "duration_years": 4,
+        "institution_type": "government",
+        "admission_route": "Merit / entrance",
+        "highlight": "Hostel available",
+        "annual_fee": 28000
+      },
+      {
+        "rank": 2,
+        "name": "Horizon University",
+        "city": "Bengaluru",
+        "course_name": "BSc Psychology",
+        "duration_years": 3,
+        "institution_type": "private",
+        "admission_route": "University entrance",
+        "highlight": "Internship support",
+        "annual_fee": 185000
+      },
+      {
+        "rank": 3,
+        "name": "Central Institute for Social & Behavioural Studies",
+        "city": "Mumbai",
+        "course_name": "BSc Psychology",
+        "duration_years": 3,
+        "institution_type": "government",
+        "admission_route": "Merit based",
+        "highlight": "Research facilities",
+        "annual_fee": 35000
+      },
+      {
+        "rank": 4,
+        "name": "Meridian Institute of Human Sciences",
+        "city": "Hyderabad",
+        "course_name": "BSc Applied Psychology",
+        "duration_years": 4,
+        "institution_type": "private",
+        "admission_route": "Interview + merit",
+        "highlight": "Applied learning",
+        "annual_fee": 210000
+      },
+      {
+        "rank": 5,
+        "name": "State University of Psychology",
+        "city": "Thiruvananthapuram",
+        "course_name": "BSc Psychology",
+        "duration_years": 3,
+        "institution_type": "government",
+        "admission_route": "Centralised allotment",
+        "highlight": "Affordable fees",
+        "annual_fee": 22000
+      },
+      {
+        "rank": 6,
+        "name": "Northbridge University",
+        "city": "Pune",
+        "course_name": "BSc Behavioural Science",
+        "duration_years": 3,
+        "institution_type": "private",
+        "admission_route": "Application + interview",
+        "highlight": "Industry electives",
+        "annual_fee": 240000
+      }
+    ],
+    "data_note": "In the production version, clearly show ranking body, category, year, methodology and official course availability. Allow users to sort by rank, fees, location, admission route and student fit."
+  },
+  "comparison": [
+    {
+      "course_name": "BSc Psychology",
+      "main_focus": "Scientific study of behaviour",
+      "statistics_level": "Moderate",
+      "laboratory_exposure": "Possible",
+      "common_next_steps": "Psychology, HR, research"
+    },
+    {
+      "course_name": "BA Psychology",
+      "main_focus": "Behaviour in social and human contexts",
+      "statistics_level": "Low to moderate",
+      "laboratory_exposure": "Usually lower",
+      "common_next_steps": "Psychology, social services"
+    },
+    {
+      "course_name": "BSc Neuroscience",
+      "main_focus": "Brain and nervous system",
+      "statistics_level": "Moderate to high",
+      "laboratory_exposure": "Usually stronger",
+      "common_next_steps": "Research, neuroscience, health sciences"
+    }
+  ],
+  "action_roadmap": [
+    {
+      "stage": "Grades 8-10",
+      "title": "Explore",
+      "description": "Read introductory psychology topics, observe related careers and develop reading, communication and basic data skills."
+    },
+    {
+      "stage": "Grade 11",
+      "title": "Prepare",
+      "description": "Choose subjects carefully, explore eligibility rules and compare BSc, BA and related behavioural-science pathways."
+    },
+    {
+      "stage": "Grade 12",
+      "title": "Apply",
+      "description": "Shortlist institutions, track applications, verify entrance requirements and calculate the full cost before applying."
+    }
+  ],
+  "parent_corner": {
+    "intro": "Parents can support students by checking whether the student understands the actual curriculum, not only the course title. Compare eligibility, total cost, institution recognition, learning environment and the qualifications required for the student's preferred career. Ask how the student expects to spend a typical week on this course, and whether that matches the work they already enjoy. A degree that sounds appealing in conversation can still involve far more reading, writing and statistics than a student expects. Where a career title is regulated, confirm the postgraduate study, supervised practice and registration that stand between graduation and that role, because those years carry their own cost and competition. Treat published salary figures as a range shaped by qualification level, employer and location rather than a promise. The most useful conversation is usually about the student's next three years, not their eventual job title.",
+    "questions": [
+      "What genuinely attracts the student to psychology?",
+      "Has the student understood the role of research and statistics?",
+      "Which careers require postgraduate study or registration?",
+      "What is the realistic total cost, including living expenses?",
+      "Are the course and institution appropriately recognised?",
+      "What alternative courses lead toward similar goals?"
+    ]
+  },
+  "faqs": [
+    {
+      "question": "Can students from any Class 12 stream apply?",
+      "answer": "Many institutions accept students from Science, Commerce or Humanities. However, minimum marks, preferred subjects and entrance requirements can differ, so each institution's latest official eligibility rules should be checked."
+    },
+    {
+      "question": "Is Mathematics required for this course?",
+      "answer": "Mathematics may not be compulsory at every institution, but the course normally includes research methods and statistics. Students should be willing to work with basic numerical data throughout the degree."
+    },
+    {
+      "question": "Can I become a psychologist after the bachelor's degree?",
+      "answer": "A bachelor's degree is usually the first stage. Specialised professional titles commonly require postgraduate education, supervised practical training and any applicable registration with the relevant authority."
+    },
+    {
+      "question": "What is the difference between BA and BSc Psychology?",
+      "answer": "The exact difference depends on the university. A BSc may place more emphasis on scientific methods, biology and statistics, while a BA may include broader social-science or humanities perspectives. Always compare the actual subject list."
+    },
+    {
+      "question": "Is this course suitable for someone who wants to work in HR?",
+      "answer": "Psychology can provide useful knowledge about behaviour, motivation and assessment. HR roles may also benefit from internships, business knowledge and specialised HR training alongside the degree."
+    }
+  ],
+  "verification": {
+    "last_reviewed": "2026-08-14",
+    "sources": [
+      {
+        "title": "Undergraduate Curriculum Framework",
+        "url": "https://www.ugc.gov.in/",
+        "publisher": "University Grants Commission"
+      },
+      {
+        "title": "National Institutional Ranking Framework",
+        "url": "https://www.nirfindia.org/",
+        "publisher": "Ministry of Education"
+      },
+      {
+        "title": "Common University Entrance Test information bulletin",
+        "url": "https://cuet.nta.nic.in/",
+        "publisher": "National Testing Agency"
+      }
+    ]
+  }
+}
