@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import logging
+from pathlib import Path
 from collections import Counter
 from dataclasses import dataclass, field
 from typing import Any, Callable
@@ -62,6 +63,7 @@ def stratified_sample(
 class PilotReport:
     results: list[CourseResult] = field(default_factory=list)
     errors: list[dict[str, Any]] = field(default_factory=list)
+    skipped: list[str] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
         validated = [r for r in self.results if r.publishable]
@@ -100,6 +102,7 @@ class PilotReport:
 
         return {
             "courses_attempted": attempted,
+            "skipped_already_generated": len(self.skipped),
             "validated": len(validated),
             "flagged": len(flagged),
             "errored": len(self.errors),
@@ -147,14 +150,36 @@ class PilotReport:
         }
 
 
+def already_generated(settings: Settings, entry: CourseEntry) -> bool:
+    run_path = Path(settings.artifacts_dir) / entry.course_id / "run.json"
+    if not run_path.exists():
+        return False
+    try:
+        with run_path.open(encoding="utf-8") as handle:
+            return json.load(handle).get("status") == "validated"
+    except (json.JSONDecodeError, OSError):
+        return False
+
+
 def run_pilot(
     entries: list[CourseEntry],
     *,
     settings: Settings,
     client_factory: Callable[[], Any] | None = None,
     on_course: Callable[[CourseEntry, CourseResult | None], None] | None = None,
+    force: bool = False,
 ) -> PilotReport:
     report = PilotReport()
+    if not force:
+        pending: list[CourseEntry] = []
+        for entry in entries:
+            if already_generated(settings, entry):
+                report.skipped.append(entry.course_id)
+            else:
+                pending.append(entry)
+        if report.skipped:
+            _log(logging.INFO, "pilot.resumed", skipped=len(report.skipped), remaining=len(pending))
+        entries = pending
     factory = client_factory or (lambda: PerplexityClient(settings))
     client = factory()
     try:

@@ -26,6 +26,9 @@ cp .env.example .env          # then add your Perplexity key
 docker compose build
 ```
 
+Compose writes container status lines to the same stream as the output, so pipe through
+`2>/dev/null` when reading the JSON in a script.
+
 ```bash
 docker compose run --rm coursegen courses docs/indian_ug_courses_171.xlsx
 docker compose run --rm coursegen pilot docs/indian_ug_courses_171.xlsx --count 10
@@ -47,6 +50,32 @@ the build context and mounted at runtime, so keys never end up in an image layer
 | Remote server | `https://portal.example.com/api/courses` |
 
 `host.docker.internal` is already mapped in `docker-compose.yml`, including on Linux.
+
+## Large runs
+
+A full catalogue takes hours: six calls per course, throttled to protect the API rate
+limit. A thousand courses is roughly six thousand requests.
+
+Runs resume. A course whose `run.json` already says `validated` is skipped, so if a run
+is interrupted, start it again and it continues from where it stopped rather than paying
+for the same courses twice.
+
+```bash
+docker compose run --rm coursegen pilot docs/courses.xlsx --count 1000
+# interrupted at course 700 -- run the same command again
+docker compose run --rm coursegen pilot docs/courses.xlsx --count 1000
+```
+
+Flagged courses are not skipped: they are retried on the next run, since a rule or prompt
+fix may now let them through. Use `--force` only when you want to regenerate courses that
+already passed.
+
+Two settings matter at this scale:
+
+```
+REQUEST_INTERVAL_SECONDS=2   # raise if you see HTTP 429
+GENERATION_MAX_ATTEMPTS=3    # attempts per section before flagging
+```
 
 ## Configuring the endpoint
 

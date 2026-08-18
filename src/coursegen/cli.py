@@ -235,7 +235,7 @@ def cmd_pilot(args: argparse.Namespace, settings: Settings) -> int:
     settings.require_api_key()
     logging.getLogger("coursegen.cli").warning(json.dumps({"event": "pilot.start", **plan}))
 
-    report = run_pilot(selected, settings=settings)
+    report = run_pilot(selected, settings=settings, force=args.force)
     payload = report.to_dict()
     for result in report.results:
         if not result.publishable:
@@ -493,6 +493,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     plt.add_argument("--out")
     plt.add_argument("--dry-run", action="store_true", help="show the plan without spending anything")
+    plt.add_argument("--force", action="store_true", help="regenerate courses already validated")
     plt.set_defaults(handler=cmd_pilot)
 
     rty = sub.add_parser("retry", help="re-run only the flagged chunks of courses in the review queue")

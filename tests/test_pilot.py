@@ -166,3 +166,60 @@ def test_seed_does_not_duplicate_into_the_stratified_fill() -> None:
     picked = stratified_sample(entries, 5, seed=seed)
     assert len({e.course_id for e in picked}) == 5
     assert picked[:2] == seed
+
+
+def test_a_rerun_skips_courses_already_validated(settings: Settings, demo_document: dict, tmp_path) -> None:
+    import dataclasses
+
+    scoped = dataclasses.replace(settings, artifacts_dir=tmp_path / "artifacts")
+    entries = [entry("BSc Psychology", "science", i) for i in range(3)]
+    client = FakeClient(lambda op, _: chunk_payload(demo_document, op.split(":")[-1]))
+
+    first = run_pilot(entries, settings=scoped, client_factory=lambda: client).to_dict()
+    assert first["validated"] == 3
+    assert first["skipped_already_generated"] == 0
+
+    calls_before = len(client.calls)
+    second = run_pilot(entries, settings=scoped, client_factory=lambda: client).to_dict()
+
+    assert second["skipped_already_generated"] == 3
+    assert second["courses_attempted"] == 0
+    assert len(client.calls) == calls_before, "a resumed run must not call the API again"
+
+
+def test_force_regenerates_everything(settings: Settings, demo_document: dict, tmp_path) -> None:
+    import dataclasses
+
+    scoped = dataclasses.replace(settings, artifacts_dir=tmp_path / "artifacts")
+    entries = [entry("BSc Psychology", "science", 0)]
+    client = FakeClient(lambda op, _: chunk_payload(demo_document, op.split(":")[-1]))
+
+    run_pilot(entries, settings=scoped, client_factory=lambda: client)
+    calls_before = len(client.calls)
+    report = run_pilot(entries, settings=scoped, client_factory=lambda: client, force=True).to_dict()
+
+    assert report["skipped_already_generated"] == 0
+    assert len(client.calls) > calls_before
+
+
+def test_a_flagged_course_is_retried_on_resume(settings: Settings, demo_document: dict, tmp_path) -> None:
+    import dataclasses
+    from typing import Any as _Any
+
+    scoped = dataclasses.replace(settings, artifacts_dir=tmp_path / "artifacts")
+    entries = [entry("BSc Psychology", "science", 0)]
+    broken = {"active": True}
+
+    def responder(operation: str, user_prompt: str) -> dict[str, _Any]:
+        payload = chunk_payload(demo_document, operation.split(":")[-1])
+        if "careers" in payload and broken["active"]:
+            payload["careers"][1]["title"] = payload["careers"][0]["title"]
+        return payload
+
+    first = run_pilot(entries, settings=scoped, client_factory=lambda: FakeClient(responder)).to_dict()
+    assert first["flagged"] == 1
+
+    broken["active"] = False
+    second = run_pilot(entries, settings=scoped, client_factory=lambda: FakeClient(responder)).to_dict()
+    assert second["skipped_already_generated"] == 0, "a flagged course must be retried, not skipped"
+    assert second["validated"] == 1

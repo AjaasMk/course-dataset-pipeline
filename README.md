@@ -47,6 +47,10 @@ coursegen publish                                  # POST validated courses
 
 Add `--dry-run` to `pilot` or `retry` to see the plan and cost before spending anything.
 
+Runs resume: a course already validated is skipped, so an interrupted run continues
+where it stopped instead of paying for the same courses twice. `--force` regenerates
+them anyway.
+
 ## Docker
 
 ```bash
