@@ -59,4 +59,8 @@ def settings(tmp_path: Path, schema_path: Path) -> Settings:
         review_dir=tmp_path / "artifacts" / "_review",
         laravel_endpoint="",
         laravel_token="",
+        laravel_method="POST",
+        laravel_payload_key="",
+        laravel_auth_header="Authorization",
+        laravel_auth_scheme="Bearer",
     )

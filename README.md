@@ -41,9 +41,22 @@ coursegen generate "B.Tech Civil Engineering"      # one course
 coursegen validate artifacts/crs_x/course.json     # re-check a saved document
 coursegen retry --revalidate-only                  # re-check the review queue, no API calls
 coursegen domains --discipline engineering         # which sources a subject will search
+coursegen publish --dry-run                        # what would be sent to Laravel
+coursegen publish                                  # POST validated courses
 ```
 
 Add `--dry-run` to `pilot` or `retry` to see the plan and cost before spending anything.
+
+## Docker
+
+```bash
+cp .env.example .env
+docker compose build
+docker compose run --rm coursegen pilot docs/indian_ug_courses_171.xlsx --count 10
+```
+
+Generated files land in `./artifacts` on the host. See
+[docs/deployment.md](docs/deployment.md) for Laravel endpoint configuration.
 
 ## Output
 

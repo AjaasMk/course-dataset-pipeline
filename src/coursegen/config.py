@@ -71,6 +71,17 @@ class Settings:
     review_dir: Path
     laravel_endpoint: str
     laravel_token: str
+    laravel_method: str
+    laravel_payload_key: str
+    laravel_auth_header: str
+    laravel_auth_scheme: str
+
+    def require_publish_target(self) -> tuple[str, str]:
+        if not self.laravel_endpoint:
+            raise ConfigError("LARAVEL_ENDPOINT is not set")
+        if not self.laravel_token:
+            raise ConfigError("LARAVEL_API_TOKEN is not set")
+        return self.laravel_endpoint, self.laravel_token
 
     def require_api_key(self) -> str:
         if not self.perplexity_api_key:
@@ -124,4 +135,8 @@ def load_settings() -> Settings:
         review_dir=Path(_env("REVIEW_DIR", str(PROJECT_ROOT / "artifacts" / "_review"))),
         laravel_endpoint=_env("LARAVEL_ENDPOINT"),
         laravel_token=_env("LARAVEL_API_TOKEN"),
+        laravel_method=_env("LARAVEL_METHOD", "POST").upper(),
+        laravel_payload_key=_env("LARAVEL_PAYLOAD_KEY"),
+        laravel_auth_header=_env("LARAVEL_AUTH_HEADER", "Authorization"),
+        laravel_auth_scheme=_env("LARAVEL_AUTH_SCHEME", "Bearer"),
     )

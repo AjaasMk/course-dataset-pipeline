@@ -20,3 +20,7 @@ dist/
 .idea/
 .DS_Store
 Thumbs.db
+
+# zipped copies of demo/ for sending; the folder itself is versioned
+demo.zip
+*.zip

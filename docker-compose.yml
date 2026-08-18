@@ -1,0 +1,13 @@
+services:
+  coursegen:
+    build: .
+    image: coursegen:latest
+    env_file: .env
+    environment:
+      ARTIFACTS_DIR: /app/artifacts
+      REVIEW_DIR: /app/artifacts/_review
+    volumes:
+      - ./artifacts:/app/artifacts
+      - ./docs:/app/docs:ro
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

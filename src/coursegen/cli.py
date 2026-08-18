@@ -14,6 +14,7 @@ from .config import ConfigError, Settings, load_settings
 from .generate import generate_course, injected_fields, slugify
 from .perplexity import PerplexityClient
 from .pilot import resolve_names, run_pilot, stratified_sample
+from .publish import publish_all
 from .review import load_review_queue
 from .schema_tools import chunk_schema, load_root_schema, relax_for_provider
 from .store import ArtifactStore, read_json, write_json
@@ -420,6 +421,25 @@ def cmd_retry(args: argparse.Namespace, settings: Settings) -> int:
     return 0 if len(cleared) == len(results) else 2
 
 
+def cmd_publish(args: argparse.Namespace, settings: Settings) -> int:
+    if not args.dry_run:
+        settings.require_publish_target()
+    summary = publish_all(
+        settings,
+        course_id=args.course_id,
+        force=args.force,
+        dry_run=args.dry_run,
+    )
+    if args.out:
+        write_json(Path(args.out), summary)
+    _emit(summary)
+    if args.dry_run:
+        return 0
+    if summary.get("aborted"):
+        return 3
+    return 0 if summary.get("rejected", 0) == 0 and summary.get("failed", 0) == 0 else 2
+
+
 def _write_review(settings: Settings, payload: dict[str, Any], course_id: str) -> Path:
     return write_json(Path(settings.review_dir) / f"{course_id}.json", payload)
 
@@ -484,6 +504,13 @@ def build_parser() -> argparse.ArgumentParser:
         help="only re-check saved documents against current rules; never call the API",
     )
     rty.set_defaults(handler=cmd_retry)
+
+    pub = sub.add_parser("publish", help="POST validated courses to the Laravel endpoint")
+    pub.add_argument("--course-id", help="publish a single course")
+    pub.add_argument("--force", action="store_true", help="re-send even if already published")
+    pub.add_argument("--dry-run", action="store_true", help="show what would be sent")
+    pub.add_argument("--out", help="write the publish summary to this path")
+    pub.set_defaults(handler=cmd_publish)
 
     dom = sub.add_parser("domains", help="show the search domains each chunk will use")
     dom.add_argument("--discipline", help="resolve as this discipline")
