@@ -77,6 +77,7 @@ class RuleContext:
     currency: str
     allowed_domains: tuple[str, ...]
     search_filtered: bool = True
+    academic_years: int | None = None
 
 
 @dataclass(frozen=True)
@@ -368,13 +369,17 @@ def rule_curriculum_length_matches_duration(doc: dict[str, Any], ctx: RuleContex
     low, high = duration.get("min_years"), duration.get("max_years")
     if not isinstance(low, (int, float)) or not isinstance(high, (int, float)):
         return
-    expected = max(math.floor(low), min(math.ceil(high), MAX_CURRICULUM_YEARS))
+    expected = ctx.academic_years or max(
+        math.floor(low), min(math.ceil(high), MAX_CURRICULUM_YEARS)
+    )
     if len(years) != expected:
-        detail = (
-            f"the course runs up to {high} years, so the page must show all {expected} of them"
-            if high > low
-            else f"a {high}-year course needs {expected} year tabs"
-        )
+        if ctx.academic_years is not None:
+            detail = f"this course has {expected} taught years, so the page shows {expected} year tabs"
+        elif high > low:
+            detail = f"the course runs up to {high} years, so the page must show all {expected} of them"
+        else:
+            detail = f"a {high}-year course needs {expected} year tabs"
+
         yield Finding(
             "curriculum_length_mismatch",
             "curriculum.years",

@@ -71,24 +71,12 @@ CHUNKS: tuple[Chunk, ...] = (
         properties=("eligibility", "curriculum", "skills"),
         focus=(
             "Cover how a student gets in and what they then study. Eligibility must reflect the "
-            "stated region's mainstream entry rules. Give one curriculum entry per academic year "
-            "the course actually runs, with four subjects in each: three entries for a three-year "
-            "degree, four for a four-year degree, five for a five-year integrated or professional "
-            "programme. The number of entries must agree with the typical duration already "
-            "established for this course. Put specialisation, elective and final project work in "
-            "the last year. Where a degree runs three or four years under the National Education "
-            "Policy, give the years the mainstream student actually studies and make the count "
-            "agree with the duration already set; a four-year Honours route means a fourth year "
-            "of advanced or research subjects, not a repeat of year three. "
-            "Give one entry for every year the course can run, using the upper end of its stated "
-            "duration: a course listed as three to four years gets four entries, and the fourth "
-            "holds the Honours, specialisation or research work that year adds. A family reading "
-            "three to four years must be able to see what the fourth year contains. "
-            "Every subject name across the whole curriculum must be distinct. Do not repeat a "
-            "subject in a later year, and do not pad a year by restating an earlier one. Where a "
-            "subject genuinely continues, number the stages -- Research Methods I then Research "
-            "Methods II -- so each entry names a different unit of study. Before finishing, read "
-            "back the full list and replace any repeat."
+            "stated region's mainstream entry rules. Give one curriculum entry per taught year, "
+            "numbered from 1, with four subjects in each, and put specialisation, elective and "
+            "final project work in the last year. Every subject name across the whole curriculum "
+            "must be distinct: do not repeat a subject in a later year, and where a subject "
+            "genuinely continues, number the stages -- Research Methods I then Research Methods "
+            "II -- so each entry names a different unit of study."
         ),
         domains=(),
     ),

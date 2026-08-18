@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import dataclasses
 import json
 import logging
 import re
@@ -10,10 +11,11 @@ from typing import Any
 from .chunks import CHUNKS, CHUNKS_BY_KEY, Chunk, chunk_owning
 from .config import Settings
 from .domains import DomainRegistry, normalize_discipline
+from .durations import Duration, DurationRegistry
 from .perplexity import ChunkResponse, PerplexityClient, ProviderOutputError
 from .prompts import SYSTEM_PROMPT, build_repair_prompt, build_user_prompt
 from .retry import TransportError
-from .schema_tools import chunk_schema, load_root_schema, relax_for_provider
+from .schema_tools import chunk_schema, load_root_schema, pin_curriculum_years, relax_for_provider
 from .store import ArtifactStore
 from .validate import RuleContext, ValidationReport, validate_document
 
@@ -125,6 +127,15 @@ def strip_citation_markers(node: Any) -> Any:
     return node
 
 
+def apply_duration(document: dict[str, Any], duration: Duration | None) -> dict[str, Any]:
+    if duration is None:
+        return document
+    quick_facts = document.get("quick_facts")
+    if isinstance(quick_facts, dict):
+        quick_facts["typical_duration"] = duration.typical_duration()
+    return document
+
+
 def apply_derived_fields(
     document: dict[str, Any], settings: Settings | None = None
 ) -> dict[str, Any]:
@@ -175,6 +186,40 @@ def merge_usage(left: dict[str, float], right: dict[str, float]) -> dict[str, fl
     return merged
 
 
+def duration_aware_chunk(chunk: Chunk, duration: Duration | None) -> Chunk:
+    if duration is None or "quick_facts" not in chunk.properties:
+        return chunk
+    if "quick_facts.typical_duration" in chunk.derived_paths:
+        return chunk
+    return dataclasses.replace(
+        chunk, derived_paths=chunk.derived_paths + ("quick_facts.typical_duration",)
+    )
+
+
+def duration_constraints(chunk: Chunk, duration: Duration | None) -> list[str]:
+    if duration is None:
+        return []
+    lines: list[str] = []
+    if "quick_facts" in chunk.properties:
+        lines.append(
+            f"- Duration is already set for this course and is not part of your output."
+        )
+    if "curriculum" in chunk.properties:
+        span = (
+            f"{duration.min_years:g} years"
+            if duration.min_years == duration.max_years
+            else f"{duration.min_years:g} to {duration.max_years:g} years"
+        )
+        lines.append(
+            f"- This course runs {span}, of which {duration.academic_years} are taught years. "
+            f"Give exactly {duration.academic_years} curriculum entries, numbered 1 to "
+            f"{duration.academic_years}, each with different subjects. Any internship or "
+            f"housemanship beyond the taught years belongs in the final year's description, "
+            f"not as an extra year of subjects."
+        )
+    return lines
+
+
 def strip_derived_fields(chunk: Chunk, data: dict[str, Any]) -> dict[str, Any]:
     stripped = json.loads(json.dumps(data))
     for dotted in chunk.derived_paths:
@@ -211,8 +256,15 @@ def generate_chunk(
     seed_data: dict[str, Any] | None = None,
     registry: DomainRegistry | None = None,
     discipline: str | None = None,
+    duration: Duration | None = None,
 ) -> ChunkOutcome:
+    chunk = duration_aware_chunk(chunk, duration)
+    constraints = duration_constraints(chunk, duration)
+    if seed_data is not None:
+        seed_data = strip_derived_fields(chunk, seed_data)
     strict_schema = chunk_schema(root_schema, chunk)
+    if duration is not None and "curriculum" in chunk.properties:
+        pin_curriculum_years(strict_schema, duration.academic_years)
     provider_schema = relax_for_provider(strict_schema)
     registry = registry if registry is not None else DomainRegistry.load(settings.domains_path)
     resolved = registry.resolve(discipline, chunk, settings.search_domains)
@@ -221,6 +273,7 @@ def generate_chunk(
         currency=settings.currency,
         allowed_domains=registry.allowlist(settings.search_domains),
         search_filtered=bool(search_domains),
+        academic_years=duration.academic_years if duration else None,
     )
 
     if not search_domains:
@@ -262,6 +315,7 @@ def generate_chunk(
                 error_lines=previous_errors,
                 context=context,
                 include_schema=settings.include_schema_in_prompt,
+                constraints=constraints,
             )
         else:
             user_prompt = build_user_prompt(
@@ -272,6 +326,7 @@ def generate_chunk(
                 schema=provider_schema,
                 context=context,
                 include_schema=settings.include_schema_in_prompt,
+                constraints=constraints,
             )
 
         _log(
@@ -350,6 +405,7 @@ def generate_chunk(
                 {"data": candidate, "citations": response.citations, "usage": response.usage},
             )
 
+        candidate = strip_derived_fields(chunk, candidate)
         merged_for_rules = {**base_fields, **context, **candidate}
         report: ValidationReport = validate_document(
             candidate,
@@ -448,8 +504,18 @@ def generate_course(
 ) -> CourseResult:
     root_schema = load_root_schema(settings.schema_path)
     registry = DomainRegistry.load(settings.domains_path)
+    duration = DurationRegistry.load(settings.durations_path).resolve(course_name)
     discipline = normalize_discipline(discipline)
     base_fields = injected_fields(course_id, course_name, settings, category)
+    if duration is None:
+        _log(logging.WARNING, "course.duration_unpinned", course_id=course_id, course_name=course_name)
+    else:
+        _log(
+            logging.INFO,
+            "course.duration_pinned",
+            course_id=course_id,
+            **duration.to_dict(),
+        )
     selected = tuple(CHUNKS_BY_KEY[key] for key in only_chunks) if only_chunks else CHUNKS
 
     document: dict[str, Any] = dict(base_fields)
@@ -474,11 +540,13 @@ def generate_course(
             store=store,
             registry=registry,
             discipline=discipline,
+            duration=duration,
         )
         outcomes.append(outcome)
         if outcome.data:
             document.update(outcome.data)
 
+    apply_duration(document, duration)
     document = apply_derived_fields(document, settings)
 
     if any(not o.accepted for o in outcomes):
@@ -504,6 +572,7 @@ def generate_course(
         store=store,
         registry=registry,
         discipline=discipline,
+        duration=duration,
     )
     _persist(result, store)
     return result
@@ -522,12 +591,14 @@ def _validate_and_repair(
     store: ArtifactStore | None,
     registry: DomainRegistry,
     discipline: str | None,
+    duration: Duration | None = None,
 ) -> CourseResult:
     guidance_domains = registry.resolve(discipline, CHUNKS_BY_KEY["guidance"], settings.search_domains)
     rule_context = RuleContext(
         currency=settings.currency,
         allowed_domains=registry.allowlist(settings.search_domains),
         search_filtered=bool(guidance_domains.domains),
+        academic_years=duration.academic_years if duration else None,
     )
     outcome_by_key = {o.chunk_key: o for o in outcomes}
 
@@ -585,6 +656,7 @@ def _validate_and_repair(
                 ),
                 registry=registry,
                 discipline=discipline,
+                duration=duration,
             )
             previous = outcome_by_key.get(chunk.key)
             if previous is not None:
@@ -604,6 +676,7 @@ def _validate_and_repair(
                     chunk_outcomes=outcomes,
                     validation=report.to_dict(),
                 )
+        apply_duration(document, duration)
         document = apply_derived_fields(document, settings)
 
     return CourseResult(

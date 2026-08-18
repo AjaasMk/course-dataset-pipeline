@@ -44,6 +44,7 @@ def build_user_prompt(
     schema: dict[str, Any],
     context: dict[str, Any] | None = None,
     include_schema: bool = False,
+    constraints: list[str] | None = None,
 ) -> str:
     sections = [
         f"Course: {course_name}",
@@ -55,6 +56,8 @@ def build_user_prompt(
         "",
         "Populate exactly these top-level keys and no others: " + ", ".join(chunk.properties),
     ]
+    if constraints:
+        sections += ["", "Fixed for this course; these are not yours to choose:", *constraints]
     if context:
         sections += [
             "",
@@ -81,6 +84,7 @@ def build_repair_prompt(
     error_lines: list[str],
     context: dict[str, Any] | None = None,
     include_schema: bool = False,
+    constraints: list[str] | None = None,
 ) -> str:
     base = build_user_prompt(
         chunk,

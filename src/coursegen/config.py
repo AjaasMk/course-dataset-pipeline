@@ -67,6 +67,7 @@ class Settings:
     generation_max_attempts: int
     schema_path: Path
     domains_path: Path
+    durations_path: Path
     artifacts_dir: Path
     review_dir: Path
     laravel_endpoint: str
@@ -131,6 +132,7 @@ def load_settings() -> Settings:
         generation_max_attempts=generation_max_attempts,
         schema_path=Path(_env("SCHEMA_PATH", str(PROJECT_ROOT / "schema" / "course.schema.json"))),
         domains_path=Path(_env("DOMAINS_PATH", str(PROJECT_ROOT / "config" / "domains.json"))),
+        durations_path=Path(_env("DURATIONS_PATH", str(PROJECT_ROOT / "config" / "durations.json"))),
         artifacts_dir=Path(_env("ARTIFACTS_DIR", str(PROJECT_ROOT / "artifacts"))),
         review_dir=Path(_env("REVIEW_DIR", str(PROJECT_ROOT / "artifacts" / "_review"))),
         laravel_endpoint=_env("LARAVEL_ENDPOINT"),

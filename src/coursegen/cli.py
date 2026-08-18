@@ -10,6 +10,7 @@ from typing import Any, Sequence
 from .chunks import CHUNKS, CHUNKS_BY_KEY
 from .courselist import CourseListError, categories, iter_entries, load_course_list
 from .domains import DomainRegistry, normalize_discipline
+from .durations import DurationRegistry
 from .config import ConfigError, Settings, load_settings
 from .generate import generate_course, injected_fields, slugify
 from .perplexity import PerplexityClient
@@ -87,8 +88,13 @@ def cmd_validate(args: argparse.Namespace, settings: Settings) -> int:
     document = read_json(Path(args.path))
     root_schema = load_root_schema(settings.schema_path)
     registry = DomainRegistry.load(settings.domains_path)
+    duration = DurationRegistry.load(settings.durations_path).resolve(
+        document.get("course_name", "")
+    )
     context = RuleContext(
-        currency=settings.currency, allowed_domains=registry.allowlist(settings.search_domains)
+        currency=settings.currency,
+        allowed_domains=registry.allowlist(settings.search_domains),
+        academic_years=duration.academic_years if duration else None,
     )
     report = validate_document(
         document,
@@ -158,6 +164,44 @@ def cmd_domains(args: argparse.Namespace, settings: Settings) -> int:
             "chunks_over_cap": truncated,
             "chunks_with_no_domains": empty,
             "per_chunk": {r.chunk_key: r.to_dict() for r in resolved},
+        }
+    )
+    return 0
+
+
+def cmd_durations(args: argparse.Namespace, settings: Settings) -> int:
+    registry = DurationRegistry.load(settings.durations_path)
+
+    if args.course:
+        found = registry.resolve(args.course)
+        _emit(
+            {
+                "status": "ok" if found else "unpinned",
+                "source_file": str(settings.durations_path),
+                "course_name": args.course,
+                "duration": found.to_dict() if found else None,
+            }
+        )
+        return 0
+
+    if not args.path:
+        _emit({"status": "error", "error": "give a course list path or --course NAME"})
+        return 2
+
+    entries = load_course_list(args.path)
+    resolved = [(entry, registry.resolve(entry.course_name)) for entry in entries]
+    unpinned = [entry.course_name for entry, found in resolved if found is None]
+    _emit(
+        {
+            "status": "warn" if unpinned else "ok",
+            "source_file": str(settings.durations_path),
+            "course_list": str(args.path),
+            "courses": len(entries),
+            "pinned": len(entries) - len(unpinned),
+            "unpinned": unpinned,
+            "per_course": {
+                entry.course_name: found.to_dict() if found else None for entry, found in resolved
+            },
         }
     )
     return 0
@@ -512,6 +556,11 @@ def build_parser() -> argparse.ArgumentParser:
     pub.add_argument("--dry-run", action="store_true", help="show what would be sent")
     pub.add_argument("--out", help="write the publish summary to this path")
     pub.set_defaults(handler=cmd_publish)
+
+    dur = sub.add_parser("durations", help="show which courses have a fixed duration")
+    dur.add_argument("path", nargs="?", default=None, help="course list to check")
+    dur.add_argument("--course", help="resolve a single course name instead")
+    dur.set_defaults(handler=cmd_durations)
 
     dom = sub.add_parser("domains", help="show the search domains each chunk will use")
     dom.add_argument("--discipline", help="resolve as this discipline")

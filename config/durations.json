@@ -1,0 +1,203 @@
+{
+  "note": "Durations for Indian undergraduate courses. min_years/max_years is the whole programme as a family experiences it, including any compulsory internship. academic_years is the number of taught years the curriculum tabs must show, which is lower wherever the programme ends in an internship rather than a further year of subjects. Courses absent from this file fall back to model-generated duration. Exact names are matched first, then patterns in order.",
+  "exact": {
+    "b.ed": {
+      "min_years": 2,
+      "max_years": 2,
+      "academic_years": 2
+    },
+    "mbbs": {
+      "min_years": 5.5,
+      "max_years": 5.5,
+      "academic_years": 4,
+      "note": "four professional phases over 4.5 years, then a one-year rotating internship"
+    },
+    "bds": {
+      "min_years": 5,
+      "max_years": 5,
+      "academic_years": 4,
+      "note": "four academic years, then a one-year internship"
+    },
+    "bams": {
+      "min_years": 5.5,
+      "max_years": 5.5,
+      "academic_years": 4,
+      "note": "four professional years, then a one-year internship"
+    },
+    "bhms": {
+      "min_years": 5.5,
+      "max_years": 5.5,
+      "academic_years": 4,
+      "note": "four professional years, then a one-year internship"
+    },
+    "bums": {
+      "min_years": 5.5,
+      "max_years": 5.5,
+      "academic_years": 4,
+      "note": "four professional years, then a one-year internship"
+    },
+    "bsms": {
+      "min_years": 5.5,
+      "max_years": 5.5,
+      "academic_years": 4,
+      "note": "four professional years, then a one-year internship"
+    },
+    "b.arch": {
+      "min_years": 5,
+      "max_years": 5,
+      "academic_years": 5
+    },
+    "bachelor of architecture": {
+      "min_years": 5,
+      "max_years": 5,
+      "academic_years": 5
+    },
+    "b.sc nursing": {
+      "min_years": 4,
+      "max_years": 4,
+      "academic_years": 4
+    },
+    "bachelor of optometry": {
+      "min_years": 4,
+      "max_years": 4,
+      "academic_years": 4
+    },
+    "bachelor of pharmacy": {
+      "min_years": 4,
+      "max_years": 4,
+      "academic_years": 4
+    }
+  },
+  "patterns": [
+    {
+      "match": "^b\\.?\\s?tech\\b",
+      "min_years": 4,
+      "max_years": 4,
+      "academic_years": 4
+    },
+    {
+      "match": "^b\\.?\\s?e\\.?\\s",
+      "min_years": 4,
+      "max_years": 4,
+      "academic_years": 4
+    },
+    {
+      "match": "^b\\.?\\s?pharm",
+      "min_years": 4,
+      "max_years": 4,
+      "academic_years": 4
+    },
+    {
+      "match": "^b\\.?\\s?arch",
+      "min_years": 5,
+      "max_years": 5,
+      "academic_years": 5
+    },
+    {
+      "match": "^b\\.?\\s?ed\\b",
+      "min_years": 2,
+      "max_years": 2,
+      "academic_years": 2
+    },
+    {
+      "match": "physiotherapy|^bpt\\b",
+      "min_years": 4.5,
+      "max_years": 4.5,
+      "academic_years": 4,
+      "note": "four academic years, then a six-month internship"
+    },
+    {
+      "match": "occupational therapy|^bot\\b",
+      "min_years": 4.5,
+      "max_years": 4.5,
+      "academic_years": 4,
+      "note": "four academic years, then a six-month internship"
+    },
+    {
+      "match": "^b\\.?\\s?sc\\.?\\s+(agriculture|horticulture|forestry|fisheries)",
+      "min_years": 4,
+      "max_years": 4,
+      "academic_years": 4
+    },
+    {
+      "match": "^b\\.?\\s?v\\.?\\s?sc",
+      "min_years": 5.5,
+      "max_years": 5.5,
+      "academic_years": 5,
+      "note": "five academic years, then a six-month internship"
+    },
+    {
+      "match": "^ba\\s?ll\\.?b|^b\\.?\\s?com\\s?ll\\.?b|^bba\\s?ll\\.?b|integrated law",
+      "min_years": 5,
+      "max_years": 5,
+      "academic_years": 5
+    },
+    {
+      "match": "^ll\\.?b\\b",
+      "min_years": 3,
+      "max_years": 3,
+      "academic_years": 3
+    },
+    {
+      "match": "^b\\.?\\s?des\\b|^bachelor of design",
+      "min_years": 4,
+      "max_years": 4,
+      "academic_years": 4
+    },
+    {
+      "match": "^b\\.?\\s?plan\\b|^bachelor of planning",
+      "min_years": 4,
+      "max_years": 4,
+      "academic_years": 4
+    },
+    {
+      "match": "^bfa\\b|fine arts|visual arts|performing arts|^bachelor of (painting|sculpture)|applied arts",
+      "min_years": 4,
+      "max_years": 4,
+      "academic_years": 4
+    },
+    {
+      "match": "interior design",
+      "min_years": 4,
+      "max_years": 4,
+      "academic_years": 4
+    },
+    {
+      "match": "^b\\.?\\s?el\\.?\\s?ed\\b|elementary education",
+      "min_years": 4,
+      "max_years": 4,
+      "academic_years": 4
+    },
+    {
+      "match": "^bhm\\b|hotel management|culinary arts",
+      "min_years": 4,
+      "max_years": 4,
+      "academic_years": 4
+    },
+    {
+      "match": "animation|multimedia|visual communication|film & television|film and television|advertising|journalism|mass communication",
+      "min_years": 3,
+      "max_years": 4,
+      "academic_years": 4
+    },
+    {
+      "match": "tourism|travel",
+      "min_years": 3,
+      "max_years": 4,
+      "academic_years": 4
+    },
+    {
+      "match": "^bachelor of (economics|management studies|business|commerce|science|arts|computer applications)",
+      "min_years": 3,
+      "max_years": 4,
+      "academic_years": 4
+    },
+    {
+      "match": "^b\\.?\\s?(sc|a|com)\\b|^bba\\b|^bca\\b|^bms\\b",
+      "min_years": 3,
+      "max_years": 4,
+      "academic_years": 4,
+      "note": "three-year degree or four-year Honours route under the National Education Policy; the page shows all four"
+    }
+  ]
+}

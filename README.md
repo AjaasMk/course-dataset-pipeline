@@ -22,6 +22,11 @@ fail → review queue               with the full failure history
 Search domains resolve per discipline and per section, so a fees lookup for engineering
 searches AICTE and JoSAA while careers searches the National Career Service.
 
+Course length is not left to the model. `config/durations.json` fixes how long each course
+runs and how many taught years its curriculum shows, and the generator pins the schema to
+that count, so a five-and-a-half-year MBBS gets four year tabs plus an internship rather
+than a padded fifth year of invented subjects.
+
 ## Setup
 
 ```bash
@@ -41,6 +46,7 @@ coursegen generate "B.Tech Civil Engineering"      # one course
 coursegen validate artifacts/crs_x/course.json     # re-check a saved document
 coursegen retry --revalidate-only                  # re-check the review queue, no API calls
 coursegen domains --discipline engineering         # which sources a subject will search
+coursegen durations docs/courses.xlsx              # which courses have a fixed duration
 coursegen publish --dry-run                        # what would be sent to Laravel
 coursegen publish                                  # POST validated courses
 ```

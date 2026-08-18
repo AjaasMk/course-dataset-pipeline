@@ -33,6 +33,11 @@ def domains_path() -> Path:
     return PROJECT_ROOT / "config" / "domains.json"
 
 
+@pytest.fixture(scope="session")
+def durations_path() -> Path:
+    return PROJECT_ROOT / "config" / "durations.json"
+
+
 @pytest.fixture()
 def settings(tmp_path: Path, schema_path: Path) -> Settings:
     return Settings(
@@ -55,6 +60,7 @@ def settings(tmp_path: Path, schema_path: Path) -> Settings:
         generation_max_attempts=3,
         schema_path=schema_path,
         domains_path=tmp_path / "domains-absent.json",
+        durations_path=tmp_path / "durations-absent.json",
         artifacts_dir=tmp_path / "artifacts",
         review_dir=tmp_path / "artifacts" / "_review",
         laravel_endpoint="",

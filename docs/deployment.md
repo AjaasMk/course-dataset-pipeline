@@ -77,6 +77,39 @@ REQUEST_INTERVAL_SECONDS=2   # raise if you see HTTP 429
 GENERATION_MAX_ATTEMPTS=3    # attempts per section before flagging
 ```
 
+## Course durations
+
+`config/durations.json` fixes how long each course runs. Two numbers matter per entry:
+
+- `min_years` / `max_years` — the whole programme as a family experiences it, internship
+  included. This is what the page shows as the duration.
+- `academic_years` — how many taught years the curriculum tabs show. Lower wherever the
+  programme ends in an internship rather than another year of subjects.
+
+MBBS is the clearest case: `5.5` years total, `4` taught years. Without this split the
+generator was asked for a fifth year of subjects that does not exist, and filled it by
+repeating year one.
+
+Check what a course list resolves to before generating:
+
+```bash
+docker compose run --rm coursegen durations docs/courses.xlsx
+docker compose run --rm coursegen durations --course MBBS
+```
+
+Courses the file does not cover are listed under `unpinned`; those fall back to a
+model-generated duration, exactly as before. Add an entry to fix one:
+
+```json
+"exact": {
+  "bachelor of medical laboratory technology": {
+    "min_years": 3, "max_years": 4, "academic_years": 4
+  }
+}
+```
+
+Exact names match first, then `patterns` in order, so put specific rules above broad ones.
+
 ## Configuring the endpoint
 
 Five settings in `.env` describe your API. Defaults suit a token-authenticated

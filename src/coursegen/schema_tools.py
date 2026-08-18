@@ -47,6 +47,28 @@ def chunk_schema(root: dict[str, Any], chunk: Chunk) -> dict[str, Any]:
     return schema
 
 
+def pin_curriculum_years(schema: dict[str, Any], count: int) -> dict[str, Any]:
+    curriculum = schema.get("properties", {}).get("curriculum")
+    if not isinstance(curriculum, dict):
+        return schema
+    years = curriculum.get("properties", {}).get("years")
+    if not isinstance(years, dict):
+        raise SchemaError("curriculum has no 'years' array to pin")
+    floor, ceiling = years.get("minItems"), years.get("maxItems")
+    if isinstance(floor, int) and count < floor:
+        raise SchemaError(f"cannot pin curriculum.years to {count}; the schema allows at least {floor}")
+    if isinstance(ceiling, int) and count > ceiling:
+        raise SchemaError(f"cannot pin curriculum.years to {count}; the schema allows at most {ceiling}")
+    years["minItems"] = count
+    years["maxItems"] = count
+    item = years.get("items")
+    if isinstance(item, dict):
+        year_number = item.get("properties", {}).get("year")
+        if isinstance(year_number, dict):
+            year_number["maximum"] = count
+    return schema
+
+
 def relax_for_provider(schema: dict[str, Any]) -> dict[str, Any]:
     def walk(node: Any) -> Any:
         if isinstance(node, dict):
